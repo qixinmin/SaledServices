@@ -1,0 +1,17 @@
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.CustomResponsibilityForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.GuaranteeForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.CustomFaultForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.ExcelImportForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.MBMaterialCompareForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.ReceiveOrderForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.SourceForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.LoginForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.MainForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.Properties.Resources.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.UserDetailForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.VendorForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.csproj.GenerateResource.Cache
+D:\projects\SaledServices\SaledServices\bin\Debug\SaledServices.exe
+D:\projects\SaledServices\SaledServices\bin\Debug\SaledServices.pdb
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.exe
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.pdb
