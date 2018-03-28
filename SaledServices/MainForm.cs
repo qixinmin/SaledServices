@@ -195,14 +195,7 @@ namespace SaledServices
 
         private void receiveOrderMenuItem_Click(object sender, EventArgs e)
         { 
-            if (roForm == null || roForm.IsDisposed)
-            {
-                roForm = new ReceiveOrderForm();
-                roForm.MdiParent = this;
-            }
-
-            roForm.BringToFront();
-            roForm.Show();
+           
         }
 
         private SourceForm sourceForm;
@@ -255,6 +248,44 @@ namespace SaledServices
 
             customResponsibilityForm.BringToFront();
             customResponsibilityForm.Show();
+        }
+
+        private StoreHouseForm storeHouseForm;
+        private void storeHouseMenuItem_Click(object sender, EventArgs e)
+        {
+            if (storeHouseForm == null || storeHouseForm.IsDisposed)
+            {
+                storeHouseForm = new StoreHouseForm();
+                storeHouseForm.MdiParent = this;
+            }
+
+            storeHouseForm.BringToFront();
+            storeHouseForm.Show();
+        }
+
+        private void 收货单ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (roForm == null || roForm.IsDisposed)
+            {
+                roForm = new ReceiveOrderForm();
+                roForm.MdiParent = this;
+            }
+
+            roForm.BringToFront();
+            roForm.Show();
+        }
+
+        private DeliveredTableForm dtform;
+        private void 收货ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dtform == null || dtform.IsDisposed)
+            {
+                dtform = new DeliveredTableForm();
+                dtform.MdiParent = this;
+            }
+
+            dtform.BringToFront();
+            dtform.Show();
         }
     }
 }

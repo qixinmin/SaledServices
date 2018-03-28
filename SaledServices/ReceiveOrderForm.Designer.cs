@@ -61,6 +61,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label14 = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.storeHouseComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -326,7 +328,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(484, 116);
+            this.label14.Location = new System.Drawing.Point(484, 168);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(17, 12);
             this.label14.TabIndex = 4;
@@ -335,16 +337,34 @@
             // idTextBox
             // 
             this.idTextBox.Enabled = false;
-            this.idTextBox.Location = new System.Drawing.Point(547, 112);
+            this.idTextBox.Location = new System.Drawing.Point(547, 165);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(100, 21);
             this.idTextBox.TabIndex = 5;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(484, 125);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(41, 12);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "仓库别";
+            // 
+            // storeHouseComboBox
+            // 
+            this.storeHouseComboBox.FormattingEnabled = true;
+            this.storeHouseComboBox.Location = new System.Drawing.Point(547, 121);
+            this.storeHouseComboBox.Name = "storeHouseComboBox";
+            this.storeHouseComboBox.Size = new System.Drawing.Size(100, 20);
+            this.storeHouseComboBox.TabIndex = 7;
             // 
             // ReceiveOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(735, 517);
+            this.ClientSize = new System.Drawing.Size(822, 537);
+            this.Controls.Add(this.storeHouseComboBox);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.custom_material_describeTextBox);
             this.Controls.Add(this.custom_materialNoTextBox);
@@ -359,6 +379,7 @@
             this.Controls.Add(this.receivedateTextBox);
             this.Controls.Add(this.receivedNumTextBox);
             this.Controls.Add(this.ordernumTextBox);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.vendorTextBox);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label11);
@@ -421,5 +442,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox idTextBox;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox storeHouseComboBox;
     }
 }

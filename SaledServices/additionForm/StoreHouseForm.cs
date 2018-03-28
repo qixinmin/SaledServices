@@ -10,23 +10,23 @@ using System.Data.SqlClient;
 
 namespace SaledServices
 {
-    public partial class CustomResponsibilityForm : Form
+    public partial class StoreHouseForm : Form
     {
         private SqlConnection mConn;
         private DataSet ds;
         private SqlDataAdapter sda;
-        private String tableName = "customResponsibility";
+        private String tableName = "storehouse";
 
-        public CustomResponsibilityForm()
+        public StoreHouseForm()
         {
             InitializeComponent();
         }
 
         private void add_Click(object sender, EventArgs e)
         {
-            if (this.responsibility_describeTextBox.Text.Trim() == "")
+            if (this.storeHouseTextBox.Text.Trim() == "")
             {
-                MessageBox.Show("客责描述的内容为空!");
+                MessageBox.Show("来源的内容为空!");
                 return;
             }
 
@@ -39,7 +39,7 @@ namespace SaledServices
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"+ this.responsibility_describeTextBox.Text.Trim() + "')";
+                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + this.storeHouseTextBox.Text.Trim() + "')";
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
                 }
@@ -80,7 +80,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "ID", "客责描述" };
+            string[] hTxt = { "ID", "仓库别" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -92,7 +92,7 @@ namespace SaledServices
             DataTable dt = ds.Tables[tableName];
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.numTextBox.Text.Trim());
-            dr["responsibility_describe"] = this.responsibility_describeTextBox.Text.Trim();            
+            dr["storehouse_describe"] = this.storeHouseTextBox.Text.Trim();            
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
@@ -129,8 +129,7 @@ namespace SaledServices
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.numTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
-            this.responsibility_describeTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
-            
+            this.storeHouseTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
         }
     }
 }

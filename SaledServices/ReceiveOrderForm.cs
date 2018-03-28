@@ -20,6 +20,38 @@ namespace SaledServices
         public ReceiveOrderForm()
         {
             InitializeComponent();
+
+            loadStoreHouse();
+        }
+
+        private void loadStoreHouse()
+        {
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandText = "select distinct storehouse_describe from storehouse";
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader querySdr = cmd.ExecuteReader();
+
+                while (querySdr.Read())
+                {
+                    this.storeHouseComboBox.Items.Add(querySdr[0].ToString());                    
+                }
+
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void add_Click(object sender, EventArgs e)
@@ -46,7 +78,8 @@ namespace SaledServices
                         this.ordertimeTextBox.Text.Trim() + "','" +
                         this.receivedNumTextBox.Text.Trim() + "','" +
                         this.receivedateTextBox.Text.Trim() + "','" +
-                        this.statusTextBox.Text.Trim() + "')";
+                        this.statusTextBox.Text.Trim() + "','" +
+                        this.storeHouseComboBox.Text.Trim() + "')";
 
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
@@ -91,7 +124,7 @@ namespace SaledServices
 
             string[] hTxt = {"ID", "厂商", "客户别","订单编号",
                                 "客户料号","客户物料描述","订单数量","MB简称",
-                                "厂商料号","制单人","制单时间","收货数量","收货日期","订单状态"};
+                                "厂商料号","制单人","制单时间","收货数量","收货日期","订单状态","仓库别"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -116,7 +149,8 @@ namespace SaledServices
             dr["ordertime"] = this.ordertimeTextBox.Text.Trim();
             dr["receivedNum"] = this.receivedNumTextBox.Text.Trim();
             dr["receivedate"] = this.receivedateTextBox.Text.Trim();
-            dr["status"] = this.statusTextBox.Text.Trim();            
+            dr["status"] = this.statusTextBox.Text.Trim();
+            dr["storehouse"] = this.storeHouseComboBox.Text.Trim();
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
@@ -166,6 +200,7 @@ namespace SaledServices
             this.receivedNumTextBox.Text = dataGridView1.SelectedCells[11].Value.ToString();
             this.receivedateTextBox.Text = dataGridView1.SelectedCells[12].Value.ToString();
             this.statusTextBox.Text = dataGridView1.SelectedCells[13].Value.ToString();
+            this.storeHouseComboBox.Text = dataGridView1.SelectedCells[14].Value.ToString();
         }
     }
 }

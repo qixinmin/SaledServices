@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="additionForm\StoreHouseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\StoreHouseForm.Designer.cs">
+      <DependentUpon>StoreHouseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Constlist.cs" />
     <Compile Include="additionForm\CustomResponsibilityForm.cs">
       <SubType>Form</SubType>
@@ -67,6 +73,12 @@
     </Compile>
     <Compile Include="additionForm\CustomFaultForm.Designer.cs">
       <DependentUpon>CustomFaultForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeliveredTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeliveredTableForm.Designer.cs">
+      <DependentUpon>DeliveredTableForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ExcelImportForm.cs">
       <SubType>Form</SubType>
@@ -119,6 +131,9 @@
     <Compile Include="VendorForm.Designer.cs">
       <DependentUpon>VendorForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="additionForm\StoreHouseForm.resx">
+      <DependentUpon>StoreHouseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="additionForm\CustomResponsibilityForm.resx">
       <DependentUpon>CustomResponsibilityForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\CustomFaultForm.resx">
       <DependentUpon>CustomFaultForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeliveredTableForm.resx">
+      <DependentUpon>DeliveredTableForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExcelImportForm.resx">
       <DependentUpon>ExcelImportForm.cs</DependentUpon>

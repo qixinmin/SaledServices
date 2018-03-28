@@ -125,5 +125,11 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.numTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
+            this.guarantee_describeTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
+        }
     }
 }

@@ -15,3 +15,5 @@ D:\projects\SaledServices\SaledServices\bin\Debug\SaledServices.exe
 D:\projects\SaledServices\SaledServices\bin\Debug\SaledServices.pdb
 D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.exe
 D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.pdb
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.StoreHouseForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Debug\SaledServices.DeliveredTableForm.resources

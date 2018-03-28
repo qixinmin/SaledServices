@@ -1,6 +1,6 @@
 ﻿namespace SaledServices
 {
-    partial class CustomFaultForm
+    partial class StoreHouseForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.fault_describeTextBox = new System.Windows.Forms.TextBox();
+            this.storeHouseTextBox = new System.Windows.Forms.TextBox();
             this.add = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.numTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,9 +45,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(55, 72);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "客户故障";
+            this.label1.Text = "仓库别";
             // 
             // dataGridView1
             // 
@@ -60,12 +60,12 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // fault_describeTextBox
+            // storeHouseTextBox
             // 
-            this.fault_describeTextBox.Location = new System.Drawing.Point(131, 69);
-            this.fault_describeTextBox.Name = "fault_describeTextBox";
-            this.fault_describeTextBox.Size = new System.Drawing.Size(100, 21);
-            this.fault_describeTextBox.TabIndex = 2;
+            this.storeHouseTextBox.Location = new System.Drawing.Point(131, 69);
+            this.storeHouseTextBox.Name = "storeHouseTextBox";
+            this.storeHouseTextBox.Size = new System.Drawing.Size(100, 21);
+            this.storeHouseTextBox.TabIndex = 2;
             // 
             // add
             // 
@@ -107,24 +107,24 @@
             this.delete.UseVisualStyleBackColor = true;
             this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(57, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 12);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "ID";
-            // 
             // numTextBox
             // 
-            this.numTextBox.Location = new System.Drawing.Point(131, 37);
+            this.numTextBox.Location = new System.Drawing.Point(131, 31);
             this.numTextBox.Name = "numTextBox";
             this.numTextBox.ReadOnly = true;
             this.numTextBox.Size = new System.Drawing.Size(100, 21);
-            this.numTextBox.TabIndex = 5;
+            this.numTextBox.TabIndex = 11;
             // 
-            // CustomFaultForm
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(57, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(17, 12);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "ID";
+            // 
+            // StoreHouseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -135,12 +135,12 @@
             this.Controls.Add(this.modify);
             this.Controls.Add(this.query);
             this.Controls.Add(this.add);
-            this.Controls.Add(this.fault_describeTextBox);
+            this.Controls.Add(this.storeHouseTextBox);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
-            this.Name = "CustomFaultForm";
+            this.Name = "StoreHouseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "客户故障";
+            this.Text = "仓库别";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -151,12 +151,12 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox fault_describeTextBox;
+        private System.Windows.Forms.TextBox storeHouseTextBox;
         private System.Windows.Forms.Button add;
         private System.Windows.Forms.Button query;
         private System.Windows.Forms.Button modify;
         private System.Windows.Forms.Button delete;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox numTextBox;
+        private System.Windows.Forms.Label label2;
     }
 }

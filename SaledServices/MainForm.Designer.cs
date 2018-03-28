@@ -39,18 +39,21 @@
             this.FunctionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExcelImportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mBMaterialCompareMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.additionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customFaultMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guaranteeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customResponsibilityMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.storeHouseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.receiveOrderMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.additionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customFaultMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.guaranteeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customResponsibilityMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.收货单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -79,7 +82,7 @@
             this.UserManageMenuItem,
             this.VendorMenuItem,
             this.FunctionMenuItem,
-            this.receiveOrderMenuItem,
+            this.receiveReturnStoreMenuItem,
             this.additionMenuItem});
             this.AllMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.AllMenuStrip.Name = "AllMenuStrip";
@@ -99,14 +102,14 @@
             // LoginMenuItem
             // 
             this.LoginMenuItem.Name = "LoginMenuItem";
-            this.LoginMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.LoginMenuItem.Size = new System.Drawing.Size(100, 22);
             this.LoginMenuItem.Text = "登录";
             this.LoginMenuItem.Click += new System.EventHandler(this.LoginMenuItem_Click);
             // 
             // LogoutMenuItem
             // 
             this.LogoutMenuItem.Name = "LogoutMenuItem";
-            this.LogoutMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.LogoutMenuItem.Size = new System.Drawing.Size(100, 22);
             this.LogoutMenuItem.Text = "注销";
             // 
             // VendorMenuItem
@@ -120,7 +123,7 @@
             // VendorChangeMenuItem
             // 
             this.VendorChangeMenuItem.Name = "VendorChangeMenuItem";
-            this.VendorChangeMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.VendorChangeMenuItem.Size = new System.Drawing.Size(124, 22);
             this.VendorChangeMenuItem.Text = "信息变更";
             this.VendorChangeMenuItem.Click += new System.EventHandler(this.VendorChangeMenuItem_Click);
             // 
@@ -146,6 +149,63 @@
             this.mBMaterialCompareMenuItem.Size = new System.Drawing.Size(156, 22);
             this.mBMaterialCompareMenuItem.Text = "MB物料对照表";
             this.mBMaterialCompareMenuItem.Click += new System.EventHandler(this.mBMaterialCompareMenuItem_Click);
+            // 
+            // receiveReturnStoreMenuItem
+            // 
+            this.receiveReturnStoreMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.收货单ToolStripMenuItem,
+            this.收货ToolStripMenuItem});
+            this.receiveReturnStoreMenuItem.Name = "receiveReturnStoreMenuItem";
+            this.receiveReturnStoreMenuItem.Size = new System.Drawing.Size(56, 21);
+            this.receiveReturnStoreMenuItem.Text = "收还货";
+            this.receiveReturnStoreMenuItem.Click += new System.EventHandler(this.receiveOrderMenuItem_Click);
+            // 
+            // additionMenuItem
+            // 
+            this.additionMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sourceMenuItem,
+            this.customFaultMenuItem,
+            this.guaranteeMenuItem,
+            this.customResponsibilityMenuItem,
+            this.storeHouseMenuItem});
+            this.additionMenuItem.Name = "additionMenuItem";
+            this.additionMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.additionMenuItem.Text = "附加信息";
+            // 
+            // sourceMenuItem
+            // 
+            this.sourceMenuItem.Name = "sourceMenuItem";
+            this.sourceMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.sourceMenuItem.Text = "收货来源";
+            this.sourceMenuItem.Click += new System.EventHandler(this.sourceMenuItem_Click);
+            // 
+            // customFaultMenuItem
+            // 
+            this.customFaultMenuItem.Name = "customFaultMenuItem";
+            this.customFaultMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.customFaultMenuItem.Text = "客户故障";
+            this.customFaultMenuItem.Click += new System.EventHandler(this.customFaultMenuItem_Click);
+            // 
+            // guaranteeMenuItem
+            // 
+            this.guaranteeMenuItem.Name = "guaranteeMenuItem";
+            this.guaranteeMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.guaranteeMenuItem.Text = "保内/保外";
+            this.guaranteeMenuItem.Click += new System.EventHandler(this.guaranteeMenuItem_Click);
+            // 
+            // customResponsibilityMenuItem
+            // 
+            this.customResponsibilityMenuItem.Name = "customResponsibilityMenuItem";
+            this.customResponsibilityMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.customResponsibilityMenuItem.Text = "客责描述";
+            this.customResponsibilityMenuItem.Click += new System.EventHandler(this.customResponsibilityMenuItem_Click);
+            // 
+            // storeHouseMenuItem
+            // 
+            this.storeHouseMenuItem.Name = "storeHouseMenuItem";
+            this.storeHouseMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.storeHouseMenuItem.Text = "仓库别";
+            this.storeHouseMenuItem.Click += new System.EventHandler(this.storeHouseMenuItem_Click);
             // 
             // label2
             // 
@@ -203,51 +263,19 @@
             this.dataGridView1.Size = new System.Drawing.Size(240, 150);
             this.dataGridView1.TabIndex = 10;
             // 
-            // receiveOrderMenuItem
+            // 收货单ToolStripMenuItem
             // 
-            this.receiveOrderMenuItem.Name = "receiveOrderMenuItem";
-            this.receiveOrderMenuItem.Size = new System.Drawing.Size(56, 21);
-            this.receiveOrderMenuItem.Text = "收还货";
-            this.receiveOrderMenuItem.Click += new System.EventHandler(this.receiveOrderMenuItem_Click);
+            this.收货单ToolStripMenuItem.Name = "收货单ToolStripMenuItem";
+            this.收货单ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.收货单ToolStripMenuItem.Text = "收货单";
+            this.收货单ToolStripMenuItem.Click += new System.EventHandler(this.收货单ToolStripMenuItem_Click);
             // 
-            // additionMenuItem
+            // 收货ToolStripMenuItem
             // 
-            this.additionMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sourceMenuItem,
-            this.customFaultMenuItem,
-            this.guaranteeMenuItem,
-            this.customResponsibilityMenuItem});
-            this.additionMenuItem.Name = "additionMenuItem";
-            this.additionMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.additionMenuItem.Text = "附加信息";
-            // 
-            // sourceMenuItem
-            // 
-            this.sourceMenuItem.Name = "sourceMenuItem";
-            this.sourceMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.sourceMenuItem.Text = "收货来源";
-            this.sourceMenuItem.Click += new System.EventHandler(this.sourceMenuItem_Click);
-            // 
-            // customFaultMenuItem
-            // 
-            this.customFaultMenuItem.Name = "customFaultMenuItem";
-            this.customFaultMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.customFaultMenuItem.Text = "客户故障";
-            this.customFaultMenuItem.Click += new System.EventHandler(this.customFaultMenuItem_Click);
-            // 
-            // guaranteeMenuItem
-            // 
-            this.guaranteeMenuItem.Name = "guaranteeMenuItem";
-            this.guaranteeMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.guaranteeMenuItem.Text = "保内/保外";
-            this.guaranteeMenuItem.Click += new System.EventHandler(this.guaranteeMenuItem_Click);
-            // 
-            // customResponsibilityMenuItem
-            // 
-            this.customResponsibilityMenuItem.Name = "customResponsibilityMenuItem";
-            this.customResponsibilityMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.customResponsibilityMenuItem.Text = "客责描述";
-            this.customResponsibilityMenuItem.Click += new System.EventHandler(this.customResponsibilityMenuItem_Click);
+            this.收货ToolStripMenuItem.Name = "收货ToolStripMenuItem";
+            this.收货ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.收货ToolStripMenuItem.Text = "收货";
+            this.收货ToolStripMenuItem.Click += new System.EventHandler(this.收货ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -295,12 +323,15 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStripMenuItem mBMaterialCompareMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem receiveOrderMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem receiveReturnStoreMenuItem;
         private System.Windows.Forms.ToolStripMenuItem additionMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sourceMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customFaultMenuItem;
         private System.Windows.Forms.ToolStripMenuItem guaranteeMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customResponsibilityMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem storeHouseMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 收货单ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 收货ToolStripMenuItem;
     }
 }
 
