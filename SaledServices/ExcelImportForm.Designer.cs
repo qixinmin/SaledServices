@@ -32,13 +32,16 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.filePath = new System.Windows.Forms.TextBox();
             this.findFile = new System.Windows.Forms.Button();
-            this.importTargetComboBox = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.mbmaterial = new System.Windows.Forms.RadioButton();
+            this.receiveOrder = new System.Windows.Forms.RadioButton();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // importButton
             // 
             this.importButton.Enabled = false;
-            this.importButton.Location = new System.Drawing.Point(83, 205);
+            this.importButton.Location = new System.Drawing.Point(128, 242);
             this.importButton.Name = "importButton";
             this.importButton.Size = new System.Drawing.Size(75, 23);
             this.importButton.TabIndex = 0;
@@ -63,29 +66,51 @@
             this.findFile.UseVisualStyleBackColor = true;
             this.findFile.Click += new System.EventHandler(this.findFile_Click);
             // 
-            // importTargetComboBox
+            // panel1
             // 
-            this.importTargetComboBox.FormattingEnabled = true;
-            this.importTargetComboBox.Items.AddRange(new object[] {
-            "MB物料对照表",
-            "收货单"});
-            this.importTargetComboBox.Location = new System.Drawing.Point(12, 116);
-            this.importTargetComboBox.Name = "importTargetComboBox";
-            this.importTargetComboBox.Size = new System.Drawing.Size(121, 20);
-            this.importTargetComboBox.TabIndex = 3;
+            this.panel1.Controls.Add(this.receiveOrder);
+            this.panel1.Controls.Add(this.mbmaterial);
+            this.panel1.Location = new System.Drawing.Point(12, 99);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.TabIndex = 4;
+            // 
+            // mbmaterial
+            // 
+            this.mbmaterial.AutoSize = true;
+            this.mbmaterial.Location = new System.Drawing.Point(13, 20);
+            this.mbmaterial.Name = "mbmaterial";
+            this.mbmaterial.Size = new System.Drawing.Size(95, 16);
+            this.mbmaterial.TabIndex = 0;
+            this.mbmaterial.Text = "MB物料对照表";
+            this.mbmaterial.UseVisualStyleBackColor = true;
+            // 
+            // receiveOrder
+            // 
+            this.receiveOrder.AutoSize = true;
+            this.receiveOrder.Checked = true;
+            this.receiveOrder.Location = new System.Drawing.Point(13, 61);
+            this.receiveOrder.Name = "receiveOrder";
+            this.receiveOrder.Size = new System.Drawing.Size(59, 16);
+            this.receiveOrder.TabIndex = 1;
+            this.receiveOrder.TabStop = true;
+            this.receiveOrder.Text = "收货单";
+            this.receiveOrder.UseVisualStyleBackColor = true;
             // 
             // ExcelImportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(561, 375);
-            this.Controls.Add(this.importTargetComboBox);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.findFile);
             this.Controls.Add(this.filePath);
             this.Controls.Add(this.importButton);
             this.Name = "ExcelImportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Excel表格导入";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,6 +122,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.TextBox filePath;
         private System.Windows.Forms.Button findFile;
-        private System.Windows.Forms.ComboBox importTargetComboBox;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton receiveOrder;
+        private System.Windows.Forms.RadioButton mbmaterial;
     }
 }

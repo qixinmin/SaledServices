@@ -19,9 +19,7 @@ namespace SaledServices
         private MBMaterialCompareForm mbFrom = null;
 
         private ReceiveOrderForm roForm = null;
-
-        private SqlConnection mConn;
-
+        
         public MainForm()
         {
             InitializeComponent();
@@ -52,31 +50,7 @@ namespace SaledServices
             }            
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {            
-            try
-            {
-                string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
-                SqlConnection conn = new SqlConnection(ConStr);
-                conn.Open();
-                if (conn.State == ConnectionState.Open)
-                {
-                    label2.Text = "connection success!";
-                }
-
-                conn.Close();
-
-                if (conn.State == ConnectionState.Closed)
-                {
-                    label2.Text = "connection close!";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("connection fail");
-            }
-        }
-
+       
         private void LoginMenuItem_Click(object sender, EventArgs e)
         {
             if (mLoginForm == null || mLoginForm.IsDisposed)
@@ -113,74 +87,6 @@ namespace SaledServices
             mExcelForm.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
-                mConn = new SqlConnection(ConStr);
-                mConn.Open();
-                if (mConn.State == ConnectionState.Open)
-                {
-                    label2.Text = "connection success!";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("connection fail");
-            }
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            try
-            {                
-                mConn.Close();
-
-                if (mConn.State == ConnectionState.Closed)
-                {
-                    label2.Text = "connection close!";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("connection fail");
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (mConn.State == ConnectionState.Open)
-                {
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = mConn;
-                    cmd.CommandText = "select * from users";
-                    cmd.CommandType = CommandType.Text;
-                    //int i = Convert.ToInt32(cmd.ExecuteScalar());
-                    //MessageBox.Show("has " + i);
-                    //SqlDataReader sdr = cmd.ExecuteReader();
-                    //listView1.Items.Clear();
-                    //while (sdr.Read())
-                    //{
-                    //    listView1.Items.Add(sdr[1].ToString());
-                    //}
-
-                    SqlDataAdapter sda = new SqlDataAdapter();
-                    sda.SelectCommand = cmd;
-                    DataSet ds = new DataSet();
-                    sda.Fill(ds, "users");
-                    dataGridView1.DataSource = ds.Tables[0];
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
         private void mBMaterialCompareMenuItem_Click(object sender, EventArgs e)
         {
             if (mbFrom == null || mbFrom.IsDisposed)
@@ -189,6 +95,7 @@ namespace SaledServices
                 mbFrom.MdiParent = this;
             }
 
+            mbFrom.WindowState = FormWindowState.Maximized;
             mbFrom.BringToFront();
             mbFrom.Show();
         }
@@ -271,6 +178,7 @@ namespace SaledServices
                 roForm.MdiParent = this;
             }
 
+            roForm.WindowState = FormWindowState.Maximized;
             roForm.BringToFront();
             roForm.Show();
         }
@@ -283,9 +191,23 @@ namespace SaledServices
                 dtform = new DeliveredTableForm();
                 dtform.MdiParent = this;
             }
-
+            dtform.WindowState = FormWindowState.Maximized;
             dtform.BringToFront();
             dtform.Show();
+        }
+
+        private ReturnStoreForm rsForm;
+        private void returnStoreMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rsForm == null || rsForm.IsDisposed)
+            {
+                rsForm = new ReturnStoreForm();
+                rsForm.MdiParent = this;
+            }
+
+            rsForm.WindowState = FormWindowState.Maximized;
+            rsForm.BringToFront();
+            rsForm.Show();
         }
     }
 }

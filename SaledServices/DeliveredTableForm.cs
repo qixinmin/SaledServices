@@ -41,7 +41,11 @@ namespace SaledServices
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
-                    this.source_briefComboBox.Items.Add(querySdr[0].ToString());
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.source_briefComboBox.Items.Add(temp);
+                    }
                 }
                 querySdr.Close();
 
@@ -49,7 +53,11 @@ namespace SaledServices
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
-                    this.custom_faultComboBox.Items.Add(querySdr[0].ToString());
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.custom_faultComboBox.Items.Add(temp);
+                    }
                 }
                 querySdr.Close();
 
@@ -57,7 +65,11 @@ namespace SaledServices
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
-                    this.guaranteeComboBox.Items.Add(querySdr[0].ToString());
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.guaranteeComboBox.Items.Add(temp);
+                    }
                 }
                 querySdr.Close();
 
@@ -65,7 +77,11 @@ namespace SaledServices
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
-                    this.customResponsibilityComboBox.Items.Add(querySdr[0].ToString());
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.customResponsibilityComboBox.Items.Add(temp);
+                    }
                 }
                 querySdr.Close();
 
@@ -74,7 +90,11 @@ namespace SaledServices
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
-                    this.custom_orderComboBox.Items.Add(querySdr[0].ToString());
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.custom_orderComboBox.Items.Add(temp);
+                    }
                 }
                 querySdr.Close();
 
@@ -157,7 +177,7 @@ namespace SaledServices
                 MessageBox.Show("请检测当前机器的时间是否正确！");
                 return;
             }
-
+            
             this.order_receive_dateTextBox.Text = dt2.ToString("yyyy/MM/dd");            
         }
 
@@ -199,27 +219,30 @@ namespace SaledServices
             DateTime dt2 = Convert.ToDateTime(this.order_receive_dateTextBox.Text);
             
             string period = this.warranty_periodTextBox.Text;
-            int warranty = Int32.Parse(period.Substring(0, period.Length - 1));
-
-            dt1 = dt1.AddMonths(warranty);//生产日期加上保修期
-            TimeSpan ts = dt2.Subtract(dt1);
-
-            int overdays = ts.Days;
-
-            if (overdays >= 0)
+            if (period != "")
             {
-                this.guaranteeComboBox.Text = "过保";
-                this.guaranteeComboBox.Enabled = false;
-                this.customResponsibilityComboBox.Text = "过保";
-                this.customResponsibilityComboBox.Enabled = false;
-                MessageBox.Show((overdays) + " fail");
-            }
-            else
-            {
-                this.guaranteeComboBox.Text = "";
-                this.guaranteeComboBox.Enabled = true;
-                this.customResponsibilityComboBox.Text = "";
-                this.customResponsibilityComboBox.Enabled = true;
+                int warranty = Int32.Parse(period.Substring(0, period.Length - 1));
+
+                dt1 = dt1.AddMonths(warranty);//生产日期加上保修期
+                TimeSpan ts = dt2.Subtract(dt1);
+
+                int overdays = ts.Days;
+
+                if (overdays >= 0)
+                {
+                    this.guaranteeComboBox.Text = "过保";
+                    this.guaranteeComboBox.Enabled = false;
+                    this.customResponsibilityComboBox.Text = "过保";
+                    this.customResponsibilityComboBox.Enabled = false;
+                    MessageBox.Show((overdays) + " fail");
+                }
+                else
+                {
+                    this.guaranteeComboBox.Text = "";
+                    this.guaranteeComboBox.Enabled = true;
+                    this.customResponsibilityComboBox.Text = "";
+                    this.customResponsibilityComboBox.Enabled = true;
+                }
             }
         }
 
@@ -264,6 +287,7 @@ namespace SaledServices
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + 
                         this.vendorTextBox.Text.Trim() + "','" +
                         this.productTextBox.Text.Trim() + "','" +
@@ -291,18 +315,46 @@ namespace SaledServices
                         this.lenovo_custom_service_noTextBox.Text.Trim() + "','" +
                         this.lenovo_maintenance_noTextBox.Text.Trim() + "','" +
                         this.lenovo_repair_noTextBox.Text.Trim() + "','" +
-                        this.whole_machine_noTextBox.Text.Trim() + "','" +
+                        this.whole_machine_noTextBox.Text.Trim() + 
                         "')";
-
-                    cmd.CommandType = CommandType.Text;
+                   
                     cmd.ExecuteNonQuery();
 
                     //除正常插入数据外，还需要把收还货表格的数量修改 TODO...
                     //1. 修改收还货表格的收货数量， 判断，小于 等于，大于的情况
                     //2 如果小于 只是修改数据
                     //3 如果等于 则需要把状态也修改位close， 如果大于则直接报错
+                    //update receiveOrder set returnNum = '1' where id = '1'
 
+                    cmd.CommandText = "select status, ordernum, receivedNum, receivedate from receiveOrder where orderno = '" + this.custom_orderComboBox.Text
+                         + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
+                    int orderNum;
+                    int receivedNum=0;
+                    string status = "open";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        if (querySdr[0].ToString() == "close")
+                        {
+                            MessageBox.Show("本板子子已经收货完毕，请检测是否有错误!");
+                        }
+                        else
+                        {
+                            orderNum = Int32.Parse(querySdr[1].ToString());
+                            receivedNum = Int32.Parse(querySdr[2].ToString()); 
+                            if (orderNum == receivedNum + 1)
+                            {
+                                status = "close";
+                            }
+                        }
+                    }
+                    querySdr.Close();
 
+                    cmd.CommandText = "update receiveOrder set status = '" + status + "',receivedNum = '" + (receivedNum + 1) +
+                                "', receivedate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                                + "where orderno = '" + this.custom_orderComboBox.Text
+                                + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {
@@ -417,7 +469,52 @@ namespace SaledServices
             }
         }
 
+        private void DeliveredTableForm_Load(object sender, EventArgs e)
+        {
+             //当TableLayoutPanel控件中的需要更新的Label过多的时候，刷新Label的时候会出现闪烁问题，主要解决办法就是增加双缓冲，代码如下
 
-       
+            tableLayoutPanel1.GetType().
+                GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+                SetValue(tableLayoutPanel1, true, null);
+            tableLayoutPanel2.GetType().
+                GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+                SetValue(tableLayoutPanel2, true, null);
+            tableLayoutPanel3.GetType().
+                GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+                SetValue(tableLayoutPanel3, true, null);
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.numTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
+            this.vendorTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
+            this.productTextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
+            this.source_briefComboBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
+            this.storehouseTextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
+            this.custom_orderComboBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
+            this.order_out_dateTextBox.Text = dataGridView1.SelectedCells[6].Value.ToString();
+            this.order_receive_dateTextBox.Text = dataGridView1.SelectedCells[7].Value.ToString();
+            this.custom_machine_typeTextBox.Text = dataGridView1.SelectedCells[8].Value.ToString();
+            this.mb_briefTextBox.Text = dataGridView1.SelectedCells[9].Value.ToString();
+            this.custommaterialNoTextBox.Text = dataGridView1.SelectedCells[10].Value.ToString();
+            this.dpk_statusTextBox.Text = dataGridView1.SelectedCells[11].Value.ToString();
+            this.track_serial_noTextBox.Text = dataGridView1.SelectedCells[12].Value.ToString();
+            this.custom_serial_noTextBox.Text = dataGridView1.SelectedCells[13].Value.ToString();
+            this.vendor_serail_noTextBox.Text = dataGridView1.SelectedCells[14].Value.ToString();
+            this.uuidTextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
+            this.macTextBox.Text = dataGridView1.SelectedCells[16].Value.ToString();
+            this.vendormaterialNoTextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
+
+            this.mb_describeTextBox.Text = dataGridView1.SelectedCells[18].Value.ToString(); ;
+            this.mb_make_dateTextBox.Text = dataGridView1.SelectedCells[19].Value.ToString(); ;
+            this.warranty_periodTextBox.Text = dataGridView1.SelectedCells[20].Value.ToString(); ;
+            this.custom_faultComboBox.Text = dataGridView1.SelectedCells[21].Value.ToString(); ;
+            this.guaranteeComboBox.Text = dataGridView1.SelectedCells[22].Value.ToString(); ;
+            this.customResponsibilityComboBox.Text = dataGridView1.SelectedCells[23].Value.ToString(); ;
+            this.lenovo_custom_service_noTextBox.Text = dataGridView1.SelectedCells[24].Value.ToString(); ;
+            this.lenovo_maintenance_noTextBox.Text = dataGridView1.SelectedCells[25].Value.ToString(); ;
+            this.lenovo_repair_noTextBox.Text = dataGridView1.SelectedCells[26].Value.ToString(); ;
+            this.whole_machine_noTextBox.Text = dataGridView1.SelectedCells[27].Value.ToString(); ;      
+        }
     }
 }

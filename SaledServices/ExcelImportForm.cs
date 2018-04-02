@@ -19,7 +19,6 @@ namespace SaledServices
         public Microsoft.Office.Interop.Excel.Worksheets wss;
         public Microsoft.Office.Interop.Excel.Worksheet ws;
 
-
         public ExcelImportForm()
         {
             InitializeComponent();
@@ -29,8 +28,7 @@ namespace SaledServices
         {
             openFileDialog.ShowDialog();
             string fileName = openFileDialog.FileName;
-            if ((fileName.EndsWith("xls") || fileName.EndsWith("xlsx"))
-                && importTargetComboBox.Text != "")
+            if (fileName.EndsWith("xls") || fileName.EndsWith("xlsx"))
             {
                 filePath.Text = fileName;
                 importButton.Enabled = true;
@@ -70,12 +68,12 @@ namespace SaledServices
 
             string sheetName = "";
             string tableName = "";
-            if (importTargetComboBox.Text == Constlist.table_MBMaterialCompare)
+            if (this.mbmaterial.Text == Constlist.table_MBMaterialCompare)
             {
                 sheetName = Constlist.table_MBMaterialCompare;
                 tableName = Constlist.table_name_MBMaterialCompare;
             }
-            else if (importTargetComboBox.Text == Constlist.table_receiveOrder)
+            else if (this.receiveOrder.Text == Constlist.table_receiveOrder)
             {
                 sheetName = Constlist.table_receiveOrder;
                 tableName = Constlist.table_name_ReceiveOrder;
@@ -85,14 +83,14 @@ namespace SaledServices
                 MessageBox.Show("信息不全");
             }
 
-            if (importTargetComboBox.Text == Constlist.table_MBMaterialCompare)
+            if (mbmaterial.Text == Constlist.table_MBMaterialCompare)
             {
                 Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
                 int rowLength = ws.UsedRange.Rows.Count;
                 int columnLength = ws.UsedRange.Columns.Count;
                 importMaterialCompare(ws, rowLength, columnLength, tableName);
             }
-            else if (importTargetComboBox.Text == Constlist.table_receiveOrder)
+            else if (receiveOrder.Text == Constlist.table_receiveOrder)
             {
                 Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
                 int rowLength = ws.UsedRange.Rows.Count;
@@ -143,7 +141,6 @@ namespace SaledServices
 
                         querySdr.Close();
 
-
                         insertCmd.CommandText = "INSERT INTO " + "receiveOrder" + " VALUES('" +
                             vendor + "','" +
                             product + "','" +
@@ -160,16 +157,7 @@ namespace SaledServices
                             "open" + "')";
 
                         insertCmd.ExecuteNonQuery();
-                    }
-
-                    try
-                    {                        
-                        
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
+                    }                   
                 }
 
                 queryConn.Close();

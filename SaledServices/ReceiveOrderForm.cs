@@ -79,7 +79,8 @@ namespace SaledServices
                         this.receivedNumTextBox.Text.Trim() + "','" +
                         this.receivedateTextBox.Text.Trim() + "','" +
                         this.statusTextBox.Text.Trim() + "','" +
-                        this.storeHouseComboBox.Text.Trim() + "')";
+                        this.storeHouseComboBox.Text.Trim() + "','" +
+                        this.returnNumTextBox.Text.Trim() + "')";
 
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
@@ -124,10 +125,11 @@ namespace SaledServices
 
             string[] hTxt = {"ID", "厂商", "客户别","订单编号",
                                 "客户料号","客户物料描述","订单数量","MB简称",
-                                "厂商料号","制单人","制单时间","收货数量","收货日期","订单状态","仓库别"};
+                                "厂商料号","制单人","制单时间","收货数量","收货日期","订单状态","仓库别","还货数量"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
+                dataGridView1.Columns[i].Name = hTxt[i];
             }
         }
 
@@ -151,6 +153,7 @@ namespace SaledServices
             dr["receivedate"] = this.receivedateTextBox.Text.Trim();
             dr["status"] = this.statusTextBox.Text.Trim();
             dr["storehouse"] = this.storeHouseComboBox.Text.Trim();
+            dr["returnNum"] = this.storeHouseComboBox.Text.Trim();
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
@@ -201,6 +204,20 @@ namespace SaledServices
             this.receivedateTextBox.Text = dataGridView1.SelectedCells[12].Value.ToString();
             this.statusTextBox.Text = dataGridView1.SelectedCells[13].Value.ToString();
             this.storeHouseComboBox.Text = dataGridView1.SelectedCells[14].Value.ToString();
+            this.returnNumTextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
+        }
+
+        private void ReceiveOrderForm_Load(object sender, EventArgs e)
+        {
+            tableLayoutPanel1.GetType().
+              GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+              SetValue(tableLayoutPanel1, true, null);
+            tableLayoutPanel2.GetType().
+                GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+                SetValue(tableLayoutPanel2, true, null);
+            tableLayoutPanel3.GetType().
+                GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+                SetValue(tableLayoutPanel3, true, null);            
         }
     }
 }

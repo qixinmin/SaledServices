@@ -287,5 +287,20 @@ namespace SaledServices
             this.cpu_typeTextBox .Text = dataGridView1.SelectedCells[28].Value.ToString();
             this.cpu_freqTextBox.Text = dataGridView1.SelectedCells[29].Value.ToString();
         }
+
+        private void MBMaterialCompareForm_Load(object sender, EventArgs e)
+        {
+            //当TableLayoutPanel控件中的需要更新的Label过多的时候，刷新Label的时候会出现闪烁问题，主要解决办法就是增加双缓冲，代码如下
+
+            tableLayoutPanel1.GetType().
+                GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+                SetValue(tableLayoutPanel1, true, null);
+            tableLayoutPanel2.GetType().
+                GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+                SetValue(tableLayoutPanel2, true, null);
+            tableLayoutPanel3.GetType().
+                GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+                SetValue(tableLayoutPanel3, true, null);
+        }
     }
 }
