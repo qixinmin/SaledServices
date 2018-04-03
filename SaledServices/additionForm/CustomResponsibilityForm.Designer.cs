@@ -43,9 +43,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(55, 72);
+            this.label1.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label1.Location = new System.Drawing.Point(92, 120);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.Size = new System.Drawing.Size(89, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "客责描述";
             // 
@@ -53,26 +55,30 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(57, 250);
+            this.dataGridView1.Location = new System.Drawing.Point(95, 417);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(371, 194);
+            this.dataGridView1.Size = new System.Drawing.Size(618, 323);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // responsibility_describeTextBox
             // 
-            this.responsibility_describeTextBox.Location = new System.Drawing.Point(131, 69);
+            this.responsibility_describeTextBox.Location = new System.Drawing.Point(263, 115);
+            this.responsibility_describeTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.responsibility_describeTextBox.Name = "responsibility_describeTextBox";
-            this.responsibility_describeTextBox.Size = new System.Drawing.Size(100, 21);
+            this.responsibility_describeTextBox.Size = new System.Drawing.Size(164, 30);
             this.responsibility_describeTextBox.TabIndex = 2;
             // 
             // add
             // 
-            this.add.Location = new System.Drawing.Point(57, 181);
+            this.add.Font = new System.Drawing.Font("SimSun", 15F);
+            this.add.Location = new System.Drawing.Point(95, 302);
+            this.add.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(75, 23);
+            this.add.Size = new System.Drawing.Size(145, 55);
             this.add.TabIndex = 3;
             this.add.Text = "新增";
             this.add.UseVisualStyleBackColor = true;
@@ -80,9 +86,11 @@
             // 
             // query
             // 
-            this.query.Location = new System.Drawing.Point(156, 181);
+            this.query.Font = new System.Drawing.Font("SimSun", 15F);
+            this.query.Location = new System.Drawing.Point(260, 302);
+            this.query.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.query.Name = "query";
-            this.query.Size = new System.Drawing.Size(75, 23);
+            this.query.Size = new System.Drawing.Size(132, 55);
             this.query.TabIndex = 3;
             this.query.Text = "查询";
             this.query.UseVisualStyleBackColor = true;
@@ -90,9 +98,11 @@
             // 
             // modify
             // 
-            this.modify.Location = new System.Drawing.Point(253, 181);
+            this.modify.Font = new System.Drawing.Font("SimSun", 15F);
+            this.modify.Location = new System.Drawing.Point(422, 302);
+            this.modify.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.modify.Name = "modify";
-            this.modify.Size = new System.Drawing.Size(75, 23);
+            this.modify.Size = new System.Drawing.Size(138, 55);
             this.modify.TabIndex = 3;
             this.modify.Text = "修改";
             this.modify.UseVisualStyleBackColor = true;
@@ -100,9 +110,11 @@
             // 
             // delete
             // 
-            this.delete.Location = new System.Drawing.Point(353, 181);
+            this.delete.Font = new System.Drawing.Font("SimSun", 15F);
+            this.delete.Location = new System.Drawing.Point(588, 302);
+            this.delete.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(75, 23);
+            this.delete.Size = new System.Drawing.Size(125, 55);
             this.delete.TabIndex = 3;
             this.delete.Text = "删除";
             this.delete.UseVisualStyleBackColor = true;
@@ -110,26 +122,29 @@
             // 
             // numTextBox
             // 
-            this.numTextBox.Location = new System.Drawing.Point(131, 30);
+            this.numTextBox.Location = new System.Drawing.Point(263, 50);
+            this.numTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.numTextBox.Name = "numTextBox";
             this.numTextBox.ReadOnly = true;
-            this.numTextBox.Size = new System.Drawing.Size(100, 21);
+            this.numTextBox.Size = new System.Drawing.Size(164, 30);
             this.numTextBox.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(57, 30);
+            this.label2.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label2.Location = new System.Drawing.Point(95, 50);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 12);
+            this.label2.Size = new System.Drawing.Size(29, 20);
             this.label2.TabIndex = 6;
             this.label2.Text = "ID";
             // 
             // CustomResponsibilityForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(557, 487);
+            this.ClientSize = new System.Drawing.Size(928, 812);
             this.Controls.Add(this.numTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.delete);
@@ -139,6 +154,8 @@
             this.Controls.Add(this.responsibility_describeTextBox);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("SimSun", 15F);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "CustomResponsibilityForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "客责描述";

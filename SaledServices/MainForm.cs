@@ -209,5 +209,32 @@ namespace SaledServices
             rsForm.BringToFront();
             rsForm.Show();
         }
+        private ReturnStoreStatusForm rssf;
+        private void 还货状态ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rssf == null || rssf.IsDisposed)
+            {
+                rssf = new ReturnStoreStatusForm();
+                rssf.MdiParent = this;
+            }
+
+            //rssf.WindowState = FormWindowState.Maximized;
+            rssf.BringToFront();
+            rssf.Show();
+        }
+
+        private ReturnStoreCustomRespForm rscrf;
+        private void 还货客责类别ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rscrf == null || rscrf.IsDisposed)
+            {
+                rscrf = new ReturnStoreCustomRespForm();
+                rscrf.MdiParent = this;
+            }
+
+            //rssf.WindowState = FormWindowState.Maximized;
+            rscrf.BringToFront();
+            rscrf.Show();
+        }
     }
 }

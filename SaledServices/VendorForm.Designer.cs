@@ -46,9 +46,10 @@
             // 
             // query
             // 
-            this.query.Location = new System.Drawing.Point(169, 244);
+            this.query.Location = new System.Drawing.Point(282, 407);
+            this.query.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.query.Name = "query";
-            this.query.Size = new System.Drawing.Size(75, 23);
+            this.query.Size = new System.Drawing.Size(125, 38);
             this.query.TabIndex = 0;
             this.query.Text = "查询";
             this.query.UseVisualStyleBackColor = true;
@@ -56,9 +57,10 @@
             // 
             // modify
             // 
-            this.modify.Location = new System.Drawing.Point(280, 244);
+            this.modify.Location = new System.Drawing.Point(467, 407);
+            this.modify.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.modify.Name = "modify";
-            this.modify.Size = new System.Drawing.Size(75, 23);
+            this.modify.Size = new System.Drawing.Size(125, 38);
             this.modify.TabIndex = 1;
             this.modify.Text = "修改";
             this.modify.UseVisualStyleBackColor = true;
@@ -69,19 +71,21 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(29, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(48, 20);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(544, 210);
+            this.dataGridView1.Size = new System.Drawing.Size(907, 350);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // add
             // 
-            this.add.Location = new System.Drawing.Point(50, 244);
+            this.add.Location = new System.Drawing.Point(83, 407);
+            this.add.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(75, 23);
+            this.add.Size = new System.Drawing.Size(125, 38);
             this.add.TabIndex = 4;
             this.add.Text = "新增";
             this.add.UseVisualStyleBackColor = true;
@@ -89,33 +93,37 @@
             // 
             // changshangTextBox
             // 
-            this.changshangTextBox.Location = new System.Drawing.Point(74, 37);
+            this.changshangTextBox.Location = new System.Drawing.Point(123, 62);
+            this.changshangTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.changshangTextBox.Name = "changshangTextBox";
-            this.changshangTextBox.Size = new System.Drawing.Size(100, 21);
+            this.changshangTextBox.Size = new System.Drawing.Size(164, 30);
             this.changshangTextBox.TabIndex = 5;
             // 
             // kehubieTextBox
             // 
-            this.kehubieTextBox.Location = new System.Drawing.Point(74, 70);
+            this.kehubieTextBox.Location = new System.Drawing.Point(123, 117);
+            this.kehubieTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.kehubieTextBox.Name = "kehubieTextBox";
-            this.kehubieTextBox.Size = new System.Drawing.Size(100, 21);
+            this.kehubieTextBox.Size = new System.Drawing.Size(164, 30);
             this.kehubieTextBox.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 40);
+            this.label1.Location = new System.Drawing.Point(17, 67);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.Size = new System.Drawing.Size(49, 20);
             this.label1.TabIndex = 7;
             this.label1.Text = "厂商";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 73);
+            this.label2.Location = new System.Drawing.Point(20, 122);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.Size = new System.Drawing.Size(69, 20);
             this.label2.TabIndex = 8;
             this.label2.Text = "客户别";
             // 
@@ -127,33 +135,37 @@
             this.groupPanel.Controls.Add(this.label2);
             this.groupPanel.Controls.Add(this.kehubieTextBox);
             this.groupPanel.Controls.Add(this.label1);
-            this.groupPanel.Location = new System.Drawing.Point(38, 293);
+            this.groupPanel.Location = new System.Drawing.Point(63, 488);
+            this.groupPanel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.groupPanel.Name = "groupPanel";
-            this.groupPanel.Size = new System.Drawing.Size(206, 120);
+            this.groupPanel.Size = new System.Drawing.Size(343, 200);
             this.groupPanel.TabIndex = 9;
             // 
             // numTextBox
             // 
-            this.numTextBox.Location = new System.Drawing.Point(74, 4);
+            this.numTextBox.Location = new System.Drawing.Point(123, 7);
+            this.numTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.numTextBox.Name = "numTextBox";
             this.numTextBox.ReadOnly = true;
-            this.numTextBox.Size = new System.Drawing.Size(100, 21);
+            this.numTextBox.Size = new System.Drawing.Size(164, 30);
             this.numTextBox.TabIndex = 10;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 7);
+            this.label3.Location = new System.Drawing.Point(20, 12);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.Size = new System.Drawing.Size(49, 20);
             this.label3.TabIndex = 9;
             this.label3.Text = "编号";
             // 
             // delete
             // 
-            this.delete.Location = new System.Drawing.Point(389, 244);
+            this.delete.Location = new System.Drawing.Point(648, 407);
+            this.delete.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(75, 23);
+            this.delete.Size = new System.Drawing.Size(125, 38);
             this.delete.TabIndex = 10;
             this.delete.Text = "删除";
             this.delete.UseVisualStyleBackColor = true;
@@ -161,15 +173,17 @@
             // 
             // VendorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 474);
+            this.ClientSize = new System.Drawing.Size(1078, 790);
             this.Controls.Add(this.delete);
             this.Controls.Add(this.groupPanel);
             this.Controls.Add(this.add);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.modify);
             this.Controls.Add(this.query);
+            this.Font = new System.Drawing.Font("SimSun", 15F);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "VendorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "厂商与客户别";

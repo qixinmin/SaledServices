@@ -25,8 +25,9 @@ namespace SaledServices
         }
 
         private void findFile_Click(object sender, EventArgs e)
-        {
+        {  
             openFileDialog.ShowDialog();
+            
             string fileName = openFileDialog.FileName;
             if (fileName.EndsWith("xls") || fileName.EndsWith("xlsx"))
             {
@@ -56,6 +57,36 @@ namespace SaledServices
             return input;
         }
 
+        //判断excel表格的内容是否为空，如果为空，则弹出对话框提示
+        private bool checkIsNullCell(Worksheet ws, int rowLength, int columnLength)
+        {
+            bool ret = false;
+            for (int i = 1; i <= rowLength; i++)
+            {  
+                for (int j = 1; j <= columnLength; j++)
+                {   
+                    //有可能有空值
+                    try
+                    {
+                        string temp = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, j]).Value2.ToString();
+
+                        if (temp == null || temp == "")
+                        {
+                            ret = true;
+                            return ret;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ret = true;
+                        return ret;
+                    }
+                }
+            }
+
+            return ret;
+        }
+
         private void importButton_Click(object sender, EventArgs e)
         {
             app = new Microsoft.Office.Interop.Excel.Application();
@@ -68,99 +99,181 @@ namespace SaledServices
 
             string sheetName = "";
             string tableName = "";
-            if (this.mbmaterial.Text == Constlist.table_MBMaterialCompare)
+            if (this.mbmaterial.Checked)
             {
                 sheetName = Constlist.table_MBMaterialCompare;
                 tableName = Constlist.table_name_MBMaterialCompare;
             }
-            else if (this.receiveOrder.Text == Constlist.table_receiveOrder)
+            else if (this.receiveOrder.Checked)
             {
                 sheetName = Constlist.table_receiveOrder;
                 tableName = Constlist.table_name_ReceiveOrder;
             }
-            else
-            {
-                MessageBox.Show("信息不全");
-            }
 
-            if (mbmaterial.Text == Constlist.table_MBMaterialCompare)
+            if (this.mbmaterial.Checked)
             {
                 Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
                 int rowLength = ws.UsedRange.Rows.Count;
                 int columnLength = ws.UsedRange.Columns.Count;
                 importMaterialCompare(ws, rowLength, columnLength, tableName);
             }
-            else if (receiveOrder.Text == Constlist.table_receiveOrder)
+            else if (this.receiveOrder.Checked)
             {
                 Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
                 int rowLength = ws.UsedRange.Rows.Count;
                 int columnLength = ws.UsedRange.Columns.Count;
 
-                //订单号
-                string order = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[3, 2]).Value2.ToString();
-
-                SqlConnection queryConn = new SqlConnection(Constlist.ConStr);
-                queryConn.Open();
-
-                SqlCommand queryCmd = new SqlCommand();
-                queryCmd.Connection = queryConn;
-                queryCmd.CommandType = CommandType.Text;
-
-                SqlCommand insertCmd = new SqlCommand();
-                insertCmd.Connection = queryConn;
-                insertCmd.CommandType = CommandType.Text;
-
-                if (queryConn.State == ConnectionState.Open)
+                if (checkIsNullCell(ws, rowLength, columnLength))
                 {
-                    for (int i = 8; i < rowLength; i++)
-                    {
-                        //客户料号
-                        string customOrderNo = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 2]).Value2.ToString();
-                        //客户物料描述
-                        string customMaterialDescribe = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 3]).Value2.ToString();
-                        //订单数量
-                        string orderNum = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 4]).Value2.ToString();
-
-                        customOrderNo = appendString(customOrderNo);
-                        string querysql = "select * from " + Constlist.table_name_MBMaterialCompare + 
-                            " where custommaterialNo ='" + customOrderNo + "'";
-
-                        queryCmd.CommandText = querysql;
-                        SqlDataReader querySdr = queryCmd.ExecuteReader();
-                        string vendor = "";
-                        string product = "";
-                        string mb_brief = "";
-                        string vendor_materialNo = "";
-                        if (querySdr.FieldCount > 0 && querySdr.Read())
-                        {
-                            vendor = querySdr[1].ToString();
-                            product = querySdr[2].ToString();
-                            mb_brief = querySdr[3].ToString();
-                            vendor_materialNo = querySdr[4].ToString();
-                        }
-
-                        querySdr.Close();
-
-                        insertCmd.CommandText = "INSERT INTO " + "receiveOrder" + " VALUES('" +
-                            vendor + "','" +
-                            product + "','" +
-                            order + "','" +
-                            customOrderNo + "','" +
-                            customMaterialDescribe + "','" +
-                            orderNum + "','" +
-                            mb_brief + "','" +
-                            vendor_materialNo + "','" +
-                            "testUser" + "','" +
-                            DateTime.Now + "','" +
-                            "0" + "','" +
-                            "NULL" + "','" +
-                            "open" + "')";
-
-                        insertCmd.ExecuteNonQuery();
-                    }                   
+                    MessageBox.Show("RMA中有空值，请确认后在上传");
+                    wbs.Close();
+                    return;
                 }
 
-                queryConn.Close();
+                try
+                {
+                    //订单号
+                    string order = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[2, 2]).Value2.ToString();
+
+                    SqlConnection queryConn = new SqlConnection(Constlist.ConStr);
+                    queryConn.Open();
+
+                    SqlCommand queryCmd = new SqlCommand();
+                    queryCmd.Connection = queryConn;
+                    queryCmd.CommandType = CommandType.Text;
+
+                    SqlCommand insertCmd = new SqlCommand();
+                    insertCmd.Connection = queryConn;
+                    insertCmd.CommandType = CommandType.Text;
+
+                    if (queryConn.State == ConnectionState.Open)
+                    {
+                        bool customMaterialNoExist = true;
+                        try
+                        {                            
+                            for (int i = 2; i < rowLength; i++)
+                            {
+                                //逻辑1 判断客户料号是否在物料对照对照表中
+                                //客户料号
+                                string customMaterialNo = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 3]).Value2.ToString();
+
+                                customMaterialNo = appendString(customMaterialNo);
+                                string querysql = "select vendor,product,mb_brief,vendormaterialNo,mb_descripe from " + Constlist.table_name_MBMaterialCompare +
+                                    " where custommaterialNo ='" + customMaterialNo + "'";
+
+                                queryCmd.CommandText = querysql;
+                                SqlDataReader querySdr = queryCmd.ExecuteReader();
+                                string vendor = "";
+                                if (querySdr.FieldCount > 0 && querySdr.Read())
+                                {
+                                    vendor = querySdr[0].ToString();                                   
+                                }
+                                querySdr.Close();
+                                if (vendor == "")
+                                {
+                                    MessageBox.Show(customMaterialNo + "在物料对照表不存在，请添加！");
+                                    customMaterialNoExist = false;
+                                    break;
+                                }                               
+
+                                //逻辑2 判断此excel表格是否已经导入过数据库中
+                                querysql = "select vendor from receiveOrder where custom_materialNo ='" + customMaterialNo + "' and orderno='" + order + "'";
+
+                                queryCmd.CommandText = querysql;
+                                querySdr = queryCmd.ExecuteReader();
+                                vendor = "";                                
+                                if (querySdr.FieldCount > 0 && querySdr.Read())
+                                {
+                                    vendor = querySdr[0].ToString();
+                                }
+                                querySdr.Close();
+                                if (vendor != "")
+                                {
+                                    MessageBox.Show(filePath.Text + "已经导入过了，请检查！");
+                                    customMaterialNoExist = false;
+                                    break;
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString()); 
+                        }
+                        finally
+                        {
+                            if (!customMaterialNoExist)
+                            {
+                                queryConn.Close();
+                            }
+                        }
+
+                        if (!customMaterialNoExist)
+                        {
+                            wbs.Close();
+                            return;
+                        }
+
+
+                        for (int i = 2; i < rowLength; i++)
+                        {
+                            string storeHouse = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 1]).Value2.ToString();
+                            //客户料号
+                            string customMaterialNo = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 3]).Value2.ToString();
+                                                        
+                            //订单数量
+                            string orderNum = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 4]).Value2.ToString();
+
+                            customMaterialNo = appendString(customMaterialNo);
+                            string querysql = "select vendor,product,mb_brief,vendormaterialNo,mb_descripe from " + Constlist.table_name_MBMaterialCompare +
+                                " where custommaterialNo ='" + customMaterialNo + "'";
+
+                            queryCmd.CommandText = querysql;
+                            SqlDataReader querySdr = queryCmd.ExecuteReader();
+                            string vendor = "";
+                            string product = "";
+                            string mb_brief = "";
+                            string vendor_materialNo = "";
+                            string customMaterialDescribe = "";
+                            if (querySdr.FieldCount > 0 && querySdr.Read())
+                            {
+                                vendor = querySdr[0].ToString();
+                                product = querySdr[1].ToString();
+                                mb_brief = querySdr[2].ToString();
+                                vendor_materialNo = querySdr[3].ToString();
+                                customMaterialDescribe = querySdr[4].ToString();
+                            }
+
+                            querySdr.Close();
+
+                            insertCmd.CommandText = "INSERT INTO receiveOrder VALUES('" +
+                                vendor + "','" +
+                                product + "','" +
+                                order + "','" +
+                                customMaterialNo + "','" +
+                                customMaterialDescribe + "','" +
+                                orderNum + "','" +
+                                mb_brief + "','" +
+                                vendor_materialNo + "','" +
+                                "testUser" + "','" +
+                                DateTime.Now + "','" +
+                                "0" + "','" +
+                                "NULL" + "','" +
+                                "open" + "','" +
+                                storeHouse + "','0')";
+
+                            insertCmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    queryConn.Close();
+                    MessageBox.Show("导入完毕");
+                }
+                catch (Exception ex)
+                { }
+                finally
+                {
+                    wbs.Close();
+                }
             }
         }
 

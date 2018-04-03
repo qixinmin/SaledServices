@@ -59,6 +59,42 @@ namespace SaledServices
                 }
                 querySdr.Close();
 
+                cmd.CommandText = "select distinct type from customResponsibilityType";
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.custom_res_typeComboBox.Items.Add(temp);
+                    }
+                }
+                querySdr.Close();
+
+                cmd.CommandText = "select distinct status from returnStoreStatus";
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.statusComboBox.Items.Add(temp);
+                    }
+                }
+                querySdr.Close();
+
+                cmd.CommandText = "select distinct responsibility_describe from customResponsibility";
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.response_describeComboBox.Items.Add(temp);
+                    }
+                }
+                querySdr.Close();
+
                 mConn.Close();
             }
             catch (Exception ex)
@@ -249,9 +285,9 @@ namespace SaledServices
                         this.custom_serial_noTextBox.Text.Trim() + "','" +
                         this.vendor_serail_noTextBox.Text.Trim() + "','" +
                         this.vendormaterialNoTextBox.Text.Trim() + "','" +
-                        this.statusTextBox.Text.Trim() + "','" +
-                        this.custom_res_typeTextBox.Text.Trim() + "','" +
-                        this.response_describeTextBox.Text.Trim() + "','"+
+                        this.statusComboBox.Text.Trim() + "','" +
+                        this.custom_res_typeComboBox.Text.Trim() + "','" +
+                        this.response_describeComboBox.Text.Trim() + "','"+
                         this.tatTextBox.Text.Trim()+
                         "')";
                     cmd.CommandType = CommandType.Text;

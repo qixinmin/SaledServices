@@ -44,48 +44,54 @@
             this.panel1.Controls.Add(this.username);
             this.panel1.Controls.Add(this.usernameInput);
             this.panel1.Controls.Add(this.login);
-            this.panel1.Location = new System.Drawing.Point(27, 29);
+            this.panel1.Location = new System.Drawing.Point(45, 48);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(393, 272);
+            this.panel1.Size = new System.Drawing.Size(655, 453);
             this.panel1.TabIndex = 0;
             // 
             // passwordInput
             // 
-            this.passwordInput.Location = new System.Drawing.Point(168, 113);
+            this.passwordInput.Location = new System.Drawing.Point(280, 188);
+            this.passwordInput.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.passwordInput.Name = "passwordInput";
-            this.passwordInput.Size = new System.Drawing.Size(100, 21);
+            this.passwordInput.Size = new System.Drawing.Size(164, 30);
             this.passwordInput.TabIndex = 4;
             // 
             // password
             // 
             this.password.AutoSize = true;
-            this.password.Location = new System.Drawing.Point(60, 122);
+            this.password.Location = new System.Drawing.Point(100, 203);
+            this.password.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(29, 12);
+            this.password.Size = new System.Drawing.Size(49, 20);
             this.password.TabIndex = 3;
             this.password.Text = "密码";
             // 
             // username
             // 
             this.username.AutoSize = true;
-            this.username.Location = new System.Drawing.Point(60, 35);
+            this.username.Location = new System.Drawing.Point(100, 58);
+            this.username.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(41, 12);
+            this.username.Size = new System.Drawing.Size(69, 20);
             this.username.TabIndex = 2;
             this.username.Text = "用户名";
             // 
             // usernameInput
             // 
-            this.usernameInput.Location = new System.Drawing.Point(168, 27);
+            this.usernameInput.Location = new System.Drawing.Point(280, 45);
+            this.usernameInput.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.usernameInput.Name = "usernameInput";
-            this.usernameInput.Size = new System.Drawing.Size(100, 21);
+            this.usernameInput.Size = new System.Drawing.Size(164, 30);
             this.usernameInput.TabIndex = 1;
             // 
             // login
             // 
-            this.login.Location = new System.Drawing.Point(168, 187);
+            this.login.Location = new System.Drawing.Point(280, 312);
+            this.login.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(75, 23);
+            this.login.Size = new System.Drawing.Size(125, 38);
             this.login.TabIndex = 0;
             this.login.Text = "登录";
             this.login.UseVisualStyleBackColor = true;
@@ -93,10 +99,12 @@
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 369);
+            this.ClientSize = new System.Drawing.Size(765, 615);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("SimSun", 15F);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "登录界面";

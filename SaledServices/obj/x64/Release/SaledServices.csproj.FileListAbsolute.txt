@@ -18,3 +18,5 @@ D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.VendorForm
 D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.csproj.GenerateResource.Cache
 D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.exe
 D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.pdb
+D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.ReturnStoreCustomRespForm.resources
+D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.ReturnStoreStatusForm.resources

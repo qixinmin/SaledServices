@@ -96,6 +96,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="additionForm\ReturnStoreCustomRespForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\ReturnStoreCustomRespForm.Designer.cs">
+      <DependentUpon>ReturnStoreCustomRespForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="additionForm\ReturnStoreStatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\ReturnStoreStatusForm.Designer.cs">
+      <DependentUpon>ReturnStoreStatusForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="additionForm\StoreHouseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +196,12 @@
     <Compile Include="VendorForm.Designer.cs">
       <DependentUpon>VendorForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="additionForm\ReturnStoreCustomRespForm.resx">
+      <DependentUpon>ReturnStoreCustomRespForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\ReturnStoreStatusForm.resx">
+      <DependentUpon>ReturnStoreStatusForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="additionForm\StoreHouseForm.resx">
       <DependentUpon>StoreHouseForm.cs</DependentUpon>
     </EmbeddedResource>

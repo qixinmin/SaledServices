@@ -181,70 +181,92 @@ namespace SaledServices
             this.order_receive_dateTextBox.Text = dt2.ToString("yyyy/MM/dd");            
         }
 
-        private void custom_serial_noTextBox_TextChanged(object sender, EventArgs e)
+        private void custom_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (this.productTextBox.Text != "TBG")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
+            if (e.KeyChar == System.Convert.ToChar(13))
             {
-                //需要去掉前面的非0字段
-                string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
+                string customSerialNo = this.custom_serial_noTextBox.Text;
 
-                if (this.custom_serial_noTextBox.Text.Contains(customSerial) == false)
+                if (customSerialNo.StartsWith("8S"))
                 {
-                    MessageBox.Show("在" + this.productTextBox.Text + "下客户序号没有包含客户料号");
+                    if (customSerialNo.Length != 23)
+                    {
+                        MessageBox.Show("客户序号的长度不是23位，请检查！");
+                        return;
+                    }
                 }
-            }
-
-            string customSerialNo= this.custom_serial_noTextBox.Text;
-            string subData = "";
-            if (customSerialNo.StartsWith("8S"))
-            {
-                subData = customSerialNo.Substring(customSerialNo.Length - 7, 3);                
-            }
-            else if (customSerialNo.StartsWith("11S"))
-            {
-                subData = customSerialNo.Substring(customSerialNo.Length - 6, 3);
-            }
-            else
-            {
-                MessageBox.Show("客户序号没有包含,没有做计算时间处理");
-                return;
-            }
-
-            string year = Untils.getTimeByChar(true, Convert.ToChar(subData.Substring(0, 1)));
-            string mouth = Untils.getTimeByChar(false, Convert.ToChar(subData.Substring(1, 1)));
-            string day = Untils.getTimeByChar(false, Convert.ToChar(subData.Substring(2, 1)));
-            this.mb_make_dateTextBox.Text = year + "/" + mouth + "/" + day;
-
-            DateTime dt1 = Convert.ToDateTime(this.mb_make_dateTextBox.Text);
-            DateTime dt2 = Convert.ToDateTime(this.order_receive_dateTextBox.Text);
-            
-            string period = this.warranty_periodTextBox.Text;
-            if (period != "")
-            {
-                int warranty = Int32.Parse(period.Substring(0, period.Length - 1));
-
-                dt1 = dt1.AddMonths(warranty);//生产日期加上保修期
-                TimeSpan ts = dt2.Subtract(dt1);
-
-                int overdays = ts.Days;
-
-                if (overdays >= 0)
+                else if (customSerialNo.StartsWith("11S"))
                 {
-                    this.guaranteeComboBox.Text = "过保";
-                    this.guaranteeComboBox.Enabled = false;
-                    this.customResponsibilityComboBox.Text = "过保";
-                    this.customResponsibilityComboBox.Enabled = false;
-                    MessageBox.Show((overdays) + " fail");
+                    if (customSerialNo.Length != 22)
+                    {
+                        MessageBox.Show("客户序号的长度不是22位，请检查！");
+                        return;
+                    }
+                }
+                
+                if (this.productTextBox.Text != "TBG" && this.productTextBox.Text !="DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
+                {
+                    //需要去掉前面的非0字段
+                    string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
+
+                    if (this.custom_serial_noTextBox.Text.ToLower().Contains(customSerial.ToLower()) == false)
+                    {
+                        MessageBox.Show("在" + this.productTextBox.Text + "下客户序号没有包含客户料号");
+                    }
+                }
+               
+                string subData = "";
+                if (customSerialNo.StartsWith("8S"))
+                {
+                    subData = customSerialNo.Substring(customSerialNo.Length - 7, 3);
+                }
+                else if (customSerialNo.StartsWith("11S"))
+                {
+                    subData = customSerialNo.Substring(customSerialNo.Length - 6, 3);
                 }
                 else
                 {
-                    this.guaranteeComboBox.Text = "";
-                    this.guaranteeComboBox.Enabled = true;
-                    this.customResponsibilityComboBox.Text = "";
-                    this.customResponsibilityComboBox.Enabled = true;
+                    MessageBox.Show("客户序号没有包含,没有做计算时间处理");
+                    return;
+                }
+
+                string year = Untils.getTimeByChar(true, Convert.ToChar(subData.Substring(0, 1)));
+                string mouth = Untils.getTimeByChar(false, Convert.ToChar(subData.Substring(1, 1)));
+                string day = Untils.getTimeByChar(false, Convert.ToChar(subData.Substring(2, 1)));
+                this.mb_make_dateTextBox.Text = year + "/" + mouth + "/" + day;
+
+                DateTime dt1 = Convert.ToDateTime(this.mb_make_dateTextBox.Text);
+                DateTime dt2 = Convert.ToDateTime(this.order_receive_dateTextBox.Text);
+
+                string period = this.warranty_periodTextBox.Text;
+                if (period != "")
+                {
+                    int warranty = Int32.Parse(period.Substring(0, period.Length - 1));
+
+                    dt1 = dt1.AddMonths(warranty);//生产日期加上保修期
+                    TimeSpan ts = dt2.Subtract(dt1);
+
+                    int overdays = ts.Days;
+
+                    if (overdays >= 0)
+                    {
+                        this.guaranteeComboBox.Text = "过保";
+                        this.guaranteeComboBox.Enabled = false;
+                        this.customResponsibilityComboBox.Text = "过保";
+                        this.customResponsibilityComboBox.Enabled = false;
+                        MessageBox.Show((overdays) + " fail");
+                    }
+                    else
+                    {
+                        this.guaranteeComboBox.Text = "";
+                        this.guaranteeComboBox.Enabled = true;
+                        this.customResponsibilityComboBox.Text = "";
+                        this.customResponsibilityComboBox.Enabled = true;
+                    }
                 }
             }
         }
+       
 
        
 //         * Id INT PRIMARY KEY IDENTITY, 
@@ -515,6 +537,41 @@ namespace SaledServices
             this.lenovo_maintenance_noTextBox.Text = dataGridView1.SelectedCells[25].Value.ToString(); ;
             this.lenovo_repair_noTextBox.Text = dataGridView1.SelectedCells[26].Value.ToString(); ;
             this.whole_machine_noTextBox.Text = dataGridView1.SelectedCells[27].Value.ToString(); ;      
+        }
+
+        private void macTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                if (this.macTextBox.Text.Length != 12)
+                {
+                    MessageBox.Show("MAC的长度不是12位，请检查！"); 
+                }
+            }
+        }
+
+        private void uuidTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                if (this.uuidTextBox.Text.Length > 32)
+                {
+                    string[] temp = this.uuidTextBox.Text.Split(' ');
+                    foreach (string str in temp)
+                    {
+                        if (str.Length == 32)
+                        {
+                            this.uuidTextBox.Text = str;
+                            break;
+                        }
+                    }
+
+                    if (this.uuidTextBox.Text.Length > 32)
+                    {
+                        MessageBox.Show("UUID中不包括有效的32位数据，请检查！"); 
+                    }
+                }
+            }
         }
     }
 }
