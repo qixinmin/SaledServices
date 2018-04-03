@@ -158,6 +158,9 @@ namespace SaledServices
                 {
                     MessageBox.Show(ex.ToString());
                 }
+
+                this.track_serial_noTextBox.Focus();
+                this.track_serial_noTextBox.SelectAll();
             }
         }
 
@@ -539,16 +542,28 @@ namespace SaledServices
             this.whole_machine_noTextBox.Text = dataGridView1.SelectedCells[27].Value.ToString(); ;      
         }
 
-        private void macTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        
+
+        
+
+        private void track_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                if (this.macTextBox.Text.Length != 12)
-                {
-                    MessageBox.Show("MAC的长度不是12位，请检查！"); 
-                }
+                this.custom_serial_noTextBox.Focus();
+                this.custom_serial_noTextBox.SelectAll();
             }
         }
+
+        private void vendor_serail_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                this.uuidTextBox.Focus();
+                this.uuidTextBox.SelectAll();
+            }
+        }
+
 
         private void uuidTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -565,12 +580,67 @@ namespace SaledServices
                             break;
                         }
                     }
-
-                    if (this.uuidTextBox.Text.Length > 32)
-                    {
-                        MessageBox.Show("UUID中不包括有效的32位数据，请检查！"); 
-                    }
                 }
+
+                if (this.uuidTextBox.Text.Length != 32)
+                {
+                    MessageBox.Show("UUID中的长度不是32位，请检查！");
+                    return;
+                }
+
+                this.macTextBox.Focus();
+                this.macTextBox.SelectAll();
+            }
+        }
+
+        private void macTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                if (this.macTextBox.Text.Length != 12)
+                {
+                    MessageBox.Show("MAC的长度不是12位，请检查！");
+                    return;
+                }
+
+                this.lenovo_custom_service_noTextBox.Focus();
+                this.lenovo_custom_service_noTextBox.SelectAll();
+            }
+        }
+
+        private void lenovo_custom_service_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                this.lenovo_maintenance_noTextBox.Focus();
+                this.lenovo_maintenance_noTextBox.SelectAll();
+            }
+        }
+
+        private void lenovo_maintenance_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                this.lenovo_repair_noTextBox.Focus();
+                this.lenovo_repair_noTextBox.SelectAll();
+            }
+        }
+
+        private void lenovo_repair_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                this.whole_machine_noTextBox.Focus();
+                this.whole_machine_noTextBox.SelectAll();
+            }
+        }
+
+        private void whole_machine_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                //this.macTextBox.Focus();
+                //this.macTextBox.SelectAll();
             }
         }
     }

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace SaledServices
 {
@@ -21,22 +22,53 @@ namespace SaledServices
 
         private void login_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            if (mUserDetailForm == null || mUserDetailForm.IsDisposed)
+            if (this.usernameInput.Text.Trim() == "" || this.passwordInput.Text.Trim() == "")
             {
-                mUserDetailForm = new UserDetailForm();
-                mUserDetailForm.MdiParent = mParent;
-
-            }
-            //else
-            {
-                mUserDetailForm.BringToFront();
-                mUserDetailForm.Show();
+                MessageBox.Show("用户名和密码不能为空");
+                return;
             }
 
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandText = "select * from users where username = '" + usernameInput.Text.Trim()
+                    + "' and password ='" + this.passwordInput.Text.Trim() + "'";
+                cmd.CommandType = CommandType.Text;
 
-            mParent.changeMenu(MenuType.LOGIN_MENU);
-            
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                string temp = "";
+                while (querySdr.Read())
+                {
+                    temp = querySdr[1].ToString();
+                    User.UserSelfForm.username = temp;
+                }
+                querySdr.Close();
+                if (temp == "")
+                {
+                    MessageBox.Show("用户名与密码不匹配");
+                    return;
+                }
+                else
+                {
+                    this.Hide();
+                    if (mUserDetailForm == null || mUserDetailForm.IsDisposed)
+                    {
+                        mUserDetailForm = new UserDetailForm();
+                        mUserDetailForm.MdiParent = mParent;
+                    }
+
+                    mUserDetailForm.BringToFront();
+                    mUserDetailForm.Show();
+
+
+                    mParent.changeMenu(MenuType.LOGIN_MENU);
+                }
+            }
+            catch (Exception ex)
+            { }
         }
     }
 }

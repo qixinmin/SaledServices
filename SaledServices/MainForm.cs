@@ -19,6 +19,8 @@ namespace SaledServices
         private MBMaterialCompareForm mbFrom = null;
 
         private ReceiveOrderForm roForm = null;
+
+        private List<Form> allForm = new List<Form>();
         
         public MainForm()
         {
@@ -47,7 +49,9 @@ namespace SaledServices
                         this.VendorMenuItem,
                         this.FunctionMenuItem});
                     break;
-            }            
+            }
+
+            this.LogoutMenuItem.Enabled = true;
         }
 
        
@@ -61,6 +65,8 @@ namespace SaledServices
 
             mLoginForm.BringToFront();
             mLoginForm.Show();
+
+            allForm.Add(mLoginForm);
         }
 
         private void VendorChangeMenuItem_Click(object sender, EventArgs e)
@@ -73,6 +79,8 @@ namespace SaledServices
 
             mVendorForm.BringToFront();
             mVendorForm.Show();
+
+            allForm.Add(mVendorForm);
         }
 
         private void ExcelImportMenuItem_Click(object sender, EventArgs e)
@@ -85,6 +93,8 @@ namespace SaledServices
 
             mExcelForm.BringToFront();
             mExcelForm.Show();
+
+            allForm.Add(mExcelForm);
         }
 
         private void mBMaterialCompareMenuItem_Click(object sender, EventArgs e)
@@ -98,6 +108,8 @@ namespace SaledServices
             mbFrom.WindowState = FormWindowState.Maximized;
             mbFrom.BringToFront();
             mbFrom.Show();
+
+            allForm.Add(mbFrom);
         }
 
         private void receiveOrderMenuItem_Click(object sender, EventArgs e)
@@ -116,6 +128,8 @@ namespace SaledServices
 
             sourceForm.BringToFront();
             sourceForm.Show();
+
+            allForm.Add(sourceForm);
         }
 
         private CustomFaultForm customFaultForm;
@@ -129,6 +143,8 @@ namespace SaledServices
 
             customFaultForm.BringToFront();
             customFaultForm.Show();
+
+            allForm.Add(customFaultForm);
         }
 
         private GuaranteeForm guaranteeForm;
@@ -142,6 +158,8 @@ namespace SaledServices
 
             guaranteeForm.BringToFront();
             guaranteeForm.Show();
+
+            allForm.Add(guaranteeForm);
         }
 
         private CustomResponsibilityForm customResponsibilityForm;
@@ -155,6 +173,8 @@ namespace SaledServices
 
             customResponsibilityForm.BringToFront();
             customResponsibilityForm.Show();
+
+            allForm.Add(customResponsibilityForm);
         }
 
         private StoreHouseForm storeHouseForm;
@@ -168,6 +188,8 @@ namespace SaledServices
 
             storeHouseForm.BringToFront();
             storeHouseForm.Show();
+
+            allForm.Add(storeHouseForm);
         }
 
         private void 收货单ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -181,6 +203,8 @@ namespace SaledServices
             roForm.WindowState = FormWindowState.Maximized;
             roForm.BringToFront();
             roForm.Show();
+
+            allForm.Add(roForm);
         }
 
         private DeliveredTableForm dtform;
@@ -194,6 +218,8 @@ namespace SaledServices
             dtform.WindowState = FormWindowState.Maximized;
             dtform.BringToFront();
             dtform.Show();
+
+            allForm.Add(dtform);
         }
 
         private ReturnStoreForm rsForm;
@@ -208,6 +234,8 @@ namespace SaledServices
             rsForm.WindowState = FormWindowState.Maximized;
             rsForm.BringToFront();
             rsForm.Show();
+
+            allForm.Add(rsForm);
         }
         private ReturnStoreStatusForm rssf;
         private void 还货状态ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -221,6 +249,8 @@ namespace SaledServices
             //rssf.WindowState = FormWindowState.Maximized;
             rssf.BringToFront();
             rssf.Show();
+
+            allForm.Add(rssf);
         }
 
         private ReturnStoreCustomRespForm rscrf;
@@ -235,6 +265,36 @@ namespace SaledServices
             //rssf.WindowState = FormWindowState.Maximized;
             rscrf.BringToFront();
             rscrf.Show();
+
+            allForm.Add(rscrf);
+        }
+        private User.UserSelfForm usf;
+        private void 个人信息查看ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (usf == null || usf.IsDisposed)
+            {
+                usf = new User.UserSelfForm();
+                usf.MdiParent = this;
+            }
+
+            //rssf.WindowState = FormWindowState.Maximized;
+            usf.BringToFront();
+            usf.Show();
+
+            allForm.Add(usf);
+        }
+
+        private void LogoutMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in allForm)
+            {
+                if (form != null && form.IsDisposed == false)
+                {
+                    form.Close();
+                }
+            }
+
+            this.LogoutMenuItem.Enabled = false;
         }
     }
 }

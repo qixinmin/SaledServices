@@ -76,7 +76,8 @@
             // 
             // add
             // 
-            this.add.Location = new System.Drawing.Point(4, 4);
+            this.add.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.add.Location = new System.Drawing.Point(125, 7);
             this.add.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(100, 31);
@@ -87,7 +88,8 @@
             // 
             // query
             // 
-            this.query.Location = new System.Drawing.Point(354, 4);
+            this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.query.Location = new System.Drawing.Point(475, 7);
             this.query.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(100, 31);
@@ -98,7 +100,8 @@
             // 
             // modify
             // 
-            this.modify.Location = new System.Drawing.Point(704, 4);
+            this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.modify.Location = new System.Drawing.Point(825, 7);
             this.modify.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(100, 31);
@@ -109,7 +112,8 @@
             // 
             // delete
             // 
-            this.delete.Location = new System.Drawing.Point(1054, 4);
+            this.delete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.delete.Location = new System.Drawing.Point(1175, 7);
             this.delete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(100, 31);

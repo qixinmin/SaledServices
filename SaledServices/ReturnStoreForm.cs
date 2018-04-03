@@ -398,7 +398,7 @@ namespace SaledServices
 
         private void track_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if (e.KeyChar == System.Convert.ToChar(13))
             {
                 //DPK状态	跟踪条码	客户序号	厂商序号	厂商料号
 
@@ -430,6 +430,26 @@ namespace SaledServices
                 {
                     MessageBox.Show(ex.ToString());
                 }
+
+                this.custom_serial_noTextBox.Focus();
+                this.custom_serial_noTextBox.SelectAll();
+            }
+        }
+
+        private void custommaterialNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                this.track_serial_noTextBox.Focus();
+                this.track_serial_noTextBox.SelectAll();
+            }
+        }
+
+        private void custom_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                this.response_describeComboBox.Focus();
             }
         }
     }

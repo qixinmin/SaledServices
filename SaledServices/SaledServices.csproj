@@ -190,6 +190,13 @@
     <Compile Include="User\UserDetailForm.Designer.cs">
       <DependentUpon>UserDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\UserSelfForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\UserSelfForm.Designer.cs">
+      <DependentUpon>UserSelfForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\UserPermission.cs" />
     <Compile Include="VendorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +256,9 @@
     </Compile>
     <EmbeddedResource Include="User\UserDetailForm.resx">
       <DependentUpon>UserDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\UserSelfForm.resx">
+      <DependentUpon>UserSelfForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VendorForm.resx">
       <DependentUpon>VendorForm.cs</DependentUpon>
