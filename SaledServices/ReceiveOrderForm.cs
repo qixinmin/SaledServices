@@ -153,7 +153,7 @@ namespace SaledServices
             dr["receivedate"] = this.receivedateTextBox.Text.Trim();
             dr["status"] = this.statusTextBox.Text.Trim();
             dr["storehouse"] = this.storeHouseComboBox.Text.Trim();
-            dr["returnNum"] = this.storeHouseComboBox.Text.Trim();
+            dr["returnNum"] = this.returnNumTextBox.Text.Trim();
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);

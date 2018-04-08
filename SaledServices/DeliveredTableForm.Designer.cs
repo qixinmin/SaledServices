@@ -42,10 +42,6 @@
             this.warranty_periodTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.custom_orderComboBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.source_briefComboBox = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.custommaterialNoTextBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.track_serial_noTextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -92,12 +88,20 @@
             this.storehouseTextBox = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.inputUserTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.source_briefComboBox = new System.Windows.Forms.ComboBox();
+            this.custommaterialNoTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridViewWaitToReturn = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaitToReturn)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -105,12 +109,12 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 421);
+            this.dataGridView1.Location = new System.Drawing.Point(521, 4);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1437, 632);
+            this.dataGridView1.Size = new System.Drawing.Size(914, 626);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -180,10 +184,6 @@
             this.tableLayoutPanel1.Controls.Add(this.warranty_periodTextBox, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.custom_orderComboBox, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.source_briefComboBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.custommaterialNoTextBox, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label12, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.track_serial_noTextBox, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label13, 0, 4);
@@ -230,6 +230,10 @@
             this.tableLayoutPanel1.Controls.Add(this.storehouseTextBox, 3, 7);
             this.tableLayoutPanel1.Controls.Add(this.label29, 4, 8);
             this.tableLayoutPanel1.Controls.Add(this.inputUserTextBox, 5, 8);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.source_briefComboBox, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.custommaterialNoTextBox, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -334,50 +338,6 @@
             this.custom_orderComboBox.TabIndex = 6;
             this.custom_orderComboBox.SelectedValueChanged += new System.EventHandler(this.custom_orderComboBox_SelectedValueChanged);
             this.custom_orderComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_orderComboBox_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label3.Location = new System.Drawing.Point(7, 38);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 20);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "来源";
-            // 
-            // source_briefComboBox
-            // 
-            this.source_briefComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.source_briefComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.source_briefComboBox.FormattingEnabled = true;
-            this.source_briefComboBox.Location = new System.Drawing.Point(245, 42);
-            this.source_briefComboBox.Margin = new System.Windows.Forms.Padding(4);
-            this.source_briefComboBox.Name = "source_briefComboBox";
-            this.source_briefComboBox.Size = new System.Drawing.Size(228, 24);
-            this.source_briefComboBox.TabIndex = 5;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(7, 73);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 20);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "客户料号";
-            // 
-            // custommaterialNoTextBox
-            // 
-            this.custommaterialNoTextBox.BackColor = System.Drawing.Color.Lime;
-            this.custommaterialNoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custommaterialNoTextBox.Location = new System.Drawing.Point(245, 77);
-            this.custommaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.custommaterialNoTextBox.Name = "custommaterialNoTextBox";
-            this.custommaterialNoTextBox.Size = new System.Drawing.Size(228, 26);
-            this.custommaterialNoTextBox.TabIndex = 0;
-            this.custommaterialNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_orderComboBox_KeyPress);
             // 
             // label12
             // 
@@ -863,13 +823,57 @@
             this.inputUserTextBox.Size = new System.Drawing.Size(100, 26);
             this.inputUserTextBox.TabIndex = 7;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label3.Location = new System.Drawing.Point(7, 73);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 20);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "来源";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label10.Location = new System.Drawing.Point(7, 38);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(89, 20);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "客户料号";
+            // 
+            // source_briefComboBox
+            // 
+            this.source_briefComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.source_briefComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.source_briefComboBox.FormattingEnabled = true;
+            this.source_briefComboBox.Location = new System.Drawing.Point(245, 77);
+            this.source_briefComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.source_briefComboBox.Name = "source_briefComboBox";
+            this.source_briefComboBox.Size = new System.Drawing.Size(228, 24);
+            this.source_briefComboBox.TabIndex = 5;
+            // 
+            // custommaterialNoTextBox
+            // 
+            this.custommaterialNoTextBox.BackColor = System.Drawing.Color.Lime;
+            this.custommaterialNoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.custommaterialNoTextBox.Location = new System.Drawing.Point(245, 42);
+            this.custommaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.custommaterialNoTextBox.Name = "custommaterialNoTextBox";
+            this.custommaterialNoTextBox.Size = new System.Drawing.Size(228, 26);
+            this.custommaterialNoTextBox.TabIndex = 0;
+            this.custommaterialNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_orderComboBox_KeyPress);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.dataGridView1, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
@@ -901,6 +905,35 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1437, 42);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.99722F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.00278F));
+            this.tableLayoutPanel4.Controls.Add(this.dataGridView1, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.dataGridViewWaitToReturn, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 420);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1439, 634);
+            this.tableLayoutPanel4.TabIndex = 5;
+            // 
+            // dataGridViewWaitToReturn
+            // 
+            this.dataGridViewWaitToReturn.AllowUserToAddRows = false;
+            this.dataGridViewWaitToReturn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridViewWaitToReturn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewWaitToReturn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewWaitToReturn.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewWaitToReturn.Name = "dataGridViewWaitToReturn";
+            this.dataGridViewWaitToReturn.RowTemplate.Height = 23;
+            this.dataGridViewWaitToReturn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewWaitToReturn.Size = new System.Drawing.Size(511, 628);
+            this.dataGridViewWaitToReturn.TabIndex = 1;
+            this.dataGridViewWaitToReturn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWaitToReturn_CellClick);
+            // 
             // DeliveredTableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -918,6 +951,8 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaitToReturn)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -990,5 +1025,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox inputUserTextBox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.DataGridView dataGridViewWaitToReturn;
     }
 }

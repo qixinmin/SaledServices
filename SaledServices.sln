@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaledServices", "SaledServices\SaledServices.csproj", "{731B3AA7-4FE7-438E-A501-5B4A115FD255}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup3", "Setup3\Setup3.vdproj", "{C48B4941-6675-43AD-9793-908526C57110}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,15 +34,6 @@ Global
 		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.问问|x64.Build.0 = 问问|x64
 		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.问问|x86.ActiveCfg = 问问|x86
 		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.问问|x86.Build.0 = 问问|x86
-		{C48B4941-6675-43AD-9793-908526C57110}.Debug|Any CPU.ActiveCfg = Debug
-		{C48B4941-6675-43AD-9793-908526C57110}.Debug|x64.ActiveCfg = Debug
-		{C48B4941-6675-43AD-9793-908526C57110}.Debug|x86.ActiveCfg = Debug
-		{C48B4941-6675-43AD-9793-908526C57110}.Release|Any CPU.ActiveCfg = Release
-		{C48B4941-6675-43AD-9793-908526C57110}.Release|x64.ActiveCfg = Release
-		{C48B4941-6675-43AD-9793-908526C57110}.Release|x86.ActiveCfg = Release
-		{C48B4941-6675-43AD-9793-908526C57110}.问问|Any CPU.ActiveCfg = Release
-		{C48B4941-6675-43AD-9793-908526C57110}.问问|x64.ActiveCfg = Release
-		{C48B4941-6675-43AD-9793-908526C57110}.问问|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

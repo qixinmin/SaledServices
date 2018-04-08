@@ -121,9 +121,11 @@ namespace SaledServices
             {
                 return;
             }
-
+            
             try
             {
+                dataGridViewToReturn.DataSource = null;
+                dataGridViewToReturn.Columns.Clear();
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                 mConn.Open();
 
@@ -150,12 +152,12 @@ namespace SaledServices
                 }
 
                 DataGridViewColumn dc = new DataGridViewColumn();
-                dc.Name = "VAT";
+                dc.Name = "TAT";
                 //dc.DataPropertyName = "FID";
 
                 dc.Visible = true;
                 // dc.SortMode = DataGridViewColumnSortMode.NotSortable;
-                dc.HeaderText = "VAT";
+                dc.HeaderText = "TAT";
                 dc.CellTemplate = new DataGridViewTextBoxCell();
                 int columnIndex = dataGridViewToReturn.Columns.Add(dc);
 
@@ -169,13 +171,18 @@ namespace SaledServices
                         TimeSpan ts = dt2.Subtract(dt1);
                         int overdays = ts.Days;
 
-                        dr.Cells["VAT"].Value = overdays + " ";
+                        dr.Cells["TAT"].Value = overdays + " ";
                     }
                     catch (Exception ex)
                     { }
                 }
 
                 mConn.Close();
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    dataGridViewToReturn.Rows[0].Selected = false;
+                }
             }
             catch (Exception ex)
             {
@@ -185,8 +192,6 @@ namespace SaledServices
 
         private void dataGridViewToReturn_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //  string[] hTxt = { "订单编号",
-                               // "客户料号","仓库别","制单时间","订单数量","收货数量","还货数量"};
             try
             {
                 this.return_file_noTextBox.Text = generateFileNo();
@@ -196,6 +201,36 @@ namespace SaledServices
                 this.return_dateTextBox.Text = DateTime.Now.ToString("yyyyMMdd");
 
                 this.tatTextBox.Text = dataGridViewToReturn.SelectedCells[7].Value.ToString();
+
+
+                //根据输入的客户料号，查询MB物料对照表找到dpk状态与mpn
+                try
+                {
+                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                    mConn.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = mConn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "select dpk_type, mpn, replace_custom_materialNo from MBMaterialCompare where custommaterialNo = '"
+                        + this.custommaterialNoTextBox.Text.Trim() + "'";
+
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        this.dpkpnTextBox.Text = querySdr[0].ToString();
+                        this.mpnTextBox.Text = querySdr[1].ToString();
+                        this.replace_custom_materialNotextBox.Text = querySdr[2].ToString();
+                    }
+                    querySdr.Close();
+
+                    mConn.Close();                   
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
             catch (Exception ex)
             { }
@@ -264,7 +299,12 @@ namespace SaledServices
         }
 
         private void returnStore_Click(object sender, EventArgs e)
-        {            
+        {
+            if (checkIsNull())
+            {
+                MessageBox.Show("输入的内容为空, 请检查！");
+                return;
+            }
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -274,8 +314,7 @@ namespace SaledServices
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
-                        
+                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +                        
                         this.vendorComboBox.Text.Trim() + "','" +
                         this.productComboBox.Text.Trim() + "','" +
                         this.return_file_noTextBox.Text.Trim() + "','" +
@@ -357,16 +396,77 @@ namespace SaledServices
 
             //dataGridViewToReturn里面的数据要更新
             doQueryAfterSelection();
+            clearInputData();
+            queryLastest(true);
         }
 
-        private void query_Click(object sender, EventArgs e)
+        private bool checkIsNull()
+        {
+            if (custommaterialNoTextBox.Text.Trim() == ""
+                || this.replace_custom_materialNotextBox.Text.Trim() == ""
+                || this.track_serial_noTextBox.Text.Trim() == ""
+                || this.custom_serial_noTextBox.Text.Trim() == ""
+
+                || this.dpkpnTextBox.Text.Trim() == ""
+
+                || this.vendor_serail_noTextBox.Text.Trim() == ""
+                || this.mpnTextBox.Text.Trim() == ""
+                || this.storehouseTextBox.Text.Trim() == ""
+                || this.return_dateTextBox.Text.Trim() == ""
+                || this.ordernoTextBox.Text.Trim() == ""
+                || this.tatTextBox.Text.Trim() == "")
+            {
+                return true;
+            }
+
+            if (custom_res_typeComboBox.Enabled &&  response_describeComboBox.Enabled)
+            {
+                if (this.custom_res_typeComboBox.Text.Trim() == ""
+                    || this.response_describeComboBox.Text.Trim() == "")
+                {
+                    return true;
+                }
+            }
+               
+            return false;           
+        }
+
+        private void clearInputData()
+        {
+            custommaterialNoTextBox.Text = "";
+            replace_custom_materialNotextBox.Text = "";
+            track_serial_noTextBox.Text = "";
+
+            custom_serial_noTextBox.Text = "";
+            custom_res_typeComboBox.SelectedIndex = -1;
+            response_describeComboBox.SelectedIndex = -1;
+            dpkpnTextBox.Text = "";
+
+            vendor_serail_noTextBox.Text = "";
+            mpnTextBox.Text = "";
+            storehouseTextBox.Text = "";
+            return_dateTextBox.Text = "";
+
+            ordernoTextBox.Text = "";
+            tatTextBox.Text = "";
+        }
+
+
+        private void queryLastest(bool latest)
         {
             try
             {
-                SqlConnection mConn = new SqlConnection(Constlist.ConStr);               
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select * from  " + tableName;
+                if (latest)
+                {
+                    cmd.CommandText = "select top 3 * from " + tableName + " order by id desc";
+                }
+                else
+                {
+                    cmd.CommandText = "select * from  " + tableName;
+                }
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -387,6 +487,11 @@ namespace SaledServices
             {
                 dataGridViewReturnedDetail.Columns[i].HeaderText = hTxt[i];
             }
+        }
+
+        private void query_Click(object sender, EventArgs e)
+        {
+            queryLastest(false);
         }
 
         private void modify_Click(object sender, EventArgs e)
@@ -410,8 +515,12 @@ namespace SaledServices
         private void track_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
-            {
-                //DPK状态	跟踪条码	客户序号	厂商序号	mpn
+            {                
+                //跟踪条码可以为空，如果为空则代表本板子是通过库房拿过来替换的，原来的板子没有维修好
+                if (track_serial_noTextBox.Text == "")
+                {
+                    return;
+                }
 
                 try
                 {
@@ -422,20 +531,37 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select dpk_status, custom_serial_no, vendor_serail_no, mpn from DeliveredTable where track_serial_no = '"
+                    cmd.CommandText = "select custom_serial_no, vendor_serail_no from DeliveredTable where track_serial_no = '"
                         + this.track_serial_noTextBox.Text + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
-                    {
-                        this.dpkpnTextBox.Text = querySdr[0].ToString();
-                        this.custom_serial_noTextBox.Text = querySdr[1].ToString();
-                        this.vendor_serail_noTextBox.Text = querySdr[2].ToString();
-                        this.mpnTextBox.Text = querySdr[3].ToString();
+                    {                       
+                        this.custom_serial_noTextBox.Text = querySdr[0].ToString();
+                        this.vendor_serail_noTextBox.Text = querySdr[1].ToString();
                     }
-                    querySdr.Close();                    
+                    querySdr.Close();
 
                     mConn.Close();
+
+                    if (this.productComboBox.Text != "TBG" && this.productComboBox.Text != "DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
+                    {
+                        //需要去掉前面的非0字段
+                        string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
+                        string replacedCustomSerial = this.replace_custom_materialNotextBox.Text.TrimStart('0');
+
+                        if (this.custom_serial_noTextBox.Text.ToLower().Contains(customSerial.ToLower()) == false
+                            || this.custom_serial_noTextBox.Text.ToLower().Contains(replacedCustomSerial.ToLower()))
+                        {
+                            this.track_serial_noTextBox.Focus();
+                            this.track_serial_noTextBox.SelectAll();
+
+                            this.custom_serial_noTextBox.Text = "";
+
+                            MessageBox.Show("在" + this.productComboBox.Text + "下客户序号没有包含客户料号, 请检查追踪条码是否正确");
+                            return;
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -461,6 +587,58 @@ namespace SaledServices
             if (e.KeyChar == System.Convert.ToChar(13))
             {
                 this.response_describeComboBox.Focus();
+
+                if (track_serial_noTextBox.Text.Trim() == "")
+                {
+                    if (this.productComboBox.Text != "TBG" && this.productComboBox.Text != "DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
+                    {
+                        //需要去掉前面的非0字段
+                        string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
+                        string replacedCustomSerial = this.replace_custom_materialNotextBox.Text.TrimStart('0');
+
+                        if (this.custom_serial_noTextBox.Text.ToLower().Contains(customSerial.ToLower()) == false
+                            || this.custom_serial_noTextBox.Text.ToLower().Contains(replacedCustomSerial.ToLower()))
+                        {
+                            this.track_serial_noTextBox.Focus();
+                            this.track_serial_noTextBox.SelectAll();
+
+                            this.custom_serial_noTextBox.Text = "";
+
+                            MessageBox.Show("在" + this.productComboBox.Text + "下客户序号没有包含客户料号, 请检查追踪条码是否正确");
+                            return;
+                        }
+                    }
+
+                    MessageBox.Show("需要查询库存表，然后调出厂商序号! todo");
+                }
+            }
+        }
+
+        private void statusComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (this.statusComboBox.Text == "良品")
+            {
+                custom_res_typeComboBox.Enabled = false;
+                response_describeComboBox.Enabled = false;
+            }
+            else if (this.statusComboBox.Text == "不良品")
+            {
+                custom_res_typeComboBox.Enabled = true;
+                response_describeComboBox.Enabled = true;
+            }
+        }
+
+        private void custom_res_typeComboBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.D1)
+            {
+                e.Handled = true;
+                this.custom_res_typeComboBox.Text = "输入1";
+            }
+            else if (e.Control && e.KeyCode == Keys.D2)
+            {
+                e.Handled = true;
+                this.custom_res_typeComboBox.Text = "输入2";
             }
         }
     }

@@ -158,8 +158,9 @@ namespace SaledServices
                     }
                     else if (status == "close")
                     {
-                        MessageBox.Show("客户料号："+this.custom_orderComboBox.Text+" 已经收货完毕，请检测是否有错误!");
-                        
+                        this.custommaterialNoTextBox.Focus();
+                        this.custommaterialNoTextBox.SelectAll();
+                        MessageBox.Show("客户料号："+this.custom_orderComboBox.Text+" 已经收货完毕，请检测是否有错误!");                        
                     }
 
                     mConn.Close();
@@ -171,8 +172,9 @@ namespace SaledServices
 
                 if (status == "close")
                 {
-                    this.custom_orderComboBox.Focus();
-                    this.custom_orderComboBox.SelectAll();
+                    this.custommaterialNoTextBox.Text = "";
+                    this.custommaterialNoTextBox.Focus();
+                    this.custommaterialNoTextBox.SelectAll();
                 }
                 else
                 {
@@ -185,6 +187,11 @@ namespace SaledServices
         private void custom_orderComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             string str = this.custom_orderComboBox.Text;
+            if (str == "")
+            {
+                return;
+            }
+
             string substr = str.Substring(str.Length-8, 6);
             string inTime = "20"+substr.Substring(0, 2) +"/"+ substr.Substring(2, 2) +"/"+ substr.Substring(4, 2);
             this.order_out_dateTextBox.Text = inTime;
@@ -199,7 +206,79 @@ namespace SaledServices
                 return;
             }
             
-            this.order_receive_dateTextBox.Text = dt2.ToString("yyyy/MM/dd");            
+            this.order_receive_dateTextBox.Text = dt2.ToString("yyyy/MM/dd");
+      
+            doQueryAfterSelection();
+        }
+
+        private void doQueryAfterSelection()
+        {
+            try
+            {
+                this.dataGridViewWaitToReturn.DataSource = null;
+                dataGridViewWaitToReturn.Columns.Clear();
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandText = "select orderno, custom_materialNo,mb_brief,ordernum, receivedNum from receiveOrder where orderno='" + this.custom_orderComboBox.Text + "'";
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataAdapter sda = new SqlDataAdapter();
+                sda.SelectCommand = cmd;
+                DataSet ds = new DataSet();
+                sda.Fill(ds, "receiveOrder");
+                dataGridViewWaitToReturn.DataSource = ds.Tables[0];
+                dataGridViewWaitToReturn.RowHeadersVisible = false;
+
+
+                string[] hTxt = { "订单编号", "客户料号", "MB简称", "订单数量", "收货数量" };
+                for (int i = 0; i < hTxt.Length; i++)
+                {
+                    dataGridViewWaitToReturn.Columns[i].HeaderText = hTxt[i];
+                    dataGridViewWaitToReturn.Columns[i].Name = hTxt[i];
+                }
+
+                DataGridViewColumn dc = new DataGridViewColumn();
+                dc.DefaultCellStyle.BackColor = Color.Red;
+                dc.Name = "差数";
+                //dc.DataPropertyName = "FID";
+
+                dc.Visible = true;
+                // dc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dc.HeaderText = "差数";
+                dc.CellTemplate = new DataGridViewTextBoxCell();
+                int columnIndex = dataGridViewWaitToReturn.Columns.Add(dc);
+
+                foreach (DataGridViewRow dr in dataGridViewWaitToReturn.Rows)
+                {
+                    try
+                    {
+                        int oNum = Int32.Parse(dr.Cells["订单数量"].Value.ToString());
+                        int rNum = Int32.Parse(dr.Cells["收货数量"].Value.ToString());
+
+                        if(oNum-rNum == 0)
+                        {
+                            dr.Cells["差数"].Style.BackColor = Color.Green;
+                        }
+                        dr.Cells["差数"].Value = (oNum - rNum) + " ";
+                    }
+                    catch (Exception ex)
+                    { }
+                }
+
+                mConn.Close();
+
+                if (ds.Tables[0].Rows.Count > 0) 
+                {
+                    dataGridViewWaitToReturn.Rows[0].Selected = false;
+                } 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void custom_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -212,6 +291,8 @@ namespace SaledServices
                 {
                     if (customSerialNo.Length != 23)
                     {
+                        this.custom_serial_noTextBox.Focus();
+                        this.custom_serial_noTextBox.SelectAll();
                         MessageBox.Show("客户序号的长度不是23位，请检查！");
                         return;
                     }
@@ -220,6 +301,8 @@ namespace SaledServices
                 {
                     if (customSerialNo.Length != 22)
                     {
+                        this.custom_serial_noTextBox.Focus();
+                        this.custom_serial_noTextBox.SelectAll();
                         MessageBox.Show("客户序号的长度不是22位，请检查！");
                         return;
                     }
@@ -233,6 +316,9 @@ namespace SaledServices
                     if (this.custom_serial_noTextBox.Text.ToLower().Contains(customSerial.ToLower()) == false)
                     {
                         MessageBox.Show("在" + this.productTextBox.Text + "下客户序号没有包含客户料号");
+                        this.custom_serial_noTextBox.Focus();
+                        this.custom_serial_noTextBox.SelectAll();
+                        return;
                     }
                 }
                
@@ -248,6 +334,8 @@ namespace SaledServices
                 else
                 {
                     MessageBox.Show("客户序号没有包含,没有做计算时间处理");
+                    this.custom_serial_noTextBox.Focus();
+                    this.custom_serial_noTextBox.SelectAll();
                     return;
                 }
 
@@ -332,6 +420,7 @@ namespace SaledServices
         {
             if (checkInputIsNull())
             {
+                MessageBox.Show("需要输入的内容为空，请检查！");
                 return;
             }
             try
@@ -423,6 +512,8 @@ namespace SaledServices
                 MessageBox.Show("收货成功！");
 
                 clearInputContent();
+                doQueryAfterSelection();
+                queryLatest(true);
             }
             catch (Exception ex)
             {
@@ -434,14 +525,19 @@ namespace SaledServices
         {
             this.custom_orderComboBox.Text = "";
             this.source_briefComboBox.Text = "";
+            this.source_briefComboBox.SelectedIndex = -1;
             this.custommaterialNoTextBox.Text = "";
             this.track_serial_noTextBox.Text = "";
             this.custom_serial_noTextBox.Text = "";
             this.vendor_serail_noTextBox.Text = "";
             this.uuidTextBox.Text = "";
             this.macTextBox.Text = "";
+            this.custom_faultComboBox.Text = "";
+            this.custom_faultComboBox.SelectedIndex = -1;
             this.guaranteeComboBox.Text = "";
+            this.guaranteeComboBox.SelectedIndex = -1;
             this.customResponsibilityComboBox.Text = "";
+            this.customResponsibilityComboBox.SelectedIndex = -1;
             this.lenovo_custom_service_noTextBox.Text = "";
             this.lenovo_maintenance_noTextBox.Text = "";
             this.lenovo_repair_noTextBox.Text = "";
@@ -457,8 +553,9 @@ namespace SaledServices
                 || this.track_serial_noTextBox.Text == ""
                 || this.custom_serial_noTextBox.Text == ""
                 || this.vendor_serail_noTextBox.Text == ""
-                || this.uuidTextBox.Text == ""
+                //|| this.uuidTextBox.Text == ""
                 || this.macTextBox.Text == ""
+                || this.custom_faultComboBox.Text == ""
                 || this.guaranteeComboBox.Text == ""
                 || this.customResponsibilityComboBox.Text == ""
                 || this.lenovo_custom_service_noTextBox.Text == ""
@@ -472,7 +569,7 @@ namespace SaledServices
             return false;           
         }
 
-        private void query_Click(object sender, EventArgs e)
+        private void queryLatest(bool latest)
         {
             try
             {
@@ -480,7 +577,14 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select * from  " + tableName;
+                if (latest)
+                {
+                    cmd.CommandText = "select top 3 * from " + tableName + " order by id desc"; 
+                }
+                else
+                {
+                    cmd.CommandText = "select * from  " + tableName;
+                }
                 cmd.CommandType = CommandType.Text;
 
                 sda = new SqlDataAdapter();
@@ -504,6 +608,11 @@ namespace SaledServices
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
             }
+        }
+
+        private void query_Click(object sender, EventArgs e)
+        {
+            queryLatest(false);
         }
 
         private void modify_Click(object sender, EventArgs e)
@@ -647,13 +756,14 @@ namespace SaledServices
                         vendor = querySdr[0].ToString();
                     }
                     querySdr.Close();
+                    mConn.Close();
 
                     if (vendor != "")
                     {
+                        this.track_serial_noTextBox.Focus();
+                        this.track_serial_noTextBox.SelectAll();
                         MessageBox.Show("跟踪条码：" + this.track_serial_noTextBox.Text + " 已经被使用过，请检测是否有错误!");
                     }
-                    
-                    mConn.Close();
                 }
                 catch (Exception ex)
                 {
@@ -679,7 +789,7 @@ namespace SaledServices
             {
                 if (this.vendor_serail_noTextBox.Text.Length != 13)
                 {
-                    this.uuidTextBox.SelectAll();
+                    this.vendor_serail_noTextBox.SelectAll();
                     MessageBox.Show("厂商序号的内容长度不是32位，请检查！");
                     return; 
                 }
@@ -746,10 +856,16 @@ namespace SaledServices
                     }
                 }
 
-                if (this.uuidTextBox.Text.Length != 32)
+                //当uuid为0的时候也可以通过
+                int length = this.uuidTextBox.Text.Length;
+                
+                if (length != 0 && this.uuidTextBox.Text.Length != 32)
                 {
                     MessageBox.Show("UUID中的长度不是32位，请检查！");
                     return;
+                }
+                else if (length == 0)
+                {
                 }
 
                 this.macTextBox.Focus();
@@ -763,6 +879,7 @@ namespace SaledServices
             {
                 if (this.macTextBox.Text.Length != 12)
                 {
+                    this.macTextBox.SelectAll();
                     MessageBox.Show("MAC的长度不是12位，请检查！");
                     return;
                 }
@@ -806,6 +923,11 @@ namespace SaledServices
                 //this.macTextBox.Focus();
                 //this.macTextBox.SelectAll();
             }
+        }
+
+        private void dataGridViewWaitToReturn_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.custommaterialNoTextBox.Text = dataGridViewWaitToReturn.SelectedCells[1].Value.ToString();
         }
     }
 }
