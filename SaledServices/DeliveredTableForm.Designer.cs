@@ -87,9 +87,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.productTextBox = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.vendormaterialNoTextBox = new System.Windows.Forms.TextBox();
+            this.mpnTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.storehouseTextBox = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.inputUserTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -223,9 +225,11 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.productTextBox, 3, 6);
             this.tableLayoutPanel1.Controls.Add(this.label17, 4, 4);
-            this.tableLayoutPanel1.Controls.Add(this.vendormaterialNoTextBox, 5, 4);
+            this.tableLayoutPanel1.Controls.Add(this.mpnTextBox, 5, 4);
             this.tableLayoutPanel1.Controls.Add(this.label4, 2, 7);
             this.tableLayoutPanel1.Controls.Add(this.storehouseTextBox, 3, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label29, 4, 8);
+            this.tableLayoutPanel1.Controls.Add(this.inputUserTextBox, 5, 8);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -805,19 +809,19 @@
             this.label17.Location = new System.Drawing.Point(962, 143);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(89, 20);
+            this.label17.Size = new System.Drawing.Size(39, 20);
             this.label17.TabIndex = 4;
-            this.label17.Text = "厂商料号";
+            this.label17.Text = "MPN";
             // 
-            // vendormaterialNoTextBox
+            // mpnTextBox
             // 
-            this.vendormaterialNoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vendormaterialNoTextBox.Location = new System.Drawing.Point(1201, 147);
-            this.vendormaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.vendormaterialNoTextBox.Name = "vendormaterialNoTextBox";
-            this.vendormaterialNoTextBox.ReadOnly = true;
-            this.vendormaterialNoTextBox.Size = new System.Drawing.Size(229, 26);
-            this.vendormaterialNoTextBox.TabIndex = 0;
+            this.mpnTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mpnTextBox.Location = new System.Drawing.Point(1201, 147);
+            this.mpnTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.mpnTextBox.Name = "mpnTextBox";
+            this.mpnTextBox.ReadOnly = true;
+            this.mpnTextBox.Size = new System.Drawing.Size(229, 26);
+            this.mpnTextBox.TabIndex = 0;
             // 
             // label4
             // 
@@ -839,6 +843,25 @@
             this.storehouseTextBox.ReadOnly = true;
             this.storehouseTextBox.Size = new System.Drawing.Size(228, 26);
             this.storehouseTextBox.TabIndex = 0;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label29.Location = new System.Drawing.Point(962, 283);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(69, 20);
+            this.label29.TabIndex = 1;
+            this.label29.Text = "收货人";
+            // 
+            // inputUserTextBox
+            // 
+            this.inputUserTextBox.Location = new System.Drawing.Point(1200, 286);
+            this.inputUserTextBox.Name = "inputUserTextBox";
+            this.inputUserTextBox.ReadOnly = true;
+            this.inputUserTextBox.Size = new System.Drawing.Size(100, 26);
+            this.inputUserTextBox.TabIndex = 7;
             // 
             // tableLayoutPanel2
             // 
@@ -948,7 +971,7 @@
         private System.Windows.Forms.TextBox vendor_serail_noTextBox;
         private System.Windows.Forms.TextBox uuidTextBox;
         private System.Windows.Forms.TextBox macTextBox;
-        private System.Windows.Forms.TextBox vendormaterialNoTextBox;
+        private System.Windows.Forms.TextBox mpnTextBox;
         private System.Windows.Forms.TextBox mb_describeTextBox;
         private System.Windows.Forms.TextBox mb_make_dateTextBox;
         private System.Windows.Forms.TextBox warranty_periodTextBox;
@@ -965,5 +988,7 @@
         private System.Windows.Forms.ComboBox custom_orderComboBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox inputUserTextBox;
     }
 }

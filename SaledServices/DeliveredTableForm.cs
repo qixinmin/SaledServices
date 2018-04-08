@@ -115,7 +115,7 @@ namespace SaledServices
                     MessageBox.Show("无效订单编号");
                     return;
                 }
-
+                string status = "";
                 try
                 {
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -125,32 +125,42 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select vendor, product, storehouse from receiveOrder where orderno = '" + this.custom_orderComboBox.Text
+                    cmd.CommandText = "select vendor, product, storehouse, status from receiveOrder where orderno = '" + this.custom_orderComboBox.Text
                         + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
+                   
                     while (querySdr.Read())
                     {
                         this.vendorTextBox.Text = querySdr[0].ToString();
                         this.productTextBox.Text = querySdr[1].ToString();
                         this.storehouseTextBox.Text = querySdr[2].ToString();
+                        status = querySdr[3].ToString();
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select custom_machine_type,mb_brief,dpk_type,vendormaterialNo,mb_descripe,warranty_period from MBMaterialCompare where custommaterialNo ='" 
-                        + this.custommaterialNoTextBox.Text + "'";
-
-                    querySdr = cmd.ExecuteReader();
-                    while (querySdr.Read())
+                    if (status == "open")
                     {
-                        this.custom_machine_typeTextBox.Text = querySdr[0].ToString();
-                        this.mb_briefTextBox.Text = querySdr[1].ToString();
-                        this.dpk_statusTextBox.Text = querySdr[2].ToString();
-                        this.vendormaterialNoTextBox.Text = querySdr[3].ToString();
-                        this.mb_describeTextBox.Text = querySdr[4].ToString();
-                        this.warranty_periodTextBox.Text = querySdr[5].ToString();
+                        cmd.CommandText = "select custom_machine_type,mb_brief,dpk_type,mpn,mb_descripe,warranty_period from MBMaterialCompare where custommaterialNo ='"
+                            + this.custommaterialNoTextBox.Text + "'";
+
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            this.custom_machine_typeTextBox.Text = querySdr[0].ToString();
+                            this.mb_briefTextBox.Text = querySdr[1].ToString();
+                            this.dpk_statusTextBox.Text = querySdr[2].ToString();
+                            this.mpnTextBox.Text = querySdr[3].ToString();
+                            this.mb_describeTextBox.Text = querySdr[4].ToString();
+                            this.warranty_periodTextBox.Text = querySdr[5].ToString();
+                        }
+                        querySdr.Close();
                     }
-                    querySdr.Close();
+                    else if (status == "close")
+                    {
+                        MessageBox.Show("客户料号："+this.custom_orderComboBox.Text+" 已经收货完毕，请检测是否有错误!");
+                        
+                    }
 
                     mConn.Close();
                 }
@@ -159,8 +169,16 @@ namespace SaledServices
                     MessageBox.Show(ex.ToString());
                 }
 
-                this.track_serial_noTextBox.Focus();
-                this.track_serial_noTextBox.SelectAll();
+                if (status == "close")
+                {
+                    this.custom_orderComboBox.Focus();
+                    this.custom_orderComboBox.SelectAll();
+                }
+                else
+                {
+                    this.track_serial_noTextBox.Focus();
+                    this.track_serial_noTextBox.SelectAll();
+                }
             }
         }
 
@@ -233,6 +251,43 @@ namespace SaledServices
                     return;
                 }
 
+                //检查客户序号或厂商序号是否已经存在本订单编号里面了，收货表中
+                string vendor = "";
+                try
+                {
+                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                    mConn.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = mConn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "select vendor from " + this.tableName + " where custom_serial_no = '" + this.custom_serial_noTextBox.Text
+                        + "' and custom_order = '" + this.custom_orderComboBox.Text + "'"; 
+
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+
+                    while (querySdr.Read())
+                    {
+                        vendor = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (vendor != "")
+                    {
+                        MessageBox.Show("客户序号：" + this.custom_serial_noTextBox.Text + " 已经被使用过，请检测是否有错误!");
+                        this.custom_serial_noTextBox.Focus();
+                        this.custom_serial_noTextBox.SelectAll();
+                        return;
+                    }
+
+                    mConn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
                 string year = Untils.getTimeByChar(true, Convert.ToChar(subData.Substring(0, 1)));
                 string mouth = Untils.getTimeByChar(false, Convert.ToChar(subData.Substring(1, 1)));
                 string day = Untils.getTimeByChar(false, Convert.ToChar(subData.Substring(2, 1)));
@@ -267,42 +322,18 @@ namespace SaledServices
                         this.customResponsibilityComboBox.Enabled = true;
                     }
                 }
+
+                this.vendor_serail_noTextBox.Focus();
+                this.vendor_serail_noTextBox.SelectAll();
             }
         }
        
-
-       
-//         * Id INT PRIMARY KEY IDENTITY, 
-//vendor NVARCHAR(128) NOT NULL, /*厂商*/
-//product NVARCHAR(128) NOT NULL, /*客户别*/
-//source_brief NVARCHAR(128) NOT NULL,/*来源*/
-//storehouse NVARCHAR(128) NOT NULL,/*库别*/
-//custom_order NVARCHAR(128) NOT NULL,/*订单编号*/
-//order_out_date NVARCHAR(128) NOT NULL,/*客户出库日期*/
-//order_receive_date NVARCHAR(128),/*收货日期*/
-//custom_machine_type NVARCHAR(128),/*客户机型*/
-//mb_brief NVARCHAR(128) NOT NULL,/*mb简称*/
-//custommaterialNo NVARCHAR(128) NOT NULL,/*客户料号*/
-//dpk_status NVARCHAR(128) NOT NULL,/*DPK状态*/
-//track_serial_no NVARCHAR(128) NOT NULL,/*跟踪条码*/
-//custom_serial_no NVARCHAR(128) NOT NULL,/*客户序号*/
-//vendor_serail_no NVARCHAR(128) NOT NULL,/*厂商序号*/
-//uuid NVARCHAR(128) NOT NULL,/*UUID*/
-//mac NVARCHAR(128) NOT NULL,/*MAC*/
-//vendormaterialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
-//mb_describe NVARCHAR(128) NOT NULL,/*mb描述*/
-//mb_make_date NVARCHAR(128) NOT NULL,/*MB生产日期*/
-//warranty_period NVARCHAR(128) NOT NULL,/*保修期*/
-//custom_fault NVARCHAR(128) NOT NULL,/*客户故障*/
-//guarantee NVARCHAR(128) NOT NULL,/*保内/保外*/
-//customResponsibility NVARCHAR(128) NOT NULL,/*客责描述*/
-//lenovo_custom_service_no NVARCHAR(128),/*联想客服序号*/
-//lenovo_maintenance_no NVARCHAR(128),/*联想维修站编号*/
-//lenovo_repair_no NVARCHAR(128),/*联想维修单编号*/
-//whole_machine_no NVARCHAR(128)/*整机序号*/
-         
         private void add_Click(object sender, EventArgs e)
-        {            
+        {
+            if (checkInputIsNull())
+            {
+                return;
+            }
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -330,7 +361,7 @@ namespace SaledServices
                         this.vendor_serail_noTextBox.Text.Trim() + "','" +
                         this.uuidTextBox.Text.Trim() + "','" +
                         this.macTextBox.Text.Trim() + "','" +
-                        this.vendormaterialNoTextBox.Text.Trim() + "','" +
+                        this.mpnTextBox.Text.Trim() + "','" +
                         this.mb_describeTextBox.Text.Trim() + "','" +
                         this.mb_make_dateTextBox.Text.Trim() + "','" +
                         this.warranty_periodTextBox.Text.Trim() + "','" +
@@ -340,7 +371,8 @@ namespace SaledServices
                         this.lenovo_custom_service_noTextBox.Text.Trim() + "','" +
                         this.lenovo_maintenance_noTextBox.Text.Trim() + "','" +
                         this.lenovo_repair_noTextBox.Text.Trim() + "','" +
-                        this.whole_machine_noTextBox.Text.Trim() + 
+                        this.whole_machine_noTextBox.Text.Trim() + "','" +
+                        this.inputUserTextBox.Text.Trim()+
                         "')";
                    
                     cmd.ExecuteNonQuery();
@@ -361,7 +393,7 @@ namespace SaledServices
                     {
                         if (querySdr[0].ToString() == "close")
                         {
-                            MessageBox.Show("本板子子已经收货完毕，请检测是否有错误!");
+                            MessageBox.Show("本板子已经收货完毕，请检测是否有错误!");
                         }
                         else
                         {
@@ -387,11 +419,57 @@ namespace SaledServices
                 }
 
                 conn.Close();
+
+                MessageBox.Show("收货成功！");
+
+                clearInputContent();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void clearInputContent()
+        {
+            this.custom_orderComboBox.Text = "";
+            this.source_briefComboBox.Text = "";
+            this.custommaterialNoTextBox.Text = "";
+            this.track_serial_noTextBox.Text = "";
+            this.custom_serial_noTextBox.Text = "";
+            this.vendor_serail_noTextBox.Text = "";
+            this.uuidTextBox.Text = "";
+            this.macTextBox.Text = "";
+            this.guaranteeComboBox.Text = "";
+            this.customResponsibilityComboBox.Text = "";
+            this.lenovo_custom_service_noTextBox.Text = "";
+            this.lenovo_maintenance_noTextBox.Text = "";
+            this.lenovo_repair_noTextBox.Text = "";
+            this.whole_machine_noTextBox.Text = "";
+        }
+
+        private bool checkInputIsNull()
+        {
+            if (this.custom_orderComboBox.Text == ""
+                || this.source_briefComboBox.Text == ""
+
+                || this.custommaterialNoTextBox.Text == ""
+                || this.track_serial_noTextBox.Text == ""
+                || this.custom_serial_noTextBox.Text == ""
+                || this.vendor_serail_noTextBox.Text == ""
+                || this.uuidTextBox.Text == ""
+                || this.macTextBox.Text == ""
+                || this.guaranteeComboBox.Text == ""
+                || this.customResponsibilityComboBox.Text == ""
+                || this.lenovo_custom_service_noTextBox.Text == ""
+                || this.lenovo_maintenance_noTextBox.Text == ""
+                || this.lenovo_repair_noTextBox.Text == ""
+                || this.whole_machine_noTextBox.Text == "")
+            {
+                return true;
+            }
+
+            return false;           
         }
 
         private void query_Click(object sender, EventArgs e)
@@ -421,7 +499,7 @@ namespace SaledServices
             string[] hTxt = { "ID", "厂商", "客户别","来源"
             ,"库别","订单编号","客户出库日期","收货日期","客户机型","mb简称","客户料号","DPK状态","跟踪条码",
             "客户序号","厂商序号","UUID","MAC","厂商料号","mb描述","MB生产日期",",保修期",",客户故障","保内/保外"
-            ,"客责描述","联想客服序号","联想维修站编号","联想维修单编号","整机序号"};
+            ,"客责描述","联想客服序号","联想维修站编号","联想维修单编号","整机序号","收货人"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -434,33 +512,34 @@ namespace SaledServices
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.numTextBox.Text.Trim());
 
-            dr["vendor"] =this.vendorTextBox.Text.Trim();
-            dr["product"] =this.productTextBox.Text.Trim() ;
-            dr["source_brief"] =this.source_briefComboBox.Text.Trim() ;
-            dr["storehouse"] =this.storehouseTextBox.Text.Trim() ;
-            dr["custom_order"] =this.custom_orderComboBox.Text.Trim() ;
-            dr["order_out_date"] =this.order_out_dateTextBox.Text.Trim() ;
-            dr["order_receive_date"] =this.order_receive_dateTextBox.Text.Trim();
-            dr["custom_machine_type "] =this.custom_machine_typeTextBox.Text.Trim() ;
-            dr["mb_brief"] =this.mb_briefTextBox.Text.Trim() ;
-            dr["custommaterialNo"] =this.custommaterialNoTextBox.Text.Trim() ;
-            dr["dpk_status"] =this.dpk_statusTextBox.Text.Trim() ;
-            dr["track_serial_no"] =this.track_serial_noTextBox.Text.Trim() ;
-            dr["custom_serial_no"] =this.custom_serial_noTextBox.Text.Trim() ;
-            dr["vendor_serail_no"] =this.vendor_serail_noTextBox.Text.Trim() ;
-            dr["uuid"] =this.uuidTextBox.Text.Trim() ;
-            dr["mac"] =this.macTextBox.Text.Trim() ;
-            dr["vendormaterialNo"] =this.vendormaterialNoTextBox.Text.Trim() ;
-            dr["mb_describe"] =this.mb_describeTextBox.Text.Trim() ;
-            dr["mb_make_date"] = this.mb_make_dateTextBox.Text.Trim() ;
-            dr["warranty_period"] =this.warranty_periodTextBox.Text.Trim() ;
-            dr["custom_fault"] =this.custom_faultComboBox.Text.Trim() ;
-            dr["guarantee"] =this.guaranteeComboBox.Text.Trim() ;
-            dr["customResponsibility"] =this.customResponsibilityComboBox.Text.Trim() ;
-            dr["lenovo_custom_service_no"] =this.lenovo_custom_service_noTextBox.Text.Trim() ;
-            dr["lenovo_maintenance_no"] =this.lenovo_maintenance_noTextBox.Text.Trim() ;
-            dr["lenovo_repair_no"] =this.lenovo_repair_noTextBox.Text.Trim() ;
-            dr["whole_machine_no"] =this.whole_machine_noTextBox.Text.Trim() ;            
+            dr["vendor"] = this.vendorTextBox.Text.Trim();
+            dr["product"] = this.productTextBox.Text.Trim();
+            dr["source_brief"] = this.source_briefComboBox.Text.Trim();
+            dr["storehouse"] = this.storehouseTextBox.Text.Trim();
+            dr["custom_order"] = this.custom_orderComboBox.Text.Trim();
+            dr["order_out_date"] = this.order_out_dateTextBox.Text.Trim();
+            dr["order_receive_date"] = this.order_receive_dateTextBox.Text.Trim();
+            dr["custom_machine_type "] = this.custom_machine_typeTextBox.Text.Trim();
+            dr["mb_brief"] = this.mb_briefTextBox.Text.Trim();
+            dr["custommaterialNo"] = this.custommaterialNoTextBox.Text.Trim();
+            dr["dpk_status"] = this.dpk_statusTextBox.Text.Trim();
+            dr["track_serial_no"] = this.track_serial_noTextBox.Text.Trim();
+            dr["custom_serial_no"] = this.custom_serial_noTextBox.Text.Trim();
+            dr["vendor_serail_no"] = this.vendor_serail_noTextBox.Text.Trim();
+            dr["uuid"] = this.uuidTextBox.Text.Trim();
+            dr["mac"] = this.macTextBox.Text.Trim();
+            dr["mpn"] = this.mpnTextBox.Text.Trim();
+            dr["mb_describe"] = this.mb_describeTextBox.Text.Trim();
+            dr["mb_make_date"] = this.mb_make_dateTextBox.Text.Trim();
+            dr["warranty_period"] = this.warranty_periodTextBox.Text.Trim();
+            dr["custom_fault"] = this.custom_faultComboBox.Text.Trim();
+            dr["guarantee"] = this.guaranteeComboBox.Text.Trim();
+            dr["customResponsibility"] = this.customResponsibilityComboBox.Text.Trim();
+            dr["lenovo_custom_service_no"] = this.lenovo_custom_service_noTextBox.Text.Trim();
+            dr["lenovo_maintenance_no"] = this.lenovo_maintenance_noTextBox.Text.Trim();
+            dr["lenovo_repair_no"] = this.lenovo_repair_noTextBox.Text.Trim();
+            dr["whole_machine_no"] = this.whole_machine_noTextBox.Text.Trim();
+            dr["inputuser"] = this.inputUserTextBox.Text.Trim();
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
@@ -528,30 +607,69 @@ namespace SaledServices
             this.vendor_serail_noTextBox.Text = dataGridView1.SelectedCells[14].Value.ToString();
             this.uuidTextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
             this.macTextBox.Text = dataGridView1.SelectedCells[16].Value.ToString();
-            this.vendormaterialNoTextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
+            this.mpnTextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
 
-            this.mb_describeTextBox.Text = dataGridView1.SelectedCells[18].Value.ToString(); ;
-            this.mb_make_dateTextBox.Text = dataGridView1.SelectedCells[19].Value.ToString(); ;
-            this.warranty_periodTextBox.Text = dataGridView1.SelectedCells[20].Value.ToString(); ;
-            this.custom_faultComboBox.Text = dataGridView1.SelectedCells[21].Value.ToString(); ;
-            this.guaranteeComboBox.Text = dataGridView1.SelectedCells[22].Value.ToString(); ;
-            this.customResponsibilityComboBox.Text = dataGridView1.SelectedCells[23].Value.ToString(); ;
-            this.lenovo_custom_service_noTextBox.Text = dataGridView1.SelectedCells[24].Value.ToString(); ;
-            this.lenovo_maintenance_noTextBox.Text = dataGridView1.SelectedCells[25].Value.ToString(); ;
-            this.lenovo_repair_noTextBox.Text = dataGridView1.SelectedCells[26].Value.ToString(); ;
-            this.whole_machine_noTextBox.Text = dataGridView1.SelectedCells[27].Value.ToString(); ;      
+            this.mb_describeTextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();
+            this.mb_make_dateTextBox.Text = dataGridView1.SelectedCells[19].Value.ToString();
+            this.warranty_periodTextBox.Text = dataGridView1.SelectedCells[20].Value.ToString();
+            this.custom_faultComboBox.Text = dataGridView1.SelectedCells[21].Value.ToString();
+            this.guaranteeComboBox.Text = dataGridView1.SelectedCells[22].Value.ToString();
+            this.customResponsibilityComboBox.Text = dataGridView1.SelectedCells[23].Value.ToString();
+            this.lenovo_custom_service_noTextBox.Text = dataGridView1.SelectedCells[24].Value.ToString();
+            this.lenovo_maintenance_noTextBox.Text = dataGridView1.SelectedCells[25].Value.ToString();
+            this.lenovo_repair_noTextBox.Text = dataGridView1.SelectedCells[26].Value.ToString();
+            this.whole_machine_noTextBox.Text = dataGridView1.SelectedCells[27].Value.ToString();
+
+            this.inputUserTextBox.Text = dataGridView1.SelectedCells[28].Value.ToString(); 
         }
-
         
-
-        
-
         private void track_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                this.custom_serial_noTextBox.Focus();
-                this.custom_serial_noTextBox.SelectAll();
+                //检查跟踪条码是否在系统中存在过，否则报错
+                string vendor = "";
+                try
+                {
+                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                    mConn.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = mConn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "select vendor from " + this.tableName + " where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+
+                    while (querySdr.Read())
+                    {
+                        vendor = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (vendor != "")
+                    {
+                        MessageBox.Show("跟踪条码：" + this.track_serial_noTextBox.Text + " 已经被使用过，请检测是否有错误!");
+                    }
+                    
+                    mConn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
+                if (vendor == "")
+                {
+                    this.custom_serial_noTextBox.Focus();
+                    this.custom_serial_noTextBox.SelectAll();
+                }
+                else 
+                {
+                    this.track_serial_noTextBox.Focus();
+                    this.track_serial_noTextBox.SelectAll();
+                }
             }
         }
 
@@ -559,6 +677,52 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
+                if (this.vendor_serail_noTextBox.Text.Length != 13)
+                {
+                    this.uuidTextBox.SelectAll();
+                    MessageBox.Show("厂商序号的内容长度不是32位，请检查！");
+                    return; 
+                }
+
+
+                //检查客户序号或厂商序号是否已经存在本订单编号里面了，收货表中
+                string vendor = "";
+                try
+                {
+                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                    mConn.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = mConn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "select vendor from " + this.tableName + " where vendor_serail_no = '" + this.vendor_serail_noTextBox.Text
+                        + "' and custom_order = '" + this.custom_orderComboBox.Text + "'";
+
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+
+                    while (querySdr.Read())
+                    {
+                        vendor = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (vendor != "")
+                    {
+                        MessageBox.Show("客户序号：" + this.custom_serial_noTextBox.Text + " 已经被使用过，请检测是否有错误!");
+                        this.vendor_serail_noTextBox.Focus();
+                        this.vendor_serail_noTextBox.SelectAll();
+                        return;
+                    }
+
+                    mConn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
+
                 this.uuidTextBox.Focus();
                 this.uuidTextBox.SelectAll();
             }

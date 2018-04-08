@@ -21,3 +21,5 @@ D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.pdb
 D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.ReturnStoreCustomRespForm.resources
 D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.ReturnStoreStatusForm.resources
 D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.User.UserSelfForm.resources
+D:\projects\SaledServices\SaledServices\bin\x64\Release\RestSharp.dll
+D:\projects\SaledServices\SaledServices\bin\x64\Release\RestSharp.xml

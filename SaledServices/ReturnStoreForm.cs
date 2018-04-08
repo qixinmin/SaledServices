@@ -223,7 +223,10 @@ namespace SaledServices
                 {
                     
                     string queryStr = querySdr[0].ToString();
-                    subRetStr = queryStr.Substring(preStr.Length, 2);
+                    if (queryStr != "")
+                    {
+                        subRetStr = queryStr.Substring(preStr.Length, 2);
+                    }
                 }
                 querySdr.Close();
 
@@ -284,11 +287,12 @@ namespace SaledServices
                         this.track_serial_noTextBox.Text.Trim() + "','" +
                         this.custom_serial_noTextBox.Text.Trim() + "','" +
                         this.vendor_serail_noTextBox.Text.Trim() + "','" +
-                        this.vendormaterialNoTextBox.Text.Trim() + "','" +
+                        this.mpnTextBox.Text.Trim() + "','" +
                         this.statusComboBox.Text.Trim() + "','" +
                         this.custom_res_typeComboBox.Text.Trim() + "','" +
                         this.response_describeComboBox.Text.Trim() + "','"+
-                        this.tatTextBox.Text.Trim()+
+                        this.tatTextBox.Text.Trim() + "','" +
+                        this.inputUserTextBox.Text.Trim() + 
                         "')";
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
@@ -305,7 +309,14 @@ namespace SaledServices
                     while (querySdr.Read())
                     {                       
                         receivedNum = Int32.Parse(querySdr[2].ToString());
-                        returnNum = Int32.Parse(querySdr[3].ToString());
+                        if (querySdr[3].ToString() == "")
+                        {
+                            returnNum = 0;
+                        }
+                        else
+                        {
+                            returnNum = Int32.Parse(querySdr[3].ToString());
+                        }
 
                         if (returnNum >= receivedNum)
                         {
@@ -371,7 +382,7 @@ namespace SaledServices
             }
 
             string[] hTxt = { "ID", "厂商","客户别","还货文件编号","客户库别","还货时间","订单编号","客户料号","DPK状态",
-                                "跟踪条码","客户序号","厂商序号","厂商料号","状态","客责类别","客责描述","TAT" };
+                                "跟踪条码","客户序号","厂商序号","厂商料号","状态","客责类别","客责描述","TAT","还货人"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridViewReturnedDetail.Columns[i].HeaderText = hTxt[i];
@@ -400,7 +411,7 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                //DPK状态	跟踪条码	客户序号	厂商序号	厂商料号
+                //DPK状态	跟踪条码	客户序号	厂商序号	mpn
 
                 try
                 {
@@ -411,7 +422,7 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select dpk_status, custom_serial_no, vendor_serail_no, vendormaterialNo from DeliveredTable where track_serial_no = '"
+                    cmd.CommandText = "select dpk_status, custom_serial_no, vendor_serail_no, mpn from DeliveredTable where track_serial_no = '"
                         + this.track_serial_noTextBox.Text + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
@@ -420,7 +431,7 @@ namespace SaledServices
                         this.dpkpnTextBox.Text = querySdr[0].ToString();
                         this.custom_serial_noTextBox.Text = querySdr[1].ToString();
                         this.vendor_serail_noTextBox.Text = querySdr[2].ToString();
-                        this.vendormaterialNoTextBox.Text = querySdr[3].ToString();
+                        this.mpnTextBox.Text = querySdr[3].ToString();
                     }
                     querySdr.Close();                    
 

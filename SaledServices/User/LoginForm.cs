@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SaledServices.User;
+using RestSharp;
+
 
 namespace SaledServices
 {
@@ -18,6 +21,7 @@ namespace SaledServices
         {
             InitializeComponent();
             mParent = parent;
+
         }
 
         private void login_Click(object sender, EventArgs e)
@@ -70,5 +74,34 @@ namespace SaledServices
             catch (Exception ex)
             { }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string address = "";
+            string sn = "BOXID(7位)";
+            RestClient client = new RestClient(address);            
+
+            RestRequest request = new RestRequest("resource/{id}", RestSharp.Method.POST);
+            request.AddBody("SET SN=" + sn + "\r\nSET LINE_NAME=1ASSYA\r\nSET GOURP_NAME=ASSY_ISI");          
+            client.Timeout = 500;
+            try
+            {
+                IRestResponse response = client.Execute(request);
+                var content = response.Content; // raw content as string
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.RequestTimeout)
+                {
+                    //网络失败
+                }
+            }
+            catch (Exception ex)
+            {
+                //网络失败
+            }
+        }
+                
     }
 }

@@ -29,27 +29,27 @@ namespace SaledServices
 
         public void changeMenu(MenuType menuType)
         {
-            this.AllMenuStrip.Items.Clear();
-            switch (menuType)
-            {
-                case MenuType.LOGIN_MENU:
-                    this.LoginMenuItem.Name = "LoginMenuItem";
-                    this.LoginMenuItem.Size = new System.Drawing.Size(152, 22);
-                    this.LoginMenuItem.Text = "登录";
-                    this.LoginMenuItem.Click += new System.EventHandler(this.LoginMenuItem_Click);
-                    this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                    this.LoginMenuItem});      
-                    break;
-                case MenuType.MAIN_MENU:
-                    this.UserManageMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                        this.LoginMenuItem,
-                        this.LogoutMenuItem});
-                    this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                        this.UserManageMenuItem,
-                        this.VendorMenuItem,
-                        this.FunctionMenuItem});
-                    break;
-            }
+            //this.AllMenuStrip.Items.Clear();
+            //switch (menuType)
+            //{
+            //    case MenuType.LOGIN_MENU:
+            //        this.LoginMenuItem.Name = "LoginMenuItem";
+            //        this.LoginMenuItem.Size = new System.Drawing.Size(152, 22);
+            //        this.LoginMenuItem.Text = "登录";
+            //        this.LoginMenuItem.Click += new System.EventHandler(this.LoginMenuItem_Click);
+            //        this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            //        this.LoginMenuItem});      
+            //        break;
+            //    case MenuType.MAIN_MENU:
+            //        this.UserManageMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            //            this.LoginMenuItem,
+            //            this.LogoutMenuItem});
+            //        this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            //            this.UserManageMenuItem,
+            //            this.VendorMenuItem,
+            //            this.FunctionMenuItem});
+            //        break;
+            //}
 
             this.LogoutMenuItem.Enabled = true;
         }

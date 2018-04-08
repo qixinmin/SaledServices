@@ -86,6 +86,10 @@ namespace SaledServices
             status  
             cpu_type 
             cpu_freq  
+         * eco
+         * eol
+         * adddate
+         * inputuser
          * */
         private void modify_Click(object sender, EventArgs e)
         {
@@ -122,11 +126,15 @@ namespace SaledServices
             dr["status"] = this.statusTextBox.Text.Trim();
             dr["cpu_type"] = this.cpu_typeTextBox.Text.Trim();
             dr["cpu_freq"] = this.cpu_freqTextBox.Text.Trim();
+            dr["eco"] = this.ecoTextBox.Text.Trim();
+            dr["eol"] = this.eolTextBox.Text.Trim();
+            dr["adddate"] = this.addDateTextBox.Text.Trim();
+            dr["inputuser"] = this.inputUserTextBox.Text.Trim();
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
         }
-    
+
         private void add_Click(object sender, EventArgs e)
         {
             if (this.custommaterialNotextBox.Text.Trim() == "")
@@ -173,7 +181,11 @@ namespace SaledServices
                         + this.areaTextBox.Text.Trim() + "','"
                         + this.statusTextBox.Text.Trim() + "','"
                         + this.cpu_typeTextBox.Text.Trim() + "','"
-                        + this.cpu_freqTextBox.Text.Trim() + "')";
+                        + this.cpu_freqTextBox.Text.Trim() + "','"
+                        + this.ecoTextBox.Text.Trim() + "','"
+                        + this.eolTextBox.Text.Trim() + "','"
+                        + this.addDateTextBox.Text.Trim() + "','"
+                        + this.inputUserTextBox.Text.Trim() + "')";
 
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
@@ -247,7 +259,7 @@ namespace SaledServices
                              "可替换MPN","客户料号","可替换客户料号","FRU料号","可替换FRU料号","MB描述",
                              "厂商PCH_MPN","PCH简述","PCH描述","厂商VGA_MPN","VGA简述","VGA描述",
                              "厂商CPU_MPN","CPU简述","CPU描述","DPK类型","DPKPN", "保修期",
-                             "客户机型","整机出货量","地区","状态","CPU型号","CPU频率" };
+                             "客户机型","整机出货量","地区","状态","CPU型号","CPU频率", "ECO","EOL","添加日期","添加人"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -286,6 +298,11 @@ namespace SaledServices
             this.statusTextBox .Text = dataGridView1.SelectedCells[27].Value.ToString();
             this.cpu_typeTextBox .Text = dataGridView1.SelectedCells[28].Value.ToString();
             this.cpu_freqTextBox.Text = dataGridView1.SelectedCells[29].Value.ToString();
+
+            this.ecoTextBox.Text = dataGridView1.SelectedCells[30].Value.ToString();
+            this.eolTextBox.Text = dataGridView1.SelectedCells[31].Value.ToString();
+            this.addDateTextBox.Text = dataGridView1.SelectedCells[32].Value.ToString();
+            this.inputUserTextBox.Text = dataGridView1.SelectedCells[33].Value.ToString();
         }
 
         private void MBMaterialCompareForm_Load(object sender, EventArgs e)
