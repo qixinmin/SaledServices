@@ -31,6 +31,7 @@
             this.AllMenuStrip = new System.Windows.Forms.MenuStrip();
             this.UserManageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LoginMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.个人信息查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LogoutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VendorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VendorChangeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,7 +50,7 @@
             this.storeHouseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.还货状态ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.还货客责类别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.个人信息查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,6 +88,13 @@
             this.LoginMenuItem.Text = "登录";
             this.LoginMenuItem.Click += new System.EventHandler(this.LoginMenuItem_Click);
             // 
+            // 个人信息查看ToolStripMenuItem
+            // 
+            this.个人信息查看ToolStripMenuItem.Name = "个人信息查看ToolStripMenuItem";
+            this.个人信息查看ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.个人信息查看ToolStripMenuItem.Text = "个人信息查看";
+            this.个人信息查看ToolStripMenuItem.Click += new System.EventHandler(this.个人信息查看ToolStripMenuItem_Click);
+            // 
             // LogoutMenuItem
             // 
             this.LogoutMenuItem.Enabled = false;
@@ -115,7 +123,8 @@
             // 
             this.FunctionMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ExcelImportMenuItem,
-            this.mBMaterialCompareMenuItem});
+            this.mBMaterialCompareMenuItem,
+            this.报表导出ToolStripMenuItem});
             this.FunctionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -232,12 +241,12 @@
             this.还货客责类别ToolStripMenuItem.Text = "还货客责类别";
             this.还货客责类别ToolStripMenuItem.Click += new System.EventHandler(this.还货客责类别ToolStripMenuItem_Click);
             // 
-            // 个人信息查看ToolStripMenuItem
+            // 报表导出ToolStripMenuItem
             // 
-            this.个人信息查看ToolStripMenuItem.Name = "个人信息查看ToolStripMenuItem";
-            this.个人信息查看ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
-            this.个人信息查看ToolStripMenuItem.Text = "个人信息查看";
-            this.个人信息查看ToolStripMenuItem.Click += new System.EventHandler(this.个人信息查看ToolStripMenuItem_Click);
+            this.报表导出ToolStripMenuItem.Name = "报表导出ToolStripMenuItem";
+            this.报表导出ToolStripMenuItem.Size = new System.Drawing.Size(217, 32);
+            this.报表导出ToolStripMenuItem.Text = "报表导出";
+            this.报表导出ToolStripMenuItem.Click += new System.EventHandler(this.报表导出ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -283,6 +292,7 @@
         private System.Windows.Forms.ToolStripMenuItem 还货状态ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 还货客责类别ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 个人信息查看ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 报表导出ToolStripMenuItem;
     }
 }
 

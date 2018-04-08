@@ -296,5 +296,21 @@ namespace SaledServices
 
             this.LogoutMenuItem.Enabled = false;
         }
+
+        private ExportExcelForm eef;
+        private void 报表导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (eef == null || eef.IsDisposed)
+            {
+                eef = new ExportExcelForm();
+                eef.MdiParent = this;
+            }
+
+            //eef.WindowState = FormWindowState.Maximized;
+            eef.BringToFront();
+            eef.Show();
+
+            allForm.Add(eef);
+        }
     }
 }
