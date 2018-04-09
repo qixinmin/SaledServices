@@ -35,14 +35,17 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
+            this.LCFC_MBBOMradioButton = new System.Windows.Forms.RadioButton();
+            this.COMPAL_MBBOMradioButton = new System.Windows.Forms.RadioButton();
+            this.LCFC71BOMRadioButton = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // importButton
             // 
             this.importButton.Enabled = false;
-            this.importButton.Location = new System.Drawing.Point(213, 403);
-            this.importButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.importButton.Location = new System.Drawing.Point(482, 418);
+            this.importButton.Margin = new System.Windows.Forms.Padding(5);
             this.importButton.Name = "importButton";
             this.importButton.Size = new System.Drawing.Size(125, 38);
             this.importButton.TabIndex = 0;
@@ -53,7 +56,7 @@
             // filePath
             // 
             this.filePath.Location = new System.Drawing.Point(20, 82);
-            this.filePath.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.filePath.Margin = new System.Windows.Forms.Padding(5);
             this.filePath.Name = "filePath";
             this.filePath.Size = new System.Drawing.Size(419, 30);
             this.filePath.TabIndex = 1;
@@ -61,7 +64,7 @@
             // findFile
             // 
             this.findFile.Location = new System.Drawing.Point(470, 82);
-            this.findFile.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.findFile.Margin = new System.Windows.Forms.Padding(5);
             this.findFile.Name = "findFile";
             this.findFile.Size = new System.Drawing.Size(125, 38);
             this.findFile.TabIndex = 2;
@@ -71,20 +74,23 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.LCFC71BOMRadioButton);
+            this.panel1.Controls.Add(this.COMPAL_MBBOMradioButton);
+            this.panel1.Controls.Add(this.LCFC_MBBOMradioButton);
             this.panel1.Controls.Add(this.receiveOrder);
             this.panel1.Controls.Add(this.mbmaterial);
-            this.panel1.Location = new System.Drawing.Point(20, 165);
-            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Location = new System.Drawing.Point(20, 149);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(333, 167);
+            this.panel1.Size = new System.Drawing.Size(381, 348);
             this.panel1.TabIndex = 4;
             // 
             // receiveOrder
             // 
             this.receiveOrder.AutoSize = true;
             this.receiveOrder.Checked = true;
-            this.receiveOrder.Location = new System.Drawing.Point(22, 102);
-            this.receiveOrder.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.receiveOrder.Location = new System.Drawing.Point(22, 67);
+            this.receiveOrder.Margin = new System.Windows.Forms.Padding(5);
             this.receiveOrder.Name = "receiveOrder";
             this.receiveOrder.Size = new System.Drawing.Size(87, 24);
             this.receiveOrder.TabIndex = 1;
@@ -95,13 +101,46 @@
             // mbmaterial
             // 
             this.mbmaterial.AutoSize = true;
-            this.mbmaterial.Location = new System.Drawing.Point(22, 33);
-            this.mbmaterial.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.mbmaterial.Location = new System.Drawing.Point(22, 14);
+            this.mbmaterial.Margin = new System.Windows.Forms.Padding(5);
             this.mbmaterial.Name = "mbmaterial";
             this.mbmaterial.Size = new System.Drawing.Size(147, 24);
             this.mbmaterial.TabIndex = 0;
             this.mbmaterial.Text = "MB物料对照表";
             this.mbmaterial.UseVisualStyleBackColor = true;
+            // 
+            // LCFC_MBBOMradioButton
+            // 
+            this.LCFC_MBBOMradioButton.AutoSize = true;
+            this.LCFC_MBBOMradioButton.Location = new System.Drawing.Point(22, 123);
+            this.LCFC_MBBOMradioButton.Name = "LCFC_MBBOMradioButton";
+            this.LCFC_MBBOMradioButton.Size = new System.Drawing.Size(127, 24);
+            this.LCFC_MBBOMradioButton.TabIndex = 2;
+            this.LCFC_MBBOMradioButton.TabStop = true;
+            this.LCFC_MBBOMradioButton.Text = "LCFC_MBBOM";
+            this.LCFC_MBBOMradioButton.UseVisualStyleBackColor = true;
+            // 
+            // COMPAL_MBBOMradioButton
+            // 
+            this.COMPAL_MBBOMradioButton.AutoSize = true;
+            this.COMPAL_MBBOMradioButton.Location = new System.Drawing.Point(22, 177);
+            this.COMPAL_MBBOMradioButton.Name = "COMPAL_MBBOMradioButton";
+            this.COMPAL_MBBOMradioButton.Size = new System.Drawing.Size(147, 24);
+            this.COMPAL_MBBOMradioButton.TabIndex = 3;
+            this.COMPAL_MBBOMradioButton.TabStop = true;
+            this.COMPAL_MBBOMradioButton.Text = "COMPAL_MBBOM";
+            this.COMPAL_MBBOMradioButton.UseVisualStyleBackColor = true;
+            // 
+            // LCFC71BOMRadioButton
+            // 
+            this.LCFC71BOMRadioButton.AutoSize = true;
+            this.LCFC71BOMRadioButton.Location = new System.Drawing.Point(22, 232);
+            this.LCFC71BOMRadioButton.Name = "LCFC71BOMRadioButton";
+            this.LCFC71BOMRadioButton.Size = new System.Drawing.Size(117, 24);
+            this.LCFC71BOMRadioButton.TabIndex = 4;
+            this.LCFC71BOMRadioButton.TabStop = true;
+            this.LCFC71BOMRadioButton.Text = "LCFC71BOM";
+            this.LCFC71BOMRadioButton.UseVisualStyleBackColor = true;
             // 
             // ExcelImportForm
             // 
@@ -113,7 +152,7 @@
             this.Controls.Add(this.filePath);
             this.Controls.Add(this.importButton);
             this.Font = new System.Drawing.Font("SimSun", 15F);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ExcelImportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Excel表格导入";
@@ -133,5 +172,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton receiveOrder;
         private System.Windows.Forms.RadioButton mbmaterial;
+        private System.Windows.Forms.RadioButton LCFC71BOMRadioButton;
+        private System.Windows.Forms.RadioButton COMPAL_MBBOMradioButton;
+        private System.Windows.Forms.RadioButton LCFC_MBBOMradioButton;
     }
 }

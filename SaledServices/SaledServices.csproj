@@ -166,6 +166,10 @@
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CheckBoxComboBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\CheckBoxComboBox.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -184,6 +188,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="additionForm\RepairFaultTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\RepairFaultTypeForm.Designer.cs">
+      <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="additionForm\ReturnStoreCustomRespForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +268,12 @@
     <Compile Include="additionForm\SourceForm.Designer.cs">
       <DependentUpon>SourceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RepairOperationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RepairOperationForm.Designer.cs">
+      <DependentUpon>RepairOperationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReturnStoreForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,6 +313,9 @@
     <Compile Include="VendorForm.Designer.cs">
       <DependentUpon>VendorForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="additionForm\RepairFaultTypeForm.resx">
+      <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="additionForm\ReturnStoreCustomRespForm.resx">
       <DependentUpon>ReturnStoreCustomRespForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -332,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\SourceForm.resx">
       <DependentUpon>SourceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RepairOperationForm.resx">
+      <DependentUpon>RepairOperationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReturnStoreForm.resx">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>

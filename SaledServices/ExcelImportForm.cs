@@ -109,8 +109,30 @@ namespace SaledServices
                 sheetName = Constlist.table_receiveOrder;
                 tableName = Constlist.table_name_ReceiveOrder;
             }
+            else if (this.LCFC_MBBOMradioButton.Checked)
+            {
+                sheetName = Constlist.table_LCFC_MBBOM;
+                tableName = Constlist.table_name_LCFC_MBBOM;
+            }
+            else if (this.COMPAL_MBBOMradioButton.Checked)
+            {
+                sheetName = Constlist.table_COMPAL_MBBOM;
+                tableName = Constlist.table_name_COMPAL_MBBOM;
+            }
+            else if (this.LCFC71BOMRadioButton.Checked)
+            {
+                sheetName = Constlist.table_LCFC71BOM;
+                tableName = Constlist.table_name_LCFC71BOM;
+            }
 
-            if (this.mbmaterial.Checked)
+            if (this.LCFC_MBBOMradioButton.Checked || this.COMPAL_MBBOMradioButton.Checked || this.LCFC71BOMRadioButton.Checked)
+            { 
+                Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
+                int rowLength = ws.UsedRange.Rows.Count;
+                int columnLength = ws.UsedRange.Columns.Count;
+                importLCFC_MBBOM(ws, rowLength, columnLength, tableName);                
+            }
+            else if (this.mbmaterial.Checked)
             {
                 Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
                 int rowLength = ws.UsedRange.Rows.Count;
@@ -344,5 +366,71 @@ namespace SaledServices
                 wbs.Close();
             }
         }
+
+        public void importLCFC_MBBOM(Worksheet ws, int rowLength, int columnLength, string tableName)
+        {
+            string s ="";
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    for (int i = 1; i <= rowLength; i++)
+                    {
+                        s = "INSERT INTO " + tableName + " VALUES('";
+                        for (int j = 1; j <= columnLength; j++)
+                        {
+                            try
+                            {
+                                //有可能有空值
+                                string temp = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, j]).Value2.ToString();
+
+                                s += temp.Replace('\'', '"');
+                            }
+                            catch (Exception ex)
+                            {
+                                s += " ";
+                            }
+
+                            if (j != columnLength)
+                            {
+                                s += "','";
+                            }
+                            else
+                            {
+                                s += "')";
+                            }
+
+                            // Console.WriteLine(s);
+                        }
+                        cmd.CommandText = s;
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+
+                MessageBox.Show("导入" + tableName + "完成！");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(s + "#"+ex.ToString());
+            }
+            finally
+            {
+                wbs.Close();
+            }
+        }
+
     }
 }

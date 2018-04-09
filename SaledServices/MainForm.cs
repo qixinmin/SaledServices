@@ -312,5 +312,37 @@ namespace SaledServices
 
             allForm.Add(eef);
         }
+
+        private RepairOperationForm rof;
+        private void 维修界面ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rof == null || rof.IsDisposed)
+            {
+                rof = new RepairOperationForm();
+                rof.MdiParent = this;
+            }
+
+            rof.WindowState = FormWindowState.Maximized;
+            rof.BringToFront();
+            rof.Show();
+
+            allForm.Add(rof);
+        }
+
+        private additionForm.RepairFaultTypeForm rftf;
+        private void 维修故障类别ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rftf == null || rftf.IsDisposed)
+            {
+                rftf = new additionForm.RepairFaultTypeForm();
+                rftf.MdiParent = this;
+            }
+
+            //eef.WindowState = FormWindowState.Maximized;
+            rftf.BringToFront();
+            rftf.Show();
+
+            allForm.Add(rftf);
+        }
     }
 }

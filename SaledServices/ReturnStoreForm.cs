@@ -628,17 +628,14 @@ namespace SaledServices
             }
         }
 
-        private void custom_res_typeComboBox_KeyDown(object sender, KeyEventArgs e)
+        private void custom_res_typeComboBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.D1)
+            if (e.KeyChar == System.Convert.ToChar(13))
             {
-                e.Handled = true;
-                this.custom_res_typeComboBox.Text = "输入1";
-            }
-            else if (e.Control && e.KeyCode == Keys.D2)
-            {
-                e.Handled = true;
-                this.custom_res_typeComboBox.Text = "输入2";
+                if (this.custom_res_typeComboBox.Text.Trim() == "11")
+                {
+                    this.custom_res_typeComboBox.Text = "这是11的内容";
+                }
             }
         }
     }

@@ -654,7 +654,7 @@
             this.custom_res_typeComboBox.Name = "custom_res_typeComboBox";
             this.custom_res_typeComboBox.Size = new System.Drawing.Size(320, 24);
             this.custom_res_typeComboBox.TabIndex = 5;
-            this.custom_res_typeComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.custom_res_typeComboBox_KeyDown);
+            this.custom_res_typeComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_res_typeComboBox_KeyPress);
             // 
             // flowLayoutPanel1
             // 

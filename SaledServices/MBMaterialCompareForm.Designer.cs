@@ -88,22 +88,22 @@
             this.cpu_freqTextBox = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.inputUserTextBox = new System.Windows.Forms.TextBox();
+            this.addDateTextBox = new System.Windows.Forms.TextBox();
+            this.eolTextBox = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.numTextBox = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.ecoTextBox = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.query = new System.Windows.Forms.Button();
             this.add = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
-            this.label31 = new System.Windows.Forms.Label();
-            this.ecoTextBox = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.eolTextBox = new System.Windows.Forms.TextBox();
-            this.addDateTextBox = new System.Windows.Forms.TextBox();
-            this.inputUserTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -775,6 +775,50 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1481, 419);
             this.tableLayoutPanel1.TabIndex = 59;
             // 
+            // inputUserTextBox
+            // 
+            this.inputUserTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inputUserTextBox.Location = new System.Drawing.Point(1297, 129);
+            this.inputUserTextBox.Name = "inputUserTextBox";
+            this.inputUserTextBox.Size = new System.Drawing.Size(178, 26);
+            this.inputUserTextBox.TabIndex = 66;
+            // 
+            // addDateTextBox
+            // 
+            this.addDateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addDateTextBox.Location = new System.Drawing.Point(1297, 88);
+            this.addDateTextBox.Name = "addDateTextBox";
+            this.addDateTextBox.Size = new System.Drawing.Size(178, 26);
+            this.addDateTextBox.TabIndex = 65;
+            // 
+            // eolTextBox
+            // 
+            this.eolTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.eolTextBox.Location = new System.Drawing.Point(1297, 47);
+            this.eolTextBox.Name = "eolTextBox";
+            this.eolTextBox.Size = new System.Drawing.Size(178, 26);
+            this.eolTextBox.TabIndex = 64;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(1113, 85);
+            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(72, 16);
+            this.label34.TabIndex = 63;
+            this.label34.Text = "添加日期";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(1113, 44);
+            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(32, 16);
+            this.label32.TabIndex = 61;
+            this.label32.Text = "EOL";
+            // 
             // label30
             // 
             this.label30.AutoSize = true;
@@ -794,6 +838,34 @@
             this.numTextBox.Name = "numTextBox";
             this.numTextBox.Size = new System.Drawing.Size(174, 26);
             this.numTextBox.TabIndex = 59;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(1113, 3);
+            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(32, 16);
+            this.label31.TabIndex = 58;
+            this.label31.Text = "ECO";
+            // 
+            // ecoTextBox
+            // 
+            this.ecoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ecoTextBox.Location = new System.Drawing.Point(1297, 6);
+            this.ecoTextBox.Name = "ecoTextBox";
+            this.ecoTextBox.Size = new System.Drawing.Size(178, 26);
+            this.ecoTextBox.TabIndex = 60;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(1113, 126);
+            this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(56, 16);
+            this.label33.TabIndex = 62;
+            this.label33.Text = "添加人";
             // 
             // tableLayoutPanel2
             // 
@@ -880,78 +952,6 @@
             this.modify.Text = "修改";
             this.modify.UseVisualStyleBackColor = true;
             this.modify.Click += new System.EventHandler(this.modify_Click);
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(1113, 3);
-            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(32, 16);
-            this.label31.TabIndex = 58;
-            this.label31.Text = "ECO";
-            // 
-            // ecoTextBox
-            // 
-            this.ecoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ecoTextBox.Location = new System.Drawing.Point(1297, 6);
-            this.ecoTextBox.Name = "ecoTextBox";
-            this.ecoTextBox.Size = new System.Drawing.Size(178, 26);
-            this.ecoTextBox.TabIndex = 60;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(1113, 44);
-            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(32, 16);
-            this.label32.TabIndex = 61;
-            this.label32.Text = "EOL";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(1113, 126);
-            this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(56, 16);
-            this.label33.TabIndex = 62;
-            this.label33.Text = "添加人";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(1113, 85);
-            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(72, 16);
-            this.label34.TabIndex = 63;
-            this.label34.Text = "添加日期";
-            // 
-            // eolTextBox
-            // 
-            this.eolTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.eolTextBox.Location = new System.Drawing.Point(1297, 47);
-            this.eolTextBox.Name = "eolTextBox";
-            this.eolTextBox.Size = new System.Drawing.Size(178, 26);
-            this.eolTextBox.TabIndex = 64;
-            // 
-            // addDateTextBox
-            // 
-            this.addDateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addDateTextBox.Location = new System.Drawing.Point(1297, 88);
-            this.addDateTextBox.Name = "addDateTextBox";
-            this.addDateTextBox.Size = new System.Drawing.Size(178, 26);
-            this.addDateTextBox.TabIndex = 65;
-            // 
-            // inputUserTextBox
-            // 
-            this.inputUserTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputUserTextBox.Location = new System.Drawing.Point(1297, 129);
-            this.inputUserTextBox.Name = "inputUserTextBox";
-            this.inputUserTextBox.Size = new System.Drawing.Size(178, 26);
-            this.inputUserTextBox.TabIndex = 66;
             // 
             // MBMaterialCompareForm
             // 

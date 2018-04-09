@@ -24,3 +24,5 @@ D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.csproj.Generat
 D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.exe
 D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.pdb
 D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.ExportExcelForm.resources
+D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.RepairOperationForm.resources
+D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.additionForm.RepairFaultTypeForm.resources
