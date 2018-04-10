@@ -16,10 +16,13 @@ namespace SaledServices
 
         private string vendorStr = "";
         private string productStr = "";
+
+        //Dictionary<string, string> myDictionary = new Dictionary<string, string>();
+
         public ReturnStoreForm()
         {
             InitializeComponent();
-            loadToReturnInformation();
+            loadToReturnInformation();  
         }
         
         public void loadToReturnInformation()
@@ -67,6 +70,7 @@ namespace SaledServices
                     if (temp != "")
                     {
                         this.custom_res_typeComboBox.Items.Add(temp);
+                        //myDictionary.Add(temp, temp);
                     }
                 }
                 querySdr.Close();
@@ -255,8 +259,7 @@ namespace SaledServices
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 string subRetStr= "";
                 while (querySdr.Read())
-                {
-                    
+                {                    
                     string queryStr = querySdr[0].ToString();
                     if (queryStr != "")
                     {
@@ -630,13 +633,20 @@ namespace SaledServices
 
         private void custom_res_typeComboBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == System.Convert.ToChar(13))
-            {
-                if (this.custom_res_typeComboBox.Text.Trim() == "11")
-                {
-                    this.custom_res_typeComboBox.Text = "这是11的内容";
-                }
-            }
+            //if (e.KeyChar == System.Convert.ToChar(13))
+            //{
+            //    try
+            //    {
+            //        //if (myDictionary[this.custom_res_typeComboBox.Text.Trim()] == "11")
+            //        {
+            //            this.custom_res_typeComboBox.Text = myDictionary[this.custom_res_typeComboBox.Text.Trim()];
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("故障代码" + this.custom_res_typeComboBox.Text.Trim() + "不存在");
+            //    }
+            //}
         }
     }
 }

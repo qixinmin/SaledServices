@@ -231,6 +231,12 @@
     <Compile Include="additionForm\CustomFaultForm.Designer.cs">
       <DependentUpon>CustomFaultForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BGARepairOperationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BGARepairOperationForm.Designer.cs">
+      <DependentUpon>BGARepairOperationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeliveredTableForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\CustomFaultForm.resx">
       <DependentUpon>CustomFaultForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BGARepairOperationForm.resx">
+      <DependentUpon>BGARepairOperationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeliveredTableForm.resx">
       <DependentUpon>DeliveredTableForm.cs</DependentUpon>

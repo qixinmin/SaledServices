@@ -458,13 +458,13 @@
             // custom_faultComboBox
             // 
             this.custom_faultComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custom_faultComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.custom_faultComboBox.FormattingEnabled = true;
             this.custom_faultComboBox.Location = new System.Drawing.Point(245, 287);
             this.custom_faultComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.custom_faultComboBox.Name = "custom_faultComboBox";
             this.custom_faultComboBox.Size = new System.Drawing.Size(228, 24);
             this.custom_faultComboBox.TabIndex = 5;
+            this.custom_faultComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_faultComboBox_KeyPress);
             // 
             // label28
             // 

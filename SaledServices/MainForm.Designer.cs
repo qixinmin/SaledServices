@@ -51,9 +51,10 @@
             this.storeHouseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.还货状态ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.还货客责类别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.维修故障类别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.维修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.维修故障类别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vGA维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -253,10 +254,18 @@
             this.还货客责类别ToolStripMenuItem.Text = "还货客责类别";
             this.还货客责类别ToolStripMenuItem.Click += new System.EventHandler(this.还货客责类别ToolStripMenuItem_Click);
             // 
+            // 维修故障类别ToolStripMenuItem
+            // 
+            this.维修故障类别ToolStripMenuItem.Name = "维修故障类别ToolStripMenuItem";
+            this.维修故障类别ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.维修故障类别ToolStripMenuItem.Text = "维修故障类别";
+            this.维修故障类别ToolStripMenuItem.Click += new System.EventHandler(this.维修故障类别ToolStripMenuItem_Click);
+            // 
             // 维修ToolStripMenuItem
             // 
             this.维修ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.维修界面ToolStripMenuItem});
+            this.维修界面ToolStripMenuItem,
+            this.vGA维修界面ToolStripMenuItem});
             this.维修ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.维修ToolStripMenuItem.Name = "维修ToolStripMenuItem";
             this.维修ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -265,16 +274,16 @@
             // 维修界面ToolStripMenuItem
             // 
             this.维修界面ToolStripMenuItem.Name = "维修界面ToolStripMenuItem";
-            this.维修界面ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.维修界面ToolStripMenuItem.Size = new System.Drawing.Size(207, 32);
             this.维修界面ToolStripMenuItem.Text = "维修界面";
             this.维修界面ToolStripMenuItem.Click += new System.EventHandler(this.维修界面ToolStripMenuItem_Click);
             // 
-            // 维修故障类别ToolStripMenuItem
+            // vGA维修界面ToolStripMenuItem
             // 
-            this.维修故障类别ToolStripMenuItem.Name = "维修故障类别ToolStripMenuItem";
-            this.维修故障类别ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
-            this.维修故障类别ToolStripMenuItem.Text = "维修故障类别";
-            this.维修故障类别ToolStripMenuItem.Click += new System.EventHandler(this.维修故障类别ToolStripMenuItem_Click);
+            this.vGA维修界面ToolStripMenuItem.Name = "vGA维修界面ToolStripMenuItem";
+            this.vGA维修界面ToolStripMenuItem.Size = new System.Drawing.Size(207, 32);
+            this.vGA维修界面ToolStripMenuItem.Text = "VGA维修界面";
+            this.vGA维修界面ToolStripMenuItem.Click += new System.EventHandler(this.vGA维修界面ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -324,6 +333,7 @@
         private System.Windows.Forms.ToolStripMenuItem 维修ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 维修界面ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 维修故障类别ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vGA维修界面ToolStripMenuItem;
     }
 }
 

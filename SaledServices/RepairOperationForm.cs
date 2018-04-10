@@ -54,10 +54,12 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
+                bool error = false;
                 if (this.track_serial_noTextBox.Text.Trim() == "")
                 {
                     this.track_serial_noTextBox.Focus();
                     MessageBox.Show("追踪条码的内容为空，请检查！");
+                    error = true;
                     return;
                 }
 
@@ -107,7 +109,6 @@ namespace SaledServices
                         }
                         querySdr.Close();
 
-
                         this.vendorTextBox.Text = vendor;
                         this.producttextBox.Text = product;
                         this.sourcetextBox.Text = sourceBrief;
@@ -125,8 +126,11 @@ namespace SaledServices
                         this.repair_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
                     }
                     else
-                    {
+                    {  
+                        this.track_serial_noTextBox.Focus();
+                        this.track_serial_noTextBox.SelectAll();
                         MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
+                        error = true;
                     }
                     mConn.Close();
                 }
@@ -134,100 +138,58 @@ namespace SaledServices
                 {
                     MessageBox.Show(ex.ToString());
                 }
+
+                this.repair_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                if (!error)
+                {
+                    mbfa1richTextBox.Focus();
+                    mbfa1richTextBox.SelectAll();
+                }
             }
         }
 
         private void not_good_placetextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (this.track_serial_noTextBox.Text.Trim() == "")
+            if (e.KeyChar == System.Convert.ToChar(13))
             {
-                MessageBox.Show("请先输入追踪条码的内容");
-                this.track_serial_noTextBox.Focus();
-                return;
-            }
-            if (this.not_good_placetextBox.Text.Trim() == "")
-            {
-                MessageBox.Show("请先输入内容");
-                this.not_good_placetextBox.Focus();
-                return;
-            }
-
-            string tableName = "";
-            if (this.vendorTextBox.Text.Trim() == "LCFC")
-            {
-                tableName = Constlist.table_name_LCFC_MBBOM;
-            }
-            else if (this.vendorTextBox.Text.Trim() == "COMPAL")
-            {
-                tableName = Constlist.table_name_COMPAL_MBBOM;
-            }
-
-            string not_good_place = this.not_good_placetextBox.Text.Trim();
-            try
-            {
-                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
-                mConn.Open();
-
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = mConn;
-                cmd.CommandType = CommandType.Text;
-
-                //先用mpn在bom表中找一遍，如果找不到，然后用mb简称再查一遍，如果都没有，要不输错了，要不bom表不全
-
-                cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8 from " + tableName + " where MPN ='" + this.mpntextBox.Text.Trim() +"'";
-                SqlDataReader querySdr = cmd.ExecuteReader();
-                this.material_mpntextBox.Text = "";
-                while (querySdr.Read())
+                bool error = false;
+                if (this.track_serial_noTextBox.Text.Trim() == "")
                 {
-                    string material_mpn = querySdr[0].ToString();;
-                    string temp = querySdr[1].ToString();
-                    if (temp != "" && temp.ToLower().Equals(not_good_place))
-                    {   
-                        this.material_mpntextBox.Text = material_mpn;
-                        break;
-                    } temp = querySdr[2].ToString();
-                    if (temp != "" && temp.ToLower().Equals(not_good_place))
-                    {
-                        this.material_mpntextBox.Text = material_mpn;
-                        break;
-                    } temp = querySdr[3].ToString();
-                    if (temp != "" && temp.ToLower().Equals(not_good_place))
-                    {
-                        this.material_mpntextBox.Text = material_mpn;
-                        break;
-                    } temp = querySdr[4].ToString();
-                    if (temp != "" && temp.ToLower().Equals(not_good_place))
-                    {
-                        this.material_mpntextBox.Text = material_mpn;
-                        break;
-                    } temp = querySdr[5].ToString();
-                    if (temp != "" && temp.ToLower().Equals(not_good_place))
-                    {
-                        this.material_mpntextBox.Text = material_mpn;
-                        break;
-                    } temp = querySdr[6].ToString();
-                    if (temp != "" && temp.ToLower().Equals(not_good_place))
-                    {
-                        this.material_mpntextBox.Text = material_mpn;
-                        break;
-                    } temp = querySdr[7].ToString();
-                    if (temp != "" && temp.ToLower().Equals(not_good_place))
-                    {
-                        this.material_mpntextBox.Text = material_mpn;
-                        break;
-                    } temp = querySdr[8].ToString();
-                    if (temp != "" && temp.ToLower().Equals(not_good_place))
-                    {
-                        this.material_mpntextBox.Text = material_mpn;
-                        break;
-                    }
+                    MessageBox.Show("请先输入追踪条码的内容");
+                    this.track_serial_noTextBox.Focus();
+                    return;
                 }
-                querySdr.Close();
-
-                if (this.material_mpntextBox.Text == "")
+                if (this.not_good_placetextBox.Text.Trim() == "")
                 {
-                    cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8 from " + tableName + " where mb_brief ='" + this.mb_brieftextBox.Text.Trim()+"'";
-                    querySdr = cmd.ExecuteReader();
+                    MessageBox.Show("请先输入内容");
+                    this.not_good_placetextBox.Focus();
+                    return;
+                }
+
+                string tableName = "";
+                if (this.vendorTextBox.Text.Trim() == "LCFC")
+                {
+                    tableName = Constlist.table_name_LCFC_MBBOM;
+                }
+                else if (this.vendorTextBox.Text.Trim() == "COMPAL")
+                {
+                    tableName = Constlist.table_name_COMPAL_MBBOM;
+                }
+
+                string not_good_place = this.not_good_placetextBox.Text.Trim();
+                try
+                {
+                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                    mConn.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = mConn;
+                    cmd.CommandType = CommandType.Text;
+
+                    //先用mpn在bom表中找一遍，如果找不到，然后用mb简称再查一遍，如果都没有，要不输错了，要不bom表不全
+
+                    cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8 from " + tableName + " where MPN ='" + this.mpntextBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
                     this.material_mpntextBox.Text = "";
                     while (querySdr.Read())
                     {
@@ -275,42 +237,125 @@ namespace SaledServices
                         }
                     }
                     querySdr.Close();
-                }
 
-                if (this.material_mpntextBox.Text.Trim() == "")
-                {
-                    MessageBox.Show("是否输入错误的位置信息，或者bom表信息不全！");
-                }
-                else
-                {
-                    cmd.CommandText = "select material_71pn from MBMaterialCompare where mpn='" + this.material_mpntextBox.Text.Trim() + "'";
-
-                    querySdr = cmd.ExecuteReader();
-
-                    string material_71pn_txt = "";
-                    while (querySdr.Read())
+                    if (this.material_mpntextBox.Text == "")
                     {
-                        material_71pn_txt = querySdr[0].ToString();
-                        if (material_71pn_txt != "")
+                        cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8 from " + tableName + " where mb_brief ='" + this.mb_brieftextBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        this.material_mpntextBox.Text = "";
+                        while (querySdr.Read())
                         {
-                            this.material_71pntextBox.Text = material_71pn_txt;
+                            string material_mpn = querySdr[0].ToString(); ;
+                            string temp = querySdr[1].ToString();
+                            if (temp != "" && temp.ToLower() == not_good_place.ToLower())
+                            {
+                                this.material_mpntextBox.Text = material_mpn;
+                                break;
+                            } temp = querySdr[2].ToString();
+                            if (temp != "" && temp.ToLower().Equals(not_good_place))
+                            {
+                                this.material_mpntextBox.Text = material_mpn;
+                                break;
+                            } temp = querySdr[3].ToString();
+                            if (temp != "" && temp.ToLower().Equals(not_good_place))
+                            {
+                                this.material_mpntextBox.Text = material_mpn;
+                                break;
+                            } temp = querySdr[4].ToString();
+                            if (temp != "" && temp.ToLower().Equals(not_good_place))
+                            {
+                                this.material_mpntextBox.Text = material_mpn;
+                                break;
+                            } temp = querySdr[5].ToString();
+                            if (temp != "" && temp.ToLower().Equals(not_good_place))
+                            {
+                                this.material_mpntextBox.Text = material_mpn;
+                                break;
+                            } temp = querySdr[6].ToString();
+                            if (temp != "" && temp.ToLower().Equals(not_good_place))
+                            {
+                                this.material_mpntextBox.Text = material_mpn;
+                                break;
+                            } temp = querySdr[7].ToString();
+                            if (temp != "" && temp.ToLower().Equals(not_good_place))
+                            {
+                                this.material_mpntextBox.Text = material_mpn;
+                                break;
+                            } temp = querySdr[8].ToString();
+                            if (temp != "" && temp.ToLower().Equals(not_good_place))
+                            {
+                                this.material_mpntextBox.Text = material_mpn;
+                                break;
+                            }
                         }
-                        else
-                        {
-                            MessageBox.Show("LCFC71BOM表中" + this.material_mpntextBox.Text.Trim() + "信息不全！");
-                        }
+                        querySdr.Close();
                     }
-                    querySdr.Close();
+
+                    if (this.material_mpntextBox.Text.Trim() == "")
+                    {
+                        error = true;
+                        MessageBox.Show("是否输入错误的位置信息，或者bom表信息不全！");
+                    }
+                    else
+                    {
+                        cmd.CommandText = "select material_vendor_pn from LCFC71BOM_table where material_mpn='" + this.material_mpntextBox.Text.Trim() + "'";
+
+                        querySdr = cmd.ExecuteReader();
+
+                        string material_71pn_txt = "";
+                        while (querySdr.Read())
+                        {
+                            material_71pn_txt = querySdr[0].ToString();
+                            if (material_71pn_txt != "")
+                            {
+                                this.material_71pntextBox.Text = material_71pn_txt;
+                            }
+                            else
+                            {
+                                error = true;
+                                MessageBox.Show("LCFC71BOM表中" + this.material_mpntextBox.Text.Trim() + "信息不全！");
+                            }
+                        }
+                        querySdr.Close();
+                    }
+
+                    mConn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
                 }
 
-                mConn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
+                if (!error)
+                {
+                    material_mpntextBox.Focus();
+                    material_mpntextBox.SelectAll();
+                }
             }
         }
 
+        private void uncheckShortCut()
+        {
+            this.checkBox1.Checked = false;
+            this.checkBox2.Checked = false;
+            this.checkBox3.Checked = false;
+            this.checkBox4.Checked = false;
+            this.checkBox5.Checked = false;
+            this.checkBox6.Checked = false;
+            this.checkBox7.Checked = false;
+            this.checkBox8.Checked = false;
+            this.checkBox9.Checked = false;
+            this.checkBox10.Checked = false;
+            this.checkBox11.Checked = false;
+            this.checkBox12.Checked = false;
+            this.checkBox13.Checked = false;
+            this.checkBox14.Checked = false;
+            this.checkBox15.Checked = false;
+            this.checkBox16.Checked = false;
+            this.checkBox17.Checked = false;
+            this.checkBox18.Checked = false;
+            this.textBox1.Text = "";
+        }
 
         private string getShortCutText()
         {
@@ -484,6 +529,7 @@ namespace SaledServices
 
         private void add_Click(object sender, EventArgs e)
         {
+            bool error = false;
             //1.包含NTF的逻辑， 所有输入的有效信息均为NTF， 2. 若第一次输入信息没有输入完毕，需提醒并把某些字段清空即可
             string track_serial_no_txt = this.track_serial_noTextBox.Text.Trim();
             string vendor_txt = this.vendorTextBox.Text.Trim();
@@ -514,7 +560,7 @@ namespace SaledServices
             string ECO_txt = this.ECOtextBox.Text.Trim();
             string repair_result_txt = this.repair_resultcomboBox.Text.Trim();
             string repairer_txt = this.repairertextBox.Text.Trim();
-            string repair_date_txt = this.repairertextBox.Text.Trim();
+            string repair_date_txt = this.repair_datetextBox.Text.Trim();
 
             if (repair_resultcomboBox.Text.Contains("NTF"))
             {
@@ -574,6 +620,7 @@ namespace SaledServices
                 }
                 else
                 {
+                    error = true;
                     MessageBox.Show("SaledService is not opened");
                 }
 
@@ -581,8 +628,46 @@ namespace SaledServices
             }
             catch (Exception ex)
             {
+                error = true;
                 MessageBox.Show(ex.ToString());
             }
+
+            if (error == false)
+            {
+                MessageBox.Show("添加维修数据成功");
+
+                this.track_serial_noTextBox.Text = "";
+                this.vendorTextBox.Text = "";
+                this.producttextBox.Text = "";
+                this.sourcetextBox.Text = "";
+                this.ordernotextBox.Text = "";
+                this.receivedatetextBox.Text = "";
+                this.mb_describetextBox.Text = "";
+                this.mb_brieftextBox.Text = "";
+                this.custom_serial_notextBox.Text = "";
+                this.vendor_serail_notextBox.Text = "";
+                this.mpntextBox.Text = "";
+                this.mb_make_dateTextBox.Text = "";
+                this.customFaulttextBox.Text = "";
+                this.fault_describetextBox.Text = "";
+                this.mbfa1richTextBox.Text = "";
+                uncheckShortCut();
+                this.software_updatecomboBox.Text = "";
+                this.not_good_placetextBox.Text = "";
+                this.material_mpntextBox.Text = "";
+                this.material_71pntextBox.Text = "";
+                this.material_typetextBox.Text = "";
+                this.fault_typecomboBox.Text = "";
+                this.actioncomboBox.Text = "";
+                this.BGAPNtextBox.Text = "";
+                this.BGA_placetextBox.Text = "";
+                this.bga_brieftextBox.Text = "";
+                this.ECOtextBox.Text = "";
+                this.repair_resultcomboBox.Text = "";
+                this.repairertextBox.Text = "";
+                this.repair_datetextBox.Text = "";
+            }
+
         }
 
         private void query_Click(object sender, EventArgs e)
@@ -618,6 +703,77 @@ namespace SaledServices
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
             }
+        }
+
+        private void repair_resultcomboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (this.repair_resultcomboBox.Text.Contains("NTF"))
+            {
+                this.software_updatecomboBox.Enabled = false;
+                this.not_good_placetextBox.Enabled = false;
+                this.material_mpntextBox.Enabled = false;
+                this.fault_typecomboBox.Enabled = false;
+                this.actioncomboBox.Enabled = false;
+                this.mbfa1richTextBox.Enabled = false;
+                this.fault_describetextBox.Enabled = false;
+                this.BGA_placetextBox.Enabled = false;
+
+                this.checkBox1.Enabled = false;
+                this.checkBox2.Enabled = false;
+                this.checkBox3.Enabled = false;
+                this.checkBox4.Enabled = false;
+                this.checkBox5.Enabled = false;
+                this.checkBox6.Enabled = false;
+                this.checkBox7.Enabled = false;
+                this.checkBox8.Enabled = false;
+                this.checkBox9.Enabled = false;
+                this.checkBox10.Enabled = false;
+                this.checkBox11.Enabled = false;
+                this.checkBox12.Enabled = false;
+                this.checkBox13.Enabled = false;
+                this.checkBox14.Enabled = false;
+                this.checkBox15.Enabled = false;
+                this.checkBox16.Enabled = false;
+                this.checkBox17.Enabled = false;
+                this.checkBox18.Enabled = false;
+                this.textBox1.Enabled = false;                
+            }
+            else
+            {
+                this.software_updatecomboBox.Enabled = true;
+                this.not_good_placetextBox.Enabled = true;
+                this.material_mpntextBox.Enabled = true;
+                this.fault_typecomboBox.Enabled = true;
+                this.actioncomboBox.Enabled = true;
+                this.mbfa1richTextBox.Enabled = true;
+                this.fault_describetextBox.Enabled = true;
+                this.BGA_placetextBox.Enabled = true;
+
+                this.checkBox1.Enabled = true;
+                this.checkBox2.Enabled = true;
+                this.checkBox3.Enabled = true;
+                this.checkBox4.Enabled = true;
+                this.checkBox5.Enabled = true;
+                this.checkBox6.Enabled = true;
+                this.checkBox7.Enabled = true;
+                this.checkBox8.Enabled = true;
+                this.checkBox9.Enabled = true;
+                this.checkBox10.Enabled = true;
+                this.checkBox11.Enabled = true;
+                this.checkBox12.Enabled = true;
+                this.checkBox13.Enabled = true;
+                this.checkBox14.Enabled = true;
+                this.checkBox15.Enabled = true;
+                this.checkBox16.Enabled = true;
+                this.checkBox17.Enabled = true;
+                this.checkBox18.Enabled = true;
+                this.textBox1.Enabled = true;
+            }
+
+            this.VGA.Checked = false;
+            this.CPU.Checked = false;
+            this.PCH.Checked = false;
+            this.noRadio.Checked = false;
         }
     }
 }

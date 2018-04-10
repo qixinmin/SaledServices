@@ -33,18 +33,20 @@
             this.filePath = new System.Windows.Forms.TextBox();
             this.findFile = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.LCFC71BOMRadioButton = new System.Windows.Forms.RadioButton();
+            this.COMPAL_MBBOMradioButton = new System.Windows.Forms.RadioButton();
+            this.LCFC_MBBOMradioButton = new System.Windows.Forms.RadioButton();
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
-            this.LCFC_MBBOMradioButton = new System.Windows.Forms.RadioButton();
-            this.COMPAL_MBBOMradioButton = new System.Windows.Forms.RadioButton();
-            this.LCFC71BOMRadioButton = new System.Windows.Forms.RadioButton();
+            this.DPKradioButton = new System.Windows.Forms.RadioButton();
+            this.faultTableRadioButton = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // importButton
             // 
             this.importButton.Enabled = false;
-            this.importButton.Location = new System.Drawing.Point(482, 418);
+            this.importButton.Location = new System.Drawing.Point(479, 448);
             this.importButton.Margin = new System.Windows.Forms.Padding(5);
             this.importButton.Name = "importButton";
             this.importButton.Size = new System.Drawing.Size(125, 38);
@@ -74,6 +76,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.faultTableRadioButton);
+            this.panel1.Controls.Add(this.DPKradioButton);
             this.panel1.Controls.Add(this.LCFC71BOMRadioButton);
             this.panel1.Controls.Add(this.COMPAL_MBBOMradioButton);
             this.panel1.Controls.Add(this.LCFC_MBBOMradioButton);
@@ -82,8 +86,41 @@
             this.panel1.Location = new System.Drawing.Point(20, 149);
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(381, 348);
+            this.panel1.Size = new System.Drawing.Size(407, 393);
             this.panel1.TabIndex = 4;
+            // 
+            // LCFC71BOMRadioButton
+            // 
+            this.LCFC71BOMRadioButton.AutoSize = true;
+            this.LCFC71BOMRadioButton.Location = new System.Drawing.Point(22, 232);
+            this.LCFC71BOMRadioButton.Name = "LCFC71BOMRadioButton";
+            this.LCFC71BOMRadioButton.Size = new System.Drawing.Size(117, 24);
+            this.LCFC71BOMRadioButton.TabIndex = 4;
+            this.LCFC71BOMRadioButton.TabStop = true;
+            this.LCFC71BOMRadioButton.Text = "LCFC71BOM";
+            this.LCFC71BOMRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // COMPAL_MBBOMradioButton
+            // 
+            this.COMPAL_MBBOMradioButton.AutoSize = true;
+            this.COMPAL_MBBOMradioButton.Location = new System.Drawing.Point(22, 177);
+            this.COMPAL_MBBOMradioButton.Name = "COMPAL_MBBOMradioButton";
+            this.COMPAL_MBBOMradioButton.Size = new System.Drawing.Size(147, 24);
+            this.COMPAL_MBBOMradioButton.TabIndex = 3;
+            this.COMPAL_MBBOMradioButton.TabStop = true;
+            this.COMPAL_MBBOMradioButton.Text = "COMPAL_MBBOM";
+            this.COMPAL_MBBOMradioButton.UseVisualStyleBackColor = true;
+            // 
+            // LCFC_MBBOMradioButton
+            // 
+            this.LCFC_MBBOMradioButton.AutoSize = true;
+            this.LCFC_MBBOMradioButton.Location = new System.Drawing.Point(22, 123);
+            this.LCFC_MBBOMradioButton.Name = "LCFC_MBBOMradioButton";
+            this.LCFC_MBBOMradioButton.Size = new System.Drawing.Size(127, 24);
+            this.LCFC_MBBOMradioButton.TabIndex = 2;
+            this.LCFC_MBBOMradioButton.TabStop = true;
+            this.LCFC_MBBOMradioButton.Text = "LCFC_MBBOM";
+            this.LCFC_MBBOMradioButton.UseVisualStyleBackColor = true;
             // 
             // receiveOrder
             // 
@@ -109,38 +146,27 @@
             this.mbmaterial.Text = "MB物料对照表";
             this.mbmaterial.UseVisualStyleBackColor = true;
             // 
-            // LCFC_MBBOMradioButton
+            // DPKradioButton
             // 
-            this.LCFC_MBBOMradioButton.AutoSize = true;
-            this.LCFC_MBBOMradioButton.Location = new System.Drawing.Point(22, 123);
-            this.LCFC_MBBOMradioButton.Name = "LCFC_MBBOMradioButton";
-            this.LCFC_MBBOMradioButton.Size = new System.Drawing.Size(127, 24);
-            this.LCFC_MBBOMradioButton.TabIndex = 2;
-            this.LCFC_MBBOMradioButton.TabStop = true;
-            this.LCFC_MBBOMradioButton.Text = "LCFC_MBBOM";
-            this.LCFC_MBBOMradioButton.UseVisualStyleBackColor = true;
+            this.DPKradioButton.AutoSize = true;
+            this.DPKradioButton.Location = new System.Drawing.Point(22, 283);
+            this.DPKradioButton.Name = "DPKradioButton";
+            this.DPKradioButton.Size = new System.Drawing.Size(57, 24);
+            this.DPKradioButton.TabIndex = 4;
+            this.DPKradioButton.TabStop = true;
+            this.DPKradioButton.Text = "DPK";
+            this.DPKradioButton.UseVisualStyleBackColor = true;
             // 
-            // COMPAL_MBBOMradioButton
+            // faultTableRadioButton
             // 
-            this.COMPAL_MBBOMradioButton.AutoSize = true;
-            this.COMPAL_MBBOMradioButton.Location = new System.Drawing.Point(22, 177);
-            this.COMPAL_MBBOMradioButton.Name = "COMPAL_MBBOMradioButton";
-            this.COMPAL_MBBOMradioButton.Size = new System.Drawing.Size(147, 24);
-            this.COMPAL_MBBOMradioButton.TabIndex = 3;
-            this.COMPAL_MBBOMradioButton.TabStop = true;
-            this.COMPAL_MBBOMradioButton.Text = "COMPAL_MBBOM";
-            this.COMPAL_MBBOMradioButton.UseVisualStyleBackColor = true;
-            // 
-            // LCFC71BOMRadioButton
-            // 
-            this.LCFC71BOMRadioButton.AutoSize = true;
-            this.LCFC71BOMRadioButton.Location = new System.Drawing.Point(22, 232);
-            this.LCFC71BOMRadioButton.Name = "LCFC71BOMRadioButton";
-            this.LCFC71BOMRadioButton.Size = new System.Drawing.Size(117, 24);
-            this.LCFC71BOMRadioButton.TabIndex = 4;
-            this.LCFC71BOMRadioButton.TabStop = true;
-            this.LCFC71BOMRadioButton.Text = "LCFC71BOM";
-            this.LCFC71BOMRadioButton.UseVisualStyleBackColor = true;
+            this.faultTableRadioButton.AutoSize = true;
+            this.faultTableRadioButton.Location = new System.Drawing.Point(22, 326);
+            this.faultTableRadioButton.Name = "faultTableRadioButton";
+            this.faultTableRadioButton.Size = new System.Drawing.Size(127, 24);
+            this.faultTableRadioButton.TabIndex = 4;
+            this.faultTableRadioButton.TabStop = true;
+            this.faultTableRadioButton.Text = "故障代码表";
+            this.faultTableRadioButton.UseVisualStyleBackColor = true;
             // 
             // ExcelImportForm
             // 
@@ -175,5 +201,7 @@
         private System.Windows.Forms.RadioButton LCFC71BOMRadioButton;
         private System.Windows.Forms.RadioButton COMPAL_MBBOMradioButton;
         private System.Windows.Forms.RadioButton LCFC_MBBOMradioButton;
+        private System.Windows.Forms.RadioButton DPKradioButton;
+        private System.Windows.Forms.RadioButton faultTableRadioButton;
     }
 }

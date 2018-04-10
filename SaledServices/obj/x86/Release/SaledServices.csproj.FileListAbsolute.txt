@@ -23,3 +23,6 @@ D:\projects\SaledServices\SaledServices\bin\Release\RestSharp.xml
 D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.ReturnStoreCustomRespForm.resources
 D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.ReturnStoreStatusForm.resources
 D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.User.UserSelfForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.RepairFaultTypeForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.ExportExcelForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.RepairOperationForm.resources

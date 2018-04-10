@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Microsoft.Office.Interop.Excel;
+using System.Data.OleDb;
 
 namespace SaledServices
 {
@@ -124,9 +125,26 @@ namespace SaledServices
                 sheetName = Constlist.table_LCFC71BOM;
                 tableName = Constlist.table_name_LCFC71BOM;
             }
+            else if(this.DPKradioButton.Checked)
+            {
+                sheetName = Constlist.table_DPK;
+                tableName = Constlist.table_name_DPK;
+            }
+            else if (this.faultTableRadioButton.Checked)
+            {
+                sheetName = Constlist.table_customFault;
+                tableName = Constlist.table_name_customFault;
+            }
 
-            if (this.LCFC_MBBOMradioButton.Checked || this.COMPAL_MBBOMradioButton.Checked || this.LCFC71BOMRadioButton.Checked)
-            { 
+            if (this.LCFC_MBBOMradioButton.Checked 
+                || this.COMPAL_MBBOMradioButton.Checked 
+                || this.LCFC71BOMRadioButton.Checked 
+                || this.DPKradioButton.Checked
+
+                || this.faultTableRadioButton.Checked)
+            {
+                //importLCFC_MBBOMtest(sheetName, tableName);
+
                 Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
                 int rowLength = ws.UsedRange.Rows.Count;
                 int columnLength = ws.UsedRange.Columns.Count;
@@ -367,6 +385,58 @@ namespace SaledServices
             }
         }
 
+        public void importLCFC_MBBOMtest(string sheetName, string tableName)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                //获取全部数据
+                string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=" + filePath.Text + ";Extended Properties='Excel 12.0;HDR=Yes;IMEX=1'";
+                OleDbConnection conn = new OleDbConnection(strConn);
+                conn.Open();
+                string strExcel = "";
+                OleDbDataAdapter myCommand = null;
+                strExcel = string.Format("select * from [{0}$]", sheetName);
+                myCommand = new OleDbDataAdapter(strExcel, strConn);
+                myCommand.Fill(ds, sheetName);
+               
+                //用bcp导入数据
+                using (System.Data.SqlClient.SqlBulkCopy bcp = new System.Data.SqlClient.SqlBulkCopy(Constlist.ConStr))
+                {
+                   // bcp.SqlRowsCopied += new System.Data.SqlClient.SqlRowsCopiedEventHandler(bcp_SqlRowsCopied);
+                    bcp.BatchSize = 10000;//每次传输的行数
+                    bcp.NotifyAfter = 10000;//进度提示的行数
+                    bcp.DestinationTableName = tableName;//目标表
+
+                    bcp.ColumnMappings.Add("date", "日期");
+                    bcp.ColumnMappings.Add("vendor", "厂商");
+                    bcp.ColumnMappings.Add("product", "客户别");
+                    bcp.ColumnMappings.Add("mb_brief", "MB简称");
+                    bcp.ColumnMappings.Add("MPN", "MPN");
+                    bcp.ColumnMappings.Add("material_mpn", "材料MPN");
+                    bcp.ColumnMappings.Add("material_box_place", "料盒位置");
+                    bcp.ColumnMappings.Add("material_describe", "物料描述");
+ 
+                    bcp.ColumnMappings.Add("material_num", "用料数量");
+                    bcp.ColumnMappings.Add("L1", "L1");
+                    bcp.ColumnMappings.Add("L2", "L2");
+                    bcp.ColumnMappings.Add("L3", "L3");
+                    bcp.ColumnMappings.Add("L4", "L4");
+                    bcp.ColumnMappings.Add("L5", "L5");
+                    bcp.ColumnMappings.Add("L6", "L6");
+                    bcp.ColumnMappings.Add("L7", "L7");
+                    bcp.ColumnMappings.Add("L8", "L8");
+
+                    bcp.WriteToServer(ds.Tables[0]);
+                    bcp.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }           
+        }
+
         public void importLCFC_MBBOM(Worksheet ws, int rowLength, int columnLength, string tableName)
         {
             string s ="";
@@ -374,12 +444,17 @@ namespace SaledServices
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
                 conn.Open();
+                SqlTransaction transaction = null;  
+  
 
                 if (conn.State == ConnectionState.Open)
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
+
+                    transaction = conn.BeginTransaction();
+                    cmd.Transaction = transaction;  
 
                     for (int i = 1; i <= rowLength; i++)
                     {
@@ -412,13 +487,18 @@ namespace SaledServices
                         cmd.CommandText = s;
                         cmd.ExecuteNonQuery();
                     }
+
+                    transaction.Commit();
                 }
                 else
                 {
                     MessageBox.Show("SaledService is not opened");
                 }
 
+
                 conn.Close();
+                transaction.Dispose();                
+                conn.Dispose();
 
                 MessageBox.Show("导入" + tableName + "完成！");
             }

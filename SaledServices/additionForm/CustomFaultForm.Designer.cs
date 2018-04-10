@@ -37,6 +37,8 @@
             this.delete = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.numTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.faultIndexTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +46,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label1.Location = new System.Drawing.Point(92, 120);
+            this.label1.Location = new System.Drawing.Point(91, 155);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 20);
@@ -56,7 +58,7 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(95, 417);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -66,8 +68,8 @@
             // 
             // fault_describeTextBox
             // 
-            this.fault_describeTextBox.Location = new System.Drawing.Point(243, 115);
-            this.fault_describeTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.fault_describeTextBox.Location = new System.Drawing.Point(243, 152);
+            this.fault_describeTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.fault_describeTextBox.Name = "fault_describeTextBox";
             this.fault_describeTextBox.Size = new System.Drawing.Size(164, 30);
             this.fault_describeTextBox.TabIndex = 2;
@@ -76,7 +78,7 @@
             // 
             this.add.Font = new System.Drawing.Font("SimSun", 15F);
             this.add.Location = new System.Drawing.Point(95, 302);
-            this.add.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.add.Margin = new System.Windows.Forms.Padding(5);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(145, 55);
             this.add.TabIndex = 3;
@@ -88,7 +90,7 @@
             // 
             this.query.Font = new System.Drawing.Font("SimSun", 15F);
             this.query.Location = new System.Drawing.Point(260, 302);
-            this.query.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.query.Margin = new System.Windows.Forms.Padding(5);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(150, 55);
             this.query.TabIndex = 3;
@@ -100,7 +102,7 @@
             // 
             this.modify.Font = new System.Drawing.Font("SimSun", 15F);
             this.modify.Location = new System.Drawing.Point(422, 302);
-            this.modify.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.modify.Margin = new System.Windows.Forms.Padding(5);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(142, 55);
             this.modify.TabIndex = 3;
@@ -112,7 +114,7 @@
             // 
             this.delete.Font = new System.Drawing.Font("SimSun", 15F);
             this.delete.Location = new System.Drawing.Point(588, 302);
-            this.delete.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.delete.Margin = new System.Windows.Forms.Padding(5);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(125, 55);
             this.delete.TabIndex = 3;
@@ -134,11 +136,30 @@
             // numTextBox
             // 
             this.numTextBox.Location = new System.Drawing.Point(243, 62);
-            this.numTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.numTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.numTextBox.Name = "numTextBox";
             this.numTextBox.ReadOnly = true;
             this.numTextBox.Size = new System.Drawing.Size(164, 30);
             this.numTextBox.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label3.Location = new System.Drawing.Point(91, 104);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "故障编号";
+            // 
+            // faultIndexTextBox
+            // 
+            this.faultIndexTextBox.Location = new System.Drawing.Point(243, 104);
+            this.faultIndexTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.faultIndexTextBox.Name = "faultIndexTextBox";
+            this.faultIndexTextBox.Size = new System.Drawing.Size(164, 30);
+            this.faultIndexTextBox.TabIndex = 2;
             // 
             // CustomFaultForm
             // 
@@ -151,11 +172,13 @@
             this.Controls.Add(this.modify);
             this.Controls.Add(this.query);
             this.Controls.Add(this.add);
+            this.Controls.Add(this.faultIndexTextBox);
             this.Controls.Add(this.fault_describeTextBox);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("SimSun", 15F);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "CustomFaultForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "客户故障";
@@ -176,5 +199,7 @@
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox numTextBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox faultIndexTextBox;
     }
 }

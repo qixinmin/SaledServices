@@ -23,3 +23,8 @@ D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.ReturnStor
 D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.User.UserSelfForm.resources
 D:\projects\SaledServices\SaledServices\bin\x64\Release\RestSharp.dll
 D:\projects\SaledServices\SaledServices\bin\x64\Release\RestSharp.xml
+D:\projects\SaledServices\SaledServices\bin\x64\Release\CheckBoxComboBox.dll
+D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.additionForm.RepairFaultTypeForm.resources
+D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.ExportExcelForm.resources
+D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.RepairOperationForm.resources
+D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.BGARepairOperationForm.resources

@@ -24,7 +24,7 @@ namespace SaledServices
 
         private void add_Click(object sender, EventArgs e)
         {
-            if (this.fault_describeTextBox.Text.Trim() == "")
+            if (this.faultIndexTextBox.Text.Trim() == "" || this.fault_describeTextBox.Text.Trim() == "")
             {
                 MessageBox.Show("客户故障的内容为空!");
                 return;
@@ -39,7 +39,7 @@ namespace SaledServices
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + this.fault_describeTextBox.Text.Trim() +"')";
+                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + this.faultIndexTextBox.Text.Trim() + "','" + this.fault_describeTextBox.Text.Trim() + "')";
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
                 }
@@ -79,7 +79,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "ID", "故障描述" };
+            string[] hTxt = { "ID", "故障代码","故障描述" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -91,6 +91,7 @@ namespace SaledServices
             DataTable dt = ds.Tables[tableName];
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.numTextBox.Text.Trim());
+            dr["fault_index"] = this.faultIndexTextBox.Text.Trim();
             dr["fault_describe"] = this.fault_describeTextBox.Text.Trim();
             
 
@@ -129,8 +130,8 @@ namespace SaledServices
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.numTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
-            this.fault_describeTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
-            
+            this.faultIndexTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
+            this.fault_describeTextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();            
         }
     }
 }

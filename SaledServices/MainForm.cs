@@ -344,5 +344,21 @@ namespace SaledServices
 
             allForm.Add(rftf);
         }
+
+        private BGARepairOperationForm vgaRof;
+        private void vGA维修界面ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (vgaRof == null || vgaRof.IsDisposed)
+            {
+                vgaRof = new BGARepairOperationForm();
+                vgaRof.MdiParent = this;
+            }
+
+            vgaRof.WindowState = FormWindowState.Maximized;
+            vgaRof.BringToFront();
+            vgaRof.Show();
+
+            allForm.Add(vgaRof);
+        }
     }
 }

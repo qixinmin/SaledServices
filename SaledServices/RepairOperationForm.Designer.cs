@@ -176,7 +176,6 @@
             this.tableLayoutPanel2.Controls.Add(this.label12, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.label13, 4, 1);
             this.tableLayoutPanel2.Controls.Add(this.label14, 4, 2);
-            this.tableLayoutPanel2.Controls.Add(this.label15, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label24, 4, 4);
             this.tableLayoutPanel2.Controls.Add(this.label25, 4, 5);
             this.tableLayoutPanel2.Controls.Add(this.BGA_placetextBox, 5, 5);
@@ -202,7 +201,6 @@
             this.tableLayoutPanel2.Controls.Add(this.fault_describetextBox, 5, 2);
             this.tableLayoutPanel2.Controls.Add(this.customFaulttextBox, 5, 1);
             this.tableLayoutPanel2.Controls.Add(this.mb_make_dateTextBox, 5, 0);
-            this.tableLayoutPanel2.Controls.Add(this.mbfa1richTextBox, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label17, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.software_updatecomboBox, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.label18, 0, 3);
@@ -217,10 +215,12 @@
             this.tableLayoutPanel2.Controls.Add(this.fault_typecomboBox, 1, 7);
             this.tableLayoutPanel2.Controls.Add(this.label23, 0, 8);
             this.tableLayoutPanel2.Controls.Add(this.actioncomboBox, 1, 8);
-            this.tableLayoutPanel2.Controls.Add(this.label28, 0, 9);
-            this.tableLayoutPanel2.Controls.Add(this.repair_resultcomboBox, 1, 9);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 5, 3);
             this.tableLayoutPanel2.Controls.Add(this.label31, 4, 3);
+            this.tableLayoutPanel2.Controls.Add(this.label15, 0, 9);
+            this.tableLayoutPanel2.Controls.Add(this.label28, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.mbfa1richTextBox, 1, 9);
+            this.tableLayoutPanel2.Controls.Add(this.repair_resultcomboBox, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
@@ -392,7 +392,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 48);
+            this.label15.Location = new System.Drawing.Point(6, 416);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(48, 16);
@@ -649,8 +649,7 @@
             // 
             // mbfa1richTextBox
             // 
-            this.mbfa1richTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mbfa1richTextBox.Location = new System.Drawing.Point(197, 52);
+            this.mbfa1richTextBox.Location = new System.Drawing.Point(197, 420);
             this.mbfa1richTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mbfa1richTextBox.Name = "mbfa1richTextBox";
             this.mbfa1richTextBox.Size = new System.Drawing.Size(202, 36);
@@ -669,7 +668,6 @@
             // 
             // software_updatecomboBox
             // 
-            this.software_updatecomboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.software_updatecomboBox.FormattingEnabled = true;
             this.software_updatecomboBox.Items.AddRange(new object[] {
             "Bios flash",
@@ -692,7 +690,6 @@
             // 
             // not_good_placetextBox
             // 
-            this.not_good_placetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.not_good_placetextBox.Location = new System.Drawing.Point(197, 144);
             this.not_good_placetextBox.Margin = new System.Windows.Forms.Padding(4);
             this.not_good_placetextBox.Name = "not_good_placetextBox";
@@ -712,7 +709,6 @@
             // 
             // material_mpntextBox
             // 
-            this.material_mpntextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.material_mpntextBox.Location = new System.Drawing.Point(197, 190);
             this.material_mpntextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_mpntextBox.Name = "material_mpntextBox";
@@ -731,10 +727,10 @@
             // 
             // material_71pntextBox
             // 
-            this.material_71pntextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.material_71pntextBox.Location = new System.Drawing.Point(197, 236);
             this.material_71pntextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_71pntextBox.Name = "material_71pntextBox";
+            this.material_71pntextBox.ReadOnly = true;
             this.material_71pntextBox.Size = new System.Drawing.Size(202, 26);
             this.material_71pntextBox.TabIndex = 42;
             // 
@@ -750,10 +746,10 @@
             // 
             // material_typetextBox
             // 
-            this.material_typetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.material_typetextBox.Location = new System.Drawing.Point(197, 282);
             this.material_typetextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_typetextBox.Name = "material_typetextBox";
+            this.material_typetextBox.ReadOnly = true;
             this.material_typetextBox.Size = new System.Drawing.Size(202, 26);
             this.material_typetextBox.TabIndex = 28;
             this.material_typetextBox.Text = "现在默认为空";
@@ -770,7 +766,6 @@
             // 
             // fault_typecomboBox
             // 
-            this.fault_typecomboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fault_typecomboBox.FormattingEnabled = true;
             this.fault_typecomboBox.Location = new System.Drawing.Point(197, 328);
             this.fault_typecomboBox.Margin = new System.Windows.Forms.Padding(4);
@@ -790,7 +785,6 @@
             // 
             // actioncomboBox
             // 
-            this.actioncomboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.actioncomboBox.FormattingEnabled = true;
             this.actioncomboBox.Items.AddRange(new object[] {
             "更换",
@@ -804,7 +798,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(6, 416);
+            this.label28.Location = new System.Drawing.Point(6, 48);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(72, 16);
@@ -813,17 +807,17 @@
             // 
             // repair_resultcomboBox
             // 
-            this.repair_resultcomboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.repair_resultcomboBox.FormattingEnabled = true;
             this.repair_resultcomboBox.Items.AddRange(new object[] {
             "NTF待测",
             "修复OK待测",
             "报废"});
-            this.repair_resultcomboBox.Location = new System.Drawing.Point(197, 420);
+            this.repair_resultcomboBox.Location = new System.Drawing.Point(197, 52);
             this.repair_resultcomboBox.Margin = new System.Windows.Forms.Padding(4);
             this.repair_resultcomboBox.Name = "repair_resultcomboBox";
             this.repair_resultcomboBox.Size = new System.Drawing.Size(202, 24);
             this.repair_resultcomboBox.TabIndex = 39;
+            this.repair_resultcomboBox.SelectedValueChanged += new System.EventHandler(this.repair_resultcomboBox_SelectedValueChanged);
             // 
             // panel2
             // 

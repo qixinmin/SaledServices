@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace SaledServices
 {
     public partial class DeliveredTableForm : Form
     {
-
+        Dictionary<string, string> myDictionary = new Dictionary<string, string>();
         private SqlConnection mConn;
         private DataSet ds;
         private SqlDataAdapter sda;
@@ -49,14 +50,16 @@ namespace SaledServices
                 }
                 querySdr.Close();
 
-                cmd.CommandText = "select distinct fault_describe from customFault";
+                cmd.CommandText = "select fault_index, fault_describe from customFault";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
-                    string temp = querySdr[0].ToString();
+                    string index = querySdr[0].ToString();
+                    string temp = querySdr[1].ToString();
                     if (temp != "")
                     {
                         this.custom_faultComboBox.Items.Add(temp);
+                        myDictionary.Add(index, temp);
                     }
                 }
                 querySdr.Close();
@@ -928,6 +931,24 @@ namespace SaledServices
         private void dataGridViewWaitToReturn_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.custommaterialNoTextBox.Text = dataGridViewWaitToReturn.SelectedCells[1].Value.ToString();
+        }
+
+        private void custom_faultComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                if (this.custom_faultComboBox.Text != "" && Regex.IsMatch(this.custom_faultComboBox.Text, @"^[+-]?\d*[.]?\d*$"))
+                {
+                    try
+                    {
+                        this.custom_faultComboBox.Text = myDictionary[this.custom_faultComboBox.Text.Trim()];
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("故障代码" + this.custom_faultComboBox.Text.Trim() + "不存在");
+                    }
+                }
+            }
         }
     }
 }

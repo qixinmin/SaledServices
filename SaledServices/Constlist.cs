@@ -23,6 +23,12 @@ namespace SaledServices
 
         public static string table_LCFC71BOM = "LCFC71BOM表";
         public static string table_name_LCFC71BOM = "LCFC71BOM_table";
+
+        public static string table_DPK = "DPK";
+        public static string table_name_DPK = "DPK_table";
+
+        public static string table_customFault = "故障代码表";
+        public static string table_name_customFault = "customFault";
     }
 
     //订单状态

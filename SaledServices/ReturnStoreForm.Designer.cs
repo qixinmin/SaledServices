@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridViewToReturn = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -78,6 +79,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.replace_custom_materialNotextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToReturn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReturnedDetail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -787,5 +789,6 @@
         private System.Windows.Forms.TextBox inputUserTextBox;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox replace_custom_materialNotextBox;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
