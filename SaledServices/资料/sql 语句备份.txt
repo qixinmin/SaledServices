@@ -96,7 +96,7 @@ mpn NVARCHAR(128) NOT NULL, /*MPN*/
 mb_make_date NVARCHAR(128) NOT NULL, /*MB生产日期*/
 customFault NVARCHAR(128) NOT NULL, /*客户故障*/
 fault_describe NVARCHAR(128) NOT NULL, /*故障原因*/
-mbfa1 NVARCHAR(128) NOT NULL, /*mbfa1*/
+mbfa1 NVARCHAR(128) NOT NULL, /*FA分析*/
 short_cut NVARCHAR(128) NOT NULL, /*短路电压*/
 software_update NVARCHAR(128) NOT NULL, /*软体更新*/
 not_good_place NVARCHAR(128), /*不良位置*/

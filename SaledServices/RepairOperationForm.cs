@@ -456,6 +456,7 @@ namespace SaledServices
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
+            this.BGA_placetextBox.ReadOnly = false;
             string bga_mpn = "";
             string bga_brief = "";
             if (this.mpntextBox.Text.Trim() == "")
@@ -525,6 +526,7 @@ namespace SaledServices
             this.BGAPNtextBox.Text = "";
             this.bga_brieftextBox.Text = "";
             this.BGA_placetextBox.Text = "";
+            this.BGA_placetextBox.ReadOnly = true;
         }
 
         private void add_Click(object sender, EventArgs e)
@@ -666,6 +668,11 @@ namespace SaledServices
                 this.repair_resultcomboBox.Text = "";
                 this.repairertextBox.Text = "";
                 this.repair_datetextBox.Text = "";
+
+                this.VGA.Checked = false;
+                this.CPU.Checked = false;
+                this.PCH.Checked = false;
+                this.noRadio.Checked = false;
             }
 
         }

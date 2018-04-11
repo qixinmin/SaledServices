@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -415,6 +416,7 @@
             this.BGA_placetextBox.Location = new System.Drawing.Point(1011, 236);
             this.BGA_placetextBox.Margin = new System.Windows.Forms.Padding(4);
             this.BGA_placetextBox.Name = "BGA_placetextBox";
+            this.BGA_placetextBox.ReadOnly = true;
             this.BGA_placetextBox.Size = new System.Drawing.Size(197, 26);
             this.BGA_placetextBox.TabIndex = 35;
             // 
@@ -693,6 +695,7 @@
             this.material_mpntextBox.Location = new System.Drawing.Point(197, 190);
             this.material_mpntextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_mpntextBox.Name = "material_mpntextBox";
+            this.material_mpntextBox.ReadOnly = true;
             this.material_mpntextBox.Size = new System.Drawing.Size(202, 26);
             this.material_mpntextBox.TabIndex = 24;
             // 
@@ -851,9 +854,9 @@
             this.label15.Location = new System.Drawing.Point(6, 416);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(48, 16);
+            this.label15.Size = new System.Drawing.Size(56, 16);
             this.label15.TabIndex = 15;
-            this.label15.Text = "mbfa1";
+            this.label15.Text = "FA分析";
             // 
             // label28
             // 
@@ -1219,10 +1222,13 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 713);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1216, 269);

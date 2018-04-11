@@ -88,10 +88,11 @@ namespace SaledServices
                         this.mpntextBox.Text = querySdr[8].ToString();
                         this.mb_make_dateTextBox.Text = querySdr[9].ToString();
                         this.customFaulttextBox.Text = querySdr[10].ToString();
-                        this.fault_describetextBox.Text = querySdr[11].ToString();
+                        this.fault_describetextBox.Text = querySdr[11].ToString();                        
 
-                        this.mb_brieftextBox.Text = querySdr[12].ToString();
-                        this.shortcutRichTextBox.Text = querySdr[13].ToString();
+                        this.mbfa1label.Text = querySdr[12].ToString();
+                        this.shortcutlabel.Text = querySdr[13].ToString();
+
                         this.BGAPNtextBox.Text = querySdr[14].ToString();
                         this.BGA_placetextBox.Text = querySdr[15].ToString();
                         this.bga_brieftextBox.Text = querySdr[16].ToString();
@@ -114,8 +115,7 @@ namespace SaledServices
 
                 if (!error)
                 {
-                    mbfa1richTextBox.Focus();
-                    mbfa1richTextBox.SelectAll();
+                   
                 }
             }
         }
@@ -155,8 +155,8 @@ namespace SaledServices
             string mb_make_date_txt = this.mb_make_dateTextBox.Text.Trim();
             string customFault_txt = this.customFaulttextBox.Text.Trim();
             string fault_describe_txt = this.fault_describetextBox.Text.Trim();
-            string mbfa1rich_txt = this.mbfa1richTextBox.Text.Trim();
-            string short_cut_txt = this.shortcutRichTextBox.Text.Trim();
+            string mbfa1rich_txt = this.mbfa1label.Text.Trim();
+            string short_cut_txt = this.shortcutlabel.Text.Trim();
 
             string BGAPN_txt = this.BGAPNtextBox.Text.Trim();
             string BGA_place_txt = this.BGA_placetextBox.Text.Trim();
