@@ -71,16 +71,7 @@ namespace SaledServices
 
         private void VendorChangeMenuItem_Click(object sender, EventArgs e)
         {
-            if (mVendorForm == null || mVendorForm.IsDisposed)
-            {
-                mVendorForm = new VendorForm();
-                mVendorForm.MdiParent = this;
-            }
-
-            mVendorForm.BringToFront();
-            mVendorForm.Show();
-
-            allForm.Add(mVendorForm);
+            
         }
 
         private void ExcelImportMenuItem_Click(object sender, EventArgs e)
@@ -194,17 +185,7 @@ namespace SaledServices
 
         private void 收货单ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (roForm == null || roForm.IsDisposed)
-            {
-                roForm = new ReceiveOrderForm();
-                roForm.MdiParent = this;
-            }
-
-            roForm.WindowState = FormWindowState.Maximized;
-            roForm.BringToFront();
-            roForm.Show();
-
-            allForm.Add(roForm);
+           
         }
 
         private DeliveredTableForm dtform;
@@ -297,20 +278,10 @@ namespace SaledServices
             this.LogoutMenuItem.Enabled = false;
         }
 
-        private ExportExcelForm eef;
+       
         private void 报表导出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (eef == null || eef.IsDisposed)
-            {
-                eef = new ExportExcelForm();
-                eef.MdiParent = this;
-            }
-
-            //eef.WindowState = FormWindowState.Maximized;
-            eef.BringToFront();
-            eef.Show();
-
-            allForm.Add(eef);
+           
         }
 
         private RepairOperationForm rof;
@@ -423,6 +394,52 @@ namespace SaledServices
             outlookform.Show();
 
             allForm.Add(outlookform);
+        }
+
+        private void 厂商信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (mVendorForm == null || mVendorForm.IsDisposed)
+            {
+                mVendorForm = new VendorForm();
+                mVendorForm.MdiParent = this;
+            }
+
+            mVendorForm.BringToFront();
+            mVendorForm.Show();
+
+            allForm.Add(mVendorForm);
+        }
+
+        private void 收货单ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (roForm == null || roForm.IsDisposed)
+            {
+                roForm = new ReceiveOrderForm();
+                roForm.MdiParent = this;
+            }
+
+            roForm.WindowState = FormWindowState.Maximized;
+            roForm.BringToFront();
+            roForm.Show();
+
+            allForm.Add(roForm);
+        }
+
+        private ExportExcelForm eef;
+        private void 报表1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+          
+            if (eef == null || eef.IsDisposed)
+            {
+                eef = new ExportExcelForm();
+                eef.MdiParent = this;
+            }
+
+            //eef.WindowState = FormWindowState.Maximized;
+            eef.BringToFront();
+            eef.Show();
+
+            allForm.Add(eef);
         }
     }
 }

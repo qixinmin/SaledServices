@@ -45,7 +45,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.BGA_placetextBox = new System.Windows.Forms.TextBox();
@@ -71,7 +70,6 @@
             this.fault_describetextBox = new System.Windows.Forms.TextBox();
             this.customFaulttextBox = new System.Windows.Forms.TextBox();
             this.mb_make_dateTextBox = new System.Windows.Forms.TextBox();
-            this.mbfa1richTextBox = new System.Windows.Forms.RichTextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.software_updatecomboBox = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -86,14 +84,16 @@
             this.fault_typecomboBox = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.actioncomboBox = new System.Windows.Forms.ComboBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.repair_resultcomboBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.noRadio = new System.Windows.Forms.RadioButton();
             this.PCH = new System.Windows.Forms.RadioButton();
             this.CPU = new System.Windows.Forms.RadioButton();
             this.VGA = new System.Windows.Forms.RadioButton();
             this.label31 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.mbfa1richTextBox = new System.Windows.Forms.RichTextBox();
+            this.repair_resultcomboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.add = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -389,16 +389,6 @@
             this.label14.TabIndex = 14;
             this.label14.Text = "故障原因";
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 416);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(48, 16);
-            this.label15.TabIndex = 15;
-            this.label15.Text = "mbfa1";
-            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -647,15 +637,6 @@
             this.mb_make_dateTextBox.Size = new System.Drawing.Size(197, 26);
             this.mb_make_dateTextBox.TabIndex = 43;
             // 
-            // mbfa1richTextBox
-            // 
-            this.mbfa1richTextBox.Location = new System.Drawing.Point(197, 420);
-            this.mbfa1richTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mbfa1richTextBox.Name = "mbfa1richTextBox";
-            this.mbfa1richTextBox.Size = new System.Drawing.Size(202, 36);
-            this.mbfa1richTextBox.TabIndex = 44;
-            this.mbfa1richTextBox.Text = "";
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -795,30 +776,6 @@
             this.actioncomboBox.Size = new System.Drawing.Size(202, 24);
             this.actioncomboBox.TabIndex = 32;
             // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(6, 48);
-            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(72, 16);
-            this.label28.TabIndex = 38;
-            this.label28.Text = "修复结果";
-            // 
-            // repair_resultcomboBox
-            // 
-            this.repair_resultcomboBox.FormattingEnabled = true;
-            this.repair_resultcomboBox.Items.AddRange(new object[] {
-            "NTF待测",
-            "修复OK待测",
-            "报废"});
-            this.repair_resultcomboBox.Location = new System.Drawing.Point(197, 52);
-            this.repair_resultcomboBox.Margin = new System.Windows.Forms.Padding(4);
-            this.repair_resultcomboBox.Name = "repair_resultcomboBox";
-            this.repair_resultcomboBox.Size = new System.Drawing.Size(202, 24);
-            this.repair_resultcomboBox.TabIndex = 39;
-            this.repair_resultcomboBox.SelectedValueChanged += new System.EventHandler(this.repair_resultcomboBox_SelectedValueChanged);
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.noRadio);
@@ -887,6 +844,49 @@
             this.label31.Size = new System.Drawing.Size(32, 16);
             this.label31.TabIndex = 33;
             this.label31.Text = "BGA";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 416);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(48, 16);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "mbfa1";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(6, 48);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(72, 16);
+            this.label28.TabIndex = 38;
+            this.label28.Text = "修复结果";
+            // 
+            // mbfa1richTextBox
+            // 
+            this.mbfa1richTextBox.Location = new System.Drawing.Point(197, 420);
+            this.mbfa1richTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.mbfa1richTextBox.Name = "mbfa1richTextBox";
+            this.mbfa1richTextBox.Size = new System.Drawing.Size(202, 36);
+            this.mbfa1richTextBox.TabIndex = 44;
+            this.mbfa1richTextBox.Text = "";
+            // 
+            // repair_resultcomboBox
+            // 
+            this.repair_resultcomboBox.FormattingEnabled = true;
+            this.repair_resultcomboBox.Items.AddRange(new object[] {
+            "NTF待测",
+            "修复OK待测",
+            "报废"});
+            this.repair_resultcomboBox.Location = new System.Drawing.Point(197, 52);
+            this.repair_resultcomboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.repair_resultcomboBox.Name = "repair_resultcomboBox";
+            this.repair_resultcomboBox.Size = new System.Drawing.Size(202, 24);
+            this.repair_resultcomboBox.TabIndex = 39;
+            this.repair_resultcomboBox.SelectedValueChanged += new System.EventHandler(this.repair_resultcomboBox_SelectedValueChanged);
             // 
             // tableLayoutPanel3
             // 
