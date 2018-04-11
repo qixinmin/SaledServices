@@ -534,39 +534,54 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    //增加站别检查，如果没有经过最后一站，则认为此板子有问题，不能归还 TODO
-
-
-                    cmd.CommandText = "select custom_serial_no, vendor_serail_no from DeliveredTable where track_serial_no = '"
-                        + this.track_serial_noTextBox.Text + "'";
+                    //增加站别检查，如果没有经过最后一站，则认为此板子有问题，不能归还 
+                    cmd.CommandText = "select track_serial_no from outlookcheck where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
+                    string track_serial_no = "";                   
                     while (querySdr.Read())
-                    {                       
-                        this.custom_serial_noTextBox.Text = querySdr[0].ToString();
-                        this.vendor_serail_noTextBox.Text = querySdr[1].ToString();
+                    {
+                        track_serial_no = querySdr[0].ToString();                       
                     }
                     querySdr.Close();
 
-                    mConn.Close();
-
-                    if (this.productComboBox.Text != "TBG" && this.productComboBox.Text != "DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
+                    if (track_serial_no != "")
                     {
-                        //需要去掉前面的非0字段
-                        string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
-                        string replacedCustomSerial = this.replace_custom_materialNotextBox.Text.TrimStart('0');
+                        cmd.CommandText = "select custom_serial_no, vendor_serail_no from DeliveredTable where track_serial_no = '"
+                            + this.track_serial_noTextBox.Text + "'";
 
-                        if (this.custom_serial_noTextBox.Text.ToLower().Contains(customSerial.ToLower()) == false
-                            || this.custom_serial_noTextBox.Text.ToLower().Contains(replacedCustomSerial.ToLower()))
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
                         {
-                            this.track_serial_noTextBox.Focus();
-                            this.track_serial_noTextBox.SelectAll();
-
-                            this.custom_serial_noTextBox.Text = "";
-
-                            MessageBox.Show("在" + this.productComboBox.Text + "下客户序号没有包含客户料号, 请检查追踪条码是否正确");
-                            return;
+                            this.custom_serial_noTextBox.Text = querySdr[0].ToString();
+                            this.vendor_serail_noTextBox.Text = querySdr[1].ToString();
                         }
+                        querySdr.Close();
+
+                        mConn.Close();
+
+                        if (this.productComboBox.Text != "TBG" && this.productComboBox.Text != "DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
+                        {
+                            //需要去掉前面的非0字段
+                            string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
+                            string replacedCustomSerial = this.replace_custom_materialNotextBox.Text.TrimStart('0');
+
+                            if (this.custom_serial_noTextBox.Text.ToLower().Contains(customSerial.ToLower()) == false
+                                || this.custom_serial_noTextBox.Text.ToLower().Contains(replacedCustomSerial.ToLower()))
+                            {
+                                this.track_serial_noTextBox.Focus();
+                                this.track_serial_noTextBox.SelectAll();
+
+                                this.custom_serial_noTextBox.Text = "";
+
+                                MessageBox.Show("在" + this.productComboBox.Text + "下客户序号没有包含客户料号, 请检查追踪条码是否正确");
+                                return;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("此单没有经过外观检查站别！");
                     }
                 }
                 catch (Exception ex)

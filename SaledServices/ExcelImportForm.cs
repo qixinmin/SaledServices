@@ -90,14 +90,6 @@ namespace SaledServices
 
         private void importButton_Click(object sender, EventArgs e)
         {
-            app = new Microsoft.Office.Interop.Excel.Application();
-            wbs = app.Workbooks;
-            wb = wbs.Add(filePath.Text);
-            
-            wb = wbs.Open(filePath.Text, 0, false, 5, string.Empty, string.Empty, 
-                false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, 
-                string.Empty, true, false, 0, true, 1, 0);
-
             string sheetName = "";
             string tableName = "";
             if (this.mbmaterial.Checked)
@@ -136,15 +128,25 @@ namespace SaledServices
                 tableName = Constlist.table_name_customFault;
             }
 
-            if (this.LCFC_MBBOMradioButton.Checked 
-                || this.COMPAL_MBBOMradioButton.Checked 
-                || this.LCFC71BOMRadioButton.Checked 
-                || this.DPKradioButton.Checked
+            if (this.LCFC_MBBOMradioButton.Checked
+                || this.COMPAL_MBBOMradioButton.Checked)
+            {
+                importLCFC_MBBOMtest(sheetName, tableName);
+                return;
+            }
 
+            app = new Microsoft.Office.Interop.Excel.Application();
+            wbs = app.Workbooks;
+            wb = wbs.Add(filePath.Text);
+            
+            wb = wbs.Open(filePath.Text, 0, false, 5, string.Empty, string.Empty, 
+                false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, 
+                string.Empty, true, false, 0, true, 1, 0);
+
+            if (this.LCFC71BOMRadioButton.Checked
+                || this.DPKradioButton.Checked
                 || this.faultTableRadioButton.Checked)
             {
-                //importLCFC_MBBOMtest(sheetName, tableName);
-
                 Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
                 int rowLength = ws.UsedRange.Rows.Count;
                 int columnLength = ws.UsedRange.Columns.Count;
@@ -190,7 +192,7 @@ namespace SaledServices
                     {
                         bool customMaterialNoExist = true;
                         try
-                        {                            
+                        {
                             for (int i = 2; i < rowLength; i++)
                             {
                                 //逻辑1 判断客户料号是否在物料对照对照表中
@@ -206,7 +208,7 @@ namespace SaledServices
                                 string vendor = "";
                                 if (querySdr.FieldCount > 0 && querySdr.Read())
                                 {
-                                    vendor = querySdr[0].ToString();                                   
+                                    vendor = querySdr[0].ToString();
                                 }
                                 querySdr.Close();
                                 if (vendor == "")
@@ -214,14 +216,14 @@ namespace SaledServices
                                     MessageBox.Show(customMaterialNo + "在物料对照表不存在，请添加！");
                                     customMaterialNoExist = false;
                                     break;
-                                }                               
+                                }
 
                                 //逻辑2 判断此excel表格是否已经导入过数据库中
                                 querysql = "select vendor from receiveOrder where custom_materialNo ='" + customMaterialNo + "' and orderno='" + order + "'";
 
                                 queryCmd.CommandText = querysql;
                                 querySdr = queryCmd.ExecuteReader();
-                                vendor = "";                                
+                                vendor = "";
                                 if (querySdr.FieldCount > 0 && querySdr.Read())
                                 {
                                     vendor = querySdr[0].ToString();
@@ -237,7 +239,7 @@ namespace SaledServices
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.ToString()); 
+                            MessageBox.Show(ex.ToString());
                         }
                         finally
                         {
@@ -259,7 +261,7 @@ namespace SaledServices
                             string storeHouse = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 1]).Value2.ToString();
                             //客户料号
                             string customMaterialNo = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 3]).Value2.ToString();
-                                                        
+
                             //订单数量
                             string orderNum = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 4]).Value2.ToString();
 
@@ -391,7 +393,7 @@ namespace SaledServices
             try
             {
                 //获取全部数据
-                string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=" + filePath.Text + ";Extended Properties='Excel 12.0;HDR=Yes;IMEX=1'";
+                string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath.Text + ";Extended Properties=Excel 12.0;";
                 OleDbConnection conn = new OleDbConnection(strConn);
                 conn.Open();
                 string strExcel = "";
@@ -408,16 +410,16 @@ namespace SaledServices
                     bcp.NotifyAfter = 10000;//进度提示的行数
                     bcp.DestinationTableName = tableName;//目标表
 
-                    bcp.ColumnMappings.Add("date", "日期");
-                    bcp.ColumnMappings.Add("vendor", "厂商");
-                    bcp.ColumnMappings.Add("product", "客户别");
-                    bcp.ColumnMappings.Add("mb_brief", "MB简称");
+                    bcp.ColumnMappings.Add("日期", "date");
+                    bcp.ColumnMappings.Add("厂商", "vendor");
+                    bcp.ColumnMappings.Add("客户别","product");
+                    bcp.ColumnMappings.Add("MB简称", "mb_brief");
                     bcp.ColumnMappings.Add("MPN", "MPN");
-                    bcp.ColumnMappings.Add("material_mpn", "材料MPN");
-                    bcp.ColumnMappings.Add("material_box_place", "料盒位置");
-                    bcp.ColumnMappings.Add("material_describe", "物料描述");
+                    bcp.ColumnMappings.Add("材料MPN","material_mpn");
+                    bcp.ColumnMappings.Add( "料盒位置","material_box_place");
+                    bcp.ColumnMappings.Add( "物料描述","material_describe");
  
-                    bcp.ColumnMappings.Add("material_num", "用料数量");
+                    bcp.ColumnMappings.Add( "用料数量","material_num");
                     bcp.ColumnMappings.Add("L1", "L1");
                     bcp.ColumnMappings.Add("L2", "L2");
                     bcp.ColumnMappings.Add("L3", "L3");
@@ -429,6 +431,9 @@ namespace SaledServices
 
                     bcp.WriteToServer(ds.Tables[0]);
                     bcp.Close();
+
+                    conn.Close();
+                    MessageBox.Show("导入完成");
                 }
             }
             catch (Exception ex)

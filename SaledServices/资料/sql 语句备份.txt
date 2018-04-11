@@ -132,19 +132,19 @@ date NVARCHAR(128) NOT NULL, /*日期*/
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
 mb_brief NVARCHAR(128) NOT NULL, /*MB简称*/
-MPN NVARCHAR(128) NOT NULL, /*MPN*/
-material_mpn NVARCHAR(128) NOT NULL, /*材料MPN*/
-material_box_place NVARCHAR(128) NOT NULL, /*料盒位置*/
-material_describe NVARCHAR(128) NOT NULL, /*物料描述*/
-material_num NVARCHAR(128) NOT NULL, /*用料数量*/
-L1 NVARCHAR(128) NOT NULL, /*L1*/
-L2 NVARCHAR(128) NOT NULL, /*L2*/
-L3 NVARCHAR(128) NOT NULL, /*L3*/
-L4 NVARCHAR(128) NOT NULL, /*L4*/
-L5 NVARCHAR(128) NOT NULL, /*L5*/
-L6 NVARCHAR(128) NOT NULL, /*L6*/
-L7 NVARCHAR(128) NOT NULL, /*L7*/
-L8 NVARCHAR(128) NOT NULL /*L8*/ 
+MPN NVARCHAR(128), /*MPN*/
+material_mpn NVARCHAR(128), /*材料MPN*/
+material_box_place NVARCHAR(128), /*料盒位置*/
+material_describe NVARCHAR(128), /*物料描述*/
+material_num NVARCHAR(128), /*用料数量*/
+L1 NVARCHAR(128) , /*L1*/
+L2 NVARCHAR(128) , /*L2*/
+L3 NVARCHAR(128) , /*L3*/
+L4 NVARCHAR(128) , /*L4*/
+L5 NVARCHAR(128) , /*L5*/
+L6 NVARCHAR(128) , /*L6*/
+L7 NVARCHAR(128) , /*L7*/
+L8 NVARCHAR(128)  /*L8*/ 
 )
 
 
@@ -154,19 +154,19 @@ date NVARCHAR(128) NOT NULL, /*日期*/
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
 mb_brief NVARCHAR(128) NOT NULL, /*MB简称*/
-MPN NVARCHAR(128) NOT NULL, /*MPN*/
-material_mpn NVARCHAR(128) NOT NULL, /*材料MPN*/
-material_box_place NVARCHAR(128) NOT NULL, /*料盒位置*/
-material_describe NVARCHAR(128) NOT NULL, /*物料描述*/
-material_num NVARCHAR(128) NOT NULL, /*用料数量*/
-L1 NVARCHAR(128) NOT NULL, /*L1*/
-L2 NVARCHAR(128) NOT NULL, /*L2*/
-L3 NVARCHAR(128) NOT NULL, /*L3*/
-L4 NVARCHAR(128) NOT NULL, /*L4*/
-L5 NVARCHAR(128) NOT NULL, /*L5*/
-L6 NVARCHAR(128) NOT NULL, /*L6*/
-L7 NVARCHAR(128) NOT NULL, /*L7*/
-L8 NVARCHAR(128) NOT NULL /*L8*/ 
+MPN NVARCHAR(128), /*MPN*/
+material_mpn NVARCHAR(128), /*材料MPN*/
+material_box_place NVARCHAR(128), /*料盒位置*/
+material_describe NVARCHAR(128), /*物料描述*/
+material_num NVARCHAR(128), /*用料数量*/
+L1 NVARCHAR(128) , /*L1*/
+L2 NVARCHAR(128) , /*L2*/
+L3 NVARCHAR(128) , /*L3*/
+L4 NVARCHAR(128) , /*L4*/
+L5 NVARCHAR(128) , /*L5*/
+L6 NVARCHAR(128) , /*L6*/
+L7 NVARCHAR(128) , /*L7*/
+L8 NVARCHAR(128)  /*L8*/ 
 )
 
 //客责类别

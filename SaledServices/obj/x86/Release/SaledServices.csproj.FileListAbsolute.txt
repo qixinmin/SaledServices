@@ -26,3 +26,8 @@ D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.User.UserS
 D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.RepairFaultTypeForm.resources
 D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.ExportExcelForm.resources
 D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.RepairOperationForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.BGARepairOperationForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.OutLookForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.Test1Form.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.Test2Form.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.TestAllForm.resources

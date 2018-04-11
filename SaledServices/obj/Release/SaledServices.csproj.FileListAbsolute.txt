@@ -26,4 +26,8 @@ D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.pdb
 D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.ExportExcelForm.resources
 D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.RepairOperationForm.resources
 D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.additionForm.RepairFaultTypeForm.resources
-D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.csprojResolveAssemblyReference.cache
+D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.BGARepairOperationForm.resources
+D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.Test_Outlook.OutLookForm.resources
+D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.Test_Outlook.Test1Form.resources
+D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.Test_Outlook.Test2Form.resources
+D:\projects\SaledServices\SaledServices\obj\Release\SaledServices.Test_Outlook.TestAllForm.resources
