@@ -195,8 +195,8 @@
             // vGA维修界面ToolStripMenuItem
             // 
             this.vGA维修界面ToolStripMenuItem.Name = "vGA维修界面ToolStripMenuItem";
-            this.vGA维修界面ToolStripMenuItem.Size = new System.Drawing.Size(207, 32);
-            this.vGA维修界面ToolStripMenuItem.Text = "VGA维修界面";
+            this.vGA维修界面ToolStripMenuItem.Size = new System.Drawing.Size(206, 32);
+            this.vGA维修界面ToolStripMenuItem.Text = "BGA维修界面";
             this.vGA维修界面ToolStripMenuItem.Click += new System.EventHandler(this.vGA维修界面ToolStripMenuItem_Click);
             // 
             // 测试ToolStripMenuItem
@@ -346,8 +346,8 @@
             // 报表1ToolStripMenuItem
             // 
             this.报表1ToolStripMenuItem.Name = "报表1ToolStripMenuItem";
-            this.报表1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.报表1ToolStripMenuItem.Text = "报表1";
+            this.报表1ToolStripMenuItem.Size = new System.Drawing.Size(191, 32);
+            this.报表1ToolStripMenuItem.Text = "RMA欠货表";
             this.报表1ToolStripMenuItem.Click += new System.EventHandler(this.报表1ToolStripMenuItem_Click);
             // 
             // MainForm

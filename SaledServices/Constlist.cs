@@ -212,59 +212,59 @@ namespace SaledServices
                 case 'h':
                     ret = "17";
                     break;
-                case 'i':
+                //case 'i':
+                //    ret = "18";
+                //    break;
+                case 'j':
                     ret = "18";
                     break;
-                case 'j':
+                case 'k':
                     ret = "19";
                     break;
-                case 'k':
+                case 'l':
                     ret = "20";
                     break;
-                case 'l':
+                case 'm':
                     ret = "21";
                     break;
-                case 'm':
+                case 'n':
                     ret = "22";
                     break;
-                case 'n':
+                //case 'o':
+                //    ret = "24";
+                //    break;
+                case 'p':
                     ret = "23";
                     break;
-                case 'o':
+                case 'q':
                     ret = "24";
                     break;
-                case 'p':
+                case 'r':
                     ret = "25";
                     break;
-                case 'q':
+                case 's':
                     ret = "26";
                     break;
-                case 'r':
+                case 't':
                     ret = "27";
                     break;
-                case 's':
+                case 'u':
                     ret = "28";
                     break;
-                case 't':
+                case 'v':
                     ret = "29";
                     break;
-                case 'u':
+                case 'w':
                     ret = "30";
                     break;
-                case 'v':
+                case 'x':
                     ret = "31";
                     break;
-                case 'w':
+                case 'y':
                     ret = "32";
                     break;
-                case 'x':
-                    ret = "33";
-                    break;
-                case 'y':
-                    ret = "34";
-                    break;
                 case 'z':
-                    ret = "35";
+                    ret = "33";
                     break;
             }
 

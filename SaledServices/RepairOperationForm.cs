@@ -195,42 +195,42 @@ namespace SaledServices
                     {
                         string material_mpn = querySdr[0].ToString(); ;
                         string temp = querySdr[1].ToString();
-                        if (temp != "" && temp.ToLower().Equals(not_good_place))
+                        if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             this.material_mpntextBox.Text = material_mpn;
                             break;
                         } temp = querySdr[2].ToString();
-                        if (temp != "" && temp.ToLower().Equals(not_good_place))
+                        if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             this.material_mpntextBox.Text = material_mpn;
                             break;
                         } temp = querySdr[3].ToString();
-                        if (temp != "" && temp.ToLower().Equals(not_good_place))
+                        if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             this.material_mpntextBox.Text = material_mpn;
                             break;
                         } temp = querySdr[4].ToString();
-                        if (temp != "" && temp.ToLower().Equals(not_good_place))
+                        if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             this.material_mpntextBox.Text = material_mpn;
                             break;
                         } temp = querySdr[5].ToString();
-                        if (temp != "" && temp.ToLower().Equals(not_good_place))
+                        if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             this.material_mpntextBox.Text = material_mpn;
                             break;
                         } temp = querySdr[6].ToString();
-                        if (temp != "" && temp.ToLower().Equals(not_good_place))
+                        if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             this.material_mpntextBox.Text = material_mpn;
                             break;
                         } temp = querySdr[7].ToString();
-                        if (temp != "" && temp.ToLower().Equals(not_good_place))
+                        if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             this.material_mpntextBox.Text = material_mpn;
                             break;
                         } temp = querySdr[8].ToString();
-                        if (temp != "" && temp.ToLower().Equals(not_good_place))
+                        if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             this.material_mpntextBox.Text = material_mpn;
                             break;
@@ -252,37 +252,37 @@ namespace SaledServices
                                 this.material_mpntextBox.Text = material_mpn;
                                 break;
                             } temp = querySdr[2].ToString();
-                            if (temp != "" && temp.ToLower().Equals(not_good_place))
+                            if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 this.material_mpntextBox.Text = material_mpn;
                                 break;
                             } temp = querySdr[3].ToString();
-                            if (temp != "" && temp.ToLower().Equals(not_good_place))
+                            if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 this.material_mpntextBox.Text = material_mpn;
                                 break;
                             } temp = querySdr[4].ToString();
-                            if (temp != "" && temp.ToLower().Equals(not_good_place))
+                            if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 this.material_mpntextBox.Text = material_mpn;
                                 break;
                             } temp = querySdr[5].ToString();
-                            if (temp != "" && temp.ToLower().Equals(not_good_place))
+                            if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 this.material_mpntextBox.Text = material_mpn;
                                 break;
                             } temp = querySdr[6].ToString();
-                            if (temp != "" && temp.ToLower().Equals(not_good_place))
+                            if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 this.material_mpntextBox.Text = material_mpn;
                                 break;
                             } temp = querySdr[7].ToString();
-                            if (temp != "" && temp.ToLower().Equals(not_good_place))
+                            if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 this.material_mpntextBox.Text = material_mpn;
                                 break;
                             } temp = querySdr[8].ToString();
-                            if (temp != "" && temp.ToLower().Equals(not_good_place))
+                            if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 this.material_mpntextBox.Text = material_mpn;
                                 break;

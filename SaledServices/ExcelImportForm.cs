@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Microsoft.Office.Interop.Excel;
 using System.Data.OleDb;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace SaledServices
 {
@@ -136,8 +138,9 @@ namespace SaledServices
             }
 
             app = new Microsoft.Office.Interop.Excel.Application();
+            app.DisplayAlerts = false;
             wbs = app.Workbooks;
-            wb = wbs.Add(filePath.Text);
+            wb = wbs.Add(filePath.Text);            
             
             wb = wbs.Open(filePath.Text, 0, false, 5, string.Empty, string.Empty, 
                 false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, 
@@ -168,7 +171,7 @@ namespace SaledServices
                 if (checkIsNullCell(ws, rowLength, columnLength))
                 {
                     MessageBox.Show("RMA中有空值，请确认后在上传");
-                    wbs.Close();
+                    closeAndKillApp();
                     return;
                 }
 
@@ -193,7 +196,7 @@ namespace SaledServices
                         bool customMaterialNoExist = true;
                         try
                         {
-                            for (int i = 2; i < rowLength; i++)
+                            for (int i = 2; i <= rowLength; i++)
                             {
                                 //逻辑1 判断客户料号是否在物料对照对照表中
                                 //客户料号
@@ -251,12 +254,12 @@ namespace SaledServices
 
                         if (!customMaterialNoExist)
                         {
-                            wbs.Close();
+                            queryConn.Close();
+                            closeAndKillApp();
                             return;
                         }
 
-
-                        for (int i = 2; i < rowLength; i++)
+                        for (int i = 2; i <= rowLength; i++)
                         {
                             string storeHouse = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 1]).Value2.ToString();
                             //客户料号
@@ -314,9 +317,23 @@ namespace SaledServices
                 { }
                 finally
                 {
-                    wbs.Close();
+                    closeAndKillApp();
                 }
             }
+        }
+        [DllImport("User32.dll")]
+        public static extern int GetWindowThreadProcessId(IntPtr hWnd, out int ProcessId);
+
+        private void closeAndKillApp()
+        {
+            wbs.Close();
+            app.Quit();
+            IntPtr intptr = new IntPtr(app.Hwnd);
+            int id;
+            GetWindowThreadProcessId(intptr, out id);
+            var p = Process.GetProcessById(id);
+            //if (p != null)
+            p.Kill();
         }
 
         public void importMaterialCompare(Worksheet ws, int rowLength, int columnLength, string tableName)

@@ -112,6 +112,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(521, 4);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(914, 626);
@@ -863,6 +864,7 @@
             this.custommaterialNoTextBox.Location = new System.Drawing.Point(245, 42);
             this.custommaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.custommaterialNoTextBox.Name = "custommaterialNoTextBox";
+            this.custommaterialNoTextBox.ReadOnly = true;
             this.custommaterialNoTextBox.Size = new System.Drawing.Size(228, 26);
             this.custommaterialNoTextBox.TabIndex = 0;
             this.custommaterialNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_orderComboBox_KeyPress);
@@ -928,6 +930,7 @@
             this.dataGridViewWaitToReturn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewWaitToReturn.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewWaitToReturn.Name = "dataGridViewWaitToReturn";
+            this.dataGridViewWaitToReturn.ReadOnly = true;
             this.dataGridViewWaitToReturn.RowTemplate.Height = 23;
             this.dataGridViewWaitToReturn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewWaitToReturn.Size = new System.Drawing.Size(511, 628);

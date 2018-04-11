@@ -49,6 +49,7 @@ namespace SaledServices
                 }
 
                 conn.Close();
+                query_Click(null, null);
             }
             catch (Exception ex)
             {
@@ -119,6 +120,8 @@ namespace SaledServices
                 }
 
                 conn.Close();
+                MessageBox.Show("删除完毕!");
+                query_Click(null, null);
             }
             catch (Exception ex)
             {

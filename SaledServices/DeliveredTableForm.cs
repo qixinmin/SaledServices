@@ -109,81 +109,86 @@ namespace SaledServices
             }
         }
 
+        private void simulateEnter()
+        {
+            if (custom_orderComboBox.Text == "" || custommaterialNoTextBox.Text == "")
+            {
+                MessageBox.Show("无效订单编号");
+                return;
+            }
+            string status = "";
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select vendor, product, storehouse, status from receiveOrder where orderno = '" + this.custom_orderComboBox.Text
+                    + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
+
+                SqlDataReader querySdr = cmd.ExecuteReader();
+
+                while (querySdr.Read())
+                {
+                    this.vendorTextBox.Text = querySdr[0].ToString();
+                    this.productTextBox.Text = querySdr[1].ToString();
+                    this.storehouseTextBox.Text = querySdr[2].ToString();
+                    status = querySdr[3].ToString();
+                }
+                querySdr.Close();
+
+                if (status == "open")
+                {
+                    cmd.CommandText = "select custom_machine_type,mb_brief,dpk_type,mpn,mb_descripe,warranty_period from MBMaterialCompare where custommaterialNo ='"
+                        + this.custommaterialNoTextBox.Text + "'";
+
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        this.custom_machine_typeTextBox.Text = querySdr[0].ToString();
+                        this.mb_briefTextBox.Text = querySdr[1].ToString();
+                        this.dpk_statusTextBox.Text = querySdr[2].ToString();
+                        this.mpnTextBox.Text = querySdr[3].ToString();
+                        this.mb_describeTextBox.Text = querySdr[4].ToString();
+                        this.warranty_periodTextBox.Text = querySdr[5].ToString();
+                    }
+                    querySdr.Close();
+                }
+                else if (status == "close")
+                {
+                    this.custommaterialNoTextBox.Focus();
+                    this.custommaterialNoTextBox.SelectAll();
+                    MessageBox.Show("客户料号：" + this.custom_orderComboBox.Text + " 已经收货完毕，请检测是否有错误!");
+                }
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            if (status == "close")
+            {
+                this.custommaterialNoTextBox.Text = "";
+                this.custommaterialNoTextBox.Focus();
+                this.custommaterialNoTextBox.SelectAll();
+            }
+            else
+            {
+                this.track_serial_noTextBox.Focus();
+                this.track_serial_noTextBox.SelectAll();
+            }
+        }
+
         private void custom_orderComboBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
-                if (custom_orderComboBox.Text == "" || custommaterialNoTextBox.Text == "")
-                {
-                    MessageBox.Show("无效订单编号");
-                    return;
-                }
-                string status = "";
-                try
-                {
-                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
-                    mConn.Open();
-
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = mConn;
-                    cmd.CommandType = CommandType.Text;
-
-                    cmd.CommandText = "select vendor, product, storehouse, status from receiveOrder where orderno = '" + this.custom_orderComboBox.Text
-                        + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
-
-                    SqlDataReader querySdr = cmd.ExecuteReader();
-                   
-                    while (querySdr.Read())
-                    {
-                        this.vendorTextBox.Text = querySdr[0].ToString();
-                        this.productTextBox.Text = querySdr[1].ToString();
-                        this.storehouseTextBox.Text = querySdr[2].ToString();
-                        status = querySdr[3].ToString();
-                    }
-                    querySdr.Close();
-
-                    if (status == "open")
-                    {
-                        cmd.CommandText = "select custom_machine_type,mb_brief,dpk_type,mpn,mb_descripe,warranty_period from MBMaterialCompare where custommaterialNo ='"
-                            + this.custommaterialNoTextBox.Text + "'";
-
-                        querySdr = cmd.ExecuteReader();
-                        while (querySdr.Read())
-                        {
-                            this.custom_machine_typeTextBox.Text = querySdr[0].ToString();
-                            this.mb_briefTextBox.Text = querySdr[1].ToString();
-                            this.dpk_statusTextBox.Text = querySdr[2].ToString();
-                            this.mpnTextBox.Text = querySdr[3].ToString();
-                            this.mb_describeTextBox.Text = querySdr[4].ToString();
-                            this.warranty_periodTextBox.Text = querySdr[5].ToString();
-                        }
-                        querySdr.Close();
-                    }
-                    else if (status == "close")
-                    {
-                        this.custommaterialNoTextBox.Focus();
-                        this.custommaterialNoTextBox.SelectAll();
-                        MessageBox.Show("客户料号："+this.custom_orderComboBox.Text+" 已经收货完毕，请检测是否有错误!");                        
-                    }
-
-                    mConn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-
-                if (status == "close")
-                {
-                    this.custommaterialNoTextBox.Text = "";
-                    this.custommaterialNoTextBox.Focus();
-                    this.custommaterialNoTextBox.SelectAll();
-                }
-                else
-                {
-                    this.track_serial_noTextBox.Focus();
-                    this.track_serial_noTextBox.SelectAll();
-                }
+                simulateEnter();
             }
         }
 
@@ -225,7 +230,8 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select orderno, custom_materialNo,mb_brief,ordernum, receivedNum from receiveOrder where orderno='" + this.custom_orderComboBox.Text + "'";
+                //加入条件判断，只显示未收完的货物
+                cmd.CommandText = "select orderno, custom_materialNo,mb_brief,ordernum, receivedNum from receiveOrder where orderno='" + this.custom_orderComboBox.Text + "' and status='open'" ;
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -384,34 +390,41 @@ namespace SaledServices
                 string day = Untils.getTimeByChar(false, Convert.ToChar(subData.Substring(2, 1)));
                 this.mb_make_dateTextBox.Text = year + "/" + mouth + "/" + day;
 
-                DateTime dt1 = Convert.ToDateTime(this.mb_make_dateTextBox.Text);
-                DateTime dt2 = Convert.ToDateTime(this.order_receive_dateTextBox.Text);
-
-                string period = this.warranty_periodTextBox.Text;
-                if (period != "")
+                try
                 {
-                    int warranty = Int32.Parse(period.Substring(0, period.Length - 1));
+                    DateTime dt1 = Convert.ToDateTime(this.mb_make_dateTextBox.Text);
+                    DateTime dt2 = Convert.ToDateTime(this.order_receive_dateTextBox.Text);
 
-                    dt1 = dt1.AddMonths(warranty);//生产日期加上保修期
-                    TimeSpan ts = dt2.Subtract(dt1);
-
-                    int overdays = ts.Days;
-
-                    if (overdays >= 0)
+                    string period = this.warranty_periodTextBox.Text;
+                    if (period != "")
                     {
-                        this.guaranteeComboBox.Text = "过保";
-                        this.guaranteeComboBox.Enabled = false;
-                        this.customResponsibilityComboBox.Text = "过保";
-                        this.customResponsibilityComboBox.Enabled = false;
-                        MessageBox.Show((overdays) + " fail");
+                        int warranty = Int32.Parse(period.Substring(0, period.Length - 1));
+
+                        dt1 = dt1.AddMonths(warranty);//生产日期加上保修期
+                        TimeSpan ts = dt2.Subtract(dt1);
+
+                        int overdays = ts.Days;
+
+                        if (overdays >= 0)
+                        {
+                            this.guaranteeComboBox.Text = "过保";
+                            this.guaranteeComboBox.Enabled = false;
+                            this.customResponsibilityComboBox.Text = "过保";
+                            this.customResponsibilityComboBox.Enabled = false;
+                            MessageBox.Show((overdays) + " fail");
+                        }
+                        else
+                        {
+                            this.guaranteeComboBox.Text = "";
+                            this.guaranteeComboBox.Enabled = true;
+                            this.customResponsibilityComboBox.Text = "";
+                            this.customResponsibilityComboBox.Enabled = true;
+                        }
                     }
-                    else
-                    {
-                        this.guaranteeComboBox.Text = "";
-                        this.guaranteeComboBox.Enabled = true;
-                        this.customResponsibilityComboBox.Text = "";
-                        this.customResponsibilityComboBox.Enabled = true;
-                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("客户料号里面的日期规则不对!");
                 }
 
                 this.vendor_serail_noTextBox.Focus();
@@ -526,10 +539,11 @@ namespace SaledServices
 
         private void clearInputContent()
         {
+            this.custommaterialNoTextBox.Text = "";
+
             this.custom_orderComboBox.Text = "";
             this.source_briefComboBox.Text = "";
             this.source_briefComboBox.SelectedIndex = -1;
-            this.custommaterialNoTextBox.Text = "";
             this.track_serial_noTextBox.Text = "";
             this.custom_serial_noTextBox.Text = "";
             this.vendor_serail_noTextBox.Text = "";
@@ -678,6 +692,8 @@ namespace SaledServices
                 }
 
                 conn.Close();
+
+                MessageBox.Show("删除完毕!");
             }
             catch (Exception ex)
             {
@@ -887,8 +903,8 @@ namespace SaledServices
                     return;
                 }
 
-                this.lenovo_custom_service_noTextBox.Focus();
-                this.lenovo_custom_service_noTextBox.SelectAll();
+                this.custom_faultComboBox.Focus();
+                this.custom_faultComboBox.SelectAll();
             }
         }
 
@@ -931,6 +947,7 @@ namespace SaledServices
         private void dataGridViewWaitToReturn_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.custommaterialNoTextBox.Text = dataGridViewWaitToReturn.SelectedCells[1].Value.ToString();
+            simulateEnter();
         }
 
         private void custom_faultComboBox_KeyPress(object sender, KeyPressEventArgs e)

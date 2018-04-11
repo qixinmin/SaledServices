@@ -134,8 +134,8 @@ namespace SaledServices.Test_Outlook
                                         }
                                         else
                                         {
-                                            //更新烧录日期与custom_serial_no
-                                            cmd.CommandText = "update DPK_table set burn_date = '" + DateTime.Now.ToString("yyyy/MM/dd") + "',custom_serial_no = '" + custom_serial_no + "'";
+                                            //更新烧录日期与custom_serial_no与使用状态
+                                            cmd.CommandText = "update DPK_table set status = '已使用', burn_date = '" + DateTime.Now.ToString("yyyy/MM/dd") + "',custom_serial_no = '" + custom_serial_no + "' where Id = '"+id+"'";
                                             cmd.ExecuteNonQuery();
                                         }
                                     }
@@ -230,7 +230,7 @@ namespace SaledServices.Test_Outlook
                 }
 
                 conn.Close();
-                MessageBox.Show("插入测试2数据OK");
+                MessageBox.Show("插入测试All数据OK");
             }
             catch (Exception ex)
             {
