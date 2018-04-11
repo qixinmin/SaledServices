@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Windows.Forms;
 
 namespace SaledServices
 {
@@ -40,6 +42,37 @@ namespace SaledServices
 
     public class Untils
     {
+
+        public static  bool in90Days(string burn_date)
+        {
+            DateTime dt1 = Convert.ToDateTime(burn_date);
+            DateTime dt2 = DateTime.Now;
+
+            TimeSpan ts = dt2.Subtract(dt1);
+            int overdays = ts.Days;
+            if (overdays > 90)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static void createFile(string path, string filename, string content)
+        {
+            try
+            {
+                FileStream fs1 = new FileStream(path+filename, FileMode.Create, FileAccess.Write);//创建写入文件 
+                StreamWriter sw = new StreamWriter(fs1);
+                sw.WriteLine(content);
+                sw.Close();
+                fs1.Close();
+            }
+            catch (Exception ex)
+            {                
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         //规则是0-9，a-z 累加， a =10
         public static string getTimeByChar(bool isYear, char ch)
         {

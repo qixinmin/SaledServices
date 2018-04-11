@@ -360,5 +360,69 @@ namespace SaledServices
 
             allForm.Add(vgaRof);
         }
+
+        private Test_Outlook.Test1Form test1form;
+        private void 测试1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (test1form == null || test1form.IsDisposed)
+            {
+                test1form = new Test_Outlook.Test1Form();
+                test1form.MdiParent = this;
+            }
+
+            //eef.WindowState = FormWindowState.Maximized;
+            test1form.BringToFront();
+            test1form.Show();
+
+            allForm.Add(test1form);
+        }
+
+        private Test_Outlook.Test2Form test2form;
+        private void 测试2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (test2form == null || test2form.IsDisposed)
+            {
+                test2form = new Test_Outlook.Test2Form();
+                test2form.MdiParent = this;
+            }
+
+            //eef.WindowState = FormWindowState.Maximized;
+            test2form.BringToFront();
+            test2form.Show();
+
+            allForm.Add(test2form);
+        }
+
+        private Test_Outlook.TestAllForm testAllform;
+        private void 测试12ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (testAllform == null || testAllform.IsDisposed)
+            {
+                testAllform = new Test_Outlook.TestAllForm();
+                testAllform.MdiParent = this;
+            }
+
+            //eef.WindowState = FormWindowState.Maximized;
+            testAllform.BringToFront();
+            testAllform.Show();
+
+            allForm.Add(testAllform);
+        }
+
+        private Test_Outlook.OutLookForm outlookform;
+        private void 外观检查ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (outlookform == null || outlookform.IsDisposed)
+            {
+                outlookform = new Test_Outlook.OutLookForm();
+                outlookform.MdiParent = this;
+            }
+
+            //eef.WindowState = FormWindowState.Maximized;
+            outlookform.BringToFront();
+            outlookform.Show();
+
+            allForm.Add(outlookform);
+        }
     }
 }

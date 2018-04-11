@@ -286,6 +286,30 @@
     <Compile Include="ReturnStoreForm.Designer.cs">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Test_Outlook\OutLookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook\OutLookForm.Designer.cs">
+      <DependentUpon>OutLookForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test_Outlook\Test1Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook\Test1Form.Designer.cs">
+      <DependentUpon>Test1Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test_Outlook\Test2Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook\Test2Form.Designer.cs">
+      <DependentUpon>Test2Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test_Outlook\TestAllForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook\TestAllForm.Designer.cs">
+      <DependentUpon>TestAllForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -366,6 +390,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReturnStoreForm.resx">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook\OutLookForm.resx">
+      <DependentUpon>OutLookForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook\Test1Form.resx">
+      <DependentUpon>Test1Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook\Test2Form.resx">
+      <DependentUpon>Test2Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook\TestAllForm.resx">
+      <DependentUpon>TestAllForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

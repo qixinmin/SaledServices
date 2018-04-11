@@ -28,3 +28,7 @@ D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.additionFo
 D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.ExportExcelForm.resources
 D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.RepairOperationForm.resources
 D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.BGARepairOperationForm.resources
+D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.Test_Outlook.OutLookForm.resources
+D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.Test_Outlook.Test1Form.resources
+D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.Test_Outlook.Test2Form.resources
+D:\projects\SaledServices\SaledServices\obj\x64\Release\SaledServices.Test_Outlook.TestAllForm.resources
