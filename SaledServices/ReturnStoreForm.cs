@@ -534,6 +534,9 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
+                    //增加站别检查，如果没有经过最后一站，则认为此板子有问题，不能归还 TODO
+
+
                     cmd.CommandText = "select custom_serial_no, vendor_serail_no from DeliveredTable where track_serial_no = '"
                         + this.track_serial_noTextBox.Text + "'";
 
