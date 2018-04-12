@@ -255,6 +255,12 @@
     <Compile Include="ExcelImportForm.Designer.cs">
       <DependentUpon>ExcelImportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExcelInputCheck\LCFC_MBBOMForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelInputCheck\LCFC_MBBOMForm.Designer.cs">
+      <DependentUpon>LCFC_MBBOMForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExportExcelForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -381,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExcelImportForm.resx">
       <DependentUpon>ExcelImportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelInputCheck\LCFC_MBBOMForm.resx">
+      <DependentUpon>LCFC_MBBOMForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportExcelForm.resx">
       <DependentUpon>ExportExcelForm.cs</DependentUpon>

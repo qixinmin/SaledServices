@@ -457,9 +457,20 @@ namespace SaledServices
             allForm.Add(bgaIf);
         }
 
+        private LCFC_MBBOMForm lcfcf;
         private void lCFCMBBOM查看ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (lcfcf == null || lcfcf.IsDisposed)
+            {
+                lcfcf = new LCFC_MBBOMForm();
+                lcfcf.MdiParent = this;
+            }
 
+            lcfcf.WindowState = FormWindowState.Maximized;
+            lcfcf.BringToFront();
+            lcfcf.Show();
+
+            allForm.Add(lcfcf);
         }
     }
 }
