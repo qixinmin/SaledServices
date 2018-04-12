@@ -427,8 +427,7 @@ namespace SaledServices
 
         private ExportExcelForm eef;
         private void 报表1ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-          
+        {          
             if (eef == null || eef.IsDisposed)
             {
                 eef = new ExportExcelForm();
@@ -440,6 +439,27 @@ namespace SaledServices
             eef.Show();
 
             allForm.Add(eef);
+        }
+
+        private BGAInfoInputForm bgaIf;
+        private void bGAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bgaIf == null || bgaIf.IsDisposed)
+            {
+                bgaIf = new BGAInfoInputForm();
+                bgaIf.MdiParent = this;
+            }
+
+            bgaIf.WindowState = FormWindowState.Maximized;
+            bgaIf.BringToFront();
+            bgaIf.Show();
+
+            allForm.Add(bgaIf);
+        }
+
+        private void lCFCMBBOM查看ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

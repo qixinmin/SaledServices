@@ -453,81 +453,7 @@ namespace SaledServices
                 GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
                 SetValue(tableLayoutPanel4, true, null);
         }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            this.BGA_placetextBox.ReadOnly = false;
-            string bga_mpn = "";
-            string bga_brief = "";
-            if (this.mpntextBox.Text.Trim() == "")
-            {
-                MessageBox.Show("请输入追踪条码！");
-                this.VGA.Checked = false;
-                this.CPU.Checked = false;
-                this.PCH.Checked = false;
-                return;
-            }
-
-            if (this.VGA.Checked)
-            {
-                bga_mpn = "vendor_vga_mpn";
-                bga_brief = "vga_brief_describe";
-            }
-            else if (this.CPU.Checked)
-            {
-                bga_mpn = "vendor_cpu_mpn";
-                bga_brief = "cpu_brief";
-            }
-            else if (this.PCH.Checked)
-            {
-                bga_mpn = "vendor_pch_mpn";
-                bga_brief = "pcb_brief_describe";
-            }
-            else
-            {
-                return;
-            }
-
-            try
-            {
-                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
-                mConn.Open();
-
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = mConn;
-                cmd.CommandType = CommandType.Text;
-
-                cmd.CommandText = "select " + bga_mpn + "," + bga_brief + " from MBMaterialCompare where mpn='" + this.mpntextBox.Text.Trim() + "'";
-
-                SqlDataReader querySdr = cmd.ExecuteReader();
-                
-                string bga_mpn_txt = "", bga_brief_txt = "";
-                while (querySdr.Read())
-                {
-                    bga_mpn_txt = querySdr[0].ToString();
-                    bga_brief_txt = querySdr[1].ToString();
-                }
-                querySdr.Close();
-
-
-                this.BGAPNtextBox.Text = bga_mpn_txt;
-                this.bga_brieftextBox.Text = bga_brief_txt;
-               
-                mConn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-        private void noRadio_CheckedChanged(object sender, EventArgs e)
-        {
-            this.BGAPNtextBox.Text = "";
-            this.bga_brieftextBox.Text = "";
-            this.BGA_placetextBox.Text = "";
-            this.BGA_placetextBox.ReadOnly = true;
-        }
+       
 
         private void add_Click(object sender, EventArgs e)
         {
@@ -556,9 +482,7 @@ namespace SaledServices
             string material_type_txt = this.material_typetextBox.Text.Trim();
             string fault_type_txt = this.fault_typecomboBox.Text.Trim();
             string action_txt = this.actioncomboBox.Text.Trim();
-            string BGAPN_txt = this.BGAPNtextBox.Text.Trim();
-            string BGA_place_txt = this.BGA_placetextBox.Text.Trim();
-            string bga_brief_txt = this.bga_brieftextBox.Text.Trim();
+          
             string ECO_txt = this.ECOtextBox.Text.Trim();
             string repair_result_txt = this.repair_resultcomboBox.Text.Trim();
             string repairer_txt = this.repairertextBox.Text.Trim();
@@ -609,9 +533,7 @@ namespace SaledServices
                         + material_type_txt + "','"
                         + fault_type_txt + "','"
                         + action_txt + "','"
-                        + BGAPN_txt + "','"
-                        + BGA_place_txt + "','"
-                        + bga_brief_txt + "','"
+                      
                         + ECO_txt + "','"
                         + repair_result_txt + "','"
                         + repairer_txt + "','"
@@ -661,18 +583,13 @@ namespace SaledServices
                 this.material_typetextBox.Text = "";
                 this.fault_typecomboBox.Text = "";
                 this.actioncomboBox.Text = "";
-                this.BGAPNtextBox.Text = "";
-                this.BGA_placetextBox.Text = "";
-                this.bga_brieftextBox.Text = "";
+               
                 this.ECOtextBox.Text = "";
                 this.repair_resultcomboBox.Text = "";
                 this.repairertextBox.Text = "";
                 this.repair_datetextBox.Text = "";
 
-                this.VGA.Checked = false;
-                this.CPU.Checked = false;
-                this.PCH.Checked = false;
-                this.noRadio.Checked = false;
+              
             }
 
         }
@@ -723,7 +640,7 @@ namespace SaledServices
                 this.actioncomboBox.Enabled = false;
                 this.mbfa1richTextBox.Enabled = false;
                 this.fault_describetextBox.Enabled = false;
-                this.BGA_placetextBox.Enabled = false;
+             
 
                 this.checkBox1.Enabled = false;
                 this.checkBox2.Enabled = false;
@@ -754,7 +671,7 @@ namespace SaledServices
                 this.actioncomboBox.Enabled = true;
                 this.mbfa1richTextBox.Enabled = true;
                 this.fault_describetextBox.Enabled = true;
-                this.BGA_placetextBox.Enabled = true;
+              
 
                 this.checkBox1.Enabled = true;
                 this.checkBox2.Enabled = true;
@@ -777,10 +694,7 @@ namespace SaledServices
                 this.textBox1.Enabled = true;
             }
 
-            this.VGA.Checked = false;
-            this.CPU.Checked = false;
-            this.PCH.Checked = false;
-            this.noRadio.Checked = false;
+          
         }
     }
 }

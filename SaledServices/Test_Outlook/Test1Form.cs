@@ -52,6 +52,24 @@ namespace SaledServices.Test_Outlook
                     }
                     querySdr.Close();
 
+                    cmd.CommandText = "select top 1 status from bga_wait_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "' order by Id desc";
+
+                    querySdr = cmd.ExecuteReader();
+                    string bgastatus = "";                  
+                    while (querySdr.Read())
+                    {
+                        bgastatus = querySdr[0].ToString();                       
+                    }
+                    querySdr.Close();
+
+                    if (bgastatus == "BGA不良")
+                    {
+                        MessageBox.Show("BGA的维修记录不对，请检查！");
+                        mConn.Close();
+                        return;
+                    }
+
+
                     //当是LBG的时候，需要分1与2test站别，否则只需要设置一个testall站别
                     if (product != "" && product == "LBG")
                     {

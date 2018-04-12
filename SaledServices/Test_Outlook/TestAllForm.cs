@@ -49,6 +49,24 @@ namespace SaledServices.Test_Outlook
                     }
                     querySdr.Close();
 
+
+                    cmd.CommandText = "select top 1 status from bga_wait_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "' order by Id desc";
+
+                    querySdr = cmd.ExecuteReader();
+                    string bgastatus = "";
+                    while (querySdr.Read())
+                    {
+                        bgastatus = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (bgastatus == "BGA不良")
+                    {
+                        MessageBox.Show("BGA的维修记录不对，请检查！");
+                        mConn.Close();
+                        return;
+                    }
+
                     if (product != "" && product != "LBG")//TBG, DT, AIO 
                     {
                         if (track_serial_no != "")

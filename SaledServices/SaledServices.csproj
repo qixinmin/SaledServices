@@ -212,6 +212,12 @@
     <Compile Include="additionForm\StoreHouseForm.Designer.cs">
       <DependentUpon>StoreHouseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BGAInfoInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BGAInfoInputForm.Designer.cs">
+      <DependentUpon>BGAInfoInputForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Constlist.cs" />
     <Compile Include="additionForm\CustomResponsibilityForm.cs">
       <SubType>Form</SubType>
@@ -255,17 +261,17 @@
     <Compile Include="ExportExcelForm.Designer.cs">
       <DependentUpon>ExportExcelForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MBMaterialCompareForm.cs">
+    <Compile Include="ExcelInputCheck\MBMaterialCompareForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MBMaterialCompareForm.Designer.cs">
+    <Compile Include="ExcelInputCheck\MBMaterialCompareForm.Designer.cs">
       <DependentUpon>MBMaterialCompareForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuType.cs" />
-    <Compile Include="ReceiveOrderForm.cs">
+    <Compile Include="ExcelInputCheck\ReceiveOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReceiveOrderForm.Designer.cs">
+    <Compile Include="ExcelInputCheck\ReceiveOrderForm.Designer.cs">
       <DependentUpon>ReceiveOrderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="additionForm\SourceForm.cs">
@@ -364,6 +370,9 @@
     <EmbeddedResource Include="additionForm\CustomFaultForm.resx">
       <DependentUpon>CustomFaultForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BGAInfoInputForm.resx">
+      <DependentUpon>BGAInfoInputForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BGARepairOperationForm.resx">
       <DependentUpon>BGARepairOperationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -376,10 +385,10 @@
     <EmbeddedResource Include="ExportExcelForm.resx">
       <DependentUpon>ExportExcelForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MBMaterialCompareForm.resx">
+    <EmbeddedResource Include="ExcelInputCheck\MBMaterialCompareForm.resx">
       <DependentUpon>MBMaterialCompareForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReceiveOrderForm.resx">
+    <EmbeddedResource Include="ExcelInputCheck\ReceiveOrderForm.resx">
       <DependentUpon>ReceiveOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\SourceForm.resx">

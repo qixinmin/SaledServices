@@ -1,4 +1,35 @@
 
+
+//bga待维修记录
+
+CREATE TABLE bga_wait_record_table(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+status NVARCHAR(128) NOT NULL, /*BGA当前的状态*/
+vendor NVARCHAR(128) NOT NULL, /*厂商*/
+product NVARCHAR(128) NOT NULL, /*客户别*/
+source NVARCHAR(128) NOT NULL, /*来源*/
+orderno NVARCHAR(128) NOT NULL, /*订单编号*/
+receivedate NVARCHAR(128) NOT NULL, /*收货日期*/
+mb_describe NVARCHAR(128), /*MB描述*/
+mb_brief NVARCHAR(128), /*MB简称*/
+custom_serial_no NVARCHAR(128) NOT NULL, /*客户序号*/
+vendor_serail_no NVARCHAR(128) NOT NULL, /*厂商序号*/
+mpn NVARCHAR(128) NOT NULL, /*MPN*/
+mb_make_date NVARCHAR(128) NOT NULL, /*MB生产日期*/
+customFault NVARCHAR(128) NOT NULL, /*客户故障*/
+ECO NVARCHAR(128), /*ECO*/
+mbfa1 NVARCHAR(128) NOT NULL, /*FA分析*/
+short_cut NVARCHAR(128) NOT NULL, /*短路电压*/
+bgatype NVARCHAR(128), /*bga类型*/
+BGAPN NVARCHAR(128), /*BGAPN*/
+BGA_place NVARCHAR(128), /*BGA位置*/
+bga_brief NVARCHAR(128) , /*BGA简述*/
+repairer NVARCHAR(128) NOT NULL, /*录入人*/
+repair_date NVARCHAR(128) NOT NULL, /*录入日期*/
+countNum NVARCHAR(128) NOT NULL/*总共录入了几次，从1开始，防止同一片板子在维修与BGA来回折腾*/
+)
+
 //outlookcheck
 CREATE TABLE outlookcheck(
 Id INT PRIMARY KEY IDENTITY, 
@@ -49,6 +80,7 @@ customFault NVARCHAR(128) NOT NULL, /*客户故障*/
 fault_describe NVARCHAR(128) NOT NULL, /*故障原因*/
 mbfa1 NVARCHAR(128) NOT NULL, /*mbfa1*/
 short_cut NVARCHAR(128) NOT NULL, /*短路电压*/
+bgatype NVARCHAR(128), /*bga类型*/
 BGAPN NVARCHAR(128), /*BGAPN*/
 BGA_place NVARCHAR(128), /*BGA位置*/
 bga_brief NVARCHAR(128) , /*BGA简述*/
@@ -57,7 +89,8 @@ repair_date NVARCHAR(128) NOT NULL, /*修复日期*/
 
 bga_repairer NVARCHAR(128) NOT NULL, /*bga维修人*/
 bga_repair_date NVARCHAR(128) NOT NULL, /*bga修复日期*/
-bga_repair_result NVARCHAR(128) NOT NULL/*bga修复状态*/
+bga_repair_result NVARCHAR(128) NOT NULL,/*bga修复状态*/
+countNum NVARCHAR(128) NOT NULL/*总共录入了几次，从1开始，防止同一片板子在维修与BGA来回折腾*/
 )
 
 //DPK 导入表格
@@ -105,9 +138,6 @@ material_71pn NVARCHAR(128), /*材料71PN*/
 material_type NVARCHAR(128), /*材料类别*/
 fault_type NVARCHAR(128), /*故障类别*/
 action NVARCHAR(128) NOT NULL, /*动作*/
-BGAPN NVARCHAR(128), /*BGAPN*/
-BGA_place NVARCHAR(128), /*BGA位置*/
-bga_brief NVARCHAR(128) , /*BGA简述*/
 ECO NVARCHAR(128), /*ECO*/
 repair_result NVARCHAR(128) NOT NULL, /*修复结果*/
 repairer NVARCHAR(128) NOT NULL, /*维修人*/

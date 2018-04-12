@@ -72,12 +72,16 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select vendor, product,source,orderno,receivedate,mb_brief, custom_serial_no,vendor_serail_no,mpn,mb_make_date,customFault,fault_describe,mbfa1,short_cut,BGAPN,BGA_place,bga_brief,repairer,repair_date from repair_record_table where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    //使用top 1保证选择是维修过来的最新的一个记录
+                    cmd.CommandText = "select top 1 vendor, product,source,orderno,receivedate,mb_brief, custom_serial_no,vendor_serail_no,mpn,mb_make_date,customFault,"
+                    +"mbfa1,short_cut,bgatype,BGAPN,BGA_place,bga_brief,repairer,repair_date, countNum "
+                    + "from bga_wait_record_table where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'  order by Id desc";
 
-                    SqlDataReader querySdr = cmd.ExecuteReader();                  
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string vendor = "";
                     while (querySdr.Read())
                     {
-                        this.vendorTextBox.Text = querySdr[0].ToString();
+                        vendor = this.vendorTextBox.Text = querySdr[0].ToString();
                         this.producttextBox.Text = querySdr[1].ToString();
                         this.sourcetextBox.Text = querySdr[2].ToString();
                         this.ordernotextBox.Text = querySdr[3].ToString();
@@ -87,30 +91,37 @@ namespace SaledServices
                         this.vendor_serail_notextBox.Text = querySdr[7].ToString();
                         this.mpntextBox.Text = querySdr[8].ToString();
                         this.mb_make_dateTextBox.Text = querySdr[9].ToString();
-                        this.customFaulttextBox.Text = querySdr[10].ToString();
-                        this.fault_describetextBox.Text = querySdr[11].ToString();                        
+                        this.customFaulttextBox.Text = querySdr[10].ToString();                   
 
-                        this.mbfa1label.Text = querySdr[12].ToString();
-                        this.shortcutlabel.Text = querySdr[13].ToString();
+                        this.mbfa1label.Text = querySdr[11].ToString();
+                        this.shortcutlabel.Text = querySdr[12].ToString();
+
+                        this.bgatypetextBox.Text = querySdr[13].ToString();
 
                         this.BGAPNtextBox.Text = querySdr[14].ToString();
                         this.BGA_placetextBox.Text = querySdr[15].ToString();
                         this.bga_brieftextBox.Text = querySdr[16].ToString();
                         this.repairertextBox.Text = querySdr[17].ToString();
                         this.repair_datetextBox.Text = querySdr[18].ToString();
+                        this.countNumtextBox.Text = querySdr[19].ToString();
 
                     }
                     querySdr.Close();
 
                     mConn.Close();
+
+                    if (vendor == "")
+                    {
+                        this.track_serial_noTextBox.Focus();
+                        this.track_serial_noTextBox.SelectAll();
+                        MessageBox.Show("追踪条码的内容不在待维修记录表中，请检查！");
+                    }
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.ToString());
-
                     this.track_serial_noTextBox.Focus();
                     this.track_serial_noTextBox.SelectAll();
-                    MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
+                    //MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
                 }
 
                 if (!error)
@@ -158,6 +169,8 @@ namespace SaledServices
             string mbfa1rich_txt = this.mbfa1label.Text.Trim();
             string short_cut_txt = this.shortcutlabel.Text.Trim();
 
+            string bgatype_txt = this.bgatypetextBox.Text.Trim();
+
             string BGAPN_txt = this.BGAPNtextBox.Text.Trim();
             string BGA_place_txt = this.BGA_placetextBox.Text.Trim();
             string bga_brief_txt = this.bga_brieftextBox.Text.Trim();
@@ -169,6 +182,8 @@ namespace SaledServices
             string bgaRepairDate_txt = DateTime.Now.ToString("yyyy/MM/dd");
             string bgaRepairResult_txt = this.bgaRepair_resultcomboBox.Text.Trim();
 
+            string countNum_txt = this.countNumtextBox.Text.Trim();
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -178,6 +193,38 @@ namespace SaledServices
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "select top 1 countNum from bga_repair_record_table where track_serial_no='" + track_serial_no_txt + "' and bgaType='" + bgatype_txt + "' and countNum='" + countNum_txt + "' order by Id desc";
+
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    int countNum = 0;
+                    while (querySdr.Read())
+                    {
+                        countNum = Int32.Parse(querySdr[0].ToString());
+                    }
+                    querySdr.Close();
+
+                    if (countNum == 0)//没有查到记录
+                    {
+                        if (bgaRepairResult_txt != "BGA待换")
+                        {
+                            MessageBox.Show("之前没有BGA待换记录，状态不对！");
+                            conn.Close();
+                            return;
+                        }
+                    }
+
+                    if (countNum > 0)//保证之前有个记录，说明刷过了
+                    {
+                        if (bgaRepairResult_txt == "BGA待换")
+                        {
+                            MessageBox.Show("之前已经有BGA待换记录，状态不对！");
+                            conn.Close();
+                            return;
+                        }
+                    }
+
                     cmd.CommandText = "INSERT INTO bga_repair_record_table VALUES('"
                         + track_serial_no_txt + "','"
                         + vendor_txt + "','"
@@ -194,6 +241,7 @@ namespace SaledServices
                         + fault_describe_txt + "','"
                         + mbfa1rich_txt + "','"
                         + short_cut_txt + "','"
+                        + bgatype_txt + "','"
                         + BGAPN_txt + "','"
                         + BGA_place_txt + "','"
                         + bga_brief_txt + "','"
@@ -201,10 +249,12 @@ namespace SaledServices
                         + repair_date_txt + "','"
                         + bgarepairer_txt + "','"
                         + bgaRepairDate_txt + "','"
-                        + bgaRepairResult_txt + "')";
+                        + bgaRepairResult_txt + "','"
+                        + countNum_txt + "')";
 
-                    cmd.CommandType = CommandType.Text;
+                    
                     cmd.ExecuteNonQuery();
+                    
                 }
                 else
                 {
@@ -223,16 +273,19 @@ namespace SaledServices
             if (error == false)
             {
                 MessageBox.Show("添加维修数据成功");
+                this.bgaRepair_resultcomboBox.Text = "";
+                this.track_serial_noTextBox.Text = "";
+                query_Click(null, null);
             }
         }
 
         private void query_Click(object sender, EventArgs e)
         {
-            if (this.track_serial_noTextBox.Text.Trim() == "")
-            {
-                MessageBox.Show("追踪条码为空");
-                return;
-            }
+            //if (this.track_serial_noTextBox.Text.Trim() == "")
+            //{
+            //    MessageBox.Show("追踪条码为空");
+            //    return;
+            //}
             try
             {
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -258,7 +311,7 @@ namespace SaledServices
             string[] hTxt = {"ID", "跟踪条码", "厂商","客户别","来源","订单编号",
                              "收货日期","MB简称","客户序号","厂商序号","MPN",
                              "MB生产日期","客户故障","故障原因","mbfa1","短路电压",
-                             "BGAPN","BGA位置","BGA简述","维修人", "修复日期","bga更换人","BGA更换日期","bga状态"};
+                             "BGA类型","BGAPN","BGA位置","BGA简述","维修人", "修复日期","bga更换人","BGA更换日期","bga状态","countNum"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];

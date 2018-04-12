@@ -37,11 +37,17 @@
             this.ExcelImportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mBMaterialCompareMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货单ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.lCFCMBBOM查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cOMPALMBBOM查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lCFC71BOM表查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dPKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.故障代码表查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.维修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bGAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vGA维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测试ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测试1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -123,7 +129,12 @@
             this.FunctionMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ExcelImportMenuItem,
             this.mBMaterialCompareMenuItem,
-            this.收货单ToolStripMenuItem1});
+            this.收货单ToolStripMenuItem1,
+            this.lCFCMBBOM查看ToolStripMenuItem,
+            this.cOMPALMBBOM查看ToolStripMenuItem,
+            this.lCFC71BOM表查看ToolStripMenuItem,
+            this.dPKToolStripMenuItem,
+            this.故障代码表查看ToolStripMenuItem});
             this.FunctionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -132,23 +143,54 @@
             // ExcelImportMenuItem
             // 
             this.ExcelImportMenuItem.Name = "ExcelImportMenuItem";
-            this.ExcelImportMenuItem.Size = new System.Drawing.Size(257, 32);
+            this.ExcelImportMenuItem.Size = new System.Drawing.Size(300, 32);
             this.ExcelImportMenuItem.Text = "Excel表格导入";
             this.ExcelImportMenuItem.Click += new System.EventHandler(this.ExcelImportMenuItem_Click);
             // 
             // mBMaterialCompareMenuItem
             // 
             this.mBMaterialCompareMenuItem.Name = "mBMaterialCompareMenuItem";
-            this.mBMaterialCompareMenuItem.Size = new System.Drawing.Size(257, 32);
+            this.mBMaterialCompareMenuItem.Size = new System.Drawing.Size(300, 32);
             this.mBMaterialCompareMenuItem.Text = "MB物料对照表查看";
             this.mBMaterialCompareMenuItem.Click += new System.EventHandler(this.mBMaterialCompareMenuItem_Click);
             // 
             // 收货单ToolStripMenuItem1
             // 
             this.收货单ToolStripMenuItem1.Name = "收货单ToolStripMenuItem1";
-            this.收货单ToolStripMenuItem1.Size = new System.Drawing.Size(257, 32);
+            this.收货单ToolStripMenuItem1.Size = new System.Drawing.Size(300, 32);
             this.收货单ToolStripMenuItem1.Text = "收货单查看";
             this.收货单ToolStripMenuItem1.Click += new System.EventHandler(this.收货单ToolStripMenuItem1_Click);
+            // 
+            // lCFCMBBOM查看ToolStripMenuItem
+            // 
+            this.lCFCMBBOM查看ToolStripMenuItem.Name = "lCFCMBBOM查看ToolStripMenuItem";
+            this.lCFCMBBOM查看ToolStripMenuItem.Size = new System.Drawing.Size(300, 32);
+            this.lCFCMBBOM查看ToolStripMenuItem.Text = "LCFC_MBBOM查看";
+            this.lCFCMBBOM查看ToolStripMenuItem.Click += new System.EventHandler(this.lCFCMBBOM查看ToolStripMenuItem_Click);
+            // 
+            // cOMPALMBBOM查看ToolStripMenuItem
+            // 
+            this.cOMPALMBBOM查看ToolStripMenuItem.Name = "cOMPALMBBOM查看ToolStripMenuItem";
+            this.cOMPALMBBOM查看ToolStripMenuItem.Size = new System.Drawing.Size(300, 32);
+            this.cOMPALMBBOM查看ToolStripMenuItem.Text = "COMPAL_MBBOM查看";
+            // 
+            // lCFC71BOM表查看ToolStripMenuItem
+            // 
+            this.lCFC71BOM表查看ToolStripMenuItem.Name = "lCFC71BOM表查看ToolStripMenuItem";
+            this.lCFC71BOM表查看ToolStripMenuItem.Size = new System.Drawing.Size(300, 32);
+            this.lCFC71BOM表查看ToolStripMenuItem.Text = "LCFC71BOM表查看";
+            // 
+            // dPKToolStripMenuItem
+            // 
+            this.dPKToolStripMenuItem.Name = "dPKToolStripMenuItem";
+            this.dPKToolStripMenuItem.Size = new System.Drawing.Size(300, 32);
+            this.dPKToolStripMenuItem.Text = "DPK表查看";
+            // 
+            // 故障代码表查看ToolStripMenuItem
+            // 
+            this.故障代码表查看ToolStripMenuItem.Name = "故障代码表查看ToolStripMenuItem";
+            this.故障代码表查看ToolStripMenuItem.Size = new System.Drawing.Size(300, 32);
+            this.故障代码表查看ToolStripMenuItem.Text = "故障代码表查看";
             // 
             // receiveReturnStoreMenuItem
             // 
@@ -164,14 +206,14 @@
             // 收货ToolStripMenuItem
             // 
             this.收货ToolStripMenuItem.Name = "收货ToolStripMenuItem";
-            this.收货ToolStripMenuItem.Size = new System.Drawing.Size(124, 32);
+            this.收货ToolStripMenuItem.Size = new System.Drawing.Size(152, 32);
             this.收货ToolStripMenuItem.Text = "收货";
             this.收货ToolStripMenuItem.Click += new System.EventHandler(this.收货ToolStripMenuItem_Click);
             // 
             // returnStoreMenuItem
             // 
             this.returnStoreMenuItem.Name = "returnStoreMenuItem";
-            this.returnStoreMenuItem.Size = new System.Drawing.Size(124, 32);
+            this.returnStoreMenuItem.Size = new System.Drawing.Size(152, 32);
             this.returnStoreMenuItem.Text = "还货";
             this.returnStoreMenuItem.Click += new System.EventHandler(this.returnStoreMenuItem_Click);
             // 
@@ -179,6 +221,7 @@
             // 
             this.维修ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.维修界面ToolStripMenuItem,
+            this.bGAToolStripMenuItem,
             this.vGA维修界面ToolStripMenuItem});
             this.维修ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.维修ToolStripMenuItem.Name = "维修ToolStripMenuItem";
@@ -188,14 +231,21 @@
             // 维修界面ToolStripMenuItem
             // 
             this.维修界面ToolStripMenuItem.Name = "维修界面ToolStripMenuItem";
-            this.维修界面ToolStripMenuItem.Size = new System.Drawing.Size(207, 32);
+            this.维修界面ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
             this.维修界面ToolStripMenuItem.Text = "维修界面";
             this.维修界面ToolStripMenuItem.Click += new System.EventHandler(this.维修界面ToolStripMenuItem_Click);
+            // 
+            // bGAToolStripMenuItem
+            // 
+            this.bGAToolStripMenuItem.Name = "bGAToolStripMenuItem";
+            this.bGAToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.bGAToolStripMenuItem.Text = "BGA待修输入界面";
+            this.bGAToolStripMenuItem.Click += new System.EventHandler(this.bGAToolStripMenuItem_Click);
             // 
             // vGA维修界面ToolStripMenuItem
             // 
             this.vGA维修界面ToolStripMenuItem.Name = "vGA维修界面ToolStripMenuItem";
-            this.vGA维修界面ToolStripMenuItem.Size = new System.Drawing.Size(206, 32);
+            this.vGA维修界面ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
             this.vGA维修界面ToolStripMenuItem.Text = "BGA维修界面";
             this.vGA维修界面ToolStripMenuItem.Click += new System.EventHandler(this.vGA维修界面ToolStripMenuItem_Click);
             // 
@@ -406,6 +456,12 @@
         private System.Windows.Forms.ToolStripMenuItem 收货单ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 报表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 报表1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lCFCMBBOM查看ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cOMPALMBBOM查看ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lCFC71BOM表查看ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dPKToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 故障代码表查看ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bGAToolStripMenuItem;
     }
 }
 

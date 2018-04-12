@@ -46,10 +46,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.BGA_placetextBox = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -65,9 +61,6 @@
             this.mpntextBox = new System.Windows.Forms.TextBox();
             this.repair_datetextBox = new System.Windows.Forms.TextBox();
             this.repairertextBox = new System.Windows.Forms.TextBox();
-            this.ECOtextBox = new System.Windows.Forms.TextBox();
-            this.bga_brieftextBox = new System.Windows.Forms.TextBox();
-            this.BGAPNtextBox = new System.Windows.Forms.TextBox();
             this.fault_describetextBox = new System.Windows.Forms.TextBox();
             this.customFaulttextBox = new System.Windows.Forms.TextBox();
             this.mb_make_dateTextBox = new System.Windows.Forms.TextBox();
@@ -85,12 +78,6 @@
             this.fault_typecomboBox = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.actioncomboBox = new System.Windows.Forms.ComboBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.noRadio = new System.Windows.Forms.RadioButton();
-            this.PCH = new System.Windows.Forms.RadioButton();
-            this.CPU = new System.Windows.Forms.RadioButton();
-            this.VGA = new System.Windows.Forms.RadioButton();
-            this.label31 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.mbfa1richTextBox = new System.Windows.Forms.RichTextBox();
@@ -100,7 +87,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.checkBox18 = new System.Windows.Forms.CheckBox();
@@ -121,15 +110,13 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ECOtextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -138,8 +125,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -172,18 +159,9 @@
             this.tableLayoutPanel2.Controls.Add(this.label7, 2, 5);
             this.tableLayoutPanel2.Controls.Add(this.label8, 2, 6);
             this.tableLayoutPanel2.Controls.Add(this.label9, 2, 7);
-            this.tableLayoutPanel2.Controls.Add(this.label10, 2, 8);
-            this.tableLayoutPanel2.Controls.Add(this.label11, 2, 9);
             this.tableLayoutPanel2.Controls.Add(this.label12, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.label13, 4, 1);
             this.tableLayoutPanel2.Controls.Add(this.label14, 4, 2);
-            this.tableLayoutPanel2.Controls.Add(this.label24, 4, 4);
-            this.tableLayoutPanel2.Controls.Add(this.label25, 4, 5);
-            this.tableLayoutPanel2.Controls.Add(this.BGA_placetextBox, 5, 5);
-            this.tableLayoutPanel2.Controls.Add(this.label26, 4, 6);
-            this.tableLayoutPanel2.Controls.Add(this.label27, 4, 7);
-            this.tableLayoutPanel2.Controls.Add(this.label29, 4, 8);
-            this.tableLayoutPanel2.Controls.Add(this.label30, 4, 9);
             this.tableLayoutPanel2.Controls.Add(this.vendorTextBox, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.producttextBox, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.sourcetextBox, 3, 2);
@@ -192,13 +170,6 @@
             this.tableLayoutPanel2.Controls.Add(this.mb_describetextBox, 3, 5);
             this.tableLayoutPanel2.Controls.Add(this.mb_brieftextBox, 3, 6);
             this.tableLayoutPanel2.Controls.Add(this.custom_serial_notextBox, 3, 7);
-            this.tableLayoutPanel2.Controls.Add(this.vendor_serail_notextBox, 3, 8);
-            this.tableLayoutPanel2.Controls.Add(this.mpntextBox, 3, 9);
-            this.tableLayoutPanel2.Controls.Add(this.repair_datetextBox, 5, 9);
-            this.tableLayoutPanel2.Controls.Add(this.repairertextBox, 5, 8);
-            this.tableLayoutPanel2.Controls.Add(this.ECOtextBox, 5, 7);
-            this.tableLayoutPanel2.Controls.Add(this.bga_brieftextBox, 5, 6);
-            this.tableLayoutPanel2.Controls.Add(this.BGAPNtextBox, 5, 4);
             this.tableLayoutPanel2.Controls.Add(this.fault_describetextBox, 5, 2);
             this.tableLayoutPanel2.Controls.Add(this.customFaulttextBox, 5, 1);
             this.tableLayoutPanel2.Controls.Add(this.mb_make_dateTextBox, 5, 0);
@@ -216,13 +187,20 @@
             this.tableLayoutPanel2.Controls.Add(this.fault_typecomboBox, 1, 7);
             this.tableLayoutPanel2.Controls.Add(this.label23, 0, 8);
             this.tableLayoutPanel2.Controls.Add(this.actioncomboBox, 1, 8);
-            this.tableLayoutPanel2.Controls.Add(this.panel2, 5, 3);
-            this.tableLayoutPanel2.Controls.Add(this.label31, 4, 3);
-            this.tableLayoutPanel2.Controls.Add(this.label15, 0, 9);
             this.tableLayoutPanel2.Controls.Add(this.label28, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.mbfa1richTextBox, 1, 9);
             this.tableLayoutPanel2.Controls.Add(this.repair_resultcomboBox, 1, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Controls.Add(this.label27, 4, 3);
+            this.tableLayoutPanel2.Controls.Add(this.ECOtextBox, 5, 3);
+            this.tableLayoutPanel2.Controls.Add(this.label29, 4, 4);
+            this.tableLayoutPanel2.Controls.Add(this.repairertextBox, 5, 4);
+            this.tableLayoutPanel2.Controls.Add(this.label30, 4, 5);
+            this.tableLayoutPanel2.Controls.Add(this.repair_datetextBox, 5, 5);
+            this.tableLayoutPanel2.Controls.Add(this.label10, 4, 6);
+            this.tableLayoutPanel2.Controls.Add(this.vendor_serail_notextBox, 5, 6);
+            this.tableLayoutPanel2.Controls.Add(this.label11, 4, 7);
+            this.tableLayoutPanel2.Controls.Add(this.mpntextBox, 5, 7);
+            this.tableLayoutPanel2.Controls.Add(this.label15, 2, 8);
+            this.tableLayoutPanel2.Controls.Add(this.mbfa1richTextBox, 3, 8);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -343,7 +321,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(409, 370);
+            this.label10.Location = new System.Drawing.Point(811, 278);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(72, 16);
@@ -353,7 +331,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(409, 416);
+            this.label11.Location = new System.Drawing.Point(811, 324);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(32, 16);
@@ -390,50 +368,10 @@
             this.label14.TabIndex = 14;
             this.label14.Text = "故障原因";
             // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(811, 186);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(48, 16);
-            this.label24.TabIndex = 33;
-            this.label24.Text = "BGAPN";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(811, 232);
-            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(64, 16);
-            this.label25.TabIndex = 34;
-            this.label25.Text = "BGA位置";
-            // 
-            // BGA_placetextBox
-            // 
-            this.BGA_placetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BGA_placetextBox.Location = new System.Drawing.Point(1011, 236);
-            this.BGA_placetextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.BGA_placetextBox.Name = "BGA_placetextBox";
-            this.BGA_placetextBox.ReadOnly = true;
-            this.BGA_placetextBox.Size = new System.Drawing.Size(197, 26);
-            this.BGA_placetextBox.TabIndex = 35;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(811, 278);
-            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(64, 16);
-            this.label26.TabIndex = 36;
-            this.label26.Text = "BGA简述";
-            // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(811, 324);
+            this.label27.Location = new System.Drawing.Point(811, 140);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(32, 16);
@@ -443,7 +381,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(811, 370);
+            this.label29.Location = new System.Drawing.Point(811, 186);
             this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(56, 16);
@@ -453,16 +391,15 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(811, 416);
+            this.label30.Location = new System.Drawing.Point(811, 232);
             this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(72, 16);
             this.label30.TabIndex = 41;
-            this.label30.Text = "修复日期";
+            this.label30.Text = "维修日期";
             // 
             // vendorTextBox
             // 
-            this.vendorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vendorTextBox.Location = new System.Drawing.Point(610, 6);
             this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendorTextBox.Name = "vendorTextBox";
@@ -472,7 +409,6 @@
             // 
             // producttextBox
             // 
-            this.producttextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.producttextBox.Location = new System.Drawing.Point(610, 52);
             this.producttextBox.Margin = new System.Windows.Forms.Padding(4);
             this.producttextBox.Name = "producttextBox";
@@ -482,7 +418,6 @@
             // 
             // sourcetextBox
             // 
-            this.sourcetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sourcetextBox.Location = new System.Drawing.Point(610, 98);
             this.sourcetextBox.Margin = new System.Windows.Forms.Padding(4);
             this.sourcetextBox.Name = "sourcetextBox";
@@ -492,7 +427,6 @@
             // 
             // ordernotextBox
             // 
-            this.ordernotextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ordernotextBox.Location = new System.Drawing.Point(610, 144);
             this.ordernotextBox.Margin = new System.Windows.Forms.Padding(4);
             this.ordernotextBox.Name = "ordernotextBox";
@@ -502,7 +436,6 @@
             // 
             // receivedatetextBox
             // 
-            this.receivedatetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.receivedatetextBox.Location = new System.Drawing.Point(610, 190);
             this.receivedatetextBox.Margin = new System.Windows.Forms.Padding(4);
             this.receivedatetextBox.Name = "receivedatetextBox";
@@ -512,7 +445,6 @@
             // 
             // mb_describetextBox
             // 
-            this.mb_describetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mb_describetextBox.Location = new System.Drawing.Point(610, 236);
             this.mb_describetextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mb_describetextBox.Name = "mb_describetextBox";
@@ -522,7 +454,6 @@
             // 
             // mb_brieftextBox
             // 
-            this.mb_brieftextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mb_brieftextBox.Location = new System.Drawing.Point(610, 282);
             this.mb_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mb_brieftextBox.Name = "mb_brieftextBox";
@@ -532,7 +463,6 @@
             // 
             // custom_serial_notextBox
             // 
-            this.custom_serial_notextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.custom_serial_notextBox.Location = new System.Drawing.Point(610, 328);
             this.custom_serial_notextBox.Margin = new System.Windows.Forms.Padding(4);
             this.custom_serial_notextBox.Name = "custom_serial_notextBox";
@@ -542,8 +472,7 @@
             // 
             // vendor_serail_notextBox
             // 
-            this.vendor_serail_notextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vendor_serail_notextBox.Location = new System.Drawing.Point(610, 374);
+            this.vendor_serail_notextBox.Location = new System.Drawing.Point(1011, 282);
             this.vendor_serail_notextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendor_serail_notextBox.Name = "vendor_serail_notextBox";
             this.vendor_serail_notextBox.ReadOnly = true;
@@ -552,8 +481,7 @@
             // 
             // mpntextBox
             // 
-            this.mpntextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mpntextBox.Location = new System.Drawing.Point(610, 420);
+            this.mpntextBox.Location = new System.Drawing.Point(1011, 328);
             this.mpntextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mpntextBox.Name = "mpntextBox";
             this.mpntextBox.ReadOnly = true;
@@ -563,7 +491,7 @@
             // repair_datetextBox
             // 
             this.repair_datetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.repair_datetextBox.Location = new System.Drawing.Point(1011, 420);
+            this.repair_datetextBox.Location = new System.Drawing.Point(1011, 236);
             this.repair_datetextBox.Margin = new System.Windows.Forms.Padding(4);
             this.repair_datetextBox.Name = "repair_datetextBox";
             this.repair_datetextBox.ReadOnly = true;
@@ -573,42 +501,12 @@
             // repairertextBox
             // 
             this.repairertextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.repairertextBox.Location = new System.Drawing.Point(1011, 374);
+            this.repairertextBox.Location = new System.Drawing.Point(1011, 190);
             this.repairertextBox.Margin = new System.Windows.Forms.Padding(4);
             this.repairertextBox.Name = "repairertextBox";
             this.repairertextBox.ReadOnly = true;
             this.repairertextBox.Size = new System.Drawing.Size(197, 26);
             this.repairertextBox.TabIndex = 43;
-            // 
-            // ECOtextBox
-            // 
-            this.ECOtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ECOtextBox.Location = new System.Drawing.Point(1011, 328);
-            this.ECOtextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.ECOtextBox.Name = "ECOtextBox";
-            this.ECOtextBox.ReadOnly = true;
-            this.ECOtextBox.Size = new System.Drawing.Size(197, 26);
-            this.ECOtextBox.TabIndex = 43;
-            // 
-            // bga_brieftextBox
-            // 
-            this.bga_brieftextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bga_brieftextBox.Location = new System.Drawing.Point(1011, 282);
-            this.bga_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.bga_brieftextBox.Name = "bga_brieftextBox";
-            this.bga_brieftextBox.ReadOnly = true;
-            this.bga_brieftextBox.Size = new System.Drawing.Size(197, 26);
-            this.bga_brieftextBox.TabIndex = 43;
-            // 
-            // BGAPNtextBox
-            // 
-            this.BGAPNtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BGAPNtextBox.Location = new System.Drawing.Point(1011, 190);
-            this.BGAPNtextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.BGAPNtextBox.Name = "BGAPNtextBox";
-            this.BGAPNtextBox.ReadOnly = true;
-            this.BGAPNtextBox.Size = new System.Drawing.Size(197, 26);
-            this.BGAPNtextBox.TabIndex = 43;
             // 
             // fault_describetextBox
             // 
@@ -621,7 +519,6 @@
             // 
             // customFaulttextBox
             // 
-            this.customFaulttextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customFaulttextBox.Location = new System.Drawing.Point(1011, 52);
             this.customFaulttextBox.Margin = new System.Windows.Forms.Padding(4);
             this.customFaulttextBox.Name = "customFaulttextBox";
@@ -631,7 +528,6 @@
             // 
             // mb_make_dateTextBox
             // 
-            this.mb_make_dateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mb_make_dateTextBox.Location = new System.Drawing.Point(1011, 6);
             this.mb_make_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mb_make_dateTextBox.Name = "mb_make_dateTextBox";
@@ -779,79 +675,10 @@
             this.actioncomboBox.Size = new System.Drawing.Size(202, 24);
             this.actioncomboBox.TabIndex = 32;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.noRadio);
-            this.panel2.Controls.Add(this.PCH);
-            this.panel2.Controls.Add(this.CPU);
-            this.panel2.Controls.Add(this.VGA);
-            this.panel2.Location = new System.Drawing.Point(1010, 143);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(199, 38);
-            this.panel2.TabIndex = 45;
-            // 
-            // noRadio
-            // 
-            this.noRadio.AutoSize = true;
-            this.noRadio.Location = new System.Drawing.Point(153, 7);
-            this.noRadio.Name = "noRadio";
-            this.noRadio.Size = new System.Drawing.Size(42, 20);
-            this.noRadio.TabIndex = 1;
-            this.noRadio.TabStop = true;
-            this.noRadio.Text = "No";
-            this.noRadio.UseVisualStyleBackColor = true;
-            this.noRadio.CheckedChanged += new System.EventHandler(this.noRadio_CheckedChanged);
-            // 
-            // PCH
-            // 
-            this.PCH.AutoSize = true;
-            this.PCH.Location = new System.Drawing.Point(107, 7);
-            this.PCH.Name = "PCH";
-            this.PCH.Size = new System.Drawing.Size(50, 20);
-            this.PCH.TabIndex = 1;
-            this.PCH.TabStop = true;
-            this.PCH.Text = "PCH";
-            this.PCH.UseVisualStyleBackColor = true;
-            this.PCH.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
-            // 
-            // CPU
-            // 
-            this.CPU.AutoSize = true;
-            this.CPU.Location = new System.Drawing.Point(59, 7);
-            this.CPU.Name = "CPU";
-            this.CPU.Size = new System.Drawing.Size(50, 20);
-            this.CPU.TabIndex = 1;
-            this.CPU.TabStop = true;
-            this.CPU.Text = "CPU";
-            this.CPU.UseVisualStyleBackColor = true;
-            this.CPU.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
-            // 
-            // VGA
-            // 
-            this.VGA.AutoSize = true;
-            this.VGA.Location = new System.Drawing.Point(3, 7);
-            this.VGA.Name = "VGA";
-            this.VGA.Size = new System.Drawing.Size(50, 20);
-            this.VGA.TabIndex = 0;
-            this.VGA.TabStop = true;
-            this.VGA.Text = "VGA";
-            this.VGA.UseVisualStyleBackColor = true;
-            this.VGA.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(811, 140);
-            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(32, 16);
-            this.label31.TabIndex = 33;
-            this.label31.Text = "BGA";
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 416);
+            this.label15.Location = new System.Drawing.Point(409, 370);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(56, 16);
@@ -870,10 +697,10 @@
             // 
             // mbfa1richTextBox
             // 
-            this.mbfa1richTextBox.Location = new System.Drawing.Point(197, 420);
+            this.mbfa1richTextBox.Location = new System.Drawing.Point(610, 374);
             this.mbfa1richTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mbfa1richTextBox.Name = "mbfa1richTextBox";
-            this.mbfa1richTextBox.Size = new System.Drawing.Size(202, 36);
+            this.mbfa1richTextBox.Size = new System.Drawing.Size(191, 36);
             this.mbfa1richTextBox.TabIndex = 44;
             this.mbfa1richTextBox.Text = "";
             // 
@@ -958,15 +785,29 @@
             this.query.UseVisualStyleBackColor = true;
             this.query.Click += new System.EventHandler(this.query_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 713);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1216, 269);
+            this.dataGridView1.TabIndex = 4;
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.87486F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.12514F));
-            this.tableLayoutPanel4.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label16, 0, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(4, 479);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -974,6 +815,16 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(1214, 142);
             this.tableLayoutPanel4.TabIndex = 3;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 2);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(72, 16);
+            this.label16.TabIndex = 17;
+            this.label16.Text = "短路电压";
             // 
             // panel1
             // 
@@ -996,7 +847,6 @@
             this.panel1.Controls.Add(this.checkBox2);
             this.panel1.Controls.Add(this.checkBox5);
             this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(199, 6);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
@@ -1209,30 +1059,15 @@
             this.checkBox1.Text = "+5VALW前短";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // label16
+            // ECOtextBox
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 2);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(72, 16);
-            this.label16.TabIndex = 17;
-            this.label16.Text = "短路电压";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 713);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1216, 269);
-            this.dataGridView1.TabIndex = 4;
+            this.ECOtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ECOtextBox.Location = new System.Drawing.Point(1011, 144);
+            this.ECOtextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.ECOtextBox.Name = "ECOtextBox";
+            this.ECOtextBox.ReadOnly = true;
+            this.ECOtextBox.Size = new System.Drawing.Size(197, 26);
+            this.ECOtextBox.TabIndex = 43;
             // 
             // RepairOperationForm
             // 
@@ -1249,14 +1084,12 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1295,10 +1128,6 @@
         private System.Windows.Forms.ComboBox fault_typecomboBox;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox actioncomboBox;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox BGA_placetextBox;
-        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ComboBox repair_resultcomboBox;
@@ -1317,9 +1146,6 @@
         private System.Windows.Forms.TextBox mpntextBox;
         private System.Windows.Forms.TextBox repair_datetextBox;
         private System.Windows.Forms.TextBox repairertextBox;
-        private System.Windows.Forms.TextBox ECOtextBox;
-        private System.Windows.Forms.TextBox bga_brieftextBox;
-        private System.Windows.Forms.TextBox BGAPNtextBox;
         private System.Windows.Forms.TextBox fault_describetextBox;
         private System.Windows.Forms.TextBox customFaulttextBox;
         private System.Windows.Forms.TextBox mb_make_dateTextBox;
@@ -1351,11 +1177,6 @@
         private System.Windows.Forms.CheckBox checkBox17;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.RadioButton PCH;
-        private System.Windows.Forms.RadioButton CPU;
-        private System.Windows.Forms.RadioButton VGA;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.RadioButton noRadio;
+        private System.Windows.Forms.TextBox ECOtextBox;
     }
 }

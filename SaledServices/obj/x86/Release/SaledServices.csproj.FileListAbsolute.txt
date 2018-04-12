@@ -31,3 +31,4 @@ D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlo
 D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.Test1Form.resources
 D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.Test2Form.resources
 D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.TestAllForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.BGAInfoInputForm.resources
