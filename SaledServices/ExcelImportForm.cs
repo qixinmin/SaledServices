@@ -133,7 +133,7 @@ namespace SaledServices
             if (this.LCFC_MBBOMradioButton.Checked
                 || this.COMPAL_MBBOMradioButton.Checked)
             {
-                importLCFC_MBBOMtest(sheetName, tableName);
+                importLCFC_MBBOMUsingADO(sheetName, tableName);
                 return;
             }
 
@@ -404,7 +404,7 @@ namespace SaledServices
             }
         }
 
-        public void importLCFC_MBBOMtest(string sheetName, string tableName)
+        public void importLCFC_MBBOMUsingADO(string sheetName, string tableName)
         {
             DataSet ds = new DataSet();
             try
@@ -466,8 +466,35 @@ namespace SaledServices
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
                 conn.Open();
-                SqlTransaction transaction = null;  
-  
+                SqlTransaction transaction = null;
+
+
+                int dateIndex = -1;
+                if (this.mbmaterial.Checked)
+                {
+                    dateIndex = 32;
+                }
+                else if (this.receiveOrder.Checked)
+                {
+                    //自动添加
+                }
+                else if (this.LCFC_MBBOMradioButton.Checked)
+                {
+                    dateIndex = 1;
+                }
+                else if (this.COMPAL_MBBOMradioButton.Checked)
+                {
+                    dateIndex = 1;
+                }
+                else if (this.LCFC71BOMRadioButton.Checked)
+                {
+                    dateIndex = 1;
+                }
+                else if (this.DPKradioButton.Checked)
+                {
+                    dateIndex = 6;
+                }
+                                
 
                 if (conn.State == ConnectionState.Open)
                 {
@@ -484,11 +511,20 @@ namespace SaledServices
                         for (int j = 1; j <= columnLength; j++)
                         {
                             try
-                            {
-                                //有可能有空值
-                                string temp = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, j]).Value2.ToString();
-
-                                s += temp.Replace('\'', '"');
+                            {                                
+                                if (j == dateIndex)//时间所在的列，从1开始，没有是-1
+                                {
+                                    string temp = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, j]).Value2.ToString();
+                                    DateTime strDate = DateTime.FromOADate(double.Parse(temp));
+                                    s += strDate.ToString("yyyy-MM-dd");
+                                }
+                                else
+                                {
+                                    //有可能有空值
+                                    string temp = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, j]).Value2.ToString();
+                                    s += temp.Replace('\'', '"');
+                                }                                
+                               
                             }
                             catch (Exception ex)
                             {
