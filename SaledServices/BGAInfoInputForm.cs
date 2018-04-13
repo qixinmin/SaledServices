@@ -100,6 +100,49 @@ namespace SaledServices
                         MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
                         error = true;
                     }
+
+                    //查询bga的维修记录，如果有bga的维修记录，则取最后一条，判断状态是否是不是“BGA待换”，否则提示报错，然后把相关bga的内容填入相应内容中去
+                    cmd.CommandText = "select top 1 bga_repair_result,bgatype,BGAPN,BGA_place,bga_brief,mbfa1 from bga_repair_record_table where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'  order by Id desc";
+
+                    querySdr = cmd.ExecuteReader();
+                    string bga_repair_result="", bgatype="", BGAPN="", BGA_place="", bga_brief="", mbfa1 = "";
+                    while (querySdr.Read())
+                    {
+                        bga_repair_result = querySdr[0].ToString();
+                        bgatype = querySdr[1].ToString();
+                        BGAPN = querySdr[2].ToString();
+                        BGA_place = querySdr[3].ToString();
+                        bga_brief = querySdr[4].ToString();
+                        mbfa1 = querySdr[5].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (bga_repair_result != "" && bga_repair_result == "BGA待换")
+                    {
+                        MessageBox.Show("BGA的状态不应该是BGA待换！");
+                        mConn.Close();
+                        return;
+                    }
+                    else
+                    {
+                        this.bga_brieftextBox.Text = bga_brief;
+                        this.BGAPNtextBox.Text = BGAPN;
+                        this.BGA_placetextBox.Text = BGA_place;
+                        this.mbfa1richTextBox.Text = mbfa1;
+                        if (bgatype == "VGA")
+                        {
+                            this.VGA.Checked = true;
+                        }
+                        else if (bgatype == "CPU")
+                        {
+                            this.CPU.Checked = true;
+                        }
+                        else if (bgatype == "PCH")
+                        {
+                            this.PCH.Checked = true;
+                        }
+                    }
+
                     mConn.Close();
                 }
                 catch (Exception ex)
@@ -149,6 +192,16 @@ namespace SaledServices
                 return;
             }
 
+            string tableName = "";
+            if (this.vendorTextBox.Text.Trim() == "LCFC")
+            {
+                tableName = Constlist.table_name_LCFC_MBBOM;
+            }
+            else if (this.vendorTextBox.Text.Trim() == "COMPAL")
+            {
+                tableName = Constlist.table_name_COMPAL_MBBOM;
+            }
+
             try
             {
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -167,6 +220,21 @@ namespace SaledServices
                 {
                     bga_mpn_txt = querySdr[0].ToString();
                     bga_brief_txt = querySdr[1].ToString();
+                }
+                querySdr.Close();
+
+                //根据bgapn与mb_brief 结合查询L1的位置
+                cmd.CommandText = "select L1 from " + tableName + " where material_mpn ='" + this.BGAPNtextBox.Text.Trim() + "' and mb_brief ='" + this.mb_brieftextBox.Text.Trim()+"'";
+                querySdr = cmd.ExecuteReader();
+                string l1 = "";
+                while (querySdr.Read())
+                {
+                    l1 = querySdr[0].ToString();
+                    if (l1 != "")
+                    {
+                        this.BGA_placetextBox.Text = l1;
+                        break;
+                    }
                 }
                 querySdr.Close();
 
@@ -362,6 +430,16 @@ namespace SaledServices
                         countNum = Int32.Parse(querySdr[0].ToString());
                     }
                     querySdr.Close();
+
+                    if (countNum == 0)
+                    {
+                        if (status != "BGA不良")
+                        {
+                            MessageBox.Show("状态输入框不对！应该是BGA不良");
+                            conn.Close();
+                            return;
+                        }
+                    }
 
                     if (status != "BGA不良" && countNum > 0)//说明板子修好了,从VGA哪里回来了
                     {

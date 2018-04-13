@@ -72,6 +72,7 @@
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.inputMpnTextBox = new System.Windows.Forms.TextBox();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.inputUserTextBox = new System.Windows.Forms.TextBox();
@@ -80,6 +81,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label20 = new System.Windows.Forms.Label();
             this.replace_custom_materialNotextBox = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToReturn)).BeginInit();
@@ -168,7 +170,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label4.Location = new System.Drawing.Point(7, 388);
+            this.label4.Location = new System.Drawing.Point(487, 498);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(129, 20);
@@ -557,6 +559,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.8472F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.7602F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.3491F));
+            this.tableLayoutPanel3.Controls.Add(this.inputMpnTextBox, 3, 9);
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.vendorComboBox, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 1);
@@ -588,13 +591,14 @@
             this.tableLayoutPanel3.Controls.Add(this.label14, 0, 8);
             this.tableLayoutPanel3.Controls.Add(this.custom_res_typeComboBox, 1, 8);
             this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel1, 1, 7);
-            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 7);
             this.tableLayoutPanel3.Controls.Add(this.custom_serial_noTextBox, 1, 6);
             this.tableLayoutPanel3.Controls.Add(this.label11, 0, 6);
             this.tableLayoutPanel3.Controls.Add(this.track_serial_noTextBox, 1, 5);
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 5);
             this.tableLayoutPanel3.Controls.Add(this.label20, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.replace_custom_materialNotextBox, 1, 4);
+            this.tableLayoutPanel3.Controls.Add(this.label4, 2, 9);
+            this.tableLayoutPanel3.Controls.Add(this.label21, 0, 7);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -612,6 +616,14 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(821, 562);
             this.tableLayoutPanel3.TabIndex = 19;
+            // 
+            // inputMpnTextBox
+            // 
+            this.inputMpnTextBox.Location = new System.Drawing.Point(640, 502);
+            this.inputMpnTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.inputMpnTextBox.Name = "inputMpnTextBox";
+            this.inputMpnTextBox.Size = new System.Drawing.Size(174, 26);
+            this.inputMpnTextBox.TabIndex = 11;
             // 
             // statusComboBox
             // 
@@ -698,6 +710,17 @@
             this.replace_custom_materialNotextBox.Size = new System.Drawing.Size(320, 26);
             this.replace_custom_materialNotextBox.TabIndex = 10;
             this.replace_custom_materialNotextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custommaterialNoTextBox_KeyPress);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label21.Location = new System.Drawing.Point(7, 388);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(79, 20);
+            this.label21.TabIndex = 13;
+            this.label21.Text = "输入MPN";
             // 
             // tableLayoutPanel2
             // 
@@ -798,5 +821,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox replace_custom_materialNotextBox;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TextBox inputMpnTextBox;
+        private System.Windows.Forms.Label label21;
     }
 }

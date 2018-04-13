@@ -74,14 +74,14 @@ namespace SaledServices
 
                     //使用top 1保证选择是维修过来的最新的一个记录
                     cmd.CommandText = "select top 1 vendor, product,source,orderno,receivedate,mb_brief, custom_serial_no,vendor_serail_no,mpn,mb_make_date,customFault,"
-                    +"mbfa1,short_cut,bgatype,BGAPN,BGA_place,bga_brief,repairer,repair_date, countNum "
+                    + "mbfa1,short_cut,bgatype,BGAPN,BGA_place,bga_brief,repairer,repair_date, countNum, status "
                     + "from bga_wait_record_table where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'  order by Id desc";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    string vendor = "";
+                    string status = "";
                     while (querySdr.Read())
                     {
-                        vendor = this.vendorTextBox.Text = querySdr[0].ToString();
+                        this.vendorTextBox.Text = querySdr[0].ToString();
                         this.producttextBox.Text = querySdr[1].ToString();
                         this.sourcetextBox.Text = querySdr[2].ToString();
                         this.ordernotextBox.Text = querySdr[3].ToString();
@@ -105,16 +105,18 @@ namespace SaledServices
                         this.repair_datetextBox.Text = querySdr[18].ToString();
                         this.countNumtextBox.Text = querySdr[19].ToString();
 
+                        status = querySdr[20].ToString();
                     }
                     querySdr.Close();
 
                     mConn.Close();
 
-                    if (vendor == "")
+                    if (status == "" || status != "BGA不良")
                     {
                         this.track_serial_noTextBox.Focus();
                         this.track_serial_noTextBox.SelectAll();
-                        MessageBox.Show("追踪条码的内容不在待维修记录表中，请检查！");
+                        MessageBox.Show("追踪条码的内容不在待维修记录表中或待维修记录的状态不是BGA不良，请检查！");
+                        return;
                     }
                 }
                 catch (Exception ex)
@@ -126,7 +128,7 @@ namespace SaledServices
 
                 if (!error)
                 {
-                   
+                    this.bgaRepair_resultcomboBox.Focus();  
                 }
             }
         }
@@ -251,10 +253,8 @@ namespace SaledServices
                         + bgaRepairDate_txt + "','"
                         + bgaRepairResult_txt + "','"
                         + countNum_txt + "')";
-
                     
-                    cmd.ExecuteNonQuery();
-                    
+                    cmd.ExecuteNonQuery();                    
                 }
                 else
                 {

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace SaledServices.Test_Outlook
 {
@@ -131,7 +132,7 @@ namespace SaledServices.Test_Outlook
                                     }
                                     else//不存在或超过90天，则分配新的东西
                                     {
-                                        cmd.CommandText = "select KEYID,KEYSERIAL,Id from DPK_table where KEYPN='" + dpkpn + "' and status ='未使用'";
+                                        cmd.CommandText = "select KEYID,KEYSERIAL,Id from DPK_table where KEYPN='" + dpkpn + "' and status ='未使用' order by Id asc";
 
                                         querySdr = cmd.ExecuteReader();
                                         bool exist = false;
@@ -165,7 +166,10 @@ namespace SaledServices.Test_Outlook
                                 }
 
                                 this.keyidtextBox.Text = KEYID;
-                                this.KEYSERIALtextBox.Text = KEYSERIAL;
+
+                                tempKeySerial = KEYSERIAL;
+                                int lastEm = tempKeySerial.LastIndexOf('-');
+                                this.KEYSERIALtextBox.Text = "XXXXX-XXXXX-XXXXX-XXXXX-" + tempKeySerial.Substring(lastEm, 5);
 
                                 //SET MBID=RIBM160907010247     跟踪条码
                                 //SET SN=1021948402900          厂商序号
@@ -204,7 +208,15 @@ namespace SaledServices.Test_Outlook
                     }
                     else
                     {
-                        MessageBox.Show("此追踪条码对应的客户别不是TBG, DT, AIO ！");
+                        if (product == "")
+                        {
+                            MessageBox.Show("此追踪条码没有维修记录！");
+                        }
+                        else
+                        {
+                            MessageBox.Show("此追踪条码对应的客户别不是TBG, DT, AIO ！");
+                        }
+                       
                     }
                     mConn.Close();
                 }
@@ -214,7 +226,7 @@ namespace SaledServices.Test_Outlook
                 }
             }
         }
-
+        string tempKeySerial = "";
         private void confirmbutton_Click(object sender, EventArgs e)
         {
             if (this.tracker_bar_textBox.Text.Trim() == "")
@@ -225,6 +237,23 @@ namespace SaledServices.Test_Outlook
 
             try
             {
+                StreamReader sr = new StreamReader("D:\\fru\\DATE.TXT", Encoding.Default);
+                String line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(line.ToString());
+                }
+                sr.Close();
+                if (tempKeySerial != "" && line.Contains(tempKeySerial))
+                {
+                }
+                else
+                {
+                    MessageBox.Show("文件不存在或者内容与序列号不匹配， 是否重启过机器？");
+                    return;
+                }
+
+
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
                 conn.Open();
 

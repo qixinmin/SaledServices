@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -422,6 +422,7 @@
             // 
             // fault_describetextBox
             // 
+            this.fault_describetextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.fault_describetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fault_describetextBox.Location = new System.Drawing.Point(1011, 98);
             this.fault_describetextBox.Margin = new System.Windows.Forms.Padding(4);
@@ -481,6 +482,7 @@
             // 
             // not_good_placetextBox
             // 
+            this.not_good_placetextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.not_good_placetextBox.Location = new System.Drawing.Point(197, 144);
             this.not_good_placetextBox.Margin = new System.Windows.Forms.Padding(4);
             this.not_good_placetextBox.Name = "not_good_placetextBox";
@@ -558,6 +560,7 @@
             // 
             // fault_typecomboBox
             // 
+            this.fault_typecomboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.fault_typecomboBox.FormattingEnabled = true;
             this.fault_typecomboBox.Location = new System.Drawing.Point(197, 328);
             this.fault_typecomboBox.Margin = new System.Windows.Forms.Padding(4);
@@ -577,6 +580,7 @@
             // 
             // actioncomboBox
             // 
+            this.actioncomboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.actioncomboBox.FormattingEnabled = true;
             this.actioncomboBox.Items.AddRange(new object[] {
             "更换",
@@ -798,8 +802,9 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 713);

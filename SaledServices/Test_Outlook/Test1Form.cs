@@ -19,7 +19,7 @@ namespace SaledServices.Test_Outlook
         {
             InitializeComponent();
         }
-
+        string tempKeySerial="";
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
@@ -64,7 +64,7 @@ namespace SaledServices.Test_Outlook
 
                     if (bgastatus == "BGA不良")
                     {
-                        MessageBox.Show("BGA的维修记录不对，请检查！");
+                        MessageBox.Show("BGA的维修记录没有结束，请检查！");
                         mConn.Close();
                         return;
                     }
@@ -135,7 +135,7 @@ namespace SaledServices.Test_Outlook
                                     }
                                     else//不存在或超过90天，则分配新的东西
                                     {
-                                        cmd.CommandText = "select KEYID,KEYSERIAL,Id from DPK_table where KEYPN='" + dpkpn + "' and status ='未使用'";
+                                        cmd.CommandText = "select KEYID,KEYSERIAL,Id from DPK_table where KEYPN='" + dpkpn + "' and status ='未使用' order by Id asc";
 
                                         querySdr = cmd.ExecuteReader();
                                         bool exist = false;
@@ -169,7 +169,10 @@ namespace SaledServices.Test_Outlook
                                 }
 
                                 this.keyidtextBox.Text = KEYID;
-                                this.KEYSERIALtextBox.Text = KEYSERIAL;
+
+                                tempKeySerial = KEYSERIAL;
+                                int lastEm = tempKeySerial.LastIndexOf('-');
+                                this.KEYSERIALtextBox.Text = "XXXXX-XXXXX-XXXXX-XXXXX-" + tempKeySerial.Substring(lastEm, 5);
 
                                 //SET MBID=RIBM160907010247     跟踪条码
                                 //SET SN=1021948402900          厂商序号
@@ -208,7 +211,13 @@ namespace SaledServices.Test_Outlook
                     }
                     else
                     {
-                        MessageBox.Show("此追踪条码对应的客户别不是LBG！");                        
+                        if (product == "")
+                        {
+                            MessageBox.Show("此追踪条码没有维修记录！");
+                        }else
+                        {
+                            MessageBox.Show("此追踪条码对应的客户别不是LBG！");
+                        }
                     }
                     mConn.Close();
                 }
@@ -217,9 +226,7 @@ namespace SaledServices.Test_Outlook
                     MessageBox.Show(ex.ToString());
                 }
             }
-        }
-
-       
+        }       
 
         private void confirmbutton_Click(object sender, EventArgs e)
         {
@@ -231,6 +238,23 @@ namespace SaledServices.Test_Outlook
 
             try
             {
+                StreamReader sr = new StreamReader("D:\\fru\\DATE.TXT", Encoding.Default);
+                String line;
+                while ((line = sr.ReadLine()) != null) 
+                {
+                    Console.WriteLine(line.ToString());
+                }
+                sr.Close();
+                if (tempKeySerial != "" && line.Contains(tempKeySerial))
+                {
+                }
+                else 
+                {
+                    MessageBox.Show("文件不存在或者内容与序列号不匹配， 是否重启过机器？");
+                    return;
+                }
+        
+
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
                 conn.Open();
 

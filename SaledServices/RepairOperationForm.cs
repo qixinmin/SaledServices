@@ -142,8 +142,8 @@ namespace SaledServices
                 this.repair_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
                 if (!error)
                 {
-                    mbfa1richTextBox.Focus();
-                    mbfa1richTextBox.SelectAll();
+                    repair_resultcomboBox.Focus();
+                    repair_resultcomboBox.SelectAll();
                 }
             }
         }
@@ -488,8 +488,12 @@ namespace SaledServices
             string repairer_txt = this.repairertextBox.Text.Trim();
             string repair_date_txt = this.repair_datetextBox.Text.Trim();
 
+            bool isNTF = false;
+
             if (repair_resultcomboBox.Text.Contains("NTF"))
             {
+                isNTF = true;
+
                 mbfa1rich_txt = "NTF";
                 software_update_txt = "NTF";
                 not_good_place_txt = "NTF";
@@ -497,8 +501,21 @@ namespace SaledServices
                 material_71pn_txt = "NTF";
                 material_type_txt = "NTF";
                 fault_type_txt = "NTF";
-                action_txt= "NTF";
+                action_txt = "NTF";
             }
+            else //“非NTF状态
+            {
+                isNTF = false;
+                if (fault_describetextBox.Text.Trim() == ""
+                    || not_good_placetextBox.Text.Trim() == ""
+                    || fault_typecomboBox.Text.Trim() == ""
+                    || actioncomboBox.Text.Trim() == "")
+                {
+                    MessageBox.Show("必须输入的框中有空值!");
+                    return;
+                }
+            }
+
 
             try
             {
@@ -589,9 +606,40 @@ namespace SaledServices
                 this.repairertextBox.Text = "";
                 this.repair_datetextBox.Text = "";
 
-              
-            }
+                if (isNTF)//非NTF复位
+                {
+                    this.software_updatecomboBox.Enabled = true;
+                    this.not_good_placetextBox.Enabled = true;
+                    this.material_mpntextBox.Enabled = true;
+                    this.fault_typecomboBox.Enabled = true;
+                    this.actioncomboBox.Enabled = true;
+                    this.mbfa1richTextBox.Enabled = true;
+                    this.fault_describetextBox.Enabled = true;
 
+                    this.checkBox1.Enabled = true;
+                    this.checkBox2.Enabled = true;
+                    this.checkBox3.Enabled = true;
+                    this.checkBox4.Enabled = true;
+                    this.checkBox5.Enabled = true;
+                    this.checkBox6.Enabled = true;
+                    this.checkBox7.Enabled = true;
+                    this.checkBox8.Enabled = true;
+                    this.checkBox9.Enabled = true;
+                    this.checkBox10.Enabled = true;
+                    this.checkBox11.Enabled = true;
+                    this.checkBox12.Enabled = true;
+                    this.checkBox13.Enabled = true;
+                    this.checkBox14.Enabled = true;
+                    this.checkBox15.Enabled = true;
+                    this.checkBox16.Enabled = true;
+                    this.checkBox17.Enabled = true;
+                    this.checkBox18.Enabled = true;
+                    this.textBox1.Enabled = true;
+                }
+
+                this.track_serial_noTextBox.Focus();
+                query_Click(null, null);
+            }
         }
 
         private void query_Click(object sender, EventArgs e)
@@ -611,7 +659,6 @@ namespace SaledServices
                 sda.Fill(ds, "repair_record_table");
                 dataGridView1.DataSource = ds.Tables[0];
                 dataGridView1.RowHeadersVisible = false;
-
             }
             catch (Exception ex)
             {
@@ -622,7 +669,7 @@ namespace SaledServices
                              "收货日期","MB描述","MB简称","客户序号","厂商序号","MPN",
                              "MB生产日期","客户故障","故障原因","mbfa1","短路电压","软体更新",
                              "不良位置","材料MPN","材料71PN","材料类别","故障类别", "动作",
-                             "BGAPN","BGA位置","BGA简述","ECO","修复结果","维修人", "修复日期"};
+                             "ECO","修复结果","维修人", "修复日期"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -639,8 +686,7 @@ namespace SaledServices
                 this.fault_typecomboBox.Enabled = false;
                 this.actioncomboBox.Enabled = false;
                 this.mbfa1richTextBox.Enabled = false;
-                this.fault_describetextBox.Enabled = false;
-             
+                this.fault_describetextBox.Enabled = false;             
 
                 this.checkBox1.Enabled = false;
                 this.checkBox2.Enabled = false;
@@ -670,8 +716,7 @@ namespace SaledServices
                 this.fault_typecomboBox.Enabled = true;
                 this.actioncomboBox.Enabled = true;
                 this.mbfa1richTextBox.Enabled = true;
-                this.fault_describetextBox.Enabled = true;
-              
+                this.fault_describetextBox.Enabled = true;              
 
                 this.checkBox1.Enabled = true;
                 this.checkBox2.Enabled = true;
@@ -692,9 +737,10 @@ namespace SaledServices
                 this.checkBox17.Enabled = true;
                 this.checkBox18.Enabled = true;
                 this.textBox1.Enabled = true;
-            }
 
-          
+                this.software_updatecomboBox.Focus();
+                this.software_updatecomboBox.SelectAll();
+            }          
         }
     }
 }

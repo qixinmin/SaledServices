@@ -61,7 +61,7 @@ namespace SaledServices.Test_Outlook
                     while (querySdr.Read())
                     {
                         track_serial_no = querySdr[0].ToString();
-                        product = querySdr[1].ToString();
+                       
                     }
                     querySdr.Close();
 

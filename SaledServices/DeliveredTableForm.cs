@@ -407,11 +407,11 @@ namespace SaledServices
 
                         if (overdays >= 0)
                         {
-                            this.guaranteeComboBox.Text = "过保";
+                            this.guaranteeComboBox.Text = "保外";
                             this.guaranteeComboBox.Enabled = false;
                             this.customResponsibilityComboBox.Text = "过保";
                             this.customResponsibilityComboBox.Enabled = false;
-                            MessageBox.Show((overdays) + " fail");
+                            MessageBox.Show((overdays) + " 天超过， 已经过保!");
                         }
                         else
                         {
@@ -881,6 +881,8 @@ namespace SaledServices
                 if (length != 0 && this.uuidTextBox.Text.Length != 32)
                 {
                     MessageBox.Show("UUID中的长度不是32位，请检查！");
+                    uuidTextBox.Focus();
+                    uuidTextBox.SelectAll();
                     return;
                 }
                 else if (length == 0)

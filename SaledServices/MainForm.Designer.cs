@@ -48,7 +48,6 @@
             this.维修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vGA维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测试ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测试1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测试2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +67,7 @@
             this.厂商信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bGA维修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +79,7 @@
             this.FunctionMenuItem,
             this.receiveReturnStoreMenuItem,
             this.维修ToolStripMenuItem,
+            this.bGA维修ToolStripMenuItem,
             this.测试ToolStripMenuItem,
             this.外观ToolStripMenuItem,
             this.库存管理ToolStripMenuItem,
@@ -225,8 +226,7 @@
             // 
             this.维修ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.维修界面ToolStripMenuItem,
-            this.bGAToolStripMenuItem,
-            this.vGA维修界面ToolStripMenuItem});
+            this.bGAToolStripMenuItem});
             this.维修ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.维修ToolStripMenuItem.Name = "维修ToolStripMenuItem";
             this.维修ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -245,13 +245,6 @@
             this.bGAToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
             this.bGAToolStripMenuItem.Text = "BGA待修输入界面";
             this.bGAToolStripMenuItem.Click += new System.EventHandler(this.bGAToolStripMenuItem_Click);
-            // 
-            // vGA维修界面ToolStripMenuItem
-            // 
-            this.vGA维修界面ToolStripMenuItem.Name = "vGA维修界面ToolStripMenuItem";
-            this.vGA维修界面ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
-            this.vGA维修界面ToolStripMenuItem.Text = "BGA维修界面";
-            this.vGA维修界面ToolStripMenuItem.Click += new System.EventHandler(this.vGA维修界面ToolStripMenuItem_Click);
             // 
             // 测试ToolStripMenuItem
             // 
@@ -404,6 +397,14 @@
             this.报表1ToolStripMenuItem.Text = "RMA欠货表";
             this.报表1ToolStripMenuItem.Click += new System.EventHandler(this.报表1ToolStripMenuItem_Click);
             // 
+            // bGA维修ToolStripMenuItem
+            // 
+            this.bGA维修ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
+            this.bGA维修ToolStripMenuItem.Name = "bGA维修ToolStripMenuItem";
+            this.bGA维修ToolStripMenuItem.Size = new System.Drawing.Size(106, 31);
+            this.bGA维修ToolStripMenuItem.Text = "BGA维修";
+            this.bGA维修ToolStripMenuItem.Click += new System.EventHandler(this.bGA维修ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -448,7 +449,6 @@
         private System.Windows.Forms.ToolStripMenuItem 维修ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 维修界面ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 维修故障类别ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem vGA维修界面ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 测试ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 测试1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 测试2ToolStripMenuItem;
@@ -466,6 +466,7 @@
         private System.Windows.Forms.ToolStripMenuItem dPKToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 故障代码表查看ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bGAToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bGA维修ToolStripMenuItem;
     }
 }
 

@@ -35,11 +35,11 @@
             this.testerTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.testdatetextBox = new System.Windows.Forms.TextBox();
-            this.confirmbutton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cpuTypetextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cpuFreqtextBox = new System.Windows.Forms.TextBox();
+            this.confirmbutton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.keyidtextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -131,16 +131,6 @@
             this.testdatetextBox.Size = new System.Drawing.Size(72, 21);
             this.testdatetextBox.TabIndex = 1;
             // 
-            // confirmbutton
-            // 
-            this.confirmbutton.Location = new System.Drawing.Point(393, 133);
-            this.confirmbutton.Name = "confirmbutton";
-            this.confirmbutton.Size = new System.Drawing.Size(73, 23);
-            this.confirmbutton.TabIndex = 1;
-            this.confirmbutton.Text = "确认OK";
-            this.confirmbutton.UseVisualStyleBackColor = true;
-            this.confirmbutton.Click += new System.EventHandler(this.confirmbutton_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -174,6 +164,16 @@
             this.cpuFreqtextBox.ReadOnly = true;
             this.cpuFreqtextBox.Size = new System.Drawing.Size(72, 21);
             this.cpuFreqtextBox.TabIndex = 1;
+            // 
+            // confirmbutton
+            // 
+            this.confirmbutton.Location = new System.Drawing.Point(393, 133);
+            this.confirmbutton.Name = "confirmbutton";
+            this.confirmbutton.Size = new System.Drawing.Size(73, 23);
+            this.confirmbutton.TabIndex = 1;
+            this.confirmbutton.Text = "确认OK";
+            this.confirmbutton.UseVisualStyleBackColor = true;
+            this.confirmbutton.Click += new System.EventHandler(this.confirmbutton_Click);
             // 
             // label6
             // 
@@ -213,7 +213,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 356);
+            this.ClientSize = new System.Drawing.Size(661, 423);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Test1Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

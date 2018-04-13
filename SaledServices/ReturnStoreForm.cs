@@ -306,6 +306,11 @@ namespace SaledServices
             if (checkIsNull())
             {
                 MessageBox.Show("输入的内容为空, 请检查！");
+
+                if (this.inputMpnTextBox.Text.Trim() != this.mpnTextBox.Text.Trim())
+                {
+ 
+                }
                 return;
             }
             try
@@ -409,9 +414,9 @@ namespace SaledServices
                 || this.replace_custom_materialNotextBox.Text.Trim() == ""
                 || this.track_serial_noTextBox.Text.Trim() == ""
                 || this.custom_serial_noTextBox.Text.Trim() == ""
-
+                || this.statusComboBox.Text.Trim() == ""
                 || this.dpkpnTextBox.Text.Trim() == ""
-
+                || this.inputMpnTextBox.Text.Trim() == ""
                 || this.vendor_serail_noTextBox.Text.Trim() == ""
                 || this.mpnTextBox.Text.Trim() == ""
                 || this.storehouseTextBox.Text.Trim() == ""

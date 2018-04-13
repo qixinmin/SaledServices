@@ -316,21 +316,7 @@ namespace SaledServices
             allForm.Add(rftf);
         }
 
-        private BGARepairOperationForm vgaRof;
-        private void vGA维修界面ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (vgaRof == null || vgaRof.IsDisposed)
-            {
-                vgaRof = new BGARepairOperationForm();
-                vgaRof.MdiParent = this;
-            }
-
-            vgaRof.WindowState = FormWindowState.Maximized;
-            vgaRof.BringToFront();
-            vgaRof.Show();
-
-            allForm.Add(vgaRof);
-        }
+       
 
         private Test_Outlook.Test1Form test1form;
         private void 测试1ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -534,6 +520,22 @@ namespace SaledServices
             repairFaultTypef.Show();
 
             allForm.Add(repairFaultTypef);
+        }
+
+        private BGARepairOperationForm vgaRof;
+        private void bGA维修ToolStripMenuItem_Click(object sender, EventArgs e)
+        {             
+            if (vgaRof == null || vgaRof.IsDisposed)
+            {
+                vgaRof = new BGARepairOperationForm();
+                vgaRof.MdiParent = this;
+            }
+
+            vgaRof.WindowState = FormWindowState.Maximized;
+            vgaRof.BringToFront();
+            vgaRof.Show();
+
+            allForm.Add(vgaRof);        
         }
     }
 }

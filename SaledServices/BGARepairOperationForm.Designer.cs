@@ -39,10 +39,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.BGA_placetextBox = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.vendorTextBox = new System.Windows.Forms.TextBox();
@@ -52,8 +48,6 @@
             this.receivedatetextBox = new System.Windows.Forms.TextBox();
             this.repair_datetextBox = new System.Windows.Forms.TextBox();
             this.repairertextBox = new System.Windows.Forms.TextBox();
-            this.bga_brieftextBox = new System.Windows.Forms.TextBox();
-            this.BGAPNtextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.mb_brieftextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -77,16 +71,22 @@
             this.bgarepairDatetextBox = new System.Windows.Forms.TextBox();
             this.shortcutlabel = new System.Windows.Forms.Label();
             this.mbfa1label = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.bga_brieftextBox = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.BGA_placetextBox = new System.Windows.Forms.TextBox();
+            this.BGAPNtextBox = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.bgatypetextBox = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.countNumtextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.add = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label18 = new System.Windows.Forms.Label();
-            this.bgatypetextBox = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.countNumtextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -268,45 +268,6 @@
             this.label6.TabIndex = 6;
             this.label6.Text = "收货日期";
             // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(811, 257);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(64, 16);
-            this.label24.TabIndex = 33;
-            this.label24.Text = "BGA类型";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(811, 380);
-            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(64, 16);
-            this.label25.TabIndex = 34;
-            this.label25.Text = "BGA位置";
-            // 
-            // BGA_placetextBox
-            // 
-            this.BGA_placetextBox.Location = new System.Drawing.Point(948, 384);
-            this.BGA_placetextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.BGA_placetextBox.Name = "BGA_placetextBox";
-            this.BGA_placetextBox.ReadOnly = true;
-            this.BGA_placetextBox.Size = new System.Drawing.Size(197, 26);
-            this.BGA_placetextBox.TabIndex = 35;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(811, 440);
-            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(64, 16);
-            this.label26.TabIndex = 36;
-            this.label26.Text = "BGA简述";
-            // 
             // label29
             // 
             this.label29.AutoSize = true;
@@ -389,24 +350,6 @@
             this.repairertextBox.ReadOnly = true;
             this.repairertextBox.Size = new System.Drawing.Size(197, 26);
             this.repairertextBox.TabIndex = 43;
-            // 
-            // bga_brieftextBox
-            // 
-            this.bga_brieftextBox.Location = new System.Drawing.Point(948, 444);
-            this.bga_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.bga_brieftextBox.Name = "bga_brieftextBox";
-            this.bga_brieftextBox.ReadOnly = true;
-            this.bga_brieftextBox.Size = new System.Drawing.Size(197, 26);
-            this.bga_brieftextBox.TabIndex = 43;
-            // 
-            // BGAPNtextBox
-            // 
-            this.BGAPNtextBox.Location = new System.Drawing.Point(948, 324);
-            this.BGAPNtextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.BGAPNtextBox.Name = "BGAPNtextBox";
-            this.BGAPNtextBox.ReadOnly = true;
-            this.BGAPNtextBox.Size = new System.Drawing.Size(197, 26);
-            this.BGAPNtextBox.TabIndex = 43;
             // 
             // label8
             // 
@@ -633,6 +576,101 @@
             this.mbfa1label.TabIndex = 45;
             this.mbfa1label.Text = "t";
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(811, 440);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(64, 16);
+            this.label26.TabIndex = 36;
+            this.label26.Text = "BGA简述";
+            // 
+            // bga_brieftextBox
+            // 
+            this.bga_brieftextBox.Location = new System.Drawing.Point(948, 444);
+            this.bga_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.bga_brieftextBox.Name = "bga_brieftextBox";
+            this.bga_brieftextBox.ReadOnly = true;
+            this.bga_brieftextBox.Size = new System.Drawing.Size(197, 26);
+            this.bga_brieftextBox.TabIndex = 43;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(811, 380);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(64, 16);
+            this.label25.TabIndex = 34;
+            this.label25.Text = "BGA位置";
+            // 
+            // BGA_placetextBox
+            // 
+            this.BGA_placetextBox.Location = new System.Drawing.Point(948, 384);
+            this.BGA_placetextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.BGA_placetextBox.Name = "BGA_placetextBox";
+            this.BGA_placetextBox.ReadOnly = true;
+            this.BGA_placetextBox.Size = new System.Drawing.Size(197, 26);
+            this.BGA_placetextBox.TabIndex = 35;
+            // 
+            // BGAPNtextBox
+            // 
+            this.BGAPNtextBox.Location = new System.Drawing.Point(948, 324);
+            this.BGAPNtextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.BGAPNtextBox.Name = "BGAPNtextBox";
+            this.BGAPNtextBox.ReadOnly = true;
+            this.BGAPNtextBox.Size = new System.Drawing.Size(197, 26);
+            this.BGAPNtextBox.TabIndex = 43;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(811, 257);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(64, 16);
+            this.label24.TabIndex = 33;
+            this.label24.Text = "BGA类型";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(811, 320);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(48, 16);
+            this.label18.TabIndex = 33;
+            this.label18.Text = "BGAPN";
+            // 
+            // bgatypetextBox
+            // 
+            this.bgatypetextBox.Location = new System.Drawing.Point(948, 261);
+            this.bgatypetextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.bgatypetextBox.Name = "bgatypetextBox";
+            this.bgatypetextBox.ReadOnly = true;
+            this.bgatypetextBox.Size = new System.Drawing.Size(197, 26);
+            this.bgatypetextBox.TabIndex = 43;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 560);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(104, 16);
+            this.label19.TabIndex = 12;
+            this.label19.Text = "板子维修次数";
+            // 
+            // countNumtextBox
+            // 
+            this.countNumtextBox.Location = new System.Drawing.Point(197, 564);
+            this.countNumtextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.countNumtextBox.Name = "countNumtextBox";
+            this.countNumtextBox.ReadOnly = true;
+            this.countNumtextBox.Size = new System.Drawing.Size(191, 26);
+            this.countNumtextBox.TabIndex = 43;
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 4;
@@ -716,44 +754,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1216, 267);
             this.dataGridView1.TabIndex = 4;
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(811, 320);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(48, 16);
-            this.label18.TabIndex = 33;
-            this.label18.Text = "BGAPN";
-            // 
-            // bgatypetextBox
-            // 
-            this.bgatypetextBox.Location = new System.Drawing.Point(948, 261);
-            this.bgatypetextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.bgatypetextBox.Name = "bgatypetextBox";
-            this.bgatypetextBox.ReadOnly = true;
-            this.bgatypetextBox.Size = new System.Drawing.Size(197, 26);
-            this.bgatypetextBox.TabIndex = 43;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(6, 560);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(104, 16);
-            this.label19.TabIndex = 12;
-            this.label19.Text = "板子维修次数";
-            // 
-            // countNumtextBox
-            // 
-            this.countNumtextBox.Location = new System.Drawing.Point(197, 564);
-            this.countNumtextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.countNumtextBox.Name = "countNumtextBox";
-            this.countNumtextBox.ReadOnly = true;
-            this.countNumtextBox.Size = new System.Drawing.Size(191, 26);
-            this.countNumtextBox.TabIndex = 43;
-            // 
             // BGARepairOperationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -764,7 +764,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BGARepairOperationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "维修界面";
+            this.Text = "BGA维修界面";
             this.Load += new System.EventHandler(this.RepairOperationForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
