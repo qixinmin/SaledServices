@@ -33,3 +33,7 @@ D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlo
 D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.TestAllForm.resources
 D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.BGAInfoInputForm.resources
 D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.LCFC_MBBOMForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.COMPAL_MBBOMForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.LCFC71BOMForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.DPKForm.resources
+D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.RepairFaultTypeForm.resources

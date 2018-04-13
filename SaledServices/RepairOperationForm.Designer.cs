@@ -41,14 +41,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
             this.vendorTextBox = new System.Windows.Forms.TextBox();
             this.producttextBox = new System.Windows.Forms.TextBox();
             this.sourcetextBox = new System.Windows.Forms.TextBox();
@@ -57,10 +52,6 @@
             this.mb_describetextBox = new System.Windows.Forms.TextBox();
             this.mb_brieftextBox = new System.Windows.Forms.TextBox();
             this.custom_serial_notextBox = new System.Windows.Forms.TextBox();
-            this.vendor_serail_notextBox = new System.Windows.Forms.TextBox();
-            this.mpntextBox = new System.Windows.Forms.TextBox();
-            this.repair_datetextBox = new System.Windows.Forms.TextBox();
-            this.repairertextBox = new System.Windows.Forms.TextBox();
             this.fault_describetextBox = new System.Windows.Forms.TextBox();
             this.customFaulttextBox = new System.Windows.Forms.TextBox();
             this.mb_make_dateTextBox = new System.Windows.Forms.TextBox();
@@ -78,10 +69,20 @@
             this.fault_typecomboBox = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.actioncomboBox = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.mbfa1richTextBox = new System.Windows.Forms.RichTextBox();
             this.repair_resultcomboBox = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.ECOtextBox = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.repairertextBox = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.repair_datetextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.vendor_serail_notextBox = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.mpntextBox = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.mbfa1richTextBox = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.add = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -110,7 +111,6 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.ECOtextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -318,26 +318,6 @@
             this.label9.TabIndex = 9;
             this.label9.Text = "客户序号";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(811, 278);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(72, 16);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "厂商序号";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(811, 324);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(32, 16);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "MPN";
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -367,36 +347,6 @@
             this.label14.Size = new System.Drawing.Size(72, 16);
             this.label14.TabIndex = 14;
             this.label14.Text = "故障原因";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(811, 140);
-            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(32, 16);
-            this.label27.TabIndex = 37;
-            this.label27.Text = "ECO";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(811, 186);
-            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(56, 16);
-            this.label29.TabIndex = 40;
-            this.label29.Text = "维修人";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(811, 232);
-            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(72, 16);
-            this.label30.TabIndex = 41;
-            this.label30.Text = "维修日期";
             // 
             // vendorTextBox
             // 
@@ -469,44 +419,6 @@
             this.custom_serial_notextBox.ReadOnly = true;
             this.custom_serial_notextBox.Size = new System.Drawing.Size(191, 26);
             this.custom_serial_notextBox.TabIndex = 43;
-            // 
-            // vendor_serail_notextBox
-            // 
-            this.vendor_serail_notextBox.Location = new System.Drawing.Point(1011, 282);
-            this.vendor_serail_notextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.vendor_serail_notextBox.Name = "vendor_serail_notextBox";
-            this.vendor_serail_notextBox.ReadOnly = true;
-            this.vendor_serail_notextBox.Size = new System.Drawing.Size(191, 26);
-            this.vendor_serail_notextBox.TabIndex = 43;
-            // 
-            // mpntextBox
-            // 
-            this.mpntextBox.Location = new System.Drawing.Point(1011, 328);
-            this.mpntextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mpntextBox.Name = "mpntextBox";
-            this.mpntextBox.ReadOnly = true;
-            this.mpntextBox.Size = new System.Drawing.Size(191, 26);
-            this.mpntextBox.TabIndex = 43;
-            // 
-            // repair_datetextBox
-            // 
-            this.repair_datetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.repair_datetextBox.Location = new System.Drawing.Point(1011, 236);
-            this.repair_datetextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.repair_datetextBox.Name = "repair_datetextBox";
-            this.repair_datetextBox.ReadOnly = true;
-            this.repair_datetextBox.Size = new System.Drawing.Size(197, 26);
-            this.repair_datetextBox.TabIndex = 43;
-            // 
-            // repairertextBox
-            // 
-            this.repairertextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.repairertextBox.Location = new System.Drawing.Point(1011, 190);
-            this.repairertextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.repairertextBox.Name = "repairertextBox";
-            this.repairertextBox.ReadOnly = true;
-            this.repairertextBox.Size = new System.Drawing.Size(197, 26);
-            this.repairertextBox.TabIndex = 43;
             // 
             // fault_describetextBox
             // 
@@ -675,16 +587,6 @@
             this.actioncomboBox.Size = new System.Drawing.Size(202, 24);
             this.actioncomboBox.TabIndex = 32;
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(409, 370);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(56, 16);
-            this.label15.TabIndex = 15;
-            this.label15.Text = "FA分析";
-            // 
             // label28
             // 
             this.label28.AutoSize = true;
@@ -694,15 +596,6 @@
             this.label28.Size = new System.Drawing.Size(72, 16);
             this.label28.TabIndex = 38;
             this.label28.Text = "修复结果";
-            // 
-            // mbfa1richTextBox
-            // 
-            this.mbfa1richTextBox.Location = new System.Drawing.Point(610, 374);
-            this.mbfa1richTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mbfa1richTextBox.Name = "mbfa1richTextBox";
-            this.mbfa1richTextBox.Size = new System.Drawing.Size(191, 36);
-            this.mbfa1richTextBox.TabIndex = 44;
-            this.mbfa1richTextBox.Text = "";
             // 
             // repair_resultcomboBox
             // 
@@ -717,6 +610,123 @@
             this.repair_resultcomboBox.Size = new System.Drawing.Size(202, 24);
             this.repair_resultcomboBox.TabIndex = 39;
             this.repair_resultcomboBox.SelectedValueChanged += new System.EventHandler(this.repair_resultcomboBox_SelectedValueChanged);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(811, 140);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(32, 16);
+            this.label27.TabIndex = 37;
+            this.label27.Text = "ECO";
+            // 
+            // ECOtextBox
+            // 
+            this.ECOtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ECOtextBox.Location = new System.Drawing.Point(1011, 144);
+            this.ECOtextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.ECOtextBox.Name = "ECOtextBox";
+            this.ECOtextBox.ReadOnly = true;
+            this.ECOtextBox.Size = new System.Drawing.Size(197, 26);
+            this.ECOtextBox.TabIndex = 43;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(811, 186);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(56, 16);
+            this.label29.TabIndex = 40;
+            this.label29.Text = "维修人";
+            // 
+            // repairertextBox
+            // 
+            this.repairertextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.repairertextBox.Location = new System.Drawing.Point(1011, 190);
+            this.repairertextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.repairertextBox.Name = "repairertextBox";
+            this.repairertextBox.ReadOnly = true;
+            this.repairertextBox.Size = new System.Drawing.Size(197, 26);
+            this.repairertextBox.TabIndex = 43;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(811, 232);
+            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(72, 16);
+            this.label30.TabIndex = 41;
+            this.label30.Text = "维修日期";
+            // 
+            // repair_datetextBox
+            // 
+            this.repair_datetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.repair_datetextBox.Location = new System.Drawing.Point(1011, 236);
+            this.repair_datetextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.repair_datetextBox.Name = "repair_datetextBox";
+            this.repair_datetextBox.ReadOnly = true;
+            this.repair_datetextBox.Size = new System.Drawing.Size(197, 26);
+            this.repair_datetextBox.TabIndex = 43;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(811, 278);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(72, 16);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "厂商序号";
+            // 
+            // vendor_serail_notextBox
+            // 
+            this.vendor_serail_notextBox.Location = new System.Drawing.Point(1011, 282);
+            this.vendor_serail_notextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.vendor_serail_notextBox.Name = "vendor_serail_notextBox";
+            this.vendor_serail_notextBox.ReadOnly = true;
+            this.vendor_serail_notextBox.Size = new System.Drawing.Size(191, 26);
+            this.vendor_serail_notextBox.TabIndex = 43;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(811, 324);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(32, 16);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "MPN";
+            // 
+            // mpntextBox
+            // 
+            this.mpntextBox.Location = new System.Drawing.Point(1011, 328);
+            this.mpntextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.mpntextBox.Name = "mpntextBox";
+            this.mpntextBox.ReadOnly = true;
+            this.mpntextBox.Size = new System.Drawing.Size(191, 26);
+            this.mpntextBox.TabIndex = 43;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(409, 370);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(56, 16);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "FA分析";
+            // 
+            // mbfa1richTextBox
+            // 
+            this.mbfa1richTextBox.Location = new System.Drawing.Point(610, 374);
+            this.mbfa1richTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.mbfa1richTextBox.Name = "mbfa1richTextBox";
+            this.mbfa1richTextBox.Size = new System.Drawing.Size(191, 36);
+            this.mbfa1richTextBox.TabIndex = 44;
+            this.mbfa1richTextBox.Text = "";
             // 
             // tableLayoutPanel3
             // 
@@ -1058,16 +1068,6 @@
             this.checkBox1.TabIndex = 0;
             this.checkBox1.Text = "+5VALW前短";
             this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // ECOtextBox
-            // 
-            this.ECOtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ECOtextBox.Location = new System.Drawing.Point(1011, 144);
-            this.ECOtextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.ECOtextBox.Name = "ECOtextBox";
-            this.ECOtextBox.ReadOnly = true;
-            this.ECOtextBox.Size = new System.Drawing.Size(197, 26);
-            this.ECOtextBox.TabIndex = 43;
             // 
             // RepairOperationForm
             // 

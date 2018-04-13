@@ -1,6 +1,6 @@
 ﻿namespace SaledServices
 {
-    partial class LCFC_MBBOMForm
+    partial class COMPAL_MBBOMForm
     {
         /// <summary>
         /// Required designer variable.
@@ -576,7 +576,7 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1400, 45);
             this.tableLayoutPanel2.TabIndex = 9;
             // 
-            // LCFC_MBBOMForm
+            // COMPAL_MBBOMForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -585,8 +585,8 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("SimSun", 12F);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "LCFC_MBBOMForm";
-            this.Text = "LCFC BOM表";
+            this.Name = "COMPAL_MBBOMForm";
+            this.Text = "COMPAL BOM表";
             this.Load += new System.EventHandler(this.ReceiveOrderForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);

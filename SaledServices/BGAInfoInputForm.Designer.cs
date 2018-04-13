@@ -41,18 +41,42 @@
             this.VGA = new System.Windows.Forms.RadioButton();
             this.label31 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ECOtextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.track_serial_noTextBox = new System.Windows.Forms.TextBox();
+            this.vendor_serail_notextBox = new System.Windows.Forms.TextBox();
+            this.custom_serial_notextBox = new System.Windows.Forms.TextBox();
+            this.mb_brieftextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.receivedatetextBox = new System.Windows.Forms.TextBox();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.repair_datetextBox = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.repairertextBox = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.mpntextBox = new System.Windows.Forms.TextBox();
+            this.ordernotextBox = new System.Windows.Forms.TextBox();
+            this.sourcetextBox = new System.Windows.Forms.TextBox();
+            this.producttextBox = new System.Windows.Forms.TextBox();
+            this.vendorTextBox = new System.Windows.Forms.TextBox();
             this.mbfa1richTextBox = new System.Windows.Forms.RichTextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.mb_describetextBox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.mb_make_dateTextBox = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.mpntextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.customFaulttextBox = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.repair_datetextBox = new System.Windows.Forms.TextBox();
+            this.repairertextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -82,30 +106,6 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.vendorTextBox = new System.Windows.Forms.TextBox();
-            this.producttextBox = new System.Windows.Forms.TextBox();
-            this.sourcetextBox = new System.Windows.Forms.TextBox();
-            this.ordernotextBox = new System.Windows.Forms.TextBox();
-            this.receivedatetextBox = new System.Windows.Forms.TextBox();
-            this.mb_describetextBox = new System.Windows.Forms.TextBox();
-            this.mb_brieftextBox = new System.Windows.Forms.TextBox();
-            this.custom_serial_notextBox = new System.Windows.Forms.TextBox();
-            this.vendor_serail_notextBox = new System.Windows.Forms.TextBox();
-            this.ECOtextBox = new System.Windows.Forms.TextBox();
-            this.mb_make_dateTextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.customFaulttextBox = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -305,6 +305,106 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1013, 444);
             this.tableLayoutPanel1.TabIndex = 54;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(247, 223);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(72, 16);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "厂商序号";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(247, 120);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 16);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "MB简称";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(247, 91);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(56, 16);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "MB描述";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 296);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(72, 16);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "收货日期";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(551, 120);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(32, 16);
+            this.label27.TabIndex = 37;
+            this.label27.Text = "ECO";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 223);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(72, 16);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "订单编号";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 150);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 16);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "来源";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 120);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(56, 16);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "客户别";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 91);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 16);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "厂商";
+            // 
+            // ECOtextBox
+            // 
+            this.ECOtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ECOtextBox.Location = new System.Drawing.Point(678, 124);
+            this.ECOtextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.ECOtextBox.Name = "ECOtextBox";
+            this.ECOtextBox.ReadOnly = true;
+            this.ECOtextBox.Size = new System.Drawing.Size(329, 26);
+            this.ECOtextBox.TabIndex = 43;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -325,6 +425,36 @@
             this.track_serial_noTextBox.TabIndex = 55;
             this.track_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.track_serial_noTextBox_KeyPress);
             // 
+            // vendor_serail_notextBox
+            // 
+            this.vendor_serail_notextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vendor_serail_notextBox.Location = new System.Drawing.Point(354, 227);
+            this.vendor_serail_notextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.vendor_serail_notextBox.Name = "vendor_serail_notextBox";
+            this.vendor_serail_notextBox.ReadOnly = true;
+            this.vendor_serail_notextBox.Size = new System.Drawing.Size(187, 26);
+            this.vendor_serail_notextBox.TabIndex = 43;
+            // 
+            // custom_serial_notextBox
+            // 
+            this.custom_serial_notextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.custom_serial_notextBox.Location = new System.Drawing.Point(354, 154);
+            this.custom_serial_notextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.custom_serial_notextBox.Name = "custom_serial_notextBox";
+            this.custom_serial_notextBox.ReadOnly = true;
+            this.custom_serial_notextBox.Size = new System.Drawing.Size(187, 26);
+            this.custom_serial_notextBox.TabIndex = 43;
+            // 
+            // mb_brieftextBox
+            // 
+            this.mb_brieftextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mb_brieftextBox.Location = new System.Drawing.Point(354, 124);
+            this.mb_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.mb_brieftextBox.Name = "mb_brieftextBox";
+            this.mb_brieftextBox.ReadOnly = true;
+            this.mb_brieftextBox.Size = new System.Drawing.Size(187, 26);
+            this.mb_brieftextBox.TabIndex = 43;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -334,6 +464,16 @@
             this.label2.Size = new System.Drawing.Size(40, 16);
             this.label2.TabIndex = 60;
             this.label2.Text = "状态";
+            // 
+            // receivedatetextBox
+            // 
+            this.receivedatetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.receivedatetextBox.Location = new System.Drawing.Point(101, 300);
+            this.receivedatetextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.receivedatetextBox.Name = "receivedatetextBox";
+            this.receivedatetextBox.ReadOnly = true;
+            this.receivedatetextBox.Size = new System.Drawing.Size(136, 26);
+            this.receivedatetextBox.TabIndex = 43;
             // 
             // statusComboBox
             // 
@@ -348,45 +488,105 @@
             this.statusComboBox.Size = new System.Drawing.Size(138, 24);
             this.statusComboBox.TabIndex = 62;
             // 
-            // label30
+            // ordernotextBox
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(553, 296);
-            this.label30.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(72, 16);
-            this.label30.TabIndex = 57;
-            this.label30.Text = "录入日期";
+            this.ordernotextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ordernotextBox.Location = new System.Drawing.Point(101, 227);
+            this.ordernotextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.ordernotextBox.Name = "ordernotextBox";
+            this.ordernotextBox.ReadOnly = true;
+            this.ordernotextBox.Size = new System.Drawing.Size(136, 26);
+            this.ordernotextBox.TabIndex = 43;
             // 
-            // repair_datetextBox
+            // sourcetextBox
             // 
-            this.repair_datetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.repair_datetextBox.Location = new System.Drawing.Point(680, 302);
-            this.repair_datetextBox.Margin = new System.Windows.Forms.Padding(6);
-            this.repair_datetextBox.Name = "repair_datetextBox";
-            this.repair_datetextBox.ReadOnly = true;
-            this.repair_datetextBox.Size = new System.Drawing.Size(325, 26);
-            this.repair_datetextBox.TabIndex = 59;
+            this.sourcetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sourcetextBox.Location = new System.Drawing.Point(101, 154);
+            this.sourcetextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.sourcetextBox.Name = "sourcetextBox";
+            this.sourcetextBox.ReadOnly = true;
+            this.sourcetextBox.Size = new System.Drawing.Size(136, 26);
+            this.sourcetextBox.TabIndex = 43;
             // 
-            // label29
+            // producttextBox
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(553, 223);
-            this.label29.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(88, 16);
-            this.label29.TabIndex = 56;
-            this.label29.Text = "信息录入人";
+            this.producttextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.producttextBox.Location = new System.Drawing.Point(101, 124);
+            this.producttextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.producttextBox.Name = "producttextBox";
+            this.producttextBox.ReadOnly = true;
+            this.producttextBox.Size = new System.Drawing.Size(136, 26);
+            this.producttextBox.TabIndex = 43;
             // 
-            // repairertextBox
+            // vendorTextBox
             // 
-            this.repairertextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.repairertextBox.Location = new System.Drawing.Point(680, 229);
-            this.repairertextBox.Margin = new System.Windows.Forms.Padding(6);
-            this.repairertextBox.Name = "repairertextBox";
-            this.repairertextBox.ReadOnly = true;
-            this.repairertextBox.Size = new System.Drawing.Size(325, 26);
-            this.repairertextBox.TabIndex = 58;
+            this.vendorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vendorTextBox.Location = new System.Drawing.Point(101, 95);
+            this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.vendorTextBox.Name = "vendorTextBox";
+            this.vendorTextBox.ReadOnly = true;
+            this.vendorTextBox.Size = new System.Drawing.Size(136, 26);
+            this.vendorTextBox.TabIndex = 43;
+            // 
+            // mbfa1richTextBox
+            // 
+            this.mbfa1richTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mbfa1richTextBox.Location = new System.Drawing.Point(101, 373);
+            this.mbfa1richTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.mbfa1richTextBox.Name = "mbfa1richTextBox";
+            this.mbfa1richTextBox.Size = new System.Drawing.Size(136, 65);
+            this.mbfa1richTextBox.TabIndex = 64;
+            this.mbfa1richTextBox.Text = "";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 369);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(56, 16);
+            this.label15.TabIndex = 63;
+            this.label15.Text = "FA分析";
+            // 
+            // mb_describetextBox
+            // 
+            this.mb_describetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mb_describetextBox.Location = new System.Drawing.Point(354, 95);
+            this.mb_describetextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.mb_describetextBox.Name = "mb_describetextBox";
+            this.mb_describetextBox.ReadOnly = true;
+            this.mb_describetextBox.Size = new System.Drawing.Size(187, 26);
+            this.mb_describetextBox.TabIndex = 43;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(247, 150);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(72, 16);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "客户序号";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(247, 296);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(88, 16);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "MB生产日期";
+            // 
+            // mb_make_dateTextBox
+            // 
+            this.mb_make_dateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mb_make_dateTextBox.Location = new System.Drawing.Point(354, 300);
+            this.mb_make_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.mb_make_dateTextBox.Name = "mb_make_dateTextBox";
+            this.mb_make_dateTextBox.ReadOnly = true;
+            this.mb_make_dateTextBox.Size = new System.Drawing.Size(187, 26);
+            this.mb_make_dateTextBox.TabIndex = 43;
             // 
             // label11
             // 
@@ -408,25 +608,65 @@
             this.mpntextBox.Size = new System.Drawing.Size(329, 26);
             this.mpntextBox.TabIndex = 61;
             // 
-            // mbfa1richTextBox
+            // label3
             // 
-            this.mbfa1richTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mbfa1richTextBox.Location = new System.Drawing.Point(101, 373);
-            this.mbfa1richTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mbfa1richTextBox.Name = "mbfa1richTextBox";
-            this.mbfa1richTextBox.Size = new System.Drawing.Size(136, 65);
-            this.mbfa1richTextBox.TabIndex = 64;
-            this.mbfa1richTextBox.Text = "";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(551, 150);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 16);
+            this.label3.TabIndex = 56;
+            this.label3.Text = "客户故障";
             // 
-            // label15
+            // customFaulttextBox
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 369);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(56, 16);
-            this.label15.TabIndex = 63;
-            this.label15.Text = "FA分析";
+            this.customFaulttextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customFaulttextBox.Location = new System.Drawing.Point(678, 154);
+            this.customFaulttextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.customFaulttextBox.Name = "customFaulttextBox";
+            this.customFaulttextBox.ReadOnly = true;
+            this.customFaulttextBox.Size = new System.Drawing.Size(329, 26);
+            this.customFaulttextBox.TabIndex = 65;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(553, 223);
+            this.label29.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(88, 16);
+            this.label29.TabIndex = 56;
+            this.label29.Text = "信息录入人";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(553, 296);
+            this.label30.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(72, 16);
+            this.label30.TabIndex = 57;
+            this.label30.Text = "录入日期";
+            // 
+            // repair_datetextBox
+            // 
+            this.repair_datetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.repair_datetextBox.Location = new System.Drawing.Point(680, 302);
+            this.repair_datetextBox.Margin = new System.Windows.Forms.Padding(6);
+            this.repair_datetextBox.Name = "repair_datetextBox";
+            this.repair_datetextBox.ReadOnly = true;
+            this.repair_datetextBox.Size = new System.Drawing.Size(325, 26);
+            this.repair_datetextBox.TabIndex = 59;
+            // 
+            // repairertextBox
+            // 
+            this.repairertextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.repairertextBox.Location = new System.Drawing.Point(680, 229);
+            this.repairertextBox.Margin = new System.Windows.Forms.Padding(6);
+            this.repairertextBox.Name = "repairertextBox";
+            this.repairertextBox.ReadOnly = true;
+            this.repairertextBox.Size = new System.Drawing.Size(325, 26);
+            this.repairertextBox.TabIndex = 58;
             // 
             // tableLayoutPanel2
             // 
@@ -792,246 +1032,6 @@
             this.checkBox1.TabIndex = 0;
             this.checkBox1.Text = "+5VALW前短";
             this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 120);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 16);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "客户别";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 150);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 16);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "来源";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 223);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 16);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "订单编号";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 296);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 16);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "收货日期";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(247, 91);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 16);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "MB描述";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(247, 120);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 16);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "MB简称";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(247, 150);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 16);
-            this.label12.TabIndex = 9;
-            this.label12.Text = "客户序号";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(247, 223);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(72, 16);
-            this.label13.TabIndex = 10;
-            this.label13.Text = "厂商序号";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(247, 296);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(88, 16);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "MB生产日期";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(551, 120);
-            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(32, 16);
-            this.label27.TabIndex = 37;
-            this.label27.Text = "ECO";
-            // 
-            // vendorTextBox
-            // 
-            this.vendorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vendorTextBox.Location = new System.Drawing.Point(101, 95);
-            this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.vendorTextBox.Name = "vendorTextBox";
-            this.vendorTextBox.ReadOnly = true;
-            this.vendorTextBox.Size = new System.Drawing.Size(136, 26);
-            this.vendorTextBox.TabIndex = 43;
-            // 
-            // producttextBox
-            // 
-            this.producttextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.producttextBox.Location = new System.Drawing.Point(101, 124);
-            this.producttextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.producttextBox.Name = "producttextBox";
-            this.producttextBox.ReadOnly = true;
-            this.producttextBox.Size = new System.Drawing.Size(136, 26);
-            this.producttextBox.TabIndex = 43;
-            // 
-            // sourcetextBox
-            // 
-            this.sourcetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sourcetextBox.Location = new System.Drawing.Point(101, 154);
-            this.sourcetextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.sourcetextBox.Name = "sourcetextBox";
-            this.sourcetextBox.ReadOnly = true;
-            this.sourcetextBox.Size = new System.Drawing.Size(136, 26);
-            this.sourcetextBox.TabIndex = 43;
-            // 
-            // ordernotextBox
-            // 
-            this.ordernotextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ordernotextBox.Location = new System.Drawing.Point(101, 227);
-            this.ordernotextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.ordernotextBox.Name = "ordernotextBox";
-            this.ordernotextBox.ReadOnly = true;
-            this.ordernotextBox.Size = new System.Drawing.Size(136, 26);
-            this.ordernotextBox.TabIndex = 43;
-            // 
-            // receivedatetextBox
-            // 
-            this.receivedatetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.receivedatetextBox.Location = new System.Drawing.Point(101, 300);
-            this.receivedatetextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.receivedatetextBox.Name = "receivedatetextBox";
-            this.receivedatetextBox.ReadOnly = true;
-            this.receivedatetextBox.Size = new System.Drawing.Size(136, 26);
-            this.receivedatetextBox.TabIndex = 43;
-            // 
-            // mb_describetextBox
-            // 
-            this.mb_describetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mb_describetextBox.Location = new System.Drawing.Point(354, 95);
-            this.mb_describetextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mb_describetextBox.Name = "mb_describetextBox";
-            this.mb_describetextBox.ReadOnly = true;
-            this.mb_describetextBox.Size = new System.Drawing.Size(187, 26);
-            this.mb_describetextBox.TabIndex = 43;
-            // 
-            // mb_brieftextBox
-            // 
-            this.mb_brieftextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mb_brieftextBox.Location = new System.Drawing.Point(354, 124);
-            this.mb_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mb_brieftextBox.Name = "mb_brieftextBox";
-            this.mb_brieftextBox.ReadOnly = true;
-            this.mb_brieftextBox.Size = new System.Drawing.Size(187, 26);
-            this.mb_brieftextBox.TabIndex = 43;
-            // 
-            // custom_serial_notextBox
-            // 
-            this.custom_serial_notextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custom_serial_notextBox.Location = new System.Drawing.Point(354, 154);
-            this.custom_serial_notextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.custom_serial_notextBox.Name = "custom_serial_notextBox";
-            this.custom_serial_notextBox.ReadOnly = true;
-            this.custom_serial_notextBox.Size = new System.Drawing.Size(187, 26);
-            this.custom_serial_notextBox.TabIndex = 43;
-            // 
-            // vendor_serail_notextBox
-            // 
-            this.vendor_serail_notextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vendor_serail_notextBox.Location = new System.Drawing.Point(354, 227);
-            this.vendor_serail_notextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.vendor_serail_notextBox.Name = "vendor_serail_notextBox";
-            this.vendor_serail_notextBox.ReadOnly = true;
-            this.vendor_serail_notextBox.Size = new System.Drawing.Size(187, 26);
-            this.vendor_serail_notextBox.TabIndex = 43;
-            // 
-            // ECOtextBox
-            // 
-            this.ECOtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ECOtextBox.Location = new System.Drawing.Point(678, 124);
-            this.ECOtextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.ECOtextBox.Name = "ECOtextBox";
-            this.ECOtextBox.ReadOnly = true;
-            this.ECOtextBox.Size = new System.Drawing.Size(329, 26);
-            this.ECOtextBox.TabIndex = 43;
-            // 
-            // mb_make_dateTextBox
-            // 
-            this.mb_make_dateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mb_make_dateTextBox.Location = new System.Drawing.Point(354, 300);
-            this.mb_make_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mb_make_dateTextBox.Name = "mb_make_dateTextBox";
-            this.mb_make_dateTextBox.ReadOnly = true;
-            this.mb_make_dateTextBox.Size = new System.Drawing.Size(187, 26);
-            this.mb_make_dateTextBox.TabIndex = 43;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 91);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 16);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "厂商";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(551, 150);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 16);
-            this.label3.TabIndex = 56;
-            this.label3.Text = "客户故障";
-            // 
-            // customFaulttextBox
-            // 
-            this.customFaulttextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customFaulttextBox.Location = new System.Drawing.Point(678, 154);
-            this.customFaulttextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.customFaulttextBox.Name = "customFaulttextBox";
-            this.customFaulttextBox.ReadOnly = true;
-            this.customFaulttextBox.Size = new System.Drawing.Size(329, 26);
-            this.customFaulttextBox.TabIndex = 65;
             // 
             // BGAInfoInputForm
             // 

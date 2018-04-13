@@ -173,24 +173,28 @@
             this.cOMPALMBBOM查看ToolStripMenuItem.Name = "cOMPALMBBOM查看ToolStripMenuItem";
             this.cOMPALMBBOM查看ToolStripMenuItem.Size = new System.Drawing.Size(300, 32);
             this.cOMPALMBBOM查看ToolStripMenuItem.Text = "COMPAL_MBBOM查看";
+            this.cOMPALMBBOM查看ToolStripMenuItem.Click += new System.EventHandler(this.cOMPALMBBOM查看ToolStripMenuItem_Click);
             // 
             // lCFC71BOM表查看ToolStripMenuItem
             // 
             this.lCFC71BOM表查看ToolStripMenuItem.Name = "lCFC71BOM表查看ToolStripMenuItem";
             this.lCFC71BOM表查看ToolStripMenuItem.Size = new System.Drawing.Size(300, 32);
             this.lCFC71BOM表查看ToolStripMenuItem.Text = "LCFC71BOM表查看";
+            this.lCFC71BOM表查看ToolStripMenuItem.Click += new System.EventHandler(this.lCFC71BOM表查看ToolStripMenuItem_Click);
             // 
             // dPKToolStripMenuItem
             // 
             this.dPKToolStripMenuItem.Name = "dPKToolStripMenuItem";
             this.dPKToolStripMenuItem.Size = new System.Drawing.Size(300, 32);
             this.dPKToolStripMenuItem.Text = "DPK表查看";
+            this.dPKToolStripMenuItem.Click += new System.EventHandler(this.dPKToolStripMenuItem_Click);
             // 
             // 故障代码表查看ToolStripMenuItem
             // 
             this.故障代码表查看ToolStripMenuItem.Name = "故障代码表查看ToolStripMenuItem";
             this.故障代码表查看ToolStripMenuItem.Size = new System.Drawing.Size(300, 32);
             this.故障代码表查看ToolStripMenuItem.Text = "故障代码表查看";
+            this.故障代码表查看ToolStripMenuItem.Click += new System.EventHandler(this.故障代码表查看ToolStripMenuItem_Click);
             // 
             // receiveReturnStoreMenuItem
             // 
@@ -206,14 +210,14 @@
             // 收货ToolStripMenuItem
             // 
             this.收货ToolStripMenuItem.Name = "收货ToolStripMenuItem";
-            this.收货ToolStripMenuItem.Size = new System.Drawing.Size(152, 32);
+            this.收货ToolStripMenuItem.Size = new System.Drawing.Size(124, 32);
             this.收货ToolStripMenuItem.Text = "收货";
             this.收货ToolStripMenuItem.Click += new System.EventHandler(this.收货ToolStripMenuItem_Click);
             // 
             // returnStoreMenuItem
             // 
             this.returnStoreMenuItem.Name = "returnStoreMenuItem";
-            this.returnStoreMenuItem.Size = new System.Drawing.Size(152, 32);
+            this.returnStoreMenuItem.Size = new System.Drawing.Size(124, 32);
             this.returnStoreMenuItem.Text = "还货";
             this.returnStoreMenuItem.Click += new System.EventHandler(this.returnStoreMenuItem_Click);
             // 

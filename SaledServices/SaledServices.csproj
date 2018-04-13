@@ -255,6 +255,30 @@
     <Compile Include="ExcelImportForm.Designer.cs">
       <DependentUpon>ExcelImportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExcelInputCheck\RepairFaultTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelInputCheck\RepairFaultTypeForm.Designer.cs">
+      <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelInputCheck\DPKForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelInputCheck\DPKForm.Designer.cs">
+      <DependentUpon>DPKForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelInputCheck\LCFC71BOMForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelInputCheck\LCFC71BOMForm.Designer.cs">
+      <DependentUpon>LCFC71BOMForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelInputCheck\COMPAL_MBBOMForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcelInputCheck\COMPAL_MBBOMForm.Designer.cs">
+      <DependentUpon>COMPAL_MBBOMForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExcelInputCheck\LCFC_MBBOMForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -387,6 +411,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExcelImportForm.resx">
       <DependentUpon>ExcelImportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelInputCheck\RepairFaultTypeForm.resx">
+      <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelInputCheck\DPKForm.resx">
+      <DependentUpon>DPKForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelInputCheck\LCFC71BOMForm.resx">
+      <DependentUpon>LCFC71BOMForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelInputCheck\COMPAL_MBBOMForm.resx">
+      <DependentUpon>COMPAL_MBBOMForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExcelInputCheck\LCFC_MBBOMForm.resx">
       <DependentUpon>LCFC_MBBOMForm.cs</DependentUpon>

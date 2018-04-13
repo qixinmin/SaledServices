@@ -472,5 +472,68 @@ namespace SaledServices
 
             allForm.Add(lcfcf);
         }
+        private COMPAL_MBBOMForm compalf;
+        private void cOMPALMBBOM查看ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (compalf == null || compalf.IsDisposed)
+            {
+                compalf = new COMPAL_MBBOMForm();
+                compalf.MdiParent = this;
+            }
+
+            compalf.WindowState = FormWindowState.Maximized;
+            compalf.BringToFront();
+            compalf.Show();
+
+            allForm.Add(compalf);
+        }
+
+        private LCFC71BOMForm lcfc71bomf;
+        private void lCFC71BOM表查看ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lcfc71bomf == null || lcfc71bomf.IsDisposed)
+            {
+                lcfc71bomf = new LCFC71BOMForm();
+                lcfc71bomf.MdiParent = this;
+            }
+
+            lcfc71bomf.WindowState = FormWindowState.Maximized;
+            lcfc71bomf.BringToFront();
+            lcfc71bomf.Show();
+
+            allForm.Add(lcfc71bomf);
+        }
+
+        private DPKForm dpkf;
+        private void dPKToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dpkf == null || dpkf.IsDisposed)
+            {
+                dpkf = new DPKForm();
+                dpkf.MdiParent = this;
+            }
+
+            dpkf.WindowState = FormWindowState.Maximized;
+            dpkf.BringToFront();
+            dpkf.Show();
+
+            allForm.Add(dpkf);
+        }
+
+        private RepairFaultTypeForm repairFaultTypef;
+        private void 故障代码表查看ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (repairFaultTypef == null || repairFaultTypef.IsDisposed)
+            {
+                repairFaultTypef = new RepairFaultTypeForm();
+                repairFaultTypef.MdiParent = this;
+            }
+
+            repairFaultTypef.WindowState = FormWindowState.Maximized;
+            repairFaultTypef.BringToFront();
+            repairFaultTypef.Show();
+
+            allForm.Add(repairFaultTypef);
+        }
     }
 }
