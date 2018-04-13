@@ -227,6 +227,24 @@ namespace SaledServices
                         }
                     }
 
+                    if (bgaRepairResult_txt == "BGA待换")
+                    {
+                        this.oldSntextBox.Text = "";
+                        this.newSntextBox.Text = "";
+                    }
+                    else
+                    {
+                        if (this.bgatypetextBox.Text != "VGA")
+                        {
+                            if (this.oldSntextBox.Text == "" || this.newSntextBox.Text == "")
+                            {
+                                MessageBox.Show("2个SN的输入为空，请检查!");
+                                conn.Close();
+                                return;
+                            }
+                        }
+                    }
+
                     cmd.CommandText = "INSERT INTO bga_repair_record_table VALUES('"
                         + track_serial_no_txt + "','"
                         + vendor_txt + "','"
@@ -252,7 +270,9 @@ namespace SaledServices
                         + bgarepairer_txt + "','"
                         + bgaRepairDate_txt + "','"
                         + bgaRepairResult_txt + "','"
-                        + countNum_txt + "')";
+                        + countNum_txt + "','"
+                        + this.oldSntextBox.Text.Trim() + "','"
+                        + this.newSntextBox.Text.Trim() + "')";
                     
                     cmd.ExecuteNonQuery();                    
                 }
@@ -311,10 +331,25 @@ namespace SaledServices
             string[] hTxt = {"ID", "跟踪条码", "厂商","客户别","来源","订单编号",
                              "收货日期","MB简称","客户序号","厂商序号","MPN",
                              "MB生产日期","客户故障","故障原因","mbfa1","短路电压",
-                             "BGA类型","BGAPN","BGA位置","BGA简述","维修人", "修复日期","bga更换人","BGA更换日期","bga状态","countNum"};
+                             "BGA类型","BGAPN","BGA位置","BGA简述","维修人", "修复日期","bga更换人","BGA更换日期","bga状态","countNum","旧SN","新SN"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
+            }
+        }
+
+        private void bgaRepair_resultcomboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            this.oldSntextBox.Focus();
+            this.oldSntextBox.SelectAll();
+        }
+
+        private void oldSntextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                this.newSntextBox.Focus();
+                this.newSntextBox.SelectAll();
             }
         }
     }

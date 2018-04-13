@@ -90,7 +90,9 @@ repair_date NVARCHAR(128) NOT NULL, /*修复日期*/
 bga_repairer NVARCHAR(128) NOT NULL, /*bga维修人*/
 bga_repair_date NVARCHAR(128) NOT NULL, /*bga修复日期*/
 bga_repair_result NVARCHAR(128) NOT NULL,/*bga修复状态*/
-countNum NVARCHAR(128) NOT NULL/*总共录入了几次，从1开始，防止同一片板子在维修与BGA来回折腾*/
+countNum NVARCHAR(128) NOT NULL,/*总共录入了几次，从1开始，防止同一片板子在维修与BGA来回折腾*/
+oldSn NVARCHAR(128), /*换下sn*/
+newSn NVARCHAR(128), /*换上sn*/
 )
 
 //DPK 导入表格

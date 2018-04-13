@@ -81,6 +81,10 @@
             this.bgatypetextBox = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.countNumtextBox = new System.Windows.Forms.TextBox();
+            this.oldSntextBox = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.newSntextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.add = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -171,6 +175,10 @@
             this.tableLayoutPanel2.Controls.Add(this.bgatypetextBox, 5, 4);
             this.tableLayoutPanel2.Controls.Add(this.label19, 0, 9);
             this.tableLayoutPanel2.Controls.Add(this.countNumtextBox, 1, 9);
+            this.tableLayoutPanel2.Controls.Add(this.oldSntextBox, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.label20, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.label21, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.newSntextBox, 1, 5);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
@@ -517,6 +525,7 @@
             this.bgaRepair_resultcomboBox.Name = "bgaRepair_resultcomboBox";
             this.bgaRepair_resultcomboBox.Size = new System.Drawing.Size(202, 24);
             this.bgaRepair_resultcomboBox.TabIndex = 39;
+            this.bgaRepair_resultcomboBox.SelectedValueChanged += new System.EventHandler(this.bgaRepair_resultcomboBox_SelectedValueChanged);
             // 
             // label7
             // 
@@ -670,6 +679,43 @@
             this.countNumtextBox.ReadOnly = true;
             this.countNumtextBox.Size = new System.Drawing.Size(191, 26);
             this.countNumtextBox.TabIndex = 43;
+            // 
+            // oldSntextBox
+            // 
+            this.oldSntextBox.Location = new System.Drawing.Point(197, 261);
+            this.oldSntextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.oldSntextBox.Name = "oldSntextBox";
+            this.oldSntextBox.Size = new System.Drawing.Size(202, 26);
+            this.oldSntextBox.TabIndex = 22;
+            this.oldSntextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.oldSntextBox_KeyPress);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 257);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(72, 16);
+            this.label20.TabIndex = 21;
+            this.label20.Text = "换下的SN";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 320);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(72, 16);
+            this.label21.TabIndex = 21;
+            this.label21.Text = "换上的SN";
+            // 
+            // newSntextBox
+            // 
+            this.newSntextBox.Location = new System.Drawing.Point(197, 324);
+            this.newSntextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.newSntextBox.Name = "newSntextBox";
+            this.newSntextBox.Size = new System.Drawing.Size(202, 26);
+            this.newSntextBox.TabIndex = 22;
             // 
             // tableLayoutPanel3
             // 
@@ -835,5 +881,9 @@
         private System.Windows.Forms.TextBox bgatypetextBox;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox countNumtextBox;
+        private System.Windows.Forms.TextBox oldSntextBox;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox newSntextBox;
     }
 }
