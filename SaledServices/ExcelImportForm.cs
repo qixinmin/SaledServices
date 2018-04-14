@@ -326,14 +326,19 @@ namespace SaledServices
 
         private void closeAndKillApp()
         {
-            wbs.Close();
-            app.Quit();
-            IntPtr intptr = new IntPtr(app.Hwnd);
-            int id;
-            GetWindowThreadProcessId(intptr, out id);
-            var p = Process.GetProcessById(id);
-            //if (p != null)
-            p.Kill();
+            try
+            {
+                wbs.Close();
+                app.Quit();
+                IntPtr intptr = new IntPtr(app.Hwnd);
+                int id;
+                GetWindowThreadProcessId(intptr, out id);
+                var p = Process.GetProcessById(id);
+                //if (p != null)
+                p.Kill();
+            }
+            catch (Exception ex)
+            { }
         }
 
         public void importMaterialCompare(Worksheet ws, int rowLength, int columnLength, string tableName)

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaledServices", "SaledServices\SaledServices.csproj", "{731B3AA7-4FE7-438E-A501-5B4A115FD255}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SaledServiceSetup", "SaledServiceSetup\SaledServiceSetup.vdproj", "{B12B4537-C985-4DB9-8A13-F4A12D9CC335}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{B169D905-84AA-4CD1-9EC3-DFF50F9A7435}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,15 +36,15 @@ Global
 		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.问问|x64.Build.0 = 问问|x64
 		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.问问|x86.ActiveCfg = 问问|x86
 		{731B3AA7-4FE7-438E-A501-5B4A115FD255}.问问|x86.Build.0 = 问问|x86
-		{B12B4537-C985-4DB9-8A13-F4A12D9CC335}.Debug|Any CPU.ActiveCfg = Debug
-		{B12B4537-C985-4DB9-8A13-F4A12D9CC335}.Debug|x64.ActiveCfg = Debug
-		{B12B4537-C985-4DB9-8A13-F4A12D9CC335}.Debug|x86.ActiveCfg = Debug
-		{B12B4537-C985-4DB9-8A13-F4A12D9CC335}.Release|Any CPU.ActiveCfg = Release
-		{B12B4537-C985-4DB9-8A13-F4A12D9CC335}.Release|x64.ActiveCfg = Release
-		{B12B4537-C985-4DB9-8A13-F4A12D9CC335}.Release|x86.ActiveCfg = Release
-		{B12B4537-C985-4DB9-8A13-F4A12D9CC335}.问问|Any CPU.ActiveCfg = Release
-		{B12B4537-C985-4DB9-8A13-F4A12D9CC335}.问问|x64.ActiveCfg = Release
-		{B12B4537-C985-4DB9-8A13-F4A12D9CC335}.问问|x86.ActiveCfg = Release
+		{B169D905-84AA-4CD1-9EC3-DFF50F9A7435}.Debug|Any CPU.ActiveCfg = Debug
+		{B169D905-84AA-4CD1-9EC3-DFF50F9A7435}.Debug|x64.ActiveCfg = Debug
+		{B169D905-84AA-4CD1-9EC3-DFF50F9A7435}.Debug|x86.ActiveCfg = Debug
+		{B169D905-84AA-4CD1-9EC3-DFF50F9A7435}.Release|Any CPU.ActiveCfg = Release
+		{B169D905-84AA-4CD1-9EC3-DFF50F9A7435}.Release|x64.ActiveCfg = Release
+		{B169D905-84AA-4CD1-9EC3-DFF50F9A7435}.Release|x86.ActiveCfg = Release
+		{B169D905-84AA-4CD1-9EC3-DFF50F9A7435}.问问|Any CPU.ActiveCfg = Release
+		{B169D905-84AA-4CD1-9EC3-DFF50F9A7435}.问问|x64.ActiveCfg = Release
+		{B169D905-84AA-4CD1-9EC3-DFF50F9A7435}.问问|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

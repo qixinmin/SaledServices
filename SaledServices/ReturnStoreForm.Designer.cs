@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewToReturn = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -72,15 +72,15 @@
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.inputMpnTextBox = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.inputUserTextBox = new System.Windows.Forms.TextBox();
             this.response_describeComboBox = new System.Windows.Forms.ComboBox();
             this.custom_res_typeComboBox = new System.Windows.Forms.ComboBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label20 = new System.Windows.Forms.Label();
             this.replace_custom_materialNotextBox = new System.Windows.Forms.TextBox();
+            this.inputMpnTextBox = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -95,8 +95,8 @@
             // dataGridViewToReturn
             // 
             this.dataGridViewToReturn.AllowUserToAddRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewToReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewToReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewToReturn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewToReturn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewToReturn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -426,8 +426,8 @@
             // dataGridViewReturnedDetail
             // 
             this.dataGridViewReturnedDetail.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewReturnedDetail.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewReturnedDetail.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewReturnedDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewReturnedDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewReturnedDetail.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -617,14 +617,16 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(837, 562);
             this.tableLayoutPanel3.TabIndex = 19;
             // 
-            // inputMpnTextBox
+            // flowLayoutPanel1
             // 
-            this.inputMpnTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputMpnTextBox.Location = new System.Drawing.Point(159, 392);
-            this.inputMpnTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.inputMpnTextBox.Name = "inputMpnTextBox";
-            this.inputMpnTextBox.Size = new System.Drawing.Size(283, 26);
-            this.inputMpnTextBox.TabIndex = 11;
+            this.flowLayoutPanel1.Controls.Add(this.return_file_noTextBox);
+            this.flowLayoutPanel1.Controls.Add(this.checkBoxMakeNew);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(571, 502);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(259, 53);
+            this.flowLayoutPanel1.TabIndex = 7;
             // 
             // statusComboBox
             // 
@@ -679,17 +681,6 @@
             this.custom_res_typeComboBox.TabIndex = 5;
             this.custom_res_typeComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_res_typeComboBox_KeyPress);
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.return_file_noTextBox);
-            this.flowLayoutPanel1.Controls.Add(this.checkBoxMakeNew);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(571, 502);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(259, 53);
-            this.flowLayoutPanel1.TabIndex = 7;
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -711,6 +702,15 @@
             this.replace_custom_materialNotextBox.Size = new System.Drawing.Size(283, 26);
             this.replace_custom_materialNotextBox.TabIndex = 10;
             this.replace_custom_materialNotextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custommaterialNoTextBox_KeyPress);
+            // 
+            // inputMpnTextBox
+            // 
+            this.inputMpnTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inputMpnTextBox.Location = new System.Drawing.Point(159, 392);
+            this.inputMpnTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.inputMpnTextBox.Name = "inputMpnTextBox";
+            this.inputMpnTextBox.Size = new System.Drawing.Size(283, 26);
+            this.inputMpnTextBox.TabIndex = 11;
             // 
             // label21
             // 
