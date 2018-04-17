@@ -191,7 +191,6 @@ namespace SaledServices
                 this.super_checkBox.Checked = false;
             }
 
-
             if (dataGridView1.SelectedCells[4].Value.ToString() == "True")
             {
                 this.bgaCheckBox.Checked = true;
@@ -201,7 +200,6 @@ namespace SaledServices
                 this.bgaCheckBox.Checked = false;
             }
 
-
             if (dataGridView1.SelectedCells[5].Value.ToString() == "True")
             {
                 this.repairCheckBox.Checked = true;
@@ -210,7 +208,6 @@ namespace SaledServices
             {
                 this.repairCheckBox.Checked = false;
             }
-
 
             if (dataGridView1.SelectedCells[6].Value.ToString() == "True")
             {

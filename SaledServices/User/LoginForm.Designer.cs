@@ -29,18 +29,17 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.passwordInput = new System.Windows.Forms.TextBox();
             this.password = new System.Windows.Forms.Label();
             this.username = new System.Windows.Forms.Label();
             this.usernameInput = new System.Windows.Forms.TextBox();
             this.login = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.passwordInput);
             this.panel1.Controls.Add(this.password);
             this.panel1.Controls.Add(this.username);
@@ -52,11 +51,22 @@
             this.panel1.Size = new System.Drawing.Size(655, 453);
             this.panel1.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(627, 537);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(93, 44);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "test";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // passwordInput
             // 
             this.passwordInput.Location = new System.Drawing.Point(280, 188);
             this.passwordInput.Margin = new System.Windows.Forms.Padding(5);
             this.passwordInput.Name = "passwordInput";
+            this.passwordInput.PasswordChar = '*';
             this.passwordInput.Size = new System.Drawing.Size(164, 30);
             this.passwordInput.TabIndex = 4;
             // 
@@ -99,21 +109,12 @@
             this.login.UseVisualStyleBackColor = true;
             this.login.Click += new System.EventHandler(this.login_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(543, 326);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(765, 615);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("SimSun", 15F);
             this.Margin = new System.Windows.Forms.Padding(5);

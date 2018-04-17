@@ -15,6 +15,17 @@ namespace SaledServices.User
         private String tableName = "users";
 
         public static string username = "";
+        public static string password = "";
+
+        public static string super_manager = "";
+        public static string bga="";
+        public static string repair="";
+        public static string test_all="";
+        public static string test1="";
+        public static string test2="";
+        public static string receive_return = "";
+        public static string store="";
+        public static string outlook="";
 
         public UserSelfForm()
         {

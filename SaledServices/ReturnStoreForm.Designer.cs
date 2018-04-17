@@ -431,22 +431,22 @@
             this.dataGridViewReturnedDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewReturnedDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewReturnedDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewReturnedDetail.Location = new System.Drawing.Point(849, 625);
+            this.dataGridViewReturnedDetail.Location = new System.Drawing.Point(849, 640);
             this.dataGridViewReturnedDetail.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewReturnedDetail.Name = "dataGridViewReturnedDetail";
             this.dataGridViewReturnedDetail.ReadOnly = true;
             this.dataGridViewReturnedDetail.RowTemplate.Height = 23;
             this.dataGridViewReturnedDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewReturnedDetail.Size = new System.Drawing.Size(806, 424);
+            this.dataGridViewReturnedDetail.Size = new System.Drawing.Size(806, 409);
             this.dataGridViewReturnedDetail.TabIndex = 15;
             // 
             // returnStore
             // 
             this.returnStore.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.returnStore.Location = new System.Drawing.Point(50, 6);
+            this.returnStore.Location = new System.Drawing.Point(4, 4);
             this.returnStore.Margin = new System.Windows.Forms.Padding(4);
             this.returnStore.Name = "returnStore";
-            this.returnStore.Size = new System.Drawing.Size(100, 31);
+            this.returnStore.Size = new System.Drawing.Size(193, 50);
             this.returnStore.TabIndex = 7;
             this.returnStore.Text = "还货";
             this.returnStore.UseVisualStyleBackColor = true;
@@ -455,10 +455,10 @@
             // query
             // 
             this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.query.Location = new System.Drawing.Point(251, 6);
+            this.query.Location = new System.Drawing.Point(205, 4);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
-            this.query.Size = new System.Drawing.Size(100, 31);
+            this.query.Size = new System.Drawing.Size(193, 50);
             this.query.TabIndex = 8;
             this.query.Text = "查询";
             this.query.UseVisualStyleBackColor = true;
@@ -468,7 +468,7 @@
             // 
             this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.modify.Enabled = false;
-            this.modify.Location = new System.Drawing.Point(452, 6);
+            this.modify.Location = new System.Drawing.Point(452, 13);
             this.modify.Margin = new System.Windows.Forms.Padding(4);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(100, 31);
@@ -481,7 +481,7 @@
             // 
             this.delete.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.delete.Enabled = false;
-            this.delete.Location = new System.Drawing.Point(654, 6);
+            this.delete.Location = new System.Drawing.Point(654, 13);
             this.delete.Margin = new System.Windows.Forms.Padding(4);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(100, 31);
@@ -546,8 +546,8 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.24837F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.936709F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.88607F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.362773F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 39.50617F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1659, 1053);
             this.tableLayoutPanel1.TabIndex = 18;
             // 
@@ -740,7 +740,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(806, 43);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(806, 58);
             this.tableLayoutPanel2.TabIndex = 19;
             // 
             // ReturnStoreForm

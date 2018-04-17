@@ -41,6 +41,20 @@ namespace SaledServices
         ORDER_CLOSE
     }
 
+    //用户权限控制
+    public enum UserPermisson
+    {
+        SUPER,//0
+        Receive_return,
+        Repair,
+        BgaRepair,
+        TestAll,
+        Test1,
+        Test2,
+        Outlook,
+        Store
+    }
+
     public class Untils
     {
 

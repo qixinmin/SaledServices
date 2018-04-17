@@ -322,6 +322,12 @@
     <Compile Include="ReturnStoreForm.Designer.cs">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\StockInSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\StockInSheetForm.Designer.cs">
+      <DependentUpon>StockInSheetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Test_Outlook\OutLookForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -445,6 +451,9 @@
     <EmbeddedResource Include="ReturnStoreForm.resx">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Store\StockInSheetForm.resx">
+      <DependentUpon>StockInSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Test_Outlook\OutLookForm.resx">
       <DependentUpon>OutLookForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -517,6 +526,7 @@
     <Content Include="资料\2.ico" />
     <Content Include="资料\sql 语句备份.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

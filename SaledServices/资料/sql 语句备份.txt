@@ -62,7 +62,6 @@ tester NVARCHAR(128) NOT NULL,
 test_date NVARCHAR(128) NOT NULL
 )
 
-
 CREATE TABLE bga_repair_record_table(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/

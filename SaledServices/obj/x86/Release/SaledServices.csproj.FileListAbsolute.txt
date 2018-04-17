@@ -37,3 +37,5 @@ D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.COMPAL_MBB
 D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.LCFC71BOMForm.resources
 D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.DPKForm.resources
 D:\projects\SaledServices\SaledServices\obj\x86\Release\SaledServices.RepairFaultTypeForm.resources
+E:\qxm\SaledServices\SaledServices\obj\x86\Release\SaledServices.exe
+E:\qxm\SaledServices\SaledServices\obj\x86\Release\SaledServices.pdb

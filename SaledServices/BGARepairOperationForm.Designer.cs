@@ -740,10 +740,10 @@
             // add
             // 
             this.add.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.add.Location = new System.Drawing.Point(67, 10);
+            this.add.Location = new System.Drawing.Point(51, 11);
             this.add.Margin = new System.Windows.Forms.Padding(4);
             this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(168, 51);
+            this.add.Size = new System.Drawing.Size(200, 50);
             this.add.TabIndex = 0;
             this.add.Text = "新增";
             this.add.UseVisualStyleBackColor = true;
@@ -753,10 +753,10 @@
             // 
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(659, 12);
+            this.button3.Location = new System.Drawing.Point(657, 11);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(197, 48);
+            this.button3.Size = new System.Drawing.Size(200, 50);
             this.button3.TabIndex = 1;
             this.button3.Text = "修改";
             this.button3.UseVisualStyleBackColor = true;
@@ -765,10 +765,10 @@
             // 
             this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button4.Enabled = false;
-            this.button4.Location = new System.Drawing.Point(967, 8);
+            this.button4.Location = new System.Drawing.Point(961, 11);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(189, 55);
+            this.button4.Size = new System.Drawing.Size(200, 50);
             this.button4.TabIndex = 1;
             this.button4.Text = "删除";
             this.button4.UseVisualStyleBackColor = true;
@@ -776,10 +776,10 @@
             // query
             // 
             this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.query.Location = new System.Drawing.Point(369, 11);
+            this.query.Location = new System.Drawing.Point(354, 11);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
-            this.query.Size = new System.Drawing.Size(171, 50);
+            this.query.Size = new System.Drawing.Size(200, 50);
             this.query.TabIndex = 1;
             this.query.Text = "查询";
             this.query.UseVisualStyleBackColor = true;

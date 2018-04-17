@@ -41,14 +41,14 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.super_checkBox = new System.Windows.Forms.CheckBox();
             this.permissionPanel = new System.Windows.Forms.Panel();
-            this.bgaCheckBox = new System.Windows.Forms.CheckBox();
-            this.repairCheckBox = new System.Windows.Forms.CheckBox();
-            this.test_allCheckBox = new System.Windows.Forms.CheckBox();
-            this.test1CheckBox = new System.Windows.Forms.CheckBox();
-            this.test2CheckBox = new System.Windows.Forms.CheckBox();
-            this.receive_returnCheckBox = new System.Windows.Forms.CheckBox();
-            this.outlookCheckBox = new System.Windows.Forms.CheckBox();
             this.storeCheckBox = new System.Windows.Forms.CheckBox();
+            this.outlookCheckBox = new System.Windows.Forms.CheckBox();
+            this.receive_returnCheckBox = new System.Windows.Forms.CheckBox();
+            this.test2CheckBox = new System.Windows.Forms.CheckBox();
+            this.test1CheckBox = new System.Windows.Forms.CheckBox();
+            this.test_allCheckBox = new System.Windows.Forms.CheckBox();
+            this.repairCheckBox = new System.Windows.Forms.CheckBox();
+            this.bgaCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.permissionPanel.SuspendLayout();
             this.SuspendLayout();
@@ -180,65 +180,15 @@
             this.permissionPanel.Size = new System.Drawing.Size(292, 269);
             this.permissionPanel.TabIndex = 7;
             // 
-            // bgaCheckBox
+            // storeCheckBox
             // 
-            this.bgaCheckBox.AutoSize = true;
-            this.bgaCheckBox.Location = new System.Drawing.Point(16, 45);
-            this.bgaCheckBox.Name = "bgaCheckBox";
-            this.bgaCheckBox.Size = new System.Drawing.Size(58, 24);
-            this.bgaCheckBox.TabIndex = 6;
-            this.bgaCheckBox.Text = "BGA";
-            this.bgaCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // repairCheckBox
-            // 
-            this.repairCheckBox.AutoSize = true;
-            this.repairCheckBox.Location = new System.Drawing.Point(16, 80);
-            this.repairCheckBox.Name = "repairCheckBox";
-            this.repairCheckBox.Size = new System.Drawing.Size(68, 24);
-            this.repairCheckBox.TabIndex = 6;
-            this.repairCheckBox.Text = "维修";
-            this.repairCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // test_allCheckBox
-            // 
-            this.test_allCheckBox.AutoSize = true;
-            this.test_allCheckBox.Location = new System.Drawing.Point(16, 110);
-            this.test_allCheckBox.Name = "test_allCheckBox";
-            this.test_allCheckBox.Size = new System.Drawing.Size(98, 24);
-            this.test_allCheckBox.TabIndex = 6;
-            this.test_allCheckBox.Text = "测试1&&2";
-            this.test_allCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // test1CheckBox
-            // 
-            this.test1CheckBox.AutoSize = true;
-            this.test1CheckBox.Location = new System.Drawing.Point(120, 110);
-            this.test1CheckBox.Name = "test1CheckBox";
-            this.test1CheckBox.Size = new System.Drawing.Size(78, 24);
-            this.test1CheckBox.TabIndex = 6;
-            this.test1CheckBox.Text = "测试1";
-            this.test1CheckBox.UseVisualStyleBackColor = true;
-            // 
-            // test2CheckBox
-            // 
-            this.test2CheckBox.AutoSize = true;
-            this.test2CheckBox.Location = new System.Drawing.Point(204, 110);
-            this.test2CheckBox.Name = "test2CheckBox";
-            this.test2CheckBox.Size = new System.Drawing.Size(78, 24);
-            this.test2CheckBox.TabIndex = 6;
-            this.test2CheckBox.Text = "测试2";
-            this.test2CheckBox.UseVisualStyleBackColor = true;
-            // 
-            // receive_returnCheckBox
-            // 
-            this.receive_returnCheckBox.AutoSize = true;
-            this.receive_returnCheckBox.Location = new System.Drawing.Point(16, 150);
-            this.receive_returnCheckBox.Name = "receive_returnCheckBox";
-            this.receive_returnCheckBox.Size = new System.Drawing.Size(88, 24);
-            this.receive_returnCheckBox.TabIndex = 6;
-            this.receive_returnCheckBox.Text = "收还货";
-            this.receive_returnCheckBox.UseVisualStyleBackColor = true;
+            this.storeCheckBox.AutoSize = true;
+            this.storeCheckBox.Location = new System.Drawing.Point(16, 212);
+            this.storeCheckBox.Name = "storeCheckBox";
+            this.storeCheckBox.Size = new System.Drawing.Size(68, 24);
+            this.storeCheckBox.TabIndex = 6;
+            this.storeCheckBox.Text = "库存";
+            this.storeCheckBox.UseVisualStyleBackColor = true;
             // 
             // outlookCheckBox
             // 
@@ -250,15 +200,65 @@
             this.outlookCheckBox.Text = "外观";
             this.outlookCheckBox.UseVisualStyleBackColor = true;
             // 
-            // storeCheckBox
+            // receive_returnCheckBox
             // 
-            this.storeCheckBox.AutoSize = true;
-            this.storeCheckBox.Location = new System.Drawing.Point(16, 212);
-            this.storeCheckBox.Name = "storeCheckBox";
-            this.storeCheckBox.Size = new System.Drawing.Size(68, 24);
-            this.storeCheckBox.TabIndex = 6;
-            this.storeCheckBox.Text = "库存";
-            this.storeCheckBox.UseVisualStyleBackColor = true;
+            this.receive_returnCheckBox.AutoSize = true;
+            this.receive_returnCheckBox.Location = new System.Drawing.Point(16, 150);
+            this.receive_returnCheckBox.Name = "receive_returnCheckBox";
+            this.receive_returnCheckBox.Size = new System.Drawing.Size(88, 24);
+            this.receive_returnCheckBox.TabIndex = 6;
+            this.receive_returnCheckBox.Text = "收还货";
+            this.receive_returnCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // test2CheckBox
+            // 
+            this.test2CheckBox.AutoSize = true;
+            this.test2CheckBox.Location = new System.Drawing.Point(204, 110);
+            this.test2CheckBox.Name = "test2CheckBox";
+            this.test2CheckBox.Size = new System.Drawing.Size(78, 24);
+            this.test2CheckBox.TabIndex = 6;
+            this.test2CheckBox.Text = "测试2";
+            this.test2CheckBox.UseVisualStyleBackColor = true;
+            // 
+            // test1CheckBox
+            // 
+            this.test1CheckBox.AutoSize = true;
+            this.test1CheckBox.Location = new System.Drawing.Point(120, 110);
+            this.test1CheckBox.Name = "test1CheckBox";
+            this.test1CheckBox.Size = new System.Drawing.Size(78, 24);
+            this.test1CheckBox.TabIndex = 6;
+            this.test1CheckBox.Text = "测试1";
+            this.test1CheckBox.UseVisualStyleBackColor = true;
+            // 
+            // test_allCheckBox
+            // 
+            this.test_allCheckBox.AutoSize = true;
+            this.test_allCheckBox.Location = new System.Drawing.Point(16, 110);
+            this.test_allCheckBox.Name = "test_allCheckBox";
+            this.test_allCheckBox.Size = new System.Drawing.Size(98, 24);
+            this.test_allCheckBox.TabIndex = 6;
+            this.test_allCheckBox.Text = "测试1&&2";
+            this.test_allCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // repairCheckBox
+            // 
+            this.repairCheckBox.AutoSize = true;
+            this.repairCheckBox.Location = new System.Drawing.Point(16, 80);
+            this.repairCheckBox.Name = "repairCheckBox";
+            this.repairCheckBox.Size = new System.Drawing.Size(68, 24);
+            this.repairCheckBox.TabIndex = 6;
+            this.repairCheckBox.Text = "维修";
+            this.repairCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // bgaCheckBox
+            // 
+            this.bgaCheckBox.AutoSize = true;
+            this.bgaCheckBox.Location = new System.Drawing.Point(16, 45);
+            this.bgaCheckBox.Name = "bgaCheckBox";
+            this.bgaCheckBox.Size = new System.Drawing.Size(98, 24);
+            this.bgaCheckBox.TabIndex = 6;
+            this.bgaCheckBox.Text = "BGA维修";
+            this.bgaCheckBox.UseVisualStyleBackColor = true;
             // 
             // UserDetailForm
             // 

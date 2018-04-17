@@ -115,17 +115,17 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(914, 626);
+            this.dataGridView1.Size = new System.Drawing.Size(914, 606);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // add
             // 
             this.add.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.add.Location = new System.Drawing.Point(129, 5);
+            this.add.Location = new System.Drawing.Point(79, 6);
             this.add.Margin = new System.Windows.Forms.Padding(4);
             this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(100, 31);
+            this.add.Size = new System.Drawing.Size(200, 50);
             this.add.TabIndex = 1;
             this.add.Text = "新增";
             this.add.UseVisualStyleBackColor = true;
@@ -134,10 +134,10 @@
             // query
             // 
             this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.query.Location = new System.Drawing.Point(488, 5);
+            this.query.Location = new System.Drawing.Point(438, 6);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
-            this.query.Size = new System.Drawing.Size(100, 31);
+            this.query.Size = new System.Drawing.Size(200, 50);
             this.query.TabIndex = 1;
             this.query.Text = "查询";
             this.query.UseVisualStyleBackColor = true;
@@ -146,7 +146,7 @@
             // modify
             // 
             this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.modify.Location = new System.Drawing.Point(847, 5);
+            this.modify.Location = new System.Drawing.Point(847, 15);
             this.modify.Margin = new System.Windows.Forms.Padding(4);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(100, 31);
@@ -158,7 +158,7 @@
             // delete
             // 
             this.delete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.delete.Location = new System.Drawing.Point(1207, 5);
+            this.delete.Location = new System.Drawing.Point(1207, 15);
             this.delete.Margin = new System.Windows.Forms.Padding(4);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(100, 31);
@@ -882,8 +882,8 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.80454F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.791929F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.52963F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.717124F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 58.56197F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1445, 1057);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
@@ -904,7 +904,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1437, 42);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1437, 62);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // tableLayoutPanel4
@@ -915,11 +915,11 @@
             this.tableLayoutPanel4.Controls.Add(this.dataGridView1, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.dataGridViewWaitToReturn, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 420);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 440);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1439, 634);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1439, 614);
             this.tableLayoutPanel4.TabIndex = 5;
             // 
             // dataGridViewWaitToReturn
@@ -933,7 +933,7 @@
             this.dataGridViewWaitToReturn.ReadOnly = true;
             this.dataGridViewWaitToReturn.RowTemplate.Height = 23;
             this.dataGridViewWaitToReturn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewWaitToReturn.Size = new System.Drawing.Size(511, 628);
+            this.dataGridViewWaitToReturn.Size = new System.Drawing.Size(511, 608);
             this.dataGridViewWaitToReturn.TabIndex = 1;
             this.dataGridViewWaitToReturn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWaitToReturn_CellClick);
             // 
