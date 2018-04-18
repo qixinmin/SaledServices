@@ -57,10 +57,13 @@
             this.外观检查ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.库存管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.材料入库单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.出库请求查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fRUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fRUSMT入库记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mBToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bGA入库记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bGA出库记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.additionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customFaultMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,6 +76,12 @@
             this.厂商信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.海关ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.期初库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.实盘库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.出库入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.工单表头ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +98,8 @@
             this.外观ToolStripMenuItem,
             this.库存管理ToolStripMenuItem,
             this.additionMenuItem,
-            this.报表ToolStripMenuItem});
+            this.报表ToolStripMenuItem,
+            this.海关ToolStripMenuItem});
             this.AllMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.AllMenuStrip.Name = "AllMenuStrip";
             this.AllMenuStrip.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
@@ -311,10 +321,13 @@
             // 
             this.库存管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.材料入库单ToolStripMenuItem,
+            this.出库请求查看ToolStripMenuItem,
             this.fRUToolStripMenuItem,
             this.fRUSMT入库记录ToolStripMenuItem,
             this.mBToolStripMenuItem,
-            this.mBToolStripMenuItem1});
+            this.mBToolStripMenuItem1,
+            this.bGA入库记录ToolStripMenuItem,
+            this.bGA出库记录ToolStripMenuItem});
             this.库存管理ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.库存管理ToolStripMenuItem.Name = "库存管理ToolStripMenuItem";
             this.库存管理ToolStripMenuItem.Size = new System.Drawing.Size(104, 31);
@@ -326,6 +339,12 @@
             this.材料入库单ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.材料入库单ToolStripMenuItem.Text = "材料入库单查看";
             this.材料入库单ToolStripMenuItem.Click += new System.EventHandler(this.材料入库单ToolStripMenuItem_Click);
+            // 
+            // 出库请求查看ToolStripMenuItem
+            // 
+            this.出库请求查看ToolStripMenuItem.Name = "出库请求查看ToolStripMenuItem";
+            this.出库请求查看ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
+            this.出库请求查看ToolStripMenuItem.Text = "出库请求查看";
             // 
             // fRUToolStripMenuItem
             // 
@@ -339,6 +358,7 @@
             this.fRUSMT入库记录ToolStripMenuItem.Name = "fRUSMT入库记录ToolStripMenuItem";
             this.fRUSMT入库记录ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.fRUSMT入库记录ToolStripMenuItem.Text = "FRU/SMT出库记录";
+            this.fRUSMT入库记录ToolStripMenuItem.Click += new System.EventHandler(this.fRUSMT入库记录ToolStripMenuItem_Click);
             // 
             // mBToolStripMenuItem
             // 
@@ -351,6 +371,18 @@
             this.mBToolStripMenuItem1.Name = "mBToolStripMenuItem1";
             this.mBToolStripMenuItem1.Size = new System.Drawing.Size(255, 32);
             this.mBToolStripMenuItem1.Text = "MB出库记录";
+            // 
+            // bGA入库记录ToolStripMenuItem
+            // 
+            this.bGA入库记录ToolStripMenuItem.Name = "bGA入库记录ToolStripMenuItem";
+            this.bGA入库记录ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
+            this.bGA入库记录ToolStripMenuItem.Text = "BGA入库记录";
+            // 
+            // bGA出库记录ToolStripMenuItem
+            // 
+            this.bGA出库记录ToolStripMenuItem.Name = "bGA出库记录ToolStripMenuItem";
+            this.bGA出库记录ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
+            this.bGA出库记录ToolStripMenuItem.Text = "BGA出库记录";
             // 
             // additionMenuItem
             // 
@@ -448,6 +480,49 @@
             this.报表1ToolStripMenuItem.Text = "RMA欠货表";
             this.报表1ToolStripMenuItem.Click += new System.EventHandler(this.报表1ToolStripMenuItem_Click);
             // 
+            // 海关ToolStripMenuItem
+            // 
+            this.海关ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.期初库存ToolStripMenuItem,
+            this.实盘库存ToolStripMenuItem,
+            this.出库入库ToolStripMenuItem,
+            this.工单表头ToolStripMenuItem,
+            this.工单表体ToolStripMenuItem});
+            this.海关ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 15F);
+            this.海关ToolStripMenuItem.Name = "海关ToolStripMenuItem";
+            this.海关ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
+            this.海关ToolStripMenuItem.Text = "海关";
+            // 
+            // 期初库存ToolStripMenuItem
+            // 
+            this.期初库存ToolStripMenuItem.Name = "期初库存ToolStripMenuItem";
+            this.期初库存ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.期初库存ToolStripMenuItem.Text = "期初库存";
+            // 
+            // 实盘库存ToolStripMenuItem
+            // 
+            this.实盘库存ToolStripMenuItem.Name = "实盘库存ToolStripMenuItem";
+            this.实盘库存ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.实盘库存ToolStripMenuItem.Text = "实盘库存";
+            // 
+            // 出库入库ToolStripMenuItem
+            // 
+            this.出库入库ToolStripMenuItem.Name = "出库入库ToolStripMenuItem";
+            this.出库入库ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.出库入库ToolStripMenuItem.Text = "出库入库";
+            // 
+            // 工单表头ToolStripMenuItem
+            // 
+            this.工单表头ToolStripMenuItem.Name = "工单表头ToolStripMenuItem";
+            this.工单表头ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.工单表头ToolStripMenuItem.Text = "工单表头";
+            // 
+            // 工单表体ToolStripMenuItem
+            // 
+            this.工单表体ToolStripMenuItem.Name = "工单表体ToolStripMenuItem";
+            this.工单表体ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.工单表体ToolStripMenuItem.Text = "工单表体";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -515,6 +590,15 @@
         private System.Windows.Forms.ToolStripMenuItem fRUSMT入库记录ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mBToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mBToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem bGA入库记录ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bGA出库记录ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 期初库存ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 实盘库存ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 出库入库ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 工单表头ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 工单表体ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 出库请求查看ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 海关ToolStripMenuItem;
     }
 }
 

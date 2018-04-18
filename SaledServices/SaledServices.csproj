@@ -243,6 +243,36 @@
     <Compile Include="BGARepairOperationForm.Designer.cs">
       <DependentUpon>BGARepairOperationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomsExport\OpeningStockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomsExport\OpeningStockForm.Designer.cs">
+      <DependentUpon>OpeningStockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsExport\RealStockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomsExport\RealStockForm.Designer.cs">
+      <DependentUpon>RealStockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsExport\StockInOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomsExport\StockInOutForm.Designer.cs">
+      <DependentUpon>StockInOutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsExport\WorkListBodyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomsExport\WorkListBodyForm.Designer.cs">
+      <DependentUpon>WorkListBodyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsExport\WorkListHeadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomsExport\WorkListHeadForm.Designer.cs">
+      <DependentUpon>WorkListHeadForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeliveredTableForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +352,18 @@
     <Compile Include="ReturnStoreForm.Designer.cs">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\CheckRequestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\CheckRequestForm.Designer.cs">
+      <DependentUpon>CheckRequestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\RequestToStoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\RequestToStoreForm.Designer.cs">
+      <DependentUpon>RequestToStoreForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Store\StockInSheetForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +375,12 @@
     </Compile>
     <Compile Include="Store\FRU_SMT_InSheetForm.Designer.cs">
       <DependentUpon>FRU_SMT_InSheetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\FRU_SMT_OutSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\FRU_SMT_OutSheetForm.Designer.cs">
+      <DependentUpon>FRU_SMT_OutSheetForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Test_Outlook\OutLookForm.cs">
       <SubType>Form</SubType>
@@ -418,6 +466,21 @@
     <EmbeddedResource Include="BGARepairOperationForm.resx">
       <DependentUpon>BGARepairOperationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomsExport\OpeningStockForm.resx">
+      <DependentUpon>OpeningStockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomsExport\RealStockForm.resx">
+      <DependentUpon>RealStockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomsExport\StockInOutForm.resx">
+      <DependentUpon>StockInOutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomsExport\WorkListBodyForm.resx">
+      <DependentUpon>WorkListBodyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomsExport\WorkListHeadForm.resx">
+      <DependentUpon>WorkListHeadForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DeliveredTableForm.resx">
       <DependentUpon>DeliveredTableForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -457,11 +520,20 @@
     <EmbeddedResource Include="ReturnStoreForm.resx">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Store\CheckRequestForm.resx">
+      <DependentUpon>CheckRequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\RequestToStoreForm.resx">
+      <DependentUpon>RequestToStoreForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Store\StockInSheetForm.resx">
       <DependentUpon>StockInSheetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\FRU_SMT_InSheetForm.resx">
       <DependentUpon>FRU_SMT_InSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\FRU_SMT_OutSheetForm.resx">
+      <DependentUpon>FRU_SMT_OutSheetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test_Outlook\OutLookForm.resx">
       <DependentUpon>OutLookForm.cs</DependentUpon>
@@ -534,7 +606,6 @@
   <ItemGroup>
     <Content Include="资料\2.ico" />
     <Content Include="资料\sql 语句备份.txt" />
-    <Content Include="资料\sql所有表格.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

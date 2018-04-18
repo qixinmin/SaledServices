@@ -570,5 +570,21 @@ namespace SaledServices
 
             allForm.Add(frusmtinform);  
         }
+
+        private FRU_SMT_OutSheetForm frusmtoutform;
+        private void fRUSMT入库记录ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frusmtoutform == null || frusmtoutform.IsDisposed)
+            {
+                frusmtoutform = new FRU_SMT_OutSheetForm();
+                frusmtoutform.MdiParent = this;
+            }
+
+            frusmtoutform.WindowState = FormWindowState.Maximized;
+            frusmtoutform.BringToFront();
+            frusmtoutform.Show();
+
+            allForm.Add(frusmtoutform);  
+        }
     }
 }

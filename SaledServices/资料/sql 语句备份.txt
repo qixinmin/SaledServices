@@ -1,4 +1,14 @@
 
+
+CREATE TABLE request_material_to_store_table(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+request_type NVARCHAR(128), /*类型fru/smt/bga/mb*/
+material_mpn NVARCHAR(128), /*材料MPN*/
+material_71pn NVARCHAR(128), /*材料71PN*/
+)
+
+
 CREATE TABLE bga_out_stock(
 Id INT PRIMARY KEY IDENTITY, 
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
@@ -18,6 +28,7 @@ note NVARCHAR(128),/*备注*/
 taker NVARCHAR(128),/*领用人*/
 inputer  NVARCHAR(128),/*输入人*/
 input_date  NVARCHAR(128),/*日期*/
+track_serial_no NVARCHAR(128),/*跟踪条码*/
 )
 
 CREATE TABLE bga_in_stock(
@@ -69,6 +80,7 @@ note NVARCHAR(128),/*备注*/
 taker NVARCHAR(128),/*领用人*/
 inputer  NVARCHAR(128),/*输入人*/
 input_date  NVARCHAR(128),/*日期*/
+track_serial_no NVARCHAR(128),/*跟踪条码*/
 )
 
 CREATE TABLE mb_in_stock(
@@ -104,21 +116,20 @@ buy_type NVARCHAR(128) NOT NULL, /*采购类别*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
 material_type NVARCHAR(128) NOT NULL, /*材料大类*/
 mpn NVARCHAR(128) NOT NULL, /*MPN*/
-vendormaterialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
-describe NVARCHAR(128) NOT NULL,/*描述*/
-
 mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
 material_name  NVARCHAR(128) NOT NULL,/*材料名称*/
-
+vendormaterialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
+describe NVARCHAR(128) NOT NULL,/*描述*/
+isdeclare NVARCHAR(128), /*是否报关*/
 stock_out_num  NVARCHAR(128),/*出库数量*/
 pricePer NVARCHAR(128) NOT NULL,/*单价*/
-
-use_describe NVARCHAR(128),/*用途*/
-note NVARCHAR(128),/*备注*/
-
+stock_place NVARCHAR(128),/*库位*/
 taker NVARCHAR(128),/*领用人*/
 inputer  NVARCHAR(128),/*输入人*/
+use_describe NVARCHAR(128),/*用途*/
+note NVARCHAR(128),/*备注*/
 input_date  NVARCHAR(128),/*日期*/
+track_serial_no NVARCHAR(128),/*跟踪条码*/
 )
 
 CREATE TABLE fru_smt_in_stock(
@@ -311,8 +322,6 @@ repair_result NVARCHAR(128) NOT NULL, /*修复结果*/
 repairer NVARCHAR(128) NOT NULL, /*维修人*/
 repair_date NVARCHAR(128) NOT NULL, /*修复日期*/
 )
-
-
 
 CREATE TABLE LCFC71BOM_table(
 Id INT PRIMARY KEY IDENTITY, 

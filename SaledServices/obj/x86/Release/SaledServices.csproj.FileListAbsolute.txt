@@ -37,3 +37,6 @@ E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\bin\Releas
 E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.exe
 E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
 E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.FRU_SMT_InSheetForm.resources
+E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.FRU_SMT_OutSheetForm.resources
+E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.Store.CheckRequestForm.resources
+E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.Store.RequestToStoreForm.resources

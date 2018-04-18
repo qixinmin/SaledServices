@@ -742,5 +742,10 @@ namespace SaledServices
                 this.software_updatecomboBox.SelectAll();
             }          
         }
+
+        private void request_to_store_button_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
