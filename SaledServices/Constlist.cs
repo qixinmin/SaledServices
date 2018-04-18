@@ -9,8 +9,8 @@ namespace SaledServices
 {
     public class Constlist
     {
-        //public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
-        public static string ConStr = "server=192.168.1.116;database=SaledService;uid=admin;pwd=admin";
+        public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
+        //public static string ConStr = "server=192.168.1.116;database=SaledService;uid=admin;pwd=admin";
 
         public static string table_MBMaterialCompare = "MB物料对照表";
         public static string table_name_MBMaterialCompare = "MBMaterialCompare";
@@ -32,6 +32,9 @@ namespace SaledServices
 
         public static string table_customFault = "故障代码表";
         public static string table_name_customFault = "customFault";
+
+        public static string table_stock_in_sheet = "材料入库单";
+        public static string table_name_stock_in_sheet = "stock_in_sheet";
     }
 
     //订单状态

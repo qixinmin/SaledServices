@@ -129,6 +129,11 @@ namespace SaledServices
                 sheetName = Constlist.table_customFault;
                 tableName = Constlist.table_name_customFault;
             }
+            else if (this.stock_in_sheetradioButton.Checked)
+            {
+                sheetName = Constlist.table_stock_in_sheet;
+                tableName = Constlist.table_name_stock_in_sheet;
+            }
 
             if (this.LCFC_MBBOMradioButton.Checked
                 || this.COMPAL_MBBOMradioButton.Checked)
@@ -148,7 +153,9 @@ namespace SaledServices
 
             if (this.LCFC71BOMRadioButton.Checked
                 || this.DPKradioButton.Checked
-                || this.faultTableRadioButton.Checked)
+                || this.faultTableRadioButton.Checked
+                
+                || this.stock_in_sheetradioButton.Checked)
             {
                 Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
                 int rowLength = ws.UsedRange.Rows.Count;
@@ -482,6 +489,10 @@ namespace SaledServices
                 else if (this.receiveOrder.Checked)
                 {
                     //自动添加
+                }
+                else if (this.stock_in_sheetradioButton.Checked)
+                {
+                    dateIndex = 15;
                 }
                 else if (this.LCFC_MBBOMradioButton.Checked)
                 {

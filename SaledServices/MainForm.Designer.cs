@@ -56,6 +56,11 @@
             this.外观ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.外观检查ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.库存管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.材料入库单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fRUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fRUSMT入库记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mBToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.additionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customFaultMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,11 +73,6 @@
             this.厂商信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.材料入库单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fRUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fRUSMT入库记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mBToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,7 +103,7 @@
             this.LoginMenuItem,
             this.个人信息查看ToolStripMenuItem,
             this.LogoutMenuItem});
-            this.UserManageMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
+            this.UserManageMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.UserManageMenuItem.Name = "UserManageMenuItem";
             this.UserManageMenuItem.Size = new System.Drawing.Size(104, 31);
             this.UserManageMenuItem.Text = "用户管理";
@@ -141,7 +141,7 @@
             this.lCFC71BOM表查看ToolStripMenuItem,
             this.dPKToolStripMenuItem,
             this.故障代码表查看ToolStripMenuItem});
-            this.FunctionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
+            this.FunctionMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
             this.FunctionMenuItem.Text = "功能";
@@ -207,7 +207,7 @@
             this.receiveReturnStoreMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.收货ToolStripMenuItem,
             this.returnStoreMenuItem});
-            this.receiveReturnStoreMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
+            this.receiveReturnStoreMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.receiveReturnStoreMenuItem.Name = "receiveReturnStoreMenuItem";
             this.receiveReturnStoreMenuItem.Size = new System.Drawing.Size(84, 31);
             this.receiveReturnStoreMenuItem.Text = "收还货";
@@ -232,7 +232,7 @@
             this.维修ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.维修界面ToolStripMenuItem,
             this.bGAToolStripMenuItem});
-            this.维修ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
+            this.维修ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.维修ToolStripMenuItem.Name = "维修ToolStripMenuItem";
             this.维修ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
             this.维修ToolStripMenuItem.Text = "维修";
@@ -253,7 +253,7 @@
             // 
             // bGA维修ToolStripMenuItem
             // 
-            this.bGA维修ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
+            this.bGA维修ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.bGA维修ToolStripMenuItem.Name = "bGA维修ToolStripMenuItem";
             this.bGA维修ToolStripMenuItem.Size = new System.Drawing.Size(106, 31);
             this.bGA维修ToolStripMenuItem.Text = "BGA维修";
@@ -265,7 +265,7 @@
             this.测试1ToolStripMenuItem,
             this.测试2ToolStripMenuItem,
             this.测试12ToolStripMenuItem});
-            this.测试ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
+            this.测试ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.测试ToolStripMenuItem.Name = "测试ToolStripMenuItem";
             this.测试ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
             this.测试ToolStripMenuItem.Text = "测试";
@@ -295,7 +295,7 @@
             // 
             this.外观ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.外观检查ToolStripMenuItem});
-            this.外观ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
+            this.外观ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.外观ToolStripMenuItem.Name = "外观ToolStripMenuItem";
             this.外观ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
             this.外观ToolStripMenuItem.Text = "外观";
@@ -315,10 +315,42 @@
             this.fRUSMT入库记录ToolStripMenuItem,
             this.mBToolStripMenuItem,
             this.mBToolStripMenuItem1});
-            this.库存管理ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
+            this.库存管理ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.库存管理ToolStripMenuItem.Name = "库存管理ToolStripMenuItem";
             this.库存管理ToolStripMenuItem.Size = new System.Drawing.Size(104, 31);
             this.库存管理ToolStripMenuItem.Text = "库存管理";
+            // 
+            // 材料入库单ToolStripMenuItem
+            // 
+            this.材料入库单ToolStripMenuItem.Name = "材料入库单ToolStripMenuItem";
+            this.材料入库单ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
+            this.材料入库单ToolStripMenuItem.Text = "材料入库单查看";
+            this.材料入库单ToolStripMenuItem.Click += new System.EventHandler(this.材料入库单ToolStripMenuItem_Click);
+            // 
+            // fRUToolStripMenuItem
+            // 
+            this.fRUToolStripMenuItem.Name = "fRUToolStripMenuItem";
+            this.fRUToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
+            this.fRUToolStripMenuItem.Text = "FRU/SMT入库记录";
+            this.fRUToolStripMenuItem.Click += new System.EventHandler(this.fRUToolStripMenuItem_Click);
+            // 
+            // fRUSMT入库记录ToolStripMenuItem
+            // 
+            this.fRUSMT入库记录ToolStripMenuItem.Name = "fRUSMT入库记录ToolStripMenuItem";
+            this.fRUSMT入库记录ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
+            this.fRUSMT入库记录ToolStripMenuItem.Text = "FRU/SMT出库记录";
+            // 
+            // mBToolStripMenuItem
+            // 
+            this.mBToolStripMenuItem.Name = "mBToolStripMenuItem";
+            this.mBToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
+            this.mBToolStripMenuItem.Text = "MB入库记录";
+            // 
+            // mBToolStripMenuItem1
+            // 
+            this.mBToolStripMenuItem1.Name = "mBToolStripMenuItem1";
+            this.mBToolStripMenuItem1.Size = new System.Drawing.Size(255, 32);
+            this.mBToolStripMenuItem1.Text = "MB出库记录";
             // 
             // additionMenuItem
             // 
@@ -332,7 +364,7 @@
             this.还货客责类别ToolStripMenuItem,
             this.维修故障类别ToolStripMenuItem,
             this.厂商信息ToolStripMenuItem});
-            this.additionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
+            this.additionMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.additionMenuItem.Name = "additionMenuItem";
             this.additionMenuItem.Size = new System.Drawing.Size(104, 31);
             this.additionMenuItem.Text = "附加信息";
@@ -404,7 +436,7 @@
             // 
             this.报表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.报表1ToolStripMenuItem});
-            this.报表ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
+            this.报表ToolStripMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
             this.报表ToolStripMenuItem.Text = "报表";
@@ -416,43 +448,13 @@
             this.报表1ToolStripMenuItem.Text = "RMA欠货表";
             this.报表1ToolStripMenuItem.Click += new System.EventHandler(this.报表1ToolStripMenuItem_Click);
             // 
-            // 材料入库单ToolStripMenuItem
-            // 
-            this.材料入库单ToolStripMenuItem.Name = "材料入库单ToolStripMenuItem";
-            this.材料入库单ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
-            this.材料入库单ToolStripMenuItem.Text = "材料入库单查看";
-            // 
-            // fRUToolStripMenuItem
-            // 
-            this.fRUToolStripMenuItem.Name = "fRUToolStripMenuItem";
-            this.fRUToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
-            this.fRUToolStripMenuItem.Text = "FRU/SMT入库记录";
-            // 
-            // fRUSMT入库记录ToolStripMenuItem
-            // 
-            this.fRUSMT入库记录ToolStripMenuItem.Name = "fRUSMT入库记录ToolStripMenuItem";
-            this.fRUSMT入库记录ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
-            this.fRUSMT入库记录ToolStripMenuItem.Text = "FRU/SMT出库记录";
-            // 
-            // mBToolStripMenuItem
-            // 
-            this.mBToolStripMenuItem.Name = "mBToolStripMenuItem";
-            this.mBToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
-            this.mBToolStripMenuItem.Text = "MB入库记录";
-            // 
-            // mBToolStripMenuItem1
-            // 
-            this.mBToolStripMenuItem1.Name = "mBToolStripMenuItem1";
-            this.mBToolStripMenuItem1.Size = new System.Drawing.Size(255, 32);
-            this.mBToolStripMenuItem1.Text = "MB出库记录";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(927, 687);
             this.Controls.Add(this.AllMenuStrip);
-            this.Font = new System.Drawing.Font("SimSun", 12F);
+            this.Font = new System.Drawing.Font("宋体", 12F);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);

@@ -33,13 +33,14 @@
             this.filePath = new System.Windows.Forms.TextBox();
             this.findFile = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.faultTableRadioButton = new System.Windows.Forms.RadioButton();
+            this.DPKradioButton = new System.Windows.Forms.RadioButton();
             this.LCFC71BOMRadioButton = new System.Windows.Forms.RadioButton();
             this.COMPAL_MBBOMradioButton = new System.Windows.Forms.RadioButton();
             this.LCFC_MBBOMradioButton = new System.Windows.Forms.RadioButton();
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
-            this.DPKradioButton = new System.Windows.Forms.RadioButton();
-            this.faultTableRadioButton = new System.Windows.Forms.RadioButton();
+            this.stock_in_sheetradioButton = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,6 +77,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.stock_in_sheetradioButton);
             this.panel1.Controls.Add(this.faultTableRadioButton);
             this.panel1.Controls.Add(this.DPKradioButton);
             this.panel1.Controls.Add(this.LCFC71BOMRadioButton);
@@ -86,8 +88,30 @@
             this.panel1.Location = new System.Drawing.Point(20, 149);
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(407, 393);
+            this.panel1.Size = new System.Drawing.Size(419, 424);
             this.panel1.TabIndex = 4;
+            // 
+            // faultTableRadioButton
+            // 
+            this.faultTableRadioButton.AutoSize = true;
+            this.faultTableRadioButton.Location = new System.Drawing.Point(22, 326);
+            this.faultTableRadioButton.Name = "faultTableRadioButton";
+            this.faultTableRadioButton.Size = new System.Drawing.Size(127, 24);
+            this.faultTableRadioButton.TabIndex = 4;
+            this.faultTableRadioButton.TabStop = true;
+            this.faultTableRadioButton.Text = "故障代码表";
+            this.faultTableRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // DPKradioButton
+            // 
+            this.DPKradioButton.AutoSize = true;
+            this.DPKradioButton.Location = new System.Drawing.Point(22, 283);
+            this.DPKradioButton.Name = "DPKradioButton";
+            this.DPKradioButton.Size = new System.Drawing.Size(57, 24);
+            this.DPKradioButton.TabIndex = 4;
+            this.DPKradioButton.TabStop = true;
+            this.DPKradioButton.Text = "DPK";
+            this.DPKradioButton.UseVisualStyleBackColor = true;
             // 
             // LCFC71BOMRadioButton
             // 
@@ -146,27 +170,16 @@
             this.mbmaterial.Text = "MB物料对照表";
             this.mbmaterial.UseVisualStyleBackColor = true;
             // 
-            // DPKradioButton
+            // stock_in_sheetradioButton
             // 
-            this.DPKradioButton.AutoSize = true;
-            this.DPKradioButton.Location = new System.Drawing.Point(22, 283);
-            this.DPKradioButton.Name = "DPKradioButton";
-            this.DPKradioButton.Size = new System.Drawing.Size(57, 24);
-            this.DPKradioButton.TabIndex = 4;
-            this.DPKradioButton.TabStop = true;
-            this.DPKradioButton.Text = "DPK";
-            this.DPKradioButton.UseVisualStyleBackColor = true;
-            // 
-            // faultTableRadioButton
-            // 
-            this.faultTableRadioButton.AutoSize = true;
-            this.faultTableRadioButton.Location = new System.Drawing.Point(22, 326);
-            this.faultTableRadioButton.Name = "faultTableRadioButton";
-            this.faultTableRadioButton.Size = new System.Drawing.Size(127, 24);
-            this.faultTableRadioButton.TabIndex = 4;
-            this.faultTableRadioButton.TabStop = true;
-            this.faultTableRadioButton.Text = "故障代码表";
-            this.faultTableRadioButton.UseVisualStyleBackColor = true;
+            this.stock_in_sheetradioButton.AutoSize = true;
+            this.stock_in_sheetradioButton.Location = new System.Drawing.Point(22, 368);
+            this.stock_in_sheetradioButton.Name = "stock_in_sheetradioButton";
+            this.stock_in_sheetradioButton.Size = new System.Drawing.Size(127, 24);
+            this.stock_in_sheetradioButton.TabIndex = 4;
+            this.stock_in_sheetradioButton.TabStop = true;
+            this.stock_in_sheetradioButton.Text = "材料入库单";
+            this.stock_in_sheetradioButton.UseVisualStyleBackColor = true;
             // 
             // ExcelImportForm
             // 
@@ -177,7 +190,7 @@
             this.Controls.Add(this.findFile);
             this.Controls.Add(this.filePath);
             this.Controls.Add(this.importButton);
-            this.Font = new System.Drawing.Font("SimSun", 15F);
+            this.Font = new System.Drawing.Font("宋体", 15F);
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ExcelImportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -203,5 +216,6 @@
         private System.Windows.Forms.RadioButton LCFC_MBBOMradioButton;
         private System.Windows.Forms.RadioButton DPKradioButton;
         private System.Windows.Forms.RadioButton faultTableRadioButton;
+        private System.Windows.Forms.RadioButton stock_in_sheetradioButton;
     }
 }

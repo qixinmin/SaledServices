@@ -1,4 +1,4 @@
-
+﻿
 CREATE TABLE bga_out_stock(
 Id INT PRIMARY KEY IDENTITY, 
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
@@ -45,7 +45,6 @@ note NVARCHAR(128),/*备注*/
 
 inputer  NVARCHAR(128),/*输入人*/
 input_date  NVARCHAR(128),/*日期*/
-isdeclare NVARCHAR(128), /*是否报关*/
 )
 
 
@@ -94,7 +93,6 @@ note NVARCHAR(128),/*备注*/
 
 inputer  NVARCHAR(128),/*输入人*/
 input_date  NVARCHAR(128),/*日期*/
-isdeclare NVARCHAR(128), /*是否报关*/
 )
 
 CREATE TABLE fru_smt_out_stock(
@@ -131,20 +129,24 @@ material_type NVARCHAR(128) NOT NULL, /*材料大类*/
 mpn NVARCHAR(128) NOT NULL, /*MPN*/
 vendormaterialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
 describe NVARCHAR(128) NOT NULL,/*描述*/
+
 number  NVARCHAR(128) NOT NULL,/*订单数量*/
 pricePer NVARCHAR(128) NOT NULL,/*单价*/
-isdeclare NVARCHAR(128), /*是否报关*/
 
 mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
 material_name  NVARCHAR(128) NOT NULL,/*材料名称*/
-stock_in_num  NVARCHAR(128),/*入库数量*/
 totalMoney  NVARCHAR(128),/*金额合计*/
+stock_in_num  NVARCHAR(128),/*入库数量*/
+
 stock_place NVARCHAR(128),/*库位*/
 note NVARCHAR(128),/*备注*/
+
 inputer  NVARCHAR(128),/*输入人*/
 input_date  NVARCHAR(128),/*日期*/
 )
-		
+
+
+								
 CREATE TABLE stock_in_sheet(
 Id INT PRIMARY KEY IDENTITY, 
 buy_order_serial_no NVARCHAR(128) NOT NULL, /*采购订单编号*/
@@ -155,19 +157,19 @@ material_type NVARCHAR(128) NOT NULL, /*材料大类*/
 mpn NVARCHAR(128) NOT NULL, /*MPN*/
 vendormaterialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
 describe NVARCHAR(128) NOT NULL,/*描述*/
+material_name  NVARCHAR(128) NOT NULL,/*材料名称*/
+
 number  NVARCHAR(128) NOT NULL,/*订单数量*/
 pricePer  NVARCHAR(128) NOT NULL,/*单价*/
-material_name  NVARCHAR(128) NOT NULL,/*材料名称*/
-totalMoney  NVARCHAR(128),/*金额合计*/
 stock_in_num  NVARCHAR(128),/*入库数量*/
+totalMoney  NVARCHAR(128),/*金额合计*/
 
 inputer  NVARCHAR(128),/*输入人*/
 input_date  NVARCHAR(128),/*日期*/
-isdeclare NVARCHAR(128), /*是否报关*/
 )
 
 
-//bga待维修记录
+
 
 CREATE TABLE bga_wait_record_table(
 Id INT PRIMARY KEY IDENTITY, 
@@ -197,7 +199,6 @@ repair_date NVARCHAR(128) NOT NULL, /*录入日期*/
 countNum NVARCHAR(128) NOT NULL/*总共录入了几次，从1开始，防止同一片板子在维修与BGA来回折腾*/
 )
 
-//outlookcheck
 CREATE TABLE outlookcheck(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL,
@@ -205,7 +206,7 @@ tester NVARCHAR(128) NOT NULL,
 test_date NVARCHAR(128) NOT NULL
 )
 
-//testall, TBG,DT, AIO
+
 CREATE TABLE testalltable(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL,
@@ -213,7 +214,7 @@ tester NVARCHAR(128) NOT NULL,
 test_date NVARCHAR(128) NOT NULL
 )
 
-//test2 LBG 使用
+
 CREATE TABLE test2table(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL,
@@ -221,7 +222,6 @@ tester NVARCHAR(128) NOT NULL,
 test_date NVARCHAR(128) NOT NULL
 )
 
-//test1 LBG
 CREATE TABLE test1table(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL,
@@ -261,7 +261,7 @@ oldSn NVARCHAR(128), /*换下sn*/
 newSn NVARCHAR(128), /*换上sn*/
 )
 
-//DPK 导入表格
+
 CREATE TABLE DPK_table(
 Id INT PRIMARY KEY IDENTITY, 
 dpk_order_no NVARCHAR(128) NOT NULL, /*联想DPK订单编号*/
@@ -275,7 +275,7 @@ burn_date NVARCHAR(128),/*烧录日期*/
 custom_serial_no NVARCHAR(128) /*客户序号*/
 )
 
-//维修故障类别
+
 CREATE TABLE repairFaultType(
 Id INT PRIMARY KEY IDENTITY, 
 type NVARCHAR(128) NOT NULL
@@ -367,14 +367,12 @@ L7 NVARCHAR(128) , /*L7*/
 L8 NVARCHAR(128)  /*L8*/ 
 )
 
-//客责类别
 CREATE TABLE customResponsibilityType(
 Id INT PRIMARY KEY IDENTITY, 
 type NVARCHAR(128) NOT NULL
 )
 
 
-//还货状态
 CREATE TABLE returnStoreStatus(
 Id INT PRIMARY KEY IDENTITY, 
 status NVARCHAR(128) NOT NULL
@@ -403,7 +401,6 @@ inputuser NVARCHAR(128)/*还货人*/
 )
 
 
-//收货
 CREATE TABLE DeliveredTable(
 Id INT PRIMARY KEY IDENTITY, 
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
@@ -437,25 +434,23 @@ inputuser NVARCHAR(128)/*收货人*/
 )
 
 
-//仓库别
+
 CREATE TABLE storehouse(
 Id INT PRIMARY KEY IDENTITY, 
 storehouse_describe NVARCHAR(128) NOT NULL
 )
 
-//客责描述
+
 CREATE TABLE customResponsibility(
 Id INT PRIMARY KEY IDENTITY, 
 responsibility_describe NVARCHAR(128) NOT NULL
 )
 
-//保内/保外
 CREATE TABLE guarantee(
 Id INT PRIMARY KEY IDENTITY, 
 guarantee_describe NVARCHAR(128) NOT NULL
 )
 
-//客户故障
 CREATE TABLE customFault(
 Id INT PRIMARY KEY IDENTITY, 
 fault_index NVARCHAR(128) NOT NULL,
@@ -470,8 +465,6 @@ Id INT PRIMARY KEY IDENTITY,
 source NVARCHAR(128) NOT NULL
 )
 
-
-users表：
 		
 CREATE TABLE users(
 Id INT PRIMARY KEY IDENTITY, 
@@ -488,22 +481,6 @@ store  NVARCHAR(128) NOT NULL,
 outlook  NVARCHAR(128) NOT NULL
 )
 
-INSERT INTO users VALUES('Value1','Value1','Value1')
-
-客户别：
-
-CREATE TABLE vendorProduct(Id INT PRIMARY KEY IDENTITY, vendor NVARCHAR(128) NOT NULL, product NVARCHAR(128) NOT NULL)
-
-修改列名：
-sp_rename 'DeliveredTable.vendormaterialNo',mpn,'column'
-
-表中添加列
-alter table MBMaterialCompare add inputuser NVARCHAR(128)
-
-倒叙查询最新的数据：
-select top 9 * from receiveOrder order by id desc
-
-MB物料对照表:
 
 CREATE TABLE MBMaterialCompare(
 Id INT PRIMARY KEY IDENTITY, 
@@ -539,10 +516,8 @@ cpu_freq NVARCHAR(128),/*CPU频率*/
 eco NVARCHAR(128),/*ECO*/
 eol NVARCHAR(128),/*EOL*/
 adddate NVARCHAR(128),/*添加日期*/
-inputuser NVARCHAR(128),/*添加人*/
+inputuser NVARCHAR(128)/*添加人*/
 )
-
-收货单：
 
 CREATE TABLE receiveOrder(
 Id INT PRIMARY KEY IDENTITY,
@@ -560,7 +535,7 @@ receivedNum NVARCHAR(128),/*收货数量*/
 receivedate NVARCHAR(128),/*收货日期*/
 status NVARCHAR(128) NOT NULL,/*订单状态*/
 storehouse NVARCHAR(128) NOT NULL,/*库别*/
-returnNum NVARCHAR(128) /*还货数量*/
+returnNum NVARCHAR(128)/*还货数量*/
 )
 
 

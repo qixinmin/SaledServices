@@ -328,6 +328,12 @@
     <Compile Include="Store\StockInSheetForm.Designer.cs">
       <DependentUpon>StockInSheetForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\FRU_SMT_InSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\FRU_SMT_InSheetForm.Designer.cs">
+      <DependentUpon>FRU_SMT_InSheetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Test_Outlook\OutLookForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -454,6 +460,9 @@
     <EmbeddedResource Include="Store\StockInSheetForm.resx">
       <DependentUpon>StockInSheetForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Store\FRU_SMT_InSheetForm.resx">
+      <DependentUpon>FRU_SMT_InSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Test_Outlook\OutLookForm.resx">
       <DependentUpon>OutLookForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -525,6 +534,7 @@
   <ItemGroup>
     <Content Include="资料\2.ico" />
     <Content Include="资料\sql 语句备份.txt" />
+    <Content Include="资料\sql所有表格.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

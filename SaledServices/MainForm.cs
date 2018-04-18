@@ -537,5 +537,38 @@ namespace SaledServices
 
             allForm.Add(vgaRof);        
         }
+
+        private StockInSheetForm sisf;
+        private void 材料入库单ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sisf == null || sisf.IsDisposed)
+            {
+                sisf = new StockInSheetForm();
+                sisf.MdiParent = this;
+            }
+
+            sisf.WindowState = FormWindowState.Maximized;
+            sisf.BringToFront();
+            sisf.Show();
+
+            allForm.Add(sisf);  
+        }
+
+
+        private FRU_SMT_InSheetForm frusmtinform;
+        private void fRUToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frusmtinform == null || frusmtinform.IsDisposed)
+            {
+                frusmtinform = new FRU_SMT_InSheetForm();
+                frusmtinform.MdiParent = this;
+            }
+
+            frusmtinform.WindowState = FormWindowState.Maximized;
+            frusmtinform.BringToFront();
+            frusmtinform.Show();
+
+            allForm.Add(frusmtinform);  
+        }
     }
 }
