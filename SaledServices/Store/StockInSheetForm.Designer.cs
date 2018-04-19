@@ -71,6 +71,12 @@
             this.label17 = new System.Windows.Forms.Label();
             this.material_nameTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.custom_request_numbertextBox = new System.Windows.Forms.TextBox();
+            this.declare_numbertextBox = new System.Windows.Forms.TextBox();
+            this.declare_unittextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -381,7 +387,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1021, 50);
+            this.label14.Location = new System.Drawing.Point(1021, 191);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(24, 16);
@@ -391,7 +397,7 @@
             // idTextBox
             // 
             this.idTextBox.Enabled = false;
-            this.idTextBox.Location = new System.Drawing.Point(1190, 54);
+            this.idTextBox.Location = new System.Drawing.Point(1190, 195);
             this.idTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.ReadOnly = true;
@@ -482,8 +488,6 @@
             this.tableLayoutPanel3.Controls.Add(this.label3, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.vendormaterialNoTextBox, 3, 1);
             this.tableLayoutPanel3.Controls.Add(this.inputerTextBox, 5, 3);
-            this.tableLayoutPanel3.Controls.Add(this.label14, 6, 1);
-            this.tableLayoutPanel3.Controls.Add(this.idTextBox, 7, 1);
             this.tableLayoutPanel3.Controls.Add(this.label17, 6, 0);
             this.tableLayoutPanel3.Controls.Add(this.isDeclareTextBox, 7, 0);
             this.tableLayoutPanel3.Controls.Add(this.material_nameTextBox, 5, 0);
@@ -493,6 +497,14 @@
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label14, 6, 4);
+            this.tableLayoutPanel3.Controls.Add(this.idTextBox, 7, 4);
+            this.tableLayoutPanel3.Controls.Add(this.label18, 6, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label19, 6, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label20, 6, 3);
+            this.tableLayoutPanel3.Controls.Add(this.custom_request_numbertextBox, 7, 3);
+            this.tableLayoutPanel3.Controls.Add(this.declare_numbertextBox, 7, 2);
+            this.tableLayoutPanel3.Controls.Add(this.declare_unittextBox, 7, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -551,6 +563,66 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1362, 49);
             this.tableLayoutPanel2.TabIndex = 9;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(1021, 50);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(72, 16);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "申报单位";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(1021, 97);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(72, 16);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "报关单号";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(1021, 144);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(72, 16);
+            this.label20.TabIndex = 4;
+            this.label20.Text = "申请单号";
+            // 
+            // custom_request_numbertextBox
+            // 
+            this.custom_request_numbertextBox.Enabled = false;
+            this.custom_request_numbertextBox.Location = new System.Drawing.Point(1190, 148);
+            this.custom_request_numbertextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.custom_request_numbertextBox.Name = "custom_request_numbertextBox";
+            this.custom_request_numbertextBox.ReadOnly = true;
+            this.custom_request_numbertextBox.Size = new System.Drawing.Size(165, 26);
+            this.custom_request_numbertextBox.TabIndex = 5;
+            // 
+            // declare_numbertextBox
+            // 
+            this.declare_numbertextBox.Enabled = false;
+            this.declare_numbertextBox.Location = new System.Drawing.Point(1190, 101);
+            this.declare_numbertextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.declare_numbertextBox.Name = "declare_numbertextBox";
+            this.declare_numbertextBox.ReadOnly = true;
+            this.declare_numbertextBox.Size = new System.Drawing.Size(165, 26);
+            this.declare_numbertextBox.TabIndex = 5;
+            // 
+            // declare_unittextBox
+            // 
+            this.declare_unittextBox.Enabled = false;
+            this.declare_unittextBox.Location = new System.Drawing.Point(1190, 54);
+            this.declare_unittextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.declare_unittextBox.Name = "declare_unittextBox";
+            this.declare_unittextBox.ReadOnly = true;
+            this.declare_unittextBox.Size = new System.Drawing.Size(165, 26);
+            this.declare_unittextBox.TabIndex = 5;
             // 
             // StockInSheetForm
             // 
@@ -617,5 +689,11 @@
         private System.Windows.Forms.TextBox inputerTextBox;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox material_nameTextBox;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox custom_request_numbertextBox;
+        private System.Windows.Forms.TextBox declare_numbertextBox;
+        private System.Windows.Forms.TextBox declare_unittextBox;
     }
 }

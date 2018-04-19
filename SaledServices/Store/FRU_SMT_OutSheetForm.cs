@@ -57,6 +57,8 @@ namespace SaledServices
 
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
+
+                    //跟新请求表格的状态
                 }
                 else
                 {
@@ -227,50 +229,61 @@ namespace SaledServices
                 SetValue(tableLayoutPanel3, true, null);           
         }
 
-        private void mpnTextBox_KeyPress(object sender, KeyPressEventArgs e)
+
+        public void doRequestUsingMpn()
+        {
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select vendor,buy_type,product,material_type,mpn,mb_brief, material_name,vendormaterialNo,describe,isdeclare,pricePer,stock_place from fru_smt_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+
+                SqlDataReader querySdr = cmd.ExecuteReader();
+
+                while (querySdr.Read())
+                {
+                    this.vendorTextBox.Text = querySdr[0].ToString();
+                    this.buy_typeTextBox.Text = querySdr[1].ToString();
+                    this.productTextBox.Text = querySdr[2].ToString();
+                    this.material_typeTextBox.Text = querySdr[3].ToString();
+                    this.mpnTextBox.Text = querySdr[4].ToString();
+                    this.mb_brieftextBox.Text = querySdr[5].ToString();
+                    this.material_nameTextBox.Text = querySdr[6].ToString();
+                    this.vendormaterialNoTextBox.Text = querySdr[7].ToString();
+                    this.describeTextBox.Text = querySdr[8].ToString();
+                    this.isDeclareTextBox.Text = querySdr[9].ToString();
+                    this.pricePerTextBox.Text = querySdr[10].ToString();
+                    this.stock_placetextBox.Text = querySdr[11].ToString();
+                }
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+        public void mpnTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                try
-                {
-                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
-                    mConn.Open();
-
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = mConn;
-                    cmd.CommandType = CommandType.Text;
-
-                    cmd.CommandText = "select vendor,buy_type,product,material_type,mpn,mb_brief, material_name,vendormaterialNo,describe,isdeclare,pricePer,stock_place from fru_smt_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "'";
-
-                    SqlDataReader querySdr = cmd.ExecuteReader();
-
-                    while (querySdr.Read())
-                    {
-                        this.vendorTextBox.Text = querySdr[0].ToString();
-                        this.buy_typeTextBox.Text = querySdr[1].ToString();
-                        this.productTextBox.Text = querySdr[2].ToString();
-                        this.material_typeTextBox.Text = querySdr[3].ToString();
-                        this.mpnTextBox.Text = querySdr[4].ToString();
-                        this.mb_brieftextBox.Text= querySdr[5].ToString();
-                        this.material_nameTextBox.Text= querySdr[6].ToString();
-                        this.vendormaterialNoTextBox.Text= querySdr[7].ToString();
-                        this.describeTextBox.Text= querySdr[8].ToString();
-                        this.isDeclareTextBox.Text= querySdr[9].ToString();
-                        this.pricePerTextBox.Text= querySdr[10].ToString();
-                        this.stock_placetextBox.Text= querySdr[11].ToString();
-                    }
-                    querySdr.Close();
-                   
-                    mConn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-
-               
-            
+               doRequestUsingMpn();            
             }
         }
+
+        public void setparamters(string track_serial_no, string material_mpn, string material_71pn)
+        {
+            this.track_serial_notextBox.Text = track_serial_no;
+            this.mpnTextBox.Text = material_mpn;
+        }
+
+
     }
 }

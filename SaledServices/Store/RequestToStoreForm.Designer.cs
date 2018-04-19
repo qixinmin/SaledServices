@@ -30,14 +30,14 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.FRUSMT = new System.Windows.Forms.RadioButton();
+            this.BGA = new System.Windows.Forms.RadioButton();
+            this.MB = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.material_mpntextBox = new System.Windows.Forms.TextBox();
+            this.track_serial_notextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.material_71pntextBox = new System.Windows.Forms.TextBox();
             this.requestbutton = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -61,63 +61,63 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "跟踪条码";
             // 
-            // radioButton1
+            // FRUSMT
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(48, 15);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(65, 16);
-            this.radioButton1.TabIndex = 2;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "FRU/SMT";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.FRUSMT.AutoSize = true;
+            this.FRUSMT.Checked = true;
+            this.FRUSMT.Location = new System.Drawing.Point(48, 15);
+            this.FRUSMT.Name = "FRUSMT";
+            this.FRUSMT.Size = new System.Drawing.Size(65, 16);
+            this.FRUSMT.TabIndex = 2;
+            this.FRUSMT.TabStop = true;
+            this.FRUSMT.Text = "FRU/SMT";
+            this.FRUSMT.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // BGA
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(48, 37);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(41, 16);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.Text = "BGA";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.BGA.AutoSize = true;
+            this.BGA.Location = new System.Drawing.Point(48, 37);
+            this.BGA.Name = "BGA";
+            this.BGA.Size = new System.Drawing.Size(41, 16);
+            this.BGA.TabIndex = 3;
+            this.BGA.Text = "BGA";
+            this.BGA.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // MB
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(48, 59);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(35, 16);
-            this.radioButton3.TabIndex = 4;
-            this.radioButton3.Text = "MB";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.MB.AutoSize = true;
+            this.MB.Location = new System.Drawing.Point(48, 59);
+            this.MB.Name = "MB";
+            this.MB.Size = new System.Drawing.Size(35, 16);
+            this.MB.TabIndex = 4;
+            this.MB.Text = "MB";
+            this.MB.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.radioButton1);
-            this.panel1.Controls.Add(this.radioButton3);
-            this.panel1.Controls.Add(this.radioButton2);
+            this.panel1.Controls.Add(this.FRUSMT);
+            this.panel1.Controls.Add(this.MB);
+            this.panel1.Controls.Add(this.BGA);
             this.panel1.Location = new System.Drawing.Point(104, 140);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(194, 128);
             this.panel1.TabIndex = 5;
             // 
-            // textBox1
+            // material_mpntextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(182, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 6;
+            this.material_mpntextBox.Location = new System.Drawing.Point(182, 69);
+            this.material_mpntextBox.Name = "material_mpntextBox";
+            this.material_mpntextBox.ReadOnly = true;
+            this.material_mpntextBox.Size = new System.Drawing.Size(100, 21);
+            this.material_mpntextBox.TabIndex = 6;
             // 
-            // textBox2
+            // track_serial_notextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(182, 36);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 21);
-            this.textBox2.TabIndex = 7;
+            this.track_serial_notextBox.Location = new System.Drawing.Point(182, 36);
+            this.track_serial_notextBox.Name = "track_serial_notextBox";
+            this.track_serial_notextBox.ReadOnly = true;
+            this.track_serial_notextBox.Size = new System.Drawing.Size(100, 21);
+            this.track_serial_notextBox.TabIndex = 7;
             // 
             // label3
             // 
@@ -128,13 +128,13 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "材料71PN";
             // 
-            // textBox3
+            // material_71pntextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(182, 102);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 21);
-            this.textBox3.TabIndex = 6;
+            this.material_71pntextBox.Location = new System.Drawing.Point(182, 102);
+            this.material_71pntextBox.Name = "material_71pntextBox";
+            this.material_71pntextBox.ReadOnly = true;
+            this.material_71pntextBox.Size = new System.Drawing.Size(100, 21);
+            this.material_71pntextBox.TabIndex = 6;
             // 
             // requestbutton
             // 
@@ -162,14 +162,15 @@
             this.ClientSize = new System.Drawing.Size(405, 377);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.requestbutton);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.track_serial_notextBox);
+            this.Controls.Add(this.material_71pntextBox);
+            this.Controls.Add(this.material_mpntextBox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "RequestToStoreForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "向库房发送请求";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -182,14 +183,14 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton FRUSMT;
+        private System.Windows.Forms.RadioButton BGA;
+        private System.Windows.Forms.RadioButton MB;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox material_mpntextBox;
+        private System.Windows.Forms.TextBox track_serial_notextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox material_71pntextBox;
         private System.Windows.Forms.Button requestbutton;
         private System.Windows.Forms.Button cancel;
     }

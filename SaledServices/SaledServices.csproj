@@ -243,6 +243,14 @@
     <Compile Include="BGARepairOperationForm.Designer.cs">
       <DependentUpon>BGARepairOperationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomsContentClass\OpeningStockClass.cs" />
+    <Compile Include="CustomsContentClass\WorkListHeadClass.cs" />
+    <Compile Include="CustomsExport\CompanyFixedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomsExport\CompanyFixedForm.Designer.cs">
+      <DependentUpon>CompanyFixedForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomsExport\OpeningStockForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -466,6 +474,9 @@
     <EmbeddedResource Include="BGARepairOperationForm.resx">
       <DependentUpon>BGARepairOperationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomsExport\CompanyFixedForm.resx">
+      <DependentUpon>CompanyFixedForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomsExport\OpeningStockForm.resx">
       <DependentUpon>OpeningStockForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -571,6 +582,9 @@
     <EmbeddedResource Include="additionForm\VendorForm.resx">
       <DependentUpon>VendorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="CustomsContentClass\RealStockClass.cs" />
+    <Compile Include="CustomsContentClass\StockInOutClass.cs" />
+    <Compile Include="CustomsContentClass\WorkListBodyClass.cs" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

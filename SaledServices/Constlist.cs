@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using SaledServices.CustomsContentClass;
 
 namespace SaledServices
 {
@@ -60,6 +61,261 @@ namespace SaledServices
 
     public class Untils
     {
+        public static void createOpeningStockXML(OpeningStockClass openingStockClass, string fileName)
+        {
+            StringBuilder xmlResult = new StringBuilder("<xml version=\"1.0\" encoding=\"utf-8\">\n");
+            xmlResult.AppendFormat("<HCHX_DATA xmlns=\"http://HCHX.Schemas.STORE_INIT\">\n");
+            xmlResult.Append("<TRANSMIT>\n");
+            xmlResult.AppendFormat("<SEQ_NO>{0}</SEQ_NO>\n", openingStockClass.seq_no);
+            xmlResult.AppendFormat("<BOXTYPE>{0}</BOXTYPE>\n", openingStockClass.boxtype);
+
+            xmlResult.AppendFormat("<FLOWSTATEG>{0}</FLOWSTATEG>\n", openingStockClass.flowstateg);
+            xmlResult.AppendFormat("<TRADE_CODE>{0}</TRADE_CODE>\n", openingStockClass.trade_code);
+
+            xmlResult.AppendFormat("<EMS_NO>{0}</EMS_NO>\n", openingStockClass.ems_no);
+            xmlResult.AppendFormat("<STATUS>{0}</STATUS>\n", openingStockClass.status);
+            xmlResult.Append("</TRANSMIT>");
+
+            foreach (StoreInit storeInit in openingStockClass.storeInitList)
+            {
+                xmlResult.Append("<STORE_INIT>\n");
+                xmlResult.AppendFormat("<EMS_NO>{0}</EMS_NO>\n", storeInit.ems_no);
+                xmlResult.AppendFormat("<COP_G_NO>{0}</COP_G_NO>\n", storeInit.cop_g_no);
+                xmlResult.AppendFormat("<QTY>{0}</QTY>\n", storeInit.qty);
+                xmlResult.AppendFormat("<UNIT>{0}</UNIT>\n", storeInit.unit);
+                xmlResult.AppendFormat("<GOODS_NATURE>{0}</GOODS_NATURE>\n", storeInit.goods_nature);
+                xmlResult.AppendFormat("<BOM_VERSION>{0}</BOM_VERSION>\n", storeInit.bom_version);
+                xmlResult.AppendFormat("<CHECK_DATE>{0}</CHECK_DATE>\n", storeInit.check_date);
+                xmlResult.AppendFormat("<DATA_TYPE>{0}</DATA_TYPE>\n", storeInit.date_type);
+
+                xmlResult.AppendFormat("<WHS_CODE>{0}</WHS_CODE>\n", storeInit.whs_code);
+                xmlResult.AppendFormat("<LOCATION_CODE>{0}</LOCATION_CODE>\n", storeInit.location_code);
+                xmlResult.AppendFormat("<NOTE>{0}</NOTE>\n", storeInit.note);
+                xmlResult.Append("</STORE_INIT>\n");
+            }
+            xmlResult.Append("</HCHX_DATA>\n");            
+
+            //写入文件  
+            try
+            {
+                //1.创建文件流    
+                FileStream fileStream = new FileStream(fileName, FileMode.Create);
+                //2.创建写入器    
+                StreamWriter streamWriter = new StreamWriter(fileStream);
+                //3.将内容写入文件    
+                streamWriter.WriteLine(xmlResult);
+                //4.关闭写入器    
+                streamWriter.Close();
+                //5.关闭文件流    
+                fileStream.Close();
+            }
+            catch (Exception e)
+            { }        
+        }
+
+        public static void createRealStockXML(RealStockClass realStockClass, string fileName)
+        {
+            StringBuilder xmlResult = new StringBuilder("<xml version=\"1.0\" encoding=\"utf-8\">\n");
+            xmlResult.AppendFormat("<HCHX_DATA xmlns=\"http://HCHX.Schemas.STORE_AMOUNT\">\n");
+            xmlResult.Append("<TRANSMIT>\n");
+            xmlResult.AppendFormat("<SEQ_NO>{0}</SEQ_NO>\n", realStockClass.seq_no);
+            xmlResult.AppendFormat("<BOXTYPE>{0}</BOXTYPE>\n", realStockClass.boxtype);
+
+            xmlResult.AppendFormat("<FLOWSTATEG>{0}</FLOWSTATEG>\n", realStockClass.flowstateg);
+            xmlResult.AppendFormat("<TRADE_CODE>{0}</TRADE_CODE>\n", realStockClass.trade_code);
+
+            xmlResult.AppendFormat("<EMS_NO>{0}</EMS_NO>\n", realStockClass.ems_no);
+            xmlResult.AppendFormat("<STATUS>{0}</STATUS>\n", realStockClass.status);
+            xmlResult.Append("</TRANSMIT>\n");
+
+            foreach (StoreAmount storeInit in realStockClass.storeAmountList)
+            {
+                xmlResult.Append("<STORE_AMOUNT>\n");
+                xmlResult.AppendFormat("<EMS_NO>{0}</EMS_NO>\n", storeInit.ems_no);
+                xmlResult.AppendFormat("<COP_G_NO>{0}</COP_G_NO>\n", storeInit.cop_g_no);
+                xmlResult.AppendFormat("<QTY>{0}</QTY>\n", storeInit.qty);
+                xmlResult.AppendFormat("<UNIT>{0}</UNIT>\n", storeInit.unit);
+                xmlResult.AppendFormat("<GOODS_NATURE>{0}</GOODS_NATURE>\n", storeInit.goods_nature);
+                xmlResult.AppendFormat("<BOM_VERSION>{0}</BOM_VERSION>\n", storeInit.bom_version);
+                xmlResult.AppendFormat("<CHECK_DATE>{0}</CHECK_DATE>\n", storeInit.check_date);
+                xmlResult.AppendFormat("<DATA_TYPE>{0}</DATA_TYPE>\n", storeInit.date_type);
+
+                xmlResult.AppendFormat("<WHS_CODE>{0}</WHS_CODE>\n", storeInit.whs_code);
+                xmlResult.AppendFormat("<LOCATION_CODE>{0}</LOCATION_CODE>\n", storeInit.location_code);
+                xmlResult.AppendFormat("<NOTE>{0}</NOTE>\n", storeInit.note);
+                xmlResult.Append("</STORE_AMOUNT>\n");
+            }
+            xmlResult.Append("</HCHX_DATA>\n");
+
+            //写入文件  
+            try
+            {
+                //1.创建文件流    
+                FileStream fileStream = new FileStream(fileName, FileMode.Create);
+                //2.创建写入器    
+                StreamWriter streamWriter = new StreamWriter(fileStream);
+                //3.将内容写入文件    
+                streamWriter.WriteLine(xmlResult);
+                //4.关闭写入器    
+                streamWriter.Close();
+                //5.关闭文件流    
+                fileStream.Close();
+            }
+            catch (Exception e)
+            { }
+        }
+
+        public static void createStockInOutXML(StockInOutClass stockInOutClass, string fileName)
+        {
+            StringBuilder xmlResult = new StringBuilder("<xml version=\"1.0\" encoding=\"utf-8\">\n");
+            xmlResult.AppendFormat("<HCHX_DATA xmlns=\"http://HCHX.Schemas.STORE_TRANS\">\n");
+            xmlResult.Append("<TRANSMIT>\n");
+            xmlResult.AppendFormat("<SEQ_NO>{0}</SEQ_NO>\n", stockInOutClass.seq_no);
+            xmlResult.AppendFormat("<BOXTYPE>{0}</BOXTYPE>\n", stockInOutClass.boxtype);
+
+            xmlResult.AppendFormat("<FLOWSTATEG>{0}</FLOWSTATEG>\n", stockInOutClass.flowstateg);
+            xmlResult.AppendFormat("<TRADE_CODE>{0}</TRADE_CODE>\n", stockInOutClass.trade_code);
+
+            xmlResult.AppendFormat("<EMS_NO>{0}</EMS_NO>\n", stockInOutClass.ems_no);
+            xmlResult.AppendFormat("<STATUS>{0}</STATUS>\n", stockInOutClass.status);
+            xmlResult.Append("</TRANSMIT>\n");
+
+            foreach (StoreTrans storeTrans in stockInOutClass.storeTransList)
+            {
+                xmlResult.Append("<STORE_TRANS>\n");
+                xmlResult.AppendFormat("<EMS_NO>{0}</EMS_NO>\n", storeTrans.ems_no);
+                xmlResult.AppendFormat("<IO_NO>{0}</IO_NO>\n", storeTrans.io_no);
+                xmlResult.AppendFormat("<GOODS_NATURE>{0}</GOODS_NATURE>\n", storeTrans.goods_nature);
+                xmlResult.AppendFormat("<IO_DATE>{0}</IO_DATE>\n", storeTrans.io_date);
+                xmlResult.AppendFormat("<COP_G_NO>{0}</COP_G_NO>\n", storeTrans.cop_g_no);
+                xmlResult.AppendFormat("<QTY>{0}</QTY>\n", storeTrans.qty);
+                xmlResult.AppendFormat("<UNIT>{0}</UNIT>\n", storeTrans.unit);
+                xmlResult.AppendFormat("<TYPE>{0}</TYPE>\n", storeTrans.type);
+                xmlResult.AppendFormat("<CHK_CODE>{0}</CHK_CODE>\n", storeTrans.chk_code);
+                xmlResult.AppendFormat("<ENTRY_ID>{0}</ENTRY_ID>\n", storeTrans.entry_id);
+                xmlResult.AppendFormat("<GATEJOB_NO>{0}</GATEJOB_NO>\n", storeTrans.gatejob_no);
+                xmlResult.AppendFormat("<WHS_CODE>{0}</WHS_CODE>\n", storeTrans.whs_code);
+                xmlResult.AppendFormat("<LOCATION_CODE>{0}</LOCATION_CODE>\n", storeTrans.location_code);
+                xmlResult.AppendFormat("<NOTE>{0}</NOTE>\n", storeTrans.note);
+                xmlResult.Append("</STORE_TRANS>\n");
+            }
+            xmlResult.Append("</HCHX_DATA>\n");
+
+            //写入文件  
+            try
+            {
+                //1.创建文件流    
+                FileStream fileStream = new FileStream(fileName, FileMode.Create);
+                //2.创建写入器    
+                StreamWriter streamWriter = new StreamWriter(fileStream);
+                //3.将内容写入文件    
+                streamWriter.WriteLine(xmlResult);
+                //4.关闭写入器    
+                streamWriter.Close();
+                //5.关闭文件流    
+                fileStream.Close();
+            }
+            catch (Exception e)
+            { }
+        }
+
+        public static void createWorkListHeadXML(WorkListHeadClass stockInOutClass, string fileName)
+        {
+            StringBuilder xmlResult = new StringBuilder("<xml version=\"1.0\" encoding=\"utf-8\">\n");
+            xmlResult.AppendFormat("<HCHX_DATA xmlns=\"http://HCHX.Schemas.WORK_ORDER_HEAD\">\n");
+            xmlResult.Append("<TRANSMIT>\n");
+            xmlResult.AppendFormat("<SEQ_NO>{0}</SEQ_NO>\n", stockInOutClass.seq_no);
+            xmlResult.AppendFormat("<BOXTYPE>{0}</BOXTYPE>\n", stockInOutClass.boxtype);
+
+            xmlResult.AppendFormat("<FLOWSTATEG>{0}</FLOWSTATEG>\n", stockInOutClass.flowstateg);
+            xmlResult.AppendFormat("<TRADE_CODE>{0}</TRADE_CODE>\n", stockInOutClass.trade_code);
+
+            xmlResult.AppendFormat("<EMS_NO>{0}</EMS_NO>\n", stockInOutClass.ems_no);
+            xmlResult.AppendFormat("<STATUS>{0}</STATUS>\n", stockInOutClass.status);
+            xmlResult.Append("</TRANSMIT>\n");
+
+            foreach (WorkOrderHead storeTrans in stockInOutClass.workOrderHeadList)
+            {
+                xmlResult.Append("<WORK_ORDER_HEAD>\n");
+
+                xmlResult.AppendFormat("<WO_NO>{0}</WO_NO>\n", storeTrans.wo_no);
+                xmlResult.AppendFormat("<WO_DATE>{0}</WO_DATE>\n", storeTrans.wo_date);
+                xmlResult.AppendFormat("<GOODS_NATURE>{0}</GOODS_NATURE> \n", storeTrans.goods_nature);
+                xmlResult.AppendFormat("<COP_G_NO>{0}</COP_G_NO>\n", storeTrans.cop_g_no);
+                xmlResult.AppendFormat("<QTY>{0}</QTY>\n", storeTrans.qty);
+                xmlResult.AppendFormat("<UNIT>{0}</UNIT>\n", storeTrans.qty);
+                xmlResult.AppendFormat("<EMS_NO>{0}</EMS_NO>\n", storeTrans.emo_no);
+
+                xmlResult.Append("</WORK_ORDER_HEAD>\n");
+            }
+            xmlResult.Append("</HCHX_DATA>\n");
+
+            //写入文件  
+            try
+            {
+                //1.创建文件流    
+                FileStream fileStream = new FileStream(fileName, FileMode.Create);
+                //2.创建写入器    
+                StreamWriter streamWriter = new StreamWriter(fileStream);
+                //3.将内容写入文件    
+                streamWriter.WriteLine(xmlResult);
+                //4.关闭写入器    
+                streamWriter.Close();
+                //5.关闭文件流    
+                fileStream.Close();
+            }
+            catch (Exception e)
+            { }
+        }
+
+        public static void createWorkListBodyXML(WorkListBodyClass stockInOutClass, string fileName)
+        {
+            StringBuilder xmlResult = new StringBuilder("<xml version=\"1.0\" encoding=\"utf-8\">\n");
+            xmlResult.AppendFormat("<HCHX_DATA xmlns=\"http://HCHX.Schemas.WORK_ORDER_LIST\">\n");
+            xmlResult.Append("<TRANSMIT>\n");
+            xmlResult.AppendFormat("<SEQ_NO>{0}</SEQ_NO>\n", stockInOutClass.seq_no);
+            xmlResult.AppendFormat("<BOXTYPE>{0}</BOXTYPE>\n", stockInOutClass.boxtype);
+
+            xmlResult.AppendFormat("<FLOWSTATEG>{0}</FLOWSTATEG>\n", stockInOutClass.flowstateg);
+            xmlResult.AppendFormat("<TRADE_CODE>{0}</TRADE_CODE>\n", stockInOutClass.trade_code);
+
+            xmlResult.AppendFormat("<EMS_NO>{0}</EMS_NO>\n", stockInOutClass.ems_no);
+            xmlResult.AppendFormat("<STATUS>{0}</STATUS>\n", stockInOutClass.status);
+            xmlResult.Append("</TRANSMIT>\n");
+
+            foreach (WorkOrderList storeTrans in stockInOutClass.workOrderList)
+            {
+                xmlResult.Append("<WORK_ORDER_LIST>\n");
+
+                xmlResult.AppendFormat("<WO_NO>{0}</WO_NO>\n", storeTrans.wo_no);
+                xmlResult.AppendFormat("<TAKE_DATE>{0}</TAKE_DATE>\n", storeTrans.take_date);
+                xmlResult.AppendFormat("<GOODS_NATURE>{0}</GOODS_NATURE> \n", storeTrans.goods_nature);
+                xmlResult.AppendFormat("<COP_G_NO>{0}</COP_G_NO>\n", storeTrans.cop_g_no);
+                xmlResult.AppendFormat("<QTY>{0}</QTY>\n", storeTrans.qty);
+                xmlResult.AppendFormat("<UNIT>{0}</UNIT>\n", storeTrans.qty);
+                xmlResult.AppendFormat("<EMS_NO>{0}</EMS_NO>\n", storeTrans.emo_no);
+
+                xmlResult.Append("</WORK_ORDER_LIST>\n");
+            }
+            xmlResult.Append("</HCHX_DATA>\n");
+
+            //写入文件  
+            try
+            {
+                //1.创建文件流    
+                FileStream fileStream = new FileStream(fileName, FileMode.Create);
+                //2.创建写入器    
+                StreamWriter streamWriter = new StreamWriter(fileStream);
+                //3.将内容写入文件    
+                streamWriter.WriteLine(xmlResult);
+                //4.关闭写入器    
+                streamWriter.Close();
+                //5.关闭文件流    
+                fileStream.Close();
+            }
+            catch (Exception e)
+            { }
+        }
 
         public static  bool in90Days(string burn_date)
         {

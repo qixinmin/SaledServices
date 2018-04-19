@@ -40,3 +40,9 @@ E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Re
 E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.FRU_SMT_OutSheetForm.resources
 E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.Store.CheckRequestForm.resources
 E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.Store.RequestToStoreForm.resources
+E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.CustomsExport.OpeningStockForm.resources
+E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.CustomsExport.RealStockForm.resources
+E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.CustomsExport.StockInOutForm.resources
+E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.CustomsExport.WorkListBodyForm.resources
+E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.CustomsExport.WorkListHeadForm.resources
+E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.CompanyFixedForm.resources

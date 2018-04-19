@@ -35,15 +35,15 @@
             this.testerTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.testdatetextBox = new System.Windows.Forms.TextBox();
-            this.confirmbutton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.keyidtextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.KEYSERIALtextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cpuTypetextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.cpuFreqtextBox = new System.Windows.Forms.TextBox();
+            this.cpuTypetextBox = new System.Windows.Forms.TextBox();
+            this.confirmbutton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,16 +131,6 @@
             this.testdatetextBox.Size = new System.Drawing.Size(72, 21);
             this.testdatetextBox.TabIndex = 1;
             // 
-            // confirmbutton
-            // 
-            this.confirmbutton.Location = new System.Drawing.Point(393, 165);
-            this.confirmbutton.Name = "confirmbutton";
-            this.confirmbutton.Size = new System.Drawing.Size(72, 23);
-            this.confirmbutton.TabIndex = 1;
-            this.confirmbutton.Text = "确认OK";
-            this.confirmbutton.UseVisualStyleBackColor = true;
-            this.confirmbutton.Click += new System.EventHandler(this.confirmbutton_Click);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -175,23 +165,6 @@
             this.KEYSERIALtextBox.Size = new System.Drawing.Size(72, 21);
             this.KEYSERIALtextBox.TabIndex = 3;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 81);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 12);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "CPU型号";
-            // 
-            // cpuTypetextBox
-            // 
-            this.cpuTypetextBox.Location = new System.Drawing.Point(81, 84);
-            this.cpuTypetextBox.Name = "cpuTypetextBox";
-            this.cpuTypetextBox.ReadOnly = true;
-            this.cpuTypetextBox.Size = new System.Drawing.Size(72, 21);
-            this.cpuTypetextBox.TabIndex = 8;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -201,6 +174,15 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "CPU频率";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 81);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 12);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "CPU型号";
+            // 
             // cpuFreqtextBox
             // 
             this.cpuFreqtextBox.Location = new System.Drawing.Point(237, 84);
@@ -209,6 +191,24 @@
             this.cpuFreqtextBox.Size = new System.Drawing.Size(72, 21);
             this.cpuFreqtextBox.TabIndex = 7;
             // 
+            // cpuTypetextBox
+            // 
+            this.cpuTypetextBox.Location = new System.Drawing.Point(81, 84);
+            this.cpuTypetextBox.Name = "cpuTypetextBox";
+            this.cpuTypetextBox.ReadOnly = true;
+            this.cpuTypetextBox.Size = new System.Drawing.Size(72, 21);
+            this.cpuTypetextBox.TabIndex = 8;
+            // 
+            // confirmbutton
+            // 
+            this.confirmbutton.Location = new System.Drawing.Point(393, 165);
+            this.confirmbutton.Name = "confirmbutton";
+            this.confirmbutton.Size = new System.Drawing.Size(72, 23);
+            this.confirmbutton.TabIndex = 1;
+            this.confirmbutton.Text = "确认OK";
+            this.confirmbutton.UseVisualStyleBackColor = true;
+            this.confirmbutton.Click += new System.EventHandler(this.confirmbutton_Click);
+            // 
             // TestAllForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -216,6 +216,7 @@
             this.ClientSize = new System.Drawing.Size(535, 383);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "TestAllForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "测试1与2界面";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

@@ -82,6 +82,7 @@
             this.出库入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表头ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.企业固定信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -345,6 +346,7 @@
             this.出库请求查看ToolStripMenuItem.Name = "出库请求查看ToolStripMenuItem";
             this.出库请求查看ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.出库请求查看ToolStripMenuItem.Text = "出库请求查看";
+            this.出库请求查看ToolStripMenuItem.Click += new System.EventHandler(this.出库请求查看ToolStripMenuItem_Click);
             // 
             // fRUToolStripMenuItem
             // 
@@ -395,7 +397,8 @@
             this.还货状态ToolStripMenuItem,
             this.还货客责类别ToolStripMenuItem,
             this.维修故障类别ToolStripMenuItem,
-            this.厂商信息ToolStripMenuItem});
+            this.厂商信息ToolStripMenuItem,
+            this.企业固定信息ToolStripMenuItem});
             this.additionMenuItem.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.additionMenuItem.Name = "additionMenuItem";
             this.additionMenuItem.Size = new System.Drawing.Size(104, 31);
@@ -498,30 +501,42 @@
             this.期初库存ToolStripMenuItem.Name = "期初库存ToolStripMenuItem";
             this.期初库存ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
             this.期初库存ToolStripMenuItem.Text = "期初库存";
+            this.期初库存ToolStripMenuItem.Click += new System.EventHandler(this.期初库存ToolStripMenuItem_Click);
             // 
             // 实盘库存ToolStripMenuItem
             // 
             this.实盘库存ToolStripMenuItem.Name = "实盘库存ToolStripMenuItem";
             this.实盘库存ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
             this.实盘库存ToolStripMenuItem.Text = "实盘库存";
+            this.实盘库存ToolStripMenuItem.Click += new System.EventHandler(this.实盘库存ToolStripMenuItem_Click);
             // 
             // 出库入库ToolStripMenuItem
             // 
             this.出库入库ToolStripMenuItem.Name = "出库入库ToolStripMenuItem";
             this.出库入库ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
             this.出库入库ToolStripMenuItem.Text = "出库入库";
+            this.出库入库ToolStripMenuItem.Click += new System.EventHandler(this.出库入库ToolStripMenuItem_Click);
             // 
             // 工单表头ToolStripMenuItem
             // 
             this.工单表头ToolStripMenuItem.Name = "工单表头ToolStripMenuItem";
             this.工单表头ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
             this.工单表头ToolStripMenuItem.Text = "工单表头";
+            this.工单表头ToolStripMenuItem.Click += new System.EventHandler(this.工单表头ToolStripMenuItem_Click);
             // 
             // 工单表体ToolStripMenuItem
             // 
             this.工单表体ToolStripMenuItem.Name = "工单表体ToolStripMenuItem";
             this.工单表体ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
             this.工单表体ToolStripMenuItem.Text = "工单表体";
+            this.工单表体ToolStripMenuItem.Click += new System.EventHandler(this.工单表体ToolStripMenuItem_Click);
+            // 
+            // 企业固定信息ToolStripMenuItem
+            // 
+            this.企业固定信息ToolStripMenuItem.Name = "企业固定信息ToolStripMenuItem";
+            this.企业固定信息ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.企业固定信息ToolStripMenuItem.Text = "企业固定信息";
+            this.企业固定信息ToolStripMenuItem.Click += new System.EventHandler(this.企业固定信息ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -599,6 +614,7 @@
         private System.Windows.Forms.ToolStripMenuItem 工单表体ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 出库请求查看ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 海关ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 企业固定信息ToolStripMenuItem;
     }
 }
 
