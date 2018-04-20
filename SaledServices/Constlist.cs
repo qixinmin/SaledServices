@@ -63,7 +63,7 @@ namespace SaledServices
     {
         public static void createOpeningStockXML(OpeningStockClass openingStockClass, string fileName)
         {
-            StringBuilder xmlResult = new StringBuilder("<xml version=\"1.0\" encoding=\"utf-8\">\n");
+            StringBuilder xmlResult = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
             xmlResult.AppendFormat("<HCHX_DATA xmlns=\"http://HCHX.Schemas.STORE_INIT\">\n");
             xmlResult.Append("<TRANSMIT>\n");
             xmlResult.AppendFormat("<SEQ_NO>{0}</SEQ_NO>\n", openingStockClass.seq_no);
@@ -115,7 +115,7 @@ namespace SaledServices
 
         public static void createRealStockXML(RealStockClass realStockClass, string fileName)
         {
-            StringBuilder xmlResult = new StringBuilder("<xml version=\"1.0\" encoding=\"utf-8\">\n");
+            StringBuilder xmlResult = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
             xmlResult.AppendFormat("<HCHX_DATA xmlns=\"http://HCHX.Schemas.STORE_AMOUNT\">\n");
             xmlResult.Append("<TRANSMIT>\n");
             xmlResult.AppendFormat("<SEQ_NO>{0}</SEQ_NO>\n", realStockClass.seq_no);
@@ -167,7 +167,7 @@ namespace SaledServices
 
         public static void createStockInOutXML(StockInOutClass stockInOutClass, string fileName)
         {
-            StringBuilder xmlResult = new StringBuilder("<xml version=\"1.0\" encoding=\"utf-8\">\n");
+            StringBuilder xmlResult = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
             xmlResult.AppendFormat("<HCHX_DATA xmlns=\"http://HCHX.Schemas.STORE_TRANS\">\n");
             xmlResult.Append("<TRANSMIT>\n");
             xmlResult.AppendFormat("<SEQ_NO>{0}</SEQ_NO>\n", stockInOutClass.seq_no);
@@ -221,7 +221,7 @@ namespace SaledServices
 
         public static void createWorkListHeadXML(WorkListHeadClass stockInOutClass, string fileName)
         {
-            StringBuilder xmlResult = new StringBuilder("<xml version=\"1.0\" encoding=\"utf-8\">\n");
+            StringBuilder xmlResult = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
             xmlResult.AppendFormat("<HCHX_DATA xmlns=\"http://HCHX.Schemas.WORK_ORDER_HEAD\">\n");
             xmlResult.Append("<TRANSMIT>\n");
             xmlResult.AppendFormat("<SEQ_NO>{0}</SEQ_NO>\n", stockInOutClass.seq_no);
@@ -270,7 +270,7 @@ namespace SaledServices
 
         public static void createWorkListBodyXML(WorkListBodyClass stockInOutClass, string fileName)
         {
-            StringBuilder xmlResult = new StringBuilder("<xml version=\"1.0\" encoding=\"utf-8\">\n");
+            StringBuilder xmlResult = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
             xmlResult.AppendFormat("<HCHX_DATA xmlns=\"http://HCHX.Schemas.WORK_ORDER_LIST\">\n");
             xmlResult.Append("<TRANSMIT>\n");
             xmlResult.AppendFormat("<SEQ_NO>{0}</SEQ_NO>\n", stockInOutClass.seq_no);
