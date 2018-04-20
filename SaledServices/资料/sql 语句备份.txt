@@ -508,13 +508,13 @@ receive_return  NVARCHAR(128) NOT NULL,
 store  NVARCHAR(128) NOT NULL,
 outlook  NVARCHAR(128) NOT NULL
 )
+/*客户别*/
+
+CREATE TABLE vendorProduct(Id INT PRIMARY KEY IDENTITY, vendor NVARCHAR(128) NOT NULL, product NVARCHAR(128) NOT NULL)
+
 
 
 INSERT INTO users VALUES('Value1','Value1','Value1')
-
-客户别：
-
-CREATE TABLE vendorProduct(Id INT PRIMARY KEY IDENTITY, vendor NVARCHAR(128) NOT NULL, product NVARCHAR(128) NOT NULL)
 
 修改列名：
 sp_rename 'DeliveredTable.vendormaterialNo',mpn,'column'

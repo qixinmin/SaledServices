@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using SaledServices.CustomsContentClass;
+using System.Data.SqlClient;
 
 namespace SaledServices.CustomsExport
 {
@@ -21,43 +22,91 @@ namespace SaledServices.CustomsExport
         private void exportxmlbutton_Click(object sender, EventArgs e)
         {
             OpeningStockClass openingstock = new OpeningStockClass();
-            openingstock.seq_no = "seq_no";
-            openingstock.boxtype = "boxtype";
-            openingstock.flowstateg = "flowstateg";
-            openingstock.trade_code = "trade_code";
-            openingstock.ems_no = "emo_no";
-            openingstock.status = "status";
-
-
             List<StoreInit> storeInitList = new List<StoreInit>();
 
-            StoreInit init1 = new StoreInit();
-            init1.ems_no = "emo_no1";
-            init1.cop_g_no = "cop_g_no1";
-            init1.qty = "qty1";
-            init1.unit = "unit1";
-            init1.goods_nature = "goods_nature1";
-            init1.bom_version = "bom_version1";
-            init1.check_date = "check_date1";
-            init1.date_type = "date_type1";
-            init1.whs_code = "whs_code1";
-            init1.location_code = "location_code1";
-            init1.note = "note1";
-            storeInitList.Add(init1);
+            string seq_no = DateTime.Now.ToString("yyyymmdd") + "2005" + "1";//日期+类型+序号
+            string boxtype = "2005";//代码
+            string flowstateg = "";
+            string trade_code = "";
+            string ems_no = "";
 
-            StoreInit init2 = new StoreInit();
-            init2.ems_no = "emo_no2";
-            init2.cop_g_no = "cop_g_no2";
-            init2.qty = "qty2";
-            init2.unit = "unit2";
-            init2.goods_nature = "goods_nature2";
-            init2.bom_version = "bom_version2";
-            init2.check_date = "check_date2";
-            init2.date_type = "date_type2";
-            init2.whs_code = "whs_code2";
-            init2.location_code = "location_code2";
-            init2.note = "note2";
-            storeInitList.Add(init2);
+            string status = "A";
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select indentifier, book_number from company_fixed_table";
+                SqlDataReader querySdr = cmd.ExecuteReader();               
+               
+                while (querySdr.Read())
+                {
+                    trade_code = querySdr[0].ToString();
+                    ems_no = querySdr[1].ToString();
+                }
+                querySdr.Close();
+
+                //选择主板信息
+                cmd.CommandText = "select custom_order, track_serial_no,order_receive_date from DeliveredTable";
+                querySdr = cmd.ExecuteReader();
+               
+                while (querySdr.Read())
+                {
+                    StoreInit init1 = new StoreInit();
+                    init1.ems_no = ems_no;
+                    init1.cop_g_no = querySdr[1].ToString();
+                    init1.qty = "1";
+                    init1.unit = "个";
+                    init1.goods_nature = "I";//代码
+                    init1.bom_version = "";
+                    init1.check_date = querySdr[2].ToString();
+                    init1.date_type = "C";//代码
+                    init1.whs_code = "";
+                    init1.location_code = "";
+                    init1.note = "";
+                    storeInitList.Add(init1);
+                }
+                querySdr.Close();
+
+                //选择库存信息，库存分几种，现在只看frusmt的，其他待做
+                cmd.CommandText = "select mpn,stock_in_num,input_date,stock_place from fru_smt_in_stock where isdeclare='是'";
+                querySdr = cmd.ExecuteReader();
+
+                while (querySdr.Read())
+                {
+                    StoreInit init1 = new StoreInit();
+                    init1.ems_no = ems_no;
+                    init1.cop_g_no = querySdr[0].ToString();
+                    init1.qty = querySdr[1].ToString();
+                    init1.unit = "个";//TODO
+                    init1.goods_nature = "I";//代码
+                    init1.bom_version = "";
+                    init1.check_date = querySdr[2].ToString();
+                    init1.date_type = "C";//代码
+                    init1.whs_code = "";
+                    init1.location_code = querySdr[3].ToString();
+                    init1.note = "";
+                    storeInitList.Add(init1);
+                }
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            openingstock.seq_no = seq_no;
+            openingstock.boxtype = boxtype;
+            openingstock.flowstateg = flowstateg;
+            openingstock.trade_code = trade_code;
+            openingstock.ems_no = ems_no;
+            openingstock.status = status;
 
             openingstock.storeInitList = storeInitList;
 

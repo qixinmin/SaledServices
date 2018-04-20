@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SaledServices.CustomsContentClass;
+using System.Data.SqlClient;
 
 namespace SaledServices.CustomsExport
 {
@@ -20,38 +21,68 @@ namespace SaledServices.CustomsExport
         private void exportxmlbutton_Click(object sender, EventArgs e)
         {
             WorkListBodyClass openingstock = new WorkListBodyClass();
-            openingstock.seq_no = "seq_no";
-            openingstock.boxtype = "boxtype";
-            openingstock.flowstateg = "flowstateg";
-            openingstock.trade_code = "trade_code";
-            openingstock.ems_no = "emo_no";
-            openingstock.status = "status";
-
-
             List<WorkOrderList> storeInitList = new List<WorkOrderList>();
 
-            WorkOrderList init1 = new WorkOrderList();
-            init1.wo_no = "wo_no";
-            init1.take_date = "take_date";
-            init1.goods_nature = "good_nature";
-            init1.cop_g_no = "cop_g_no";
-            init1.qty = "qty";
-            init1.unit = "unit";
-            init1.emo_no = "emo_no";
-            storeInitList.Add(init1);
+            string seq_no = DateTime.Now.ToString("yyyymmdd") + "4003" + "1";//日期+类型,后面需要加入序号信息
+            string boxtype = "4003";//代码
+            string flowstateg = "";
+            string trade_code = "";
+            string ems_no = "";
 
-            WorkOrderList init2 = new WorkOrderList();
-            init2.wo_no = "wo_no";
-            init2.take_date = "take_date";
-            init2.goods_nature = "good_nature";
-            init2.cop_g_no = "cop_g_no";
-            init2.qty = "qty";
-            init2.unit = "unit";
-            init2.emo_no = "emo_no";
-            storeInitList.Add(init2);
+            string status = "A";
+            string today = DateTime.Now.ToString("yyyy/MM/dd");
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select indentifier, book_number from company_fixed_table";
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    trade_code = querySdr[0].ToString();
+                    ems_no = querySdr[1].ToString();
+                }
+                querySdr.Close();
+
+                //报关出库的板子与出库表关联， 其他出库表待做
+                cmd.CommandText = "select returnStore.track_serial_no,input_date,mpn,stock_out_num from returnStore inner join fru_smt_out_stock on fru_smt_out_stock.track_serial_no = returnStore.track_serial_no where return_date='" + today + "'";
+                querySdr = cmd.ExecuteReader();
+
+                while (querySdr.Read())
+                {
+                    WorkOrderList init1 = new WorkOrderList();
+                    init1.wo_no = querySdr[0].ToString();
+                    init1.take_date = querySdr[1].ToString();
+                    init1.goods_nature = "I";
+                    init1.cop_g_no = querySdr[2].ToString();
+                    init1.qty = querySdr[3].ToString();
+                    init1.unit = "个";//TODO 添加字段
+                    init1.emo_no = ems_no;
+
+                    storeInitList.Add(init1);
+                }
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            openingstock.seq_no = seq_no;
+            openingstock.boxtype = boxtype;
+            openingstock.flowstateg = flowstateg;
+            openingstock.trade_code = trade_code;
+            openingstock.ems_no = ems_no;
+            openingstock.status = status;
 
             openingstock.workOrderList = storeInitList;
-
 
             Untils.createWorkListBodyXML(openingstock, "D:\\test_worklistBody.xml");
 
