@@ -61,7 +61,7 @@ namespace SaledServices.CustomsExport
                     init1.goods_nature = "I";
                     init1.cop_g_no = querySdr[2].ToString();
                     init1.qty = querySdr[3].ToString();
-                    init1.unit = "个";//TODO 添加字段
+                    init1.unit = "007";//TODO 添加字段
                     init1.emo_no = ems_no;
 
                     storeInitList.Add(init1);

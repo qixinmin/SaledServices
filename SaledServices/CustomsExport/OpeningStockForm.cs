@@ -60,7 +60,7 @@ namespace SaledServices.CustomsExport
                     init1.ems_no = ems_no;
                     init1.cop_g_no = querySdr[1].ToString();
                     init1.qty = "1";
-                    init1.unit = "个";
+                    init1.unit = "007";
                     init1.goods_nature = "I";//代码
                     init1.bom_version = "";
                     init1.check_date = querySdr[2].ToString();
@@ -82,7 +82,7 @@ namespace SaledServices.CustomsExport
                     init1.ems_no = ems_no;
                     init1.cop_g_no = querySdr[0].ToString();
                     init1.qty = querySdr[1].ToString();
-                    init1.unit = "个";//TODO
+                    init1.unit = "007";//TODO
                     init1.goods_nature = "I";//代码
                     init1.bom_version = "";
                     init1.check_date = querySdr[2].ToString();

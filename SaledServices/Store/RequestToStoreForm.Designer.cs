@@ -107,7 +107,6 @@
             // 
             this.material_mpntextBox.Location = new System.Drawing.Point(182, 69);
             this.material_mpntextBox.Name = "material_mpntextBox";
-            this.material_mpntextBox.ReadOnly = true;
             this.material_mpntextBox.Size = new System.Drawing.Size(100, 21);
             this.material_mpntextBox.TabIndex = 6;
             // 
@@ -132,7 +131,6 @@
             // 
             this.material_71pntextBox.Location = new System.Drawing.Point(182, 102);
             this.material_71pntextBox.Name = "material_71pntextBox";
-            this.material_71pntextBox.ReadOnly = true;
             this.material_71pntextBox.Size = new System.Drawing.Size(100, 21);
             this.material_71pntextBox.TabIndex = 6;
             // 
