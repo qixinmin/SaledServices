@@ -274,7 +274,11 @@ namespace SaledServices
                         + this.oldSntextBox.Text.Trim() + "','"
                         + this.newSntextBox.Text.Trim() + "')";
                     
-                    cmd.ExecuteNonQuery();                    
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "update stationInformation set station = 'BGA', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                              + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {

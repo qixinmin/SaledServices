@@ -36,7 +36,7 @@ namespace SaledServices
                 cmd.CommandType = CommandType.Text;
 
                 //1 来源 2.客户故障	3.保内/保外	4 .客责描述
-                cmd.CommandText = "select distinct buy_order_serial_no from stock_in_sheet";
+                cmd.CommandText = "select distinct buy_order_serial_no from stock_in_sheet where status = 'open'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -67,6 +67,41 @@ namespace SaledServices
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
+
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "select number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim()
+                                        + "' and mpn='" + this.mpnTextBox.Text.Trim() + "' and number='" + this.numberTextBox.Text.Trim() + "'";
+
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string status = "open";
+                    int total_number, in_number_int=0, this_enter_number=0;
+                    while (querySdr.Read())
+                    {
+                        string number = querySdr[0].ToString();
+                        string in_number = querySdr[1].ToString();
+                        total_number = Int32.Parse(number);
+                        in_number_int = Int32.Parse(in_number);
+                        this_enter_number = Int32.Parse(this.stock_in_numTextBox.Text.Trim());
+                        if (in_number_int + this_enter_number > total_number)
+                        {
+                            MessageBox.Show("输入数量大于订单数量!");
+                            querySdr.Close();
+                            conn.Close();
+                            return;
+                        }
+                        else if (in_number_int + this_enter_number == total_number)
+                        {
+                            status = "close";
+                        }
+                        break;
+                    }
+                    querySdr.Close();
+
+                    //更新采购表里面的数量与状态
+                    cmd.CommandText = "update stock_in_sheet set status = '" + status + "',stock_in_num = '" + (in_number_int + this_enter_number) + "'";
+                    cmd.ExecuteNonQuery();
+
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
                         this.buy_order_serial_noComboBox.Text.Trim() + "','" +
                         this.vendorTextBox.Text.Trim() + "','" +
@@ -87,9 +122,8 @@ namespace SaledServices
                         this.stock_placetextBox.Text.Trim() + "','" +                       
                         this.notetextBox.Text.Trim() + "','" +
                         this.inputerTextBox.Text.Trim() + "','" +
-                        this.input_dateTextBox.Text.Trim() + "')";
-
-                    cmd.CommandType = CommandType.Text;
+                        DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                    
                     cmd.ExecuteNonQuery();
                 }
                 else

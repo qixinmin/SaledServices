@@ -139,7 +139,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 50);
+            this.label1.Location = new System.Drawing.Point(7, 97);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 16);
@@ -148,7 +148,7 @@
             // 
             // vendorTextBox
             // 
-            this.vendorTextBox.Location = new System.Drawing.Point(176, 54);
+            this.vendorTextBox.Location = new System.Drawing.Point(176, 101);
             this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendorTextBox.Name = "vendorTextBox";
             this.vendorTextBox.Size = new System.Drawing.Size(158, 26);
@@ -157,7 +157,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 97);
+            this.label2.Location = new System.Drawing.Point(7, 144);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 16);
@@ -237,7 +237,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(7, 144);
+            this.label12.Location = new System.Drawing.Point(7, 50);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(32, 16);
@@ -246,7 +246,7 @@
             // 
             // productTextBox
             // 
-            this.productTextBox.Location = new System.Drawing.Point(176, 101);
+            this.productTextBox.Location = new System.Drawing.Point(176, 148);
             this.productTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.productTextBox.Name = "productTextBox";
             this.productTextBox.Size = new System.Drawing.Size(158, 26);
@@ -262,7 +262,7 @@
             // 
             // mpnTextBox
             // 
-            this.mpnTextBox.Location = new System.Drawing.Point(176, 148);
+            this.mpnTextBox.Location = new System.Drawing.Point(176, 54);
             this.mpnTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mpnTextBox.Name = "mpnTextBox";
             this.mpnTextBox.Size = new System.Drawing.Size(158, 26);
@@ -348,8 +348,6 @@
             this.tableLayoutPanel3.Controls.Add(this.material_typeTextBox, 1, 4);
             this.tableLayoutPanel3.Controls.Add(this.numberTextBox, 3, 3);
             this.tableLayoutPanel3.Controls.Add(this.describeTextBox, 3, 2);
-            this.tableLayoutPanel3.Controls.Add(this.mpnTextBox, 1, 3);
-            this.tableLayoutPanel3.Controls.Add(this.label12, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.label6, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.label11, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.buy_typeTextBox, 3, 0);
@@ -358,11 +356,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label5, 2, 3);
             this.tableLayoutPanel3.Controls.Add(this.label3, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.vendormaterialNoTextBox, 3, 1);
-            this.tableLayoutPanel3.Controls.Add(this.vendorTextBox, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.productTextBox, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.buy_order_serial_noComboBox, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label17, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.isDeclareTextBox, 5, 0);
@@ -380,6 +374,12 @@
             this.tableLayoutPanel3.Controls.Add(this.label20, 6, 1);
             this.tableLayoutPanel3.Controls.Add(this.input_dateTextBox, 7, 4);
             this.tableLayoutPanel3.Controls.Add(this.notetextBox, 7, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label2, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.productTextBox, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label12, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.vendorTextBox, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.mpnTextBox, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -664,7 +664,7 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("宋体", 12F);
+            this.Font = new System.Drawing.Font("SimSun", 12F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FRU_SMT_InSheetForm";
             this.Text = "FRU/SMT入库表";

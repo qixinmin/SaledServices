@@ -41,7 +41,7 @@ namespace SaledServices.Store
                 MessageBox.Show(ex.ToString());
             }
          
-            string[] hTxt = { "ID", "跟踪条码", "类型","材料MPN","材料71PN","状态"};
+            string[] hTxt = { "ID", "跟踪条码", "类型","材料MPN","材料71PN","数量","状态"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -54,8 +54,9 @@ namespace SaledServices.Store
             this.track_serial_notextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
             this.request_typetextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
             this.material_mpntextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
-            this.material_71pntextBox.Text = dataGridView1.SelectedCells[4].Value.ToString(); 
-            this.statustextBox.Text  = dataGridView1.SelectedCells[5].Value.ToString(); 
+            this.material_71pntextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
+            this.numberTextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
+            this.statustextBox.Text  = dataGridView1.SelectedCells[6].Value.ToString(); 
         }
 
         private void refreshbutton_Click(object sender, EventArgs e)

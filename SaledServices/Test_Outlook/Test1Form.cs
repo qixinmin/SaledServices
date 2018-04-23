@@ -270,7 +270,11 @@ namespace SaledServices.Test_Outlook
                         + this.testdatetextBox.Text.Trim()
                         + "')";
 
-                    cmd.ExecuteNonQuery();                    
+                    cmd.ExecuteNonQuery();
+
+                    //cmd.CommandText = "update stationInformation set station = 'Test1', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    //          + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                    //cmd.ExecuteNonQuery();
                 }
                 else
                 {

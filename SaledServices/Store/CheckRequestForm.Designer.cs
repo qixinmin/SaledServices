@@ -41,6 +41,8 @@
             this.statustextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.material_mpntextBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numberTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +71,7 @@
             // 
             // processRequestbutton
             // 
-            this.processRequestbutton.Location = new System.Drawing.Point(511, 114);
+            this.processRequestbutton.Location = new System.Drawing.Point(511, 164);
             this.processRequestbutton.Name = "processRequestbutton";
             this.processRequestbutton.Size = new System.Drawing.Size(75, 23);
             this.processRequestbutton.TabIndex = 1;
@@ -131,7 +133,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(226, 87);
+            this.label4.Location = new System.Drawing.Point(413, 87);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 8;
@@ -139,7 +141,7 @@
             // 
             // statustextBox
             // 
-            this.statustextBox.Location = new System.Drawing.Point(299, 84);
+            this.statustextBox.Location = new System.Drawing.Point(486, 87);
             this.statustextBox.Name = "statustextBox";
             this.statustextBox.ReadOnly = true;
             this.statustextBox.Size = new System.Drawing.Size(100, 21);
@@ -162,13 +164,32 @@
             this.material_mpntextBox.Size = new System.Drawing.Size(100, 21);
             this.material_mpntextBox.TabIndex = 12;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(226, 93);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "数量";
+            // 
+            // numberTextBox
+            // 
+            this.numberTextBox.Location = new System.Drawing.Point(299, 84);
+            this.numberTextBox.Name = "numberTextBox";
+            this.numberTextBox.ReadOnly = true;
+            this.numberTextBox.Size = new System.Drawing.Size(100, 21);
+            this.numberTextBox.TabIndex = 11;
+            // 
             // CheckRequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(685, 413);
             this.Controls.Add(this.track_serial_notextBox);
+            this.Controls.Add(this.numberTextBox);
             this.Controls.Add(this.statustextBox);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.material_71pntextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.material_mpntextBox);
@@ -204,5 +225,7 @@
         private System.Windows.Forms.TextBox statustextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox material_mpntextBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox numberTextBox;
     }
 }

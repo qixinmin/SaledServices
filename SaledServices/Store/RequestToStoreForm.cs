@@ -41,8 +41,9 @@ namespace SaledServices.Store
                     cmd.CommandText = "INSERT INTO request_material_to_store_table VALUES('" 
                         + this.track_serial_notextBox.Text.Trim() + "','"
                         + this.currentType + "','"
-                         + this.material_mpntextBox.Text.Trim() + "','"
-                          + this.material_71pntextBox.Text.Trim() + "','"
+                        + this.material_mpntextBox.Text.Trim() + "','"
+                        + this.material_71pntextBox.Text.Trim() + "','"
+                        + this.numberTextBox.Text.Trim() + "','"
                         + this.status + "')";
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();

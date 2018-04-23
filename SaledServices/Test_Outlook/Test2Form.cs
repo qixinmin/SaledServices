@@ -111,6 +111,47 @@ namespace SaledServices.Test_Outlook
                         + this.testdatetextBox.Text.Trim()
                         + "')";
                     cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "update stationInformation set station = 'Test2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+                MessageBox.Show("插入测试2数据OK");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (this.tracker_bar_textBox.Text.Trim() == "")
+            {
+                MessageBox.Show("追踪条码的内容为空，请检查！");
+                return;
+            }
+
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {

@@ -44,6 +44,7 @@
             this.cpuFreqtextBox = new System.Windows.Forms.TextBox();
             this.cpuTypetextBox = new System.Windows.Forms.TextBox();
             this.confirmbutton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +71,8 @@
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.cpuFreqtextBox, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.cpuTypetextBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.confirmbutton, 5, 2);
+            this.tableLayoutPanel1.Controls.Add(this.confirmbutton, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 5, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(33, 71);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
@@ -201,13 +203,23 @@
             // 
             // confirmbutton
             // 
-            this.confirmbutton.Location = new System.Drawing.Point(393, 165);
+            this.confirmbutton.Location = new System.Drawing.Point(315, 165);
             this.confirmbutton.Name = "confirmbutton";
             this.confirmbutton.Size = new System.Drawing.Size(72, 23);
             this.confirmbutton.TabIndex = 1;
             this.confirmbutton.Text = "确认OK";
             this.confirmbutton.UseVisualStyleBackColor = true;
             this.confirmbutton.Click += new System.EventHandler(this.confirmbutton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(393, 165);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(72, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "确认Fail";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // TestAllForm
             // 
@@ -242,5 +254,6 @@
         private System.Windows.Forms.TextBox cpuTypetextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox cpuFreqtextBox;
+        private System.Windows.Forms.Button button1;
     }
 }

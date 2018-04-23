@@ -1,11 +1,17 @@
+/*站别记录信息*/
+CREATE TABLE stationInformation(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+station NVARCHAR(128) /*站别信息：收货，维修，(BGA), 测试1， 测试2(或测试1&2）， 外观等，[合肥有Test2->Running->外观->OBE]*/
+updateDate NVARCHAR(128) /*更新时间*/
+)
 
-
+/*合肥海关信息*/
 CREATE TABLE company_fixed_table(
 Id INT PRIMARY KEY IDENTITY, 
 indentifier NVARCHAR(128) NOT NULL, /*企业编号*/
 book_number NVARCHAR(128), /*账册编号*/
 electronic_number NVARCHAR(128), /*电子账册号*/
-
 )
 
 CREATE TABLE request_material_to_store_table(
@@ -14,7 +20,8 @@ track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
 request_type NVARCHAR(128), /*类型fru/smt/bga/mb*/
 material_mpn NVARCHAR(128), /*材料MPN*/
 material_71pn NVARCHAR(128), /*材料71PN*/
-status NVARCHAR(128) /*状态，request/close/wait*/
+number NVARCHAR(128), /*请求数量*/
+status NVARCHAR(128) /*状态, request/close/wait*/
 )
 
 
@@ -181,6 +188,8 @@ pricePer  NVARCHAR(128) NOT NULL,/*单价*/
 material_name  NVARCHAR(128) NOT NULL,/*材料名称*/
 totalMoney  NVARCHAR(128),/*金额合计*/
 stock_in_num  NVARCHAR(128),/*入库数量*/
+
+status NVARCHAR(128),/*状态 open/close*/
 
 inputer  NVARCHAR(128),/*输入人*/
 input_date  NVARCHAR(128),/*日期*/

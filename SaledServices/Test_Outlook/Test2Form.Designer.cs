@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.testdatetextBox = new System.Windows.Forms.TextBox();
             this.confirmbutton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label3, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.testdatetextBox, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.confirmbutton, 4, 1);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 5, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(105, 95);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -124,6 +126,16 @@
             this.confirmbutton.UseVisualStyleBackColor = true;
             this.confirmbutton.Click += new System.EventHandler(this.confirmbutton_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(393, 123);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(72, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "确认Fail";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Test2Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -149,5 +161,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox testdatetextBox;
         private System.Windows.Forms.Button confirmbutton;
+        private System.Windows.Forms.Button button1;
     }
 }

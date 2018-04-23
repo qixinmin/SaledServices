@@ -40,6 +40,8 @@
             this.material_71pntextBox = new System.Windows.Forms.TextBox();
             this.requestbutton = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.numberTextBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,7 +100,7 @@
             this.panel1.Controls.Add(this.FRUSMT);
             this.panel1.Controls.Add(this.MB);
             this.panel1.Controls.Add(this.BGA);
-            this.panel1.Location = new System.Drawing.Point(104, 140);
+            this.panel1.Location = new System.Drawing.Point(104, 165);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(194, 128);
             this.panel1.TabIndex = 5;
@@ -153,6 +155,22 @@
             this.cancel.Text = "取消";
             this.cancel.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(102, 141);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "请求数量";
+            // 
+            // numberTextBox
+            // 
+            this.numberTextBox.Location = new System.Drawing.Point(182, 138);
+            this.numberTextBox.Name = "numberTextBox";
+            this.numberTextBox.Size = new System.Drawing.Size(100, 21);
+            this.numberTextBox.TabIndex = 6;
+            // 
             // RequestToStoreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -161,8 +179,10 @@
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.requestbutton);
             this.Controls.Add(this.track_serial_notextBox);
+            this.Controls.Add(this.numberTextBox);
             this.Controls.Add(this.material_71pntextBox);
             this.Controls.Add(this.material_mpntextBox);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -191,5 +211,7 @@
         private System.Windows.Forms.TextBox material_71pntextBox;
         private System.Windows.Forms.Button requestbutton;
         private System.Windows.Forms.Button cancel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox numberTextBox;
     }
 }

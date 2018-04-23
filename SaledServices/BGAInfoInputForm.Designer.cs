@@ -1039,7 +1039,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1021, 749);
             this.Controls.Add(this.tableLayoutPanel2);
-            this.Font = new System.Drawing.Font("宋体", 12F);
+            this.Font = new System.Drawing.Font("SimSun", 12F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BGAInfoInputForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
