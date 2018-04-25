@@ -1,0 +1,120 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+
+namespace SaledServices.Store
+{
+    public partial class ProcessReturnStoreForm : Form
+    {
+        public ProcessReturnStoreForm()
+        {
+            InitializeComponent();
+            loadInfo();
+        }
+
+        private void loadInfo()
+        {
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandText = "select material_mpn,return_number,stock_place,requester,request_date,fromId,Id from fru_smt_return_store_record where status ='request'";
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataAdapter sda = new SqlDataAdapter();
+                sda.SelectCommand = cmd;
+                DataSet ds = new DataSet();
+                sda.Fill(ds, "request_fru_smt_to_store_table");
+                dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.RowHeadersVisible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+         
+            string[] hTxt = {"材料MPN","归还数量","库位","申请人","申请日期","来源ID","ID"};
+            for (int i = 0; i < hTxt.Length; i++)
+            {
+                dataGridView1.Columns[i].HeaderText = hTxt[i];
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.materialMpnTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
+            this.returnNumbertextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
+            this.stock_placetextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
+            this.requestertextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
+            this.requestdateTextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
+            this.fromidTextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
+            this.idtextBox.Text = dataGridView1.SelectedCells[6].Value.ToString();
+        }
+
+        private void refreshbutton_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.Columns.Clear();
+
+            loadInfo();
+        }
+
+        private void returnStorebutton_Click(object sender, EventArgs e)
+        {           
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    //1 修改归还仓库状态
+                    cmd.CommandText = "update fru_smt_return_store_record set status = 'done',processer = '" + "testerprcess" +
+                                "', processe_date = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                                + "where Id = '" + this.idtextBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+
+                    //2 把仓库入库对应列加上数字
+                    cmd.CommandText = "select used_num from fru_smt_in_stock where Id='" + this.fromidTextBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string used_number="";
+                    while (querySdr.Read())
+                    {
+                        used_number = querySdr[0].ToString();                       
+                        break;
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = "update fru_smt_in_stock set used_num ='"
+                        + (Int32.Parse(used_number) - Int32.Parse(this.returnNumbertextBox.Text)) + "' "
+                        + "where Id = '" + this.idtextBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+
+                MessageBox.Show("归还库存成功！");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+    }
+}

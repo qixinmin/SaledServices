@@ -42,6 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.materialMpnComboBox = new System.Windows.Forms.ComboBox();
+            this.checkRequestListbutton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -163,17 +164,28 @@
             this.materialMpnComboBox.Size = new System.Drawing.Size(121, 20);
             this.materialMpnComboBox.TabIndex = 19;
             // 
+            // checkRequestListbutton
+            // 
+            this.checkRequestListbutton.Location = new System.Drawing.Point(478, 277);
+            this.checkRequestListbutton.Name = "checkRequestListbutton";
+            this.checkRequestListbutton.Size = new System.Drawing.Size(118, 23);
+            this.checkRequestListbutton.TabIndex = 8;
+            this.checkRequestListbutton.Text = "查看申请列表";
+            this.checkRequestListbutton.UseVisualStyleBackColor = true;
+            this.checkRequestListbutton.Click += new System.EventHandler(this.checkRequestListbutton_Click);
+            // 
             // RequestFRUSMTStoreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 511);
+            this.ClientSize = new System.Drawing.Size(784, 509);
             this.Controls.Add(this.materialMpnComboBox);
             this.Controls.Add(this.dateTextBox);
             this.Controls.Add(this.requesterTextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.checkRequestListbutton);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.requestbutton);
             this.Controls.Add(this.numberTextBox);
@@ -206,5 +218,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox materialMpnComboBox;
+        private System.Windows.Forms.Button checkRequestListbutton;
     }
 }

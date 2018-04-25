@@ -27,7 +27,6 @@ namespace SaledServices
 
         private void add_Click(object sender, EventArgs e)
         {
-
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -59,18 +58,17 @@ namespace SaledServices
                         this.use_describetextBox.Text.Trim() + "','" +
                         this.notetextBox.Text.Trim() + "','" +
                         this.input_dateTextBox.Text.Trim() + "')";
-
                     
                     cmd.ExecuteNonQuery();
 
                     //跟新请求表格的状态
-                    cmd.CommandText = "update request_fru_smt_to_store_table set status = '" + this.reqeusterStatus + "',realNumber = '" + (this.stock_out_numTextBox.Text) + "' "
-                               + "where requestId = '" + this.requestId + "'";
+                    cmd.CommandText = "update request_fru_smt_to_store_table set status = '" + this.reqeusterStatus + "',realNumber = '" + (this.stock_out_numTextBox.Text) + "', fromId='" + fru_smt_in_id + "'"
+                               + " where Id = '" + this.requestId + "'";
                     cmd.ExecuteNonQuery();
 
                     //更新入库表的使用数量，要加上出库的数量
-                    cmd.CommandText = "update fru_smt_in_stock set status = '" + this.reqeusterStatus + "',used_num = '" +  (Int32.Parse(this.used_num) + Int32.Parse(this.stock_out_numTextBox.Text)) + "' "
-                               + "where requestId = '" + fru_smt_in_id + "'";
+                    cmd.CommandText = "update fru_smt_in_stock set used_num = '" +  (Int32.Parse(this.used_num) + Int32.Parse(this.stock_out_numTextBox.Text)) + "' "
+                               + "where Id = '" + fru_smt_in_id + "'";
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -138,7 +136,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "ID", "厂商", "采购类别", "客户别", "材料大类", "MPN", "MB简称", "材料名称", "厂商料号", "描述", "是否报关", "出库数量", "单价", "库位", "领用人", "出库人", "用途", "备注", "出库日期","跟踪条码"};
+            string[] hTxt = { "ID", "厂商", "采购类别", "客户别", "材料大类", "MPN", "MB简称", "材料名称", "厂商料号", "描述", "是否报关", "出库数量", "单价", "库位", "领用人", "出库人", "用途", "备注", "出库日期"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -366,7 +364,7 @@ namespace SaledServices
                     if (ret == System.Windows.Forms.DialogResult.Yes)
                     {
                         this.add.Enabled = true;
-                        this.stock_out_numTextBox.Text = this.requestNumber;
+                        this.stock_out_numTextBox.Text = currentNumber+"";//给与能给的最大数量
                     }
                     else if (ret == System.Windows.Forms.DialogResult.No || ret == System.Windows.Forms.DialogResult.Cancel)
                     {
@@ -387,6 +385,11 @@ namespace SaledServices
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void queryStock_Click(object sender, EventArgs e)
+        {
+
         }
 
 

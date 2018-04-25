@@ -123,7 +123,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "订单数量", "单价", "材料名称", "金额合计", "入库数量", "输入人", "日期", "报关", "申报单位", "报关单号", "申请单号" };
+            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "订单数量", "单价", "材料名称", "金额合计", "入库数量", "状态", "输入人", "日期", "是否报关", "申报单位", "报关单号", "申请单号" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -207,14 +207,15 @@ namespace SaledServices
             this.material_nameTextBox.Text = dataGridView1.SelectedCells[11].Value.ToString();
             this.totalMoneyTextBox.Text = dataGridView1.SelectedCells[12].Value.ToString();
             this.stock_in_numTextBox.Text = dataGridView1.SelectedCells[13].Value.ToString();
+            //status 14
 
-            this.inputerTextBox.Text = dataGridView1.SelectedCells[14].Value.ToString();
-            this.input_dateTextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
-            this.isDeclareTextBox.Text = dataGridView1.SelectedCells[16].Value.ToString();
+            this.inputerTextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
+            this.input_dateTextBox.Text = dataGridView1.SelectedCells[16].Value.ToString();
+            this.isDeclareTextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
 
-            this.declare_unittextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
-            this.declare_numbertextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();
-            this.custom_request_numbertextBox.Text = dataGridView1.SelectedCells[19].Value.ToString();
+            this.declare_unittextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();
+            this.declare_numbertextBox.Text = dataGridView1.SelectedCells[19].Value.ToString();
+            this.custom_request_numbertextBox.Text = dataGridView1.SelectedCells[20].Value.ToString();
         }
 
         private void ReceiveOrderForm_Load(object sender, EventArgs e)

@@ -384,6 +384,12 @@
     <Compile Include="Repair\RequestFRUSMTStoreForm.Designer.cs">
       <DependentUpon>RequestFRUSMTStoreForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\ProcessReturnStoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\ProcessReturnStoreForm.Designer.cs">
+      <DependentUpon>ProcessReturnStoreForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Store\StockInSheetForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -554,6 +560,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\RequestFRUSMTStoreForm.resx">
       <DependentUpon>RequestFRUSMTStoreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\ProcessReturnStoreForm.resx">
+      <DependentUpon>ProcessReturnStoreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\StockInSheetForm.resx">
       <DependentUpon>StockInSheetForm.cs</DependentUpon>

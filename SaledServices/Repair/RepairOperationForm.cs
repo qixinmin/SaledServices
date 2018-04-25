@@ -7,16 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SaledServices.Repair;
 
 namespace SaledServices
 {
     public partial class RepairOperationForm : Form
     {
+        private PrepareUseDetail mPrepareUseDetail;
         public RepairOperationForm()
         {
             InitializeComponent();
 
             loadAdditionInfomation();
+
+            mPrepareUseDetail = new PrepareUseDetail();
         }
 
         private void loadAdditionInfomation()
@@ -526,6 +530,8 @@ namespace SaledServices
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
                     cmd.CommandText = "INSERT INTO repair_record_table VALUES('"
                         + track_serial_no_txt + "','"
                         + vendor_txt + "','"
@@ -555,14 +561,34 @@ namespace SaledServices
                         + repair_result_txt + "','"
                         + repairer_txt + "','"
                         + repair_date_txt + "')";
-
-                    cmd.CommandType = CommandType.Text;
+                    
                     cmd.ExecuteNonQuery();
 
                     //更新维修站别
                     cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                                + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
+
+                    if (mPrepareUseDetail.Id != null)
+                    {
+                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                           + repair_result_txt + "','"
+                           + repair_date_txt + "','"
+                           + track_serial_no_txt + "','"
+                           + mPrepareUseDetail.material_mpn + "','"
+                           + mPrepareUseDetail.thisUseNumber + "','"
+                           + mPrepareUseDetail.stock_place + "')";
+                        cmd.ExecuteNonQuery();
+
+                        //更新预领料表的数量
+                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + mPrepareUseDetail.totalUseNumber + "' "
+                                  + "where Id = '" + mPrepareUseDetail.Id + "'";
+                        cmd.ExecuteNonQuery();
+
+                        //使用完毕需要清空
+                        mPrepareUseDetail.Id = null;
+                    }
                 }
                 else
                 {
@@ -748,10 +774,20 @@ namespace SaledServices
             }          
         }
 
-
         private void choose_material_button_Click(object sender, EventArgs e)
         {
-           
+            RrepareUseListForm prepareUseList = new RrepareUseListForm(this);
+            prepareUseList.Show();
+        }
+
+        public void setPrepareUseDetail(string id, string mb_brief, string material_mpn, string stock_place, string thisUseNumber, string totalUseNumber)
+        {
+            mPrepareUseDetail.Id = id;
+            mPrepareUseDetail.mb_brief = mb_brief;
+            mPrepareUseDetail.material_mpn = material_mpn;
+            mPrepareUseDetail.stock_place = stock_place;
+            mPrepareUseDetail.thisUseNumber = thisUseNumber;
+            mPrepareUseDetail.totalUseNumber = totalUseNumber;
         }
     }
 }

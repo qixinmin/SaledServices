@@ -275,6 +275,7 @@ namespace SaledServices
                     form.Close();
                 }
             }
+            LoginForm.currentUser = "";
 
             this.LogoutMenuItem.Enabled = false;
         }
@@ -705,7 +706,20 @@ namespace SaledServices
         {
             Store.RequestFRUSMTStoreForm rtsf = new Store.RequestFRUSMTStoreForm();
            // rtsf.setParameters(this.track_serial_noTextBox.Text, this.material_mpntextBox.Text, this.material_71pntextBox.Text);
+            rtsf.MdiParent = this;
             rtsf.Show();
+        }
+
+        private void 还货请求查看ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Store.ProcessReturnStoreForm prsf = new Store.ProcessReturnStoreForm();
+            prsf.MdiParent = this;
+            prsf.Show();
+        }
+
+        private void bGA领料申请ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

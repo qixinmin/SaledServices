@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.choosebutton = new System.Windows.Forms.Button();
             this.refreshbutton = new System.Windows.Forms.Button();
@@ -42,14 +42,21 @@
             this.thisNumbertextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.stock_placetextBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.usedNumbertextBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.idTextBox = new System.Windows.Forms.TextBox();
+            this.returnMaterialbutton = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.fromIdTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(21, 185);
@@ -58,15 +65,18 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(722, 365);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // choosebutton
             // 
+            this.choosebutton.Enabled = false;
             this.choosebutton.Location = new System.Drawing.Point(763, 185);
             this.choosebutton.Name = "choosebutton";
             this.choosebutton.Size = new System.Drawing.Size(75, 23);
             this.choosebutton.TabIndex = 1;
             this.choosebutton.Text = "使用";
             this.choosebutton.UseVisualStyleBackColor = true;
+            this.choosebutton.Click += new System.EventHandler(this.choosebutton_Click);
             // 
             // refreshbutton
             // 
@@ -130,7 +140,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(571, 65);
+            this.label4.Location = new System.Drawing.Point(201, 128);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 12);
             this.label4.TabIndex = 2;
@@ -138,10 +148,11 @@
             // 
             // thisNumbertextBox
             // 
-            this.thisNumbertextBox.Location = new System.Drawing.Point(654, 62);
+            this.thisNumbertextBox.Location = new System.Drawing.Point(284, 122);
             this.thisNumbertextBox.Name = "thisNumbertextBox";
             this.thisNumbertextBox.Size = new System.Drawing.Size(100, 21);
             this.thisNumbertextBox.TabIndex = 3;
+            this.thisNumbertextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.thisNumbertextBox_KeyPress);
             // 
             // label5
             // 
@@ -160,6 +171,67 @@
             this.stock_placetextBox.Size = new System.Drawing.Size(100, 21);
             this.stock_placetextBox.TabIndex = 3;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(575, 65);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 12);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "使用过的数量";
+            // 
+            // usedNumbertextBox
+            // 
+            this.usedNumbertextBox.Location = new System.Drawing.Point(658, 62);
+            this.usedNumbertextBox.Name = "usedNumbertextBox";
+            this.usedNumbertextBox.ReadOnly = true;
+            this.usedNumbertextBox.Size = new System.Drawing.Size(100, 21);
+            this.usedNumbertextBox.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(454, 128);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(17, 12);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Id";
+            // 
+            // idTextBox
+            // 
+            this.idTextBox.Location = new System.Drawing.Point(488, 119);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.ReadOnly = true;
+            this.idTextBox.Size = new System.Drawing.Size(100, 21);
+            this.idTextBox.TabIndex = 3;
+            // 
+            // returnMaterialbutton
+            // 
+            this.returnMaterialbutton.Location = new System.Drawing.Point(763, 296);
+            this.returnMaterialbutton.Name = "returnMaterialbutton";
+            this.returnMaterialbutton.Size = new System.Drawing.Size(75, 23);
+            this.returnMaterialbutton.TabIndex = 1;
+            this.returnMaterialbutton.Text = "归还到库存";
+            this.returnMaterialbutton.UseVisualStyleBackColor = true;
+            this.returnMaterialbutton.Click += new System.EventHandler(this.returnMaterialbutton_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(624, 131);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 12);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "FromId";
+            // 
+            // fromIdTextBox
+            // 
+            this.fromIdTextBox.Location = new System.Drawing.Point(685, 122);
+            this.fromIdTextBox.Name = "fromIdTextBox";
+            this.fromIdTextBox.ReadOnly = true;
+            this.fromIdTextBox.Size = new System.Drawing.Size(100, 21);
+            this.fromIdTextBox.TabIndex = 3;
+            // 
             // RrepareUseListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -169,6 +241,12 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.stock_placetextBox);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.fromIdTextBox);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.idTextBox);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.usedNumbertextBox);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.realNumbertextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.material_mpntextBox);
@@ -176,6 +254,7 @@
             this.Controls.Add(this.mb_brieftextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.refreshbutton);
+            this.Controls.Add(this.returnMaterialbutton);
             this.Controls.Add(this.choosebutton);
             this.Controls.Add(this.dataGridView1);
             this.Name = "RrepareUseListForm";
@@ -202,5 +281,12 @@
         private System.Windows.Forms.TextBox thisNumbertextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox stock_placetextBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox usedNumbertextBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox idTextBox;
+        private System.Windows.Forms.Button returnMaterialbutton;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox fromIdTextBox;
     }
 }

@@ -26,7 +26,7 @@ namespace SaledServices.Store
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select * from  request_fru_smt_to_store_table";
+                cmd.CommandText = "select * from  request_fru_smt_to_store_table where status ='request'";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -41,7 +41,7 @@ namespace SaledServices.Store
                 MessageBox.Show(ex.ToString());
             }
          
-            string[] hTxt = { "ID", "机型", "位置","材料MPN","请求数量","申请人","申请日期","状态"};
+            string[] hTxt = { "ID", "机型", "位置","材料MPN","请求数量","申请人","申请日期","状态","使用的数量","库位","来源ID"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -70,6 +70,11 @@ namespace SaledServices.Store
 
         private void processRequestbutton_Click(object sender, EventArgs e)
         {
+            if (this.materialMpnTextBox.Text == "")
+            {
+                MessageBox.Show("请选择一行作为处理！");
+                return;
+            }
             //在处理之前的时候可以使用mpn的字段查询库存中是否有相应的内容，如果没有则提示说此库存没有相关库存，要备料
             FRU_SMT_OutSheetForm frusmtout = new FRU_SMT_OutSheetForm();
             frusmtout.setparamters(this.mb_brieftextBox.Text.Trim(), this.materialMpnTextBox.Text.Trim(),  this.requestNumbertextBox.Text.Trim(), this.idTextBox.Text.Trim());

@@ -2,7 +2,7 @@
 CREATE TABLE stationInformation(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
-station NVARCHAR(128) /*站别信息：收货，维修，(BGA), 测试1， 测试2(或测试1&2）， 外观等，[合肥有Test2->Running->外观->OBE]*/
+station NVARCHAR(128), /*站别信息：收货，维修，(BGA), 测试1， 测试2(或测试1&2）， 外观等，[合肥有Test2->Running->外观->OBE]*/
 updateDate NVARCHAR(128) /*更新时间*/
 )
 
@@ -12,6 +12,22 @@ Id INT PRIMARY KEY IDENTITY,
 indentifier NVARCHAR(128) NOT NULL, /*企业编号*/
 book_number NVARCHAR(128), /*账册编号*/
 electronic_number NVARCHAR(128), /*电子账册号*/
+)
+
+/*请求归还料表 库房*/
+CREATE TABLE fru_smt_return_store_record(
+Id INT PRIMARY KEY IDENTITY, 
+material_mpn NVARCHAR(128), /*材料mpn*/
+return_number NVARCHAR(128), /*请求数量*/
+stock_place NVARCHAR(128),/*库位*/
+
+requester NVARCHAR(128), /*请求人*/
+request_date NVARCHAR(128), /*请求日期*/
+
+fromId NVARCHAR(128),/*从fru_smt_in_stock来的id，将来可能要还回去*/
+processer NVARCHAR(128), /*处理人*/
+processe_date NVARCHAR(128), /*处理日期*/
+status NVARCHAR(128), /*request/done 2中状态*/
 )
 
 /*需要创建一个表格，记录维修的每条使用记录 TODO...*/
@@ -35,9 +51,12 @@ number NVARCHAR(128), /*请求数量*/
 realNumber NVARCHAR(128), /*获得的真正数量*/
 requester NVARCHAR(128), /*请求人*/
 date NVARCHAR(128), /*请求日期*/
-status NVARCHAR(128) /*状态, request/close/part/wait*/
+status NVARCHAR(128), /*状态, request/close/part/wait*/
 usedNumber NVARCHAR(128), /*使用的数量,是个累加数量*/
 stock_place NVARCHAR(128),/*库位*/
+fromId NVARCHAR(128),/*从fru_smt_in_stock来的id，将来可能要还回去*/
+processer NVARCHAR(128), /*处理人*/
+processe_date NVARCHAR(128), /*处理日期*/
 )
 
 CREATE TABLE bga_out_stock(

@@ -5,8 +5,9 @@ using System.Windows.Forms;
 
 namespace SaledServices
 {
-    static class Program
+    public static class Program
     {
+        public static Form parentForm = null;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -15,7 +16,8 @@ namespace SaledServices
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            parentForm = new MainForm();
+            Application.Run(parentForm);
         }
     }
 }

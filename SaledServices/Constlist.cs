@@ -8,6 +8,16 @@ using SaledServices.CustomsContentClass;
 
 namespace SaledServices
 {
+    public class PrepareUseDetail
+    {
+        public string Id;
+        public string mb_brief;
+        public string material_mpn;
+        public string stock_place;
+        public string thisUseNumber;
+        public string totalUseNumber;
+    }
+
     public class Constlist
     {
         public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";

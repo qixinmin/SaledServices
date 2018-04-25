@@ -58,6 +58,23 @@ namespace SaledServices
 
         private void add_Click(object sender, EventArgs e)
         {
+            if (this.mpnTextBox.Text.Trim() == "" || this.buy_order_serial_noComboBox.Text.Trim() =="")
+            {
+                MessageBox.Show("MPN 或订单号为空！");
+                return;
+            }
+
+            if (this.stock_placetextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("库位为空，请检查！");
+                return;
+            }
+            if (this.totalMoneyTextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("金额为空，请输入数量后回车！");
+                return;
+            }
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -67,7 +84,6 @@ namespace SaledServices
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
-
                     cmd.CommandType = CommandType.Text;
 
                     cmd.CommandText = "select number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim()
@@ -85,7 +101,7 @@ namespace SaledServices
                         this_enter_number = Int32.Parse(this.stock_in_numTextBox.Text.Trim());
                         if (in_number_int + this_enter_number > total_number)
                         {
-                            MessageBox.Show("输入数量大于订单数量!");
+                            MessageBox.Show("输入数量大于订单数量, 查看是否由多次入库引起的!");
                             querySdr.Close();
                             conn.Close();
                             return;
@@ -99,7 +115,7 @@ namespace SaledServices
                     querySdr.Close();
 
                     //更新采购表里面的数量与状态
-                    cmd.CommandText = "update stock_in_sheet set status = '" + status + "',stock_in_num = '" + (in_number_int + this_enter_number) + "'";
+                    cmd.CommandText = "update stock_in_sheet set status = '" + status + "',stock_in_num = '" + (in_number_int + this_enter_number) + "' where mpn='"+this.mpnTextBox.Text.Trim()+"' and buy_order_serial_no='"+this.buy_order_serial_noComboBox.Text.Trim()+"'";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
@@ -133,6 +149,9 @@ namespace SaledServices
                 }
 
                 conn.Close();
+
+                doQueryAfterSelection();
+                clearInputText();
             }
             catch (Exception ex)
             {
@@ -281,11 +300,12 @@ namespace SaledServices
             this.mb_brieftextBox.Text= dataGridView1.SelectedCells[12].Value.ToString();
             this.material_nameTextBox.Text= dataGridView1.SelectedCells[13].Value.ToString();
             this.stock_in_numTextBox.Text= dataGridView1.SelectedCells[14].Value.ToString();
-            this.totalMoneyTextBox.Text= dataGridView1.SelectedCells[15].Value.ToString();
-            this.stock_placetextBox.Text= dataGridView1.SelectedCells[16].Value.ToString();
-            this.notetextBox.Text= dataGridView1.SelectedCells[17].Value.ToString();
-            this.inputerTextBox.Text= dataGridView1.SelectedCells[18].Value.ToString();
-            this.input_dateTextBox.Text = dataGridView1.SelectedCells[19].Value.ToString();
+            //used_num 15
+            this.totalMoneyTextBox.Text= dataGridView1.SelectedCells[16].Value.ToString();
+            this.stock_placetextBox.Text= dataGridView1.SelectedCells[17].Value.ToString();
+            this.notetextBox.Text= dataGridView1.SelectedCells[18].Value.ToString();
+            this.inputerTextBox.Text= dataGridView1.SelectedCells[19].Value.ToString();
+            this.input_dateTextBox.Text = dataGridView1.SelectedCells[20].Value.ToString();
         }
 
         private void ReceiveOrderForm_Load(object sender, EventArgs e)
@@ -304,48 +324,167 @@ namespace SaledServices
                 SetValue(tableLayoutPanel4, true, null);
         }
 
+        private void simulateMpnEnter()
+        {
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,number,pricePer,material_name,isdeclare from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+
+                SqlDataReader querySdr = cmd.ExecuteReader();
+
+                while (querySdr.Read())
+                {
+                    this.buy_order_serial_noComboBox.Text = querySdr[0].ToString();
+                    this.vendorTextBox.Text = querySdr[1].ToString();
+                    this.buy_typeTextBox.Text = querySdr[2].ToString();
+                    this.productTextBox.Text = querySdr[3].ToString();
+                    this.material_typeTextBox.Text = querySdr[4].ToString();
+                    this.vendormaterialNoTextBox.Text = querySdr[5].ToString();
+                    this.describeTextBox.Text = querySdr[6].ToString();
+                    this.numberTextBox.Text = querySdr[7].ToString();
+                    this.pricePerTextBox.Text = querySdr[8].ToString();
+                    this.material_nameTextBox.Text = querySdr[9].ToString();
+                    this.isDeclareTextBox.Text = querySdr[10].ToString();
+                }
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            clearInputText();
+        }
+
+        private void clearInputText()
+        {
+            this.mb_brieftextBox.Text = "";
+            this.totalMoneyTextBox.Text = "";
+            this.stock_in_numTextBox.Text = "";
+            this.stock_placetextBox.Text = "";
+            this.notetextBox.Text = "";
+        }
+
         private void mpnTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                try
+                simulateMpnEnter();
+            }
+        }
+
+        private void buy_order_serial_noComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            string str = this.buy_order_serial_noComboBox.Text;
+            if (str == "")
+            {
+                return;
+            }
+
+            doQueryAfterSelection();
+        }
+        private void doQueryAfterSelection()
+        {
+            try
+            {
+                this.dataGridViewToReturn.DataSource = null;
+                dataGridViewToReturn.Columns.Clear();
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                //加入条件判断，只显示未收完的货物
+                cmd.CommandText = "select material_type,mpn, vendormaterialNo, number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text + "' and status='open'";
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataAdapter sda = new SqlDataAdapter();
+                sda.SelectCommand = cmd;
+                DataSet ds = new DataSet();
+                sda.Fill(ds, "stock_in_sheet");
+                dataGridViewToReturn.DataSource = ds.Tables[0];
+                dataGridViewToReturn.RowHeadersVisible = false;
+                mConn.Close();
+
+                string[] hTxt = { "材料大类", "MPN", "厂商料号", "订单数量", "入库数量" };
+                for (int i = 0; i < hTxt.Length; i++)
                 {
-                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
-                    mConn.Open();
+                    dataGridViewToReturn.Columns[i].HeaderText = hTxt[i];
+                    dataGridViewToReturn.Columns[i].Name = hTxt[i];
+                }
 
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = mConn;
-                    cmd.CommandType = CommandType.Text;
+                DataGridViewColumn dc = new DataGridViewColumn();
+                dc.DefaultCellStyle.BackColor = Color.Red;
+                dc.Name = "差数";
+                //dc.DataPropertyName = "FID";
 
-                    cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,number,pricePer,material_name,isdeclare from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                dc.Visible = true;
+                // dc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dc.HeaderText = "差数";
+                dc.CellTemplate = new DataGridViewTextBoxCell();
+                int columnIndex = dataGridViewToReturn.Columns.Add(dc);
 
-                    SqlDataReader querySdr = cmd.ExecuteReader();
-                   
-                    while (querySdr.Read())
+                foreach (DataGridViewRow dr in dataGridViewToReturn.Rows)
+                {
+                    try
                     {
-                        this.buy_order_serial_noComboBox.Text = querySdr[0].ToString();
-                        this.vendorTextBox.Text = querySdr[1].ToString();
-                        this.buy_typeTextBox.Text = querySdr[2].ToString();
-                        this.productTextBox.Text = querySdr[3].ToString();
-                        this.material_typeTextBox.Text = querySdr[4].ToString();
-                        this.vendormaterialNoTextBox.Text = querySdr[5].ToString();
-                        this.describeTextBox.Text = querySdr[6].ToString();
-                        this.numberTextBox.Text = querySdr[7].ToString();
-                        this.pricePerTextBox.Text = querySdr[8].ToString();
-                        this.material_nameTextBox.Text = querySdr[9].ToString();
-                        this.isDeclareTextBox.Text = querySdr[10].ToString();
+                        int oNum = Int32.Parse(dr.Cells["订单数量"].Value.ToString());
+                        int rNum = Int32.Parse(dr.Cells["入库数量"].Value.ToString());
+
+                        if (oNum - rNum == 0)
+                        {
+                            dr.Cells["差数"].Style.BackColor = Color.Green;
+                        }
+                        dr.Cells["差数"].Value = (oNum - rNum) + " ";
                     }
-                    querySdr.Close();
-                   
-                    mConn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
 
-               
-            
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    dataGridViewToReturn.Rows[0].Selected = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void dataGridViewToReturn_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.mpnTextBox.Text = dataGridViewToReturn.SelectedCells[1].Value.ToString();
+            simulateMpnEnter();
+        }
+
+        private void stock_in_numTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                double order_number_int = Double.Parse(this.numberTextBox.Text);
+                double this_enter_number = Double.Parse(this.stock_in_numTextBox.Text.Trim());
+                if (this_enter_number > order_number_int)
+                {
+                    MessageBox.Show("输入数量大于订单数量!");
+                    this.stock_in_numTextBox.Clear();
+                    this.stock_in_numTextBox.Focus();
+                    return;
+                }
+
+                double totalMoney = this_enter_number * Double.Parse(this.pricePerTextBox.Text);
+                this.totalMoneyTextBox.Text = totalMoney.ToString();
             }
         }
     }

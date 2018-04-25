@@ -15,6 +15,7 @@ namespace SaledServices
 {
     public partial class LoginForm : Form
     {
+        public static string currentUser = "";
         private UserDetailForm mUserDetailForm;
         private MainForm mParent;
         public LoginForm(MainForm parent)
@@ -67,6 +68,8 @@ namespace SaledServices
                 }
                 else
                 {
+                    currentUser = this.usernameInput.Text.Trim();//记录用户名
+
                     this.Hide();
                     if (mUserDetailForm == null || mUserDetailForm.IsDisposed)
                     {

@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.add = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
@@ -428,14 +427,16 @@
             this.stock_in_numTextBox.Name = "stock_in_numTextBox";
             this.stock_in_numTextBox.Size = new System.Drawing.Size(158, 26);
             this.stock_in_numTextBox.TabIndex = 20;
+            this.stock_in_numTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stock_in_numTextBox_KeyPress);
             // 
             // buy_order_serial_noComboBox
             // 
             this.buy_order_serial_noComboBox.FormattingEnabled = true;
             this.buy_order_serial_noComboBox.Location = new System.Drawing.Point(175, 6);
             this.buy_order_serial_noComboBox.Name = "buy_order_serial_noComboBox";
-            this.buy_order_serial_noComboBox.Size = new System.Drawing.Size(121, 24);
+            this.buy_order_serial_noComboBox.Size = new System.Drawing.Size(148, 24);
             this.buy_order_serial_noComboBox.TabIndex = 6;
+            this.buy_order_serial_noComboBox.SelectedValueChanged += new System.EventHandler(this.buy_order_serial_noComboBox_SelectedValueChanged);
             // 
             // label17
             // 
@@ -470,6 +471,7 @@
             this.totalMoneyTextBox.Location = new System.Drawing.Point(852, 195);
             this.totalMoneyTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.totalMoneyTextBox.Name = "totalMoneyTextBox";
+            this.totalMoneyTextBox.ReadOnly = true;
             this.totalMoneyTextBox.Size = new System.Drawing.Size(158, 26);
             this.totalMoneyTextBox.TabIndex = 21;
             // 
@@ -623,8 +625,6 @@
             // dataGridViewToReturn
             // 
             this.dataGridViewToReturn.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewToReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewToReturn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewToReturn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewToReturn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -637,12 +637,13 @@
             this.dataGridViewToReturn.Size = new System.Drawing.Size(420, 429);
             this.dataGridViewToReturn.TabIndex = 8;
             this.dataGridViewToReturn.VirtualMode = true;
+            this.dataGridViewToReturn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewToReturn_CellClick);
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;

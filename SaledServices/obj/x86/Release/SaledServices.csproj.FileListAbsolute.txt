@@ -46,8 +46,6 @@ E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Re
 E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.CustomsExport.WorkListBodyForm.resources
 E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.CustomsExport.WorkListHeadForm.resources
 E:\BaiduNetdiskDownload\SaledServices0417\SaledServices\SaledServices\obj\x86\Release\SaledServices.CompanyFixedForm.resources
-D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.exe
-D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
 D:\projects\SaledServices0420\SaledServices\SaledServices\bin\Release\SaledServices.exe
 D:\projects\SaledServices0420\SaledServices\SaledServices\bin\Release\SaledServices.pdb
 D:\projects\SaledServices0420\SaledServices\SaledServices\bin\Release\RestSharp.dll
@@ -79,8 +77,12 @@ D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledS
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.ReceiveOrderForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.SourceForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.RepairOperationForm.resources
+D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.Repair.RequestBGAForm.resources
+D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.Repair.RrepareUseListForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.ReturnStoreForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.Store.CheckRequestForm.resources
+D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.Store.RequestFRUSMTStoreForm.resources
+D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.Store.ProcessReturnStoreForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.StockInSheetForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.FRU_SMT_InSheetForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.FRU_SMT_OutSheetForm.resources
@@ -95,6 +97,5 @@ D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledS
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.User.UserSelfForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.VendorForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.csproj.GenerateResource.Cache
-D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.Repair.RequestBGAForm.resources
-D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.Repair.RrepareUseListForm.resources
-D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.Store.RequestFRUSMTStoreForm.resources
+D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.exe
+D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
