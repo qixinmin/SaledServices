@@ -143,7 +143,7 @@ namespace SaledServices.Repair
                         + this.material_mpntextBox.Text.Trim() + "','"
                         + (Int32.Parse(this.realNumbertextBox.Text == "" ? "0" : this.realNumbertextBox.Text) - Int32.Parse(this.totalUseNumber == "" ? "0" : this.totalUseNumber)) + "','"
                         + this.stock_placetextBox.Text.Trim() + "','"
-                        + "tester" + "','"
+                        + LoginForm.currentUser + "','"
                         + DateTime.Now.ToString("yyyy/MM/dd") + "','"
                         + this.fromIdTextBox.Text + "','"
                         + "" + "','"

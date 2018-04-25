@@ -23,6 +23,7 @@ namespace SaledServices
         public FRU_SMT_OutSheetForm()
         {
             InitializeComponent();
+            inputerTextBox.Text = LoginForm.currentUser;
         }
 
         private void add_Click(object sender, EventArgs e)

@@ -18,6 +18,7 @@ namespace SaledServices.Test_Outlook
         public Test1Form()
         {
             InitializeComponent();
+            testerTextBox.Text = LoginForm.currentUser;
         }
         string tempKeySerial="";
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)

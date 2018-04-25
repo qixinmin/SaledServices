@@ -15,7 +15,7 @@ namespace SaledServices
 {
     public partial class LoginForm : Form
     {
-        public static string currentUser = "";
+        public static string currentUser = "defaultUser";
         private UserDetailForm mUserDetailForm;
         private MainForm mParent;
         public LoginForm(MainForm parent)

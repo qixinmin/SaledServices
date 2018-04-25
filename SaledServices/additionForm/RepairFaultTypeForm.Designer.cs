@@ -42,29 +42,29 @@
             // 
             // numTextBox
             // 
-            this.numTextBox.Location = new System.Drawing.Point(304, 32);
-            this.numTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.numTextBox.Location = new System.Drawing.Point(406, 42);
+            this.numTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.numTextBox.Name = "numTextBox";
             this.numTextBox.ReadOnly = true;
-            this.numTextBox.Size = new System.Drawing.Size(164, 21);
+            this.numTextBox.Size = new System.Drawing.Size(218, 26);
             this.numTextBox.TabIndex = 20;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(181, 32);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Location = new System.Drawing.Point(242, 42);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 12);
+            this.label2.Size = new System.Drawing.Size(24, 16);
             this.label2.TabIndex = 19;
             this.label2.Text = "ID";
             // 
             // delete
             // 
-            this.delete.Location = new System.Drawing.Point(674, 282);
-            this.delete.Margin = new System.Windows.Forms.Padding(5);
+            this.delete.Location = new System.Drawing.Point(898, 376);
+            this.delete.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(125, 38);
+            this.delete.Size = new System.Drawing.Size(166, 50);
             this.delete.TabIndex = 17;
             this.delete.Text = "删除";
             this.delete.UseVisualStyleBackColor = true;
@@ -72,10 +72,10 @@
             // 
             // modify
             // 
-            this.modify.Location = new System.Drawing.Point(508, 282);
-            this.modify.Margin = new System.Windows.Forms.Padding(5);
+            this.modify.Location = new System.Drawing.Point(678, 376);
+            this.modify.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.modify.Name = "modify";
-            this.modify.Size = new System.Drawing.Size(125, 38);
+            this.modify.Size = new System.Drawing.Size(166, 50);
             this.modify.TabIndex = 18;
             this.modify.Text = "修改";
             this.modify.UseVisualStyleBackColor = true;
@@ -83,10 +83,10 @@
             // 
             // query
             // 
-            this.query.Location = new System.Drawing.Point(346, 282);
-            this.query.Margin = new System.Windows.Forms.Padding(5);
+            this.query.Location = new System.Drawing.Point(462, 376);
+            this.query.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.query.Name = "query";
-            this.query.Size = new System.Drawing.Size(125, 38);
+            this.query.Size = new System.Drawing.Size(166, 50);
             this.query.TabIndex = 16;
             this.query.Text = "查询";
             this.query.UseVisualStyleBackColor = true;
@@ -94,10 +94,10 @@
             // 
             // add
             // 
-            this.add.Location = new System.Drawing.Point(181, 282);
-            this.add.Margin = new System.Windows.Forms.Padding(5);
+            this.add.Location = new System.Drawing.Point(242, 376);
+            this.add.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(125, 38);
+            this.add.Size = new System.Drawing.Size(166, 50);
             this.add.TabIndex = 15;
             this.add.Text = "新增";
             this.add.UseVisualStyleBackColor = true;
@@ -105,39 +105,39 @@
             // 
             // faultTypeTextBox
             // 
-            this.faultTypeTextBox.Location = new System.Drawing.Point(304, 95);
-            this.faultTypeTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.faultTypeTextBox.Location = new System.Drawing.Point(406, 126);
+            this.faultTypeTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.faultTypeTextBox.Name = "faultTypeTextBox";
-            this.faultTypeTextBox.Size = new System.Drawing.Size(164, 21);
+            this.faultTypeTextBox.Size = new System.Drawing.Size(218, 26);
             this.faultTypeTextBox.TabIndex = 14;
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(181, 397);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGridView1.Location = new System.Drawing.Point(242, 530);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(618, 323);
+            this.dataGridView1.Size = new System.Drawing.Size(824, 430);
             this.dataGridView1.TabIndex = 13;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(178, 100);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Location = new System.Drawing.Point(238, 134);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.Size = new System.Drawing.Size(40, 16);
             this.label1.TabIndex = 12;
             this.label1.Text = "类别";
             // 
             // RepairFaultTypeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 753);
+            this.ClientSize = new System.Drawing.Size(1302, 850);
             this.Controls.Add(this.numTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.delete);
@@ -147,6 +147,8 @@
             this.Controls.Add(this.faultTypeTextBox);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("SimSun", 12F);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "RepairFaultTypeForm";
             this.Text = "维修故障类别";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

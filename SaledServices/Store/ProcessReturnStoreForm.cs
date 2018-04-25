@@ -15,6 +15,7 @@ namespace SaledServices.Store
         public ProcessReturnStoreForm()
         {
             InitializeComponent();
+            requestertextBox.Text = LoginForm.currentUser;
             loadInfo();
         }
 

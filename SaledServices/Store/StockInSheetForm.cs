@@ -20,6 +20,7 @@ namespace SaledServices
         public StockInSheetForm()
         {
             InitializeComponent();
+            inputerTextBox.Text = LoginForm.currentUser;
         }
 
         private void add_Click(object sender, EventArgs e)

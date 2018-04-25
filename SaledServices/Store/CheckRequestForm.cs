@@ -15,6 +15,7 @@ namespace SaledServices.Store
         public CheckRequestForm()
         {
             InitializeComponent();
+            requestertextBox.Text = LoginForm.currentUser;
             loadInfo();
         }
 

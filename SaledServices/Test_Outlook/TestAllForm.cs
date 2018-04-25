@@ -17,6 +17,7 @@ namespace SaledServices.Test_Outlook
         public TestAllForm()
         {
             InitializeComponent();
+            testerTextBox.Text = LoginForm.currentUser;
         }
 
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)

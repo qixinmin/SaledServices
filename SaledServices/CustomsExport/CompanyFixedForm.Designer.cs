@@ -47,7 +47,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("宋体", 15F);
+            this.label1.Font = new System.Drawing.Font("SimSun", 15F);
             this.label1.Location = new System.Drawing.Point(91, 155);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
@@ -79,7 +79,7 @@
             // 
             // add
             // 
-            this.add.Font = new System.Drawing.Font("宋体", 15F);
+            this.add.Font = new System.Drawing.Font("SimSun", 15F);
             this.add.Location = new System.Drawing.Point(95, 302);
             this.add.Margin = new System.Windows.Forms.Padding(5);
             this.add.Name = "add";
@@ -91,7 +91,7 @@
             // 
             // query
             // 
-            this.query.Font = new System.Drawing.Font("宋体", 15F);
+            this.query.Font = new System.Drawing.Font("SimSun", 15F);
             this.query.Location = new System.Drawing.Point(260, 302);
             this.query.Margin = new System.Windows.Forms.Padding(5);
             this.query.Name = "query";
@@ -103,7 +103,7 @@
             // 
             // modify
             // 
-            this.modify.Font = new System.Drawing.Font("宋体", 15F);
+            this.modify.Font = new System.Drawing.Font("SimSun", 15F);
             this.modify.Location = new System.Drawing.Point(422, 302);
             this.modify.Margin = new System.Windows.Forms.Padding(5);
             this.modify.Name = "modify";
@@ -115,7 +115,7 @@
             // 
             // delete
             // 
-            this.delete.Font = new System.Drawing.Font("宋体", 15F);
+            this.delete.Font = new System.Drawing.Font("SimSun", 15F);
             this.delete.Location = new System.Drawing.Point(588, 302);
             this.delete.Margin = new System.Windows.Forms.Padding(5);
             this.delete.Name = "delete";
@@ -128,7 +128,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("宋体", 15F);
+            this.label2.Font = new System.Drawing.Font("SimSun", 15F);
             this.label2.Location = new System.Drawing.Point(95, 62);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
@@ -148,7 +148,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 15F);
+            this.label3.Font = new System.Drawing.Font("SimSun", 15F);
             this.label3.Location = new System.Drawing.Point(91, 104);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
@@ -167,8 +167,8 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("宋体", 15F);
-            this.label4.Location = new System.Drawing.Point(95, 202);
+            this.label4.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label4.Location = new System.Drawing.Point(91, 202);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(109, 20);
@@ -201,7 +201,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("宋体", 15F);
+            this.Font = new System.Drawing.Font("SimSun", 15F);
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "CompanyFixedForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

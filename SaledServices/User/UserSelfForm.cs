@@ -31,6 +31,8 @@ namespace SaledServices.User
         {
             InitializeComponent();
 
+            usernameTextBox.Text = LoginForm.currentUser;
+
             loadUserInfo();
         }
 

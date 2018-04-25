@@ -14,6 +14,7 @@ namespace SaledServices.Repair
         public RequestBGAForm()
         {
             InitializeComponent();
+            requesterTextBox.Text = LoginForm.currentUser;
         }
     }
 }

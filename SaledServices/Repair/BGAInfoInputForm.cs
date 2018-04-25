@@ -15,6 +15,7 @@ namespace SaledServices
         public BGAInfoInputForm()
         {
             InitializeComponent();
+            this.repairertextBox.Text = LoginForm.currentUser;
         }
 
         private void track_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -90,7 +91,7 @@ namespace SaledServices
                         this.customFaulttextBox.Text = custom_fault;
                         this.ECOtextBox.Text = eco;
                     
-                        this.repairertextBox.Text = "tester";
+         
                         this.repair_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
                     }
                     else
@@ -509,7 +510,7 @@ namespace SaledServices
                 this.BGA_placetextBox.Text = "";
                 this.bga_brieftextBox.Text = "";
                
-                this.repairertextBox.Text = "";
+                //this.repairertextBox.Text = "";
                 this.repair_datetextBox.Text = "";
 
                 this.VGA.Checked = false;

@@ -20,6 +20,7 @@ namespace SaledServices
 
             loadAdditionInfomation();
 
+            repairertextBox.Text = LoginForm.currentUser;
             mPrepareUseDetail = new PrepareUseDetail();
         }
 
@@ -126,7 +127,7 @@ namespace SaledServices
                         this.mb_make_dateTextBox.Text = mb_make_date;
                         this.customFaulttextBox.Text = custom_fault;
                         this.ECOtextBox.Text = eco;
-                        this.repairertextBox.Text = "tester";
+                       // this.repairertextBox.Text = "tester";
                         this.repair_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
                     }
                     else
@@ -634,7 +635,7 @@ namespace SaledServices
                
                 this.ECOtextBox.Text = "";
                 this.repair_resultcomboBox.Text = "";
-                this.repairertextBox.Text = "";
+                //this.repairertextBox.Text = "";
                 this.repair_datetextBox.Text = "";
 
                 if (isNTF)//非NTF复位

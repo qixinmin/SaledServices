@@ -17,6 +17,7 @@ namespace SaledServices
             InitializeComponent();
 
             loadAdditionInfomation();
+            repairertextBox.Text = LoginForm.currentUser;
         }
 
         private void loadAdditionInfomation()//TODO
@@ -178,7 +179,7 @@ namespace SaledServices
             string bga_brief_txt = this.bga_brieftextBox.Text.Trim();
 
             string repairer_txt = this.repairertextBox.Text.Trim();
-            string repair_date_txt = this.repairertextBox.Text.Trim();
+            string repair_date_txt = this.repair_datetextBox.Text.Trim();
 
             string bgarepairer_txt = this.bgarepairertextBox.Text.Trim();
             string bgaRepairDate_txt = DateTime.Now.ToString("yyyy/MM/dd");

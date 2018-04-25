@@ -22,7 +22,8 @@ namespace SaledServices
         public ReturnStoreForm()
         {
             InitializeComponent();
-            loadToReturnInformation();  
+            loadToReturnInformation();
+            this.inputUserTextBox.Text = LoginForm.currentUser;
         }
         
         public void loadToReturnInformation()

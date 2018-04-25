@@ -21,6 +21,8 @@ namespace SaledServices
         {
             InitializeComponent();
 
+            inputerTextBox.Text = LoginForm.currentUser;
+
             loadAdditionInfomation();
         }
 
