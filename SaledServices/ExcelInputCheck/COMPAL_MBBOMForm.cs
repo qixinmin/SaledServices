@@ -204,8 +204,7 @@ namespace SaledServices
             this.L5TextBox.Text = dataGridView1.SelectedCells[14].Value.ToString();
             this.L6TextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
             this.L7TextBox.Text = dataGridView1.SelectedCells[16].Value.ToString();
-            this.L8TextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
-            
+            this.L8TextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();            
         }
 
         private void ReceiveOrderForm_Load(object sender, EventArgs e)
@@ -218,7 +217,7 @@ namespace SaledServices
                 SetValue(tableLayoutPanel2, true, null);
             tableLayoutPanel3.GetType().
                 GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
-                SetValue(tableLayoutPanel3, true, null);            
+                SetValue(tableLayoutPanel3, true, null);       
             
         }
     }

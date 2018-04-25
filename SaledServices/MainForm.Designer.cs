@@ -83,6 +83,8 @@
             this.出库入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表头ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.库房领料申请ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bGA领料申请ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -242,7 +244,9 @@
             // 
             this.维修ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.维修界面ToolStripMenuItem,
-            this.bGAToolStripMenuItem});
+            this.bGAToolStripMenuItem,
+            this.库房领料申请ToolStripMenuItem,
+            this.bGA领料申请ToolStripMenuItem});
             this.维修ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.维修ToolStripMenuItem.Name = "维修ToolStripMenuItem";
             this.维修ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -538,6 +542,19 @@
             this.工单表体ToolStripMenuItem.Text = "工单表体";
             this.工单表体ToolStripMenuItem.Click += new System.EventHandler(this.工单表体ToolStripMenuItem_Click);
             // 
+            // 库房领料申请ToolStripMenuItem
+            // 
+            this.库房领料申请ToolStripMenuItem.Name = "库房领料申请ToolStripMenuItem";
+            this.库房领料申请ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
+            this.库房领料申请ToolStripMenuItem.Text = "FRU/SMT领料申请";
+            this.库房领料申请ToolStripMenuItem.Click += new System.EventHandler(this.库房领料申请ToolStripMenuItem_Click);
+            // 
+            // bGA领料申请ToolStripMenuItem
+            // 
+            this.bGA领料申请ToolStripMenuItem.Name = "bGA领料申请ToolStripMenuItem";
+            this.bGA领料申请ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
+            this.bGA领料申请ToolStripMenuItem.Text = "BGA领料申请";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -615,6 +632,8 @@
         private System.Windows.Forms.ToolStripMenuItem 出库请求查看ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 海关ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 企业固定信息ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 库房领料申请ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bGA领料申请ToolStripMenuItem;
     }
 }
 

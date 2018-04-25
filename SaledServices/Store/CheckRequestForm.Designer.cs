@@ -31,18 +31,22 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.refreshbutton = new System.Windows.Forms.Button();
             this.processRequestbutton = new System.Windows.Forms.Button();
-            this.track_serial_notextBox = new System.Windows.Forms.TextBox();
-            this.material_71pntextBox = new System.Windows.Forms.TextBox();
-            this.request_typetextBox = new System.Windows.Forms.TextBox();
+            this.mb_brieftextBox = new System.Windows.Forms.TextBox();
+            this.requestertextBox = new System.Windows.Forms.TextBox();
+            this.not_good_placetextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.statustextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.material_mpntextBox = new System.Windows.Forms.TextBox();
+            this.requestNumbertextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.numberTextBox = new System.Windows.Forms.TextBox();
+            this.dateTextBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.materialMpnTextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.idTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,47 +83,47 @@
             this.processRequestbutton.UseVisualStyleBackColor = true;
             this.processRequestbutton.Click += new System.EventHandler(this.processRequestbutton_Click);
             // 
-            // track_serial_notextBox
+            // mb_brieftextBox
             // 
-            this.track_serial_notextBox.Location = new System.Drawing.Point(102, 27);
-            this.track_serial_notextBox.Name = "track_serial_notextBox";
-            this.track_serial_notextBox.ReadOnly = true;
-            this.track_serial_notextBox.Size = new System.Drawing.Size(100, 21);
-            this.track_serial_notextBox.TabIndex = 13;
+            this.mb_brieftextBox.Location = new System.Drawing.Point(102, 27);
+            this.mb_brieftextBox.Name = "mb_brieftextBox";
+            this.mb_brieftextBox.ReadOnly = true;
+            this.mb_brieftextBox.Size = new System.Drawing.Size(100, 21);
+            this.mb_brieftextBox.TabIndex = 13;
             // 
-            // material_71pntextBox
+            // requestertextBox
             // 
-            this.material_71pntextBox.Location = new System.Drawing.Point(102, 84);
-            this.material_71pntextBox.Name = "material_71pntextBox";
-            this.material_71pntextBox.ReadOnly = true;
-            this.material_71pntextBox.Size = new System.Drawing.Size(100, 21);
-            this.material_71pntextBox.TabIndex = 11;
+            this.requestertextBox.Location = new System.Drawing.Point(102, 84);
+            this.requestertextBox.Name = "requestertextBox";
+            this.requestertextBox.ReadOnly = true;
+            this.requestertextBox.Size = new System.Drawing.Size(100, 21);
+            this.requestertextBox.TabIndex = 11;
             // 
-            // request_typetextBox
+            // not_good_placetextBox
             // 
-            this.request_typetextBox.Location = new System.Drawing.Point(299, 30);
-            this.request_typetextBox.Name = "request_typetextBox";
-            this.request_typetextBox.ReadOnly = true;
-            this.request_typetextBox.Size = new System.Drawing.Size(100, 21);
-            this.request_typetextBox.TabIndex = 12;
+            this.not_good_placetextBox.Location = new System.Drawing.Point(299, 30);
+            this.not_good_placetextBox.Name = "not_good_placetextBox";
+            this.not_good_placetextBox.ReadOnly = true;
+            this.not_good_placetextBox.Size = new System.Drawing.Size(100, 21);
+            this.not_good_placetextBox.TabIndex = 12;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(29, 93);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 8;
-            this.label3.Text = "材料71PN";
+            this.label3.Text = "申请人";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(29, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 10;
-            this.label2.Text = "跟踪条码";
+            this.label2.Text = "机型";
             // 
             // label1
             // 
@@ -128,7 +132,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 9;
-            this.label1.Text = "请求类型";
+            this.label1.Text = "不良位置";
             // 
             // label4
             // 
@@ -150,19 +154,19 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(413, 35);
+            this.label5.Location = new System.Drawing.Point(615, 34);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 12);
+            this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 9;
-            this.label5.Text = "材料MPN";
+            this.label5.Text = "请求数量";
             // 
-            // material_mpntextBox
+            // requestNumbertextBox
             // 
-            this.material_mpntextBox.Location = new System.Drawing.Point(486, 31);
-            this.material_mpntextBox.Name = "material_mpntextBox";
-            this.material_mpntextBox.ReadOnly = true;
-            this.material_mpntextBox.Size = new System.Drawing.Size(100, 21);
-            this.material_mpntextBox.TabIndex = 12;
+            this.requestNumbertextBox.Location = new System.Drawing.Point(686, 31);
+            this.requestNumbertextBox.Name = "requestNumbertextBox";
+            this.requestNumbertextBox.ReadOnly = true;
+            this.requestNumbertextBox.Size = new System.Drawing.Size(100, 21);
+            this.requestNumbertextBox.TabIndex = 12;
             // 
             // label6
             // 
@@ -171,29 +175,67 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 8;
-            this.label6.Text = "数量";
+            this.label6.Text = "日期";
             // 
-            // numberTextBox
+            // dateTextBox
             // 
-            this.numberTextBox.Location = new System.Drawing.Point(299, 84);
-            this.numberTextBox.Name = "numberTextBox";
-            this.numberTextBox.ReadOnly = true;
-            this.numberTextBox.Size = new System.Drawing.Size(100, 21);
-            this.numberTextBox.TabIndex = 11;
+            this.dateTextBox.Location = new System.Drawing.Point(299, 84);
+            this.dateTextBox.Name = "dateTextBox";
+            this.dateTextBox.ReadOnly = true;
+            this.dateTextBox.Size = new System.Drawing.Size(100, 21);
+            this.dateTextBox.TabIndex = 11;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(413, 34);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(47, 12);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "材料MPN";
+            // 
+            // materialMpnTextBox
+            // 
+            this.materialMpnTextBox.Location = new System.Drawing.Point(486, 31);
+            this.materialMpnTextBox.Name = "materialMpnTextBox";
+            this.materialMpnTextBox.ReadOnly = true;
+            this.materialMpnTextBox.Size = new System.Drawing.Size(100, 21);
+            this.materialMpnTextBox.TabIndex = 12;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(615, 93);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(17, 12);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "ID";
+            // 
+            // idTextBox
+            // 
+            this.idTextBox.Location = new System.Drawing.Point(688, 93);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.ReadOnly = true;
+            this.idTextBox.Size = new System.Drawing.Size(100, 21);
+            this.idTextBox.TabIndex = 11;
             // 
             // CheckRequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(685, 413);
-            this.Controls.Add(this.track_serial_notextBox);
-            this.Controls.Add(this.numberTextBox);
+            this.ClientSize = new System.Drawing.Size(844, 462);
+            this.Controls.Add(this.mb_brieftextBox);
+            this.Controls.Add(this.dateTextBox);
+            this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.statustextBox);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.material_71pntextBox);
+            this.Controls.Add(this.requestertextBox);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.material_mpntextBox);
-            this.Controls.Add(this.request_typetextBox);
+            this.Controls.Add(this.materialMpnTextBox);
+            this.Controls.Add(this.requestNumbertextBox);
+            this.Controls.Add(this.not_good_placetextBox);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
@@ -215,17 +257,21 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button refreshbutton;
         private System.Windows.Forms.Button processRequestbutton;
-        private System.Windows.Forms.TextBox track_serial_notextBox;
-        private System.Windows.Forms.TextBox material_71pntextBox;
-        private System.Windows.Forms.TextBox request_typetextBox;
+        private System.Windows.Forms.TextBox mb_brieftextBox;
+        private System.Windows.Forms.TextBox requestertextBox;
+        private System.Windows.Forms.TextBox not_good_placetextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox statustextBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox material_mpntextBox;
+        private System.Windows.Forms.TextBox requestNumbertextBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox numberTextBox;
+        private System.Windows.Forms.TextBox dateTextBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox materialMpnTextBox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox idTextBox;
     }
 }

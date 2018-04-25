@@ -212,10 +212,10 @@
     <Compile Include="additionForm\StoreHouseForm.Designer.cs">
       <DependentUpon>StoreHouseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BGAInfoInputForm.cs">
+    <Compile Include="Repair\BGAInfoInputForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BGAInfoInputForm.Designer.cs">
+    <Compile Include="Repair\BGAInfoInputForm.Designer.cs">
       <DependentUpon>BGAInfoInputForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Constlist.cs" />
@@ -237,10 +237,10 @@
     <Compile Include="additionForm\CustomFaultForm.Designer.cs">
       <DependentUpon>CustomFaultForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BGARepairOperationForm.cs">
+    <Compile Include="Repair\BGARepairOperationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BGARepairOperationForm.Designer.cs">
+    <Compile Include="Repair\BGARepairOperationForm.Designer.cs">
       <DependentUpon>BGARepairOperationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomsContentClass\OpeningStockClass.cs" />
@@ -348,11 +348,23 @@
     <Compile Include="additionForm\SourceForm.Designer.cs">
       <DependentUpon>SourceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RepairOperationForm.cs">
+    <Compile Include="Repair\RepairOperationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RepairOperationForm.Designer.cs">
+    <Compile Include="Repair\RepairOperationForm.Designer.cs">
       <DependentUpon>RepairOperationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repair\RequestBGAForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Repair\RequestBGAForm.Designer.cs">
+      <DependentUpon>RequestBGAForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repair\RrepareUseListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Repair\RrepareUseListForm.Designer.cs">
+      <DependentUpon>RrepareUseListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ReturnStoreForm.cs">
       <SubType>Form</SubType>
@@ -366,11 +378,11 @@
     <Compile Include="Store\CheckRequestForm.Designer.cs">
       <DependentUpon>CheckRequestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Store\RequestToStoreForm.cs">
+    <Compile Include="Repair\RequestFRUSMTStoreForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Store\RequestToStoreForm.Designer.cs">
-      <DependentUpon>RequestToStoreForm.cs</DependentUpon>
+    <Compile Include="Repair\RequestFRUSMTStoreForm.Designer.cs">
+      <DependentUpon>RequestFRUSMTStoreForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Store\StockInSheetForm.cs">
       <SubType>Form</SubType>
@@ -468,10 +480,10 @@
     <EmbeddedResource Include="additionForm\CustomFaultForm.resx">
       <DependentUpon>CustomFaultForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BGAInfoInputForm.resx">
+    <EmbeddedResource Include="Repair\BGAInfoInputForm.resx">
       <DependentUpon>BGAInfoInputForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BGARepairOperationForm.resx">
+    <EmbeddedResource Include="Repair\BGARepairOperationForm.resx">
       <DependentUpon>BGARepairOperationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomsExport\CompanyFixedForm.resx">
@@ -525,8 +537,14 @@
     <EmbeddedResource Include="additionForm\SourceForm.resx">
       <DependentUpon>SourceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RepairOperationForm.resx">
+    <EmbeddedResource Include="Repair\RepairOperationForm.resx">
       <DependentUpon>RepairOperationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Repair\RequestBGAForm.resx">
+      <DependentUpon>RequestBGAForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Repair\RrepareUseListForm.resx">
+      <DependentUpon>RrepareUseListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReturnStoreForm.resx">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>
@@ -534,8 +552,8 @@
     <EmbeddedResource Include="Store\CheckRequestForm.resx">
       <DependentUpon>CheckRequestForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Store\RequestToStoreForm.resx">
-      <DependentUpon>RequestToStoreForm.cs</DependentUpon>
+    <EmbeddedResource Include="Repair\RequestFRUSMTStoreForm.resx">
+      <DependentUpon>RequestFRUSMTStoreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\StockInSheetForm.resx">
       <DependentUpon>StockInSheetForm.cs</DependentUpon>

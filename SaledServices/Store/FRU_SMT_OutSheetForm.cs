@@ -17,6 +17,9 @@ namespace SaledServices
         private SqlDataAdapter sda;
         private DataSet ds;
 
+        private string requestId = "";
+        private string requestNumber = "";
+
         public FRU_SMT_OutSheetForm()
         {
             InitializeComponent();
@@ -24,6 +27,7 @@ namespace SaledServices
 
         private void add_Click(object sender, EventArgs e)
         {
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -33,6 +37,8 @@ namespace SaledServices
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
                         this.vendorTextBox.Text.Trim() + "','" +
                         this.buy_typeTextBox.Text.Trim() + "','" +
@@ -52,13 +58,20 @@ namespace SaledServices
                         this.inputerTextBox.Text.Trim() + "','" +                       
                         this.use_describetextBox.Text.Trim() + "','" +
                         this.notetextBox.Text.Trim() + "','" +
-                        this.input_dateTextBox.Text.Trim() + "','" +
-                        this.track_serial_notextBox.Text.Trim() + "')";
+                        this.input_dateTextBox.Text.Trim() + "')";
 
-                    cmd.CommandType = CommandType.Text;
+                    
                     cmd.ExecuteNonQuery();
 
                     //跟新请求表格的状态
+                    cmd.CommandText = "update request_fru_smt_to_store_table set status = '" + this.reqeusterStatus + "',realNumber = '" + (this.stock_out_numTextBox.Text) + "' "
+                               + "where requestId = '" + this.requestId + "'";
+                    cmd.ExecuteNonQuery();
+
+                    //更新入库表的使用数量，要加上出库的数量
+                    cmd.CommandText = "update fru_smt_in_stock set status = '" + this.reqeusterStatus + "',used_num = '" +  (Int32.Parse(this.used_num) + Int32.Parse(this.stock_out_numTextBox.Text)) + "' "
+                               + "where requestId = '" + fru_smt_in_id + "'";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {
@@ -156,7 +169,7 @@ namespace SaledServices
             dr["inputer"] = this.inputerTextBox.Text.Trim();
             dr["use_describe"] = this.use_describetextBox.Text.Trim();
             dr["input_date"] = this.input_dateTextBox.Text.Trim();
-            dr["track_serial_no"] = this.track_serial_notextBox.Text.Trim();           
+    
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
@@ -213,7 +226,7 @@ namespace SaledServices
             this.use_describetextBox.Text = dataGridView1.SelectedCells[16].Value.ToString();
             this.notetextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
             this.input_dateTextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();
-            this.track_serial_notextBox.Text = dataGridView1.SelectedCells[19].Value.ToString();
+
         }
 
         private void ReceiveOrderForm_Load(object sender, EventArgs e)
@@ -226,25 +239,93 @@ namespace SaledServices
                 SetValue(tableLayoutPanel2, true, null);
             tableLayoutPanel3.GetType().
                 GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
-                SetValue(tableLayoutPanel3, true, null);           
-        }
+                SetValue(tableLayoutPanel3, true, null);
 
+            tableLayoutPanel4.GetType().
+                GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+                SetValue(tableLayoutPanel4, true, null);
+        }
 
         public void doRequestUsingMpn()
         {
+            if (this.mb_brieftextBox.Text == "" || this.mpnTextBox.Text == "")
+            {
+                return;
+            }
+
             try
             {
+                this.dataGridView2.DataSource = null;
+                dataGridView2.Columns.Clear();
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                 mConn.Open();
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
+                cmd.CommandText = "select vendor,product,material_type,mpn,mb_brief, material_name,describe,isdeclare,stock_place,stock_in_num from fru_smt_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "' and mb_brief='" + this.mb_brieftextBox.Text.Trim() + "' order by Id asc";
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select vendor,buy_type,product,material_type,mpn,mb_brief, material_name,vendormaterialNo,describe,isdeclare,pricePer,stock_place from fru_smt_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                SqlDataAdapter sda = new SqlDataAdapter();
+                sda.SelectCommand = cmd;
+                DataSet ds = new DataSet();
+                sda.Fill(ds, "fru_smt_in_stock");
+                dataGridView2.DataSource = ds.Tables[0];
+                dataGridView2.RowHeadersVisible = false;
+
+                string[] hTxt = { "厂商", "客户别", "材料大类", "MPN", 
+                                     "MB简称","材料名称", "描述","是否报关","库位", "入库数量" };
+                for (int i = 0; i < hTxt.Length; i++)
+                {
+                    dataGridView2.Columns[i].HeaderText = hTxt[i];
+                    dataGridView2.Columns[i].Name = hTxt[i];
+                }
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public void mpnTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+               //doRequestUsingMpn();            
+            }
+        }
+
+        public void setparamters(string mb_brief, string material_mpn, string requestNumber, string index)
+        {
+            this.mb_brieftextBox.Text = mb_brief;
+            this.mpnTextBox.Text = material_mpn;
+            this.requestNumber = requestNumber;
+            requestId = index;
+        }
+
+
+        string reqeusterStatus = "";
+        string fru_smt_in_id = "";
+        string used_num = "";
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                this.add.Enabled = false;
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select vendor,buy_type,product,material_type,mpn,mb_brief, material_name,vendormaterialNo,describe,isdeclare,pricePer,stock_place,stock_in_num,used_num, Id from fru_smt_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "' and mb_brief='" + this.mb_brieftextBox.Text.Trim() + "'";
 
                 SqlDataReader querySdr = cmd.ExecuteReader();
 
+                string stock_in_num ="";                
                 while (querySdr.Read())
                 {
                     this.vendorTextBox.Text = querySdr[0].ToString();
@@ -259,29 +340,53 @@ namespace SaledServices
                     this.isDeclareTextBox.Text = querySdr[9].ToString();
                     this.pricePerTextBox.Text = querySdr[10].ToString();
                     this.stock_placetextBox.Text = querySdr[11].ToString();
+                    stock_in_num = querySdr[12].ToString();
+                    used_num = querySdr[13].ToString();
+                    fru_smt_in_id = querySdr[14].ToString();
                 }
                 querySdr.Close();
 
                 mConn.Close();
+
+                int currentNumber = Int32.Parse(stock_in_num) - Int32.Parse(used_num);
+                int requestNumber = Int32.Parse(this.requestNumber);
+               
+                if (currentNumber == 0)
+                {
+                    reqeusterStatus = "wait";
+                    this.add.Enabled = false;
+                    MessageBox.Show("TODO 生成购买记录！");
+                    //修改请求状态
+                }
+                else if (requestNumber > currentNumber)
+                {
+                    reqeusterStatus = "part";
+                    
+                    DialogResult ret = MessageBox.Show("库房数量不能满足要求数量" + this.requestNumber+",是否部分分配，并生成申请记录！","",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Warning);
+                    if (ret == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        this.add.Enabled = true;
+                        this.stock_out_numTextBox.Text = this.requestNumber;
+                    }
+                    else if (ret == System.Windows.Forms.DialogResult.No || ret == System.Windows.Forms.DialogResult.Cancel)
+                    {
+                        this.add.Enabled = false;
+                    }
+
+                    MessageBox.Show("TODO 生成购买记录！");
+                }
+                else if (requestNumber <= currentNumber)
+                {
+                    //满足条件，正常分配
+                    reqeusterStatus = "close";
+                    this.add.Enabled = true;
+                    this.stock_out_numTextBox.Text = this.requestNumber;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
-        }
-        public void mpnTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == System.Convert.ToChar(13))
-            {
-               doRequestUsingMpn();            
-            }
-        }
-
-        public void setparamters(string track_serial_no, string material_mpn, string material_71pn)
-        {
-            this.track_serial_notextBox.Text = track_serial_no;
-            this.mpnTextBox.Text = material_mpn;
         }
 
 

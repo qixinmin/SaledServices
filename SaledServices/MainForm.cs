@@ -700,5 +700,12 @@ namespace SaledServices
 
             allForm.Add(cfform);  
         }
+
+        private void 库房领料申请ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Store.RequestFRUSMTStoreForm rtsf = new Store.RequestFRUSMTStoreForm();
+           // rtsf.setParameters(this.track_serial_noTextBox.Text, this.material_mpntextBox.Text, this.material_71pntextBox.Text);
+            rtsf.Show();
+        }
     }
 }

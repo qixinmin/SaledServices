@@ -26,13 +26,13 @@ namespace SaledServices.Store
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select * from  request_material_to_store_table";
+                cmd.CommandText = "select * from  request_fru_smt_to_store_table";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
                 sda.SelectCommand = cmd;
                 DataSet ds = new DataSet();
-                sda.Fill(ds, "request_material_to_store_table");
+                sda.Fill(ds, "request_fru_smt_to_store_table");
                 dataGridView1.DataSource = ds.Tables[0];
                 dataGridView1.RowHeadersVisible = false;
             }
@@ -41,7 +41,7 @@ namespace SaledServices.Store
                 MessageBox.Show(ex.ToString());
             }
          
-            string[] hTxt = { "ID", "跟踪条码", "类型","材料MPN","材料71PN","数量","状态"};
+            string[] hTxt = { "ID", "机型", "位置","材料MPN","请求数量","申请人","申请日期","状态"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -50,13 +50,14 @@ namespace SaledServices.Store
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           // this.numTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
-            this.track_serial_notextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
-            this.request_typetextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
-            this.material_mpntextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
-            this.material_71pntextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
-            this.numberTextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
-            this.statustextBox.Text  = dataGridView1.SelectedCells[6].Value.ToString(); 
+            this.idTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
+            this.mb_brieftextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
+            this.not_good_placetextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
+            this.materialMpnTextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
+            this.requestNumbertextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
+            this.requestertextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
+            this.dateTextBox.Text = dataGridView1.SelectedCells[6].Value.ToString();
+            this.statustextBox.Text  = dataGridView1.SelectedCells[7].Value.ToString(); 
         }
 
         private void refreshbutton_Click(object sender, EventArgs e)
@@ -69,20 +70,14 @@ namespace SaledServices.Store
 
         private void processRequestbutton_Click(object sender, EventArgs e)
         {
-            if (this.request_typetextBox.Text == "FRUSMT")
-            {
-                //在处理之前的时候可以使用mpn的字段查询库存中是否有相应的内容，如果没有则提示说此库存没有相关库存，要备料
+            //在处理之前的时候可以使用mpn的字段查询库存中是否有相应的内容，如果没有则提示说此库存没有相关库存，要备料
+            FRU_SMT_OutSheetForm frusmtout = new FRU_SMT_OutSheetForm();
+            frusmtout.setparamters(this.mb_brieftextBox.Text.Trim(), this.materialMpnTextBox.Text.Trim(),  this.requestNumbertextBox.Text.Trim(), this.idTextBox.Text.Trim());
+            frusmtout.Show();
+            frusmtout.doRequestUsingMpn();
 
+            //在处理完请求后需要把本条记录状态修改为close或其他状态
 
-                FRU_SMT_OutSheetForm frusmtout = new FRU_SMT_OutSheetForm();
-                frusmtout.setparamters(this.track_serial_notextBox.Text, this.material_mpntextBox.Text, this.material_71pntextBox.Text);
-                frusmtout.Show();
-                frusmtout.doRequestUsingMpn();
-
-                //在处理完请求后需要把本条记录状态修改为close或其他状态
-
-                
-            }
         }
     }
 }

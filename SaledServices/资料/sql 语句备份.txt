@@ -14,27 +14,39 @@ book_number NVARCHAR(128), /*账册编号*/
 electronic_number NVARCHAR(128), /*电子账册号*/
 )
 
-CREATE TABLE request_material_to_store_table(
+/*需要创建一个表格，记录维修的每条使用记录 TODO...*/
+CREATE TABLE fru_smt_used_record(
 Id INT PRIMARY KEY IDENTITY, 
-track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
-request_type NVARCHAR(128), /*类型fru/smt/bga/mb*/
-material_mpn NVARCHAR(128), /*材料MPN*/
-material_71pn NVARCHAR(128), /*材料71PN*/
-number NVARCHAR(128), /*请求数量*/
-status NVARCHAR(128) /*状态, request/close/wait*/
+inputer  NVARCHAR(128),/*输入人*/
+input_date  NVARCHAR(128),/*日期*/
+track_serial_no NVARCHAR(128),/*跟踪条码*/
+
+material_mpn NVARCHAR(128), /*材料mpn*/
+thisNumber NVARCHAR(128), /*此次使用的数量*/
+stock_place NVARCHAR(128),/*库位*/
 )
 
+CREATE TABLE request_fru_smt_to_store_table(
+Id INT PRIMARY KEY IDENTITY, 
+mb_brief NVARCHAR(128), /*机型*/
+not_good_place NVARCHAR(128), /*不良位置*/
+material_mpn NVARCHAR(128), /*材料mpn*/
+number NVARCHAR(128), /*请求数量*/
+realNumber NVARCHAR(128), /*获得的真正数量*/
+requester NVARCHAR(128), /*请求人*/
+date NVARCHAR(128), /*请求日期*/
+status NVARCHAR(128) /*状态, request/close/part/wait*/
+usedNumber NVARCHAR(128), /*使用的数量,是个累加数量*/
+stock_place NVARCHAR(128),/*库位*/
+)
 
 CREATE TABLE bga_out_stock(
 Id INT PRIMARY KEY IDENTITY, 
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
 mpn NVARCHAR(128) NOT NULL, /*MPN*/
-
 mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
-
 bga_describe NVARCHAR(128) NOT NULL,/*BGA简述*/
-
 bgasn NVARCHAR(128),/*BGASN*/
 
 stock_place NVARCHAR(128),/*库位*/
@@ -74,7 +86,6 @@ inputer  NVARCHAR(128),/*输入人*/
 input_date  NVARCHAR(128),/*日期*/
 isdeclare NVARCHAR(128), /*是否报关*/
 )
-
 
 CREATE TABLE mb_out_stock(
 Id INT PRIMARY KEY IDENTITY, 
@@ -145,7 +156,6 @@ inputer  NVARCHAR(128),/*输入人*/
 use_describe NVARCHAR(128),/*用途*/
 note NVARCHAR(128),/*备注*/
 input_date  NVARCHAR(128),/*日期*/
-track_serial_no NVARCHAR(128),/*跟踪条码*/
 )
 
 CREATE TABLE fru_smt_in_stock(
@@ -165,6 +175,7 @@ isdeclare NVARCHAR(128), /*是否报关*/
 mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
 material_name  NVARCHAR(128) NOT NULL,/*材料名称*/
 stock_in_num  NVARCHAR(128),/*入库数量*/
+used_num NVARCHAR(128),/*使用的数量*/
 totalMoney  NVARCHAR(128),/*金额合计*/
 stock_place NVARCHAR(128),/*库位*/
 note NVARCHAR(128),/*备注*/

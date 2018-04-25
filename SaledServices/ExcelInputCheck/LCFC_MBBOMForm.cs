@@ -72,7 +72,6 @@ namespace SaledServices
         {
             try
             {
-
                 dataGridView1.DataSource = null;
                 dataGridView1.Columns.Clear();
 

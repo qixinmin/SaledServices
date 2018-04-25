@@ -118,6 +118,7 @@ namespace SaledServices
                         this.mb_brieftextBox.Text.Trim() + "','" +
                         this.material_nameTextBox.Text.Trim() + "','" +
                         this.stock_in_numTextBox.Text.Trim() + "','" +
+                        "0','" +//used_num
                         this.totalMoneyTextBox.Text.Trim() + "','" +
                         this.stock_placetextBox.Text.Trim() + "','" +                       
                         this.notetextBox.Text.Trim() + "','" +
@@ -193,7 +194,7 @@ namespace SaledServices
             }
 
 
-            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "订单数量", "单价", "是否报关", "MB简称", "材料名称", "入库数量", "合计金额", "库位", "备注", "输入人", "日期" };
+            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "订单数量", "单价", "是否报关", "MB简称", "材料名称", "入库数量","使用数量", "合计金额", "库位", "备注", "输入人", "日期" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];

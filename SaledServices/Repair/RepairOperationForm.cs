@@ -749,11 +749,9 @@ namespace SaledServices
         }
 
 
-        private void request_to_store_button_Click(object sender, EventArgs e)
+        private void choose_material_button_Click(object sender, EventArgs e)
         {
-            Store.RequestToStoreForm rtsf = new Store.RequestToStoreForm();
-            rtsf.setParameters(this.track_serial_noTextBox.Text, this.material_mpntextBox.Text, this.material_71pntextBox.Text);
-            rtsf.Show();
+           
         }
     }
 }

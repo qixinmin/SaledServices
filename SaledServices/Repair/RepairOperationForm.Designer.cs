@@ -83,7 +83,7 @@
             this.mpntextBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.mbfa1richTextBox = new System.Windows.Forms.RichTextBox();
-            this.request_to_store_button = new System.Windows.Forms.Button();
+            this.choose_material_button = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.add = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -202,7 +202,7 @@
             this.tableLayoutPanel2.Controls.Add(this.mpntextBox, 5, 7);
             this.tableLayoutPanel2.Controls.Add(this.label15, 2, 8);
             this.tableLayoutPanel2.Controls.Add(this.mbfa1richTextBox, 3, 8);
-            this.tableLayoutPanel2.Controls.Add(this.request_to_store_button, 1, 9);
+            this.tableLayoutPanel2.Controls.Add(this.choose_material_button, 1, 9);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
@@ -756,15 +756,15 @@
             this.mbfa1richTextBox.TabIndex = 44;
             this.mbfa1richTextBox.Text = "";
             // 
-            // request_to_store_button
+            // choose_material_button
             // 
-            this.request_to_store_button.Location = new System.Drawing.Point(196, 383);
-            this.request_to_store_button.Name = "request_to_store_button";
-            this.request_to_store_button.Size = new System.Drawing.Size(151, 26);
-            this.request_to_store_button.TabIndex = 45;
-            this.request_to_store_button.Text = "库房领料申请";
-            this.request_to_store_button.UseVisualStyleBackColor = true;
-            this.request_to_store_button.Click += new System.EventHandler(this.request_to_store_button_Click);
+            this.choose_material_button.Location = new System.Drawing.Point(196, 383);
+            this.choose_material_button.Name = "choose_material_button";
+            this.choose_material_button.Size = new System.Drawing.Size(151, 26);
+            this.choose_material_button.TabIndex = 45;
+            this.choose_material_button.Text = "选择申请的材料";
+            this.choose_material_button.UseVisualStyleBackColor = true;
+            this.choose_material_button.Click += new System.EventHandler(this.choose_material_button_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -1219,6 +1219,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox ECOtextBox;
-        private System.Windows.Forms.Button request_to_store_button;
+        private System.Windows.Forms.Button choose_material_button;
     }
 }

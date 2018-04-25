@@ -183,8 +183,7 @@ namespace SaledServices
                 SetValue(tableLayoutPanel2, true, null);
             tableLayoutPanel3.GetType().
                 GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
-                SetValue(tableLayoutPanel3, true, null);            
-            
+                SetValue(tableLayoutPanel3, true, null);
         }
     }
 }
