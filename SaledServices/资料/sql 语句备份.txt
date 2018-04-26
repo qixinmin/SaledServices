@@ -1,17 +1,11 @@
-/*站别记录信息*/
-CREATE TABLE stationInformation(
-Id INT PRIMARY KEY IDENTITY, 
-track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
-station NVARCHAR(128), /*站别信息：收货，维修，(BGA), 测试1， 测试2(或测试1&2）， 外观等，[合肥有Test2->Running->外观->OBE]*/
-updateDate NVARCHAR(128) /*更新时间*/
-)
 
-/*合肥海关信息*/
-CREATE TABLE company_fixed_table(
+/*库房信息*/
+CREATE TABLE store_house(
 Id INT PRIMARY KEY IDENTITY, 
-indentifier NVARCHAR(128) NOT NULL, /*企业编号*/
-book_number NVARCHAR(128), /*账册编号*/
-electronic_number NVARCHAR(128), /*电子账册号*/
+house NVARCHAR(128), /*库房*/
+place NVARCHAR(128), /*储位,储位的名称开始字母可以区分可以存储的类型，fru/smt, bga, mb*/
+mpn NVARCHAR(128), /*存储料号*/
+number NVARCHAR(128), /*已存数量,不限数量的，可以累积*/
 )
 
 /*请求归还料表 库房*/
@@ -498,7 +492,7 @@ inputuser NVARCHAR(128)/*收货人*/
 )
 
 
-/*仓库别*/
+/*仓库别 来货*/
 CREATE TABLE storehouse(
 Id INT PRIMARY KEY IDENTITY, 
 storehouse_describe NVARCHAR(128) NOT NULL
@@ -626,4 +620,20 @@ declare_number NVARCHAR(128), /*报关单号*/
 custom_request_number NVARCHAR(128), /*申请单号*/
 )
 
+
+/*站别记录信息*/
+CREATE TABLE stationInformation(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+station NVARCHAR(128), /*站别信息：收货，维修，(BGA), 测试1， 测试2(或测试1&2）， 外观等，[合肥有Test2->Running->外观->OBE]*/
+updateDate NVARCHAR(128) /*更新时间*/
+)
+
+/*合肥海关信息*/
+CREATE TABLE company_fixed_table(
+Id INT PRIMARY KEY IDENTITY, 
+indentifier NVARCHAR(128) NOT NULL, /*企业编号*/
+book_number NVARCHAR(128), /*账册编号*/
+electronic_number NVARCHAR(128), /*电子账册号*/
+)
 

@@ -17,6 +17,8 @@ namespace SaledServices
         private SqlDataAdapter sda;
         private DataSet ds;
 
+        private ChooseStock chooseStock = new ChooseStock();
+
         public FRU_SMT_InSheetForm()
         {
             InitializeComponent();
@@ -93,7 +95,7 @@ namespace SaledServices
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string status = "open";
-                    int total_number, in_number_int=0, this_enter_number=0;
+                    int total_number, in_number_int = 0, this_enter_number = 0;
                     while (querySdr.Read())
                     {
                         string number = querySdr[0].ToString();
@@ -117,7 +119,7 @@ namespace SaledServices
                     querySdr.Close();
 
                     //更新采购表里面的数量与状态
-                    cmd.CommandText = "update stock_in_sheet set status = '" + status + "',stock_in_num = '" + (in_number_int + this_enter_number) + "' where mpn='"+this.mpnTextBox.Text.Trim()+"' and buy_order_serial_no='"+this.buy_order_serial_noComboBox.Text.Trim()+"'";
+                    cmd.CommandText = "update stock_in_sheet set status = '" + status + "',stock_in_num = '" + (in_number_int + this_enter_number) + "' where mpn='" + this.mpnTextBox.Text.Trim() + "' and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
@@ -138,11 +140,26 @@ namespace SaledServices
                         this.stock_in_numTextBox.Text.Trim() + "','" +
                         "0','" +//used_num
                         this.totalMoneyTextBox.Text.Trim() + "','" +
-                        this.stock_placetextBox.Text.Trim() + "','" +                       
+                        this.stock_placetextBox.Text.Trim() + "','" +
                         this.notetextBox.Text.Trim() + "','" +
                         this.inputerTextBox.Text.Trim() + "','" +
                         DateTime.Now.ToString("yyyy/MM/dd") + "')";
-                    
+
+                    cmd.ExecuteNonQuery();
+
+                    //更新库存占用记录，保证库房的信息被更新
+                    string stockNumber = "";
+                    if (this.stock_placetextBox.Enabled == false)
+                    {
+                        //加上历史数据
+                        int total = Int32.Parse(chooseStock.number) + Int32.Parse(numberTextBox.Text.Trim());
+                        stockNumber = total + "";
+                    }
+                    else
+                    {
+                        stockNumber = this.numberTextBox.Text;
+                    }
+                    cmd.CommandText = "update store_house set mpn = '" + this.mpnTextBox.Text.Trim() + "',number = '" + stockNumber + "'";
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -357,6 +374,32 @@ namespace SaledServices
                 }
                 querySdr.Close();
 
+                cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                querySdr = cmd.ExecuteReader();
+                string house = "", place = "",Id="", number="";
+                while (querySdr.Read())
+                {
+                    house = querySdr[0].ToString();
+                    place = querySdr[1].ToString();
+                    Id = querySdr[2].ToString();
+                    number = querySdr[3].ToString();
+                }
+                querySdr.Close();
+
+                if (house != "" && place != "")
+                {
+                    this.stock_placetextBox.Enabled = false;
+                    this.stock_placetextBox.Text = house + "," + place;
+                    chooseStock.Id = Id;
+                    chooseStock.house = house;
+                    chooseStock.place = place;
+                    chooseStock.number = number;
+                }
+                else
+                {
+                    this.stock_placetextBox.Enabled = true;
+                }
+
                 mConn.Close();
             }
             catch (Exception ex)
@@ -487,6 +530,26 @@ namespace SaledServices
 
                 double totalMoney = this_enter_number * Double.Parse(this.pricePerTextBox.Text);
                 this.totalMoneyTextBox.Text = totalMoney.ToString();
+            }
+        }
+
+        public void setChooseStock(string id, string house, string place)
+        {
+            chooseStock.Id = id;
+            chooseStock.house = house;
+            chooseStock.place = place;
+
+            this.stock_placetextBox.Text = chooseStock.house + "," + chooseStock.place;
+        }
+        
+        private void stock_placetextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                //打开选择界面，并把结果返回到本界面来
+                ChooseStoreHouseForm csform = new ChooseStoreHouseForm(this);
+                csform.MdiParent = Program.parentForm;
+                csform.Show();
             }
         }
     }

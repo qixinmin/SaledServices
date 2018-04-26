@@ -524,20 +524,10 @@ namespace SaledServices
             allForm.Add(repairFaultTypef);
         }
 
-        private BGARepairOperationForm vgaRof;
+        
         private void bGA维修ToolStripMenuItem_Click(object sender, EventArgs e)
         {             
-            if (vgaRof == null || vgaRof.IsDisposed)
-            {
-                vgaRof = new BGARepairOperationForm();
-                vgaRof.MdiParent = this;
-            }
-
-            vgaRof.WindowState = FormWindowState.Maximized;
-            vgaRof.BringToFront();
-            vgaRof.Show();
-
-            allForm.Add(vgaRof);        
+            
         }
 
         private StockInSheetForm sisf;
@@ -720,6 +710,38 @@ namespace SaledServices
         private void bGA领料申请ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private BGARepairOperationForm vgaRof;
+        private void bGA维修界面ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (vgaRof == null || vgaRof.IsDisposed)
+            {
+                vgaRof = new BGARepairOperationForm();
+                vgaRof.MdiParent = this;
+            }
+
+            vgaRof.WindowState = FormWindowState.Maximized;
+            vgaRof.BringToFront();
+            vgaRof.Show();
+
+            allForm.Add(vgaRof);        
+        }
+
+        private StoreHouseInnerForm shif;
+        private void 库房储位管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (shif == null || shif.IsDisposed)
+            {
+                shif = new StoreHouseInnerForm();
+                shif.MdiParent = this;
+            }
+
+            //shif.WindowState = FormWindowState.Maximized;
+            shif.BringToFront();
+            shif.Show();
+
+            allForm.Add(shif);     
         }
     }
 }

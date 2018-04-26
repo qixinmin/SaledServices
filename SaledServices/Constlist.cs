@@ -8,6 +8,14 @@ using SaledServices.CustomsContentClass;
 
 namespace SaledServices
 {
+    public class ChooseStock
+    {
+        public string Id;
+        public string house;
+        public string place;
+        public string number;
+    }
+
     public class PrepareUseDetail
     {
         public string Id;
@@ -46,6 +54,9 @@ namespace SaledServices
 
         public static string table_stock_in_sheet = "材料入库单";
         public static string table_name_stock_in_sheet = "stock_in_sheet";
+
+        public static string table_stock_house = "库房";
+        public static string table_name_store_house_sheet = "store_house";
     }
 
     //订单状态

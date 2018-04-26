@@ -49,8 +49,9 @@
             this.维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.库房领料申请ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bGA领料申请ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA维修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bGA领料申请ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bGA维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测试ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测试1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测试2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,6 +87,7 @@
             this.出库入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表头ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.库房储位管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -246,8 +248,7 @@
             this.维修ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.维修界面ToolStripMenuItem,
             this.bGAToolStripMenuItem,
-            this.库房领料申请ToolStripMenuItem,
-            this.bGA领料申请ToolStripMenuItem});
+            this.库房领料申请ToolStripMenuItem});
             this.维修ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.维修ToolStripMenuItem.Name = "维修ToolStripMenuItem";
             this.维修ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -274,20 +275,29 @@
             this.库房领料申请ToolStripMenuItem.Text = "FRU/SMT领料申请";
             this.库房领料申请ToolStripMenuItem.Click += new System.EventHandler(this.库房领料申请ToolStripMenuItem_Click);
             // 
-            // bGA领料申请ToolStripMenuItem
-            // 
-            this.bGA领料申请ToolStripMenuItem.Name = "bGA领料申请ToolStripMenuItem";
-            this.bGA领料申请ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
-            this.bGA领料申请ToolStripMenuItem.Text = "BGA领料申请";
-            this.bGA领料申请ToolStripMenuItem.Click += new System.EventHandler(this.bGA领料申请ToolStripMenuItem_Click);
-            // 
             // bGA维修ToolStripMenuItem
             // 
+            this.bGA维修ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bGA领料申请ToolStripMenuItem,
+            this.bGA维修界面ToolStripMenuItem});
             this.bGA维修ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.bGA维修ToolStripMenuItem.Name = "bGA维修ToolStripMenuItem";
             this.bGA维修ToolStripMenuItem.Size = new System.Drawing.Size(106, 31);
             this.bGA维修ToolStripMenuItem.Text = "BGA维修";
             this.bGA维修ToolStripMenuItem.Click += new System.EventHandler(this.bGA维修ToolStripMenuItem_Click);
+            // 
+            // bGA领料申请ToolStripMenuItem
+            // 
+            this.bGA领料申请ToolStripMenuItem.Name = "bGA领料申请ToolStripMenuItem";
+            this.bGA领料申请ToolStripMenuItem.Size = new System.Drawing.Size(206, 32);
+            this.bGA领料申请ToolStripMenuItem.Text = "BGA领料申请";
+            // 
+            // bGA维修界面ToolStripMenuItem
+            // 
+            this.bGA维修界面ToolStripMenuItem.Name = "bGA维修界面ToolStripMenuItem";
+            this.bGA维修界面ToolStripMenuItem.Size = new System.Drawing.Size(206, 32);
+            this.bGA维修界面ToolStripMenuItem.Text = "BGA维修界面";
+            this.bGA维修界面ToolStripMenuItem.Click += new System.EventHandler(this.bGA维修界面ToolStripMenuItem_Click);
             // 
             // 测试ToolStripMenuItem
             // 
@@ -348,7 +358,8 @@
             this.mBToolStripMenuItem,
             this.mBToolStripMenuItem1,
             this.bGA入库记录ToolStripMenuItem,
-            this.bGA出库记录ToolStripMenuItem});
+            this.bGA出库记录ToolStripMenuItem,
+            this.库房储位管理ToolStripMenuItem});
             this.库存管理ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.库存管理ToolStripMenuItem.Name = "库存管理ToolStripMenuItem";
             this.库存管理ToolStripMenuItem.Size = new System.Drawing.Size(104, 31);
@@ -565,6 +576,13 @@
             this.工单表体ToolStripMenuItem.Text = "工单表体";
             this.工单表体ToolStripMenuItem.Click += new System.EventHandler(this.工单表体ToolStripMenuItem_Click);
             // 
+            // 库房储位管理ToolStripMenuItem
+            // 
+            this.库房储位管理ToolStripMenuItem.Name = "库房储位管理ToolStripMenuItem";
+            this.库房储位管理ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
+            this.库房储位管理ToolStripMenuItem.Text = "库房储位管理";
+            this.库房储位管理ToolStripMenuItem.Click += new System.EventHandler(this.库房储位管理ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -643,8 +661,10 @@
         private System.Windows.Forms.ToolStripMenuItem 海关ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 企业固定信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 库房领料申请ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bGA领料申请ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 还货请求查看ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bGA领料申请ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bGA维修界面ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 库房储位管理ToolStripMenuItem;
     }
 }
 

@@ -384,6 +384,18 @@
     <Compile Include="Repair\RequestFRUSMTStoreForm.Designer.cs">
       <DependentUpon>RequestFRUSMTStoreForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\ChooseStoreHouseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\ChooseStoreHouseForm.Designer.cs">
+      <DependentUpon>ChooseStoreHouseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\StoreHouseInnerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\StoreHouseInnerForm.Designer.cs">
+      <DependentUpon>StoreHouseInnerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Store\ProcessReturnStoreForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -560,6 +572,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\RequestFRUSMTStoreForm.resx">
       <DependentUpon>RequestFRUSMTStoreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\ChooseStoreHouseForm.resx">
+      <DependentUpon>ChooseStoreHouseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\StoreHouseInnerForm.resx">
+      <DependentUpon>StoreHouseInnerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\ProcessReturnStoreForm.resx">
       <DependentUpon>ProcessReturnStoreForm.cs</DependentUpon>

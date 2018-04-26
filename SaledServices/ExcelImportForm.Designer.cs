@@ -33,6 +33,7 @@
             this.filePath = new System.Windows.Forms.TextBox();
             this.findFile = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.stock_in_sheetradioButton = new System.Windows.Forms.RadioButton();
             this.faultTableRadioButton = new System.Windows.Forms.RadioButton();
             this.DPKradioButton = new System.Windows.Forms.RadioButton();
             this.LCFC71BOMRadioButton = new System.Windows.Forms.RadioButton();
@@ -40,7 +41,7 @@
             this.LCFC_MBBOMradioButton = new System.Windows.Forms.RadioButton();
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
-            this.stock_in_sheetradioButton = new System.Windows.Forms.RadioButton();
+            this.storeInfoImportradioButton = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,6 +78,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.storeInfoImportradioButton);
             this.panel1.Controls.Add(this.stock_in_sheetradioButton);
             this.panel1.Controls.Add(this.faultTableRadioButton);
             this.panel1.Controls.Add(this.DPKradioButton);
@@ -88,8 +90,19 @@
             this.panel1.Location = new System.Drawing.Point(20, 149);
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(419, 424);
+            this.panel1.Size = new System.Drawing.Size(430, 462);
             this.panel1.TabIndex = 4;
+            // 
+            // stock_in_sheetradioButton
+            // 
+            this.stock_in_sheetradioButton.AutoSize = true;
+            this.stock_in_sheetradioButton.Location = new System.Drawing.Point(22, 368);
+            this.stock_in_sheetradioButton.Name = "stock_in_sheetradioButton";
+            this.stock_in_sheetradioButton.Size = new System.Drawing.Size(127, 24);
+            this.stock_in_sheetradioButton.TabIndex = 4;
+            this.stock_in_sheetradioButton.TabStop = true;
+            this.stock_in_sheetradioButton.Text = "材料入库单";
+            this.stock_in_sheetradioButton.UseVisualStyleBackColor = true;
             // 
             // faultTableRadioButton
             // 
@@ -170,16 +183,16 @@
             this.mbmaterial.Text = "MB物料对照表";
             this.mbmaterial.UseVisualStyleBackColor = true;
             // 
-            // stock_in_sheetradioButton
+            // storeInfoImportradioButton
             // 
-            this.stock_in_sheetradioButton.AutoSize = true;
-            this.stock_in_sheetradioButton.Location = new System.Drawing.Point(22, 368);
-            this.stock_in_sheetradioButton.Name = "stock_in_sheetradioButton";
-            this.stock_in_sheetradioButton.Size = new System.Drawing.Size(127, 24);
-            this.stock_in_sheetradioButton.TabIndex = 4;
-            this.stock_in_sheetradioButton.TabStop = true;
-            this.stock_in_sheetradioButton.Text = "材料入库单";
-            this.stock_in_sheetradioButton.UseVisualStyleBackColor = true;
+            this.storeInfoImportradioButton.AutoSize = true;
+            this.storeInfoImportradioButton.Location = new System.Drawing.Point(22, 408);
+            this.storeInfoImportradioButton.Name = "storeInfoImportradioButton";
+            this.storeInfoImportradioButton.Size = new System.Drawing.Size(147, 24);
+            this.storeInfoImportradioButton.TabIndex = 4;
+            this.storeInfoImportradioButton.TabStop = true;
+            this.storeInfoImportradioButton.Text = "库房储位导入";
+            this.storeInfoImportradioButton.UseVisualStyleBackColor = true;
             // 
             // ExcelImportForm
             // 
@@ -190,7 +203,7 @@
             this.Controls.Add(this.findFile);
             this.Controls.Add(this.filePath);
             this.Controls.Add(this.importButton);
-            this.Font = new System.Drawing.Font("宋体", 15F);
+            this.Font = new System.Drawing.Font("SimSun", 15F);
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ExcelImportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -217,5 +230,6 @@
         private System.Windows.Forms.RadioButton DPKradioButton;
         private System.Windows.Forms.RadioButton faultTableRadioButton;
         private System.Windows.Forms.RadioButton stock_in_sheetradioButton;
+        private System.Windows.Forms.RadioButton storeInfoImportradioButton;
     }
 }
