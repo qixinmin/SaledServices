@@ -53,53 +53,6 @@ processer NVARCHAR(128), /*处理人*/
 processe_date NVARCHAR(128), /*处理日期*/
 )
 
-CREATE TABLE bga_out_stock(
-Id INT PRIMARY KEY IDENTITY, 
-vendor NVARCHAR(128) NOT NULL, /*厂商*/
-product NVARCHAR(128) NOT NULL, /*客户别*/
-mpn NVARCHAR(128) NOT NULL, /*MPN*/
-mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
-bga_describe NVARCHAR(128) NOT NULL,/*BGA简述*/
-bgasn NVARCHAR(128),/*BGASN*/
-
-stock_place NVARCHAR(128),/*库位*/
-out_number  NVARCHAR(128),/*出库数量*/
-note NVARCHAR(128),/*备注*/
-
-taker NVARCHAR(128),/*领用人*/
-inputer  NVARCHAR(128),/*输入人*/
-input_date  NVARCHAR(128),/*日期*/
-track_serial_no NVARCHAR(128),/*跟踪条码*/
-)
-
-CREATE TABLE bga_in_stock(
-Id INT PRIMARY KEY IDENTITY, 
-buy_order_serial_no NVARCHAR(128) NOT NULL, /*采购订单编号*/
-vendor NVARCHAR(128) NOT NULL, /*厂商*/
-buy_type NVARCHAR(128) NOT NULL, /*采购类别*/
-product NVARCHAR(128) NOT NULL, /*客户别*/
-material_type NVARCHAR(128) NOT NULL, /*材料大类*/
-mpn NVARCHAR(128) NOT NULL, /*MPN*/
-vendormaterialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
-describe NVARCHAR(128) NOT NULL,/*描述*/
-
-pricePer NVARCHAR(128) NOT NULL,/*单价*/
-
-mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
-
-bga_describe NVARCHAR(128) NOT NULL,/*BGA简述*/
-input_number  NVARCHAR(128),/*入库数量*/
-
-bgasn NVARCHAR(128),/*BGASN*/
-
-stock_place NVARCHAR(128),/*库位*/
-note NVARCHAR(128),/*备注*/
-
-inputer  NVARCHAR(128),/*输入人*/
-input_date  NVARCHAR(128),/*日期*/
-isdeclare NVARCHAR(128), /*是否报关*/
-)
-
 CREATE TABLE mb_out_stock(
 Id INT PRIMARY KEY IDENTITY, 
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
@@ -148,6 +101,51 @@ inputer  NVARCHAR(128),/*输入人*/
 input_date  NVARCHAR(128),/*日期*/
 isdeclare NVARCHAR(128), /*是否报关*/
 )
+
+
+CREATE TABLE bga_out_stock(
+Id INT PRIMARY KEY IDENTITY, 
+vendor NVARCHAR(128) NOT NULL, /*厂商*/
+product NVARCHAR(128) NOT NULL, /*客户别*/
+mpn NVARCHAR(128) NOT NULL, /*MPN*/
+mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
+bga_describe NVARCHAR(128) NOT NULL,/*BGA简述*/
+bgasn NVARCHAR(128),/*BGASN*/
+
+stock_place NVARCHAR(128),/*库位*/
+out_number  NVARCHAR(128),/*出库数量*/
+note NVARCHAR(128),/*备注*/
+
+taker NVARCHAR(128),/*领用人*/
+inputer  NVARCHAR(128),/*输入人*/
+input_date  NVARCHAR(128),/*日期*/
+track_serial_no NVARCHAR(128),/*跟踪条码*/
+)
+
+CREATE TABLE bga_in_stock(
+Id INT PRIMARY KEY IDENTITY, 
+buy_order_serial_no NVARCHAR(128) NOT NULL, /*采购订单编号*/
+vendor NVARCHAR(128) NOT NULL, /*厂商*/
+buy_type NVARCHAR(128) NOT NULL, /*采购类别*/
+product NVARCHAR(128) NOT NULL, /*客户别*/
+material_type NVARCHAR(128) NOT NULL, /*材料大类*/
+mpn NVARCHAR(128) NOT NULL, /*MPN*/
+vendormaterialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
+describe NVARCHAR(128) NOT NULL,/*描述*/
+pricePer NVARCHAR(128) NOT NULL,/*单价*/
+isdeclare NVARCHAR(128), /*是否报关*/
+
+bga_describe NVARCHAR(128) NOT NULL,/*BGA简述*/
+order_number NVARCHAR(128),/*订单数量*/
+input_number  NVARCHAR(128),/*入库数量*/
+used_number  NVARCHAR(128),/*使用的数量，VGA数量可以多个，但其他最多为1*/
+bgasn NVARCHAR(128),/*BGASN*/
+stock_place NVARCHAR(128),/*库位*/
+note NVARCHAR(128),/*备注*/
+inputer  NVARCHAR(128),/*输入人*/
+input_date  NVARCHAR(128),/*日期*/
+)
+
 
 CREATE TABLE fru_smt_out_stock(
 Id INT PRIMARY KEY IDENTITY, 

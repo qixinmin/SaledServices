@@ -1,6 +1,6 @@
 ﻿namespace SaledServices
 {
-    partial class FRU_SMT_InSheetForm
+    partial class BGA_InSheetForm
     {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -50,7 +49,6 @@
             this.material_typeTextBox = new System.Windows.Forms.TextBox();
             this.buy_typeTextBox = new System.Windows.Forms.TextBox();
             this.describeTextBox = new System.Windows.Forms.TextBox();
-            this.numberTextBox = new System.Windows.Forms.TextBox();
             this.pricePerTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -61,12 +59,10 @@
             this.buy_order_serial_noComboBox = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.isDeclareTextBox = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.totalMoneyTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
-            this.mb_brieftextBox = new System.Windows.Forms.TextBox();
+            this.bga_brieftextBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.inputerTextBox = new System.Windows.Forms.TextBox();
@@ -79,18 +75,28 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewToReturn = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label21 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.CPU = new System.Windows.Forms.RadioButton();
+            this.PCH = new System.Windows.Forms.RadioButton();
+            this.VGA = new System.Windows.Forms.RadioButton();
+            this.label22 = new System.Windows.Forms.Label();
+            this.bgaSnTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.orderNumberTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToReturn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // add
             // 
             this.add.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.add.Location = new System.Drawing.Point(120, 9);
+            this.add.Location = new System.Drawing.Point(120, 6);
             this.add.Margin = new System.Windows.Forms.Padding(4);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(100, 31);
@@ -102,7 +108,7 @@
             // query
             // 
             this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.query.Location = new System.Drawing.Point(460, 9);
+            this.query.Location = new System.Drawing.Point(460, 6);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(100, 31);
@@ -114,7 +120,7 @@
             // modify
             // 
             this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.modify.Location = new System.Drawing.Point(800, 9);
+            this.modify.Location = new System.Drawing.Point(800, 6);
             this.modify.Margin = new System.Windows.Forms.Padding(4);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(100, 31);
@@ -126,7 +132,7 @@
             // delete
             // 
             this.delete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.delete.Location = new System.Drawing.Point(1141, 9);
+            this.delete.Location = new System.Drawing.Point(1141, 6);
             this.delete.Margin = new System.Windows.Forms.Padding(4);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(100, 31);
@@ -138,7 +144,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 97);
+            this.label1.Location = new System.Drawing.Point(7, 120);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 16);
@@ -147,7 +153,7 @@
             // 
             // vendorTextBox
             // 
-            this.vendorTextBox.Location = new System.Drawing.Point(176, 101);
+            this.vendorTextBox.Location = new System.Drawing.Point(176, 124);
             this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendorTextBox.Name = "vendorTextBox";
             this.vendorTextBox.Size = new System.Drawing.Size(158, 26);
@@ -156,7 +162,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 144);
+            this.label2.Location = new System.Drawing.Point(7, 159);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 16);
@@ -166,7 +172,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(345, 50);
+            this.label3.Location = new System.Drawing.Point(345, 42);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 16);
@@ -176,27 +182,17 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(345, 191);
+            this.label4.Location = new System.Drawing.Point(345, 159);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 16);
             this.label4.TabIndex = 4;
             this.label4.Text = "单价";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(345, 144);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 16);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "订单数量";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 191);
+            this.label6.Location = new System.Drawing.Point(7, 198);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 16);
@@ -206,7 +202,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(345, 97);
+            this.label9.Location = new System.Drawing.Point(345, 81);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 16);
@@ -236,7 +232,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(7, 50);
+            this.label12.Location = new System.Drawing.Point(7, 42);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(32, 16);
@@ -245,7 +241,7 @@
             // 
             // productTextBox
             // 
-            this.productTextBox.Location = new System.Drawing.Point(176, 148);
+            this.productTextBox.Location = new System.Drawing.Point(176, 163);
             this.productTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.productTextBox.Name = "productTextBox";
             this.productTextBox.Size = new System.Drawing.Size(158, 26);
@@ -253,7 +249,7 @@
             // 
             // vendormaterialNoTextBox
             // 
-            this.vendormaterialNoTextBox.Location = new System.Drawing.Point(514, 54);
+            this.vendormaterialNoTextBox.Location = new System.Drawing.Point(514, 46);
             this.vendormaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendormaterialNoTextBox.Name = "vendormaterialNoTextBox";
             this.vendormaterialNoTextBox.Size = new System.Drawing.Size(158, 26);
@@ -261,7 +257,7 @@
             // 
             // mpnTextBox
             // 
-            this.mpnTextBox.Location = new System.Drawing.Point(176, 54);
+            this.mpnTextBox.Location = new System.Drawing.Point(176, 46);
             this.mpnTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mpnTextBox.Name = "mpnTextBox";
             this.mpnTextBox.Size = new System.Drawing.Size(158, 26);
@@ -270,7 +266,7 @@
             // 
             // material_typeTextBox
             // 
-            this.material_typeTextBox.Location = new System.Drawing.Point(176, 195);
+            this.material_typeTextBox.Location = new System.Drawing.Point(176, 202);
             this.material_typeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_typeTextBox.Name = "material_typeTextBox";
             this.material_typeTextBox.Size = new System.Drawing.Size(158, 26);
@@ -286,26 +282,18 @@
             // 
             // describeTextBox
             // 
-            this.describeTextBox.Location = new System.Drawing.Point(514, 101);
+            this.describeTextBox.Location = new System.Drawing.Point(514, 85);
             this.describeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.describeTextBox.Name = "describeTextBox";
             this.describeTextBox.Size = new System.Drawing.Size(158, 26);
             this.describeTextBox.TabIndex = 5;
             // 
-            // numberTextBox
-            // 
-            this.numberTextBox.Location = new System.Drawing.Point(514, 148);
-            this.numberTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.numberTextBox.Name = "numberTextBox";
-            this.numberTextBox.ReadOnly = true;
-            this.numberTextBox.Size = new System.Drawing.Size(158, 26);
-            this.numberTextBox.TabIndex = 5;
-            // 
             // pricePerTextBox
             // 
-            this.pricePerTextBox.Location = new System.Drawing.Point(514, 195);
+            this.pricePerTextBox.Location = new System.Drawing.Point(514, 163);
             this.pricePerTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.pricePerTextBox.Name = "pricePerTextBox";
+            this.pricePerTextBox.ReadOnly = true;
             this.pricePerTextBox.Size = new System.Drawing.Size(158, 26);
             this.pricePerTextBox.TabIndex = 5;
             // 
@@ -322,9 +310,9 @@
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.700312F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.00104F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.64753F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.94259F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.27637F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1370, 749);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
@@ -345,27 +333,21 @@
             this.tableLayoutPanel3.Controls.Add(this.label13, 4, 3);
             this.tableLayoutPanel3.Controls.Add(this.stock_in_numTextBox, 5, 3);
             this.tableLayoutPanel3.Controls.Add(this.pricePerTextBox, 3, 4);
-            this.tableLayoutPanel3.Controls.Add(this.material_typeTextBox, 1, 4);
-            this.tableLayoutPanel3.Controls.Add(this.numberTextBox, 3, 3);
             this.tableLayoutPanel3.Controls.Add(this.describeTextBox, 3, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label6, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.label11, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.buy_typeTextBox, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.label4, 2, 4);
             this.tableLayoutPanel3.Controls.Add(this.label9, 2, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label5, 2, 3);
             this.tableLayoutPanel3.Controls.Add(this.label3, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.vendormaterialNoTextBox, 3, 1);
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.buy_order_serial_noComboBox, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label17, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.isDeclareTextBox, 5, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label8, 4, 4);
-            this.tableLayoutPanel3.Controls.Add(this.totalMoneyTextBox, 5, 4);
             this.tableLayoutPanel3.Controls.Add(this.label14, 6, 2);
             this.tableLayoutPanel3.Controls.Add(this.label18, 4, 1);
             this.tableLayoutPanel3.Controls.Add(this.idTextBox, 7, 2);
-            this.tableLayoutPanel3.Controls.Add(this.mb_brieftextBox, 5, 1);
+            this.tableLayoutPanel3.Controls.Add(this.bga_brieftextBox, 5, 1);
             this.tableLayoutPanel3.Controls.Add(this.label15, 6, 3);
             this.tableLayoutPanel3.Controls.Add(this.label19, 6, 0);
             this.tableLayoutPanel3.Controls.Add(this.inputerTextBox, 7, 3);
@@ -374,29 +356,38 @@
             this.tableLayoutPanel3.Controls.Add(this.label20, 6, 1);
             this.tableLayoutPanel3.Controls.Add(this.input_dateTextBox, 7, 4);
             this.tableLayoutPanel3.Controls.Add(this.notetextBox, 7, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label2, 0, 3);
-            this.tableLayoutPanel3.Controls.Add(this.productTextBox, 1, 3);
-            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.label12, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.vendorTextBox, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.mpnTextBox, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label6, 0, 5);
+            this.tableLayoutPanel3.Controls.Add(this.material_typeTextBox, 1, 5);
+            this.tableLayoutPanel3.Controls.Add(this.label2, 0, 4);
+            this.tableLayoutPanel3.Controls.Add(this.productTextBox, 1, 4);
+            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.vendorTextBox, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label21, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.panel1, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label22, 4, 4);
+            this.tableLayoutPanel3.Controls.Add(this.bgaSnTextBox, 5, 4);
+            this.tableLayoutPanel3.Controls.Add(this.label5, 2, 3);
+            this.tableLayoutPanel3.Controls.Add(this.orderNumberTextBox, 3, 3);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 5;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1362, 241);
+            this.tableLayoutPanel3.RowCount = 6;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.38461F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.38462F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.38462F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.38462F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.38462F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.07692F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1362, 259);
             this.tableLayoutPanel3.TabIndex = 9;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(683, 97);
+            this.label7.Location = new System.Drawing.Point(683, 81);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 16);
@@ -405,7 +396,7 @@
             // 
             // material_nameTextBox
             // 
-            this.material_nameTextBox.Location = new System.Drawing.Point(852, 101);
+            this.material_nameTextBox.Location = new System.Drawing.Point(852, 85);
             this.material_nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_nameTextBox.Name = "material_nameTextBox";
             this.material_nameTextBox.Size = new System.Drawing.Size(158, 26);
@@ -414,7 +405,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(683, 144);
+            this.label13.Location = new System.Drawing.Point(683, 120);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(72, 16);
@@ -423,7 +414,8 @@
             // 
             // stock_in_numTextBox
             // 
-            this.stock_in_numTextBox.Location = new System.Drawing.Point(852, 148);
+            this.stock_in_numTextBox.Enabled = false;
+            this.stock_in_numTextBox.Location = new System.Drawing.Point(852, 124);
             this.stock_in_numTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.stock_in_numTextBox.Name = "stock_in_numTextBox";
             this.stock_in_numTextBox.Size = new System.Drawing.Size(158, 26);
@@ -457,29 +449,10 @@
             this.isDeclareTextBox.Size = new System.Drawing.Size(158, 26);
             this.isDeclareTextBox.TabIndex = 26;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(683, 191);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 16);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "金额合计";
-            // 
-            // totalMoneyTextBox
-            // 
-            this.totalMoneyTextBox.Location = new System.Drawing.Point(852, 195);
-            this.totalMoneyTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.totalMoneyTextBox.Name = "totalMoneyTextBox";
-            this.totalMoneyTextBox.ReadOnly = true;
-            this.totalMoneyTextBox.Size = new System.Drawing.Size(158, 26);
-            this.totalMoneyTextBox.TabIndex = 21;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1021, 97);
+            this.label14.Location = new System.Drawing.Point(1021, 81);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(24, 16);
@@ -489,35 +462,36 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(683, 50);
+            this.label18.Location = new System.Drawing.Point(683, 42);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(56, 16);
+            this.label18.Size = new System.Drawing.Size(64, 16);
             this.label18.TabIndex = 11;
-            this.label18.Text = "MB简称";
+            this.label18.Text = "BGA简述";
             // 
             // idTextBox
             // 
             this.idTextBox.Enabled = false;
-            this.idTextBox.Location = new System.Drawing.Point(1190, 101);
+            this.idTextBox.Location = new System.Drawing.Point(1190, 85);
             this.idTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.ReadOnly = true;
             this.idTextBox.Size = new System.Drawing.Size(165, 26);
             this.idTextBox.TabIndex = 18;
             // 
-            // mb_brieftextBox
+            // bga_brieftextBox
             // 
-            this.mb_brieftextBox.Location = new System.Drawing.Point(852, 54);
-            this.mb_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mb_brieftextBox.Name = "mb_brieftextBox";
-            this.mb_brieftextBox.Size = new System.Drawing.Size(158, 26);
-            this.mb_brieftextBox.TabIndex = 24;
+            this.bga_brieftextBox.Location = new System.Drawing.Point(852, 46);
+            this.bga_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.bga_brieftextBox.Name = "bga_brieftextBox";
+            this.bga_brieftextBox.ReadOnly = true;
+            this.bga_brieftextBox.Size = new System.Drawing.Size(158, 26);
+            this.bga_brieftextBox.TabIndex = 24;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(1021, 144);
+            this.label15.Location = new System.Drawing.Point(1021, 120);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(56, 16);
@@ -536,7 +510,7 @@
             // 
             // inputerTextBox
             // 
-            this.inputerTextBox.Location = new System.Drawing.Point(1190, 148);
+            this.inputerTextBox.Location = new System.Drawing.Point(1190, 124);
             this.inputerTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.inputerTextBox.Name = "inputerTextBox";
             this.inputerTextBox.Size = new System.Drawing.Size(158, 26);
@@ -554,7 +528,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(1021, 191);
+            this.label16.Location = new System.Drawing.Point(1021, 159);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(40, 16);
@@ -564,7 +538,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(1021, 50);
+            this.label20.Location = new System.Drawing.Point(1021, 42);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(40, 16);
@@ -574,7 +548,7 @@
             // input_dateTextBox
             // 
             this.input_dateTextBox.Enabled = false;
-            this.input_dateTextBox.Location = new System.Drawing.Point(1190, 195);
+            this.input_dateTextBox.Location = new System.Drawing.Point(1190, 163);
             this.input_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.input_dateTextBox.Name = "input_dateTextBox";
             this.input_dateTextBox.ReadOnly = true;
@@ -583,7 +557,7 @@
             // 
             // notetextBox
             // 
-            this.notetextBox.Location = new System.Drawing.Point(1190, 54);
+            this.notetextBox.Location = new System.Drawing.Point(1190, 46);
             this.notetextBox.Margin = new System.Windows.Forms.Padding(4);
             this.notetextBox.Name = "notetextBox";
             this.notetextBox.Size = new System.Drawing.Size(158, 26);
@@ -601,12 +575,12 @@
             this.tableLayoutPanel2.Controls.Add(this.modify, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.delete, 3, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 253);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 271);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1362, 49);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1362, 44);
             this.tableLayoutPanel2.TabIndex = 9;
             // 
             // tableLayoutPanel4
@@ -617,11 +591,11 @@
             this.tableLayoutPanel4.Controls.Add(this.dataGridViewToReturn, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.dataGridView1, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 309);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 322);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1364, 437);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1364, 424);
             this.tableLayoutPanel4.TabIndex = 10;
             // 
             // dataGridViewToReturn
@@ -636,7 +610,7 @@
             this.dataGridViewToReturn.ReadOnly = true;
             this.dataGridViewToReturn.RowTemplate.Height = 23;
             this.dataGridViewToReturn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewToReturn.Size = new System.Drawing.Size(420, 429);
+            this.dataGridViewToReturn.Size = new System.Drawing.Size(420, 416);
             this.dataGridViewToReturn.TabIndex = 8;
             this.dataGridViewToReturn.VirtualMode = true;
             this.dataGridViewToReturn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewToReturn_CellClick);
@@ -655,12 +629,108 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(928, 429);
+            this.dataGridView1.Size = new System.Drawing.Size(928, 416);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.VirtualMode = true;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // FRU_SMT_InSheetForm
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(7, 81);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(64, 16);
+            this.label21.TabIndex = 4;
+            this.label21.Text = "BGA类型";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.VGA);
+            this.panel1.Controls.Add(this.PCH);
+            this.panel1.Controls.Add(this.CPU);
+            this.panel1.Location = new System.Drawing.Point(175, 84);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(160, 30);
+            this.panel1.TabIndex = 27;
+            // 
+            // CPU
+            // 
+            this.CPU.AutoSize = true;
+            this.CPU.Location = new System.Drawing.Point(3, 7);
+            this.CPU.Name = "CPU";
+            this.CPU.Size = new System.Drawing.Size(50, 20);
+            this.CPU.TabIndex = 0;
+            this.CPU.TabStop = true;
+            this.CPU.Text = "CPU";
+            this.CPU.UseVisualStyleBackColor = true;
+            this.CPU.CheckedChanged += new System.EventHandler(this.CPU_CheckedChanged);
+            // 
+            // PCH
+            // 
+            this.PCH.AutoSize = true;
+            this.PCH.Location = new System.Drawing.Point(55, 7);
+            this.PCH.Name = "PCH";
+            this.PCH.Size = new System.Drawing.Size(50, 20);
+            this.PCH.TabIndex = 0;
+            this.PCH.TabStop = true;
+            this.PCH.Text = "PCH";
+            this.PCH.UseVisualStyleBackColor = true;
+            this.PCH.CheckedChanged += new System.EventHandler(this.CPU_CheckedChanged);
+            // 
+            // VGA
+            // 
+            this.VGA.AutoSize = true;
+            this.VGA.Location = new System.Drawing.Point(107, 7);
+            this.VGA.Name = "VGA";
+            this.VGA.Size = new System.Drawing.Size(50, 20);
+            this.VGA.TabIndex = 0;
+            this.VGA.TabStop = true;
+            this.VGA.Text = "VGA";
+            this.VGA.UseVisualStyleBackColor = true;
+            this.VGA.CheckedChanged += new System.EventHandler(this.CPU_CheckedChanged);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(683, 159);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(56, 16);
+            this.label22.TabIndex = 16;
+            this.label22.Text = "BGA SN";
+            // 
+            // bgaSnTextBox
+            // 
+            this.bgaSnTextBox.Enabled = false;
+            this.bgaSnTextBox.Location = new System.Drawing.Point(852, 163);
+            this.bgaSnTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.bgaSnTextBox.Name = "bgaSnTextBox";
+            this.bgaSnTextBox.Size = new System.Drawing.Size(158, 26);
+            this.bgaSnTextBox.TabIndex = 20;
+            this.bgaSnTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stock_in_numTextBox_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(345, 120);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 16);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "订单数量";
+            // 
+            // orderNumberTextBox
+            // 
+            this.orderNumberTextBox.Location = new System.Drawing.Point(514, 124);
+            this.orderNumberTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.orderNumberTextBox.Name = "orderNumberTextBox";
+            this.orderNumberTextBox.ReadOnly = true;
+            this.orderNumberTextBox.Size = new System.Drawing.Size(158, 26);
+            this.orderNumberTextBox.TabIndex = 5;
+            // 
+            // BGA_InSheetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -669,8 +739,8 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("SimSun", 12F);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FRU_SMT_InSheetForm";
-            this.Text = "FRU/SMT入库表";
+            this.Name = "BGA_InSheetForm";
+            this.Text = "BGA入库表";
             this.Load += new System.EventHandler(this.ReceiveOrderForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -679,6 +749,8 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToReturn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -694,7 +766,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
@@ -706,7 +777,6 @@
         private System.Windows.Forms.TextBox material_typeTextBox;
         private System.Windows.Forms.TextBox buy_typeTextBox;
         private System.Windows.Forms.TextBox describeTextBox;
-        private System.Windows.Forms.TextBox numberTextBox;
         private System.Windows.Forms.TextBox pricePerTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -719,14 +789,12 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox inputerTextBox;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox totalMoneyTextBox;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox isDeclareTextBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox material_nameTextBox;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox mb_brieftextBox;
+        private System.Windows.Forms.TextBox bga_brieftextBox;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox stock_in_numTextBox;
         private System.Windows.Forms.Label label19;
@@ -735,5 +803,14 @@
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox notetextBox;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton VGA;
+        private System.Windows.Forms.RadioButton PCH;
+        private System.Windows.Forms.RadioButton CPU;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox bgaSnTextBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox orderNumberTextBox;
     }
 }

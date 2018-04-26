@@ -17,9 +17,10 @@ namespace SaledServices
         private SqlDataAdapter sda;
         private String tableName = "store_house";
 
-        FRU_SMT_InSheetForm mFromFrom;
+        //FRU_SMT_InSheetForm mFromFrom;
+        Form mFromFrom;
 
-        public ChooseStoreHouseForm(FRU_SMT_InSheetForm fromFrom)
+        public ChooseStoreHouseForm(Form fromFrom)
         {
             InitializeComponent();
             mFromFrom = fromFrom;
@@ -182,7 +183,14 @@ namespace SaledServices
                 MessageBox.Show("请选择一个库位!");
                 return;
             }
-            mFromFrom.setChooseStock(this.numTextBox.Text.Trim(), this.houseTextBox.Text.Trim(), this.placeTextBox.Text.Trim());
+            if (mFromFrom is FRU_SMT_InSheetForm)
+            {
+                ((FRU_SMT_InSheetForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseTextBox.Text.Trim(), this.placeTextBox.Text.Trim());
+            }
+            else if (mFromFrom is BGA_InSheetForm)
+            {
+                ((BGA_InSheetForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseTextBox.Text.Trim(), this.placeTextBox.Text.Trim());
+            }
             this.Close();
         }
     }

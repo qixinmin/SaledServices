@@ -102,6 +102,22 @@ namespace SaledServices.Store
                         + (Int32.Parse(used_number) - Int32.Parse(this.returnNumbertextBox.Text)) + "' "
                         + "where Id = '" + this.idtextBox.Text + "'";
                     cmd.ExecuteNonQuery();
+
+                    //3.归还的数量要加到库存储位的数量上
+                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.materialMpnTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    string house = "", place = "", Id = "", number = "";
+                    while (querySdr.Read())
+                    {
+                        house = querySdr[0].ToString();
+                        place = querySdr[1].ToString();
+                        Id = querySdr[2].ToString();
+                        number = querySdr[3].ToString();
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = "update store_house set number = '" + (Int32.Parse(number) + Int32.Parse(this.returnNumbertextBox.Text)) + "'  where house='"+ house+"' and place='"+place+"'";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {

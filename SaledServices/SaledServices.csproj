@@ -390,6 +390,12 @@
     <Compile Include="Store\ChooseStoreHouseForm.Designer.cs">
       <DependentUpon>ChooseStoreHouseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\BGA_InSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\BGA_InSheetForm.Designer.cs">
+      <DependentUpon>BGA_InSheetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Store\StoreHouseInnerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -575,6 +581,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Store\ChooseStoreHouseForm.resx">
       <DependentUpon>ChooseStoreHouseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\BGA_InSheetForm.resx">
+      <DependentUpon>BGA_InSheetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\StoreHouseInnerForm.resx">
       <DependentUpon>StoreHouseInnerForm.cs</DependentUpon>

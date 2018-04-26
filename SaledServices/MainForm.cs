@@ -743,5 +743,21 @@ namespace SaledServices
 
             allForm.Add(shif);     
         }
+
+        private BGA_InSheetForm bgainform;
+        private void bGA入库记录ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bgainform == null || bgainform.IsDisposed)
+            {
+                bgainform = new BGA_InSheetForm();
+                bgainform.MdiParent = this;
+            }
+
+            bgainform.WindowState = FormWindowState.Maximized;
+            bgainform.BringToFront();
+            bgainform.Show();
+
+            allForm.Add(bgainform);    
+        }
     }
 }

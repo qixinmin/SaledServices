@@ -10,16 +10,16 @@ using System.Data.SqlClient;
 
 namespace SaledServices
 {
-    public partial class FRU_SMT_InSheetForm : Form
+    public partial class BGA_InSheetForm : Form
     {
-        private String tableName = "fru_smt_in_stock";
+        private String tableName = "bga_in_stock";
         private SqlConnection mConn;
         private SqlDataAdapter sda;
         private DataSet ds;
 
         private ChooseStock chooseStock = new ChooseStock();
 
-        public FRU_SMT_InSheetForm()
+        public BGA_InSheetForm()
         {
             InitializeComponent();
 
@@ -72,12 +72,7 @@ namespace SaledServices
             {
                 MessageBox.Show("库位为空，请检查！");
                 return;
-            }
-            if (this.totalMoneyTextBox.Text.Trim() == "")
-            {
-                MessageBox.Show("金额为空，请输入数量后回车！");
-                return;
-            }
+            }           
 
             try
             {
@@ -91,7 +86,7 @@ namespace SaledServices
                     cmd.CommandType = CommandType.Text;
 
                     cmd.CommandText = "select number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim()
-                                        + "' and mpn='" + this.mpnTextBox.Text.Trim() + "' and number='" + this.numberTextBox.Text.Trim() + "'";
+                                        + "' and mpn='" + this.mpnTextBox.Text.Trim() + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string status = "open";
@@ -131,15 +126,14 @@ namespace SaledServices
                         this.mpnTextBox.Text.Trim() + "','" +
                         this.vendormaterialNoTextBox.Text.Trim() + "','" +
                         this.describeTextBox.Text.Trim() + "','" +
-                        this.numberTextBox.Text.Trim() + "','" +
                         this.pricePerTextBox.Text.Trim() + "','" +
                         this.isDeclareTextBox.Text.Trim() + "','" +
 
-                        this.mb_brieftextBox.Text.Trim() + "','" +
-                        this.material_nameTextBox.Text.Trim() + "','" +
+                        this.bga_brieftextBox.Text.Trim() + "','" +
+                        this.orderNumberTextBox.Text.Trim() + "','" +
                         this.stock_in_numTextBox.Text.Trim() + "','" +
-                        "0','" +//used_num
-                        this.totalMoneyTextBox.Text.Trim() + "','" +
+                        "0','" +//used_number
+                        this.bgaSnTextBox.Text.Trim() + "','" +
                         this.stock_placetextBox.Text.Trim() + "','" +
                         this.notetextBox.Text.Trim() + "','" +
                         this.inputerTextBox.Text.Trim() + "','" +
@@ -152,12 +146,12 @@ namespace SaledServices
                     if (this.stock_placetextBox.Enabled == false)
                     {
                         //加上历史数据
-                        int total = Int32.Parse(chooseStock.number) + Int32.Parse(numberTextBox.Text.Trim());
+                        int total = Int32.Parse(chooseStock.number) + Int32.Parse(stock_in_numTextBox.Text.Trim());
                         stockNumber = total + "";
                     }
                     else
                     {
-                        stockNumber = this.numberTextBox.Text;
+                        stockNumber = this.stock_in_numTextBox.Text;
                     }
                     cmd.CommandText = "update store_house set mpn = '" + this.mpnTextBox.Text.Trim() + "',number = '" + stockNumber + "' where house='"+chooseStock.house+"' and place='"+chooseStock.place+"'";
                     cmd.ExecuteNonQuery();
@@ -231,8 +225,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-
-            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "订单数量", "单价", "是否报关", "MB简称", "材料名称", "入库数量","使用数量", "合计金额", "库位", "备注", "输入人", "日期" };
+            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "单价", "是否报关", "BGA简称", "订单数量","入库数量","使用数量","BGASN", "库位", "备注", "输入人", "日期" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -254,15 +247,14 @@ namespace SaledServices
             dr["mpn"] = this.mpnTextBox.Text.Trim();
             dr["vendormaterialNo"] = this.vendormaterialNoTextBox.Text.Trim();
             dr["describe"] = this.describeTextBox.Text.Trim();
-            dr["number"] = this.numberTextBox.Text.Trim();
             dr["pricePer"] = this.pricePerTextBox.Text.Trim();
             dr["isdeclare"] = this.isDeclareTextBox.Text.Trim();
 
-
-            dr["mb_brief"] = this.mb_brieftextBox.Text.Trim();
-            dr["material_name"] = this.material_nameTextBox.Text.Trim();
-            dr["stock_in_num"] = this.stock_in_numTextBox.Text.Trim();
-            dr["totalMoney"] = this.totalMoneyTextBox.Text.Trim();              
+            dr["bga_describe"] = this.bga_brieftextBox.Text.Trim();
+            dr["order_number"] = this.orderNumberTextBox.Text.Trim();
+            dr["input_number"] = this.stock_in_numTextBox.Text.Trim();
+            dr["bgasn"] = this.bgaSnTextBox.Text.Trim();
+           
             dr["stock_place"]= this.stock_placetextBox.Text.Trim();
             dr["note"] = this.notetextBox.Text.Trim();      
             dr["inputer"] = this.inputerTextBox.Text.Trim();
@@ -311,20 +303,20 @@ namespace SaledServices
             this.mpnTextBox.Text = dataGridView1.SelectedCells[6].Value.ToString();
             this.vendormaterialNoTextBox.Text = dataGridView1.SelectedCells[7].Value.ToString();
             this.describeTextBox.Text = dataGridView1.SelectedCells[8].Value.ToString();
-            this.numberTextBox.Text = dataGridView1.SelectedCells[9].Value.ToString();
-            this.pricePerTextBox.Text = dataGridView1.SelectedCells[10].Value.ToString();
+            this.pricePerTextBox.Text = dataGridView1.SelectedCells[9].Value.ToString();
+            this.isDeclareTextBox.Text = dataGridView1.SelectedCells[10].Value.ToString();
+            this.bga_brieftextBox.Text= dataGridView1.SelectedCells[11].Value.ToString();
 
-            this.isDeclareTextBox.Text = dataGridView1.SelectedCells[11].Value.ToString();
-
-            this.mb_brieftextBox.Text= dataGridView1.SelectedCells[12].Value.ToString();
-            this.material_nameTextBox.Text= dataGridView1.SelectedCells[13].Value.ToString();
-            this.stock_in_numTextBox.Text= dataGridView1.SelectedCells[14].Value.ToString();
-            //used_num 15
-            this.totalMoneyTextBox.Text= dataGridView1.SelectedCells[16].Value.ToString();
-            this.stock_placetextBox.Text= dataGridView1.SelectedCells[17].Value.ToString();
-            this.notetextBox.Text= dataGridView1.SelectedCells[18].Value.ToString();
-            this.inputerTextBox.Text= dataGridView1.SelectedCells[19].Value.ToString();
-            this.input_dateTextBox.Text = dataGridView1.SelectedCells[20].Value.ToString();
+            this.orderNumberTextBox.Text = dataGridView1.SelectedCells[12].Value.ToString();
+            this.stock_in_numTextBox.Text= dataGridView1.SelectedCells[13].Value.ToString();
+            //used_number 14
+            
+            this.bgaSnTextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
+           
+            this.stock_placetextBox.Text= dataGridView1.SelectedCells[16].Value.ToString();
+            this.notetextBox.Text= dataGridView1.SelectedCells[17].Value.ToString();
+            this.inputerTextBox.Text= dataGridView1.SelectedCells[18].Value.ToString();
+            this.input_dateTextBox.Text = dataGridView1.SelectedCells[19].Value.ToString();
         }
 
         private void ReceiveOrderForm_Load(object sender, EventArgs e)
@@ -354,7 +346,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,number,pricePer,material_name,isdeclare from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,pricePer,material_name,isdeclare,number from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "'";
 
                 SqlDataReader querySdr = cmd.ExecuteReader();
 
@@ -367,10 +359,10 @@ namespace SaledServices
                     this.material_typeTextBox.Text = querySdr[4].ToString();
                     this.vendormaterialNoTextBox.Text = querySdr[5].ToString();
                     this.describeTextBox.Text = querySdr[6].ToString();
-                    this.numberTextBox.Text = querySdr[7].ToString();
-                    this.pricePerTextBox.Text = querySdr[8].ToString();
-                    this.material_nameTextBox.Text = querySdr[9].ToString();
-                    this.isDeclareTextBox.Text = querySdr[10].ToString();
+                    this.pricePerTextBox.Text = querySdr[7].ToString();
+                    this.material_nameTextBox.Text = querySdr[8].ToString();
+                    this.isDeclareTextBox.Text = querySdr[9].ToString();
+                    this.orderNumberTextBox.Text = querySdr[10].ToString();
                 }
                 querySdr.Close();
 
@@ -388,8 +380,10 @@ namespace SaledServices
 
                 if (house != "" && place != "")
                 {
-                    this.stock_placetextBox.Enabled = false;
+                    
                     this.stock_placetextBox.Text = house + "," + place;
+                    this.stock_placetextBox.Enabled = false;
+                   
                     chooseStock.Id = Id;
                     chooseStock.house = house;
                     chooseStock.place = place;
@@ -397,7 +391,7 @@ namespace SaledServices
                 }
                 else
                 {
-                    this.stock_placetextBox.Enabled = true;
+                   this.stock_placetextBox.Enabled = true;
                 }
 
                 mConn.Close();
@@ -412,11 +406,14 @@ namespace SaledServices
 
         private void clearInputText()
         {
-            this.mb_brieftextBox.Text = "";
-            this.totalMoneyTextBox.Text = "";
+            this.bga_brieftextBox.Text = "";
             this.stock_in_numTextBox.Text = "";
-           
+            //this.stock_placetextBox.Text = "";
             this.notetextBox.Text = "";
+
+            this.CPU.Checked = false;
+            this.PCH.Checked = false;
+            this.VGA.Checked = false;
         }
 
         private void mpnTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -512,7 +509,7 @@ namespace SaledServices
         private void dataGridViewToReturn_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.mpnTextBox.Text = dataGridViewToReturn.SelectedCells[1].Value.ToString();
-            this.stock_placetextBox.Text = "";//此次需要事前清除
+            this.stock_placetextBox.Text = "";
             simulateMpnEnter();
         }
 
@@ -520,18 +517,16 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                double order_number_int = Double.Parse(this.numberTextBox.Text);
-                double this_enter_number = Double.Parse(this.stock_in_numTextBox.Text.Trim());
-                if (this_enter_number > order_number_int)
-                {
-                    MessageBox.Show("输入数量大于订单数量!");
-                    this.stock_in_numTextBox.Clear();
-                    this.stock_in_numTextBox.Focus();
-                    return;
-                }
+                //double order_number_int = Double.Parse(this.numberTextBox.Text);
+                //double this_enter_number = Double.Parse(this.stock_in_numTextBox.Text.Trim());
+                //if (this_enter_number > order_number_int)
+                //{
+                //    MessageBox.Show("输入数量大于订单数量!");
+                //    this.stock_in_numTextBox.Clear();
+                //    this.stock_in_numTextBox.Focus();
+                //    return;
+                //}
 
-                double totalMoney = this_enter_number * Double.Parse(this.pricePerTextBox.Text);
-                this.totalMoneyTextBox.Text = totalMoney.ToString();
             }
         }
 
@@ -553,6 +548,72 @@ namespace SaledServices
                 csform.MdiParent = Program.parentForm;
                 csform.Show();
             }
+        }
+
+        private void CPU_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+            if (this.mpnTextBox.Text.Trim() == "" && rb.Checked)
+            {
+                MessageBox.Show("MPN不能为空！");
+                rb.Checked = false;
+                this.mpnTextBox.Focus();
+                return;
+            }
+
+            string type="";
+            if(PCH.Checked)
+            {
+                type = "pcb_brief_describe";
+                this.stock_in_numTextBox.Enabled = false;
+                this.stock_in_numTextBox.Text = "1";
+                this.bgaSnTextBox.Enabled = true;
+            }
+            else if (CPU.Checked )
+            {
+                type = "cpu_brief";
+                this.stock_in_numTextBox.Enabled = false;
+                this.stock_in_numTextBox.Text = "1";
+                this.bgaSnTextBox.Enabled = true;
+            }
+            else if (this.VGA.Checked)
+            {
+                type = "vga_brief_describe";
+                this.stock_in_numTextBox.Enabled = true;
+                this.bgaSnTextBox.Enabled = false;
+                this.bgaSnTextBox.Clear();
+            }
+            else 
+            {
+                return;
+            }
+            
+            //根据信息查询BGA简述
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select " + type + " from MBMaterialCompare where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+
+                SqlDataReader querySdr = cmd.ExecuteReader();                
+                while (querySdr.Read())
+                {
+                    this.bga_brieftextBox.Text = querySdr[0].ToString();                    
+                }
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
     }
 }

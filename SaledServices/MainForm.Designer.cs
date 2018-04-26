@@ -68,6 +68,7 @@
             this.mBToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA入库记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA出库记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.库房储位管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.additionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customFaultMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,7 +88,6 @@
             this.出库入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表头ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.库房储位管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -417,12 +417,20 @@
             this.bGA入库记录ToolStripMenuItem.Name = "bGA入库记录ToolStripMenuItem";
             this.bGA入库记录ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.bGA入库记录ToolStripMenuItem.Text = "BGA入库记录";
+            this.bGA入库记录ToolStripMenuItem.Click += new System.EventHandler(this.bGA入库记录ToolStripMenuItem_Click);
             // 
             // bGA出库记录ToolStripMenuItem
             // 
             this.bGA出库记录ToolStripMenuItem.Name = "bGA出库记录ToolStripMenuItem";
             this.bGA出库记录ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.bGA出库记录ToolStripMenuItem.Text = "BGA出库记录";
+            // 
+            // 库房储位管理ToolStripMenuItem
+            // 
+            this.库房储位管理ToolStripMenuItem.Name = "库房储位管理ToolStripMenuItem";
+            this.库房储位管理ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
+            this.库房储位管理ToolStripMenuItem.Text = "库房储位管理";
+            this.库房储位管理ToolStripMenuItem.Click += new System.EventHandler(this.库房储位管理ToolStripMenuItem_Click);
             // 
             // additionMenuItem
             // 
@@ -575,13 +583,6 @@
             this.工单表体ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
             this.工单表体ToolStripMenuItem.Text = "工单表体";
             this.工单表体ToolStripMenuItem.Click += new System.EventHandler(this.工单表体ToolStripMenuItem_Click);
-            // 
-            // 库房储位管理ToolStripMenuItem
-            // 
-            this.库房储位管理ToolStripMenuItem.Name = "库房储位管理ToolStripMenuItem";
-            this.库房储位管理ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
-            this.库房储位管理ToolStripMenuItem.Text = "库房储位管理";
-            this.库房储位管理ToolStripMenuItem.Click += new System.EventHandler(this.库房储位管理ToolStripMenuItem_Click);
             // 
             // MainForm
             // 

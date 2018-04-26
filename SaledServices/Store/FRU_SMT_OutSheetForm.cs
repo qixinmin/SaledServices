@@ -71,6 +71,23 @@ namespace SaledServices
                     cmd.CommandText = "update fru_smt_in_stock set used_num = '" +  (Int32.Parse(this.used_num) + Int32.Parse(this.stock_out_numTextBox.Text)) + "' "
                                + "where Id = '" + fru_smt_in_id + "'";
                     cmd.ExecuteNonQuery();
+
+                    //需要更新库房对应储位的数量 减去 本次出库的数量
+                    //根据mpn查对应的查询
+                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string house = "", place = "", Id = "", number = "";
+                    while (querySdr.Read())
+                    {
+                        house = querySdr[0].ToString();
+                        place = querySdr[1].ToString();
+                        Id = querySdr[2].ToString();
+                        number = querySdr[3].ToString();
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = "update store_house set number = '" + (Int32.Parse(number) - Int32.Parse(this.stock_out_numTextBox.Text)) + "'  where house='"+ house+"' and place='"+place+"'";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {
