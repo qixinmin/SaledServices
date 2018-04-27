@@ -49,6 +49,8 @@
             this.test_allCheckBox = new System.Windows.Forms.CheckBox();
             this.repairCheckBox = new System.Windows.Forms.CheckBox();
             this.bgaCheckBox = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.workIdTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.permissionPanel.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +83,7 @@
             // 
             // userNameTextBox
             // 
-            this.userNameTextBox.Location = new System.Drawing.Point(185, 137);
+            this.userNameTextBox.Location = new System.Drawing.Point(185, 127);
             this.userNameTextBox.Name = "userNameTextBox";
             this.userNameTextBox.Size = new System.Drawing.Size(145, 30);
             this.userNameTextBox.TabIndex = 3;
@@ -89,7 +91,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(51, 205);
+            this.label3.Location = new System.Drawing.Point(51, 213);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 20);
             this.label3.TabIndex = 2;
@@ -97,7 +99,7 @@
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(185, 198);
+            this.passwordTextBox.Location = new System.Drawing.Point(185, 203);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(145, 30);
             this.passwordTextBox.TabIndex = 3;
@@ -260,6 +262,22 @@
             this.bgaCheckBox.Text = "BGA维修";
             this.bgaCheckBox.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(51, 177);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 20);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "工号";
+            // 
+            // workIdTextBox
+            // 
+            this.workIdTextBox.Location = new System.Drawing.Point(185, 167);
+            this.workIdTextBox.Name = "workIdTextBox";
+            this.workIdTextBox.Size = new System.Drawing.Size(145, 30);
+            this.workIdTextBox.TabIndex = 3;
+            // 
             // UserDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -273,7 +291,9 @@
             this.Controls.Add(this.add);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.workIdTextBox);
             this.Controls.Add(this.userNameTextBox);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.label1);
@@ -314,6 +334,8 @@
         private System.Windows.Forms.CheckBox test2CheckBox;
         private System.Windows.Forms.CheckBox outlookCheckBox;
         private System.Windows.Forms.CheckBox storeCheckBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox workIdTextBox;
 
     }
 }

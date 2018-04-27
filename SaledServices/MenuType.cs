@@ -7,7 +7,17 @@ namespace SaledServices
 {
     public enum MenuType
     {
-        MAIN_MENU,
-        LOGIN_MENU
+        None,//开始为空
+        Super,//需要把下面的权限全部加进去才可以
+        Self,
+        Bga_Repair,
+        Repair,
+        TestALL,
+        Test1,
+        Test2,
+        Recieve_Return,
+        Outlook,
+        Store,
+        Other,//把不能分类的都放在这里
     }
 }

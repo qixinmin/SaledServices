@@ -26,8 +26,6 @@ namespace SaledServices
         private void UserDetailForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             MainForm form = this.MdiParent as MainForm;
-            form.changeMenu(MenuType.MAIN_MENU);
-
         }
 
         private void add_Click(object sender, EventArgs e)
@@ -69,6 +67,7 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" 
                         + this.userNameTextBox.Text.Trim() + "','"
+                        + this.workIdTextBox.Text.Trim() + "','"
                         + this.passwordTextBox.Text.Trim() + "','"
                         + this.super_checkBox.Checked + "','"
                         + this.bgaCheckBox.Checked + "','"
@@ -119,7 +118,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "ID", "用户名","密码", "超级管理员", "BGA", "维修", "测试ALL","测试1","测试2","收还货","库存","外观" };
+            string[] hTxt = { "ID", "用户名","工号","密码", "超级管理员", "BGA", "维修", "测试ALL","测试1","测试2","收还货","库存","外观" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -133,6 +132,7 @@ namespace SaledServices
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.idTextBox.Text.Trim());
             dr["username"] = this.userNameTextBox.Text.Trim();
+            dr["workId"] = this.workIdTextBox.Text.Trim();
             dr["password"] = this.passwordTextBox.Text.Trim();
             dr["super_manager"] = this.super_checkBox.Checked;
             dr["bga"] = this.bgaCheckBox.Checked;
@@ -180,9 +180,10 @@ namespace SaledServices
         {
             this.idTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
             this.userNameTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
-            this.passwordTextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
+            this.workIdTextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
+            this.passwordTextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
 
-            if (dataGridView1.SelectedCells[3].Value.ToString() == "True")
+            if (dataGridView1.SelectedCells[4].Value.ToString() == "True")
             {
                 this.super_checkBox.Checked = true;
             }
@@ -191,7 +192,7 @@ namespace SaledServices
                 this.super_checkBox.Checked = false;
             }
 
-            if (dataGridView1.SelectedCells[4].Value.ToString() == "True")
+            if (dataGridView1.SelectedCells[5].Value.ToString() == "True")
             {
                 this.bgaCheckBox.Checked = true;
             }
@@ -200,7 +201,7 @@ namespace SaledServices
                 this.bgaCheckBox.Checked = false;
             }
 
-            if (dataGridView1.SelectedCells[5].Value.ToString() == "True")
+            if (dataGridView1.SelectedCells[6].Value.ToString() == "True")
             {
                 this.repairCheckBox.Checked = true;
             }
@@ -209,7 +210,7 @@ namespace SaledServices
                 this.repairCheckBox.Checked = false;
             }
 
-            if (dataGridView1.SelectedCells[6].Value.ToString() == "True")
+            if (dataGridView1.SelectedCells[7].Value.ToString() == "True")
             {
                 this.test_allCheckBox.Checked = true;
             }
@@ -218,7 +219,7 @@ namespace SaledServices
                 this.test_allCheckBox.Checked = false;
             }
 
-            if (dataGridView1.SelectedCells[7].Value.ToString() == "True")
+            if (dataGridView1.SelectedCells[8].Value.ToString() == "True")
             {
                 this.test1CheckBox.Checked = true;
             }
@@ -227,7 +228,7 @@ namespace SaledServices
                 this.test1CheckBox.Checked = false;
             }
 
-            if (dataGridView1.SelectedCells[8].Value.ToString() == "True")
+            if (dataGridView1.SelectedCells[9].Value.ToString() == "True")
             {
                 this.test2CheckBox.Checked = true;
             }
@@ -236,7 +237,7 @@ namespace SaledServices
                 this.test2CheckBox.Checked = false;
             }
 
-            if (dataGridView1.SelectedCells[9].Value.ToString() == "True")
+            if (dataGridView1.SelectedCells[10].Value.ToString() == "True")
             {
                 this.receive_returnCheckBox.Checked = true;
             }
@@ -245,7 +246,7 @@ namespace SaledServices
                 this.receive_returnCheckBox.Checked = false;
             }
 
-            if (dataGridView1.SelectedCells[10].Value.ToString() == "True")
+            if (dataGridView1.SelectedCells[11].Value.ToString() == "True")
             {
                 this.storeCheckBox.Checked = true;
             }
@@ -254,7 +255,7 @@ namespace SaledServices
                 this.storeCheckBox.Checked = false;
             }
 
-            if (dataGridView1.SelectedCells[11].Value.ToString() == "True")
+            if (dataGridView1.SelectedCells[12].Value.ToString() == "True")
             {
                 this.outlookCheckBox.Checked = true;
             }

@@ -28,29 +28,64 @@ namespace SaledServices
             InitializeComponent();
         }
 
-        public void changeMenu(MenuType menuType)
+        public void clearAllMenu()
         {
-            //this.AllMenuStrip.Items.Clear();
-            //switch (menuType)
-            //{
-            //    case MenuType.LOGIN_MENU:
-            //        this.LoginMenuItem.Name = "LoginMenuItem";
-            //        this.LoginMenuItem.Size = new System.Drawing.Size(152, 22);
-            //        this.LoginMenuItem.Text = "登录";
-            //        this.LoginMenuItem.Click += new System.EventHandler(this.LoginMenuItem_Click);
-            //        this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            //        this.LoginMenuItem});      
-            //        break;
-            //    case MenuType.MAIN_MENU:
-            //        this.UserManageMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            //            this.LoginMenuItem,
-            //            this.LogoutMenuItem});
-            //        this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            //            this.UserManageMenuItem,
-            //            this.VendorMenuItem,
-            //            this.FunctionMenuItem});
-            //        break;
-            //}
+            this.AllMenuStrip.Items.Clear();
+        }
+
+        public void appendMenu(MenuType menuType)
+        {
+            switch (menuType)
+            {
+                case MenuType.Bga_Repair:
+                    this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
+                    this.bGA维修ToolStripMenuItem
+                    });
+                    break;
+                case MenuType.Repair:
+                    this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                    this.维修ToolStripMenuItem
+                    });
+                    break;
+                case MenuType.Recieve_Return:
+                    this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
+                    this.receiveReturnStoreMenuItem,
+                   });
+                    break;
+                case MenuType.TestALL:
+                    this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
+                    this.测试ToolStripMenuItem,
+                   });
+                    break;
+                case MenuType.Test1:
+                    break;
+                case MenuType.Test2:
+                    break;
+                case MenuType.Outlook:
+                    this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
+                    this.外观ToolStripMenuItem,
+                   });
+                    break;
+                case MenuType.Store:
+                    this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
+                    this.库存管理ToolStripMenuItem,
+                   });
+                    break;
+                case MenuType.Self:
+                    this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
+                    this.UserManageMenuItem,
+                   });
+                    break;
+                case MenuType.Other:
+                    this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                    this.FunctionMenuItem,           
+                    this.additionMenuItem,
+                    this.报表ToolStripMenuItem,
+                    this.海关ToolStripMenuItem
+                    });
+
+                    break;
+            }
 
             this.LogoutMenuItem.Enabled = true;
         }
@@ -805,6 +840,21 @@ namespace SaledServices
             mboutform.Show();
 
             allForm.Add(mboutform);   
+        }
+
+        private UserDetailForm mUserDetailForm;
+        private void 员工管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (mUserDetailForm == null || mUserDetailForm.IsDisposed)
+            {
+                mUserDetailForm = new UserDetailForm();
+                mUserDetailForm.MdiParent = this;
+            }
+
+            mUserDetailForm.BringToFront();
+            mUserDetailForm.Show();
+
+            allForm.Add(mUserDetailForm);   
         }
     }
 }

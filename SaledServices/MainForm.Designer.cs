@@ -64,10 +64,10 @@
             this.还货请求查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fRUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fRUSMT入库记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mBToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA入库记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA出库记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mBToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.库房储位管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.additionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,6 +88,7 @@
             this.出库入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表头ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.员工管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,7 +110,7 @@
             this.AllMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.AllMenuStrip.Name = "AllMenuStrip";
             this.AllMenuStrip.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.AllMenuStrip.Size = new System.Drawing.Size(927, 37);
+            this.AllMenuStrip.Size = new System.Drawing.Size(1067, 37);
             this.AllMenuStrip.TabIndex = 4;
             this.AllMenuStrip.Text = "AllMenu";
             // 
@@ -400,20 +401,6 @@
             this.fRUSMT入库记录ToolStripMenuItem.Text = "FRU/SMT出库记录";
             this.fRUSMT入库记录ToolStripMenuItem.Click += new System.EventHandler(this.fRUSMT入库记录ToolStripMenuItem_Click);
             // 
-            // mBToolStripMenuItem
-            // 
-            this.mBToolStripMenuItem.Name = "mBToolStripMenuItem";
-            this.mBToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
-            this.mBToolStripMenuItem.Text = "MB入库记录";
-            this.mBToolStripMenuItem.Click += new System.EventHandler(this.mBToolStripMenuItem_Click);
-            // 
-            // mBToolStripMenuItem1
-            // 
-            this.mBToolStripMenuItem1.Name = "mBToolStripMenuItem1";
-            this.mBToolStripMenuItem1.Size = new System.Drawing.Size(255, 32);
-            this.mBToolStripMenuItem1.Text = "MB出库记录";
-            this.mBToolStripMenuItem1.Click += new System.EventHandler(this.mBToolStripMenuItem1_Click);
-            // 
             // bGA入库记录ToolStripMenuItem
             // 
             this.bGA入库记录ToolStripMenuItem.Name = "bGA入库记录ToolStripMenuItem";
@@ -427,6 +414,20 @@
             this.bGA出库记录ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.bGA出库记录ToolStripMenuItem.Text = "BGA出库记录";
             this.bGA出库记录ToolStripMenuItem.Click += new System.EventHandler(this.bGA出库记录ToolStripMenuItem_Click);
+            // 
+            // mBToolStripMenuItem
+            // 
+            this.mBToolStripMenuItem.Name = "mBToolStripMenuItem";
+            this.mBToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
+            this.mBToolStripMenuItem.Text = "MB入库记录";
+            this.mBToolStripMenuItem.Click += new System.EventHandler(this.mBToolStripMenuItem_Click);
+            // 
+            // mBToolStripMenuItem1
+            // 
+            this.mBToolStripMenuItem1.Name = "mBToolStripMenuItem1";
+            this.mBToolStripMenuItem1.Size = new System.Drawing.Size(255, 32);
+            this.mBToolStripMenuItem1.Text = "MB出库记录";
+            this.mBToolStripMenuItem1.Click += new System.EventHandler(this.mBToolStripMenuItem1_Click);
             // 
             // 库房储位管理ToolStripMenuItem
             // 
@@ -447,7 +448,8 @@
             this.还货客责类别ToolStripMenuItem,
             this.维修故障类别ToolStripMenuItem,
             this.厂商信息ToolStripMenuItem,
-            this.企业固定信息ToolStripMenuItem});
+            this.企业固定信息ToolStripMenuItem,
+            this.员工管理ToolStripMenuItem});
             this.additionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.additionMenuItem.Name = "additionMenuItem";
             this.additionMenuItem.Size = new System.Drawing.Size(104, 31);
@@ -587,11 +589,18 @@
             this.工单表体ToolStripMenuItem.Text = "工单表体";
             this.工单表体ToolStripMenuItem.Click += new System.EventHandler(this.工单表体ToolStripMenuItem_Click);
             // 
+            // 员工管理ToolStripMenuItem
+            // 
+            this.员工管理ToolStripMenuItem.Name = "员工管理ToolStripMenuItem";
+            this.员工管理ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.员工管理ToolStripMenuItem.Text = "员工管理";
+            this.员工管理ToolStripMenuItem.Click += new System.EventHandler(this.员工管理ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(927, 687);
+            this.ClientSize = new System.Drawing.Size(1067, 682);
             this.Controls.Add(this.AllMenuStrip);
             this.Font = new System.Drawing.Font("SimSun", 12F);
             this.IsMdiContainer = true;
@@ -669,6 +678,7 @@
         private System.Windows.Forms.ToolStripMenuItem bGA领料申请ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bGA维修界面ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 库房储位管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 员工管理ToolStripMenuItem;
     }
 }
 

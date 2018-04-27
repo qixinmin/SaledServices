@@ -16,7 +16,7 @@ namespace SaledServices
     public partial class LoginForm : Form
     {
         public static string currentUser = "defaultUser";
-        private UserDetailForm mUserDetailForm;
+      
         private MainForm mParent;
         public LoginForm(MainForm parent)
         {
@@ -48,15 +48,15 @@ namespace SaledServices
                 {
                     temp = querySdr[1].ToString();
                     User.UserSelfForm.username = temp;
-                    User.UserSelfForm.super_manager = querySdr[2].ToString();
-                    User.UserSelfForm.bga = querySdr[3].ToString();
-                    User.UserSelfForm.repair = querySdr[4].ToString();
-                    User.UserSelfForm.test_all = querySdr[5].ToString();
-                    User.UserSelfForm.test1 = querySdr[6].ToString();
-                    User.UserSelfForm.test2 = querySdr[7].ToString();
-                    User.UserSelfForm.receive_return = querySdr[8].ToString();
-                    User.UserSelfForm.store = querySdr[9].ToString();
-                    User.UserSelfForm.outlook = querySdr[10].ToString();
+                    User.UserSelfForm.super_manager = querySdr[3].ToString();
+                    User.UserSelfForm.bga = querySdr[4].ToString();
+                    User.UserSelfForm.repair = querySdr[5].ToString();
+                    User.UserSelfForm.test_all = querySdr[6].ToString();
+                    User.UserSelfForm.test1 = querySdr[7].ToString();
+                    User.UserSelfForm.test2 = querySdr[8].ToString();
+                    User.UserSelfForm.receive_return = querySdr[9].ToString();
+                    User.UserSelfForm.store = querySdr[10].ToString();
+                    User.UserSelfForm.outlook = querySdr[11].ToString();
                 }
                 querySdr.Close();
 
@@ -71,17 +71,65 @@ namespace SaledServices
                     currentUser = this.usernameInput.Text.Trim();//记录用户名
 
                     this.Hide();
-                    if (mUserDetailForm == null || mUserDetailForm.IsDisposed)
+                  
+                    //根据user的权限，添加对应的menu，有多少权限对应多少menu
+                    mParent.clearAllMenu();
+
+                    if (User.UserSelfForm.super_manager == "True")
                     {
-                        mUserDetailForm = new UserDetailForm();
-                        mUserDetailForm.MdiParent = mParent;
+                        mParent.appendMenu(MenuType.Self);  
+                        mParent.appendMenu(MenuType.Repair);                        
+                        mParent.appendMenu(MenuType.Bga_Repair);                       
+                        mParent.appendMenu(MenuType.TestALL);                       
+                        mParent.appendMenu(MenuType.TestALL);                        
+                        mParent.appendMenu(MenuType.Test1);                        
+                        mParent.appendMenu(MenuType.Test2);                        
+                        mParent.appendMenu(MenuType.Recieve_Return);                        
+                        mParent.appendMenu(MenuType.Outlook);                        
+                        mParent.appendMenu(MenuType.Store);
+                        mParent.appendMenu(MenuType.Other);       
                     }
-
-                    mUserDetailForm.BringToFront();
-                    mUserDetailForm.Show();
-
-
-                    mParent.changeMenu(MenuType.LOGIN_MENU);
+                    else
+                    {
+                        mParent.appendMenu(MenuType.Self);  
+                        if (User.UserSelfForm.repair == "True")
+                        {
+                            mParent.appendMenu(MenuType.Repair);
+                        }
+                        if (User.UserSelfForm.bga == "True")
+                        {
+                            mParent.appendMenu(MenuType.Bga_Repair);
+                        }
+                        if (User.UserSelfForm.test_all == "True")
+                        {
+                            mParent.appendMenu(MenuType.TestALL);
+                        }
+                        if (User.UserSelfForm.test_all == "True")
+                        {
+                            mParent.appendMenu(MenuType.TestALL);
+                        }
+                        if (User.UserSelfForm.test1 == "True")
+                        {
+                            mParent.appendMenu(MenuType.Test1);
+                        }
+                        if (User.UserSelfForm.test2 == "True")
+                        {
+                            mParent.appendMenu(MenuType.Test2);
+                        }
+                        if (User.UserSelfForm.receive_return == "True")
+                        {
+                            mParent.appendMenu(MenuType.Recieve_Return);
+                        }
+                        if (User.UserSelfForm.outlook == "True")
+                        {
+                            mParent.appendMenu(MenuType.Outlook);
+                        }
+                        if (User.UserSelfForm.store == "True")
+                        {
+                            mParent.appendMenu(MenuType.Store);
+                        }
+                    }
+                    
                 }
 
                 mConn.Close();

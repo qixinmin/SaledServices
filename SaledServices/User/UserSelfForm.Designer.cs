@@ -49,6 +49,8 @@
             this.super_checkBox = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
+            this.workIdtextBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.permissionPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -248,8 +250,10 @@
             this.panel1.Controls.Add(this.modifyPassButton);
             this.panel1.Controls.Add(this.oripasswordTextBox);
             this.panel1.Controls.Add(this.confirmPassTextBox);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.workIdtextBox);
             this.panel1.Controls.Add(this.usernameTextBox);
             this.panel1.Controls.Add(this.newpassTextBox);
             this.panel1.Controls.Add(this.label2);
@@ -267,6 +271,23 @@
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 10;
             this.label5.Text = "当前的权限";
+            // 
+            // workIdtextBox
+            // 
+            this.workIdtextBox.Location = new System.Drawing.Point(118, 77);
+            this.workIdtextBox.Name = "workIdtextBox";
+            this.workIdtextBox.ReadOnly = true;
+            this.workIdtextBox.Size = new System.Drawing.Size(100, 21);
+            this.workIdtextBox.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(17, 80);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "工号";
             // 
             // UserSelfForm
             // 
@@ -311,5 +332,7 @@
         private System.Windows.Forms.CheckBox super_checkBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox workIdtextBox;
     }
 }

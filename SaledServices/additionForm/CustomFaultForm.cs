@@ -49,6 +49,7 @@ namespace SaledServices
                 }
 
                 conn.Close();
+                MessageBox.Show("新增成功！");
                 query_Click(null, null);
             }
             catch (Exception ex)
@@ -85,6 +86,7 @@ namespace SaledServices
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
             }
+            MessageBox.Show("查询完成！");
         }
 
         private void modify_Click(object sender, EventArgs e)
@@ -98,6 +100,7 @@ namespace SaledServices
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
+            MessageBox.Show("修改成功！");
         }
 
         private void delete_Click(object sender, EventArgs e)

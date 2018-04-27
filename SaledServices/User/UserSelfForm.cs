@@ -55,9 +55,9 @@ namespace SaledServices.User
                     if (temp != "")
                     {
                         this.usernameTextBox.Text = querySdr[1].ToString();
-                        //this.passwordTextBox.Text = querySdr[2].ToString();
-
-                        if (querySdr[3].ToString() == "True")
+                        this.workIdtextBox.Text = querySdr[2].ToString();
+                        //3是password
+                        if (querySdr[4].ToString() == "True")
                         {
                             this.super_checkBox.Checked = true;
                         }
@@ -67,7 +67,7 @@ namespace SaledServices.User
                         }
 
 
-                        if (querySdr[4].ToString() == "True")
+                        if (querySdr[5].ToString() == "True")
                         {
                             this.bgaCheckBox.Checked = true;
                         }
@@ -76,8 +76,7 @@ namespace SaledServices.User
                             this.bgaCheckBox.Checked = false;
                         }
 
-
-                        if (querySdr[5].ToString() == "True")
+                        if (querySdr[6].ToString() == "True")
                         {
                             this.repairCheckBox.Checked = true;
                         }
@@ -87,7 +86,7 @@ namespace SaledServices.User
                         }
 
 
-                        if (querySdr[6].ToString() == "True")
+                        if (querySdr[7].ToString() == "True")
                         {
                             this.test_allCheckBox.Checked = true;
                         }
@@ -96,7 +95,7 @@ namespace SaledServices.User
                             this.test_allCheckBox.Checked = false;
                         }
 
-                        if (querySdr[7].ToString() == "True")
+                        if (querySdr[8].ToString() == "True")
                         {
                             this.test1CheckBox.Checked = true;
                         }
@@ -105,7 +104,7 @@ namespace SaledServices.User
                             this.test1CheckBox.Checked = false;
                         }
 
-                        if (querySdr[8].ToString() == "True")
+                        if (querySdr[9].ToString() == "True")
                         {
                             this.test2CheckBox.Checked = true;
                         }
@@ -114,7 +113,7 @@ namespace SaledServices.User
                             this.test2CheckBox.Checked = false;
                         }
 
-                        if (querySdr[9].ToString() == "True")
+                        if (querySdr[10].ToString() == "True")
                         {
                             this.receive_returnCheckBox.Checked = true;
                         }
@@ -123,7 +122,7 @@ namespace SaledServices.User
                             this.receive_returnCheckBox.Checked = false;
                         }
 
-                        if (querySdr[10].ToString() == "True")
+                        if (querySdr[11].ToString() == "True")
                         {
                             this.storeCheckBox.Checked = true;
                         }
@@ -132,7 +131,7 @@ namespace SaledServices.User
                             this.storeCheckBox.Checked = false;
                         }
 
-                        if (querySdr[11].ToString() == "True")
+                        if (querySdr[12].ToString() == "True")
                         {
                             this.outlookCheckBox.Checked = true;
                         }
