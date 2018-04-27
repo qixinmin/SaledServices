@@ -12,7 +12,7 @@ namespace SaledServices
 {
     public partial class MB_InSheetForm : Form
     {
-        private String tableName = "bga_in_stock";
+        private String tableName = "mb_in_stock";
         private SqlConnection mConn;
         private SqlDataAdapter sda;
         private DataSet ds;

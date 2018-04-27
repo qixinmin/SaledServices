@@ -296,7 +296,8 @@ namespace SaledServices
                             this.productTextBox.Text = querySdr[1].ToString();
                             this.bga_brieftextBox.Text = querySdr[2].ToString();
                             this.bgadescribeTextBox.Text = querySdr[3].ToString();
-                            this.isDeclareTextBox.Text = querySdr[4].ToString();                          
+                            this.isDeclareTextBox.Text = querySdr[4].ToString();
+                            break;
                         }
                         querySdr.Close();
                     }

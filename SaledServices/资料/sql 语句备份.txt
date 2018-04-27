@@ -57,23 +57,21 @@ CREATE TABLE mb_out_stock(
 Id INT PRIMARY KEY IDENTITY, 
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
-material_type NVARCHAR(128) NOT NULL, /*材料大类*/
 mpn NVARCHAR(128) NOT NULL, /*MPN*/
-describe NVARCHAR(128) NOT NULL,/*描述*/
-
 mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
+describe NVARCHAR(128) NOT NULL,/*描述*/
 
 custom_serial_no NVARCHAR(128) NOT NULL,/*客户序号*/
 vendor_serial_no NVARCHAR(128) NOT NULL,/*厂商序号*/
 stock_place NVARCHAR(128),/*库位*/
+out_number  NVARCHAR(128),/*出库数量*/
+isdeclare NVARCHAR(128), /*是否报关*/
 
-use_describe NVARCHAR(128),/*用途*/
 note NVARCHAR(128),/*备注*/
 
 taker NVARCHAR(128),/*领用人*/
 inputer  NVARCHAR(128),/*输入人*/
 input_date  NVARCHAR(128),/*日期*/
-track_serial_no NVARCHAR(128),/*跟踪条码*/
 )
 
 CREATE TABLE mb_in_stock(
