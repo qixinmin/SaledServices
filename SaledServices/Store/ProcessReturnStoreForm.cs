@@ -27,7 +27,7 @@ namespace SaledServices.Store
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select material_mpn,return_number,stock_place,requester,request_date,Id from fru_smt_return_store_record where status ='request'";
+                cmd.CommandText = "select material_mpn,return_number,stock_place,requester,request_date,Id, fromId from fru_smt_return_store_record where status ='request'";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -42,7 +42,7 @@ namespace SaledServices.Store
                 MessageBox.Show(ex.ToString());
             }
          
-            string[] hTxt = {"材料MPN","归还数量","库位","申请人","申请日期","ID"};
+            string[] hTxt = {"材料MPN","归还数量","库位","申请人","申请日期","ID","请求来源ID"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -57,6 +57,7 @@ namespace SaledServices.Store
             this.requestertextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
             this.requestdateTextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
             this.idtextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
+            this.fromIdtextBox.Text = dataGridView1.SelectedCells[6].Value.ToString();
         }
 
         private void refreshbutton_Click(object sender, EventArgs e)
@@ -100,6 +101,10 @@ namespace SaledServices.Store
                     querySdr.Close();
 
                     cmd.CommandText = "update store_house set number = '" + (Int32.Parse(number) + Int32.Parse(this.returnNumbertextBox.Text)) + "'  where house='"+ house+"' and place='"+place+"'";
+                    cmd.ExecuteNonQuery();
+
+                    //3.更新表request_fru_smt_to_store_table中的status的字段的数量为return
+                    cmd.CommandText = "update request_fru_smt_to_store_table set status = 'return' where Id='"+this.fromIdtextBox.Text.Trim()+"'";
                     cmd.ExecuteNonQuery();
                 }
                 else

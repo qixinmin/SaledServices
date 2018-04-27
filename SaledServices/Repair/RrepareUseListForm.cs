@@ -37,7 +37,7 @@ namespace SaledServices.Repair
                 dataGridView1.Columns.Clear();
 
                 // string sqlStr = "select top 100 * from fru_smt_out_stock where requester='"+tester+"'";
-                string sqlStr = "select mb_brief,material_mpn,stock_place,realNumber,usedNumber,Id from request_fru_smt_to_store_table /*where requester='tester'*/";
+                string sqlStr = "select mb_brief,material_mpn,stock_place,realNumber,usedNumber,Id from request_fru_smt_to_store_table where status !='request' and status !='return' /*where requester='tester'*/";
 
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
 
@@ -146,7 +146,8 @@ namespace SaledServices.Repair
                         + DateTime.Now.ToString("yyyy/MM/dd") + "','"
                         + "" + "','"
                         + "" + "','"
-                        + "request" + "')";
+                        + "request" + "','"
+                        + idTextBox.Text.Trim() + "')";
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
                 }

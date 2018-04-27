@@ -21,6 +21,7 @@ request_date NVARCHAR(128), /*请求日期*/
 processer NVARCHAR(128), /*处理人*/
 processe_date NVARCHAR(128), /*处理日期*/
 status NVARCHAR(128), /*request/done 2中状态*/
+fromId NVARCHAR(128),/*从request_fru_smt_to_store_table中过来的id，还需要此id来更新状态*/
 )
 
 /*需要创建一个表格，记录维修的每条使用记录 TODO...*/
@@ -44,7 +45,7 @@ number NVARCHAR(128), /*请求数量*/
 realNumber NVARCHAR(128), /*获得的真正数量*/
 requester NVARCHAR(128), /*请求人*/
 date NVARCHAR(128), /*请求日期*/
-status NVARCHAR(128), /*状态, request/close/part/wait*/
+status NVARCHAR(128), /*状态, request/close/part/wait,return*/
 usedNumber NVARCHAR(128), /*使用的数量,是个累加数量*/
 stock_place NVARCHAR(128),/*库位*/
 processer NVARCHAR(128), /*处理人*/
