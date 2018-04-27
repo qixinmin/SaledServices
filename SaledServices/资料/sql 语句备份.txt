@@ -18,7 +18,6 @@ stock_place NVARCHAR(128),/*库位*/
 requester NVARCHAR(128), /*请求人*/
 request_date NVARCHAR(128), /*请求日期*/
 
-fromId NVARCHAR(128),/*从fru_smt_in_stock来的id，将来可能要还回去*/
 processer NVARCHAR(128), /*处理人*/
 processe_date NVARCHAR(128), /*处理日期*/
 status NVARCHAR(128), /*request/done 2中状态*/
@@ -48,7 +47,6 @@ date NVARCHAR(128), /*请求日期*/
 status NVARCHAR(128), /*状态, request/close/part/wait*/
 usedNumber NVARCHAR(128), /*使用的数量,是个累加数量*/
 stock_place NVARCHAR(128),/*库位*/
-fromId NVARCHAR(128),/*从fru_smt_in_stock来的id，将来可能要还回去*/
 processer NVARCHAR(128), /*处理人*/
 processe_date NVARCHAR(128), /*处理日期*/
 )
@@ -135,7 +133,6 @@ isdeclare NVARCHAR(128), /*是否报关*/
 bga_describe NVARCHAR(128) NOT NULL,/*BGA简述*/
 order_number NVARCHAR(128),/*订单数量*/
 input_number  NVARCHAR(128),/*入库数量*/
-used_number  NVARCHAR(128),/*使用的数量，VGA数量可以多个，但其他最多为1*/
 bgasn NVARCHAR(128),/*BGASN*/
 stock_place NVARCHAR(128),/*库位*/
 note NVARCHAR(128),/*备注*/
@@ -183,7 +180,6 @@ isdeclare NVARCHAR(128), /*是否报关*/
 mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
 material_name  NVARCHAR(128) NOT NULL,/*材料名称*/
 stock_in_num  NVARCHAR(128),/*入库数量*/
-used_num NVARCHAR(128),/*使用的数量*/
 totalMoney  NVARCHAR(128),/*金额合计*/
 stock_place NVARCHAR(128),/*库位*/
 note NVARCHAR(128),/*备注*/

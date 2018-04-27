@@ -77,7 +77,6 @@ D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledS
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.ReceiveOrderForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.SourceForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.RepairOperationForm.resources
-D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.Repair.RequestBGAForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.Repair.RrepareUseListForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.ReturnStoreForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.Store.CheckRequestForm.resources

@@ -54,7 +54,6 @@ namespace SaledServices.Store
                         + "" + "','"
                         + "" + "','"
                         + "" + "','"
-                        + "" + "','"
                         + "" + "')";
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();

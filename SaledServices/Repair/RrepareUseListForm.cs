@@ -37,7 +37,7 @@ namespace SaledServices.Repair
                 dataGridView1.Columns.Clear();
 
                 // string sqlStr = "select top 100 * from fru_smt_out_stock where requester='"+tester+"'";
-                string sqlStr = "select mb_brief,material_mpn,stock_place,realNumber,usedNumber,Id,fromId from request_fru_smt_to_store_table /*where requester='tester'*/";
+                string sqlStr = "select mb_brief,material_mpn,stock_place,realNumber,usedNumber,Id from request_fru_smt_to_store_table /*where requester='tester'*/";
 
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
 
@@ -58,7 +58,7 @@ namespace SaledServices.Repair
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "机型", "材料mpn", "库位","已有数量","使用过的数量","ID","FromId" };
+            string[] hTxt = { "机型", "材料mpn", "库位","已有数量","使用过的数量","ID" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -76,7 +76,6 @@ namespace SaledServices.Repair
             this.realNumbertextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
             this.usedNumbertextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
             this.idTextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
-            this.fromIdTextBox.Text = dataGridView1.SelectedCells[6].Value.ToString();
         }
 
         private string totalUseNumber ="";
@@ -145,7 +144,6 @@ namespace SaledServices.Repair
                         + this.stock_placetextBox.Text.Trim() + "','"
                         + LoginForm.currentUser + "','"
                         + DateTime.Now.ToString("yyyy/MM/dd") + "','"
-                        + this.fromIdTextBox.Text + "','"
                         + "" + "','"
                         + "" + "','"
                         + "request" + "')";

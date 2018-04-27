@@ -354,12 +354,6 @@
     <Compile Include="Repair\RepairOperationForm.Designer.cs">
       <DependentUpon>RepairOperationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Repair\RequestBGAForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Repair\RequestBGAForm.Designer.cs">
-      <DependentUpon>RequestBGAForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Repair\RrepareUseListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -581,9 +575,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\RepairOperationForm.resx">
       <DependentUpon>RepairOperationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Repair\RequestBGAForm.resx">
-      <DependentUpon>RequestBGAForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\RrepareUseListForm.resx">
       <DependentUpon>RrepareUseListForm.cs</DependentUpon>

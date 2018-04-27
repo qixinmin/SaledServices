@@ -79,6 +79,8 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
+            this.currentStockNumbertextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -90,7 +92,7 @@
             // add
             // 
             this.add.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.add.Location = new System.Drawing.Point(426, 9);
+            this.add.Location = new System.Drawing.Point(425, 9);
             this.add.Margin = new System.Windows.Forms.Padding(4);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(100, 31);
@@ -102,7 +104,7 @@
             // query
             // 
             this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.query.Location = new System.Drawing.Point(717, 9);
+            this.query.Location = new System.Drawing.Point(715, 9);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(100, 31);
@@ -114,7 +116,7 @@
             // modify
             // 
             this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.modify.Location = new System.Drawing.Point(967, 9);
+            this.modify.Location = new System.Drawing.Point(965, 9);
             this.modify.Margin = new System.Windows.Forms.Padding(4);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(100, 31);
@@ -126,7 +128,7 @@
             // delete
             // 
             this.delete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.delete.Location = new System.Drawing.Point(1192, 9);
+            this.delete.Location = new System.Drawing.Point(1191, 9);
             this.delete.Margin = new System.Windows.Forms.Padding(4);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(100, 31);
@@ -349,6 +351,8 @@
             this.tableLayoutPanel3.Controls.Add(this.notetextBox, 7, 2);
             this.tableLayoutPanel3.Controls.Add(this.label5, 6, 1);
             this.tableLayoutPanel3.Controls.Add(this.use_describetextBox, 7, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label10, 6, 4);
+            this.tableLayoutPanel3.Controls.Add(this.currentStockNumbertextBox, 7, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -573,7 +577,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.9325F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.85227F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.75F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 238F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 240F));
             this.tableLayoutPanel2.Controls.Add(this.delete, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.modify, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.query, 2, 0);
@@ -651,7 +655,26 @@
             this.dataGridView2.Size = new System.Drawing.Size(325, 429);
             this.dataGridView2.TabIndex = 10;
             this.dataGridView2.VirtualMode = true;
-            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(1021, 191);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(72, 16);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "库存数量";
+            // 
+            // currentStockNumbertextBox
+            // 
+            this.currentStockNumbertextBox.Enabled = false;
+            this.currentStockNumbertextBox.Location = new System.Drawing.Point(1190, 195);
+            this.currentStockNumbertextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.currentStockNumbertextBox.Name = "currentStockNumbertextBox";
+            this.currentStockNumbertextBox.ReadOnly = true;
+            this.currentStockNumbertextBox.Size = new System.Drawing.Size(165, 26);
+            this.currentStockNumbertextBox.TabIndex = 18;
             // 
             // FRU_SMT_OutSheetForm
             // 
@@ -727,5 +750,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button queryStock;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox currentStockNumbertextBox;
     }
 }

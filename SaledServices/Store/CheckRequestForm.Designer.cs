@@ -47,6 +47,7 @@
             this.materialMpnTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
+            this.waitbutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +61,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(368, 219);
+            this.dataGridView1.Size = new System.Drawing.Size(429, 238);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -76,11 +77,11 @@
             // 
             // processRequestbutton
             // 
-            this.processRequestbutton.Location = new System.Drawing.Point(511, 164);
+            this.processRequestbutton.Location = new System.Drawing.Point(511, 145);
             this.processRequestbutton.Name = "processRequestbutton";
-            this.processRequestbutton.Size = new System.Drawing.Size(75, 23);
+            this.processRequestbutton.Size = new System.Drawing.Size(89, 35);
             this.processRequestbutton.TabIndex = 1;
-            this.processRequestbutton.Text = "处理请求";
+            this.processRequestbutton.Text = "处理出库请求";
             this.processRequestbutton.UseVisualStyleBackColor = true;
             this.processRequestbutton.Click += new System.EventHandler(this.processRequestbutton_Click);
             // 
@@ -220,6 +221,16 @@
             this.idTextBox.Size = new System.Drawing.Size(100, 21);
             this.idTextBox.TabIndex = 11;
             // 
+            // waitbutton
+            // 
+            this.waitbutton.Location = new System.Drawing.Point(511, 219);
+            this.waitbutton.Name = "waitbutton";
+            this.waitbutton.Size = new System.Drawing.Size(89, 35);
+            this.waitbutton.TabIndex = 1;
+            this.waitbutton.Text = "设置等待";
+            this.waitbutton.UseVisualStyleBackColor = true;
+            this.waitbutton.Click += new System.EventHandler(this.waitbutton_Click);
+            // 
             // CheckRequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -241,6 +252,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.waitbutton);
             this.Controls.Add(this.processRequestbutton);
             this.Controls.Add(this.refreshbutton);
             this.Controls.Add(this.dataGridView1);
@@ -274,5 +286,6 @@
         private System.Windows.Forms.TextBox materialMpnTextBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox idTextBox;
+        private System.Windows.Forms.Button waitbutton;
     }
 }

@@ -138,7 +138,6 @@ namespace SaledServices
                         this.mb_brieftextBox.Text.Trim() + "','" +
                         this.material_nameTextBox.Text.Trim() + "','" +
                         this.stock_in_numTextBox.Text.Trim() + "','" +
-                        "0','" +//used_num
                         this.totalMoneyTextBox.Text.Trim() + "','" +
                         this.stock_placetextBox.Text.Trim() + "','" +
                         this.notetextBox.Text.Trim() + "','" +
@@ -232,7 +231,7 @@ namespace SaledServices
             }
 
 
-            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "订单数量", "单价", "是否报关", "MB简称", "材料名称", "入库数量","使用数量", "合计金额", "库位", "备注", "输入人", "日期" };
+            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "订单数量", "单价", "是否报关", "MB简称", "材料名称", "入库数量", "合计金额", "库位", "备注", "输入人", "日期" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -319,12 +318,12 @@ namespace SaledServices
             this.mb_brieftextBox.Text= dataGridView1.SelectedCells[12].Value.ToString();
             this.material_nameTextBox.Text= dataGridView1.SelectedCells[13].Value.ToString();
             this.stock_in_numTextBox.Text= dataGridView1.SelectedCells[14].Value.ToString();
-            //used_num 15
-            this.totalMoneyTextBox.Text= dataGridView1.SelectedCells[16].Value.ToString();
-            this.stock_placetextBox.Text= dataGridView1.SelectedCells[17].Value.ToString();
-            this.notetextBox.Text= dataGridView1.SelectedCells[18].Value.ToString();
-            this.inputerTextBox.Text= dataGridView1.SelectedCells[19].Value.ToString();
-            this.input_dateTextBox.Text = dataGridView1.SelectedCells[20].Value.ToString();
+
+            this.totalMoneyTextBox.Text= dataGridView1.SelectedCells[15].Value.ToString();
+            this.stock_placetextBox.Text= dataGridView1.SelectedCells[16].Value.ToString();
+            this.notetextBox.Text= dataGridView1.SelectedCells[17].Value.ToString();
+            this.inputerTextBox.Text= dataGridView1.SelectedCells[18].Value.ToString();
+            this.input_dateTextBox.Text = dataGridView1.SelectedCells[19].Value.ToString();
         }
 
         private void ReceiveOrderForm_Load(object sender, EventArgs e)

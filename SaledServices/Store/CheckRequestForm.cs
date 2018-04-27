@@ -42,7 +42,7 @@ namespace SaledServices.Store
                 MessageBox.Show(ex.ToString());
             }
          
-            string[] hTxt = { "ID", "机型", "位置","材料MPN","请求数量","申请人","申请日期","状态","使用的数量","库位","来源ID"};
+            string[] hTxt = { "ID", "机型", "位置","材料MPN","请求数量","申请人","申请日期","状态","使用的数量","库位"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -59,6 +59,65 @@ namespace SaledServices.Store
             this.requestertextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
             this.dateTextBox.Text = dataGridView1.SelectedCells[6].Value.ToString();
             this.statustextBox.Text  = dataGridView1.SelectedCells[7].Value.ToString(); 
+
+            //根据mpn查询库位的剩余数量，如果不满足条件，则直接disable处理情况，只负责更新状态
+
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    //根据mpn查对应的查询
+                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.materialMpnTextBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string house = "", place = "", Id = "", number = "";
+                    while (querySdr.Read())
+                    {
+                        house = querySdr[0].ToString();
+                        place = querySdr[1].ToString();
+                        Id = querySdr[2].ToString();
+                        number = querySdr[3].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (house == "" || place == "")
+                    {
+                        MessageBox.Show("此料不在库存里面！");
+                        conn.Close();
+                        return;
+                    }
+
+                    int requestNumber = Int32.Parse(this.requestNumbertextBox.Text.Trim());
+                    int totalCurentNumber = Int32.Parse(number);
+
+                    if (requestNumber <= totalCurentNumber)
+                    {
+                        processRequestbutton.Enabled = true;
+                        waitbutton.Enabled = false;
+                    }
+                    else
+                    {
+                        processRequestbutton.Enabled = false;
+                        waitbutton.Enabled = true;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void refreshbutton_Click(object sender, EventArgs e)
@@ -84,6 +143,36 @@ namespace SaledServices.Store
 
             //在处理完请求后需要把本条记录状态修改为close或其他状态
 
+        }
+
+        private void waitbutton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+                    //跟新请求表格的状态
+                    cmd.CommandText = "update request_fru_smt_to_store_table set status = 'wait' where Id = '" + this.idTextBox.Text.Trim() + "'";
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+                MessageBox.Show("更新状态成功!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

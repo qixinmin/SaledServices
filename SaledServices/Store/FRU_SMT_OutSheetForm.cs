@@ -20,6 +20,8 @@ namespace SaledServices
         private string requestId = "";
         private string requestNumber = "";
 
+        private string reqeusterStatus = "";
+
         public FRU_SMT_OutSheetForm()
         {
             InitializeComponent();
@@ -63,15 +65,10 @@ namespace SaledServices
                     cmd.ExecuteNonQuery();
 
                     //跟新请求表格的状态
-                    cmd.CommandText = "update request_fru_smt_to_store_table set status = '" + this.reqeusterStatus + "',realNumber = '" + (this.stock_out_numTextBox.Text) + "', fromId='" + fru_smt_in_id + "'"
+                    cmd.CommandText = "update request_fru_smt_to_store_table set status = '" + this.reqeusterStatus + "',realNumber = '" + (this.stock_out_numTextBox.Text) + "'"
                                + " where Id = '" + this.requestId + "'";
                     cmd.ExecuteNonQuery();
-
-                    //更新入库表的使用数量，要加上出库的数量
-                    cmd.CommandText = "update fru_smt_in_stock set used_num = '" +  (Int32.Parse(this.used_num) + Int32.Parse(this.stock_out_numTextBox.Text)) + "' "
-                               + "where Id = '" + fru_smt_in_id + "'";
-                    cmd.ExecuteNonQuery();
-
+                    
                     //需要更新库房对应储位的数量 减去 本次出库的数量
                     //根据mpn查对应的查询
                     cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
@@ -271,32 +268,77 @@ namespace SaledServices
 
             try
             {
-                this.dataGridView2.DataSource = null;
-                dataGridView2.Columns.Clear();
-                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
-                mConn.Open();
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
 
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = mConn;
-                cmd.CommandText = "select vendor,product,material_type,mpn,mb_brief, material_name,describe,isdeclare,stock_place,stock_in_num from fru_smt_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "' and mb_brief='" + this.mb_brieftextBox.Text.Trim() + "' order by Id asc";
-                cmd.CommandType = CommandType.Text;
-
-                SqlDataAdapter sda = new SqlDataAdapter();
-                sda.SelectCommand = cmd;
-                DataSet ds = new DataSet();
-                sda.Fill(ds, "fru_smt_in_stock");
-                dataGridView2.DataSource = ds.Tables[0];
-                dataGridView2.RowHeadersVisible = false;
-
-                string[] hTxt = { "厂商", "客户别", "材料大类", "MPN", 
-                                     "MB简称","材料名称", "描述","是否报关","库位", "入库数量" };
-                for (int i = 0; i < hTxt.Length; i++)
+                if (conn.State == ConnectionState.Open)
                 {
-                    dataGridView2.Columns[i].HeaderText = hTxt[i];
-                    dataGridView2.Columns[i].Name = hTxt[i];
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+ 
+                    //根据mpn查对应的查询
+                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string house = "", place = "", Id = "", number = "";
+                    while (querySdr.Read())
+                    {
+                        house = querySdr[0].ToString();
+                        place = querySdr[1].ToString();
+                        Id = querySdr[2].ToString();
+                        number = querySdr[3].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (house == "" || place == "")
+                    {
+                        MessageBox.Show("此料不在库存里面！");
+                        conn.Close();
+                        return;
+                    }
+                    this.currentStockNumbertextBox.Text = number;
+                    this.stock_placetextBox.Text = house + "," + place;
+
+                    int requestNumber = Int32.Parse(this.requestNumber);
+                    int totalCurentNumber = Int32.Parse(this.currentStockNumbertextBox.Text);
+
+                    
+                    //库房为空的情况放在上一步来check
+                    if (requestNumber != 0 && requestNumber > totalCurentNumber)
+                    {
+                        MessageBox.Show("申请的数量不能满足，请知晓!");
+                        reqeusterStatus = "part";
+                        this.stock_out_numTextBox.Text = this.currentStockNumbertextBox.Text;
+                    }
+                    else
+                    {
+                        reqeusterStatus = "close";
+                        this.stock_out_numTextBox.Text = this.requestNumber;
+                    }
+
+                    cmd.CommandText = "select vendor,product,mb_brief,describe,isdeclare,material_type,vendormaterialNo,material_name  from fru_smt_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+
+                    while (querySdr.Read())
+                    {
+                        this.vendorTextBox.Text = querySdr[0].ToString();
+                        this.productTextBox.Text = querySdr[1].ToString();
+                        this.mb_brieftextBox.Text = querySdr[2].ToString();
+                        this.describeTextBox.Text = querySdr[3].ToString();
+                        this.isDeclareTextBox.Text = querySdr[4].ToString();
+                        this.material_typeTextBox.Text = querySdr[5].ToString();
+                        this.vendormaterialNoTextBox.Text = querySdr[6].ToString();
+                        this.material_nameTextBox.Text = querySdr[7].ToString();
+                        break;
+                    }
+                    querySdr.Close();
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
                 }
 
-                mConn.Close();
+                conn.Close();
             }
             catch (Exception ex)
             {
@@ -304,11 +346,12 @@ namespace SaledServices
             }
         }
 
+        //小材料领料有2中情况，1 发起请求来领， 2. 直接库房出库
         public void mpnTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-               //doRequestUsingMpn();            
+                doRequestUsingMpn();            
             }
         }
 
@@ -320,90 +363,6 @@ namespace SaledServices
             requestId = index;
         }
 
-
-        string reqeusterStatus = "";
-        string fru_smt_in_id = "";
-        string used_num = "";
-        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                this.add.Enabled = false;
-                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
-                mConn.Open();
-
-
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = mConn;
-                cmd.CommandType = CommandType.Text;
-
-                cmd.CommandText = "select vendor,buy_type,product,material_type,mpn,mb_brief, material_name,vendormaterialNo,describe,isdeclare,pricePer,stock_place,stock_in_num,used_num, Id from fru_smt_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "' and mb_brief='" + this.mb_brieftextBox.Text.Trim() + "'";
-
-                SqlDataReader querySdr = cmd.ExecuteReader();
-
-                string stock_in_num ="";                
-                while (querySdr.Read())
-                {
-                    this.vendorTextBox.Text = querySdr[0].ToString();
-                    this.buy_typeTextBox.Text = querySdr[1].ToString();
-                    this.productTextBox.Text = querySdr[2].ToString();
-                    this.material_typeTextBox.Text = querySdr[3].ToString();
-                    this.mpnTextBox.Text = querySdr[4].ToString();
-                    this.mb_brieftextBox.Text = querySdr[5].ToString();
-                    this.material_nameTextBox.Text = querySdr[6].ToString();
-                    this.vendormaterialNoTextBox.Text = querySdr[7].ToString();
-                    this.describeTextBox.Text = querySdr[8].ToString();
-                    this.isDeclareTextBox.Text = querySdr[9].ToString();
-                    this.pricePerTextBox.Text = querySdr[10].ToString();
-                    this.stock_placetextBox.Text = querySdr[11].ToString();
-                    stock_in_num = querySdr[12].ToString();
-                    used_num = querySdr[13].ToString();
-                    fru_smt_in_id = querySdr[14].ToString();
-                }
-                querySdr.Close();
-
-                mConn.Close();
-
-                int currentNumber = Int32.Parse(stock_in_num) - Int32.Parse(used_num);
-                int requestNumber = Int32.Parse(this.requestNumber);
-               
-                if (currentNumber == 0)
-                {
-                    reqeusterStatus = "wait";
-                    this.add.Enabled = false;
-                    MessageBox.Show("TODO 生成购买记录！");
-                    //修改请求状态
-                }
-                else if (requestNumber > currentNumber)
-                {
-                    reqeusterStatus = "part";
-                    
-                    DialogResult ret = MessageBox.Show("库房数量不能满足要求数量" + this.requestNumber+",是否部分分配，并生成申请记录！","",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Warning);
-                    if (ret == System.Windows.Forms.DialogResult.Yes)
-                    {
-                        this.add.Enabled = true;
-                        this.stock_out_numTextBox.Text = currentNumber+"";//给与能给的最大数量
-                    }
-                    else if (ret == System.Windows.Forms.DialogResult.No || ret == System.Windows.Forms.DialogResult.Cancel)
-                    {
-                        this.add.Enabled = false;
-                    }
-
-                    MessageBox.Show("TODO 生成购买记录！");
-                }
-                else if (requestNumber <= currentNumber)
-                {
-                    //满足条件，正常分配
-                    reqeusterStatus = "close";
-                    this.add.Enabled = true;
-                    this.stock_out_numTextBox.Text = this.requestNumber;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
 
         private void queryStock_Click(object sender, EventArgs e)
         {
