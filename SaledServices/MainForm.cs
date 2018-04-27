@@ -759,5 +759,52 @@ namespace SaledServices
 
             allForm.Add(bgainform);    
         }
+
+        private BGA_OutSheetForm bgaoutform;
+        private void bGA出库记录ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bgaoutform == null || bgaoutform.IsDisposed)
+            {
+                bgaoutform = new BGA_OutSheetForm();
+                bgaoutform.MdiParent = this;
+            }
+
+            bgaoutform.WindowState = FormWindowState.Maximized;
+            bgaoutform.BringToFront();
+            bgaoutform.Show();
+
+            allForm.Add(bgaoutform);    
+        }
+        private MB_InSheetForm mbinform;
+        private void mBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (mbinform == null || mbinform.IsDisposed)
+            {
+                mbinform = new MB_InSheetForm();
+                mbinform.MdiParent = this;
+            }
+
+            mbinform.WindowState = FormWindowState.Maximized;
+            mbinform.BringToFront();
+            mbinform.Show();
+
+            allForm.Add(mbinform);  
+        }
+
+        private MB_OutSheetForm mboutform;
+        private void mBToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (mboutform == null || mboutform.IsDisposed)
+            {
+                mboutform = new MB_OutSheetForm();
+                mboutform.MdiParent = this;
+            }
+
+            mboutform.WindowState = FormWindowState.Maximized;
+            mboutform.BringToFront();
+            mboutform.Show();
+
+            allForm.Add(mboutform);   
+        }
     }
 }

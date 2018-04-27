@@ -102,3 +102,6 @@ D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledS
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.StoreHouseInnerForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.ChooseStoreHouseForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.BGA_InSheetForm.resources
+D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.BGA_OutSheetForm.resources
+D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.MB_InSheetForm.resources
+D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.MB_OutSheetForm.resources

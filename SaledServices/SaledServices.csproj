@@ -396,6 +396,24 @@
     <Compile Include="Store\BGA_InSheetForm.Designer.cs">
       <DependentUpon>BGA_InSheetForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\BGA_OutSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\BGA_OutSheetForm.Designer.cs">
+      <DependentUpon>BGA_OutSheetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\MB_InSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\MB_InSheetForm.Designer.cs">
+      <DependentUpon>MB_InSheetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\MB_OutSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\MB_OutSheetForm.Designer.cs">
+      <DependentUpon>MB_OutSheetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Store\StoreHouseInnerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -584,6 +602,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Store\BGA_InSheetForm.resx">
       <DependentUpon>BGA_InSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\BGA_OutSheetForm.resx">
+      <DependentUpon>BGA_OutSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\MB_InSheetForm.resx">
+      <DependentUpon>MB_InSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\MB_OutSheetForm.resx">
+      <DependentUpon>MB_OutSheetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\StoreHouseInnerForm.resx">
       <DependentUpon>StoreHouseInnerForm.cs</DependentUpon>

@@ -355,10 +355,10 @@
             this.还货请求查看ToolStripMenuItem,
             this.fRUToolStripMenuItem,
             this.fRUSMT入库记录ToolStripMenuItem,
-            this.mBToolStripMenuItem,
-            this.mBToolStripMenuItem1,
             this.bGA入库记录ToolStripMenuItem,
             this.bGA出库记录ToolStripMenuItem,
+            this.mBToolStripMenuItem,
+            this.mBToolStripMenuItem1,
             this.库房储位管理ToolStripMenuItem});
             this.库存管理ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.库存管理ToolStripMenuItem.Name = "库存管理ToolStripMenuItem";
@@ -405,12 +405,14 @@
             this.mBToolStripMenuItem.Name = "mBToolStripMenuItem";
             this.mBToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.mBToolStripMenuItem.Text = "MB入库记录";
+            this.mBToolStripMenuItem.Click += new System.EventHandler(this.mBToolStripMenuItem_Click);
             // 
             // mBToolStripMenuItem1
             // 
             this.mBToolStripMenuItem1.Name = "mBToolStripMenuItem1";
             this.mBToolStripMenuItem1.Size = new System.Drawing.Size(255, 32);
             this.mBToolStripMenuItem1.Text = "MB出库记录";
+            this.mBToolStripMenuItem1.Click += new System.EventHandler(this.mBToolStripMenuItem1_Click);
             // 
             // bGA入库记录ToolStripMenuItem
             // 
@@ -424,6 +426,7 @@
             this.bGA出库记录ToolStripMenuItem.Name = "bGA出库记录ToolStripMenuItem";
             this.bGA出库记录ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
             this.bGA出库记录ToolStripMenuItem.Text = "BGA出库记录";
+            this.bGA出库记录ToolStripMenuItem.Click += new System.EventHandler(this.bGA出库记录ToolStripMenuItem_Click);
             // 
             // 库房储位管理ToolStripMenuItem
             // 

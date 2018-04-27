@@ -38,20 +38,6 @@ namespace SaledServices.Store
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
                 conn.Open();
 
-//                mb_brief NVARCHAR(128), /*机型*/
-//not_good_place NVARCHAR(128), /*不良位置*/
-//material_mpn NVARCHAR(128), /*材料mpn*/
-//number NVARCHAR(128), /*请求数量*/
-//realNumber NVARCHAR(128), /*获得的真正数量*/
-//requester NVARCHAR(128), /*请求人*/
-//date NVARCHAR(128), /*请求日期*/
-//status NVARCHAR(128), /*状态, request/close/part/wait*/
-//usedNumber NVARCHAR(128), /*使用的数量,是个累加数量*/
-//stock_place NVARCHAR(128),/*库位*/
-//fromId NVARCHAR(128),/*从fru_smt_in_stock来的id，将来可能要还回去*/
-//processer NVARCHAR(128), /*处理人*/
-//processe_date NVARCHAR(128), /*处理日期*/
-
                 if (conn.State == ConnectionState.Open)
                 {
                     SqlCommand cmd = new SqlCommand();
