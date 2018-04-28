@@ -438,28 +438,40 @@
     <Compile Include="Store\FRU_SMT_OutSheetForm.Designer.cs">
       <DependentUpon>FRU_SMT_OutSheetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Test_Outlook\OutLookForm.cs">
+    <Compile Include="Test_Outlook_Other\ObeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Test_Outlook\OutLookForm.Designer.cs">
+    <Compile Include="Test_Outlook_Other\ObeForm.Designer.cs">
+      <DependentUpon>ObeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\RunningForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\RunningForm.Designer.cs">
+      <DependentUpon>RunningForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\OutLookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\OutLookForm.Designer.cs">
       <DependentUpon>OutLookForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Test_Outlook\Test1Form.cs">
+    <Compile Include="Test_Outlook_Other\Test1Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Test_Outlook\Test1Form.Designer.cs">
+    <Compile Include="Test_Outlook_Other\Test1Form.Designer.cs">
       <DependentUpon>Test1Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Test_Outlook\Test2Form.cs">
+    <Compile Include="Test_Outlook_Other\Test2Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Test_Outlook\Test2Form.Designer.cs">
+    <Compile Include="Test_Outlook_Other\Test2Form.Designer.cs">
       <DependentUpon>Test2Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Test_Outlook\TestAllForm.cs">
+    <Compile Include="Test_Outlook_Other\TestAllForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Test_Outlook\TestAllForm.Designer.cs">
+    <Compile Include="Test_Outlook_Other\TestAllForm.Designer.cs">
       <DependentUpon>TestAllForm.cs</DependentUpon>
     </Compile>
     <Compile Include="User\LoginForm.cs">
@@ -618,16 +630,22 @@
     <EmbeddedResource Include="Store\FRU_SMT_OutSheetForm.resx">
       <DependentUpon>FRU_SMT_OutSheetForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Test_Outlook\OutLookForm.resx">
+    <EmbeddedResource Include="Test_Outlook_Other\ObeForm.resx">
+      <DependentUpon>ObeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook_Other\RunningForm.resx">
+      <DependentUpon>RunningForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook_Other\OutLookForm.resx">
       <DependentUpon>OutLookForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Test_Outlook\Test1Form.resx">
+    <EmbeddedResource Include="Test_Outlook_Other\Test1Form.resx">
       <DependentUpon>Test1Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Test_Outlook\Test2Form.resx">
+    <EmbeddedResource Include="Test_Outlook_Other\Test2Form.resx">
       <DependentUpon>Test2Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Test_Outlook\TestAllForm.resx">
+    <EmbeddedResource Include="Test_Outlook_Other\TestAllForm.resx">
       <DependentUpon>TestAllForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\LoginForm.resx">

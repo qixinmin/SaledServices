@@ -104,3 +104,5 @@ D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledS
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.BGA_OutSheetForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.MB_InSheetForm.resources
 D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.MB_OutSheetForm.resources
+D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.ObeForm.resources
+D:\projects\SaledServices0420\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.RunningForm.resources

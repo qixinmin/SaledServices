@@ -51,6 +51,8 @@
             this.bgaCheckBox = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.workIdTextBox = new System.Windows.Forms.TextBox();
+            this.runningcheckBox = new System.Windows.Forms.CheckBox();
+            this.obecheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.permissionPanel.SuspendLayout();
             this.SuspendLayout();
@@ -169,6 +171,8 @@
             // permissionPanel
             // 
             this.permissionPanel.Controls.Add(this.storeCheckBox);
+            this.permissionPanel.Controls.Add(this.obecheckBox);
+            this.permissionPanel.Controls.Add(this.runningcheckBox);
             this.permissionPanel.Controls.Add(this.outlookCheckBox);
             this.permissionPanel.Controls.Add(this.receive_returnCheckBox);
             this.permissionPanel.Controls.Add(this.test2CheckBox);
@@ -278,6 +282,26 @@
             this.workIdTextBox.Size = new System.Drawing.Size(145, 30);
             this.workIdTextBox.TabIndex = 3;
             // 
+            // runningcheckBox
+            // 
+            this.runningcheckBox.AutoSize = true;
+            this.runningcheckBox.Location = new System.Drawing.Point(107, 182);
+            this.runningcheckBox.Name = "runningcheckBox";
+            this.runningcheckBox.Size = new System.Drawing.Size(98, 24);
+            this.runningcheckBox.TabIndex = 6;
+            this.runningcheckBox.Text = "Running";
+            this.runningcheckBox.UseVisualStyleBackColor = true;
+            // 
+            // obecheckBox
+            // 
+            this.obecheckBox.AutoSize = true;
+            this.obecheckBox.Location = new System.Drawing.Point(215, 182);
+            this.obecheckBox.Name = "obecheckBox";
+            this.obecheckBox.Size = new System.Drawing.Size(58, 24);
+            this.obecheckBox.TabIndex = 6;
+            this.obecheckBox.Text = "OBE";
+            this.obecheckBox.UseVisualStyleBackColor = true;
+            // 
             // UserDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -336,6 +360,8 @@
         private System.Windows.Forms.CheckBox storeCheckBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox workIdTextBox;
+        private System.Windows.Forms.CheckBox obecheckBox;
+        private System.Windows.Forms.CheckBox runningcheckBox;
 
     }
 }

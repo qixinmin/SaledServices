@@ -26,6 +26,8 @@ namespace SaledServices.User
         public static string receive_return = "";
         public static string store="";
         public static string outlook="";
+        public static string running = "";
+        public static string obe = "";
 
         public UserSelfForm()
         {
@@ -138,6 +140,24 @@ namespace SaledServices.User
                         else
                         {
                             this.outlookCheckBox.Checked = false;
+                        }
+
+                        if (querySdr[13].ToString() == "True")
+                        {
+                            this.runningcheckBox.Checked = true;
+                        }
+                        else
+                        {
+                            this.runningcheckBox.Checked = false;
+                        }
+
+                        if (querySdr[14].ToString() == "True")
+                        {
+                            this.obecheckBox.Checked = true;
+                        }
+                        else
+                        {
+                            this.obecheckBox.Checked = false;
                         }     
                     }
                 }

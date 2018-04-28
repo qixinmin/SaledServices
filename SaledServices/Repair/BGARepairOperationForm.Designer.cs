@@ -685,6 +685,7 @@
             this.oldSntextBox.Location = new System.Drawing.Point(197, 261);
             this.oldSntextBox.Margin = new System.Windows.Forms.Padding(4);
             this.oldSntextBox.Name = "oldSntextBox";
+            this.oldSntextBox.ReadOnly = true;
             this.oldSntextBox.Size = new System.Drawing.Size(202, 26);
             this.oldSntextBox.TabIndex = 22;
             this.oldSntextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.oldSntextBox_KeyPress);
@@ -714,8 +715,10 @@
             this.newSntextBox.Location = new System.Drawing.Point(197, 324);
             this.newSntextBox.Margin = new System.Windows.Forms.Padding(4);
             this.newSntextBox.Name = "newSntextBox";
+            this.newSntextBox.ReadOnly = true;
             this.newSntextBox.Size = new System.Drawing.Size(202, 26);
             this.newSntextBox.TabIndex = 22;
+            this.newSntextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.newSntextBox_KeyPress);
             // 
             // tableLayoutPanel3
             // 

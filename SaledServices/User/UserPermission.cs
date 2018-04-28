@@ -17,5 +17,8 @@ namespace SaledServices.User
         public const string RECEIVE_RETURN = "receive_return";
         public const string STORE = "store";
         public const string OUTLOOK = "outlook";
+
+        public const string Running = "running";
+        public const string OBE = "obe";
     }
 }

@@ -58,12 +58,28 @@ namespace SaledServices
                    });
                     break;
                 case MenuType.Test1:
+                    this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
+                    this.测试1ToolStripMenuItem1,
+                   });
                     break;
                 case MenuType.Test2:
+                    this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
+                    this.测试2ToolStripMenuItem1,
+                   });
+                    break;
+                case MenuType.Running:
+                    this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
+                    this.runningToolStripMenuItem,
+                   });
                     break;
                 case MenuType.Outlook:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.外观ToolStripMenuItem,
+                   });
+                    break;
+                case MenuType.Obe:
+                    this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
+                    this.oBEToolStripMenuItem,
                    });
                     break;
                 case MenuType.Store:
@@ -351,40 +367,6 @@ namespace SaledServices
             rftf.Show();
 
             allForm.Add(rftf);
-        }
-
-       
-
-        private Test_Outlook.Test1Form test1form;
-        private void 测试1ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (test1form == null || test1form.IsDisposed)
-            {
-                test1form = new Test_Outlook.Test1Form();
-                test1form.MdiParent = this;
-            }
-
-            //eef.WindowState = FormWindowState.Maximized;
-            test1form.BringToFront();
-            test1form.Show();
-
-            allForm.Add(test1form);
-        }
-
-        private Test_Outlook.Test2Form test2form;
-        private void 测试2ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (test2form == null || test2form.IsDisposed)
-            {
-                test2form = new Test_Outlook.Test2Form();
-                test2form.MdiParent = this;
-            }
-
-            //eef.WindowState = FormWindowState.Maximized;
-            test2form.BringToFront();
-            test2form.Show();
-
-            allForm.Add(test2form);
         }
 
         private Test_Outlook.TestAllForm testAllform;
@@ -855,6 +837,70 @@ namespace SaledServices
             mUserDetailForm.Show();
 
             allForm.Add(mUserDetailForm);   
+        }
+
+        private Test_Outlook.Test1Form test1form;
+        private void 测试1ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (test1form == null || test1form.IsDisposed)
+            {
+                test1form = new Test_Outlook.Test1Form();
+                test1form.MdiParent = this;
+            }
+
+            //eef.WindowState = FormWindowState.Maximized;
+            test1form.BringToFront();
+            test1form.Show();
+
+            allForm.Add(test1form);
+        }
+
+        private Test_Outlook.Test2Form test2form;
+        private void 测试2ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (test2form == null || test2form.IsDisposed)
+            {
+                test2form = new Test_Outlook.Test2Form();
+                test2form.MdiParent = this;
+            }
+
+            //eef.WindowState = FormWindowState.Maximized;
+            test2form.BringToFront();
+            test2form.Show();
+
+            allForm.Add(test2form);
+        }
+        
+        private Test_Outlook.RunningForm runningform;
+        private void runningToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (runningform == null || runningform.IsDisposed)
+            {
+                runningform = new Test_Outlook.RunningForm();
+                runningform.MdiParent = this;
+            }
+
+            //runningform.WindowState = FormWindowState.Maximized;
+            runningform.BringToFront();
+            runningform.Show();
+
+            allForm.Add(runningform);
+        }
+
+        private Test_Outlook.ObeForm obeform;
+        private void oBEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (obeform == null || obeform.IsDisposed)
+            {
+                obeform = new Test_Outlook.ObeForm();
+                obeform.MdiParent = this;
+            }
+
+            //obeform.WindowState = FormWindowState.Maximized;
+            obeform.BringToFront();
+            obeform.Show();
+
+            allForm.Add(obeform);
         }
     }
 }

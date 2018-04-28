@@ -18,6 +18,8 @@ namespace SaledServices
         Recieve_Return,
         Outlook,
         Store,
+        Running,
+        Obe,
         Other,//把不能分类的都放在这里
     }
 }

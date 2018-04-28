@@ -228,22 +228,19 @@ namespace SaledServices
                         }
                     }
 
-                    if (bgaRepairResult_txt == "BGA待换")
+
+                    if (this.oldSntextBox.ReadOnly == false)
                     {
-                        this.oldSntextBox.Text = "";
-                        this.newSntextBox.Text = "";
+                        MessageBox.Show("换下的BGA SN的输入为空，请检查!");
+                        conn.Close();
+                        return;
                     }
-                    else
+
+                    if (this.newSntextBox.ReadOnly == false)
                     {
-                        if (this.bgatypetextBox.Text != "VGA")
-                        {
-                            if (this.oldSntextBox.Text == "" || this.newSntextBox.Text == "")
-                            {
-                                MessageBox.Show("2个SN的输入为空，请检查!");
-                                conn.Close();
-                                return;
-                            }
-                        }
+                        MessageBox.Show("换上的BGA SN的输入为空，请检查!");
+                        conn.Close();
+                        return;
                     }
 
                     cmd.CommandText = "INSERT INTO bga_repair_record_table VALUES('"
@@ -345,16 +342,53 @@ namespace SaledServices
 
         private void bgaRepair_resultcomboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            this.oldSntextBox.Focus();
-            this.oldSntextBox.SelectAll();
+            //this.oldSntextBox.Focus();
+            //this.oldSntextBox.SelectAll();
+            if (this.bgatypetextBox.Text != "VGA")
+            {
+                if (this.bgaRepair_resultcomboBox.Text == "BGA待换")
+                {
+                    this.oldSntextBox.ReadOnly = false;
+                    this.newSntextBox.Clear();
+                    this.newSntextBox.ReadOnly = true;
+                }
+                else
+                {
+                    this.oldSntextBox.Clear();
+                    this.oldSntextBox.ReadOnly = true;
+                    this.newSntextBox.ReadOnly = false;
+                }
+            }
+            else
+            {
+                this.oldSntextBox.Clear();
+                this.oldSntextBox.ReadOnly = true; ;
+                this.newSntextBox.Clear();
+                this.newSntextBox.ReadOnly = true;
+            }
         }
 
         private void oldSntextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                this.newSntextBox.Focus();
-                this.newSntextBox.SelectAll();
+                if (this.oldSntextBox.ReadOnly == false && this.oldSntextBox.Text == "")
+                {
+                    MessageBox.Show("请输入内容");
+                    this.oldSntextBox.Focus();
+                }
+            }
+        }
+
+        private void newSntextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                if (this.newSntextBox.ReadOnly == false && this.newSntextBox.Text == "")
+                {
+                    MessageBox.Show("请输入内容");
+                    this.newSntextBox.Focus();
+                }
             }
         }
     }

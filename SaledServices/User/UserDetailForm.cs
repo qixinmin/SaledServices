@@ -49,8 +49,10 @@ namespace SaledServices
                 this.test1CheckBox.Checked == false &&
                 this.test2CheckBox.Checked == false &&
                 this.receive_returnCheckBox.Checked == false &&
-                this.outlookCheckBox.Checked == false && 
-                this.storeCheckBox.Checked == false)
+                this.outlookCheckBox.Checked == false &&
+                this.storeCheckBox.Checked == false &&
+                this.runningcheckBox.Checked == false && 
+                this.obecheckBox.Checked == false)
             {
                 MessageBox.Show("请选择至少一个权限!");
                 return;
@@ -77,7 +79,9 @@ namespace SaledServices
                         + this.test2CheckBox.Checked + "','"
                         + this.receive_returnCheckBox.Checked + "','"
                         + this.storeCheckBox.Checked + "','"
-                        + this.outlookCheckBox.Checked + 
+                        + this.outlookCheckBox.Checked + "','"
+                        + this.runningcheckBox.Checked + "','"
+                        + this.obecheckBox.Checked + 
                         "')";
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
@@ -118,7 +122,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "ID", "用户名","工号","密码", "超级管理员", "BGA", "维修", "测试ALL","测试1","测试2","收还货","库存","外观" };
+            string[] hTxt = { "ID", "用户名","工号","密码", "超级管理员", "BGA", "维修", "测试ALL","测试1","测试2","收还货","库存","外观","Running","OBE" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -143,6 +147,8 @@ namespace SaledServices
             dr["receive_return"] = this.receive_returnCheckBox.Checked;
             dr["store"] = this.storeCheckBox.Checked;
             dr["outlook"] = this.outlookCheckBox.Checked;
+            dr["running"] = this.runningcheckBox.Checked;
+            dr["obe"] = this.obecheckBox.Checked;
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
@@ -262,7 +268,25 @@ namespace SaledServices
             else
             {
                 this.outlookCheckBox.Checked = false;
-            }            
+            }
+
+            if (dataGridView1.SelectedCells[13].Value.ToString() == "True")
+            {
+                this.runningcheckBox.Checked = true;
+            }
+            else
+            {
+                this.runningcheckBox.Checked = false;
+            }
+
+            if (dataGridView1.SelectedCells[14].Value.ToString() == "True")
+            {
+                this.obecheckBox.Checked = true;
+            }
+            else
+            {
+                this.obecheckBox.Checked = false;
+            }    
         }
     }
 }

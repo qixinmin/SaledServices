@@ -48,9 +48,11 @@
             this.bgaCheckBox = new System.Windows.Forms.CheckBox();
             this.super_checkBox = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.workIdtextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.workIdtextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.obecheckBox = new System.Windows.Forms.CheckBox();
+            this.runningcheckBox = new System.Windows.Forms.CheckBox();
             this.permissionPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -132,7 +134,9 @@
             // 
             // permissionPanel
             // 
+            this.permissionPanel.Controls.Add(this.obecheckBox);
             this.permissionPanel.Controls.Add(this.storeCheckBox);
+            this.permissionPanel.Controls.Add(this.runningcheckBox);
             this.permissionPanel.Controls.Add(this.outlookCheckBox);
             this.permissionPanel.Controls.Add(this.receive_returnCheckBox);
             this.permissionPanel.Controls.Add(this.test2CheckBox);
@@ -263,14 +267,14 @@
             this.panel1.Size = new System.Drawing.Size(363, 236);
             this.panel1.TabIndex = 9;
             // 
-            // label5
+            // label6
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(170, 288);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 12);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "当前的权限";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(17, 80);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "工号";
             // 
             // workIdtextBox
             // 
@@ -280,14 +284,34 @@
             this.workIdtextBox.Size = new System.Drawing.Size(100, 21);
             this.workIdtextBox.TabIndex = 1;
             // 
-            // label6
+            // label5
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 80);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 12);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "工号";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(170, 288);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "当前的权限";
+            // 
+            // obecheckBox
+            // 
+            this.obecheckBox.AutoSize = true;
+            this.obecheckBox.Location = new System.Drawing.Point(216, 182);
+            this.obecheckBox.Name = "obecheckBox";
+            this.obecheckBox.Size = new System.Drawing.Size(42, 16);
+            this.obecheckBox.TabIndex = 12;
+            this.obecheckBox.Text = "OBE";
+            this.obecheckBox.UseVisualStyleBackColor = true;
+            // 
+            // runningcheckBox
+            // 
+            this.runningcheckBox.AutoSize = true;
+            this.runningcheckBox.Location = new System.Drawing.Point(120, 182);
+            this.runningcheckBox.Name = "runningcheckBox";
+            this.runningcheckBox.Size = new System.Drawing.Size(66, 16);
+            this.runningcheckBox.TabIndex = 11;
+            this.runningcheckBox.Text = "Running";
+            this.runningcheckBox.UseVisualStyleBackColor = true;
             // 
             // UserSelfForm
             // 
@@ -334,5 +358,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox workIdtextBox;
+        private System.Windows.Forms.CheckBox obecheckBox;
+        private System.Windows.Forms.CheckBox runningcheckBox;
     }
 }

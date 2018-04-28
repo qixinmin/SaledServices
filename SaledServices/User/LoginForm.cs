@@ -38,7 +38,7 @@ namespace SaledServices
                 mConn.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select Id, username, password, super_manager, bga,repair,test_all ,test1,test2 ,receive_return, store,outlook  from users where username = '" + usernameInput.Text.Trim()
+                cmd.CommandText = "select Id, username, password, super_manager, bga,repair,test_all ,test1,test2 ,receive_return, store,outlook,running,obe  from users where username = '" + usernameInput.Text.Trim()
                     + "' and password ='" + this.passwordInput.Text.Trim() + "'";
                 cmd.CommandType = CommandType.Text;
 
@@ -57,6 +57,9 @@ namespace SaledServices
                     User.UserSelfForm.receive_return = querySdr[9].ToString();
                     User.UserSelfForm.store = querySdr[10].ToString();
                     User.UserSelfForm.outlook = querySdr[11].ToString();
+
+                    User.UserSelfForm.running = querySdr[12].ToString();
+                    User.UserSelfForm.obe = querySdr[13].ToString();
                 }
                 querySdr.Close();
 
@@ -77,17 +80,18 @@ namespace SaledServices
 
                     if (User.UserSelfForm.super_manager == "True")
                     {
-                        mParent.appendMenu(MenuType.Self);  
+                        mParent.appendMenu(MenuType.Self);
+                        mParent.appendMenu(MenuType.Other);     
                         mParent.appendMenu(MenuType.Repair);                        
-                        mParent.appendMenu(MenuType.Bga_Repair);                       
-                        mParent.appendMenu(MenuType.TestALL);                       
+                        mParent.appendMenu(MenuType.Bga_Repair);                                          
                         mParent.appendMenu(MenuType.TestALL);                        
                         mParent.appendMenu(MenuType.Test1);                        
-                        mParent.appendMenu(MenuType.Test2);                        
+                        mParent.appendMenu(MenuType.Test2);      
+                        mParent.appendMenu(MenuType.Running);      
                         mParent.appendMenu(MenuType.Recieve_Return);                        
-                        mParent.appendMenu(MenuType.Outlook);                        
-                        mParent.appendMenu(MenuType.Store);
-                        mParent.appendMenu(MenuType.Other);       
+                        mParent.appendMenu(MenuType.Outlook);     
+                        mParent.appendMenu(MenuType.Obe);      
+                        mParent.appendMenu(MenuType.Store);                          
                     }
                     else
                     {
@@ -127,6 +131,14 @@ namespace SaledServices
                         if (User.UserSelfForm.store == "True")
                         {
                             mParent.appendMenu(MenuType.Store);
+                        }
+                        if (User.UserSelfForm.running == "True")
+                        {
+                            mParent.appendMenu(MenuType.Running);
+                        }
+                        if (User.UserSelfForm.obe == "True")
+                        {
+                            mParent.appendMenu(MenuType.Obe);
                         }
                     }
                     
