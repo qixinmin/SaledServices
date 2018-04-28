@@ -186,7 +186,7 @@ namespace SaledServices.User
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
                 cmd.CommandText = "select * from  " + tableName + " where username = '" + username
-                    + "' and password ='" + this.oripasswordTextBox.Text.Trim() + "'";
+                    + "' and _password ='" + this.oripasswordTextBox.Text.Trim() + "'";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataReader querySdr = cmd.ExecuteReader();
@@ -207,7 +207,7 @@ namespace SaledServices.User
                 }
 
                 //更新密码，并提示
-                cmd.CommandText = "update users set password = '" + this.confirmPassTextBox.Text.Trim()
+                cmd.CommandText = "update users set _password = '" + this.confirmPassTextBox.Text.Trim()
                                + "' where username = '" + username + "'";
                 cmd.ExecuteNonQuery();
 

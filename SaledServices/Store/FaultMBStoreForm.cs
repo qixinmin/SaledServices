@@ -341,5 +341,16 @@ namespace SaledServices
                 csform.Show();
             }
         }
+
+        private void track_serial_noTextBox_Enter(object sender, EventArgs e)
+        {
+            MessageBox.Show("enter");
+            this.track_serial_noTextBox.BackColor = Color.Red;
+        }
+
+        private void track_serial_noTextBox_Leave(object sender, EventArgs e)
+        {
+            MessageBox.Show("leave");
+        }
     }
 }

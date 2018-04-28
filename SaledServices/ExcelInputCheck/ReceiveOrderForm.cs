@@ -154,7 +154,7 @@ namespace SaledServices
             dr["ordertime"] = this.ordertimeTextBox.Text.Trim();
             dr["receivedNum"] = this.receivedNumTextBox.Text.Trim();
             dr["receivedate"] = this.receivedateTextBox.Text.Trim();
-            dr["status"] = this.statusTextBox.Text.Trim();
+            dr["_status"] = this.statusTextBox.Text.Trim();
             dr["storehouse"] = this.storeHouseComboBox.Text.Trim();
             dr["returnNum"] = this.returnNumTextBox.Text.Trim();
 

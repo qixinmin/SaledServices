@@ -65,7 +65,7 @@ namespace SaledServices
                     cmd.ExecuteNonQuery();
 
                     //跟新请求表格的状态
-                    cmd.CommandText = "update request_fru_smt_to_store_table set status = '" + this.reqeusterStatus + "',realNumber = '" + (this.stock_out_numTextBox.Text) + "'"
+                    cmd.CommandText = "update request_fru_smt_to_store_table set _status = '" + this.reqeusterStatus + "',realNumber = '" + (this.stock_out_numTextBox.Text) + "'"
                                + " where Id = '" + this.requestId + "'";
                     cmd.ExecuteNonQuery();
                     

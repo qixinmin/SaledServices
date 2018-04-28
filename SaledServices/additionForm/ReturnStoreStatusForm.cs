@@ -92,7 +92,7 @@ namespace SaledServices
             DataTable dt = ds.Tables[tableName];
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.numTextBox.Text.Trim());
-            dr["status"] = this.statusTextBox.Text.Trim();
+            dr["_status"] = this.statusTextBox.Text.Trim();
             
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);

@@ -35,7 +35,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select distinct type from repairFaultType";
+                cmd.CommandText = "select distinct _type from repairFaultType";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {

@@ -422,7 +422,7 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select top 1 countNum from bga_wait_record_table where track_serial_no='" + track_serial_no_txt + "' and bgatype='" + bgaType + "' and status='BGA不良' order by Id desc";
+                    cmd.CommandText = "select top 1 countNum from bga_wait_record_table where track_serial_no='" + track_serial_no_txt + "' and bgatype='" + bgaType + "' and _status='BGA不良' order by Id desc";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     int countNum = 0;                 

@@ -27,7 +27,7 @@ namespace SaledServices.Store
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select * from  request_fru_smt_to_store_table where status ='request'";
+                cmd.CommandText = "select * from  request_fru_smt_to_store_table where _status ='request'";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -158,7 +158,7 @@ namespace SaledServices.Store
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
                     //跟新请求表格的状态
-                    cmd.CommandText = "update request_fru_smt_to_store_table set status = 'wait' where Id = '" + this.idTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "update request_fru_smt_to_store_table set _status = 'wait' where Id = '" + this.idTextBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
                 }
                 else

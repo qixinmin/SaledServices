@@ -40,7 +40,7 @@ namespace SaledServices
                 cmd.CommandType = CommandType.Text;
 
                 //1 来源 2.客户故障	3.保内/保外	4 .客责描述
-                cmd.CommandText = "select distinct buy_order_serial_no from stock_in_sheet where status = 'open'";
+                cmd.CommandText = "select distinct buy_order_serial_no from stock_in_sheet where _status = 'open'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -114,7 +114,7 @@ namespace SaledServices
                     querySdr.Close();
 
                     //更新采购表里面的数量与状态
-                    cmd.CommandText = "update stock_in_sheet set status = '" + status + "',stock_in_num = '" + (in_number_int + this_enter_number) + "' where mpn='" + this.mpnTextBox.Text.Trim() + "' and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim() + "'";
+                    cmd.CommandText = "update stock_in_sheet set _status = '" + status + "',stock_in_num = '" + (in_number_int + this_enter_number) + "' where mpn='" + this.mpnTextBox.Text.Trim() + "' and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
@@ -445,7 +445,7 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
                 //加入条件判断，只显示未收完的货物
-                cmd.CommandText = "select material_type,mpn, vendormaterialNo, number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text + "' and status='open'";
+                cmd.CommandText = "select material_type,mpn, vendormaterialNo, number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text + "' and _status='open'";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();

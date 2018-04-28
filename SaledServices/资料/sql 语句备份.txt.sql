@@ -6,17 +6,17 @@ vendor NVARCHAR(128) NOT NULL, /*厂商*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
 source NVARCHAR(128) NOT NULL, /*来源*/
 orderno NVARCHAR(128) NOT NULL, /*订单编号*/
-receivedate NVARCHAR(128) NOT NULL, /*收货日期*/
+receivedate date, /*收货日期*/
 mb_describe NVARCHAR(128), /*MB描述*/
 mb_brief NVARCHAR(128), /*MB简称*/
 custom_serial_no NVARCHAR(128) NOT NULL, /*客户序号*/
 vendor_serail_no NVARCHAR(128) NOT NULL, /*厂商序号*/
 mpn NVARCHAR(128) NOT NULL, /*MPN*/
-mb_make_date NVARCHAR(128) NOT NULL, /*MB生产日期*/
+mb_make_date date, /*MB生产日期*/
 customFault NVARCHAR(128) NOT NULL, /*客户故障*/
 ECO NVARCHAR(128), /*ECO*/
 repairer NVARCHAR(128) NOT NULL, /*维修人*/
-repair_date NVARCHAR(128) NOT NULL, /*修复日期*/
+repair_date date, /*修复日期*/
 )
 
 /*不良品入库表*/
@@ -27,17 +27,17 @@ vendor NVARCHAR(128) NOT NULL, /*厂商*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
 source NVARCHAR(128) NOT NULL, /*来源*/
 orderno NVARCHAR(128) NOT NULL, /*订单编号*/
-receivedate NVARCHAR(128) NOT NULL, /*收货日期*/
+receivedate date, /*收货日期*/
 mb_describe NVARCHAR(128), /*MB描述*/
 mb_brief NVARCHAR(128), /*MB简称*/
 custom_serial_no NVARCHAR(128) NOT NULL, /*客户序号*/
 vendor_serail_no NVARCHAR(128) NOT NULL, /*厂商序号*/
 mpn NVARCHAR(128) NOT NULL, /*MPN*/
-mb_make_date NVARCHAR(128) NOT NULL, /*MB生产日期*/
+mb_make_date date, /*MB生产日期*/
 customFault NVARCHAR(128) NOT NULL, /*客户故障*/
 ECO NVARCHAR(128), /*ECO*/
 repairer NVARCHAR(128) NOT NULL, /*维修人*/
-repair_date NVARCHAR(128) NOT NULL, /*修复日期*/
+repair_date date, /*修复日期*/
 )
 
 
@@ -58,11 +58,11 @@ return_number NVARCHAR(128), /*请求数量*/
 stock_place NVARCHAR(128),/*库位*/
 
 requester NVARCHAR(128), /*请求人*/
-request_date NVARCHAR(128), /*请求日期*/
+request_date date, /*请求日期*/
 
 processer NVARCHAR(128), /*处理人*/
-processe_date NVARCHAR(128), /*处理日期*/
-status NVARCHAR(128), /*request/done 2中状态*/
+processe_date date, /*处理日期*/
+_status NVARCHAR(128), /*request/done 2中状态*/
 fromId NVARCHAR(128),/*从request_fru_smt_to_store_table中过来的id，还需要此id来更新状态*/
 )
 
@@ -70,7 +70,7 @@ fromId NVARCHAR(128),/*从request_fru_smt_to_store_table中过来的id，还需�
 CREATE TABLE fru_smt_used_record(
 Id INT PRIMARY KEY IDENTITY, 
 inputer  NVARCHAR(128),/*输入人*/
-input_date  NVARCHAR(128),/*日期*/
+input_date  date,/*日期*/
 track_serial_no NVARCHAR(128),/*跟踪条码*/
 
 material_mpn NVARCHAR(128), /*材料mpn*/
@@ -86,12 +86,12 @@ material_mpn NVARCHAR(128), /*材料mpn*/
 number NVARCHAR(128), /*请求数量*/
 realNumber NVARCHAR(128), /*获得的真正数量*/
 requester NVARCHAR(128), /*请求人*/
-date NVARCHAR(128), /*请求日期*/
-status NVARCHAR(128), /*状态, request/close/part/wait,return*/
+_date date, /*请求日期*/
+_status NVARCHAR(128), /*状态, request/close/part/wait,return*/
 usedNumber NVARCHAR(128), /*使用的数量,是个累加数量*/
 stock_place NVARCHAR(128),/*库位*/
 processer NVARCHAR(128), /*处理人*/
-processe_date NVARCHAR(128), /*处理日期*/
+processe_date date, /*处理日期*/
 )
 
 CREATE TABLE mb_out_stock(
@@ -112,7 +112,7 @@ note NVARCHAR(128),/*备注*/
 
 taker NVARCHAR(128),/*领用人*/
 inputer  NVARCHAR(128),/*输入人*/
-input_date  NVARCHAR(128),/*日期*/
+input_date date,/*日期*/
 )
 
 CREATE TABLE mb_in_stock(
@@ -139,7 +139,7 @@ vendor_serial_no NVARCHAR(128) NOT NULL,/*厂商序号*/
 
 note NVARCHAR(128),/*备注*/
 inputer  NVARCHAR(128),/*输入人*/
-input_date  NVARCHAR(128),/*日期*/
+input_date  date,/*日期*/
 )
 
 CREATE TABLE bga_out_stock(
@@ -157,7 +157,7 @@ note NVARCHAR(128),/*备注*/
 
 taker NVARCHAR(128),/*领用人*/
 inputer  NVARCHAR(128),/*输入人*/
-input_date  NVARCHAR(128),/*日期*/
+input_date date,/*日期*/
 )
 
 CREATE TABLE bga_in_stock(
@@ -180,7 +180,7 @@ bgasn NVARCHAR(128),/*BGASN*/
 stock_place NVARCHAR(128),/*库位*/
 note NVARCHAR(128),/*备注*/
 inputer  NVARCHAR(128),/*输入人*/
-input_date  NVARCHAR(128),/*日期*/
+input_date date,/*日期*/
 )
 
 
@@ -203,7 +203,7 @@ taker NVARCHAR(128),/*领用人*/
 inputer  NVARCHAR(128),/*输入人*/
 use_describe NVARCHAR(128),/*用途*/
 note NVARCHAR(128),/*备注*/
-input_date  NVARCHAR(128),/*日期*/
+input_date date,/*日期*/
 )
 
 CREATE TABLE fru_smt_in_stock(
@@ -227,7 +227,7 @@ totalMoney  NVARCHAR(128),/*金额合计*/
 stock_place NVARCHAR(128),/*库位*/
 note NVARCHAR(128),/*备注*/
 inputer  NVARCHAR(128),/*输入人*/
-input_date  NVARCHAR(128),/*日期*/
+input_date date,/*日期*/
 )
 
 /*材料入库单*/
@@ -247,10 +247,10 @@ material_name  NVARCHAR(128) NOT NULL,/*材料名称*/
 totalMoney  NVARCHAR(128),/*金额合计*/
 stock_in_num  NVARCHAR(128),/*入库数量*/
 
-status NVARCHAR(128),/*状态 open/close*/
+_status NVARCHAR(128),/*状态 open/close*/
 
 inputer  NVARCHAR(128),/*输入人*/
-input_date  NVARCHAR(128),/*日期*/
+input_date  date,/*日期*/
 isdeclare NVARCHAR(128), /*是否报关*/
 
 declare_unit NVARCHAR(128), /*申报单位*/
@@ -263,18 +263,18 @@ custom_request_number NVARCHAR(128), /*申请单号*/
 CREATE TABLE bga_wait_record_table(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
-status NVARCHAR(128) NOT NULL, /*BGA当前的状态*/
+_status NVARCHAR(128) NOT NULL, /*BGA当前的状态*/
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
 source NVARCHAR(128) NOT NULL, /*来源*/
 orderno NVARCHAR(128) NOT NULL, /*订单编号*/
-receivedate NVARCHAR(128) NOT NULL, /*收货日期*/
+receivedate date, /*收货日期*/
 mb_describe NVARCHAR(128), /*MB描述*/
 mb_brief NVARCHAR(128), /*MB简称*/
 custom_serial_no NVARCHAR(128) NOT NULL, /*客户序号*/
 vendor_serail_no NVARCHAR(128) NOT NULL, /*厂商序号*/
 mpn NVARCHAR(128) NOT NULL, /*MPN*/
-mb_make_date NVARCHAR(128) NOT NULL, /*MB生产日期*/
+mb_make_date date, /*MB生产日期*/
 customFault NVARCHAR(128) NOT NULL, /*客户故障*/
 ECO NVARCHAR(128), /*ECO*/
 mbfa1 NVARCHAR(128) NOT NULL, /*FA分析*/
@@ -283,8 +283,8 @@ bgatype NVARCHAR(128), /*bga类型*/
 BGAPN NVARCHAR(128), /*BGAPN*/
 BGA_place NVARCHAR(128), /*BGA位置*/
 bga_brief NVARCHAR(128) , /*BGA简述*/
-repairer NVARCHAR(128) NOT NULL, /*录入人*/
-repair_date NVARCHAR(128) NOT NULL, /*录入日期*/
+repairer NVARCHAR(128) NOT NULL, /*bga维修人*/
+repair_date date, /*bga维修日期*/
 countNum NVARCHAR(128) NOT NULL/*总共录入了几次，从1开始，防止同一片板子在维修与BGA来回折腾*/
 )
 
@@ -293,7 +293,7 @@ CREATE TABLE outlookcheck(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL,
 tester NVARCHAR(128) NOT NULL,
-test_date NVARCHAR(128) NOT NULL
+test_date date
 )
 
 /*testall, TBG,DT, AIO*/
@@ -301,7 +301,7 @@ CREATE TABLE testalltable(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL,
 tester NVARCHAR(128) NOT NULL,
-test_date NVARCHAR(128) NOT NULL
+test_date date
 )
 
 /*Obe*/
@@ -309,7 +309,7 @@ CREATE TABLE Obetable(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL,
 tester NVARCHAR(128) NOT NULL,
-test_date NVARCHAR(128) NOT NULL
+test_date date
 )
 
 /*Running*/
@@ -317,7 +317,7 @@ CREATE TABLE Runningtable(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL,
 tester NVARCHAR(128) NOT NULL,
-test_date NVARCHAR(128) NOT NULL
+test_date date
 )
 
 /*test2 LBG 使用*/
@@ -325,7 +325,7 @@ CREATE TABLE test2table(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL,
 tester NVARCHAR(128) NOT NULL,
-test_date NVARCHAR(128) NOT NULL
+test_date date
 )
 
 /*test1 LBG*/
@@ -333,7 +333,7 @@ CREATE TABLE test1table(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL,
 tester NVARCHAR(128) NOT NULL,
-test_date NVARCHAR(128) NOT NULL
+test_date date
 )
 
 CREATE TABLE bga_repair_record_table(
@@ -343,12 +343,12 @@ vendor NVARCHAR(128) NOT NULL, /*厂商*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
 source NVARCHAR(128) NOT NULL, /*来源*/
 orderno NVARCHAR(128) NOT NULL, /*订单编号*/
-receivedate NVARCHAR(128) NOT NULL, /*收货日期*/
+receivedate date, /*收货日期*/
 mb_brief NVARCHAR(128), /*MB简称*/
 custom_serial_no NVARCHAR(128) NOT NULL, /*客户序号*/
 vendor_serail_no NVARCHAR(128) NOT NULL, /*厂商序号*/
 mpn NVARCHAR(128) NOT NULL, /*MPN*/
-mb_make_date NVARCHAR(128) NOT NULL, /*MB生产日期*/
+mb_make_date date, /*MB生产日期*/
 customFault NVARCHAR(128) NOT NULL, /*客户故障*/
 fault_describe NVARCHAR(128) NOT NULL, /*故障原因*/
 mbfa1 NVARCHAR(128) NOT NULL, /*mbfa1*/
@@ -358,10 +358,10 @@ BGAPN NVARCHAR(128), /*BGAPN*/
 BGA_place NVARCHAR(128), /*BGA位置*/
 bga_brief NVARCHAR(128) , /*BGA简述*/
 repairer NVARCHAR(128) NOT NULL, /*维修人*/
-repair_date NVARCHAR(128) NOT NULL, /*修复日期*/
+repair_date date, /*修复日期*/
 
 bga_repairer NVARCHAR(128) NOT NULL, /*bga维修人*/
-bga_repair_date NVARCHAR(128) NOT NULL, /*bga修复日期*/
+bga_repair_date date, /*bga修复日期*/
 bga_repair_result NVARCHAR(128) NOT NULL,/*bga修复状态*/
 countNum NVARCHAR(128) NOT NULL,/*总共录入了几次，从1开始，防止同一片板子在维修与BGA来回折腾*/
 oldSn NVARCHAR(128), /*换下sn*/
@@ -376,16 +376,16 @@ dpk_type NVARCHAR(128) NOT NULL, /*DPK类别*/
 KEYPN NVARCHAR(128) NOT NULL, /*KEYPN*/
 KEYID  NVARCHAR(128) NOT NULL, /*KEYID*/
 KEYSERIAL NVARCHAR(128) NOT NULL, /*KEYSERIAL*/
-upload_date NVARCHAR(128) NOT NULL, /*上传日期*/
-status NVARCHAR(128) NOT NULL, /*状态*/
-burn_date NVARCHAR(128),/*烧录日期*/
+upload_date date, /*上传日期*/
+_status NVARCHAR(128) NOT NULL, /*状态*/
+burn_date date,/*烧录日期*/
 custom_serial_no NVARCHAR(128) /*客户序号*/
 )
 
 /*维修故障类别*/
 CREATE TABLE repairFaultType(
 Id INT PRIMARY KEY IDENTITY, 
-type NVARCHAR(128) NOT NULL
+_type NVARCHAR(128) NOT NULL
 )
 
 CREATE TABLE repair_record_table(
@@ -395,13 +395,13 @@ vendor NVARCHAR(128) NOT NULL, /*厂商*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
 source NVARCHAR(128) NOT NULL, /*来源*/
 orderno NVARCHAR(128) NOT NULL, /*订单编号*/
-receivedate NVARCHAR(128) NOT NULL, /*收货日期*/
+receivedate date, /*收货日期*/
 mb_describe NVARCHAR(128), /*MB描述*/
 mb_brief NVARCHAR(128), /*MB简称*/
 custom_serial_no NVARCHAR(128) NOT NULL, /*客户序号*/
 vendor_serail_no NVARCHAR(128) NOT NULL, /*厂商序号*/
 mpn NVARCHAR(128) NOT NULL, /*MPN*/
-mb_make_date NVARCHAR(128) NOT NULL, /*MB生产日期*/
+mb_make_date date, /*MB生产日期*/
 customFault NVARCHAR(128) NOT NULL, /*客户故障*/
 fault_describe NVARCHAR(128) NOT NULL, /*故障原因*/
 mbfa1 NVARCHAR(128) NOT NULL, /*FA分析*/
@@ -412,26 +412,26 @@ material_mpn NVARCHAR(128), /*材料MPN*/
 material_71pn NVARCHAR(128), /*材料71PN*/
 material_type NVARCHAR(128), /*材料类别*/
 fault_type NVARCHAR(128), /*故障类别*/
-action NVARCHAR(128) NOT NULL, /*动作*/
+_action NVARCHAR(128) NOT NULL, /*动作*/
 ECO NVARCHAR(128), /*ECO*/
 repair_result NVARCHAR(128) NOT NULL, /*修复结果*/
 repairer NVARCHAR(128) NOT NULL, /*维修人*/
-repair_date NVARCHAR(128) NOT NULL, /*修复日期*/
+repair_date date, /*修复日期*/
 )
 
 CREATE TABLE LCFC71BOM_table(
 Id INT PRIMARY KEY IDENTITY, 
-date NVARCHAR(128) NOT NULL, /*日期*/
+_date date, /*日期*/
 mb_brief NVARCHAR(128) NOT NULL, /*MB简称*/
 material_vendor_pn NVARCHAR(128) NOT NULL, /*材料厂商PN*/
 material_mpn NVARCHAR(128) NOT NULL, /*材料MPN*/
-description NVARCHAR(128) NOT NULL, /*Description*/
+_description NVARCHAR(128) NOT NULL, /*Description*/
 price NVARCHAR(128) NOT NULL/*price*/
 )
 
 CREATE TABLE COMPAL_MBBOM_table(
 Id INT PRIMARY KEY IDENTITY, 
-date NVARCHAR(128) NOT NULL, /*日期*/
+_date date, /*日期*/
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
 mb_brief NVARCHAR(128) NOT NULL, /*MB简称*/
@@ -453,7 +453,7 @@ L8 NVARCHAR(128)  /*L8*/
 
 CREATE TABLE LCFC_MBBOM_table(
 Id INT PRIMARY KEY IDENTITY, 
-date NVARCHAR(128) NOT NULL, /*日期*/
+_date date, /*日期*/
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
 mb_brief NVARCHAR(128) NOT NULL, /*MB简称*/
@@ -475,14 +475,14 @@ L8 NVARCHAR(128)  /*L8*/
 /*客责类别*/
 CREATE TABLE customResponsibilityType(
 Id INT PRIMARY KEY IDENTITY, 
-type NVARCHAR(128) NOT NULL
+_type NVARCHAR(128) NOT NULL
 )
 
 
 /*还货状态*/
 CREATE TABLE returnStoreStatus(
 Id INT PRIMARY KEY IDENTITY, 
-status NVARCHAR(128) NOT NULL
+_status NVARCHAR(128) NOT NULL
 )
 
 /*还货表*/
@@ -492,7 +492,7 @@ vendor NVARCHAR(128) NOT NULL, /*--厂商*/
 product NVARCHAR(128) NOT NULL, /*--客户别*/
 return_file_no NVARCHAR(128) NOT NULL,/*--还货文件编号*/
 storehouse NVARCHAR(128) NOT NULL,/*--客户库别*/
-return_date NVARCHAR(128) NOT NULL,/*--还货时间*/
+return_date date,/*--还货时间*/
 orderno NVARCHAR(128),/*--订单编号*/
 custommaterialNo NVARCHAR(128) NOT NULL,/*--客户料号*/
 dpkpn NVARCHAR(128),/*--DPK状态*/
@@ -500,7 +500,7 @@ track_serial_no NVARCHAR(128),/*--跟踪条码*/
 custom_serial_no NVARCHAR(128),/*--客户序号*/
 vendor_serail_no NVARCHAR(128) NOT NULL,/*--厂商序号*/
 vendormaterialNo NVARCHAR(128),/*--厂商料号*/
-status NVARCHAR(128),/*--状态*/
+_status NVARCHAR(128),/*--状态*/
 custom_res_type NVARCHAR(128),/*--客责类别*/
 response_describe NVARCHAR(128),/*--客责描述*/
 tat NVARCHAR(128),/*--TAT*/
@@ -516,8 +516,8 @@ product NVARCHAR(128) NOT NULL, /*客户别*/
 source_brief NVARCHAR(128) NOT NULL,/*来源*/
 storehouse NVARCHAR(128) NOT NULL,/*库别*/
 custom_order NVARCHAR(128) NOT NULL,/*订单编号*/
-order_out_date NVARCHAR(128) NOT NULL,/*客户出库日期*/
-order_receive_date NVARCHAR(128),/*收货日期*/
+order_out_date date,/*客户出库日期*/
+order_receive_date date,/*收货日期*/
 custom_machine_type NVARCHAR(128),/*客户机型*/
 mb_brief NVARCHAR(128) NOT NULL,/*mb简称*/
 custommaterialNo NVARCHAR(128) NOT NULL,/*客户料号*/
@@ -529,7 +529,7 @@ uuid NVARCHAR(128) NOT NULL,/*UUID*/
 mac NVARCHAR(128) NOT NULL,/*MAC*/
 vendormaterialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
 mb_describe NVARCHAR(128) NOT NULL,/*mb描述*/
-mb_make_date NVARCHAR(128) NOT NULL,/*MB生产日期*/
+mb_make_date date,/*MB生产日期*/
 warranty_period NVARCHAR(128) NOT NULL,/*保修期*/
 custom_fault NVARCHAR(128) NOT NULL,/*客户故障*/
 guarantee NVARCHAR(128) NOT NULL,/*保内/保外*/
@@ -567,21 +567,18 @@ fault_index NVARCHAR(128) NOT NULL,
 fault_describe NVARCHAR(128) NOT NULL
 )
 
-
-
 /*来源	正常RMA\RMA_DOA\NB_DOA\RMA_IQC\成都DT\北京DT\惠阳DT*/
 CREATE TABLE sourceTable(
 Id INT PRIMARY KEY IDENTITY, 
 source NVARCHAR(128) NOT NULL
 )
 
-
 /*users表*/
 CREATE TABLE users(
 Id INT PRIMARY KEY IDENTITY, 
 username NVARCHAR(128) NOT NULL, 
 workId NVARCHAR(128) NOT NULL, 
-password NVARCHAR(128) NOT NULL, 
+_password NVARCHAR(128) NOT NULL, 
 super_manager NVARCHAR(128) NOT NULL,
 bga  NVARCHAR(128) NOT NULL,
 repair  NVARCHAR(128) NOT NULL,
@@ -640,12 +637,12 @@ warranty_period NVARCHAR(128) NOT NULL,/*保修期*/
 custom_machine_type NVARCHAR(128),/*客户机型*/
 whole_machine_num NVARCHAR(128) NOT NULL,/*整机出货量*/
 area NVARCHAR(128) NOT NULL,/*地区*/
-status NVARCHAR(128) NOT NULL,/*状态*/
+_status NVARCHAR(128) NOT NULL,/*状态*/
 cpu_type NVARCHAR(128),/*CPU型号*/
 cpu_freq NVARCHAR(128),/*CPU频率*/
 eco NVARCHAR(128),/*ECO*/
 eol NVARCHAR(128),/*EOL*/
-adddate NVARCHAR(128),/*添加日期*/
+adddate date,/*添加日期*/
 inputuser NVARCHAR(128),/*添加人*/
 )
 
@@ -661,10 +658,10 @@ ordernum NVARCHAR(128) NOT NULL,/*订单数量*/
 mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
 vendor_materialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
 username NVARCHAR(128) NOT NULL,/*制单人*/
-ordertime NVARCHAR(128) NOT NULL,/*制单时间*/
+ordertime date,/*制单时间*/
 receivedNum NVARCHAR(128),/*收货数量*/
-receivedate NVARCHAR(128),/*收货日期*/
-status NVARCHAR(128) NOT NULL,/*订单状态*/
+receivedate date,/*收货日期*/
+_status NVARCHAR(128) NOT NULL,/*订单状态*/
 storehouse NVARCHAR(128) NOT NULL,/*库别*/
 returnNum NVARCHAR(128), /*还货数量*/
 
@@ -679,7 +676,7 @@ CREATE TABLE stationInformation(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
 station NVARCHAR(128), /*站别信息：收货，维修，(BGA), 测试1， 测试2(或测试1&2）， 外观等，[合肥有Test2->Running->外观->OBE]*/
-updateDate NVARCHAR(128) /*更新时间*/
+updateDate date /*更新时间*/
 )
 
 /*合肥海关信息*/

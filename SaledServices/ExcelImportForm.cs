@@ -451,7 +451,7 @@ namespace SaledServices
                     bcp.NotifyAfter = 10000;//进度提示的行数
                     bcp.DestinationTableName = tableName;//目标表
 
-                    bcp.ColumnMappings.Add("日期", "date");
+                    bcp.ColumnMappings.Add("日期", "_date");
                     bcp.ColumnMappings.Add("厂商", "vendor");
                     bcp.ColumnMappings.Add("客户别","product");
                     bcp.ColumnMappings.Add("MB简称", "mb_brief");

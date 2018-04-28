@@ -123,7 +123,7 @@ namespace SaledServices
             dr["custom_machine_type"] = this.custom_machine_typeTextBox.Text.Trim();
             dr["whole_machine_num"] = this.whole_machine_numTextBox.Text.Trim();
             dr["area"] = this.areaTextBox.Text.Trim();
-            dr["status"] = this.statusTextBox.Text.Trim();
+            dr["_status"] = this.statusTextBox.Text.Trim();
             dr["cpu_type"] = this.cpu_typeTextBox.Text.Trim();
             dr["cpu_freq"] = this.cpu_freqTextBox.Text.Trim();
             dr["eco"] = this.ecoTextBox.Text.Trim();

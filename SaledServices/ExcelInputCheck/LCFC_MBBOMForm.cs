@@ -151,7 +151,7 @@ namespace SaledServices
             dr["L6"] = this.L6TextBox.Text.Trim();
             dr["L7"] = this.L7TextBox.Text.Trim();
             dr["L8"] = this.L8TextBox.Text.Trim();
-            dr["date"] = this.datetextBox.Text.Trim();
+            dr["_date"] = this.datetextBox.Text.Trim();
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);

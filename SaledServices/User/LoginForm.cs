@@ -38,8 +38,8 @@ namespace SaledServices
                 mConn.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select Id, username, password, super_manager, bga,repair,test_all ,test1,test2 ,receive_return, store,outlook,running,obe  from users where username = '" + usernameInput.Text.Trim()
-                    + "' and password ='" + this.passwordInput.Text.Trim() + "'";
+                cmd.CommandText = "select Id, username, _password, super_manager, bga,repair,test_all ,test1,test2 ,receive_return, store,outlook,running,obe  from users where username = '" + usernameInput.Text.Trim()
+                    + "' and _password ='" + this.passwordInput.Text.Trim() + "'";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataReader querySdr = cmd.ExecuteReader();

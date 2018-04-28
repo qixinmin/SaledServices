@@ -27,7 +27,7 @@ namespace SaledServices.Store
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select material_mpn,return_number,stock_place,requester,request_date,Id, fromId from fru_smt_return_store_record where status ='request'";
+                cmd.CommandText = "select material_mpn,return_number,stock_place,requester,request_date,Id, fromId from fru_smt_return_store_record where _status ='request'";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -82,7 +82,7 @@ namespace SaledServices.Store
                     cmd.CommandType = CommandType.Text;
 
                     //1 修改归还仓库状态
-                    cmd.CommandText = "update fru_smt_return_store_record set status = 'done',processer = '" + "testerprcess" +
+                    cmd.CommandText = "update fru_smt_return_store_record set _status = 'done',processer = '" + "testerprcess" +
                                 "', processe_date = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                                 + "where Id = '" + this.idtextBox.Text + "'";
                     cmd.ExecuteNonQuery();
@@ -104,7 +104,7 @@ namespace SaledServices.Store
                     cmd.ExecuteNonQuery();
 
                     //3.更新表request_fru_smt_to_store_table中的status的字段的数量为return
-                    cmd.CommandText = "update request_fru_smt_to_store_table set status = 'return' where Id='"+this.fromIdtextBox.Text.Trim()+"'";
+                    cmd.CommandText = "update request_fru_smt_to_store_table set _status = 'return' where Id='"+this.fromIdtextBox.Text.Trim()+"'";
                     cmd.ExecuteNonQuery();
                 }
                 else

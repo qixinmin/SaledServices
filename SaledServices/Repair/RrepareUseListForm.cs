@@ -37,7 +37,7 @@ namespace SaledServices.Repair
                 dataGridView1.Columns.Clear();
 
                 // string sqlStr = "select top 100 * from fru_smt_out_stock where requester='"+tester+"'";
-                string sqlStr = "select mb_brief,material_mpn,stock_place,realNumber,usedNumber,Id from request_fru_smt_to_store_table where status !='request' and status !='return' /*where requester='tester'*/";
+                string sqlStr = "select mb_brief,material_mpn,stock_place,realNumber,usedNumber,Id from request_fru_smt_to_store_table where _status !='request' and _status !='return' /*where requester='tester'*/";
 
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
 

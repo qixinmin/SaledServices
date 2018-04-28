@@ -128,7 +128,7 @@ namespace SaledServices
             dr["material_mpn"] = this.material_mpnTextBox.Text.Trim();
             dr["material_box_place"] = this.descriptionTextBox.Text.Trim();
             dr["mb_brief"] = this.mb_briefTextBox.Text.Trim();
-            dr["date"] = this.datetextBox.Text.Trim();
+            dr["_date"] = this.datetextBox.Text.Trim();
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);

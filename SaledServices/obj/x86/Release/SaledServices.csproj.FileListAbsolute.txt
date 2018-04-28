@@ -111,8 +111,6 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.exe
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
 D:\维修系统\SaledServices\SaledServices\bin\Release\SaledServices.exe
 D:\维修系统\SaledServices\SaledServices\bin\Release\SaledServices.pdb
-D:\维修系统\SaledServices\SaledServices\bin\Release\RestSharp.xml
-D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.csprojResolveAssemblyReference.cache
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.RepairFaultTypeForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.ReturnStoreCustomRespForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.ReturnStoreStatusForm.resources

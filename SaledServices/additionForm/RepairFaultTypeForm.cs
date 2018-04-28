@@ -95,7 +95,7 @@ namespace SaledServices.additionForm
             DataTable dt = ds.Tables[tableName];
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.numTextBox.Text.Trim());
-            dr["type"] = this.faultTypeTextBox.Text.Trim();            
+            dr["_type"] = this.faultTypeTextBox.Text.Trim();            
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);

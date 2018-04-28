@@ -63,7 +63,7 @@ namespace SaledServices
                 }
                 querySdr.Close();
 
-                cmd.CommandText = "select distinct type from customResponsibilityType";
+                cmd.CommandText = "select distinct _type from customResponsibilityType";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -76,7 +76,7 @@ namespace SaledServices
                 }
                 querySdr.Close();
 
-                cmd.CommandText = "select distinct status from returnStoreStatus";
+                cmd.CommandText = "select distinct _status from returnStoreStatus";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -137,7 +137,7 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
                 cmd.CommandText = "select orderno, custom_materialNo,storehouse, ordertime,ordernum , receivedNum, returnNum from receiveOrder where vendor='" + vendorStr 
-                    + "' and product ='" + productStr + "' and status = 'close'";
+                    + "' and product ='" + productStr + "' and _status = 'close'";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -347,7 +347,7 @@ namespace SaledServices
 
 
                     //在更新收货表的同时，需要同时更新导入的表格收货数量，不然数据会乱掉
-                    cmd.CommandText = "select status, ordernum, receivedNum, returnNum from receiveOrder where orderno = '" + this.ordernoTextBox.Text
+                    cmd.CommandText = "select _status, ordernum, receivedNum, returnNum from receiveOrder where orderno = '" + this.ordernoTextBox.Text
                            + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
 
                     int receivedNum = 0, returnNum =0;
@@ -380,7 +380,7 @@ namespace SaledServices
 
                     if (isDone == false)
                     {
-                        cmd.CommandText = "update receiveOrder set status = '" + status + "',returnNum = '" + (returnNum + 1) +"' "
+                        cmd.CommandText = "update receiveOrder set _status = '" + status + "',returnNum = '" + (returnNum + 1) +"' "
                                     + "where orderno = '" + this.ordernoTextBox.Text
                                     + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
 

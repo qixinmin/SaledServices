@@ -91,7 +91,7 @@ namespace SaledServices
                 querySdr.Close();
 
                 //加载没有收完货的订单
-                cmd.CommandText = "select distinct orderno from receiveOrder where status = 'open'";
+                cmd.CommandText = "select distinct orderno from receiveOrder where _status = 'open'";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -128,7 +128,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select vendor, product, storehouse, status from receiveOrder where orderno = '" + this.custom_orderComboBox.Text
+                cmd.CommandText = "select vendor, product, storehouse, _status from receiveOrder where orderno = '" + this.custom_orderComboBox.Text
                     + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
 
                 SqlDataReader querySdr = cmd.ExecuteReader();
@@ -233,7 +233,7 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
                 //加入条件判断，只显示未收完的货物
-                cmd.CommandText = "select orderno, custom_materialNo,mb_brief,ordernum, receivedNum from receiveOrder where orderno='" + this.custom_orderComboBox.Text + "' and status='open'" ;
+                cmd.CommandText = "select orderno, custom_materialNo,mb_brief,ordernum, receivedNum from receiveOrder where orderno='" + this.custom_orderComboBox.Text + "' and _status='open'" ;
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -490,7 +490,7 @@ namespace SaledServices
                     //3 如果等于 则需要把状态也修改位close， 如果大于则直接报错
                     //update receiveOrder set returnNum = '1' where id = '1'
 
-                    cmd.CommandText = "select status, ordernum, receivedNum, receivedate from receiveOrder where orderno = '" + this.custom_orderComboBox.Text
+                    cmd.CommandText = "select _status, ordernum, receivedNum, receivedate from receiveOrder where orderno = '" + this.custom_orderComboBox.Text
                          + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
                     int orderNum;
                     int receivedNum=0;
@@ -514,7 +514,7 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "update receiveOrder set status = '" + status + "',receivedNum = '" + (receivedNum + 1) +
+                    cmd.CommandText = "update receiveOrder set _status = '" + status + "',receivedNum = '" + (receivedNum + 1) +
                                 "', receivedate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                                 + "where orderno = '" + this.custom_orderComboBox.Text
                                 + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";

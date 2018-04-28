@@ -137,7 +137,7 @@ namespace SaledServices
             DataRow dr = dt.Rows.Find(this.idTextBox.Text.Trim());
             dr["username"] = this.userNameTextBox.Text.Trim();
             dr["workId"] = this.workIdTextBox.Text.Trim();
-            dr["password"] = this.passwordTextBox.Text.Trim();
+            dr["_password"] = this.passwordTextBox.Text.Trim();
             dr["super_manager"] = this.super_checkBox.Checked;
             dr["bga"] = this.bgaCheckBox.Checked;
             dr["repair"] = this.repairCheckBox.Checked;

@@ -53,7 +53,7 @@ namespace SaledServices.Test_Outlook
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select top 1 status from bga_wait_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "' order by Id desc";
+                    cmd.CommandText = "select top 1 _status from bga_wait_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "' order by Id desc";
 
                     querySdr = cmd.ExecuteReader();
                     string bgastatus = "";                  
@@ -136,7 +136,7 @@ namespace SaledServices.Test_Outlook
                                     }
                                     else//不存在或超过90天，则分配新的东西
                                     {
-                                        cmd.CommandText = "select KEYID,KEYSERIAL,Id from DPK_table where KEYPN='" + dpkpn + "' and status ='未使用' order by Id asc";
+                                        cmd.CommandText = "select KEYID,KEYSERIAL,Id from DPK_table where KEYPN='" + dpkpn + "' and _status ='未使用' order by Id asc";
 
                                         querySdr = cmd.ExecuteReader();
                                         bool exist = false;
@@ -158,7 +158,7 @@ namespace SaledServices.Test_Outlook
                                         else
                                         {
                                             //更新烧录日期与custom_serial_no,与使用状态
-                                            cmd.CommandText = "update DPK_table set status = '已使用', burn_date = '" + DateTime.Now.ToString("yyyy/MM/dd") + "',custom_serial_no = '" + custom_serial_no + "' where Id = '" + id + "'";
+                                            cmd.CommandText = "update DPK_table set _status = '已使用', burn_date = '" + DateTime.Now.ToString("yyyy/MM/dd") + "',custom_serial_no = '" + custom_serial_no + "' where Id = '" + id + "'";
                                             cmd.ExecuteNonQuery();
                                         }
                                     }

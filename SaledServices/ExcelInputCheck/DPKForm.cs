@@ -117,7 +117,7 @@ namespace SaledServices
             dr["dpk_order_no"] = this.dpk_order_noTextBox.Text.Trim();
             dr["dpk_type"] = this.dpk_typeTextBox.Text.Trim();
 
-            dr["status"] = this.statusTextBox.Text.Trim();
+            dr["_status"] = this.statusTextBox.Text.Trim();
             dr["KEYID"] = this.KEYIDTextBox.Text.Trim();
             dr["KEYSERIAL"] = this.KEYSERIALTextBox.Text.Trim();
             dr["upload_date"] = this.upload_dateTextBox.Text.Trim();

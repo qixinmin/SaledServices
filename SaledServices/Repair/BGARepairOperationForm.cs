@@ -75,7 +75,7 @@ namespace SaledServices
 
                     //使用top 1保证选择是维修过来的最新的一个记录
                     cmd.CommandText = "select top 1 vendor, product,source,orderno,receivedate,mb_brief, custom_serial_no,vendor_serail_no,mpn,mb_make_date,customFault,"
-                    + "mbfa1,short_cut,bgatype,BGAPN,BGA_place,bga_brief,repairer,repair_date, countNum, status "
+                    + "mbfa1,short_cut,bgatype,BGAPN,BGA_place,bga_brief,repairer,repair_date, countNum, _status "
                     + "from bga_wait_record_table where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'  order by Id desc";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
