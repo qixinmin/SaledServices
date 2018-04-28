@@ -195,6 +195,10 @@ namespace SaledServices
             {
                 ((MB_InSheetForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseTextBox.Text.Trim(), this.placeTextBox.Text.Trim());
             }
+            else if (mFromFrom is FaultMBStoreForm)
+            {
+                ((FaultMBStoreForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseTextBox.Text.Trim(), this.placeTextBox.Text.Trim());
+            }
             this.Close();
         }
     }

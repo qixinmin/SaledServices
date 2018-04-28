@@ -902,5 +902,21 @@ namespace SaledServices
 
             allForm.Add(obeform);
         }
+
+        private FaultMBStoreForm faultMbStoreForm;
+        private void 不良品出入库管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (faultMbStoreForm == null || faultMbStoreForm.IsDisposed)
+            {
+                faultMbStoreForm = new FaultMBStoreForm();
+                faultMbStoreForm.MdiParent = this;
+            }
+
+            faultMbStoreForm.WindowState = FormWindowState.Maximized;
+            faultMbStoreForm.BringToFront();
+            faultMbStoreForm.Show();
+
+            allForm.Add(faultMbStoreForm);
+        }
     }
 }

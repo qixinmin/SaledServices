@@ -170,6 +170,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Release\CheckBoxComboBox.dll</HintPath>
     </Reference>
+    <Reference Include="Interop.LabelManager2">
+      <HintPath>obj\x86\Release\Interop.LabelManager2.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -408,6 +412,12 @@
     <Compile Include="Store\MB_OutSheetForm.Designer.cs">
       <DependentUpon>MB_OutSheetForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\FaultMBStoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\FaultMBStoreForm.Designer.cs">
+      <DependentUpon>FaultMBStoreForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Store\StoreHouseInnerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -615,6 +625,9 @@
     <EmbeddedResource Include="Store\MB_OutSheetForm.resx">
       <DependentUpon>MB_OutSheetForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Store\FaultMBStoreForm.resx">
+      <DependentUpon>FaultMBStoreForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Store\StoreHouseInnerForm.resx">
       <DependentUpon>StoreHouseInnerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -709,7 +722,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="资料\2.ico" />
-    <Content Include="资料\sql 语句备份.txt" />
+    <Content Include="资料\sql 语句备份.txt.sql" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

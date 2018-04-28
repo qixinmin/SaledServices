@@ -82,6 +82,39 @@ namespace SaledServices
 
     public class Untils
     {
+        public void InitCodesoftForReturn()
+        {
+
+            LabelManager2.Application labApp = new LabelManager2.Application();
+            LabelManager2.Document doc = null;
+            string labFileName = System.Windows.Forms.Application.StartupPath + @"\barJapLab.Lab";
+            try
+            {
+                if (!File.Exists(labFileName))
+                {
+                    MessageBox.Show("沒有找到標簽模板文件：barJapLab.Lab,請聯系系統管理員", "溫馨提示");
+                    return;
+                }
+                labApp = new LabelManager2.Application();
+                labApp.Documents.Open(labFileName, false);// 调用设计好的label文件
+                doc = labApp.ActiveDocument;
+                doc.Variables.FormVariables.Item("var0").Value = "ABCDEFG";
+                doc.Variables.FormVariables.Item("var1").Value = "HIJKLMN";
+                doc.Variables.FormVariables.Item("var2").Value = "OPQRSTU";
+
+                doc.PrintDocument(); //打印一次
+                doc.FormFeed(); //结束打印
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+
+            }
+
+        }
         public static void createOpeningStockXML(OpeningStockClass openingStockClass, string fileName)
         {
             StringBuilder xmlResult = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");

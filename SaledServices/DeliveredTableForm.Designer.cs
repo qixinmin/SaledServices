@@ -109,20 +109,20 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(495, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(489, 4);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(865, 302);
+            this.dataGridView1.Size = new System.Drawing.Size(855, 296);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // add
             // 
             this.add.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.add.Location = new System.Drawing.Point(70, 6);
+            this.add.Location = new System.Drawing.Point(68, 5);
             this.add.Margin = new System.Windows.Forms.Padding(4);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(200, 34);
@@ -134,7 +134,7 @@
             // query
             // 
             this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.query.Location = new System.Drawing.Point(410, 6);
+            this.query.Location = new System.Drawing.Point(404, 5);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(200, 34);
@@ -146,7 +146,7 @@
             // modify
             // 
             this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.modify.Location = new System.Drawing.Point(800, 7);
+            this.modify.Location = new System.Drawing.Point(790, 6);
             this.modify.Margin = new System.Windows.Forms.Padding(4);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(100, 31);
@@ -158,7 +158,7 @@
             // delete
             // 
             this.delete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.delete.Location = new System.Drawing.Point(1141, 7);
+            this.delete.Location = new System.Drawing.Point(1127, 6);
             this.delete.Margin = new System.Windows.Forms.Padding(4);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(100, 31);
@@ -250,14 +250,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1362, 371);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1346, 363);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label18.Location = new System.Drawing.Point(459, 291);
+            this.label18.Location = new System.Drawing.Point(453, 291);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(69, 20);
@@ -268,7 +268,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label19.Location = new System.Drawing.Point(911, 3);
+            this.label19.Location = new System.Drawing.Point(899, 3);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(109, 20);
@@ -279,7 +279,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label20.Location = new System.Drawing.Point(911, 39);
+            this.label20.Location = new System.Drawing.Point(899, 39);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(69, 20);
@@ -289,31 +289,31 @@
             // mb_describeTextBox
             // 
             this.mb_describeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mb_describeTextBox.Location = new System.Drawing.Point(685, 295);
+            this.mb_describeTextBox.Location = new System.Drawing.Point(676, 295);
             this.mb_describeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mb_describeTextBox.Name = "mb_describeTextBox";
             this.mb_describeTextBox.ReadOnly = true;
-            this.mb_describeTextBox.Size = new System.Drawing.Size(215, 26);
+            this.mb_describeTextBox.Size = new System.Drawing.Size(212, 26);
             this.mb_describeTextBox.TabIndex = 0;
             // 
             // mb_make_dateTextBox
             // 
             this.mb_make_dateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mb_make_dateTextBox.Location = new System.Drawing.Point(1137, 7);
+            this.mb_make_dateTextBox.Location = new System.Drawing.Point(1122, 7);
             this.mb_make_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mb_make_dateTextBox.Name = "mb_make_dateTextBox";
             this.mb_make_dateTextBox.ReadOnly = true;
-            this.mb_make_dateTextBox.Size = new System.Drawing.Size(218, 26);
+            this.mb_make_dateTextBox.Size = new System.Drawing.Size(217, 26);
             this.mb_make_dateTextBox.TabIndex = 0;
             // 
             // warranty_periodTextBox
             // 
             this.warranty_periodTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.warranty_periodTextBox.Location = new System.Drawing.Point(1137, 43);
+            this.warranty_periodTextBox.Location = new System.Drawing.Point(1122, 43);
             this.warranty_periodTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.warranty_periodTextBox.Name = "warranty_periodTextBox";
             this.warranty_periodTextBox.ReadOnly = true;
-            this.warranty_periodTextBox.Size = new System.Drawing.Size(218, 26);
+            this.warranty_periodTextBox.Size = new System.Drawing.Size(217, 26);
             this.warranty_periodTextBox.TabIndex = 0;
             // 
             // label5
@@ -332,10 +332,10 @@
             this.custom_orderComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.custom_orderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.custom_orderComboBox.FormattingEnabled = true;
-            this.custom_orderComboBox.Location = new System.Drawing.Point(233, 7);
+            this.custom_orderComboBox.Location = new System.Drawing.Point(230, 7);
             this.custom_orderComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.custom_orderComboBox.Name = "custom_orderComboBox";
-            this.custom_orderComboBox.Size = new System.Drawing.Size(215, 24);
+            this.custom_orderComboBox.Size = new System.Drawing.Size(212, 24);
             this.custom_orderComboBox.TabIndex = 6;
             this.custom_orderComboBox.SelectedValueChanged += new System.EventHandler(this.custom_orderComboBox_SelectedValueChanged);
             this.custom_orderComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_orderComboBox_KeyPress);
@@ -354,10 +354,10 @@
             // track_serial_noTextBox
             // 
             this.track_serial_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.track_serial_noTextBox.Location = new System.Drawing.Point(233, 115);
+            this.track_serial_noTextBox.Location = new System.Drawing.Point(230, 115);
             this.track_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.track_serial_noTextBox.Name = "track_serial_noTextBox";
-            this.track_serial_noTextBox.Size = new System.Drawing.Size(215, 26);
+            this.track_serial_noTextBox.Size = new System.Drawing.Size(212, 26);
             this.track_serial_noTextBox.TabIndex = 0;
             this.track_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.track_serial_noTextBox_KeyPress);
             // 
@@ -375,10 +375,10 @@
             // custom_serial_noTextBox
             // 
             this.custom_serial_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custom_serial_noTextBox.Location = new System.Drawing.Point(233, 151);
+            this.custom_serial_noTextBox.Location = new System.Drawing.Point(230, 151);
             this.custom_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.custom_serial_noTextBox.Name = "custom_serial_noTextBox";
-            this.custom_serial_noTextBox.Size = new System.Drawing.Size(215, 26);
+            this.custom_serial_noTextBox.Size = new System.Drawing.Size(212, 26);
             this.custom_serial_noTextBox.TabIndex = 0;
             this.custom_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_serial_noTextBox_KeyPress);
             // 
@@ -396,10 +396,10 @@
             // vendor_serail_noTextBox
             // 
             this.vendor_serail_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vendor_serail_noTextBox.Location = new System.Drawing.Point(233, 187);
+            this.vendor_serail_noTextBox.Location = new System.Drawing.Point(230, 187);
             this.vendor_serail_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendor_serail_noTextBox.Name = "vendor_serail_noTextBox";
-            this.vendor_serail_noTextBox.Size = new System.Drawing.Size(215, 26);
+            this.vendor_serail_noTextBox.Size = new System.Drawing.Size(212, 26);
             this.vendor_serail_noTextBox.TabIndex = 0;
             this.vendor_serail_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vendor_serail_noTextBox_KeyPress);
             // 
@@ -417,10 +417,10 @@
             // uuidTextBox
             // 
             this.uuidTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uuidTextBox.Location = new System.Drawing.Point(233, 223);
+            this.uuidTextBox.Location = new System.Drawing.Point(230, 223);
             this.uuidTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.uuidTextBox.Name = "uuidTextBox";
-            this.uuidTextBox.Size = new System.Drawing.Size(215, 26);
+            this.uuidTextBox.Size = new System.Drawing.Size(212, 26);
             this.uuidTextBox.TabIndex = 0;
             this.uuidTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uuidTextBox_KeyPress);
             // 
@@ -438,10 +438,10 @@
             // macTextBox
             // 
             this.macTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.macTextBox.Location = new System.Drawing.Point(233, 259);
+            this.macTextBox.Location = new System.Drawing.Point(230, 259);
             this.macTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.macTextBox.Name = "macTextBox";
-            this.macTextBox.Size = new System.Drawing.Size(215, 26);
+            this.macTextBox.Size = new System.Drawing.Size(212, 26);
             this.macTextBox.TabIndex = 0;
             this.macTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.macTextBox_KeyPress);
             // 
@@ -460,10 +460,10 @@
             // 
             this.custom_faultComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.custom_faultComboBox.FormattingEnabled = true;
-            this.custom_faultComboBox.Location = new System.Drawing.Point(233, 295);
+            this.custom_faultComboBox.Location = new System.Drawing.Point(230, 295);
             this.custom_faultComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.custom_faultComboBox.Name = "custom_faultComboBox";
-            this.custom_faultComboBox.Size = new System.Drawing.Size(215, 24);
+            this.custom_faultComboBox.Size = new System.Drawing.Size(212, 24);
             this.custom_faultComboBox.TabIndex = 5;
             this.custom_faultComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_faultComboBox_KeyPress);
             // 
@@ -471,7 +471,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label28.Location = new System.Drawing.Point(911, 75);
+            this.label28.Location = new System.Drawing.Point(899, 75);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(29, 20);
@@ -481,11 +481,11 @@
             // numTextBox
             // 
             this.numTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numTextBox.Location = new System.Drawing.Point(1137, 79);
+            this.numTextBox.Location = new System.Drawing.Point(1122, 79);
             this.numTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.numTextBox.Name = "numTextBox";
             this.numTextBox.ReadOnly = true;
-            this.numTextBox.Size = new System.Drawing.Size(218, 26);
+            this.numTextBox.Size = new System.Drawing.Size(217, 26);
             this.numTextBox.TabIndex = 0;
             // 
             // label22
@@ -504,17 +504,17 @@
             this.guaranteeComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guaranteeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.guaranteeComboBox.FormattingEnabled = true;
-            this.guaranteeComboBox.Location = new System.Drawing.Point(233, 331);
+            this.guaranteeComboBox.Location = new System.Drawing.Point(230, 331);
             this.guaranteeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.guaranteeComboBox.Name = "guaranteeComboBox";
-            this.guaranteeComboBox.Size = new System.Drawing.Size(215, 24);
+            this.guaranteeComboBox.Size = new System.Drawing.Size(212, 24);
             this.guaranteeComboBox.TabIndex = 5;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label11.Location = new System.Drawing.Point(911, 111);
+            this.label11.Location = new System.Drawing.Point(899, 111);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 20);
@@ -524,18 +524,18 @@
             // dpk_statusTextBox
             // 
             this.dpk_statusTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dpk_statusTextBox.Location = new System.Drawing.Point(1137, 115);
+            this.dpk_statusTextBox.Location = new System.Drawing.Point(1122, 115);
             this.dpk_statusTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.dpk_statusTextBox.Name = "dpk_statusTextBox";
             this.dpk_statusTextBox.ReadOnly = true;
-            this.dpk_statusTextBox.Size = new System.Drawing.Size(218, 26);
+            this.dpk_statusTextBox.Size = new System.Drawing.Size(217, 26);
             this.dpk_statusTextBox.TabIndex = 0;
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label23.Location = new System.Drawing.Point(459, 3);
+            this.label23.Location = new System.Drawing.Point(453, 3);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(89, 20);
@@ -547,17 +547,17 @@
             this.customResponsibilityComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customResponsibilityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.customResponsibilityComboBox.FormattingEnabled = true;
-            this.customResponsibilityComboBox.Location = new System.Drawing.Point(685, 7);
+            this.customResponsibilityComboBox.Location = new System.Drawing.Point(676, 7);
             this.customResponsibilityComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.customResponsibilityComboBox.Name = "customResponsibilityComboBox";
-            this.customResponsibilityComboBox.Size = new System.Drawing.Size(215, 24);
+            this.customResponsibilityComboBox.Size = new System.Drawing.Size(212, 24);
             this.customResponsibilityComboBox.TabIndex = 5;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label24.Location = new System.Drawing.Point(459, 39);
+            this.label24.Location = new System.Drawing.Point(453, 39);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(129, 20);
@@ -567,10 +567,10 @@
             // lenovo_custom_service_noTextBox
             // 
             this.lenovo_custom_service_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lenovo_custom_service_noTextBox.Location = new System.Drawing.Point(685, 43);
+            this.lenovo_custom_service_noTextBox.Location = new System.Drawing.Point(676, 43);
             this.lenovo_custom_service_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.lenovo_custom_service_noTextBox.Name = "lenovo_custom_service_noTextBox";
-            this.lenovo_custom_service_noTextBox.Size = new System.Drawing.Size(215, 26);
+            this.lenovo_custom_service_noTextBox.Size = new System.Drawing.Size(212, 26);
             this.lenovo_custom_service_noTextBox.TabIndex = 0;
             this.lenovo_custom_service_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lenovo_custom_service_noTextBox_KeyPress);
             // 
@@ -578,7 +578,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label6.Location = new System.Drawing.Point(911, 183);
+            this.label6.Location = new System.Drawing.Point(899, 183);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(129, 20);
@@ -588,18 +588,18 @@
             // order_out_dateTextBox
             // 
             this.order_out_dateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.order_out_dateTextBox.Location = new System.Drawing.Point(1137, 187);
+            this.order_out_dateTextBox.Location = new System.Drawing.Point(1122, 187);
             this.order_out_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.order_out_dateTextBox.Name = "order_out_dateTextBox";
             this.order_out_dateTextBox.ReadOnly = true;
-            this.order_out_dateTextBox.Size = new System.Drawing.Size(218, 26);
+            this.order_out_dateTextBox.Size = new System.Drawing.Size(217, 26);
             this.order_out_dateTextBox.TabIndex = 0;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label25.Location = new System.Drawing.Point(459, 75);
+            this.label25.Location = new System.Drawing.Point(453, 75);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(149, 20);
@@ -609,10 +609,10 @@
             // lenovo_maintenance_noTextBox
             // 
             this.lenovo_maintenance_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lenovo_maintenance_noTextBox.Location = new System.Drawing.Point(685, 79);
+            this.lenovo_maintenance_noTextBox.Location = new System.Drawing.Point(676, 79);
             this.lenovo_maintenance_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.lenovo_maintenance_noTextBox.Name = "lenovo_maintenance_noTextBox";
-            this.lenovo_maintenance_noTextBox.Size = new System.Drawing.Size(215, 26);
+            this.lenovo_maintenance_noTextBox.Size = new System.Drawing.Size(212, 26);
             this.lenovo_maintenance_noTextBox.TabIndex = 0;
             this.lenovo_maintenance_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lenovo_maintenance_noTextBox_KeyPress);
             // 
@@ -620,7 +620,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label26.Location = new System.Drawing.Point(459, 111);
+            this.label26.Location = new System.Drawing.Point(453, 111);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(149, 20);
@@ -630,20 +630,20 @@
             // order_receive_dateTextBox
             // 
             this.order_receive_dateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.order_receive_dateTextBox.Location = new System.Drawing.Point(1137, 259);
+            this.order_receive_dateTextBox.Location = new System.Drawing.Point(1122, 259);
             this.order_receive_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.order_receive_dateTextBox.Name = "order_receive_dateTextBox";
             this.order_receive_dateTextBox.ReadOnly = true;
-            this.order_receive_dateTextBox.Size = new System.Drawing.Size(218, 26);
+            this.order_receive_dateTextBox.Size = new System.Drawing.Size(217, 26);
             this.order_receive_dateTextBox.TabIndex = 0;
             // 
             // lenovo_repair_noTextBox
             // 
             this.lenovo_repair_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lenovo_repair_noTextBox.Location = new System.Drawing.Point(685, 115);
+            this.lenovo_repair_noTextBox.Location = new System.Drawing.Point(676, 115);
             this.lenovo_repair_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.lenovo_repair_noTextBox.Name = "lenovo_repair_noTextBox";
-            this.lenovo_repair_noTextBox.Size = new System.Drawing.Size(215, 26);
+            this.lenovo_repair_noTextBox.Size = new System.Drawing.Size(212, 26);
             this.lenovo_repair_noTextBox.TabIndex = 0;
             this.lenovo_repair_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lenovo_repair_noTextBox_KeyPress);
             // 
@@ -651,7 +651,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label7.Location = new System.Drawing.Point(911, 255);
+            this.label7.Location = new System.Drawing.Point(899, 255);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 20);
@@ -662,7 +662,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label27.Location = new System.Drawing.Point(459, 147);
+            this.label27.Location = new System.Drawing.Point(453, 147);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(89, 20);
@@ -672,10 +672,10 @@
             // whole_machine_noTextBox
             // 
             this.whole_machine_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.whole_machine_noTextBox.Location = new System.Drawing.Point(685, 151);
+            this.whole_machine_noTextBox.Location = new System.Drawing.Point(676, 151);
             this.whole_machine_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.whole_machine_noTextBox.Name = "whole_machine_noTextBox";
-            this.whole_machine_noTextBox.Size = new System.Drawing.Size(215, 26);
+            this.whole_machine_noTextBox.Size = new System.Drawing.Size(212, 26);
             this.whole_machine_noTextBox.TabIndex = 0;
             this.whole_machine_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.whole_machine_noTextBox_KeyPress);
             // 
@@ -683,7 +683,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label8.Location = new System.Drawing.Point(911, 219);
+            this.label8.Location = new System.Drawing.Point(899, 219);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 20);
@@ -693,18 +693,18 @@
             // custom_machine_typeTextBox
             // 
             this.custom_machine_typeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custom_machine_typeTextBox.Location = new System.Drawing.Point(1137, 223);
+            this.custom_machine_typeTextBox.Location = new System.Drawing.Point(1122, 223);
             this.custom_machine_typeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.custom_machine_typeTextBox.Name = "custom_machine_typeTextBox";
             this.custom_machine_typeTextBox.ReadOnly = true;
-            this.custom_machine_typeTextBox.Size = new System.Drawing.Size(218, 26);
+            this.custom_machine_typeTextBox.Size = new System.Drawing.Size(217, 26);
             this.custom_machine_typeTextBox.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(459, 183);
+            this.label1.Location = new System.Drawing.Point(453, 183);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 20);
@@ -714,18 +714,18 @@
             // vendorTextBox
             // 
             this.vendorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vendorTextBox.Location = new System.Drawing.Point(685, 187);
+            this.vendorTextBox.Location = new System.Drawing.Point(676, 187);
             this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendorTextBox.Name = "vendorTextBox";
             this.vendorTextBox.ReadOnly = true;
-            this.vendorTextBox.Size = new System.Drawing.Size(215, 26);
+            this.vendorTextBox.Size = new System.Drawing.Size(212, 26);
             this.vendorTextBox.TabIndex = 0;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label9.Location = new System.Drawing.Point(459, 327);
+            this.label9.Location = new System.Drawing.Point(453, 327);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 20);
@@ -735,18 +735,18 @@
             // mb_briefTextBox
             // 
             this.mb_briefTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mb_briefTextBox.Location = new System.Drawing.Point(685, 331);
+            this.mb_briefTextBox.Location = new System.Drawing.Point(676, 331);
             this.mb_briefTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mb_briefTextBox.Name = "mb_briefTextBox";
             this.mb_briefTextBox.ReadOnly = true;
-            this.mb_briefTextBox.Size = new System.Drawing.Size(215, 26);
+            this.mb_briefTextBox.Size = new System.Drawing.Size(212, 26);
             this.mb_briefTextBox.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label2.Location = new System.Drawing.Point(459, 219);
+            this.label2.Location = new System.Drawing.Point(453, 219);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 20);
@@ -756,18 +756,18 @@
             // productTextBox
             // 
             this.productTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.productTextBox.Location = new System.Drawing.Point(685, 223);
+            this.productTextBox.Location = new System.Drawing.Point(676, 223);
             this.productTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.productTextBox.Name = "productTextBox";
             this.productTextBox.ReadOnly = true;
-            this.productTextBox.Size = new System.Drawing.Size(215, 26);
+            this.productTextBox.Size = new System.Drawing.Size(212, 26);
             this.productTextBox.TabIndex = 0;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label17.Location = new System.Drawing.Point(911, 147);
+            this.label17.Location = new System.Drawing.Point(899, 147);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(39, 20);
@@ -777,18 +777,18 @@
             // mpnTextBox
             // 
             this.mpnTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mpnTextBox.Location = new System.Drawing.Point(1137, 151);
+            this.mpnTextBox.Location = new System.Drawing.Point(1122, 151);
             this.mpnTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mpnTextBox.Name = "mpnTextBox";
             this.mpnTextBox.ReadOnly = true;
-            this.mpnTextBox.Size = new System.Drawing.Size(218, 26);
+            this.mpnTextBox.Size = new System.Drawing.Size(217, 26);
             this.mpnTextBox.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label4.Location = new System.Drawing.Point(459, 255);
+            this.label4.Location = new System.Drawing.Point(453, 255);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 20);
@@ -798,18 +798,18 @@
             // storehouseTextBox
             // 
             this.storehouseTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.storehouseTextBox.Location = new System.Drawing.Point(685, 259);
+            this.storehouseTextBox.Location = new System.Drawing.Point(676, 259);
             this.storehouseTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.storehouseTextBox.Name = "storehouseTextBox";
             this.storehouseTextBox.ReadOnly = true;
-            this.storehouseTextBox.Size = new System.Drawing.Size(215, 26);
+            this.storehouseTextBox.Size = new System.Drawing.Size(212, 26);
             this.storehouseTextBox.TabIndex = 0;
             // 
             // label29
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label29.Location = new System.Drawing.Point(911, 291);
+            this.label29.Location = new System.Drawing.Point(899, 291);
             this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(69, 20);
@@ -818,7 +818,7 @@
             // 
             // inputUserTextBox
             // 
-            this.inputUserTextBox.Location = new System.Drawing.Point(1136, 294);
+            this.inputUserTextBox.Location = new System.Drawing.Point(1121, 294);
             this.inputUserTextBox.Name = "inputUserTextBox";
             this.inputUserTextBox.ReadOnly = true;
             this.inputUserTextBox.Size = new System.Drawing.Size(100, 26);
@@ -851,21 +851,21 @@
             this.source_briefComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.source_briefComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.source_briefComboBox.FormattingEnabled = true;
-            this.source_briefComboBox.Location = new System.Drawing.Point(233, 79);
+            this.source_briefComboBox.Location = new System.Drawing.Point(230, 79);
             this.source_briefComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.source_briefComboBox.Name = "source_briefComboBox";
-            this.source_briefComboBox.Size = new System.Drawing.Size(215, 24);
+            this.source_briefComboBox.Size = new System.Drawing.Size(212, 24);
             this.source_briefComboBox.TabIndex = 5;
             // 
             // custommaterialNoTextBox
             // 
             this.custommaterialNoTextBox.BackColor = System.Drawing.Color.Lime;
             this.custommaterialNoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custommaterialNoTextBox.Location = new System.Drawing.Point(233, 43);
+            this.custommaterialNoTextBox.Location = new System.Drawing.Point(230, 43);
             this.custommaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.custommaterialNoTextBox.Name = "custommaterialNoTextBox";
             this.custommaterialNoTextBox.ReadOnly = true;
-            this.custommaterialNoTextBox.Size = new System.Drawing.Size(215, 26);
+            this.custommaterialNoTextBox.Size = new System.Drawing.Size(212, 26);
             this.custommaterialNoTextBox.TabIndex = 0;
             this.custommaterialNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_orderComboBox_KeyPress);
             // 
@@ -884,7 +884,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.6008F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.209613F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.05608F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1370, 749);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1354, 733);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // tableLayoutPanel3
@@ -899,12 +899,12 @@
             this.tableLayoutPanel3.Controls.Add(this.modify, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.delete, 3, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 383);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 375);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1362, 46);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1346, 44);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // tableLayoutPanel4
@@ -915,11 +915,11 @@
             this.tableLayoutPanel4.Controls.Add(this.dataGridView1, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.dataGridViewWaitToReturn, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 436);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 426);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1364, 310);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1348, 304);
             this.tableLayoutPanel4.TabIndex = 5;
             // 
             // dataGridViewWaitToReturn
@@ -933,7 +933,7 @@
             this.dataGridViewWaitToReturn.ReadOnly = true;
             this.dataGridViewWaitToReturn.RowTemplate.Height = 23;
             this.dataGridViewWaitToReturn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewWaitToReturn.Size = new System.Drawing.Size(485, 304);
+            this.dataGridViewWaitToReturn.Size = new System.Drawing.Size(479, 298);
             this.dataGridViewWaitToReturn.TabIndex = 1;
             this.dataGridViewWaitToReturn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWaitToReturn_CellClick);
             // 
@@ -941,7 +941,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1354, 733);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Font = new System.Drawing.Font("SimSun", 12F);
             this.Margin = new System.Windows.Forms.Padding(4);

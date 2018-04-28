@@ -1,3 +1,45 @@
+/*不良品出库表*/
+CREATE TABLE fault_mb_out_record_table(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+vendor NVARCHAR(128) NOT NULL, /*厂商*/
+product NVARCHAR(128) NOT NULL, /*客户别*/
+source NVARCHAR(128) NOT NULL, /*来源*/
+orderno NVARCHAR(128) NOT NULL, /*订单编号*/
+receivedate NVARCHAR(128) NOT NULL, /*收货日期*/
+mb_describe NVARCHAR(128), /*MB描述*/
+mb_brief NVARCHAR(128), /*MB简称*/
+custom_serial_no NVARCHAR(128) NOT NULL, /*客户序号*/
+vendor_serail_no NVARCHAR(128) NOT NULL, /*厂商序号*/
+mpn NVARCHAR(128) NOT NULL, /*MPN*/
+mb_make_date NVARCHAR(128) NOT NULL, /*MB生产日期*/
+customFault NVARCHAR(128) NOT NULL, /*客户故障*/
+ECO NVARCHAR(128), /*ECO*/
+repairer NVARCHAR(128) NOT NULL, /*维修人*/
+repair_date NVARCHAR(128) NOT NULL, /*修复日期*/
+)
+
+/*不良品入库表*/
+CREATE TABLE fault_mb_enter_record_table(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+vendor NVARCHAR(128) NOT NULL, /*厂商*/
+product NVARCHAR(128) NOT NULL, /*客户别*/
+source NVARCHAR(128) NOT NULL, /*来源*/
+orderno NVARCHAR(128) NOT NULL, /*订单编号*/
+receivedate NVARCHAR(128) NOT NULL, /*收货日期*/
+mb_describe NVARCHAR(128), /*MB描述*/
+mb_brief NVARCHAR(128), /*MB简称*/
+custom_serial_no NVARCHAR(128) NOT NULL, /*客户序号*/
+vendor_serail_no NVARCHAR(128) NOT NULL, /*厂商序号*/
+mpn NVARCHAR(128) NOT NULL, /*MPN*/
+mb_make_date NVARCHAR(128) NOT NULL, /*MB生产日期*/
+customFault NVARCHAR(128) NOT NULL, /*客户故障*/
+ECO NVARCHAR(128), /*ECO*/
+repairer NVARCHAR(128) NOT NULL, /*维修人*/
+repair_date NVARCHAR(128) NOT NULL, /*修复日期*/
+)
+
 
 /*库房信息*/
 CREATE TABLE store_house(
