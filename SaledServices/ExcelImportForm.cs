@@ -92,6 +92,7 @@ namespace SaledServices
 
         private void importButton_Click(object sender, EventArgs e)
         {
+            this.importButton.Enabled = false;
             string sheetName = "";
             string tableName = "";
             if (this.mbmaterial.Checked)
@@ -144,6 +145,13 @@ namespace SaledServices
                 || this.COMPAL_MBBOMradioButton.Checked)
             {
                 importLCFC_MBBOMUsingADO(sheetName, tableName);
+                this.importButton.Enabled = true;
+                return;
+            }
+            else if (this.LCFC71BOMRadioButton.Checked)
+            {
+                importLCFC_71BOMUsingADO(sheetName, tableName);
+                this.importButton.Enabled = true;
                 return;
             }
 
@@ -156,8 +164,7 @@ namespace SaledServices
                 false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, 
                 string.Empty, true, false, 0, true, 1, 0);
 
-            if (this.LCFC71BOMRadioButton.Checked
-                || this.DPKradioButton.Checked
+            if ( this.DPKradioButton.Checked
                 || this.faultTableRadioButton.Checked
                 
                 || this.stock_in_sheetradioButton.Checked
@@ -185,6 +192,7 @@ namespace SaledServices
                 {
                     MessageBox.Show("RMA中有空值，请确认后在上传");
                     closeAndKillApp();
+                    this.importButton.Enabled = true;
                     return;
                 }
 
@@ -269,6 +277,7 @@ namespace SaledServices
                         {
                             queryConn.Close();
                             closeAndKillApp();
+                            this.importButton.Enabled = true;
                             return;
                         }
 
@@ -339,6 +348,8 @@ namespace SaledServices
                     closeAndKillApp();
                 }
             }
+
+            this.importButton.Enabled = true;
         }
         [DllImport("User32.dll")]
         public static extern int GetWindowThreadProcessId(IntPtr hWnd, out int ProcessId);
@@ -457,10 +468,10 @@ namespace SaledServices
                     bcp.ColumnMappings.Add("MB简称", "mb_brief");
                     bcp.ColumnMappings.Add("MPN", "MPN");
                     bcp.ColumnMappings.Add("材料MPN","material_mpn");
-                    bcp.ColumnMappings.Add( "料盒位置","material_box_place");
-                    bcp.ColumnMappings.Add( "物料描述","material_describe");
+                    bcp.ColumnMappings.Add("料盒位置","material_box_place");
+                    bcp.ColumnMappings.Add("物料描述","material_describe");
  
-                    bcp.ColumnMappings.Add( "用料数量","material_num");
+                    bcp.ColumnMappings.Add("用料数量","material_num");
                     bcp.ColumnMappings.Add("L1", "L1");
                     bcp.ColumnMappings.Add("L2", "L2");
                     bcp.ColumnMappings.Add("L3", "L3");
@@ -482,7 +493,49 @@ namespace SaledServices
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }           
         }
+        
+        public void importLCFC_71BOMUsingADO(string sheetName, string tableName)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                //获取全部数据
+                string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath.Text + ";Extended Properties=Excel 12.0;";
+                OleDbConnection conn = new OleDbConnection(strConn);
+                conn.Open();
+                string strExcel = "";
+                OleDbDataAdapter myCommand = null;
+                strExcel = string.Format("select * from [{0}$]", sheetName);
+                myCommand = new OleDbDataAdapter(strExcel, strConn);
+                myCommand.Fill(ds, sheetName);
+               
+                //用bcp导入数据
+                using (System.Data.SqlClient.SqlBulkCopy bcp = new System.Data.SqlClient.SqlBulkCopy(Constlist.ConStr))
+                {
+                   // bcp.SqlRowsCopied += new System.Data.SqlClient.SqlRowsCopiedEventHandler(bcp_SqlRowsCopied);
+                    bcp.BatchSize = 1000;//每次传输的行数
+                    bcp.NotifyAfter = 1000;//进度提示的行数
+                    bcp.DestinationTableName = tableName;//目标表
 
+                    bcp.ColumnMappings.Add("日期", "_date");
+                    bcp.ColumnMappings.Add("MB简称", "mb_brief");
+                    bcp.ColumnMappings.Add("材料厂商PN","material_vendor_pn");
+                    bcp.ColumnMappings.Add("材料MPN", "material_mpn");
+                    bcp.ColumnMappings.Add("Description", "_description");
+                    bcp.ColumnMappings.Add("2017 Q4 final price","price");
+
+                    bcp.WriteToServer(ds.Tables[0]);
+                    bcp.Close();
+
+                    conn.Close();
+                    MessageBox.Show("导入完成");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }           
+        }
         public void importLCFC_MBBOM(Worksheet ws, int rowLength, int columnLength, string tableName)
         {
             string s ="";
@@ -504,7 +557,7 @@ namespace SaledServices
                 }
                 else if (this.stock_in_sheetradioButton.Checked)
                 {
-                    dateIndex = 15;
+                    dateIndex = 16;
                 }
                 else if (this.LCFC_MBBOMradioButton.Checked)
                 {
@@ -533,7 +586,7 @@ namespace SaledServices
                     transaction = conn.BeginTransaction();
                     cmd.Transaction = transaction;  
 
-                    for (int i = 1; i <= rowLength; i++)
+                    for (int i = 2; i <= rowLength; i++)
                     {
                         s = "INSERT INTO " + tableName + " VALUES('";
                         for (int j = 1; j <= columnLength; j++)

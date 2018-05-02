@@ -211,7 +211,7 @@ namespace SaledServices
             //status 14
 
             this.inputerTextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
-            this.input_dateTextBox.Text = dataGridView1.SelectedCells[16].Value.ToString();
+            this.input_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[16].Value.ToString()).ToString("yyyy/MM/dd");
             this.isDeclareTextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
 
             this.declare_unittextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();

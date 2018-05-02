@@ -19,6 +19,7 @@ namespace SaledServices.Test_Outlook
         {
             InitializeComponent();
             testerTextBox.Text = LoginForm.currentUser;
+            testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
         }
         string tempKeySerial="";
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -154,6 +155,8 @@ namespace SaledServices.Test_Outlook
                                         if (exist == false)
                                         {
                                             MessageBox.Show("此DPKPN" + dpkpn + "的序列号已经使用完毕或不存在！");
+                                            mConn.Close();
+                                            return;
                                         }
                                         else
                                         {
@@ -203,11 +206,15 @@ namespace SaledServices.Test_Outlook
                                 this.tracker_bar_textBox.Focus();
                                 this.tracker_bar_textBox.SelectAll();
                                 MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
+                                mConn.Close();
+                                return;
                             }
                         }
                         else
                         {
                             MessageBox.Show("此追踪条码没有维修记录！");
+                            mConn.Close();
+                            return;
                         }
                     }
                     else
@@ -215,9 +222,13 @@ namespace SaledServices.Test_Outlook
                         if (product == "")
                         {
                             MessageBox.Show("此追踪条码没有维修记录！");
+                            mConn.Close();
+                            return;
                         }else
                         {
                             MessageBox.Show("此追踪条码对应的客户别不是LBG！");
+                            mConn.Close();
+                            return;
                         }
                     }
                     mConn.Close();
@@ -226,6 +237,8 @@ namespace SaledServices.Test_Outlook
                 {
                     MessageBox.Show(ex.ToString());
                 }
+
+                MessageBox.Show("成功生成BOM文档，请重启机器！");
             }
         }       
 

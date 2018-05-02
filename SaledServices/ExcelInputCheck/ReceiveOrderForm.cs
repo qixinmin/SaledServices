@@ -94,11 +94,13 @@ namespace SaledServices
                 }
 
                 conn.Close();
+                query_Click(null, null);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+            MessageBox.Show("添加成功！");
         }
 
         private void query_Click(object sender, EventArgs e)
@@ -164,6 +166,7 @@ namespace SaledServices
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
+            MessageBox.Show("修改成功！");
         }
 
         private void delete_Click(object sender, EventArgs e)
@@ -187,6 +190,9 @@ namespace SaledServices
                 }
 
                 conn.Close();
+
+                query_Click(null, null);
+                MessageBox.Show("删除成功！");
             }
             catch (Exception ex)
             {

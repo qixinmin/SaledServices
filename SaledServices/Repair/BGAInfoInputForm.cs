@@ -53,7 +53,7 @@ namespace SaledServices
                         order_receive_date = querySdr[3].ToString();
                         custom_serial_no = querySdr[4].ToString();
                         vendor_serial_no = querySdr[5].ToString();
-                        mb_make_date = querySdr[6].ToString();
+                        mb_make_date = DateTime.Parse(querySdr[6].ToString()).ToString("yyyy/MM/dd");
                         custom_fault = querySdr[7].ToString();
 
                     }
@@ -162,6 +162,7 @@ namespace SaledServices
         private void CPU_CheckedChanged(object sender, EventArgs e)
         {
             this.BGA_placetextBox.ReadOnly = false;
+            this.BGA_placetextBox.Text = "";
             string bga_mpn = "";
             string bga_brief = "";
             if (this.mpntextBox.Text.Trim() == "")
@@ -358,7 +359,7 @@ namespace SaledServices
                 || this.statusComboBox.Text == ""
                 || this.mpntextBox.Text == ""
                 || this.BGAPNtextBox.Text == ""
-                || this.BGA_placetextBox.Text == ""
+                //|| this.BGA_placetextBox.Text == ""
                 || this.bga_brieftextBox.Text == ""
                 || this.repairertextBox.Text == ""
                 || this.repair_datetextBox.Text == "")

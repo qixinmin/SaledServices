@@ -86,12 +86,12 @@ namespace SaledServices
                         this.producttextBox.Text = querySdr[1].ToString();
                         this.sourcetextBox.Text = querySdr[2].ToString();
                         this.ordernotextBox.Text = querySdr[3].ToString();
-                        this.receivedatetextBox.Text = querySdr[4].ToString();
+                        this.receivedatetextBox.Text = DateTime.Parse(querySdr[4].ToString()).ToString("yyyy/MM/dd");
                         this.mb_brieftextBox.Text = querySdr[5].ToString();
                         this.custom_serial_notextBox.Text = querySdr[6].ToString();
                         this.vendor_serail_notextBox.Text = querySdr[7].ToString();
                         this.mpntextBox.Text = querySdr[8].ToString();
-                        this.mb_make_dateTextBox.Text = querySdr[9].ToString();
+                        this.mb_make_dateTextBox.Text = DateTime.Parse(querySdr[9].ToString()).ToString("yyyy/MM/dd");
                         this.customFaulttextBox.Text = querySdr[10].ToString();                   
 
                         this.mbfa1label.Text = querySdr[11].ToString();
@@ -103,13 +103,13 @@ namespace SaledServices
                         this.BGA_placetextBox.Text = querySdr[15].ToString();
                         this.bga_brieftextBox.Text = querySdr[16].ToString();
                         this.repairertextBox.Text = querySdr[17].ToString();
-                        this.repair_datetextBox.Text = querySdr[18].ToString();
+                        this.repair_datetextBox.Text = DateTime.Parse(querySdr[18].ToString()).ToString("yyyy/MM/dd");
                         this.countNumtextBox.Text = querySdr[19].ToString();
 
                         status = querySdr[20].ToString();
                     }
                     querySdr.Close();
-
+                    
                     mConn.Close();
 
                     if (status == "" || status != "BGA不良")
@@ -129,7 +129,10 @@ namespace SaledServices
 
                 if (!error)
                 {
-                    this.bgaRepair_resultcomboBox.Focus();  
+                    this.bgaRepair_resultcomboBox.Focus();
+                    bgarepairertextBox.Text = LoginForm.currentUser;
+                    bgarepairDatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+
                 }
             }
         }
@@ -229,14 +232,14 @@ namespace SaledServices
                     }
 
 
-                    if (this.oldSntextBox.ReadOnly == false)
+                    if (this.oldSntextBox.ReadOnly == false && this.oldSntextBox.Text == "")
                     {
                         MessageBox.Show("换下的BGA SN的输入为空，请检查!");
                         conn.Close();
                         return;
                     }
 
-                    if (this.newSntextBox.ReadOnly == false)
+                    if (this.newSntextBox.ReadOnly == false && this.newSntextBox.Text == "")
                     {
                         MessageBox.Show("换上的BGA SN的输入为空，请检查!");
                         conn.Close();

@@ -527,7 +527,7 @@ custom_serial_no NVARCHAR(128) NOT NULL,/*客户序号*/
 vendor_serail_no NVARCHAR(128) NOT NULL,/*厂商序号*/
 uuid NVARCHAR(128) NOT NULL,/*UUID*/
 mac NVARCHAR(128) NOT NULL,/*MAC*/
-vendormaterialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
+mpn NVARCHAR(128) NOT NULL,/*厂商料号*/
 mb_describe NVARCHAR(128) NOT NULL,/*mb描述*/
 mb_make_date date,/*MB生产日期*/
 warranty_period NVARCHAR(128) NOT NULL,/*保修期*/

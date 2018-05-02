@@ -87,10 +87,10 @@ namespace SaledServices
                         customMaterialNo = querySdr[0].ToString();
                         sourceBrief = querySdr[1].ToString();
                         customOrder = querySdr[2].ToString();
-                        order_receive_date = querySdr[3].ToString();
+                        order_receive_date = DateTime.Parse(querySdr[3].ToString()).ToString("yyyy/MM/dd");
                         custom_serial_no = querySdr[4].ToString();
                         vendor_serial_no = querySdr[5].ToString();
-                        mb_make_date = querySdr[6].ToString();
+                        mb_make_date = DateTime.Parse(querySdr[6].ToString()).ToString("yyyy/MM/dd");
                         custom_fault = querySdr[7].ToString();
 
                     }

@@ -647,14 +647,19 @@ namespace SaledServices
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.numTextBox.Text.Trim());
 
+
+
+
+
+
             dr["vendor"] = this.vendorTextBox.Text.Trim();
             dr["product"] = this.productTextBox.Text.Trim();
             dr["source_brief"] = this.source_briefComboBox.Text.Trim();
             dr["storehouse"] = this.storehouseTextBox.Text.Trim();
             dr["custom_order"] = this.custom_orderComboBox.Text.Trim();
             dr["order_out_date"] = this.order_out_dateTextBox.Text.Trim();
-            dr["order_receive_date"] = this.order_receive_dateTextBox.Text.Trim();
-            dr["custom_machine_type "] = this.custom_machine_typeTextBox.Text.Trim();
+            dr["order_receive_date"] = this.order_receive_dateTextBox.Text.Trim();            
+            dr["custom_machine_type"] = this.custom_machine_typeTextBox.Text.Trim();
             dr["mb_brief"] = this.mb_briefTextBox.Text.Trim();
             dr["custommaterialNo"] = this.custommaterialNoTextBox.Text.Trim();
             dr["dpk_status"] = this.dpk_statusTextBox.Text.Trim();
@@ -733,8 +738,8 @@ namespace SaledServices
             this.source_briefComboBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
             this.storehouseTextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
             this.custom_orderComboBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
-            this.order_out_dateTextBox.Text = dataGridView1.SelectedCells[6].Value.ToString();
-            this.order_receive_dateTextBox.Text = dataGridView1.SelectedCells[7].Value.ToString();
+            this.order_out_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[6].Value.ToString()).ToString("yyyy/MM/dd");
+            this.order_receive_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[7].Value.ToString()).ToString("yyyy/MM/dd");
             this.custom_machine_typeTextBox.Text = dataGridView1.SelectedCells[8].Value.ToString();
             this.mb_briefTextBox.Text = dataGridView1.SelectedCells[9].Value.ToString();
             this.custommaterialNoTextBox.Text = dataGridView1.SelectedCells[10].Value.ToString();
@@ -747,7 +752,7 @@ namespace SaledServices
             this.mpnTextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
 
             this.mb_describeTextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();
-            this.mb_make_dateTextBox.Text = dataGridView1.SelectedCells[19].Value.ToString();
+            this.mb_make_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[19].Value.ToString()).ToString("yyyy/MM/dd");
             this.warranty_periodTextBox.Text = dataGridView1.SelectedCells[20].Value.ToString();
             this.custom_faultComboBox.Text = dataGridView1.SelectedCells[21].Value.ToString();
             this.guaranteeComboBox.Text = dataGridView1.SelectedCells[22].Value.ToString();
