@@ -33,6 +33,7 @@
             this.filePath = new System.Windows.Forms.TextBox();
             this.findFile = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.storeInfoImportradioButton = new System.Windows.Forms.RadioButton();
             this.stock_in_sheetradioButton = new System.Windows.Forms.RadioButton();
             this.faultTableRadioButton = new System.Windows.Forms.RadioButton();
             this.DPKradioButton = new System.Windows.Forms.RadioButton();
@@ -41,7 +42,7 @@
             this.LCFC_MBBOMradioButton = new System.Windows.Forms.RadioButton();
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
-            this.storeInfoImportradioButton = new System.Windows.Forms.RadioButton();
+            this.userInputRadioButton = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +79,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.userInputRadioButton);
             this.panel1.Controls.Add(this.storeInfoImportradioButton);
             this.panel1.Controls.Add(this.stock_in_sheetradioButton);
             this.panel1.Controls.Add(this.faultTableRadioButton);
@@ -90,8 +92,19 @@
             this.panel1.Location = new System.Drawing.Point(20, 149);
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(430, 462);
+            this.panel1.Size = new System.Drawing.Size(430, 495);
             this.panel1.TabIndex = 4;
+            // 
+            // storeInfoImportradioButton
+            // 
+            this.storeInfoImportradioButton.AutoSize = true;
+            this.storeInfoImportradioButton.Location = new System.Drawing.Point(22, 408);
+            this.storeInfoImportradioButton.Name = "storeInfoImportradioButton";
+            this.storeInfoImportradioButton.Size = new System.Drawing.Size(147, 24);
+            this.storeInfoImportradioButton.TabIndex = 4;
+            this.storeInfoImportradioButton.TabStop = true;
+            this.storeInfoImportradioButton.Text = "库房储位导入";
+            this.storeInfoImportradioButton.UseVisualStyleBackColor = true;
             // 
             // stock_in_sheetradioButton
             // 
@@ -183,22 +196,22 @@
             this.mbmaterial.Text = "MB物料对照表";
             this.mbmaterial.UseVisualStyleBackColor = true;
             // 
-            // storeInfoImportradioButton
+            // userInputRadioButton
             // 
-            this.storeInfoImportradioButton.AutoSize = true;
-            this.storeInfoImportradioButton.Location = new System.Drawing.Point(22, 408);
-            this.storeInfoImportradioButton.Name = "storeInfoImportradioButton";
-            this.storeInfoImportradioButton.Size = new System.Drawing.Size(147, 24);
-            this.storeInfoImportradioButton.TabIndex = 4;
-            this.storeInfoImportradioButton.TabStop = true;
-            this.storeInfoImportradioButton.Text = "库房储位导入";
-            this.storeInfoImportradioButton.UseVisualStyleBackColor = true;
+            this.userInputRadioButton.AutoSize = true;
+            this.userInputRadioButton.Location = new System.Drawing.Point(22, 448);
+            this.userInputRadioButton.Name = "userInputRadioButton";
+            this.userInputRadioButton.Size = new System.Drawing.Size(147, 24);
+            this.userInputRadioButton.TabIndex = 4;
+            this.userInputRadioButton.TabStop = true;
+            this.userInputRadioButton.Text = "用户资料导入";
+            this.userInputRadioButton.UseVisualStyleBackColor = true;
             // 
             // ExcelImportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 625);
+            this.ClientSize = new System.Drawing.Size(925, 658);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.findFile);
             this.Controls.Add(this.filePath);
@@ -231,5 +244,6 @@
         private System.Windows.Forms.RadioButton faultTableRadioButton;
         private System.Windows.Forms.RadioButton stock_in_sheetradioButton;
         private System.Windows.Forms.RadioButton storeInfoImportradioButton;
+        private System.Windows.Forms.RadioButton userInputRadioButton;
     }
 }

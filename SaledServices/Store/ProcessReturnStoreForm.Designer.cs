@@ -60,13 +60,13 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(368, 219);
+            this.dataGridView1.Size = new System.Drawing.Size(634, 259);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // refreshbutton
             // 
-            this.refreshbutton.Location = new System.Drawing.Point(511, 255);
+            this.refreshbutton.Location = new System.Drawing.Point(697, 245);
             this.refreshbutton.Name = "refreshbutton";
             this.refreshbutton.Size = new System.Drawing.Size(75, 23);
             this.refreshbutton.TabIndex = 1;
@@ -76,7 +76,7 @@
             // 
             // returnStorebutton
             // 
-            this.returnStorebutton.Location = new System.Drawing.Point(511, 190);
+            this.returnStorebutton.Location = new System.Drawing.Point(697, 180);
             this.returnStorebutton.Name = "returnStorebutton";
             this.returnStorebutton.Size = new System.Drawing.Size(75, 23);
             this.returnStorebutton.TabIndex = 1;

@@ -22,6 +22,7 @@ namespace SaledServices
         {
             InitializeComponent();
             mParent = parent;
+            this.ControlBox = false;
         }
 
         private void login_Click(object sender, EventArgs e)
@@ -153,6 +154,7 @@ namespace SaledServices
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Untils.InitCodesoftForReturn();
             //string address = "";
             //string sn = "BOXID(7位)";
             //RestClient client = new RestClient(address);            

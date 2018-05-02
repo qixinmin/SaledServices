@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.AllMenuStrip = new System.Windows.Forms.MenuStrip();
             this.UserManageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LoginMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,6 +71,7 @@
             this.mBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mBToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.库房储位管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.不良品出入库管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.additionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customFaultMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,7 +92,6 @@
             this.出库入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表头ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.不良品出入库管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,6 +134,7 @@
             // 
             // LoginMenuItem
             // 
+            this.LoginMenuItem.Enabled = false;
             this.LoginMenuItem.Name = "LoginMenuItem";
             this.LoginMenuItem.Size = new System.Drawing.Size(204, 32);
             this.LoginMenuItem.Text = "登录";
@@ -452,6 +454,13 @@
             this.库房储位管理ToolStripMenuItem.Text = "库房储位管理";
             this.库房储位管理ToolStripMenuItem.Click += new System.EventHandler(this.库房储位管理ToolStripMenuItem_Click);
             // 
+            // 不良品出入库管理ToolStripMenuItem
+            // 
+            this.不良品出入库管理ToolStripMenuItem.Name = "不良品出入库管理ToolStripMenuItem";
+            this.不良品出入库管理ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
+            this.不良品出入库管理ToolStripMenuItem.Text = "不良品出入库管理";
+            this.不良品出入库管理ToolStripMenuItem.Click += new System.EventHandler(this.不良品出入库管理ToolStripMenuItem_Click);
+            // 
             // additionMenuItem
             // 
             this.additionMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -572,7 +581,7 @@
             this.出库入库ToolStripMenuItem,
             this.工单表头ToolStripMenuItem,
             this.工单表体ToolStripMenuItem});
-            this.海关ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.海关ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.海关ToolStripMenuItem.Name = "海关ToolStripMenuItem";
             this.海关ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
             this.海关ToolStripMenuItem.Text = "海关";
@@ -580,44 +589,37 @@
             // 期初库存ToolStripMenuItem
             // 
             this.期初库存ToolStripMenuItem.Name = "期初库存ToolStripMenuItem";
-            this.期初库存ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.期初库存ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
             this.期初库存ToolStripMenuItem.Text = "期初库存";
             this.期初库存ToolStripMenuItem.Click += new System.EventHandler(this.期初库存ToolStripMenuItem_Click);
             // 
             // 实盘库存ToolStripMenuItem
             // 
             this.实盘库存ToolStripMenuItem.Name = "实盘库存ToolStripMenuItem";
-            this.实盘库存ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.实盘库存ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
             this.实盘库存ToolStripMenuItem.Text = "实盘库存";
             this.实盘库存ToolStripMenuItem.Click += new System.EventHandler(this.实盘库存ToolStripMenuItem_Click);
             // 
             // 出库入库ToolStripMenuItem
             // 
             this.出库入库ToolStripMenuItem.Name = "出库入库ToolStripMenuItem";
-            this.出库入库ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.出库入库ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
             this.出库入库ToolStripMenuItem.Text = "出库入库";
             this.出库入库ToolStripMenuItem.Click += new System.EventHandler(this.出库入库ToolStripMenuItem_Click);
             // 
             // 工单表头ToolStripMenuItem
             // 
             this.工单表头ToolStripMenuItem.Name = "工单表头ToolStripMenuItem";
-            this.工单表头ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.工单表头ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
             this.工单表头ToolStripMenuItem.Text = "工单表头";
             this.工单表头ToolStripMenuItem.Click += new System.EventHandler(this.工单表头ToolStripMenuItem_Click);
             // 
             // 工单表体ToolStripMenuItem
             // 
             this.工单表体ToolStripMenuItem.Name = "工单表体ToolStripMenuItem";
-            this.工单表体ToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.工单表体ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
             this.工单表体ToolStripMenuItem.Text = "工单表体";
             this.工单表体ToolStripMenuItem.Click += new System.EventHandler(this.工单表体ToolStripMenuItem_Click);
-            // 
-            // 不良品出入库管理ToolStripMenuItem
-            // 
-            this.不良品出入库管理ToolStripMenuItem.Name = "不良品出入库管理ToolStripMenuItem";
-            this.不良品出入库管理ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
-            this.不良品出入库管理ToolStripMenuItem.Text = "不良品出入库管理";
-            this.不良品出入库管理ToolStripMenuItem.Click += new System.EventHandler(this.不良品出入库管理ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -626,12 +628,14 @@
             this.ClientSize = new System.Drawing.Size(1251, 686);
             this.Controls.Add(this.AllMenuStrip);
             this.Font = new System.Drawing.Font("SimSun", 12F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "进销存系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.AllMenuStrip.ResumeLayout(false);
             this.AllMenuStrip.PerformLayout();
             this.ResumeLayout(false);

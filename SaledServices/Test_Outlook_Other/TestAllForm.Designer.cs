@@ -51,11 +51,11 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 6;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.025477F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.84713F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.936306F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.25478F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.12102F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tracker_bar_textBox, 1, 0);
@@ -73,13 +73,13 @@
             this.tableLayoutPanel1.Controls.Add(this.cpuTypetextBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.confirmbutton, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.button1, 5, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(33, 71);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 77F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(469, 240);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(785, 327);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label1
@@ -93,16 +93,17 @@
             // 
             // tracker_bar_textBox
             // 
-            this.tracker_bar_textBox.Location = new System.Drawing.Point(81, 3);
+            this.tracker_bar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tracker_bar_textBox.Location = new System.Drawing.Point(66, 3);
             this.tracker_bar_textBox.Name = "tracker_bar_textBox";
-            this.tracker_bar_textBox.Size = new System.Drawing.Size(72, 21);
+            this.tracker_bar_textBox.Size = new System.Drawing.Size(244, 21);
             this.tracker_bar_textBox.TabIndex = 1;
             this.tracker_bar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tracker_bar_textBox_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(159, 0);
+            this.label2.Location = new System.Drawing.Point(316, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 2;
@@ -110,16 +111,17 @@
             // 
             // testerTextBox
             // 
-            this.testerTextBox.Location = new System.Drawing.Point(237, 3);
+            this.testerTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.testerTextBox.Location = new System.Drawing.Point(394, 3);
             this.testerTextBox.Name = "testerTextBox";
             this.testerTextBox.ReadOnly = true;
-            this.testerTextBox.Size = new System.Drawing.Size(72, 21);
+            this.testerTextBox.Size = new System.Drawing.Size(153, 21);
             this.testerTextBox.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(315, 0);
+            this.label3.Location = new System.Drawing.Point(553, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 2;
@@ -127,16 +129,17 @@
             // 
             // testdatetextBox
             // 
-            this.testdatetextBox.Location = new System.Drawing.Point(393, 3);
+            this.testdatetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.testdatetextBox.Location = new System.Drawing.Point(656, 3);
             this.testdatetextBox.Name = "testdatetextBox";
             this.testdatetextBox.ReadOnly = true;
-            this.testdatetextBox.Size = new System.Drawing.Size(72, 21);
+            this.testdatetextBox.Size = new System.Drawing.Size(126, 21);
             this.testdatetextBox.TabIndex = 1;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 162);
+            this.label6.Location = new System.Drawing.Point(3, 250);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 12);
             this.label6.TabIndex = 5;
@@ -144,16 +147,17 @@
             // 
             // keyidtextBox
             // 
-            this.keyidtextBox.Location = new System.Drawing.Point(81, 165);
+            this.keyidtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.keyidtextBox.Location = new System.Drawing.Point(66, 253);
             this.keyidtextBox.Name = "keyidtextBox";
             this.keyidtextBox.ReadOnly = true;
-            this.keyidtextBox.Size = new System.Drawing.Size(72, 21);
+            this.keyidtextBox.Size = new System.Drawing.Size(244, 21);
             this.keyidtextBox.TabIndex = 4;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(159, 162);
+            this.label7.Location = new System.Drawing.Point(316, 250);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 12);
             this.label7.TabIndex = 6;
@@ -161,16 +165,17 @@
             // 
             // KEYSERIALtextBox
             // 
-            this.KEYSERIALtextBox.Location = new System.Drawing.Point(237, 165);
+            this.KEYSERIALtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KEYSERIALtextBox.Location = new System.Drawing.Point(394, 253);
             this.KEYSERIALtextBox.Name = "KEYSERIALtextBox";
             this.KEYSERIALtextBox.ReadOnly = true;
-            this.KEYSERIALtextBox.Size = new System.Drawing.Size(72, 21);
+            this.KEYSERIALtextBox.Size = new System.Drawing.Size(153, 21);
             this.KEYSERIALtextBox.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(159, 81);
+            this.label5.Location = new System.Drawing.Point(316, 125);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 12);
             this.label5.TabIndex = 10;
@@ -179,7 +184,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 81);
+            this.label4.Location = new System.Drawing.Point(3, 125);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 12);
             this.label4.TabIndex = 9;
@@ -187,23 +192,25 @@
             // 
             // cpuFreqtextBox
             // 
-            this.cpuFreqtextBox.Location = new System.Drawing.Point(237, 84);
+            this.cpuFreqtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cpuFreqtextBox.Location = new System.Drawing.Point(394, 128);
             this.cpuFreqtextBox.Name = "cpuFreqtextBox";
             this.cpuFreqtextBox.ReadOnly = true;
-            this.cpuFreqtextBox.Size = new System.Drawing.Size(72, 21);
+            this.cpuFreqtextBox.Size = new System.Drawing.Size(153, 21);
             this.cpuFreqtextBox.TabIndex = 7;
             // 
             // cpuTypetextBox
             // 
-            this.cpuTypetextBox.Location = new System.Drawing.Point(81, 84);
+            this.cpuTypetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cpuTypetextBox.Location = new System.Drawing.Point(66, 128);
             this.cpuTypetextBox.Name = "cpuTypetextBox";
             this.cpuTypetextBox.ReadOnly = true;
-            this.cpuTypetextBox.Size = new System.Drawing.Size(72, 21);
+            this.cpuTypetextBox.Size = new System.Drawing.Size(244, 21);
             this.cpuTypetextBox.TabIndex = 8;
             // 
             // confirmbutton
             // 
-            this.confirmbutton.Location = new System.Drawing.Point(315, 165);
+            this.confirmbutton.Location = new System.Drawing.Point(553, 253);
             this.confirmbutton.Name = "confirmbutton";
             this.confirmbutton.Size = new System.Drawing.Size(72, 23);
             this.confirmbutton.TabIndex = 1;
@@ -213,7 +220,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(393, 165);
+            this.button1.Location = new System.Drawing.Point(656, 253);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(72, 23);
             this.button1.TabIndex = 1;
@@ -225,7 +232,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 383);
+            this.ClientSize = new System.Drawing.Size(820, 407);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "TestAllForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -24,6 +24,7 @@ namespace SaledServices
             InitializeComponent();
 
             inputerTextBox.Text = LoginForm.currentUser;
+            this.input_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
             loadAdditionInfomation();
         }

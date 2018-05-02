@@ -61,13 +61,13 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(429, 238);
+            this.dataGridView1.Size = new System.Drawing.Size(637, 277);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // refreshbutton
             // 
-            this.refreshbutton.Location = new System.Drawing.Point(511, 319);
+            this.refreshbutton.Location = new System.Drawing.Point(699, 319);
             this.refreshbutton.Name = "refreshbutton";
             this.refreshbutton.Size = new System.Drawing.Size(75, 23);
             this.refreshbutton.TabIndex = 1;
@@ -77,7 +77,7 @@
             // 
             // processRequestbutton
             // 
-            this.processRequestbutton.Location = new System.Drawing.Point(511, 145);
+            this.processRequestbutton.Location = new System.Drawing.Point(699, 145);
             this.processRequestbutton.Name = "processRequestbutton";
             this.processRequestbutton.Size = new System.Drawing.Size(89, 35);
             this.processRequestbutton.TabIndex = 1;
@@ -223,7 +223,7 @@
             // 
             // waitbutton
             // 
-            this.waitbutton.Location = new System.Drawing.Point(511, 219);
+            this.waitbutton.Location = new System.Drawing.Point(699, 219);
             this.waitbutton.Name = "waitbutton";
             this.waitbutton.Size = new System.Drawing.Size(89, 35);
             this.waitbutton.TabIndex = 1;

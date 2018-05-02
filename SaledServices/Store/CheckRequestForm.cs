@@ -16,6 +16,7 @@ namespace SaledServices.Store
         {
             InitializeComponent();
             requestertextBox.Text = LoginForm.currentUser;
+            this.dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
             loadInfo();
         }
 

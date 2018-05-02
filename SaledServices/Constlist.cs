@@ -57,6 +57,10 @@ namespace SaledServices
 
         public static string table_stock_house = "库房";
         public static string table_name_store_house_sheet = "store_house";
+
+
+        public static string table_users = "用户导入";
+        public static string table_name_users_sheet = "users";
     }
 
     //订单状态
@@ -82,12 +86,13 @@ namespace SaledServices
 
     public class Untils
     {
-        public void InitCodesoftForReturn()
+        public static void InitCodesoftForReturn()
         {
 
             LabelManager2.Application labApp = new LabelManager2.Application();
             LabelManager2.Document doc = null;
-            string labFileName = System.Windows.Forms.Application.StartupPath + @"\barJapLab.Lab";
+            //string labFileName = System.Windows.Forms.Application.StartupPath + @"\barJapLab.Lab";
+            string labFileName = @"D:\维修系统\测试专用\test.Lab";
             try
             {
                 if (!File.Exists(labFileName))
@@ -105,9 +110,9 @@ namespace SaledServices
                 doc.PrintDocument(); //打印一次
                 doc.FormFeed(); //结束打印
             }
-            catch
+            catch(Exception ex)
             {
-
+                MessageBox.Show(ex.ToString());
             }
             finally
             {

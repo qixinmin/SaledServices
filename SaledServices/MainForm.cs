@@ -109,16 +109,7 @@ namespace SaledServices
        
         private void LoginMenuItem_Click(object sender, EventArgs e)
         {
-            if (mLoginForm == null || mLoginForm.IsDisposed)
-            {
-                mLoginForm = new LoginForm(this);
-                mLoginForm.MdiParent = this;
-            }
-
-            mLoginForm.BringToFront();
-            mLoginForm.Show();
-
-            allForm.Add(mLoginForm);
+           
         }
 
         private void VendorChangeMenuItem_Click(object sender, EventArgs e)
@@ -329,6 +320,7 @@ namespace SaledServices
             LoginForm.currentUser = "";
 
             this.LogoutMenuItem.Enabled = false;
+            MainForm_Load(null, null);
         }
 
        
@@ -917,6 +909,22 @@ namespace SaledServices
             faultMbStoreForm.Show();
 
             allForm.Add(faultMbStoreForm);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            clearAllMenu();
+
+            if (mLoginForm == null || mLoginForm.IsDisposed)
+            {
+                mLoginForm = new LoginForm(this);
+                mLoginForm.MdiParent = this;
+            }
+
+            mLoginForm.BringToFront();
+            mLoginForm.Show();
+
+            allForm.Add(mLoginForm);
         }
     }
 }

@@ -23,6 +23,7 @@ namespace SaledServices
             loadAdditionInfomation();
 
             inputertextBox.Text = LoginForm.currentUser;
+            this.input_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
             mPrepareUseDetail = new PrepareUseDetail();            
         }
 

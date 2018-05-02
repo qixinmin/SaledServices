@@ -43,9 +43,9 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 6;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.45552F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.93893F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.312977F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -57,12 +57,12 @@
             this.tableLayoutPanel1.Controls.Add(this.testdatetextBox, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.confirmbutton, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.button1, 5, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(105, 95);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(469, 240);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(655, 324);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label1
@@ -76,16 +76,17 @@
             // 
             // tracker_bar_textBox
             // 
-            this.tracker_bar_textBox.Location = new System.Drawing.Point(81, 3);
+            this.tracker_bar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tracker_bar_textBox.Location = new System.Drawing.Point(84, 3);
             this.tracker_bar_textBox.Name = "tracker_bar_textBox";
-            this.tracker_bar_textBox.Size = new System.Drawing.Size(72, 21);
+            this.tracker_bar_textBox.Size = new System.Drawing.Size(177, 21);
             this.tracker_bar_textBox.TabIndex = 1;
             this.tracker_bar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tracker_bar_textBox_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(159, 0);
+            this.label2.Location = new System.Drawing.Point(267, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 2;
@@ -93,16 +94,17 @@
             // 
             // testerTextBox
             // 
-            this.testerTextBox.Location = new System.Drawing.Point(237, 3);
+            this.testerTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.testerTextBox.Location = new System.Drawing.Point(328, 3);
             this.testerTextBox.Name = "testerTextBox";
             this.testerTextBox.ReadOnly = true;
-            this.testerTextBox.Size = new System.Drawing.Size(72, 21);
+            this.testerTextBox.Size = new System.Drawing.Size(103, 21);
             this.testerTextBox.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(315, 0);
+            this.label3.Location = new System.Drawing.Point(437, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 2;
@@ -110,15 +112,16 @@
             // 
             // testdatetextBox
             // 
-            this.testdatetextBox.Location = new System.Drawing.Point(393, 3);
+            this.testdatetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.testdatetextBox.Location = new System.Drawing.Point(546, 3);
             this.testdatetextBox.Name = "testdatetextBox";
             this.testdatetextBox.ReadOnly = true;
-            this.testdatetextBox.Size = new System.Drawing.Size(72, 21);
+            this.testdatetextBox.Size = new System.Drawing.Size(106, 21);
             this.testdatetextBox.TabIndex = 1;
             // 
             // confirmbutton
             // 
-            this.confirmbutton.Location = new System.Drawing.Point(315, 123);
+            this.confirmbutton.Location = new System.Drawing.Point(437, 165);
             this.confirmbutton.Name = "confirmbutton";
             this.confirmbutton.Size = new System.Drawing.Size(72, 23);
             this.confirmbutton.TabIndex = 1;
@@ -128,7 +131,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(393, 123);
+            this.button1.Location = new System.Drawing.Point(546, 165);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(72, 23);
             this.button1.TabIndex = 1;

@@ -140,6 +140,11 @@ namespace SaledServices
                 sheetName = Constlist.table_stock_house;
                 tableName = Constlist.table_name_store_house_sheet;
             }
+            else if (this.userInputRadioButton.Checked)
+            {
+                sheetName = Constlist.table_users;
+                tableName = Constlist.table_name_users_sheet;
+            }
 
             if (this.LCFC_MBBOMradioButton.Checked
                 || this.COMPAL_MBBOMradioButton.Checked)
@@ -151,6 +156,12 @@ namespace SaledServices
             else if (this.LCFC71BOMRadioButton.Checked)
             {
                 importLCFC_71BOMUsingADO(sheetName, tableName);
+                this.importButton.Enabled = true;
+                return;
+            }
+            else if (this.userInputRadioButton.Checked)
+            {
+                importUserInfo(sheetName, tableName);
                 this.importButton.Enabled = true;
                 return;
             }
@@ -536,6 +547,59 @@ namespace SaledServices
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }           
         }
+
+        public void importUserInfo(string sheetName, string tableName)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                //获取全部数据
+                string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath.Text + ";Extended Properties=Excel 12.0;";
+                OleDbConnection conn = new OleDbConnection(strConn);
+                conn.Open();
+                string strExcel = "";
+                OleDbDataAdapter myCommand = null;
+                strExcel = string.Format("select * from [{0}$]", sheetName);
+                myCommand = new OleDbDataAdapter(strExcel, strConn);
+                myCommand.Fill(ds, sheetName);
+
+                //用bcp导入数据
+                using (System.Data.SqlClient.SqlBulkCopy bcp = new System.Data.SqlClient.SqlBulkCopy(Constlist.ConStr))
+                {
+                    // bcp.SqlRowsCopied += new System.Data.SqlClient.SqlRowsCopiedEventHandler(bcp_SqlRowsCopied);
+                    bcp.BatchSize = 1000;//每次传输的行数
+                    bcp.NotifyAfter = 1000;//进度提示的行数
+                    bcp.DestinationTableName = tableName;//目标表
+
+                    bcp.ColumnMappings.Add("用户名", "username");
+                    bcp.ColumnMappings.Add("工号", "workId");
+                    bcp.ColumnMappings.Add("默认密码", "_password");
+                    bcp.ColumnMappings.Add("超级管理员", "super_manager");
+                    bcp.ColumnMappings.Add("BGA", "bga");
+                    bcp.ColumnMappings.Add("Repair", "repair");
+                    bcp.ColumnMappings.Add("Test_all", "test_all");
+                    bcp.ColumnMappings.Add("Test1", "test1");
+                    bcp.ColumnMappings.Add("Test2", "test2");
+                    bcp.ColumnMappings.Add("receive_return", "receive_return");
+                    bcp.ColumnMappings.Add("store", "store");
+
+                    bcp.ColumnMappings.Add("outlook", "outlook");
+                    bcp.ColumnMappings.Add("running", "running");
+                    bcp.ColumnMappings.Add("obe", "obe");
+
+                    bcp.WriteToServer(ds.Tables[0]);
+                    bcp.Close();
+
+                    conn.Close();
+                    MessageBox.Show("导入完成");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
         public void importLCFC_MBBOM(Worksheet ws, int rowLength, int columnLength, string tableName)
         {
             string s ="";

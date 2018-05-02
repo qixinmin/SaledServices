@@ -38,7 +38,9 @@
             this.confirmPassTextBox = new System.Windows.Forms.TextBox();
             this.modifyPassButton = new System.Windows.Forms.Button();
             this.permissionPanel = new System.Windows.Forms.Panel();
+            this.obecheckBox = new System.Windows.Forms.CheckBox();
             this.storeCheckBox = new System.Windows.Forms.CheckBox();
+            this.runningcheckBox = new System.Windows.Forms.CheckBox();
             this.outlookCheckBox = new System.Windows.Forms.CheckBox();
             this.receive_returnCheckBox = new System.Windows.Forms.CheckBox();
             this.test2CheckBox = new System.Windows.Forms.CheckBox();
@@ -51,8 +53,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.workIdtextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.obecheckBox = new System.Windows.Forms.CheckBox();
-            this.runningcheckBox = new System.Windows.Forms.CheckBox();
             this.permissionPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -150,6 +150,17 @@
             this.permissionPanel.Size = new System.Drawing.Size(292, 269);
             this.permissionPanel.TabIndex = 8;
             // 
+            // obecheckBox
+            // 
+            this.obecheckBox.AutoSize = true;
+            this.obecheckBox.Enabled = false;
+            this.obecheckBox.Location = new System.Drawing.Point(216, 182);
+            this.obecheckBox.Name = "obecheckBox";
+            this.obecheckBox.Size = new System.Drawing.Size(42, 16);
+            this.obecheckBox.TabIndex = 12;
+            this.obecheckBox.Text = "OBE";
+            this.obecheckBox.UseVisualStyleBackColor = true;
+            // 
             // storeCheckBox
             // 
             this.storeCheckBox.AutoSize = true;
@@ -160,6 +171,17 @@
             this.storeCheckBox.TabIndex = 6;
             this.storeCheckBox.Text = "库存";
             this.storeCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // runningcheckBox
+            // 
+            this.runningcheckBox.AutoSize = true;
+            this.runningcheckBox.Enabled = false;
+            this.runningcheckBox.Location = new System.Drawing.Point(120, 182);
+            this.runningcheckBox.Name = "runningcheckBox";
+            this.runningcheckBox.Size = new System.Drawing.Size(66, 16);
+            this.runningcheckBox.TabIndex = 11;
+            this.runningcheckBox.Text = "Running";
+            this.runningcheckBox.UseVisualStyleBackColor = true;
             // 
             // outlookCheckBox
             // 
@@ -292,26 +314,6 @@
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 10;
             this.label5.Text = "当前的权限";
-            // 
-            // obecheckBox
-            // 
-            this.obecheckBox.AutoSize = true;
-            this.obecheckBox.Location = new System.Drawing.Point(216, 182);
-            this.obecheckBox.Name = "obecheckBox";
-            this.obecheckBox.Size = new System.Drawing.Size(42, 16);
-            this.obecheckBox.TabIndex = 12;
-            this.obecheckBox.Text = "OBE";
-            this.obecheckBox.UseVisualStyleBackColor = true;
-            // 
-            // runningcheckBox
-            // 
-            this.runningcheckBox.AutoSize = true;
-            this.runningcheckBox.Location = new System.Drawing.Point(120, 182);
-            this.runningcheckBox.Name = "runningcheckBox";
-            this.runningcheckBox.Size = new System.Drawing.Size(66, 16);
-            this.runningcheckBox.TabIndex = 11;
-            this.runningcheckBox.Text = "Running";
-            this.runningcheckBox.UseVisualStyleBackColor = true;
             // 
             // UserSelfForm
             // 

@@ -432,10 +432,11 @@
             // 
             // buy_order_serial_noComboBox
             // 
+            this.buy_order_serial_noComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buy_order_serial_noComboBox.FormattingEnabled = true;
             this.buy_order_serial_noComboBox.Location = new System.Drawing.Point(175, 6);
             this.buy_order_serial_noComboBox.Name = "buy_order_serial_noComboBox";
-            this.buy_order_serial_noComboBox.Size = new System.Drawing.Size(148, 24);
+            this.buy_order_serial_noComboBox.Size = new System.Drawing.Size(160, 24);
             this.buy_order_serial_noComboBox.TabIndex = 6;
             this.buy_order_serial_noComboBox.SelectedValueChanged += new System.EventHandler(this.buy_order_serial_noComboBox_SelectedValueChanged);
             // 
@@ -530,9 +531,9 @@
             this.label19.Location = new System.Drawing.Point(1021, 3);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(40, 16);
+            this.label19.Size = new System.Drawing.Size(88, 16);
             this.label19.TabIndex = 10;
-            this.label19.Text = "库位";
+            this.label19.Text = "库位(回车)";
             // 
             // inputerTextBox
             // 
@@ -612,8 +613,8 @@
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.3783F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.6217F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.31672F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.68328F));
             this.tableLayoutPanel4.Controls.Add(this.dataGridViewToReturn, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.dataGridView1, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -636,9 +637,8 @@
             this.dataGridViewToReturn.ReadOnly = true;
             this.dataGridViewToReturn.RowTemplate.Height = 23;
             this.dataGridViewToReturn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewToReturn.Size = new System.Drawing.Size(420, 429);
+            this.dataGridViewToReturn.Size = new System.Drawing.Size(501, 429);
             this.dataGridViewToReturn.TabIndex = 8;
-            this.dataGridViewToReturn.VirtualMode = true;
             this.dataGridViewToReturn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewToReturn_CellClick);
             // 
             // dataGridView1
@@ -649,13 +649,13 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(432, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(513, 4);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(928, 429);
+            this.dataGridView1.Size = new System.Drawing.Size(847, 429);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.VirtualMode = true;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
