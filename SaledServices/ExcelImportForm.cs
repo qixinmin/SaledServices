@@ -306,7 +306,7 @@ namespace SaledServices
                             }
 
                             querySdr.Close();
-
+                             
                             insertCmd.CommandText = "INSERT INTO receiveOrder VALUES('" +
                                 vendor + "','" +
                                 product + "','" +
@@ -316,10 +316,10 @@ namespace SaledServices
                                 orderNum + "','" +
                                 mb_brief + "','" +
                                 vendor_materialNo + "','" +
-                                "testUser" + "','" +
-                                DateTime.Now + "','" +
+                                LoginForm.currentUser + "','" +                                
+                                 DateTime.Now.ToString("yyyy/MM/dd")+ "','" +
                                 "0" + "','" +
-                                "NULL" + "','" +
+                                DateTime.Now.ToString("1900/01/01") + "','" +
                                 "open" + "','" +
                                 storeHouse + "','0',"+"'"+declare_unit+"','"+declare_number+"','"+custom_request_number+"')";
 
@@ -373,7 +373,7 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    for (int i = 1; i <= rowLength; i++)
+                    for (int i = 2; i <= rowLength; i++)
                     {
                         string s = "INSERT INTO " + tableName + " VALUES('";
                         for (int j = 1; j <= columnLength; j++)

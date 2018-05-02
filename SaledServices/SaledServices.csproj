@@ -722,7 +722,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="资料\2.ico" />
-    <Content Include="资料\sql 语句备份.txt.sql" />
+    <None Include="资料\sql 语句备份.txt.sql" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
