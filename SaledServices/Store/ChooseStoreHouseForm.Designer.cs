@@ -37,13 +37,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.numTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.houseTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.numbertextBox = new System.Windows.Forms.TextBox();
             this.mpntextBox = new System.Windows.Forms.TextBox();
             this.releasePlacebutton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.houseComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,14 +137,6 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "库房";
             // 
-            // houseTextBox
-            // 
-            this.houseTextBox.Location = new System.Drawing.Point(243, 104);
-            this.houseTextBox.Margin = new System.Windows.Forms.Padding(5);
-            this.houseTextBox.Name = "houseTextBox";
-            this.houseTextBox.Size = new System.Drawing.Size(164, 30);
-            this.houseTextBox.TabIndex = 2;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -207,11 +199,21 @@
             this.label6.TabIndex = 7;
             this.label6.Text = "可以模糊查询";
             // 
+            // houseComboBox
+            // 
+            this.houseComboBox.FormattingEnabled = true;
+            this.houseComboBox.Location = new System.Drawing.Point(243, 113);
+            this.houseComboBox.Name = "houseComboBox";
+            this.houseComboBox.Size = new System.Drawing.Size(164, 28);
+            this.houseComboBox.TabIndex = 8;
+            this.houseComboBox.SelectedValueChanged += new System.EventHandler(this.houseComboBox_SelectedValueChanged);
+            // 
             // ChooseStoreHouseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 716);
+            this.Controls.Add(this.houseComboBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.numTextBox);
             this.Controls.Add(this.label2);
@@ -219,7 +221,6 @@
             this.Controls.Add(this.query);
             this.Controls.Add(this.choose);
             this.Controls.Add(this.mpntextBox);
-            this.Controls.Add(this.houseTextBox);
             this.Controls.Add(this.numbertextBox);
             this.Controls.Add(this.placeTextBox);
             this.Controls.Add(this.label5);
@@ -248,12 +249,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox numTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox houseTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox numbertextBox;
         private System.Windows.Forms.TextBox mpntextBox;
         private System.Windows.Forms.Button releasePlacebutton;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox houseComboBox;
     }
 }

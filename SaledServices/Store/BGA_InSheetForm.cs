@@ -41,7 +41,7 @@ namespace SaledServices
                 cmd.CommandType = CommandType.Text;
 
                 //1 来源 2.客户故障	3.保内/保外	4 .客责描述
-                cmd.CommandText = "select distinct buy_order_serial_no from stock_in_sheet where _status = 'open'";
+                cmd.CommandText = "select distinct buy_order_serial_no from stock_in_sheet where _status = 'open' and material_type in ('BGA')";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -63,6 +63,12 @@ namespace SaledServices
 
         private void add_Click(object sender, EventArgs e)
         {
+            if (this.CPU.Checked == false && this.PCH.Checked == false && this.VGA.Checked == false)
+            {
+                MessageBox.Show("BGA的类型没有选择！");
+                return;
+            }
+
             if (this.mpnTextBox.Text.Trim() == "" || this.buy_order_serial_noComboBox.Text.Trim() =="")
             {
                 MessageBox.Show("MPN 或订单号为空！");
@@ -73,7 +79,7 @@ namespace SaledServices
             {
                 MessageBox.Show("库位为空，请检查！");
                 return;
-            }           
+            }
 
             try
             {
@@ -86,10 +92,25 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
+                    SqlDataReader querySdr = null;
+
+                    //首先检查此sn是否已经在数据库中存在，如果存在则不能再次入库
+                    if (this.bgaSnTextBox.Text != "")
+                    {
+                        cmd.CommandText = "select * from " + tableName + " where bgasn='"+this.bgaSnTextBox.Text.Trim()+"'";
+                        querySdr = cmd.ExecuteReader();
+                        if(querySdr.HasRows)
+                        {
+                            conn.Close();
+                            MessageBox.Show("此BGA SN号码已经存在数据库中了，请检查是否重复！");
+                            return;
+                        }
+                    }
+
                     cmd.CommandText = "select number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim()
                                         + "' and mpn='" + this.mpnTextBox.Text.Trim() + "'";
 
-                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    querySdr = cmd.ExecuteReader();
                     string status = "open";
                     int total_number, in_number_int = 0, this_enter_number = 0;
                     while (querySdr.Read())
@@ -345,7 +366,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,pricePer,material_name,isdeclare,number from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,pricePer,material_name,isdeclare,number from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "' and material_type in ('BGA')";
 
                 SqlDataReader querySdr = cmd.ExecuteReader();
 
@@ -446,7 +467,7 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
                 //加入条件判断，只显示未收完的货物
-                cmd.CommandText = "select material_type,mpn, vendormaterialNo, number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text + "' and _status='open'";
+                cmd.CommandText = "select material_type,mpn, vendormaterialNo, number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text + "' and _status='open' and material_type in ('BGA') ";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -509,6 +530,7 @@ namespace SaledServices
         {
             this.mpnTextBox.Text = dataGridViewToReturn.SelectedCells[1].Value.ToString();
             this.stock_placetextBox.Text = "";
+            this.bga_brieftextBox.Text = "";
             simulateMpnEnter();
         }
 
@@ -521,6 +543,14 @@ namespace SaledServices
                 if (this_enter_number > order_number_int)
                 {
                     MessageBox.Show("输入数量大于订单数量!");
+                    this.stock_in_numTextBox.Clear();
+                    this.stock_in_numTextBox.Focus();
+                    return;
+                }
+
+                if (this_enter_number == 0)
+                {
+                    MessageBox.Show("输入数量不能为0!");
                     this.stock_in_numTextBox.Clear();
                     this.stock_in_numTextBox.Focus();
                     return;
@@ -561,9 +591,11 @@ namespace SaledServices
             }
 
             string type="";
+            string mpnType = "";
             if(PCH.Checked)
             {
                 type = "pcb_brief_describe";
+                mpnType = "vendor_pch_mpn";
                 this.stock_in_numTextBox.Enabled = false;
                 this.stock_in_numTextBox.Text = "1";
                 this.bgaSnTextBox.Enabled = true;
@@ -571,6 +603,7 @@ namespace SaledServices
             else if (CPU.Checked )
             {
                 type = "cpu_brief";
+                mpnType = "vendor_cpu_mpn";
                 this.stock_in_numTextBox.Enabled = false;
                 this.stock_in_numTextBox.Text = "1";
                 this.bgaSnTextBox.Enabled = true;
@@ -578,6 +611,7 @@ namespace SaledServices
             else if (this.VGA.Checked)
             {
                 type = "vga_brief_describe";
+                mpnType = "vendor_vga_mpn";
                 this.stock_in_numTextBox.Enabled = true;
                 this.bgaSnTextBox.Enabled = false;
                 this.bgaSnTextBox.Clear();
@@ -597,7 +631,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select " + type + " from MBMaterialCompare where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                cmd.CommandText = "select " + type + " from MBMaterialCompare where " + mpnType + "='" + this.mpnTextBox.Text.Trim() + "'";
 
                 SqlDataReader querySdr = cmd.ExecuteReader();                
                 while (querySdr.Read())
@@ -605,6 +639,15 @@ namespace SaledServices
                     this.bga_brieftextBox.Text = querySdr[0].ToString();                    
                 }
                 querySdr.Close();
+
+                if (this.bga_brieftextBox.Text == "")
+                {
+                    this.bga_brieftextBox.ReadOnly = false;
+                }
+                else
+                {
+                    this.bga_brieftextBox.ReadOnly = true;
+                }
 
                 mConn.Close();
             }

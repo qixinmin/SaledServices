@@ -41,7 +41,7 @@ namespace SaledServices
                 cmd.CommandType = CommandType.Text;
 
                 //1 来源 2.客户故障	3.保内/保外	4 .客责描述
-                cmd.CommandText = "select distinct buy_order_serial_no from stock_in_sheet where _status = 'open'";
+                cmd.CommandText = "select distinct buy_order_serial_no from stock_in_sheet where _status = 'open' and material_type in ('MB')";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -86,10 +86,23 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
+                    SqlDataReader querySdr=null;
+                    if (this.custom_serial_noTextBox.Text != "")
+                    {
+                        cmd.CommandText = "select * from " + tableName + " where custom_serial_no='" + this.custom_serial_noTextBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        if(querySdr.HasRows)
+                        {
+                            conn.Close();
+                            MessageBox.Show("此板子客户序号已经存在数据库中了，请检查是否重复！");
+                            return;
+                        }
+                    }
+
                     cmd.CommandText = "select number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim()
                                         + "' and mpn='" + this.mpnTextBox.Text.Trim() + "'";
 
-                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    querySdr = cmd.ExecuteReader();
                     string status = "open";
                     int total_number, in_number_int = 0, this_enter_number = 0;
                     while (querySdr.Read())
@@ -347,7 +360,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,pricePer,isdeclare,number from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,pricePer,isdeclare,number from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "' and material_type in ('MB')";
 
                 SqlDataReader querySdr = cmd.ExecuteReader();
 
@@ -416,7 +429,7 @@ namespace SaledServices
 
         private void clearInputText()
         {
-            this.mb_brieftextBox.Text = "";
+            //this.mb_brieftextBox.Text = "";
             this.stock_in_numTextBox.Text = "";
             //this.stock_placetextBox.Text = "";
             this.notetextBox.Text = "";
@@ -453,7 +466,7 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
                 //加入条件判断，只显示未收完的货物
-                cmd.CommandText = "select material_type,mpn, vendormaterialNo, number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text + "' and _status='open'";
+                cmd.CommandText = "select material_type,mpn, vendormaterialNo, number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text + "' and _status='open' and material_type in ('MB')";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -528,6 +541,13 @@ namespace SaledServices
                 if (this_enter_number > order_number_int)
                 {
                     MessageBox.Show("输入数量大于订单数量!");
+                    this.stock_in_numTextBox.Clear();
+                    this.stock_in_numTextBox.Focus();
+                    return;
+                }
+                if (this_enter_number == 0)
+                {
+                    MessageBox.Show("输入数量不能为0!");
                     this.stock_in_numTextBox.Clear();
                     this.stock_in_numTextBox.Focus();
                     return;

@@ -150,6 +150,7 @@
             this.vendorTextBox.Location = new System.Drawing.Point(176, 101);
             this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendorTextBox.Name = "vendorTextBox";
+            this.vendorTextBox.ReadOnly = true;
             this.vendorTextBox.Size = new System.Drawing.Size(158, 26);
             this.vendorTextBox.TabIndex = 5;
             // 
@@ -248,6 +249,7 @@
             this.productTextBox.Location = new System.Drawing.Point(176, 148);
             this.productTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.productTextBox.Name = "productTextBox";
+            this.productTextBox.ReadOnly = true;
             this.productTextBox.Size = new System.Drawing.Size(158, 26);
             this.productTextBox.TabIndex = 5;
             // 
@@ -256,6 +258,7 @@
             this.vendormaterialNoTextBox.Location = new System.Drawing.Point(514, 54);
             this.vendormaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendormaterialNoTextBox.Name = "vendormaterialNoTextBox";
+            this.vendormaterialNoTextBox.ReadOnly = true;
             this.vendormaterialNoTextBox.Size = new System.Drawing.Size(158, 26);
             this.vendormaterialNoTextBox.TabIndex = 5;
             // 
@@ -264,6 +267,7 @@
             this.mpnTextBox.Location = new System.Drawing.Point(176, 54);
             this.mpnTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mpnTextBox.Name = "mpnTextBox";
+            this.mpnTextBox.ReadOnly = true;
             this.mpnTextBox.Size = new System.Drawing.Size(158, 26);
             this.mpnTextBox.TabIndex = 5;
             this.mpnTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mpnTextBox_KeyPress);
@@ -273,6 +277,7 @@
             this.material_typeTextBox.Location = new System.Drawing.Point(176, 195);
             this.material_typeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_typeTextBox.Name = "material_typeTextBox";
+            this.material_typeTextBox.ReadOnly = true;
             this.material_typeTextBox.Size = new System.Drawing.Size(158, 26);
             this.material_typeTextBox.TabIndex = 5;
             // 
@@ -281,6 +286,7 @@
             this.buy_typeTextBox.Location = new System.Drawing.Point(514, 7);
             this.buy_typeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.buy_typeTextBox.Name = "buy_typeTextBox";
+            this.buy_typeTextBox.ReadOnly = true;
             this.buy_typeTextBox.Size = new System.Drawing.Size(158, 26);
             this.buy_typeTextBox.TabIndex = 5;
             // 
@@ -289,6 +295,7 @@
             this.describeTextBox.Location = new System.Drawing.Point(514, 101);
             this.describeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.describeTextBox.Name = "describeTextBox";
+            this.describeTextBox.ReadOnly = true;
             this.describeTextBox.Size = new System.Drawing.Size(158, 26);
             this.describeTextBox.TabIndex = 5;
             // 
@@ -306,6 +313,7 @@
             this.pricePerTextBox.Location = new System.Drawing.Point(514, 195);
             this.pricePerTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.pricePerTextBox.Name = "pricePerTextBox";
+            this.pricePerTextBox.ReadOnly = true;
             this.pricePerTextBox.Size = new System.Drawing.Size(158, 26);
             this.pricePerTextBox.TabIndex = 5;
             // 
@@ -408,6 +416,7 @@
             this.material_nameTextBox.Location = new System.Drawing.Point(852, 101);
             this.material_nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_nameTextBox.Name = "material_nameTextBox";
+            this.material_nameTextBox.ReadOnly = true;
             this.material_nameTextBox.Size = new System.Drawing.Size(158, 26);
             this.material_nameTextBox.TabIndex = 25;
             // 
@@ -455,6 +464,7 @@
             this.isDeclareTextBox.Location = new System.Drawing.Point(852, 7);
             this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.isDeclareTextBox.Name = "isDeclareTextBox";
+            this.isDeclareTextBox.ReadOnly = true;
             this.isDeclareTextBox.Size = new System.Drawing.Size(158, 26);
             this.isDeclareTextBox.TabIndex = 26;
             // 
@@ -540,6 +550,7 @@
             this.inputerTextBox.Location = new System.Drawing.Point(1190, 148);
             this.inputerTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.inputerTextBox.Name = "inputerTextBox";
+            this.inputerTextBox.ReadOnly = true;
             this.inputerTextBox.Size = new System.Drawing.Size(158, 26);
             this.inputerTextBox.TabIndex = 22;
             // 

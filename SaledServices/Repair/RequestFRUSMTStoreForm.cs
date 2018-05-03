@@ -94,7 +94,7 @@ namespace SaledServices.Store
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
                   
-                    if (this.mb_brieftextBox.Text == "")
+                    if (this.mb_brieftextBox.Text != "")
                     {
                         cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8 from " +  Constlist.table_name_LCFC_MBBOM +" where mb_brief ='" + this.mb_brieftextBox.Text.Trim() + "'";
                         SqlDataReader querySdr = cmd.ExecuteReader();

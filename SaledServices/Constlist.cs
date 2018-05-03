@@ -63,27 +63,6 @@ namespace SaledServices
         public static string table_name_users_sheet = "users";
     }
 
-    //订单状态
-    public enum OrderStatus 
-    {
-        ORDER_OPEN,
-        ORDER_CLOSE
-    }
-
-    //用户权限控制
-    public enum UserPermisson
-    {
-        SUPER,//0
-        Receive_return,
-        Repair,
-        BgaRepair,
-        TestAll,
-        Test1,
-        Test2,
-        Outlook,
-        Store
-    }
-
     public class Untils
     {
         public static void InitCodesoftForReturn()
@@ -101,7 +80,6 @@ namespace SaledServices
                     return;
                 }
                 labApp = new LabelManager2.Application();
-               // labApp.ActivePrinterName = "ZDesigner 110Xi4 300 dpi";
                 
                 labApp.Documents.Open(labFileName, false);// 调用设计好的label文件
                 doc = labApp.ActiveDocument;

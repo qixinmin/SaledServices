@@ -74,13 +74,13 @@
             this.notetextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.use_describetextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.currentStockNumbertextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.queryStock = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
-            this.currentStockNumbertextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -104,7 +104,7 @@
             // query
             // 
             this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.query.Location = new System.Drawing.Point(715, 9);
+            this.query.Location = new System.Drawing.Point(714, 9);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(100, 31);
@@ -116,7 +116,7 @@
             // modify
             // 
             this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.modify.Location = new System.Drawing.Point(965, 9);
+            this.modify.Location = new System.Drawing.Point(963, 9);
             this.modify.Margin = new System.Windows.Forms.Padding(4);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(100, 31);
@@ -128,7 +128,7 @@
             // delete
             // 
             this.delete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.delete.Location = new System.Drawing.Point(1191, 9);
+            this.delete.Location = new System.Drawing.Point(1190, 9);
             this.delete.Margin = new System.Windows.Forms.Padding(4);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(100, 31);
@@ -435,7 +435,6 @@
             this.stock_out_numTextBox.Location = new System.Drawing.Point(852, 7);
             this.stock_out_numTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.stock_out_numTextBox.Name = "stock_out_numTextBox";
-            this.stock_out_numTextBox.ReadOnly = true;
             this.stock_out_numTextBox.Size = new System.Drawing.Size(158, 26);
             this.stock_out_numTextBox.TabIndex = 20;
             // 
@@ -472,7 +471,6 @@
             this.takertextBox.Location = new System.Drawing.Point(852, 148);
             this.takertextBox.Margin = new System.Windows.Forms.Padding(4);
             this.takertextBox.Name = "takertextBox";
-            this.takertextBox.ReadOnly = true;
             this.takertextBox.Size = new System.Drawing.Size(158, 26);
             this.takertextBox.TabIndex = 22;
             // 
@@ -491,6 +489,7 @@
             this.inputerTextBox.Location = new System.Drawing.Point(852, 195);
             this.inputerTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.inputerTextBox.Name = "inputerTextBox";
+            this.inputerTextBox.ReadOnly = true;
             this.inputerTextBox.Size = new System.Drawing.Size(158, 26);
             this.inputerTextBox.TabIndex = 22;
             // 
@@ -570,6 +569,26 @@
             this.use_describetextBox.Size = new System.Drawing.Size(158, 26);
             this.use_describetextBox.TabIndex = 17;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(1021, 191);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(72, 16);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "库存数量";
+            // 
+            // currentStockNumbertextBox
+            // 
+            this.currentStockNumbertextBox.Enabled = false;
+            this.currentStockNumbertextBox.Location = new System.Drawing.Point(1190, 195);
+            this.currentStockNumbertextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.currentStockNumbertextBox.Name = "currentStockNumbertextBox";
+            this.currentStockNumbertextBox.ReadOnly = true;
+            this.currentStockNumbertextBox.Size = new System.Drawing.Size(165, 26);
+            this.currentStockNumbertextBox.TabIndex = 18;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 5;
@@ -577,7 +596,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.9325F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.85227F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.75F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 240F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 242F));
             this.tableLayoutPanel2.Controls.Add(this.delete, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.modify, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.query, 2, 0);
@@ -655,26 +674,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(325, 429);
             this.dataGridView2.TabIndex = 10;
             this.dataGridView2.VirtualMode = true;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1021, 191);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(72, 16);
-            this.label10.TabIndex = 7;
-            this.label10.Text = "库存数量";
-            // 
-            // currentStockNumbertextBox
-            // 
-            this.currentStockNumbertextBox.Enabled = false;
-            this.currentStockNumbertextBox.Location = new System.Drawing.Point(1190, 195);
-            this.currentStockNumbertextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.currentStockNumbertextBox.Name = "currentStockNumbertextBox";
-            this.currentStockNumbertextBox.ReadOnly = true;
-            this.currentStockNumbertextBox.Size = new System.Drawing.Size(165, 26);
-            this.currentStockNumbertextBox.TabIndex = 18;
             // 
             // FRU_SMT_OutSheetForm
             // 

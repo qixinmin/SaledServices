@@ -24,6 +24,40 @@ namespace SaledServices
         {
             InitializeComponent();
             mFromFrom = fromFrom;
+
+            loadAdditionInfomation();
+        }
+
+        private void loadAdditionInfomation()
+        {
+
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select distinct house from " + tableName + " where mpn=''";
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.houseComboBox.Items.Add(temp);
+                    }
+                }
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void add_Click(object sender, EventArgs e)
@@ -38,19 +72,9 @@ namespace SaledServices
                 dataGridView1.DataSource = null;
                 dataGridView1.Columns.Clear();
 
-                string sqlStr = "select top 100 * from " + tableName;
+                string sqlStr = "select top 100 * from " + tableName +" where mpn=''";
 
-                if (this.houseTextBox.Text.Trim() != "")
-                {
-                    if (!sqlStr.Contains("where"))
-                    {
-                        sqlStr += " where house= '" + houseTextBox.Text.Trim() + "' ";
-                    }
-                    else
-                    {
-                        sqlStr += " and house= '" + houseTextBox.Text.Trim() + "' ";
-                    }
-                }
+                
 
                 if (this.placeTextBox.Text.Trim() != "")
                 {
@@ -95,7 +119,7 @@ namespace SaledServices
             DataTable dt = ds.Tables[tableName];
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.numTextBox.Text.Trim());
-            dr["house"] = this.houseTextBox.Text.Trim();
+            dr["house"] = this.houseComboBox.Text.Trim();
             dr["place"] = this.placeTextBox.Text.Trim();
             dr["mpn"] = this.mpntextBox.Text.Trim();
             dr["number"] = this.numbertextBox.Text.Trim();
@@ -138,7 +162,7 @@ namespace SaledServices
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.numTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
-            this.houseTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
+            this.houseComboBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
             this.placeTextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
             this.mpntextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
             this.numbertextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
@@ -178,28 +202,74 @@ namespace SaledServices
 
         private void choose_Click(object sender, EventArgs e)
         {
-            if (this.houseTextBox.Text.Trim() == "" || this.placeTextBox.Text.Trim() == "")
+            if (this.houseComboBox.Text.Trim() == "" || this.placeTextBox.Text.Trim() == "")
             {
                 MessageBox.Show("请选择一个库位!");
                 return;
             }
             if (mFromFrom is FRU_SMT_InSheetForm)
             {
-                ((FRU_SMT_InSheetForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseTextBox.Text.Trim(), this.placeTextBox.Text.Trim());
+                ((FRU_SMT_InSheetForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseComboBox.Text.Trim(), this.placeTextBox.Text.Trim());
             }
             else if (mFromFrom is BGA_InSheetForm)
             {
-                ((BGA_InSheetForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseTextBox.Text.Trim(), this.placeTextBox.Text.Trim());
+                ((BGA_InSheetForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseComboBox.Text.Trim(), this.placeTextBox.Text.Trim());
             }
             else if (mFromFrom is MB_InSheetForm)
             {
-                ((MB_InSheetForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseTextBox.Text.Trim(), this.placeTextBox.Text.Trim());
+                ((MB_InSheetForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseComboBox.Text.Trim(), this.placeTextBox.Text.Trim());
             }
             else if (mFromFrom is FaultMBStoreForm)
             {
-                ((FaultMBStoreForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseTextBox.Text.Trim(), this.placeTextBox.Text.Trim());
+                ((FaultMBStoreForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseComboBox.Text.Trim(), this.placeTextBox.Text.Trim());
             }
             this.Close();
+        }
+
+        private void houseComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            string str = this.houseComboBox.Text;
+            if (str == "")
+            {
+                return;
+            }
+
+            doQueryAfterSelection();
+        }
+
+        private void doQueryAfterSelection()
+        {
+            try
+            {
+                this.dataGridView1.DataSource = null;
+                dataGridView1.Columns.Clear();
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandText = "select * from " + tableName + " where mpn='' and house ='" + this.houseComboBox.Text +"'";
+                cmd.CommandType = CommandType.Text;
+
+                mConn = new SqlConnection(Constlist.ConStr);
+
+                sda = new SqlDataAdapter();
+                sda.SelectCommand = cmd;
+                ds = new DataSet();
+                sda.Fill(ds, tableName);
+                dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.RowHeadersVisible = false;
+
+                string[] hTxt = { "ID", "库房", "储位", "物料", "数量" };
+                for (int i = 0; i < hTxt.Length; i++)
+                {
+                    dataGridView1.Columns[i].HeaderText = hTxt[i];
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

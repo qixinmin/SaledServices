@@ -71,26 +71,26 @@
             this.label20 = new System.Windows.Forms.Label();
             this.input_dateTextBox = new System.Windows.Forms.TextBox();
             this.notetextBox = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridViewToReturn = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label21 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.CPU = new System.Windows.Forms.RadioButton();
-            this.PCH = new System.Windows.Forms.RadioButton();
             this.VGA = new System.Windows.Forms.RadioButton();
+            this.PCH = new System.Windows.Forms.RadioButton();
+            this.CPU = new System.Windows.Forms.RadioButton();
             this.label22 = new System.Windows.Forms.Label();
             this.bgaSnTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.orderNumberTextBox = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridViewToReturn = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToReturn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // add
@@ -156,6 +156,7 @@
             this.vendorTextBox.Location = new System.Drawing.Point(176, 124);
             this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendorTextBox.Name = "vendorTextBox";
+            this.vendorTextBox.ReadOnly = true;
             this.vendorTextBox.Size = new System.Drawing.Size(158, 26);
             this.vendorTextBox.TabIndex = 5;
             // 
@@ -244,6 +245,7 @@
             this.productTextBox.Location = new System.Drawing.Point(176, 163);
             this.productTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.productTextBox.Name = "productTextBox";
+            this.productTextBox.ReadOnly = true;
             this.productTextBox.Size = new System.Drawing.Size(158, 26);
             this.productTextBox.TabIndex = 5;
             // 
@@ -252,6 +254,7 @@
             this.vendormaterialNoTextBox.Location = new System.Drawing.Point(514, 46);
             this.vendormaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendormaterialNoTextBox.Name = "vendormaterialNoTextBox";
+            this.vendormaterialNoTextBox.ReadOnly = true;
             this.vendormaterialNoTextBox.Size = new System.Drawing.Size(158, 26);
             this.vendormaterialNoTextBox.TabIndex = 5;
             // 
@@ -260,6 +263,7 @@
             this.mpnTextBox.Location = new System.Drawing.Point(176, 46);
             this.mpnTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mpnTextBox.Name = "mpnTextBox";
+            this.mpnTextBox.ReadOnly = true;
             this.mpnTextBox.Size = new System.Drawing.Size(158, 26);
             this.mpnTextBox.TabIndex = 5;
             this.mpnTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mpnTextBox_KeyPress);
@@ -269,6 +273,7 @@
             this.material_typeTextBox.Location = new System.Drawing.Point(176, 202);
             this.material_typeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_typeTextBox.Name = "material_typeTextBox";
+            this.material_typeTextBox.ReadOnly = true;
             this.material_typeTextBox.Size = new System.Drawing.Size(158, 26);
             this.material_typeTextBox.TabIndex = 5;
             // 
@@ -277,6 +282,7 @@
             this.buy_typeTextBox.Location = new System.Drawing.Point(514, 7);
             this.buy_typeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.buy_typeTextBox.Name = "buy_typeTextBox";
+            this.buy_typeTextBox.ReadOnly = true;
             this.buy_typeTextBox.Size = new System.Drawing.Size(158, 26);
             this.buy_typeTextBox.TabIndex = 5;
             // 
@@ -285,6 +291,7 @@
             this.describeTextBox.Location = new System.Drawing.Point(514, 85);
             this.describeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.describeTextBox.Name = "describeTextBox";
+            this.describeTextBox.ReadOnly = true;
             this.describeTextBox.Size = new System.Drawing.Size(158, 26);
             this.describeTextBox.TabIndex = 5;
             // 
@@ -399,6 +406,7 @@
             this.material_nameTextBox.Location = new System.Drawing.Point(852, 85);
             this.material_nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_nameTextBox.Name = "material_nameTextBox";
+            this.material_nameTextBox.ReadOnly = true;
             this.material_nameTextBox.Size = new System.Drawing.Size(158, 26);
             this.material_nameTextBox.TabIndex = 25;
             // 
@@ -446,6 +454,7 @@
             this.isDeclareTextBox.Location = new System.Drawing.Point(852, 7);
             this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.isDeclareTextBox.Name = "isDeclareTextBox";
+            this.isDeclareTextBox.ReadOnly = true;
             this.isDeclareTextBox.Size = new System.Drawing.Size(158, 26);
             this.isDeclareTextBox.TabIndex = 26;
             // 
@@ -563,6 +572,102 @@
             this.notetextBox.Size = new System.Drawing.Size(158, 26);
             this.notetextBox.TabIndex = 17;
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(7, 81);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(64, 16);
+            this.label21.TabIndex = 4;
+            this.label21.Text = "BGA类型";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.VGA);
+            this.panel1.Controls.Add(this.PCH);
+            this.panel1.Controls.Add(this.CPU);
+            this.panel1.Location = new System.Drawing.Point(175, 84);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(160, 30);
+            this.panel1.TabIndex = 27;
+            // 
+            // VGA
+            // 
+            this.VGA.AutoSize = true;
+            this.VGA.Location = new System.Drawing.Point(107, 7);
+            this.VGA.Name = "VGA";
+            this.VGA.Size = new System.Drawing.Size(50, 20);
+            this.VGA.TabIndex = 0;
+            this.VGA.TabStop = true;
+            this.VGA.Text = "VGA";
+            this.VGA.UseVisualStyleBackColor = true;
+            this.VGA.CheckedChanged += new System.EventHandler(this.CPU_CheckedChanged);
+            // 
+            // PCH
+            // 
+            this.PCH.AutoSize = true;
+            this.PCH.Location = new System.Drawing.Point(55, 7);
+            this.PCH.Name = "PCH";
+            this.PCH.Size = new System.Drawing.Size(50, 20);
+            this.PCH.TabIndex = 0;
+            this.PCH.TabStop = true;
+            this.PCH.Text = "PCH";
+            this.PCH.UseVisualStyleBackColor = true;
+            this.PCH.CheckedChanged += new System.EventHandler(this.CPU_CheckedChanged);
+            // 
+            // CPU
+            // 
+            this.CPU.AutoSize = true;
+            this.CPU.Location = new System.Drawing.Point(3, 7);
+            this.CPU.Name = "CPU";
+            this.CPU.Size = new System.Drawing.Size(50, 20);
+            this.CPU.TabIndex = 0;
+            this.CPU.TabStop = true;
+            this.CPU.Text = "CPU";
+            this.CPU.UseVisualStyleBackColor = true;
+            this.CPU.CheckedChanged += new System.EventHandler(this.CPU_CheckedChanged);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(683, 159);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(56, 16);
+            this.label22.TabIndex = 16;
+            this.label22.Text = "BGA SN";
+            // 
+            // bgaSnTextBox
+            // 
+            this.bgaSnTextBox.Enabled = false;
+            this.bgaSnTextBox.Location = new System.Drawing.Point(852, 163);
+            this.bgaSnTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.bgaSnTextBox.Name = "bgaSnTextBox";
+            this.bgaSnTextBox.Size = new System.Drawing.Size(158, 26);
+            this.bgaSnTextBox.TabIndex = 20;
+            this.bgaSnTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stock_in_numTextBox_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(345, 120);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 16);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "订单数量";
+            // 
+            // orderNumberTextBox
+            // 
+            this.orderNumberTextBox.Location = new System.Drawing.Point(514, 124);
+            this.orderNumberTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.orderNumberTextBox.Name = "orderNumberTextBox";
+            this.orderNumberTextBox.ReadOnly = true;
+            this.orderNumberTextBox.Size = new System.Drawing.Size(158, 26);
+            this.orderNumberTextBox.TabIndex = 5;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 4;
@@ -634,102 +739,6 @@
             this.dataGridView1.VirtualMode = true;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(7, 81);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(64, 16);
-            this.label21.TabIndex = 4;
-            this.label21.Text = "BGA类型";
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.VGA);
-            this.panel1.Controls.Add(this.PCH);
-            this.panel1.Controls.Add(this.CPU);
-            this.panel1.Location = new System.Drawing.Point(175, 84);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(160, 30);
-            this.panel1.TabIndex = 27;
-            // 
-            // CPU
-            // 
-            this.CPU.AutoSize = true;
-            this.CPU.Location = new System.Drawing.Point(3, 7);
-            this.CPU.Name = "CPU";
-            this.CPU.Size = new System.Drawing.Size(50, 20);
-            this.CPU.TabIndex = 0;
-            this.CPU.TabStop = true;
-            this.CPU.Text = "CPU";
-            this.CPU.UseVisualStyleBackColor = true;
-            this.CPU.CheckedChanged += new System.EventHandler(this.CPU_CheckedChanged);
-            // 
-            // PCH
-            // 
-            this.PCH.AutoSize = true;
-            this.PCH.Location = new System.Drawing.Point(55, 7);
-            this.PCH.Name = "PCH";
-            this.PCH.Size = new System.Drawing.Size(50, 20);
-            this.PCH.TabIndex = 0;
-            this.PCH.TabStop = true;
-            this.PCH.Text = "PCH";
-            this.PCH.UseVisualStyleBackColor = true;
-            this.PCH.CheckedChanged += new System.EventHandler(this.CPU_CheckedChanged);
-            // 
-            // VGA
-            // 
-            this.VGA.AutoSize = true;
-            this.VGA.Location = new System.Drawing.Point(107, 7);
-            this.VGA.Name = "VGA";
-            this.VGA.Size = new System.Drawing.Size(50, 20);
-            this.VGA.TabIndex = 0;
-            this.VGA.TabStop = true;
-            this.VGA.Text = "VGA";
-            this.VGA.UseVisualStyleBackColor = true;
-            this.VGA.CheckedChanged += new System.EventHandler(this.CPU_CheckedChanged);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(683, 159);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(56, 16);
-            this.label22.TabIndex = 16;
-            this.label22.Text = "BGA SN";
-            // 
-            // bgaSnTextBox
-            // 
-            this.bgaSnTextBox.Enabled = false;
-            this.bgaSnTextBox.Location = new System.Drawing.Point(852, 163);
-            this.bgaSnTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.bgaSnTextBox.Name = "bgaSnTextBox";
-            this.bgaSnTextBox.Size = new System.Drawing.Size(158, 26);
-            this.bgaSnTextBox.TabIndex = 20;
-            this.bgaSnTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stock_in_numTextBox_KeyPress);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(345, 120);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 16);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "订单数量";
-            // 
-            // orderNumberTextBox
-            // 
-            this.orderNumberTextBox.Location = new System.Drawing.Point(514, 124);
-            this.orderNumberTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.orderNumberTextBox.Name = "orderNumberTextBox";
-            this.orderNumberTextBox.ReadOnly = true;
-            this.orderNumberTextBox.Size = new System.Drawing.Size(158, 26);
-            this.orderNumberTextBox.TabIndex = 5;
-            // 
             // BGA_InSheetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -745,12 +754,12 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToReturn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

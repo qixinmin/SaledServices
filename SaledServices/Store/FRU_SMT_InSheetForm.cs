@@ -40,7 +40,7 @@ namespace SaledServices
                 cmd.CommandType = CommandType.Text;
 
                 //1 来源 2.客户故障	3.保内/保外	4 .客责描述
-                cmd.CommandText = "select distinct buy_order_serial_no from stock_in_sheet where _status = 'open'";
+                cmd.CommandText = "select distinct buy_order_serial_no from stock_in_sheet where _status = 'open' and material_type in ('SMT','FRU')";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -449,7 +449,7 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
                 //加入条件判断，只显示未收完的货物
-                cmd.CommandText = "select material_type,mpn, vendormaterialNo, number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text + "' and _status='open'";
+                cmd.CommandText = "select material_type,mpn, vendormaterialNo, number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text + "' and _status='open' and material_type in ('SMT','FRU')";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -524,6 +524,13 @@ namespace SaledServices
                 if (this_enter_number > order_number_int)
                 {
                     MessageBox.Show("输入数量大于订单数量!");
+                    this.stock_in_numTextBox.Clear();
+                    this.stock_in_numTextBox.Focus();
+                    return;
+                }
+                if (this_enter_number == 0)
+                {
+                    MessageBox.Show("输入数量不能为0!");
                     this.stock_in_numTextBox.Clear();
                     this.stock_in_numTextBox.Focus();
                     return;
