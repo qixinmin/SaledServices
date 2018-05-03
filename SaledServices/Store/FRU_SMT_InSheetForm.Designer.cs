@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.add = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
@@ -55,7 +55,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
-            this.material_nameTextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.stock_in_numTextBox = new System.Windows.Forms.TextBox();
             this.buy_order_serial_noComboBox = new System.Windows.Forms.ComboBox();
@@ -75,6 +74,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.input_dateTextBox = new System.Windows.Forms.TextBox();
             this.notetextBox = new System.Windows.Forms.TextBox();
+            this.material_namecomboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewToReturn = new System.Windows.Forms.DataGridView();
@@ -349,7 +349,6 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel3.Controls.Add(this.label7, 4, 2);
-            this.tableLayoutPanel3.Controls.Add(this.material_nameTextBox, 5, 2);
             this.tableLayoutPanel3.Controls.Add(this.label13, 4, 3);
             this.tableLayoutPanel3.Controls.Add(this.stock_in_numTextBox, 5, 3);
             this.tableLayoutPanel3.Controls.Add(this.pricePerTextBox, 3, 4);
@@ -388,6 +387,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label12, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.vendorTextBox, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.mpnTextBox, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.material_namecomboBox, 5, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -410,15 +410,6 @@
             this.label7.Size = new System.Drawing.Size(72, 16);
             this.label7.TabIndex = 9;
             this.label7.Text = "材料名称";
-            // 
-            // material_nameTextBox
-            // 
-            this.material_nameTextBox.Location = new System.Drawing.Point(852, 101);
-            this.material_nameTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.material_nameTextBox.Name = "material_nameTextBox";
-            this.material_nameTextBox.ReadOnly = true;
-            this.material_nameTextBox.Size = new System.Drawing.Size(158, 26);
-            this.material_nameTextBox.TabIndex = 25;
             // 
             // label13
             // 
@@ -601,6 +592,16 @@
             this.notetextBox.Size = new System.Drawing.Size(158, 26);
             this.notetextBox.TabIndex = 17;
             // 
+            // material_namecomboBox
+            // 
+            this.material_namecomboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.material_namecomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.material_namecomboBox.FormattingEnabled = true;
+            this.material_namecomboBox.Location = new System.Drawing.Point(851, 100);
+            this.material_namecomboBox.Name = "material_namecomboBox";
+            this.material_namecomboBox.Size = new System.Drawing.Size(160, 24);
+            this.material_namecomboBox.TabIndex = 27;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 4;
@@ -655,8 +656,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -735,7 +736,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox isDeclareTextBox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox material_nameTextBox;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox mb_brieftextBox;
         private System.Windows.Forms.Label label13;
@@ -746,5 +746,6 @@
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox notetextBox;
+        private System.Windows.Forms.ComboBox material_namecomboBox;
     }
 }

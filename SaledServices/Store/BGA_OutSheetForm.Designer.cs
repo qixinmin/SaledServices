@@ -35,35 +35,35 @@
             this.modify = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.vendorTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.productTextBox = new System.Windows.Forms.TextBox();
             this.mpnTextBox = new System.Windows.Forms.TextBox();
             this.bgadescribeTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.bga_brieftextBox = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.stock_placetextBox = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.takertextBox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.input_dateTextBox = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.stock_out_numTextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.currentStockNumbertextBox = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.bga_brieftextBox = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.isDeclareTextBox = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.stock_placetextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.currentStockNumbertextBox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.stock_out_numTextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.takertextBox = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.notetextBox = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.idTextBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.inputerTextBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.idTextBox = new System.Windows.Forms.TextBox();
+            this.vendorcomboBox = new System.Windows.Forms.ComboBox();
+            this.productcomboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.queryStock = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -80,7 +80,7 @@
             // add
             // 
             this.add.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.add.Location = new System.Drawing.Point(423, 9);
+            this.add.Location = new System.Drawing.Point(422, 9);
             this.add.Margin = new System.Windows.Forms.Padding(4);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(100, 31);
@@ -92,7 +92,7 @@
             // query
             // 
             this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.query.Location = new System.Drawing.Point(712, 9);
+            this.query.Location = new System.Drawing.Point(709, 9);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(100, 31);
@@ -104,7 +104,7 @@
             // modify
             // 
             this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.modify.Location = new System.Drawing.Point(960, 9);
+            this.modify.Location = new System.Drawing.Point(957, 9);
             this.modify.Margin = new System.Windows.Forms.Padding(4);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(100, 31);
@@ -116,7 +116,7 @@
             // delete
             // 
             this.delete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.delete.Location = new System.Drawing.Point(1188, 9);
+            this.delete.Location = new System.Drawing.Point(1186, 9);
             this.delete.Margin = new System.Windows.Forms.Padding(4);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(100, 31);
@@ -135,15 +135,6 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "厂商";
             // 
-            // vendorTextBox
-            // 
-            this.vendorTextBox.Location = new System.Drawing.Point(176, 54);
-            this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.vendorTextBox.Name = "vendorTextBox";
-            this.vendorTextBox.ReadOnly = true;
-            this.vendorTextBox.Size = new System.Drawing.Size(158, 26);
-            this.vendorTextBox.TabIndex = 5;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -157,7 +148,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(345, 50);
+            this.label9.Location = new System.Drawing.Point(345, 97);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 16);
@@ -167,34 +158,26 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(7, 3);
+            this.label12.Location = new System.Drawing.Point(7, 144);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(32, 16);
             this.label12.TabIndex = 4;
             this.label12.Text = "MPN";
             // 
-            // productTextBox
-            // 
-            this.productTextBox.Location = new System.Drawing.Point(176, 101);
-            this.productTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.productTextBox.Name = "productTextBox";
-            this.productTextBox.ReadOnly = true;
-            this.productTextBox.Size = new System.Drawing.Size(158, 26);
-            this.productTextBox.TabIndex = 5;
-            // 
             // mpnTextBox
             // 
-            this.mpnTextBox.Location = new System.Drawing.Point(176, 7);
+            this.mpnTextBox.Location = new System.Drawing.Point(176, 148);
             this.mpnTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mpnTextBox.Name = "mpnTextBox";
+            this.mpnTextBox.ReadOnly = true;
             this.mpnTextBox.Size = new System.Drawing.Size(158, 26);
             this.mpnTextBox.TabIndex = 5;
             this.mpnTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mpnTextBox_KeyPress);
             // 
             // bgadescribeTextBox
             // 
-            this.bgadescribeTextBox.Location = new System.Drawing.Point(514, 54);
+            this.bgadescribeTextBox.Location = new System.Drawing.Point(514, 101);
             this.bgadescribeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.bgadescribeTextBox.Name = "bgadescribeTextBox";
             this.bgadescribeTextBox.ReadOnly = true;
@@ -232,34 +215,34 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel3.Controls.Add(this.label18, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.bga_brieftextBox, 3, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label19, 4, 2);
-            this.tableLayoutPanel3.Controls.Add(this.stock_placetextBox, 5, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label8, 4, 3);
-            this.tableLayoutPanel3.Controls.Add(this.takertextBox, 5, 3);
             this.tableLayoutPanel3.Controls.Add(this.label16, 6, 0);
             this.tableLayoutPanel3.Controls.Add(this.input_dateTextBox, 7, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label12, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.mpnTextBox, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label13, 4, 1);
-            this.tableLayoutPanel3.Controls.Add(this.stock_out_numTextBox, 5, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label4, 4, 0);
-            this.tableLayoutPanel3.Controls.Add(this.currentStockNumbertextBox, 5, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.productTextBox, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label18, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.bga_brieftextBox, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label17, 2, 3);
+            this.tableLayoutPanel3.Controls.Add(this.isDeclareTextBox, 3, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label19, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.stock_placetextBox, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label9, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.bgadescribeTextBox, 3, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label4, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.currentStockNumbertextBox, 3, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label13, 4, 0);
+            this.tableLayoutPanel3.Controls.Add(this.stock_out_numTextBox, 5, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label8, 4, 1);
+            this.tableLayoutPanel3.Controls.Add(this.takertextBox, 5, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label20, 4, 2);
+            this.tableLayoutPanel3.Controls.Add(this.notetextBox, 5, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label15, 4, 3);
+            this.tableLayoutPanel3.Controls.Add(this.inputerTextBox, 5, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label14, 6, 1);
+            this.tableLayoutPanel3.Controls.Add(this.idTextBox, 7, 1);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.vendorTextBox, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label9, 2, 1);
-            this.tableLayoutPanel3.Controls.Add(this.bgadescribeTextBox, 3, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label17, 2, 2);
-            this.tableLayoutPanel3.Controls.Add(this.isDeclareTextBox, 3, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label20, 6, 1);
-            this.tableLayoutPanel3.Controls.Add(this.notetextBox, 7, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label14, 6, 2);
-            this.tableLayoutPanel3.Controls.Add(this.idTextBox, 7, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label15, 6, 3);
-            this.tableLayoutPanel3.Controls.Add(this.inputerTextBox, 7, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label2, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label12, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.mpnTextBox, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.vendorcomboBox, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.productcomboBox, 1, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -272,62 +255,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1362, 241);
             this.tableLayoutPanel3.TabIndex = 9;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(345, 3);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(64, 16);
-            this.label18.TabIndex = 11;
-            this.label18.Text = "BGA简称";
-            // 
-            // bga_brieftextBox
-            // 
-            this.bga_brieftextBox.Location = new System.Drawing.Point(514, 7);
-            this.bga_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.bga_brieftextBox.Name = "bga_brieftextBox";
-            this.bga_brieftextBox.ReadOnly = true;
-            this.bga_brieftextBox.Size = new System.Drawing.Size(158, 26);
-            this.bga_brieftextBox.TabIndex = 24;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(683, 97);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(40, 16);
-            this.label19.TabIndex = 10;
-            this.label19.Text = "库位";
-            // 
-            // stock_placetextBox
-            // 
-            this.stock_placetextBox.Location = new System.Drawing.Point(852, 101);
-            this.stock_placetextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.stock_placetextBox.Name = "stock_placetextBox";
-            this.stock_placetextBox.ReadOnly = true;
-            this.stock_placetextBox.Size = new System.Drawing.Size(158, 26);
-            this.stock_placetextBox.TabIndex = 19;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(683, 144);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 16);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "领用人";
-            // 
-            // takertextBox
-            // 
-            this.takertextBox.Location = new System.Drawing.Point(852, 148);
-            this.takertextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.takertextBox.Name = "takertextBox";
-            this.takertextBox.Size = new System.Drawing.Size(158, 26);
-            this.takertextBox.TabIndex = 22;
             // 
             // label16
             // 
@@ -349,48 +276,29 @@
             this.input_dateTextBox.Size = new System.Drawing.Size(158, 26);
             this.input_dateTextBox.TabIndex = 23;
             // 
-            // label13
+            // label18
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(683, 50);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(72, 16);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "出库数量";
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(7, 3);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(64, 16);
+            this.label18.TabIndex = 11;
+            this.label18.Text = "BGA简称";
             // 
-            // stock_out_numTextBox
+            // bga_brieftextBox
             // 
-            this.stock_out_numTextBox.Location = new System.Drawing.Point(852, 54);
-            this.stock_out_numTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.stock_out_numTextBox.Name = "stock_out_numTextBox";
-            this.stock_out_numTextBox.Size = new System.Drawing.Size(158, 26);
-            this.stock_out_numTextBox.TabIndex = 20;
-            this.stock_out_numTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stock_out_numTextBox_KeyPress);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(683, 3);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "现有数量";
-            // 
-            // currentStockNumbertextBox
-            // 
-            this.currentStockNumbertextBox.Location = new System.Drawing.Point(852, 7);
-            this.currentStockNumbertextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.currentStockNumbertextBox.Name = "currentStockNumbertextBox";
-            this.currentStockNumbertextBox.ReadOnly = true;
-            this.currentStockNumbertextBox.Size = new System.Drawing.Size(158, 26);
-            this.currentStockNumbertextBox.TabIndex = 20;
+            this.bga_brieftextBox.Location = new System.Drawing.Point(176, 7);
+            this.bga_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.bga_brieftextBox.Name = "bga_brieftextBox";
+            this.bga_brieftextBox.Size = new System.Drawing.Size(158, 26);
+            this.bga_brieftextBox.TabIndex = 24;
+            this.bga_brieftextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.bga_brieftextBox_KeyPress);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(345, 97);
+            this.label17.Location = new System.Drawing.Point(345, 144);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(72, 16);
@@ -399,17 +307,92 @@
             // 
             // isDeclareTextBox
             // 
-            this.isDeclareTextBox.Location = new System.Drawing.Point(514, 101);
+            this.isDeclareTextBox.Location = new System.Drawing.Point(514, 148);
             this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.isDeclareTextBox.Name = "isDeclareTextBox";
             this.isDeclareTextBox.ReadOnly = true;
             this.isDeclareTextBox.Size = new System.Drawing.Size(158, 26);
             this.isDeclareTextBox.TabIndex = 26;
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(345, 3);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(40, 16);
+            this.label19.TabIndex = 10;
+            this.label19.Text = "库位";
+            // 
+            // stock_placetextBox
+            // 
+            this.stock_placetextBox.Location = new System.Drawing.Point(514, 7);
+            this.stock_placetextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.stock_placetextBox.Name = "stock_placetextBox";
+            this.stock_placetextBox.ReadOnly = true;
+            this.stock_placetextBox.Size = new System.Drawing.Size(158, 26);
+            this.stock_placetextBox.TabIndex = 19;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(345, 50);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 16);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "现有数量";
+            // 
+            // currentStockNumbertextBox
+            // 
+            this.currentStockNumbertextBox.Location = new System.Drawing.Point(514, 54);
+            this.currentStockNumbertextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.currentStockNumbertextBox.Name = "currentStockNumbertextBox";
+            this.currentStockNumbertextBox.ReadOnly = true;
+            this.currentStockNumbertextBox.Size = new System.Drawing.Size(158, 26);
+            this.currentStockNumbertextBox.TabIndex = 20;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(683, 3);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(72, 16);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "出库数量";
+            // 
+            // stock_out_numTextBox
+            // 
+            this.stock_out_numTextBox.Location = new System.Drawing.Point(852, 7);
+            this.stock_out_numTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.stock_out_numTextBox.Name = "stock_out_numTextBox";
+            this.stock_out_numTextBox.Size = new System.Drawing.Size(158, 26);
+            this.stock_out_numTextBox.TabIndex = 20;
+            this.stock_out_numTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stock_out_numTextBox_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(683, 50);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 16);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "领用人";
+            // 
+            // takertextBox
+            // 
+            this.takertextBox.Location = new System.Drawing.Point(852, 54);
+            this.takertextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.takertextBox.Name = "takertextBox";
+            this.takertextBox.Size = new System.Drawing.Size(158, 26);
+            this.takertextBox.TabIndex = 22;
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(1021, 50);
+            this.label20.Location = new System.Drawing.Point(683, 97);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(40, 16);
@@ -418,16 +401,35 @@
             // 
             // notetextBox
             // 
-            this.notetextBox.Location = new System.Drawing.Point(1190, 54);
+            this.notetextBox.Location = new System.Drawing.Point(852, 101);
             this.notetextBox.Margin = new System.Windows.Forms.Padding(4);
             this.notetextBox.Name = "notetextBox";
             this.notetextBox.Size = new System.Drawing.Size(158, 26);
             this.notetextBox.TabIndex = 17;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(683, 144);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(56, 16);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "出库人";
+            // 
+            // inputerTextBox
+            // 
+            this.inputerTextBox.Location = new System.Drawing.Point(852, 148);
+            this.inputerTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.inputerTextBox.Name = "inputerTextBox";
+            this.inputerTextBox.ReadOnly = true;
+            this.inputerTextBox.Size = new System.Drawing.Size(158, 26);
+            this.inputerTextBox.TabIndex = 22;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1021, 97);
+            this.label14.Location = new System.Drawing.Point(1021, 50);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(24, 16);
@@ -437,31 +439,32 @@
             // idTextBox
             // 
             this.idTextBox.Enabled = false;
-            this.idTextBox.Location = new System.Drawing.Point(1190, 101);
+            this.idTextBox.Location = new System.Drawing.Point(1190, 54);
             this.idTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.ReadOnly = true;
             this.idTextBox.Size = new System.Drawing.Size(165, 26);
             this.idTextBox.TabIndex = 18;
             // 
-            // label15
+            // vendorcomboBox
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(1021, 144);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(56, 16);
-            this.label15.TabIndex = 14;
-            this.label15.Text = "出库人";
+            this.vendorcomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.vendorcomboBox.FormattingEnabled = true;
+            this.vendorcomboBox.Location = new System.Drawing.Point(175, 53);
+            this.vendorcomboBox.Name = "vendorcomboBox";
+            this.vendorcomboBox.Size = new System.Drawing.Size(159, 24);
+            this.vendorcomboBox.TabIndex = 27;
+            this.vendorcomboBox.SelectedValueChanged += new System.EventHandler(this.queryStock_Click);
             // 
-            // inputerTextBox
+            // productcomboBox
             // 
-            this.inputerTextBox.Location = new System.Drawing.Point(1190, 148);
-            this.inputerTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.inputerTextBox.Name = "inputerTextBox";
-            this.inputerTextBox.ReadOnly = true;
-            this.inputerTextBox.Size = new System.Drawing.Size(158, 26);
-            this.inputerTextBox.TabIndex = 22;
+            this.productcomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.productcomboBox.FormattingEnabled = true;
+            this.productcomboBox.Location = new System.Drawing.Point(175, 100);
+            this.productcomboBox.Name = "productcomboBox";
+            this.productcomboBox.Size = new System.Drawing.Size(159, 24);
+            this.productcomboBox.TabIndex = 28;
+            this.productcomboBox.SelectedValueChanged += new System.EventHandler(this.queryStock_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -470,7 +473,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.9325F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.85227F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.75F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 244F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 248F));
             this.tableLayoutPanel2.Controls.Add(this.delete, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.modify, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.query, 2, 0);
@@ -549,7 +552,7 @@
             this.dataGridView2.Size = new System.Drawing.Size(325, 429);
             this.dataGridView2.TabIndex = 10;
             this.dataGridView2.VirtualMode = true;
-           
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // BGA_OutSheetForm
             // 
@@ -581,11 +584,9 @@
         private System.Windows.Forms.Button modify;
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox vendorTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox productTextBox;
         private System.Windows.Forms.TextBox mpnTextBox;
         private System.Windows.Forms.TextBox bgadescribeTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -615,5 +616,7 @@
         private System.Windows.Forms.Button queryStock;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox currentStockNumbertextBox;
+        private System.Windows.Forms.ComboBox vendorcomboBox;
+        private System.Windows.Forms.ComboBox productcomboBox;
     }
 }

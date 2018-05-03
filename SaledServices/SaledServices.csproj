@@ -195,6 +195,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="additionForm\MaterialNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\MaterialNameForm.Designer.cs">
+      <DependentUpon>MaterialNameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="additionForm\RepairFaultTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -403,6 +409,12 @@
     <Compile Include="Store\BGA_OutSheetForm.Designer.cs">
       <DependentUpon>BGA_OutSheetForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\FRU_OutSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\FRU_OutSheetForm.Designer.cs">
+      <DependentUpon>FRU_OutSheetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Store\MB_InSheetForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -520,6 +532,9 @@
     <Compile Include="additionForm\VendorForm.Designer.cs">
       <DependentUpon>VendorForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="additionForm\MaterialNameForm.resx">
+      <DependentUpon>MaterialNameForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="additionForm\RepairFaultTypeForm.resx">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -621,6 +636,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Store\BGA_OutSheetForm.resx">
       <DependentUpon>BGA_OutSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\FRU_OutSheetForm.resx">
+      <DependentUpon>FRU_OutSheetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\MB_InSheetForm.resx">
       <DependentUpon>MB_InSheetForm.cs</DependentUpon>

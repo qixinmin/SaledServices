@@ -28,7 +28,7 @@ namespace SaledServices.Store
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select * from  request_fru_smt_to_store_table where _status ='request'";
+                cmd.CommandText = "select Id,mb_brief,not_good_place,material_mpn,number,requester,_date,_status,usedNumber,stock_place from  request_fru_smt_to_store_table where _status ='request'";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -90,8 +90,13 @@ namespace SaledServices.Store
                     if (house == "" || place == "")
                     {
                         MessageBox.Show("此料不在库存里面！");
+                        this.processRequestbutton.Enabled = false;
                         conn.Close();
                         return;
+                    }
+                    else
+                    {
+                        this.processRequestbutton.Enabled = true;
                     }
 
                     int requestNumber = Int32.Parse(this.requestNumbertextBox.Text.Trim());
@@ -138,6 +143,7 @@ namespace SaledServices.Store
             }
             //在处理之前的时候可以使用mpn的字段查询库存中是否有相应的内容，如果没有则提示说此库存没有相关库存，要备料
             FRU_SMT_OutSheetForm frusmtout = new FRU_SMT_OutSheetForm();
+            frusmtout.MdiParent = Program.parentForm;
             frusmtout.setparamters(this.mb_brieftextBox.Text.Trim(), this.materialMpnTextBox.Text.Trim(),  this.requestNumbertextBox.Text.Trim(), this.idTextBox.Text.Trim());
             frusmtout.Show();
             frusmtout.doRequestUsingMpn();

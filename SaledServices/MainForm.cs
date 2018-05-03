@@ -572,22 +572,21 @@ namespace SaledServices
             allForm.Add(frusmtinform);  
         }
 
-        private FRU_SMT_OutSheetForm frusmtoutform;
+        private FRU_OutSheetForm fruoutform;
         private void fRUSMT入库记录ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (frusmtoutform == null || frusmtoutform.IsDisposed)
+            if (fruoutform == null || fruoutform.IsDisposed)
             {
-                frusmtoutform = new FRU_SMT_OutSheetForm();
-                frusmtoutform.MdiParent = this;
+                fruoutform = new FRU_OutSheetForm();
+                fruoutform.MdiParent = this;
             }
 
-            frusmtoutform.WindowState = FormWindowState.Maximized;
-            frusmtoutform.BringToFront();
-            frusmtoutform.Show();
+            fruoutform.WindowState = FormWindowState.Maximized;
+            fruoutform.BringToFront();
+            fruoutform.Show();
 
-            allForm.Add(frusmtoutform);  
+            allForm.Add(fruoutform);  
         }
-
 
         private Store.CheckRequestForm checkrequestform;
         private void 出库请求查看ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -925,6 +924,22 @@ namespace SaledServices
             mLoginForm.Show();
 
             allForm.Add(mLoginForm);
+        }
+
+        private MaterialNameForm materialNameForm;
+        private void 材料名称ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (materialNameForm == null || materialNameForm.IsDisposed)
+            {
+                materialNameForm = new MaterialNameForm();
+                materialNameForm.MdiParent = this;
+            }
+
+            materialNameForm.WindowState = FormWindowState.Maximized;
+            materialNameForm.BringToFront();
+            materialNameForm.Show();
+
+            allForm.Add(materialNameForm);
         }
     }
 }

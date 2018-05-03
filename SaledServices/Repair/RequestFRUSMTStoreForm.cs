@@ -74,6 +74,7 @@ namespace SaledServices.Store
 
         private void not_good_placeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            
             if (e.KeyChar == System.Convert.ToChar(13))
             {
                 bool error = false;

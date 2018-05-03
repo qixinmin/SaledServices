@@ -92,6 +92,7 @@
             this.出库入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表头ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.材料名称ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -474,7 +475,8 @@
             this.维修故障类别ToolStripMenuItem,
             this.厂商信息ToolStripMenuItem,
             this.企业固定信息ToolStripMenuItem,
-            this.员工管理ToolStripMenuItem});
+            this.员工管理ToolStripMenuItem,
+            this.材料名称ToolStripMenuItem});
             this.additionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.additionMenuItem.Name = "additionMenuItem";
             this.additionMenuItem.Size = new System.Drawing.Size(104, 31);
@@ -621,6 +623,13 @@
             this.工单表体ToolStripMenuItem.Text = "工单表体";
             this.工单表体ToolStripMenuItem.Click += new System.EventHandler(this.工单表体ToolStripMenuItem_Click);
             // 
+            // 材料名称ToolStripMenuItem
+            // 
+            this.材料名称ToolStripMenuItem.Name = "材料名称ToolStripMenuItem";
+            this.材料名称ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.材料名称ToolStripMenuItem.Text = "材料名称";
+            this.材料名称ToolStripMenuItem.Click += new System.EventHandler(this.材料名称ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -708,6 +717,7 @@
         private System.Windows.Forms.ToolStripMenuItem runningToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oBEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 不良品出入库管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 材料名称ToolStripMenuItem;
     }
 }
 

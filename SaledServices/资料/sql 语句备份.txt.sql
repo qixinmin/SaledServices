@@ -382,6 +382,12 @@ burn_date date,/*烧录日期*/
 custom_serial_no NVARCHAR(128) /*客户序号*/
 )
 
+/*材料名称*/
+CREATE TABLE materialNameTable(
+Id INT PRIMARY KEY IDENTITY, 
+materialName NVARCHAR(128) NOT NULL
+)
+
 /*维修故障类别*/
 CREATE TABLE repairFaultType(
 Id INT PRIMARY KEY IDENTITY, 

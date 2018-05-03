@@ -52,6 +52,18 @@ namespace SaledServices
                 }
                 querySdr.Close();
 
+                cmd.CommandText = "select distinct materialName from materialNameTable";
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.material_namecomboBox.Items.Add(temp);
+                    }
+                }
+                querySdr.Close();
+
                 mConn.Close();
             }
             catch (Exception ex)
@@ -65,6 +77,12 @@ namespace SaledServices
             if (this.mpnTextBox.Text.Trim() == "" || this.buy_order_serial_noComboBox.Text.Trim() =="")
             {
                 MessageBox.Show("MPN 或订单号为空！");
+                return;
+            }
+
+            if (this.material_namecomboBox.Text == "")
+            {
+                MessageBox.Show("材料名称为空！");
                 return;
             }
 
@@ -136,7 +154,7 @@ namespace SaledServices
                         this.isDeclareTextBox.Text.Trim() + "','" +
 
                         this.mb_brieftextBox.Text.Trim() + "','" +
-                        this.material_nameTextBox.Text.Trim() + "','" +
+                        this.material_namecomboBox.Text.Trim() + "','" +
                         this.stock_in_numTextBox.Text.Trim() + "','" +
                         this.totalMoneyTextBox.Text.Trim() + "','" +
                         this.stock_placetextBox.Text.Trim() + "','" +
@@ -259,7 +277,7 @@ namespace SaledServices
 
 
             dr["mb_brief"] = this.mb_brieftextBox.Text.Trim();
-            dr["material_name"] = this.material_nameTextBox.Text.Trim();
+            dr["material_name"] = this.material_namecomboBox.Text.Trim();
             dr["stock_in_num"] = this.stock_in_numTextBox.Text.Trim();
             dr["totalMoney"] = this.totalMoneyTextBox.Text.Trim();              
             dr["stock_place"]= this.stock_placetextBox.Text.Trim();
@@ -316,7 +334,7 @@ namespace SaledServices
             this.isDeclareTextBox.Text = dataGridView1.SelectedCells[11].Value.ToString();
 
             this.mb_brieftextBox.Text= dataGridView1.SelectedCells[12].Value.ToString();
-            this.material_nameTextBox.Text= dataGridView1.SelectedCells[13].Value.ToString();
+            this.material_namecomboBox.Text= dataGridView1.SelectedCells[13].Value.ToString();
             this.stock_in_numTextBox.Text= dataGridView1.SelectedCells[14].Value.ToString();
 
             this.totalMoneyTextBox.Text= dataGridView1.SelectedCells[15].Value.ToString();
@@ -368,7 +386,7 @@ namespace SaledServices
                     this.describeTextBox.Text = querySdr[6].ToString();
                     this.numberTextBox.Text = querySdr[7].ToString();
                     this.pricePerTextBox.Text = querySdr[8].ToString();
-                    this.material_nameTextBox.Text = querySdr[9].ToString();
+                    this.material_namecomboBox.Text = querySdr[9].ToString();
                     this.isDeclareTextBox.Text = querySdr[10].ToString();
                 }
                 querySdr.Close();
