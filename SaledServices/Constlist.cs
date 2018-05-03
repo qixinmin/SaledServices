@@ -101,11 +101,15 @@ namespace SaledServices
                     return;
                 }
                 labApp = new LabelManager2.Application();
+               // labApp.ActivePrinterName = "ZDesigner 110Xi4 300 dpi";
+                
                 labApp.Documents.Open(labFileName, false);// 调用设计好的label文件
                 doc = labApp.ActiveDocument;
-                doc.Variables.FormVariables.Item("var0").Value = "ABCDEFG";
-                doc.Variables.FormVariables.Item("var1").Value = "HIJKLMN";
-                doc.Variables.FormVariables.Item("var2").Value = "OPQRSTU";
+                doc.Printer.SwitchTo("a");//打印机名字，自定义，可以修改
+                
+                doc.Variables.FormVariables.Item("hbj3").Value = "ABCDEFG";
+                doc.Variables.FormVariables.Item("hbj1").Value = "HIJKLMN";
+                doc.Variables.FormVariables.Item("hbj2").Value = "OPQRSTU";
 
                 doc.PrintDocument(); //打印一次
                 doc.FormFeed(); //结束打印
