@@ -33,16 +33,15 @@
             this.filePath = new System.Windows.Forms.TextBox();
             this.findFile = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.userInputRadioButton = new System.Windows.Forms.RadioButton();
             this.storeInfoImportradioButton = new System.Windows.Forms.RadioButton();
             this.stock_in_sheetradioButton = new System.Windows.Forms.RadioButton();
             this.faultTableRadioButton = new System.Windows.Forms.RadioButton();
             this.DPKradioButton = new System.Windows.Forms.RadioButton();
             this.LCFC71BOMRadioButton = new System.Windows.Forms.RadioButton();
-            this.COMPAL_MBBOMradioButton = new System.Windows.Forms.RadioButton();
             this.LCFC_MBBOMradioButton = new System.Windows.Forms.RadioButton();
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
-            this.userInputRadioButton = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,7 +84,6 @@
             this.panel1.Controls.Add(this.faultTableRadioButton);
             this.panel1.Controls.Add(this.DPKradioButton);
             this.panel1.Controls.Add(this.LCFC71BOMRadioButton);
-            this.panel1.Controls.Add(this.COMPAL_MBBOMradioButton);
             this.panel1.Controls.Add(this.LCFC_MBBOMradioButton);
             this.panel1.Controls.Add(this.receiveOrder);
             this.panel1.Controls.Add(this.mbmaterial);
@@ -94,6 +92,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(430, 495);
             this.panel1.TabIndex = 4;
+            // 
+            // userInputRadioButton
+            // 
+            this.userInputRadioButton.AutoSize = true;
+            this.userInputRadioButton.Location = new System.Drawing.Point(22, 448);
+            this.userInputRadioButton.Name = "userInputRadioButton";
+            this.userInputRadioButton.Size = new System.Drawing.Size(147, 24);
+            this.userInputRadioButton.TabIndex = 4;
+            this.userInputRadioButton.TabStop = true;
+            this.userInputRadioButton.Text = "用户资料导入";
+            this.userInputRadioButton.UseVisualStyleBackColor = true;
             // 
             // storeInfoImportradioButton
             // 
@@ -150,26 +159,15 @@
             this.LCFC71BOMRadioButton.Text = "LCFC71BOM";
             this.LCFC71BOMRadioButton.UseVisualStyleBackColor = true;
             // 
-            // COMPAL_MBBOMradioButton
-            // 
-            this.COMPAL_MBBOMradioButton.AutoSize = true;
-            this.COMPAL_MBBOMradioButton.Location = new System.Drawing.Point(22, 177);
-            this.COMPAL_MBBOMradioButton.Name = "COMPAL_MBBOMradioButton";
-            this.COMPAL_MBBOMradioButton.Size = new System.Drawing.Size(147, 24);
-            this.COMPAL_MBBOMradioButton.TabIndex = 3;
-            this.COMPAL_MBBOMradioButton.TabStop = true;
-            this.COMPAL_MBBOMradioButton.Text = "COMPAL_MBBOM";
-            this.COMPAL_MBBOMradioButton.UseVisualStyleBackColor = true;
-            // 
             // LCFC_MBBOMradioButton
             // 
             this.LCFC_MBBOMradioButton.AutoSize = true;
             this.LCFC_MBBOMradioButton.Location = new System.Drawing.Point(22, 123);
             this.LCFC_MBBOMradioButton.Name = "LCFC_MBBOMradioButton";
-            this.LCFC_MBBOMradioButton.Size = new System.Drawing.Size(127, 24);
+            this.LCFC_MBBOMradioButton.Size = new System.Drawing.Size(257, 24);
             this.LCFC_MBBOMradioButton.TabIndex = 2;
             this.LCFC_MBBOMradioButton.TabStop = true;
-            this.LCFC_MBBOMradioButton.Text = "LCFC_MBBOM";
+            this.LCFC_MBBOMradioButton.Text = "LCFC_MBBOM&&COMPAL_MBBOM";
             this.LCFC_MBBOMradioButton.UseVisualStyleBackColor = true;
             // 
             // receiveOrder
@@ -195,17 +193,6 @@
             this.mbmaterial.TabIndex = 0;
             this.mbmaterial.Text = "MB物料对照表";
             this.mbmaterial.UseVisualStyleBackColor = true;
-            // 
-            // userInputRadioButton
-            // 
-            this.userInputRadioButton.AutoSize = true;
-            this.userInputRadioButton.Location = new System.Drawing.Point(22, 448);
-            this.userInputRadioButton.Name = "userInputRadioButton";
-            this.userInputRadioButton.Size = new System.Drawing.Size(147, 24);
-            this.userInputRadioButton.TabIndex = 4;
-            this.userInputRadioButton.TabStop = true;
-            this.userInputRadioButton.Text = "用户资料导入";
-            this.userInputRadioButton.UseVisualStyleBackColor = true;
             // 
             // ExcelImportForm
             // 
@@ -238,7 +225,6 @@
         private System.Windows.Forms.RadioButton receiveOrder;
         private System.Windows.Forms.RadioButton mbmaterial;
         private System.Windows.Forms.RadioButton LCFC71BOMRadioButton;
-        private System.Windows.Forms.RadioButton COMPAL_MBBOMradioButton;
         private System.Windows.Forms.RadioButton LCFC_MBBOMradioButton;
         private System.Windows.Forms.RadioButton DPKradioButton;
         private System.Windows.Forms.RadioButton faultTableRadioButton;

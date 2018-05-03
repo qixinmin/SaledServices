@@ -172,14 +172,14 @@ namespace SaledServices
                 }
 
                 string tableName = "";
-                if (this.vendorTextBox.Text.Trim() == "LCFC")
-                {
+                //if (this.vendorTextBox.Text.Trim() == "LCFC")
+                //{
                     tableName = Constlist.table_name_LCFC_MBBOM;
-                }
-                else if (this.vendorTextBox.Text.Trim() == "COMPAL")
-                {
-                    tableName = Constlist.table_name_COMPAL_MBBOM;
-                }
+                //}
+                //else if (this.vendorTextBox.Text.Trim() == "COMPAL")
+                //{
+                //    tableName = Constlist.table_name_COMPAL_MBBOM;
+                //}
 
                 string not_good_place = this.not_good_placetextBox.Text.Trim();
                 try

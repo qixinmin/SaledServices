@@ -40,8 +40,8 @@ namespace SaledServices
         public static string table_LCFC_MBBOM = "LCFC_MBBOM";
         public static string table_name_LCFC_MBBOM = "LCFC_MBBOM_table";
 
-        public static string table_COMPAL_MBBOM = "COMPAL_MBBOM";
-        public static string table_name_COMPAL_MBBOM = "COMPAL_MBBOM_table";
+        //public static string table_COMPAL_MBBOM = "COMPAL_MBBOM";
+        //public static string table_name_COMPAL_MBBOM = "COMPAL_MBBOM_table";
 
         public static string table_LCFC71BOM = "LCFC71BOM表";
         public static string table_name_LCFC71BOM = "LCFC71BOM_table";

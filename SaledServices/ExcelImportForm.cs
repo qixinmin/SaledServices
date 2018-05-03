@@ -110,11 +110,11 @@ namespace SaledServices
                 sheetName = Constlist.table_LCFC_MBBOM;
                 tableName = Constlist.table_name_LCFC_MBBOM;
             }
-            else if (this.COMPAL_MBBOMradioButton.Checked)
-            {
-                sheetName = Constlist.table_COMPAL_MBBOM;
-                tableName = Constlist.table_name_COMPAL_MBBOM;
-            }
+            //else if (this.COMPAL_MBBOMradioButton.Checked)
+            //{
+            //    sheetName = Constlist.table_COMPAL_MBBOM;
+            //    tableName = Constlist.table_name_COMPAL_MBBOM;
+            //}
             else if (this.LCFC71BOMRadioButton.Checked)
             {
                 sheetName = Constlist.table_LCFC71BOM;
@@ -146,8 +146,7 @@ namespace SaledServices
                 tableName = Constlist.table_name_users_sheet;
             }
 
-            if (this.LCFC_MBBOMradioButton.Checked
-                || this.COMPAL_MBBOMradioButton.Checked)
+            if (this.LCFC_MBBOMradioButton.Checked)
             {
                 importLCFC_MBBOMUsingADO(sheetName, tableName);
                 this.importButton.Enabled = true;
@@ -627,10 +626,10 @@ namespace SaledServices
                 {
                     dateIndex = 1;
                 }
-                else if (this.COMPAL_MBBOMradioButton.Checked)
-                {
-                    dateIndex = 1;
-                }
+                //else if (this.COMPAL_MBBOMradioButton.Checked)
+                //{
+                //    dateIndex = 1;
+                //}
                 else if (this.LCFC71BOMRadioButton.Checked)
                 {
                     dateIndex = 1;
