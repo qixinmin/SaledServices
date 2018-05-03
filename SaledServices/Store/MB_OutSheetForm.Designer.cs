@@ -42,8 +42,6 @@
             this.describeTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.mb_brieftextBox = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.stock_placetextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -54,14 +52,18 @@
             this.stock_out_numTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.currentStockNumbertextBox = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.isDeclareTextBox = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.notetextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.inputerTextBox = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.mb_brieftextBox = new System.Windows.Forms.TextBox();
+            this.vendorcomboBox = new System.Windows.Forms.ComboBox();
+            this.productcomboBox = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.isDeclareTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.custom_serial_notextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -71,8 +73,6 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.vendorcomboBox = new System.Windows.Forms.ComboBox();
-            this.productcomboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -84,7 +84,7 @@
             // add
             // 
             this.add.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.add.Location = new System.Drawing.Point(422, 9);
+            this.add.Location = new System.Drawing.Point(421, 9);
             this.add.Margin = new System.Windows.Forms.Padding(4);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(100, 31);
@@ -96,7 +96,7 @@
             // query
             // 
             this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.query.Location = new System.Drawing.Point(709, 9);
+            this.query.Location = new System.Drawing.Point(708, 9);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(100, 31);
@@ -108,7 +108,7 @@
             // modify
             // 
             this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.modify.Location = new System.Drawing.Point(957, 9);
+            this.modify.Location = new System.Drawing.Point(956, 9);
             this.modify.Margin = new System.Windows.Forms.Padding(4);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(100, 31);
@@ -264,24 +264,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1362, 241);
             this.tableLayoutPanel3.TabIndex = 9;
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(7, 3);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(56, 16);
-            this.label18.TabIndex = 11;
-            this.label18.Text = "MB简称";
-            // 
-            // mb_brieftextBox
-            // 
-            this.mb_brieftextBox.Location = new System.Drawing.Point(176, 7);
-            this.mb_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mb_brieftextBox.Name = "mb_brieftextBox";
-            this.mb_brieftextBox.Size = new System.Drawing.Size(158, 26);
-            this.mb_brieftextBox.TabIndex = 24;
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -378,25 +360,6 @@
             this.currentStockNumbertextBox.Size = new System.Drawing.Size(158, 26);
             this.currentStockNumbertextBox.TabIndex = 20;
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(345, 50);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(72, 16);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "是否报关";
-            // 
-            // isDeclareTextBox
-            // 
-            this.isDeclareTextBox.Location = new System.Drawing.Point(514, 54);
-            this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.isDeclareTextBox.Name = "isDeclareTextBox";
-            this.isDeclareTextBox.ReadOnly = true;
-            this.isDeclareTextBox.Size = new System.Drawing.Size(158, 26);
-            this.isDeclareTextBox.TabIndex = 26;
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -454,6 +417,64 @@
             this.inputerTextBox.Size = new System.Drawing.Size(158, 26);
             this.inputerTextBox.TabIndex = 22;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(7, 3);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(56, 16);
+            this.label18.TabIndex = 11;
+            this.label18.Text = "MB简称";
+            // 
+            // mb_brieftextBox
+            // 
+            this.mb_brieftextBox.Location = new System.Drawing.Point(176, 7);
+            this.mb_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.mb_brieftextBox.Name = "mb_brieftextBox";
+            this.mb_brieftextBox.Size = new System.Drawing.Size(158, 26);
+            this.mb_brieftextBox.TabIndex = 24;
+            this.mb_brieftextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mb_brieftextBox_KeyPress);
+            // 
+            // vendorcomboBox
+            // 
+            this.vendorcomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.vendorcomboBox.FormattingEnabled = true;
+            this.vendorcomboBox.Location = new System.Drawing.Point(175, 53);
+            this.vendorcomboBox.Name = "vendorcomboBox";
+            this.vendorcomboBox.Size = new System.Drawing.Size(159, 24);
+            this.vendorcomboBox.TabIndex = 27;
+            this.vendorcomboBox.SelectedIndexChanged += new System.EventHandler(this.queryStock_Click);
+            // 
+            // productcomboBox
+            // 
+            this.productcomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.productcomboBox.FormattingEnabled = true;
+            this.productcomboBox.Location = new System.Drawing.Point(175, 100);
+            this.productcomboBox.Name = "productcomboBox";
+            this.productcomboBox.Size = new System.Drawing.Size(159, 24);
+            this.productcomboBox.TabIndex = 27;
+            this.productcomboBox.SelectedIndexChanged += new System.EventHandler(this.queryStock_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(345, 50);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(72, 16);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "是否报关";
+            // 
+            // isDeclareTextBox
+            // 
+            this.isDeclareTextBox.Location = new System.Drawing.Point(514, 54);
+            this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.isDeclareTextBox.Name = "isDeclareTextBox";
+            this.isDeclareTextBox.ReadOnly = true;
+            this.isDeclareTextBox.Size = new System.Drawing.Size(158, 26);
+            this.isDeclareTextBox.TabIndex = 26;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -497,7 +518,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.9325F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.85227F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.75F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 248F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 251F));
             this.tableLayoutPanel2.Controls.Add(this.delete, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.modify, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.query, 2, 0);
@@ -516,13 +537,14 @@
             // 
             this.queryStock.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.queryStock.Enabled = false;
-            this.queryStock.Location = new System.Drawing.Point(114, 9);
+            this.queryStock.Location = new System.Drawing.Point(113, 9);
             this.queryStock.Margin = new System.Windows.Forms.Padding(4);
             this.queryStock.Name = "queryStock";
             this.queryStock.Size = new System.Drawing.Size(100, 31);
             this.queryStock.TabIndex = 0;
             this.queryStock.Text = "查询库存";
             this.queryStock.UseVisualStyleBackColor = true;
+            this.queryStock.Click += new System.EventHandler(this.queryStock_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -575,22 +597,7 @@
             this.dataGridView2.Size = new System.Drawing.Size(325, 429);
             this.dataGridView2.TabIndex = 10;
             this.dataGridView2.VirtualMode = true;
-            // 
-            // vendorcomboBox
-            // 
-            this.vendorcomboBox.FormattingEnabled = true;
-            this.vendorcomboBox.Location = new System.Drawing.Point(175, 53);
-            this.vendorcomboBox.Name = "vendorcomboBox";
-            this.vendorcomboBox.Size = new System.Drawing.Size(159, 24);
-            this.vendorcomboBox.TabIndex = 27;
-            // 
-            // productcomboBox
-            // 
-            this.productcomboBox.FormattingEnabled = true;
-            this.productcomboBox.Location = new System.Drawing.Point(175, 100);
-            this.productcomboBox.Name = "productcomboBox";
-            this.productcomboBox.Size = new System.Drawing.Size(159, 24);
-            this.productcomboBox.TabIndex = 27;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // MB_OutSheetForm
             // 

@@ -47,8 +47,8 @@ namespace SaledServices
                     cmd.CommandType = CommandType.Text;
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
-                        this.vendorTextBox.Text.Trim() + "','" +
-                        this.productTextBox.Text.Trim() + "','" +
+                        this.vendorcomboBox.Text.Trim() + "','" +
+                        this.productcomboBox.Text.Trim() + "','" +
                         this.mpnTextBox.Text.Trim() + "','" +
                         this.mb_brieftextBox.Text.Trim() + "','" +
                         this.describeTextBox.Text.Trim() + "','" +
@@ -99,8 +99,8 @@ namespace SaledServices
 
         private void clearTexts()
         {
-            this.vendorTextBox.Text = "";
-            this.productTextBox.Text = "";
+            this.vendorcomboBox.Text = "";
+            this.productcomboBox.Text = "";
             this.mpnTextBox.Text = "";
             this.mb_brieftextBox.Text = "";
             this.describeTextBox.Text = "";
@@ -121,27 +121,27 @@ namespace SaledServices
 
                 string sqlStr =  "select top 100 * from " + tableName;
 
-                if (vendorTextBox.Text.Trim() != "")
+                if (this.vendorcomboBox.Text.Trim() != "")
                 {
                     if (!sqlStr.Contains("where"))
                     {
-                        sqlStr += " where vendor= '" + vendorTextBox.Text.Trim() + "' ";
+                        sqlStr += " where vendor= '" + vendorcomboBox.Text.Trim() + "' ";
                     }
                     else
                     {
-                        sqlStr += " and vendor= '" + vendorTextBox.Text.Trim() + "' ";
+                        sqlStr += " and vendor= '" + vendorcomboBox.Text.Trim() + "' ";
                     }
                 }
 
-                if (productTextBox.Text.Trim() != "")
+                if (this.productcomboBox.Text.Trim() != "")
                 {
                     if (!sqlStr.Contains("where"))
                     {
-                        sqlStr += " where product= '" + productTextBox.Text.Trim() + "' ";
+                        sqlStr += " where product= '" + productcomboBox.Text.Trim() + "' ";
                     }
                     else
                     {
-                        sqlStr += " and product= '" + productTextBox.Text.Trim() + "' ";
+                        sqlStr += " and product= '" + productcomboBox.Text.Trim() + "' ";
                     }
                 }
 
@@ -178,8 +178,8 @@ namespace SaledServices
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.idTextBox.Text.Trim());  
            
-            dr["vendor"] = this.vendorTextBox.Text.Trim();
-            dr["product"] = this.productTextBox.Text.Trim();
+            dr["vendor"] = this.vendorcomboBox.Text.Trim();
+            dr["product"] = this.productcomboBox.Text.Trim();
             dr["mpn"] = this.mpnTextBox.Text.Trim();
             dr["mb_brief"] = this.mb_brieftextBox.Text.Trim();
             dr["describe"] = this.describeTextBox.Text.Trim();
@@ -231,8 +231,8 @@ namespace SaledServices
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.idTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
-            this.vendorTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
-            this.productTextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();           
+            this.vendorcomboBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
+            this.productcomboBox.Text = dataGridView1.SelectedCells[2].Value.ToString();           
             this.mpnTextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
             this.mb_brieftextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();         
             this.describeTextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
@@ -266,68 +266,72 @@ namespace SaledServices
                 SetValue(tableLayoutPanel4, true, null);
         }
 
+        public void doRequestUsingMpn()
+        {
+            try
+            {
+                this.input_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    //查询库位和数量
+                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string house = "", place = "", Id = "", number = "";
+                    while (querySdr.Read())
+                    {
+                        house = querySdr[0].ToString();
+                        place = querySdr[1].ToString();
+                        Id = querySdr[2].ToString();
+                        number = querySdr[3].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (house == "" || place == "")
+                    {
+                        MessageBox.Show("此料不在库存里面！");
+                        conn.Close();
+                        return;
+                    }
+                    this.currentStockNumbertextBox.Text = number;
+                    this.stock_placetextBox.Text = house + "," + place;
+
+                    cmd.CommandText = "select vendor,product,mb_brief,describe,isdeclare from mb_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        this.vendorcomboBox.Text = querySdr[0].ToString();
+                        this.productcomboBox.Text = querySdr[1].ToString();
+                        this.mb_brieftextBox.Text = querySdr[2].ToString();
+                        this.describeTextBox.Text = querySdr[3].ToString();
+                        this.isDeclareTextBox.Text = querySdr[4].ToString();
+                        break;
+                    }
+                    querySdr.Close();
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
         public void mpnTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                try
-                {
-                    this.input_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
-                    SqlConnection conn = new SqlConnection(Constlist.ConStr);
-                    conn.Open();
-
-                    if (conn.State == ConnectionState.Open)
-                    {
-                        SqlCommand cmd = new SqlCommand();
-                        cmd.Connection = conn;
-                        cmd.CommandType = CommandType.Text;
-
-                        //查询库位和数量
-                        cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
-                        SqlDataReader querySdr = cmd.ExecuteReader();
-                        string house = "", place = "", Id = "", number = "";
-                        while (querySdr.Read())
-                        {
-                            house = querySdr[0].ToString();
-                            place = querySdr[1].ToString();
-                            Id = querySdr[2].ToString();
-                            number = querySdr[3].ToString();
-                        }
-                        querySdr.Close();
-
-                        if (house == "" || place == "")
-                        {
-                            MessageBox.Show("此料不在库存里面！");
-                            conn.Close();
-                            return;
-                        }
-                        this.currentStockNumbertextBox.Text = number;
-                        this.stock_placetextBox.Text = house + "," + place;
-
-                        cmd.CommandText = "select vendor,product,mb_brief,describe,isdeclare from mb_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "'";
-                        querySdr = cmd.ExecuteReader();                       
-                        while (querySdr.Read())
-                        {
-                            this.vendorTextBox.Text = querySdr[0].ToString();
-                            this.productTextBox.Text = querySdr[1].ToString();
-                            this.mb_brieftextBox.Text = querySdr[2].ToString();
-                            this.describeTextBox.Text = querySdr[3].ToString();
-                            this.isDeclareTextBox.Text = querySdr[4].ToString();
-                            break;
-                        }
-                        querySdr.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("SaledService is not opened");
-                    }
-
-                    conn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }              
+                doRequestUsingMpn();   
             }
         }
 
@@ -337,6 +341,111 @@ namespace SaledServices
             this.mpnTextBox.Text = material_mpn;
             this.requestNumber = requestNumber;
             requestId = index;
+        }
+
+        private void mb_brieftextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                try
+                {
+                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                    mConn.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = mConn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "select distinct vendor from mb_in_stock where mb_brief ='" + this.mb_brieftextBox.Text + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        string temp = querySdr[0].ToString();
+                        if (temp != "")
+                        {
+                            this.vendorcomboBox.Items.Add(temp);
+                        }
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = "select distinct product from mb_in_stock where  mb_brief ='" + this.mb_brieftextBox.Text + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        string temp = querySdr[0].ToString();
+                        if (temp != "")
+                        {
+                            this.productcomboBox.Items.Add(temp);
+                        }
+                    }
+                    querySdr.Close();
+
+                    mConn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
+        private void queryStock_Click(object sender, EventArgs e)
+        {
+            if (this.mb_brieftextBox.Text == "")
+            {
+                MessageBox.Show("BGA简称不能为空！");
+                return;
+            }
+            try
+            {
+                this.dataGridView2.DataSource = null;
+                dataGridView2.Columns.Clear();
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+
+                string sql = "select mpn,stock_place,input_number,isdeclare from bga_in_stock where mb_brief='" + this.mb_brieftextBox.Text + "'";
+
+                if (this.vendorcomboBox.Text != "")
+                {
+                    sql += " and vendor='" + this.vendorcomboBox.Text + "'";
+                }
+
+                if (this.productcomboBox.Text != "")
+                {
+                    sql += " and product='" + this.productcomboBox.Text + "'";
+                }
+
+                cmd.CommandText = sql;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataAdapter sda = new SqlDataAdapter();
+                sda.SelectCommand = cmd;
+                DataSet ds = new DataSet();
+                sda.Fill(ds, "stock_in_sheet");
+                dataGridView2.DataSource = ds.Tables[0];
+                dataGridView2.RowHeadersVisible = false;
+                mConn.Close();
+
+                string[] hTxt = { "MPN", "库位", "已有数量", "是否申报" };
+                for (int i = 0; i < hTxt.Length; i++)
+                {
+                    dataGridView2.Columns[i].HeaderText = hTxt[i];
+                    dataGridView2.Columns[i].Name = hTxt[i];
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.mpnTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
+            doRequestUsingMpn();
         }
     }
 }
