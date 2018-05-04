@@ -96,7 +96,7 @@
             // userInputRadioButton
             // 
             this.userInputRadioButton.AutoSize = true;
-            this.userInputRadioButton.Location = new System.Drawing.Point(22, 448);
+            this.userInputRadioButton.Location = new System.Drawing.Point(22, 397);
             this.userInputRadioButton.Name = "userInputRadioButton";
             this.userInputRadioButton.Size = new System.Drawing.Size(147, 24);
             this.userInputRadioButton.TabIndex = 4;
@@ -107,7 +107,7 @@
             // storeInfoImportradioButton
             // 
             this.storeInfoImportradioButton.AutoSize = true;
-            this.storeInfoImportradioButton.Location = new System.Drawing.Point(22, 408);
+            this.storeInfoImportradioButton.Location = new System.Drawing.Point(22, 347);
             this.storeInfoImportradioButton.Name = "storeInfoImportradioButton";
             this.storeInfoImportradioButton.Size = new System.Drawing.Size(147, 24);
             this.storeInfoImportradioButton.TabIndex = 4;
@@ -118,7 +118,7 @@
             // stock_in_sheetradioButton
             // 
             this.stock_in_sheetradioButton.AutoSize = true;
-            this.stock_in_sheetradioButton.Location = new System.Drawing.Point(22, 368);
+            this.stock_in_sheetradioButton.Location = new System.Drawing.Point(22, 307);
             this.stock_in_sheetradioButton.Name = "stock_in_sheetradioButton";
             this.stock_in_sheetradioButton.Size = new System.Drawing.Size(127, 24);
             this.stock_in_sheetradioButton.TabIndex = 4;
@@ -129,7 +129,7 @@
             // faultTableRadioButton
             // 
             this.faultTableRadioButton.AutoSize = true;
-            this.faultTableRadioButton.Location = new System.Drawing.Point(22, 326);
+            this.faultTableRadioButton.Location = new System.Drawing.Point(22, 265);
             this.faultTableRadioButton.Name = "faultTableRadioButton";
             this.faultTableRadioButton.Size = new System.Drawing.Size(127, 24);
             this.faultTableRadioButton.TabIndex = 4;
@@ -140,7 +140,7 @@
             // DPKradioButton
             // 
             this.DPKradioButton.AutoSize = true;
-            this.DPKradioButton.Location = new System.Drawing.Point(22, 283);
+            this.DPKradioButton.Location = new System.Drawing.Point(22, 222);
             this.DPKradioButton.Name = "DPKradioButton";
             this.DPKradioButton.Size = new System.Drawing.Size(57, 24);
             this.DPKradioButton.TabIndex = 4;
@@ -151,7 +151,7 @@
             // LCFC71BOMRadioButton
             // 
             this.LCFC71BOMRadioButton.AutoSize = true;
-            this.LCFC71BOMRadioButton.Location = new System.Drawing.Point(22, 232);
+            this.LCFC71BOMRadioButton.Location = new System.Drawing.Point(22, 171);
             this.LCFC71BOMRadioButton.Name = "LCFC71BOMRadioButton";
             this.LCFC71BOMRadioButton.Size = new System.Drawing.Size(117, 24);
             this.LCFC71BOMRadioButton.TabIndex = 4;

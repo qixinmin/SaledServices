@@ -37,7 +37,7 @@
             this.modify = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.numTextBox = new System.Windows.Forms.TextBox();
+            this.idTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.houseTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -143,14 +143,14 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "ID";
             // 
-            // numTextBox
+            // idTextBox
             // 
-            this.numTextBox.Location = new System.Drawing.Point(243, 62);
-            this.numTextBox.Margin = new System.Windows.Forms.Padding(5);
-            this.numTextBox.Name = "numTextBox";
-            this.numTextBox.ReadOnly = true;
-            this.numTextBox.Size = new System.Drawing.Size(164, 30);
-            this.numTextBox.TabIndex = 5;
+            this.idTextBox.Location = new System.Drawing.Point(243, 62);
+            this.idTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.ReadOnly = true;
+            this.idTextBox.Size = new System.Drawing.Size(164, 30);
+            this.idTextBox.TabIndex = 5;
             // 
             // label3
             // 
@@ -238,7 +238,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 716);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.numTextBox);
+            this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.releasePlacebutton);
             this.Controls.Add(this.delete);
@@ -275,7 +275,7 @@
         private System.Windows.Forms.Button modify;
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox numTextBox;
+        private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox houseTextBox;
         private System.Windows.Forms.Label label4;

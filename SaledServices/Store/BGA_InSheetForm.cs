@@ -105,6 +105,7 @@ namespace SaledServices
                             MessageBox.Show("此BGA SN号码已经存在数据库中了，请检查是否重复！");
                             return;
                         }
+                        querySdr.Close();
                     }
 
                     cmd.CommandText = "select number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim()

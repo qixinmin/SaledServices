@@ -463,7 +463,7 @@ namespace SaledServices
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.mpnTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
+            this.mpnTextBox.Text = dataGridView2.SelectedCells[0].Value.ToString();
             doRequestUsingMpn();
         }
     }

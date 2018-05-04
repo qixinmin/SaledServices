@@ -17,10 +17,10 @@ namespace SaledServices
         private SqlDataAdapter sda;
         private DataSet ds;
 
-        private string requestId = "";
-        private string requestNumber = "";
+        //private string requestId = "";
+       // private string requestNumber = "";
 
-        private string reqeusterStatus = "";
+        //private string reqeusterStatus = "";
 
         public FRU_OutSheetForm()
         {
@@ -109,11 +109,6 @@ namespace SaledServices
                     
                     cmd.ExecuteNonQuery();
 
-                    //跟新请求表格的状态
-                    cmd.CommandText = "update request_fru_smt_to_store_table set _status = '" + this.reqeusterStatus + "',realNumber = '" + (this.stock_out_numTextBox.Text) + "'"
-                               + " where Id = '" + this.requestId + "'";
-                    cmd.ExecuteNonQuery();
-                    
                     //需要更新库房对应储位的数量 减去 本次出库的数量
                     //根据mpn查对应的查询
                     cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
@@ -226,8 +221,7 @@ namespace SaledServices
             dr["taker"] = this.takertextBox.Text.Trim();
             dr["inputer"] = this.inputerTextBox.Text.Trim();
             dr["use_describe"] = this.use_describetextBox.Text.Trim();
-            dr["input_date"] = this.input_dateTextBox.Text.Trim();
-    
+            dr["input_date"] = this.input_dateTextBox.Text.Trim();    
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
@@ -306,7 +300,7 @@ namespace SaledServices
 
         public void doRequestUsingMpn()
         {
-            if (this.mb_brieftextBox.Text == "" || this.mpnTextBox.Text == "")
+            if (this.mpnTextBox.Text == "")
             {
                 return;
             }
@@ -344,22 +338,8 @@ namespace SaledServices
                     this.currentStockNumbertextBox.Text = number;
                     this.stock_placetextBox.Text = house + "," + place;
 
-                    int requestNumber = Int32.Parse(this.requestNumber);
-                    int totalCurentNumber = Int32.Parse(this.currentStockNumbertextBox.Text);
-
-                    
-                    //库房为空的情况放在上一步来check
-                    if (requestNumber != 0 && requestNumber > totalCurentNumber)
-                    {
-                        MessageBox.Show("申请的数量不能满足，请知晓!");
-                        reqeusterStatus = "part";
-                        this.stock_out_numTextBox.Text = this.currentStockNumbertextBox.Text;
-                    }
-                    else
-                    {
-                        reqeusterStatus = "close";
-                        this.stock_out_numTextBox.Text = this.requestNumber;
-                    }
+                  
+                    int totalCurentNumber = Int32.Parse(this.currentStockNumbertextBox.Text);                   
 
                     cmd.CommandText = "select vendor,product,mb_brief,describe,isdeclare,material_type,vendormaterialNo,material_name  from fru_smt_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();
@@ -400,14 +380,6 @@ namespace SaledServices
             }
         }
 
-        public void setparamters(string mb_brief, string material_mpn, string requestNumber, string index)
-        {
-            this.mb_brieftextBox.Text = mb_brief;
-            this.mpnTextBox.Text = material_mpn;
-            this.requestNumber = requestNumber;
-            requestId = index;
-        }
-
 
         private void vendorcomboBox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -444,7 +416,7 @@ namespace SaledServices
 
                 if (this.material_nameTextBox.Text != "")
                 {
-                    sql += " and material_name='" + this.material_nameTextBox.Text + "'";
+                    sql += " and material_name like '%" + this.material_nameTextBox.Text + "%'";
                 }
 
                 cmd.CommandText = sql;
@@ -489,8 +461,31 @@ namespace SaledServices
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.mpnTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
+            this.mpnTextBox.Text = dataGridView2.SelectedCells[0].Value.ToString();
             doRequestUsingMpn();
+        }
+
+        private void stock_out_numTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                double requestNumber = Double.Parse(this.stock_out_numTextBox.Text);
+                double currentNumber = Double.Parse(this.currentStockNumbertextBox.Text.Trim());
+                if (requestNumber > currentNumber)
+                {
+                    MessageBox.Show("输入数量大于库存数量!");
+                    this.stock_out_numTextBox.Clear();
+                    this.stock_out_numTextBox.Focus();
+                    return;
+                }
+                if (requestNumber == 0)
+                {
+                    MessageBox.Show("输入数量不能为0!");
+                    this.stock_out_numTextBox.Clear();
+                    this.stock_out_numTextBox.Focus();
+                    return;
+                }
+            }
         }
     }
 }

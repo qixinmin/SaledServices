@@ -84,6 +84,7 @@
             this.厂商信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.企业固定信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.员工管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.材料名称ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.海关ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,7 +93,6 @@
             this.出库入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表头ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.材料名称ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -202,6 +202,7 @@
             // 
             // cOMPALMBBOM查看ToolStripMenuItem
             // 
+            this.cOMPALMBBOM查看ToolStripMenuItem.Enabled = false;
             this.cOMPALMBBOM查看ToolStripMenuItem.Name = "cOMPALMBBOM查看ToolStripMenuItem";
             this.cOMPALMBBOM查看ToolStripMenuItem.Size = new System.Drawing.Size(300, 32);
             this.cOMPALMBBOM查看ToolStripMenuItem.Text = "COMPAL_MBBOM查看";
@@ -242,14 +243,14 @@
             // 收货ToolStripMenuItem
             // 
             this.收货ToolStripMenuItem.Name = "收货ToolStripMenuItem";
-            this.收货ToolStripMenuItem.Size = new System.Drawing.Size(124, 32);
+            this.收货ToolStripMenuItem.Size = new System.Drawing.Size(152, 32);
             this.收货ToolStripMenuItem.Text = "收货";
             this.收货ToolStripMenuItem.Click += new System.EventHandler(this.收货ToolStripMenuItem_Click);
             // 
             // returnStoreMenuItem
             // 
             this.returnStoreMenuItem.Name = "returnStoreMenuItem";
-            this.returnStoreMenuItem.Size = new System.Drawing.Size(124, 32);
+            this.returnStoreMenuItem.Size = new System.Drawing.Size(152, 32);
             this.returnStoreMenuItem.Text = "还货";
             this.returnStoreMenuItem.Click += new System.EventHandler(this.returnStoreMenuItem_Click);
             // 
@@ -417,7 +418,7 @@
             // 
             this.fRUSMT入库记录ToolStripMenuItem.Name = "fRUSMT入库记录ToolStripMenuItem";
             this.fRUSMT入库记录ToolStripMenuItem.Size = new System.Drawing.Size(255, 32);
-            this.fRUSMT入库记录ToolStripMenuItem.Text = "FRU/SMT出库记录";
+            this.fRUSMT入库记录ToolStripMenuItem.Text = "FRU出库";
             this.fRUSMT入库记录ToolStripMenuItem.Click += new System.EventHandler(this.fRUSMT入库记录ToolStripMenuItem_Click);
             // 
             // bGA入库记录ToolStripMenuItem
@@ -559,6 +560,13 @@
             this.员工管理ToolStripMenuItem.Text = "员工管理维护";
             this.员工管理ToolStripMenuItem.Click += new System.EventHandler(this.员工管理ToolStripMenuItem_Click);
             // 
+            // 材料名称ToolStripMenuItem
+            // 
+            this.材料名称ToolStripMenuItem.Name = "材料名称ToolStripMenuItem";
+            this.材料名称ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.材料名称ToolStripMenuItem.Text = "材料名称";
+            this.材料名称ToolStripMenuItem.Click += new System.EventHandler(this.材料名称ToolStripMenuItem_Click);
+            // 
             // 报表ToolStripMenuItem
             // 
             this.报表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -622,13 +630,6 @@
             this.工单表体ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
             this.工单表体ToolStripMenuItem.Text = "工单表体";
             this.工单表体ToolStripMenuItem.Click += new System.EventHandler(this.工单表体ToolStripMenuItem_Click);
-            // 
-            // 材料名称ToolStripMenuItem
-            // 
-            this.材料名称ToolStripMenuItem.Name = "材料名称ToolStripMenuItem";
-            this.材料名称ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
-            this.材料名称ToolStripMenuItem.Text = "材料名称";
-            this.材料名称ToolStripMenuItem.Click += new System.EventHandler(this.材料名称ToolStripMenuItem_Click);
             // 
             // MainForm
             // 

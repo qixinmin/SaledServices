@@ -120,7 +120,7 @@ namespace SaledServices
         {
             DataTable dt = ds.Tables[tableName];
             sda.FillSchema(dt, SchemaType.Mapped);
-            DataRow dr = dt.Rows.Find(this.numTextBox.Text.Trim());
+            DataRow dr = dt.Rows.Find(this.idTextBox.Text.Trim());
             dr["house"] = this.houseTextBox.Text.Trim();
             dr["place"] = this.placeTextBox.Text.Trim();
             dr["mpn"] = this.mpntextBox.Text.Trim();
@@ -163,7 +163,7 @@ namespace SaledServices
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.numTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
+            this.idTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
             this.houseTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
             this.placeTextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
             this.mpntextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
@@ -184,7 +184,7 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "update store_house set mpn = '',number = ''";
+                    cmd.CommandText = "update store_house set mpn = '',number = '' where Id='"+this.idTextBox.Text+"'";
                     cmd.ExecuteNonQuery();
                 }
                 else

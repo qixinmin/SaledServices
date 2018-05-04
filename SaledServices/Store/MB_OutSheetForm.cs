@@ -406,7 +406,7 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
 
-                string sql = "select mpn,stock_place,input_number,isdeclare from bga_in_stock where mb_brief='" + this.mb_brieftextBox.Text + "'";
+                string sql = "select mpn,stock_place,input_number,isdeclare from mb_in_stock where mb_brief='" + this.mb_brieftextBox.Text + "'";
 
                 if (this.vendorcomboBox.Text != "")
                 {
@@ -444,7 +444,7 @@ namespace SaledServices
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.mpnTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
+            this.mpnTextBox.Text = dataGridView2.SelectedCells[0].Value.ToString();
             doRequestUsingMpn();
         }
     }
