@@ -48,6 +48,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.waitbutton = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.currentNumbertextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.stockplacetextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,13 +65,13 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(637, 277);
+            this.dataGridView1.Size = new System.Drawing.Size(555, 269);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // refreshbutton
             // 
-            this.refreshbutton.Location = new System.Drawing.Point(699, 319);
+            this.refreshbutton.Location = new System.Drawing.Point(617, 364);
             this.refreshbutton.Name = "refreshbutton";
             this.refreshbutton.Size = new System.Drawing.Size(75, 23);
             this.refreshbutton.TabIndex = 1;
@@ -77,7 +81,7 @@
             // 
             // processRequestbutton
             // 
-            this.processRequestbutton.Location = new System.Drawing.Point(699, 145);
+            this.processRequestbutton.Location = new System.Drawing.Point(617, 190);
             this.processRequestbutton.Name = "processRequestbutton";
             this.processRequestbutton.Size = new System.Drawing.Size(89, 35);
             this.processRequestbutton.TabIndex = 1;
@@ -95,7 +99,7 @@
             // 
             // requestertextBox
             // 
-            this.requestertextBox.Location = new System.Drawing.Point(102, 84);
+            this.requestertextBox.Location = new System.Drawing.Point(102, 71);
             this.requestertextBox.Name = "requestertextBox";
             this.requestertextBox.ReadOnly = true;
             this.requestertextBox.Size = new System.Drawing.Size(100, 21);
@@ -112,7 +116,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 93);
+            this.label3.Location = new System.Drawing.Point(29, 74);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 8;
@@ -139,7 +143,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(413, 87);
+            this.label4.Location = new System.Drawing.Point(413, 77);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 8;
@@ -147,7 +151,7 @@
             // 
             // statustextBox
             // 
-            this.statustextBox.Location = new System.Drawing.Point(486, 87);
+            this.statustextBox.Location = new System.Drawing.Point(486, 71);
             this.statustextBox.Name = "statustextBox";
             this.statustextBox.ReadOnly = true;
             this.statustextBox.Size = new System.Drawing.Size(100, 21);
@@ -173,7 +177,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(226, 93);
+            this.label6.Location = new System.Drawing.Point(226, 74);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 8;
@@ -181,7 +185,7 @@
             // 
             // dateTextBox
             // 
-            this.dateTextBox.Location = new System.Drawing.Point(299, 84);
+            this.dateTextBox.Location = new System.Drawing.Point(299, 74);
             this.dateTextBox.Name = "dateTextBox";
             this.dateTextBox.ReadOnly = true;
             this.dateTextBox.Size = new System.Drawing.Size(100, 21);
@@ -207,7 +211,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(615, 93);
+            this.label8.Location = new System.Drawing.Point(29, 101);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(17, 12);
             this.label8.TabIndex = 8;
@@ -215,7 +219,7 @@
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(688, 93);
+            this.idTextBox.Location = new System.Drawing.Point(102, 98);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.ReadOnly = true;
             this.idTextBox.Size = new System.Drawing.Size(100, 21);
@@ -223,7 +227,7 @@
             // 
             // waitbutton
             // 
-            this.waitbutton.Location = new System.Drawing.Point(699, 219);
+            this.waitbutton.Location = new System.Drawing.Point(617, 264);
             this.waitbutton.Name = "waitbutton";
             this.waitbutton.Size = new System.Drawing.Size(89, 35);
             this.waitbutton.TabIndex = 1;
@@ -231,11 +235,45 @@
             this.waitbutton.UseVisualStyleBackColor = true;
             this.waitbutton.Click += new System.EventHandler(this.waitbutton_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(617, 80);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 12);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "现有库存";
+            // 
+            // currentNumbertextBox
+            // 
+            this.currentNumbertextBox.Location = new System.Drawing.Point(688, 77);
+            this.currentNumbertextBox.Name = "currentNumbertextBox";
+            this.currentNumbertextBox.ReadOnly = true;
+            this.currentNumbertextBox.Size = new System.Drawing.Size(100, 21);
+            this.currentNumbertextBox.TabIndex = 12;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(617, 126);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(29, 12);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "库位";
+            // 
+            // stockplacetextBox
+            // 
+            this.stockplacetextBox.Location = new System.Drawing.Point(688, 123);
+            this.stockplacetextBox.Name = "stockplacetextBox";
+            this.stockplacetextBox.ReadOnly = true;
+            this.stockplacetextBox.Size = new System.Drawing.Size(100, 21);
+            this.stockplacetextBox.TabIndex = 12;
+            // 
             // CheckRequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 462);
+            this.ClientSize = new System.Drawing.Size(980, 475);
             this.Controls.Add(this.mb_brieftextBox);
             this.Controls.Add(this.dateTextBox);
             this.Controls.Add(this.idTextBox);
@@ -245,9 +283,13 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.materialMpnTextBox);
+            this.Controls.Add(this.stockplacetextBox);
+            this.Controls.Add(this.currentNumbertextBox);
             this.Controls.Add(this.requestNumbertextBox);
             this.Controls.Add(this.not_good_placetextBox);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
@@ -287,5 +329,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Button waitbutton;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox currentNumbertextBox;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox stockplacetextBox;
     }
 }

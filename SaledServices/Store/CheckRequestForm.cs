@@ -28,7 +28,7 @@ namespace SaledServices.Store
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select Id,mb_brief,not_good_place,material_mpn,number,requester,_date,_status,usedNumber,stock_place from  request_fru_smt_to_store_table where _status ='request'";
+                cmd.CommandText = "select Id,mb_brief,not_good_place,material_mpn,number,requester,_date,_status,usedNumber from  request_fru_smt_to_store_table where _status ='request'";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -43,7 +43,7 @@ namespace SaledServices.Store
                 MessageBox.Show(ex.ToString());
             }
          
-            string[] hTxt = { "ID", "机型", "位置","材料MPN","请求数量","申请人","申请日期","状态","使用的数量","库位"};
+            string[] hTxt = { "ID", "机型", "位置","材料MPN","请求数量","申请人","申请日期","状态","使用的数量"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -96,6 +96,8 @@ namespace SaledServices.Store
                     {
                         MessageBox.Show("此料不在库存里面！");
                         this.processRequestbutton.Enabled = false;
+                        this.currentNumbertextBox.Text = "";
+                        this.stockplacetextBox.Text = "";
                         conn.Close();
                         return;
                     }
@@ -106,6 +108,8 @@ namespace SaledServices.Store
 
                     int requestNumber = Int32.Parse(this.requestNumbertextBox.Text.Trim());
                     int totalCurentNumber = Int32.Parse(number);
+                    this.currentNumbertextBox.Text = number;
+                    this.stockplacetextBox.Text = house+","+place;
 
                     if (requestNumber <= totalCurentNumber)
                     {
@@ -149,7 +153,7 @@ namespace SaledServices.Store
             //在处理之前的时候可以使用mpn的字段查询库存中是否有相应的内容，如果没有则提示说此库存没有相关库存，要备料
             FRU_SMT_OutSheetForm frusmtout = new FRU_SMT_OutSheetForm();
             frusmtout.MdiParent = Program.parentForm;
-            frusmtout.setparamters(this.mb_brieftextBox.Text.Trim(), this.materialMpnTextBox.Text.Trim(),  this.requestNumbertextBox.Text.Trim(), this.idTextBox.Text.Trim());
+            frusmtout.setparamters(this.mb_brieftextBox.Text.Trim(), this.materialMpnTextBox.Text.Trim(),  this.requestNumbertextBox.Text.Trim(), this.idTextBox.Text.Trim(),this.requestertextBox.Text.Trim());
             frusmtout.Show();
             frusmtout.doRequestUsingMpn();
 

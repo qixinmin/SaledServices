@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.add = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
@@ -240,9 +240,9 @@
             this.label12.Location = new System.Drawing.Point(7, 50);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(32, 16);
+            this.label12.Size = new System.Drawing.Size(64, 16);
             this.label12.TabIndex = 4;
-            this.label12.Text = "MPN";
+            this.label12.Text = "材料MPN";
             // 
             // productTextBox
             // 
@@ -350,7 +350,6 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel3.Controls.Add(this.label7, 4, 2);
             this.tableLayoutPanel3.Controls.Add(this.label13, 4, 3);
             this.tableLayoutPanel3.Controls.Add(this.stock_in_numTextBox, 5, 3);
             this.tableLayoutPanel3.Controls.Add(this.pricePerTextBox, 3, 4);
@@ -372,9 +371,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label8, 4, 4);
             this.tableLayoutPanel3.Controls.Add(this.totalMoneyTextBox, 5, 4);
             this.tableLayoutPanel3.Controls.Add(this.label14, 6, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label18, 4, 1);
             this.tableLayoutPanel3.Controls.Add(this.idTextBox, 7, 2);
-            this.tableLayoutPanel3.Controls.Add(this.mb_brieftextBox, 5, 1);
             this.tableLayoutPanel3.Controls.Add(this.label15, 6, 3);
             this.tableLayoutPanel3.Controls.Add(this.label19, 6, 0);
             this.tableLayoutPanel3.Controls.Add(this.inputerTextBox, 7, 3);
@@ -389,7 +386,10 @@
             this.tableLayoutPanel3.Controls.Add(this.label12, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.vendorTextBox, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.mpnTextBox, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.material_namecomboBox, 5, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label18, 4, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label7, 4, 1);
+            this.tableLayoutPanel3.Controls.Add(this.mb_brieftextBox, 5, 2);
+            this.tableLayoutPanel3.Controls.Add(this.material_namecomboBox, 5, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -406,7 +406,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(683, 97);
+            this.label7.Location = new System.Drawing.Point(683, 50);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 16);
@@ -493,7 +493,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(683, 50);
+            this.label18.Location = new System.Drawing.Point(683, 97);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(56, 16);
@@ -512,10 +512,12 @@
             // 
             // mb_brieftextBox
             // 
-            this.mb_brieftextBox.Location = new System.Drawing.Point(852, 54);
+            this.mb_brieftextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mb_brieftextBox.Location = new System.Drawing.Point(852, 101);
             this.mb_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.mb_brieftextBox.Multiline = true;
             this.mb_brieftextBox.Name = "mb_brieftextBox";
-            this.mb_brieftextBox.Size = new System.Drawing.Size(158, 26);
+            this.mb_brieftextBox.Size = new System.Drawing.Size(158, 47);
             this.mb_brieftextBox.TabIndex = 24;
             // 
             // label15
@@ -596,10 +598,9 @@
             // 
             // material_namecomboBox
             // 
-            this.material_namecomboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.material_namecomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.material_namecomboBox.FormattingEnabled = true;
-            this.material_namecomboBox.Location = new System.Drawing.Point(851, 100);
+            this.material_namecomboBox.Location = new System.Drawing.Point(851, 53);
             this.material_namecomboBox.Name = "material_namecomboBox";
             this.material_namecomboBox.Size = new System.Drawing.Size(160, 24);
             this.material_namecomboBox.TabIndex = 27;
@@ -658,8 +659,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;

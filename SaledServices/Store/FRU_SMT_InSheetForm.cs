@@ -194,6 +194,7 @@ namespace SaledServices
 
                 doQueryAfterSelection();
                 clearInputText();
+                this.mb_brieftextBox.Text = "";
             }
             catch (Exception ex)
             {
@@ -431,7 +432,7 @@ namespace SaledServices
                 }
 
                 string all_mb_briefs = "";
-                cmd.CommandText = "select mb_brief from LCFC_MBBOM_table where MPN='" + this.mpnTextBox.Text.Trim() + "' and vendor ='"+this.vendorTextBox+"'";
+                cmd.CommandText = "select mb_brief from LCFC_MBBOM_table where material_mpn='" + this.mpnTextBox.Text.Trim() + "' and vendor ='"+this.vendorTextBox.Text.Trim()+"'";
                 querySdr = cmd.ExecuteReader();              
                 while (querySdr.Read())
                 {
@@ -452,7 +453,7 @@ namespace SaledServices
 
         private void clearInputText()
         {
-            this.mb_brieftextBox.Text = "";
+            //this.mb_brieftextBox.Text = "";
             this.totalMoneyTextBox.Text = "";
             this.stock_in_numTextBox.Text = "";
            

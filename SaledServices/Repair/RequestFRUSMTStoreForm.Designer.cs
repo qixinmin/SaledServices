@@ -44,6 +44,8 @@
             this.checkRequestListbutton = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.materialMpnTextBox = new System.Windows.Forms.TextBox();
+            this.materialDescribetextBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -193,6 +195,23 @@
             this.materialMpnTextBox.Size = new System.Drawing.Size(100, 21);
             this.materialMpnTextBox.TabIndex = 6;
             // 
+            // materialDescribetextBox
+            // 
+            this.materialDescribetextBox.Location = new System.Drawing.Point(589, 40);
+            this.materialDescribetextBox.Name = "materialDescribetextBox";
+            this.materialDescribetextBox.ReadOnly = true;
+            this.materialDescribetextBox.Size = new System.Drawing.Size(100, 21);
+            this.materialDescribetextBox.TabIndex = 6;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(505, 40);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 12);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "材料描述";
+            // 
             // RequestFRUSMTStoreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -201,6 +220,7 @@
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.dateTextBox);
             this.Controls.Add(this.requesterTextBox);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
@@ -209,6 +229,7 @@
             this.Controls.Add(this.requestbutton);
             this.Controls.Add(this.numberTextBox);
             this.Controls.Add(this.not_good_placeTextBox);
+            this.Controls.Add(this.materialDescribetextBox);
             this.Controls.Add(this.materialMpnTextBox);
             this.Controls.Add(this.mb_brieftextBox);
             this.Controls.Add(this.label4);
@@ -241,5 +262,7 @@
         private System.Windows.Forms.Button checkRequestListbutton;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.TextBox materialMpnTextBox;
+        private System.Windows.Forms.TextBox materialDescribetextBox;
+        private System.Windows.Forms.Label label7;
     }
 }

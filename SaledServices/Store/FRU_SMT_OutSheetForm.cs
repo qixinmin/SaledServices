@@ -99,11 +99,14 @@ namespace SaledServices
                 }
 
                 conn.Close();
+                query_Click(null, null);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+            MessageBox.Show("出库成功,请关闭本界面！");
+
         }
 
         private void query_Click(object sender, EventArgs e)
@@ -188,8 +191,7 @@ namespace SaledServices
             dr["taker"] = this.takertextBox.Text.Trim();
             dr["inputer"] = this.inputerTextBox.Text.Trim();
             dr["use_describe"] = this.use_describetextBox.Text.Trim();
-            dr["input_date"] = this.input_dateTextBox.Text.Trim();
-    
+            dr["input_date"] = this.input_dateTextBox.Text.Trim();    
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
@@ -328,11 +330,13 @@ namespace SaledServices
                         this.stock_out_numTextBox.Text = this.requestNumber;
                     }
 
-                    cmd.CommandText = "select vendor,product,mb_brief,describe,isdeclare,material_type,vendormaterialNo,material_name  from fru_smt_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select vendor,product,mb_brief,describe,isdeclare,material_type,vendormaterialNo,material_name,buy_type  from fru_smt_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();
 
+                    bool existData = false;
                     while (querySdr.Read())
                     {
+                        existData = true;
                         this.vendorTextBox.Text = querySdr[0].ToString();
                         this.productTextBox.Text = querySdr[1].ToString();
                         this.mb_brieftextBox.Text = querySdr[2].ToString();
@@ -341,9 +345,16 @@ namespace SaledServices
                         this.material_typeTextBox.Text = querySdr[5].ToString();
                         this.vendormaterialNoTextBox.Text = querySdr[6].ToString();
                         this.material_nameTextBox.Text = querySdr[7].ToString();
+                        this.buy_typeTextBox.Text = querySdr[8].ToString();
                         break;
                     }
                     querySdr.Close();
+                    if (existData == false)
+                    {
+                        MessageBox.Show("SMT入库记录中不含此纪录！");
+                        conn.Close();
+                        return;
+                    }
                 }
                 else
                 {
@@ -367,12 +378,13 @@ namespace SaledServices
             }
         }
 
-        public void setparamters(string mb_brief, string material_mpn, string requestNumber, string index)
+        public void setparamters(string mb_brief, string material_mpn, string requestNumber, string index, string requester)
         {
             this.mb_brieftextBox.Text = mb_brief;
             this.mpnTextBox.Text = material_mpn;
             this.requestNumber = requestNumber;
             requestId = index;
+            this.takertextBox.Text = requester;
         }
 
 

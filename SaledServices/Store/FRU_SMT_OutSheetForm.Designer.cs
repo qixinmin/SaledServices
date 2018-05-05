@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.add = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
@@ -92,7 +92,7 @@
             // add
             // 
             this.add.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.add.Location = new System.Drawing.Point(422, 9);
+            this.add.Location = new System.Drawing.Point(345, 9);
             this.add.Margin = new System.Windows.Forms.Padding(4);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(100, 31);
@@ -104,7 +104,7 @@
             // query
             // 
             this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.query.Location = new System.Drawing.Point(711, 9);
+            this.query.Location = new System.Drawing.Point(709, 9);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(100, 31);
@@ -116,7 +116,7 @@
             // modify
             // 
             this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.modify.Location = new System.Drawing.Point(959, 9);
+            this.modify.Location = new System.Drawing.Point(957, 9);
             this.modify.Margin = new System.Windows.Forms.Padding(4);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(100, 31);
@@ -128,7 +128,7 @@
             // delete
             // 
             this.delete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.delete.Location = new System.Drawing.Point(1188, 9);
+            this.delete.Location = new System.Drawing.Point(1186, 9);
             this.delete.Margin = new System.Windows.Forms.Padding(4);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(100, 31);
@@ -152,6 +152,7 @@
             this.vendorTextBox.Location = new System.Drawing.Point(176, 7);
             this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendorTextBox.Name = "vendorTextBox";
+            this.vendorTextBox.ReadOnly = true;
             this.vendorTextBox.Size = new System.Drawing.Size(158, 26);
             this.vendorTextBox.TabIndex = 5;
             // 
@@ -230,6 +231,7 @@
             this.productTextBox.Location = new System.Drawing.Point(176, 54);
             this.productTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.productTextBox.Name = "productTextBox";
+            this.productTextBox.ReadOnly = true;
             this.productTextBox.Size = new System.Drawing.Size(158, 26);
             this.productTextBox.TabIndex = 5;
             // 
@@ -238,6 +240,7 @@
             this.vendormaterialNoTextBox.Location = new System.Drawing.Point(514, 101);
             this.vendormaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendormaterialNoTextBox.Name = "vendormaterialNoTextBox";
+            this.vendormaterialNoTextBox.ReadOnly = true;
             this.vendormaterialNoTextBox.Size = new System.Drawing.Size(158, 26);
             this.vendormaterialNoTextBox.TabIndex = 5;
             // 
@@ -246,6 +249,7 @@
             this.mpnTextBox.Location = new System.Drawing.Point(176, 195);
             this.mpnTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mpnTextBox.Name = "mpnTextBox";
+            this.mpnTextBox.ReadOnly = true;
             this.mpnTextBox.Size = new System.Drawing.Size(158, 26);
             this.mpnTextBox.TabIndex = 5;
             this.mpnTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mpnTextBox_KeyPress);
@@ -255,6 +259,7 @@
             this.material_typeTextBox.Location = new System.Drawing.Point(176, 148);
             this.material_typeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_typeTextBox.Name = "material_typeTextBox";
+            this.material_typeTextBox.ReadOnly = true;
             this.material_typeTextBox.Size = new System.Drawing.Size(158, 26);
             this.material_typeTextBox.TabIndex = 5;
             // 
@@ -263,6 +268,7 @@
             this.buy_typeTextBox.Location = new System.Drawing.Point(176, 101);
             this.buy_typeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.buy_typeTextBox.Name = "buy_typeTextBox";
+            this.buy_typeTextBox.ReadOnly = true;
             this.buy_typeTextBox.Size = new System.Drawing.Size(158, 26);
             this.buy_typeTextBox.TabIndex = 5;
             // 
@@ -271,6 +277,7 @@
             this.describeTextBox.Location = new System.Drawing.Point(514, 148);
             this.describeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.describeTextBox.Name = "describeTextBox";
+            this.describeTextBox.ReadOnly = true;
             this.describeTextBox.Size = new System.Drawing.Size(158, 26);
             this.describeTextBox.TabIndex = 5;
             // 
@@ -279,6 +286,7 @@
             this.pricePerTextBox.Location = new System.Drawing.Point(852, 54);
             this.pricePerTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.pricePerTextBox.Name = "pricePerTextBox";
+            this.pricePerTextBox.ReadOnly = true;
             this.pricePerTextBox.Size = new System.Drawing.Size(158, 26);
             this.pricePerTextBox.TabIndex = 5;
             // 
@@ -381,6 +389,7 @@
             this.mb_brieftextBox.Location = new System.Drawing.Point(514, 7);
             this.mb_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mb_brieftextBox.Name = "mb_brieftextBox";
+            this.mb_brieftextBox.ReadOnly = true;
             this.mb_brieftextBox.Size = new System.Drawing.Size(158, 26);
             this.mb_brieftextBox.TabIndex = 24;
             // 
@@ -399,6 +408,7 @@
             this.material_nameTextBox.Location = new System.Drawing.Point(514, 54);
             this.material_nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_nameTextBox.Name = "material_nameTextBox";
+            this.material_nameTextBox.ReadOnly = true;
             this.material_nameTextBox.Size = new System.Drawing.Size(158, 26);
             this.material_nameTextBox.TabIndex = 25;
             // 
@@ -417,6 +427,7 @@
             this.isDeclareTextBox.Location = new System.Drawing.Point(514, 195);
             this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.isDeclareTextBox.Name = "isDeclareTextBox";
+            this.isDeclareTextBox.ReadOnly = true;
             this.isDeclareTextBox.Size = new System.Drawing.Size(158, 26);
             this.isDeclareTextBox.TabIndex = 26;
             // 
@@ -453,6 +464,7 @@
             this.stock_placetextBox.Location = new System.Drawing.Point(852, 101);
             this.stock_placetextBox.Margin = new System.Windows.Forms.Padding(4);
             this.stock_placetextBox.Name = "stock_placetextBox";
+            this.stock_placetextBox.ReadOnly = true;
             this.stock_placetextBox.Size = new System.Drawing.Size(158, 26);
             this.stock_placetextBox.TabIndex = 19;
             // 
@@ -471,6 +483,7 @@
             this.takertextBox.Location = new System.Drawing.Point(852, 148);
             this.takertextBox.Margin = new System.Windows.Forms.Padding(4);
             this.takertextBox.Name = "takertextBox";
+            this.takertextBox.ReadOnly = true;
             this.takertextBox.Size = new System.Drawing.Size(158, 26);
             this.takertextBox.TabIndex = 22;
             // 
@@ -592,11 +605,11 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 5;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.4849F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.9325F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.75158F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.69397F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.85227F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.75F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 247F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 248F));
             this.tableLayoutPanel2.Controls.Add(this.delete, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.modify, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.query, 2, 0);
@@ -614,7 +627,7 @@
             // queryStock
             // 
             this.queryStock.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.queryStock.Location = new System.Drawing.Point(114, 9);
+            this.queryStock.Location = new System.Drawing.Point(37, 9);
             this.queryStock.Margin = new System.Windows.Forms.Padding(4);
             this.queryStock.Name = "queryStock";
             this.queryStock.Size = new System.Drawing.Size(100, 31);
@@ -626,8 +639,8 @@
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.56305F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.43695F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.19062F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 89.80939F));
             this.tableLayoutPanel4.Controls.Add(this.dataGridView1, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.dataGridView2, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -641,18 +654,18 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(529, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(142, 4);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(831, 429);
+            this.dataGridView1.Size = new System.Drawing.Size(1218, 429);
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.VirtualMode = true;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
@@ -660,8 +673,8 @@
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -671,7 +684,7 @@
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(517, 429);
+            this.dataGridView2.Size = new System.Drawing.Size(130, 429);
             this.dataGridView2.TabIndex = 10;
             this.dataGridView2.VirtualMode = true;
             // 

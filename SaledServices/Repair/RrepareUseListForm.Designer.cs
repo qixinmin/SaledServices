@@ -41,12 +41,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.thisNumbertextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.stock_placetextBox = new System.Windows.Forms.TextBox();
+            this.notgood_placetextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.usedNumbertextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.returnMaterialbutton = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.materialdescribetextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,6 +62,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(32, 155);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(722, 365);
@@ -90,7 +93,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 62);
+            this.label1.Location = new System.Drawing.Point(31, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 2;
@@ -98,7 +101,7 @@
             // 
             // mb_brieftextBox
             // 
-            this.mb_brieftextBox.Location = new System.Drawing.Point(65, 59);
+            this.mb_brieftextBox.Location = new System.Drawing.Point(66, 21);
             this.mb_brieftextBox.Name = "mb_brieftextBox";
             this.mb_brieftextBox.Size = new System.Drawing.Size(100, 21);
             this.mb_brieftextBox.TabIndex = 3;
@@ -106,7 +109,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(192, 62);
+            this.label2.Location = new System.Drawing.Point(189, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 12);
             this.label2.TabIndex = 2;
@@ -114,7 +117,7 @@
             // 
             // material_mpntextBox
             // 
-            this.material_mpntextBox.Location = new System.Drawing.Point(263, 59);
+            this.material_mpntextBox.Location = new System.Drawing.Point(260, 24);
             this.material_mpntextBox.Name = "material_mpntextBox";
             this.material_mpntextBox.Size = new System.Drawing.Size(100, 21);
             this.material_mpntextBox.TabIndex = 3;
@@ -122,7 +125,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(380, 62);
+            this.label3.Location = new System.Drawing.Point(29, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 2;
@@ -130,7 +133,7 @@
             // 
             // realNumbertextBox
             // 
-            this.realNumbertextBox.Location = new System.Drawing.Point(439, 59);
+            this.realNumbertextBox.Location = new System.Drawing.Point(88, 69);
             this.realNumbertextBox.Name = "realNumbertextBox";
             this.realNumbertextBox.ReadOnly = true;
             this.realNumbertextBox.Size = new System.Drawing.Size(100, 21);
@@ -158,22 +161,22 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(30, 131);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 12);
+            this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 2;
-            this.label5.Text = "库位";
+            this.label5.Text = "不良位置";
             // 
-            // stock_placetextBox
+            // notgood_placetextBox
             // 
-            this.stock_placetextBox.Location = new System.Drawing.Point(65, 128);
-            this.stock_placetextBox.Name = "stock_placetextBox";
-            this.stock_placetextBox.ReadOnly = true;
-            this.stock_placetextBox.Size = new System.Drawing.Size(100, 21);
-            this.stock_placetextBox.TabIndex = 3;
+            this.notgood_placetextBox.Location = new System.Drawing.Point(95, 125);
+            this.notgood_placetextBox.Name = "notgood_placetextBox";
+            this.notgood_placetextBox.ReadOnly = true;
+            this.notgood_placetextBox.Size = new System.Drawing.Size(100, 21);
+            this.notgood_placetextBox.TabIndex = 3;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(575, 65);
+            this.label6.Location = new System.Drawing.Point(224, 75);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 12);
             this.label6.TabIndex = 2;
@@ -181,7 +184,7 @@
             // 
             // usedNumbertextBox
             // 
-            this.usedNumbertextBox.Location = new System.Drawing.Point(658, 62);
+            this.usedNumbertextBox.Location = new System.Drawing.Point(307, 72);
             this.usedNumbertextBox.Name = "usedNumbertextBox";
             this.usedNumbertextBox.ReadOnly = true;
             this.usedNumbertextBox.Size = new System.Drawing.Size(100, 21);
@@ -190,7 +193,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(454, 128);
+            this.label7.Location = new System.Drawing.Point(647, 128);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(17, 12);
             this.label7.TabIndex = 2;
@@ -198,7 +201,7 @@
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(488, 119);
+            this.idTextBox.Location = new System.Drawing.Point(681, 119);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.ReadOnly = true;
             this.idTextBox.Size = new System.Drawing.Size(100, 21);
@@ -214,6 +217,23 @@
             this.returnMaterialbutton.UseVisualStyleBackColor = true;
             this.returnMaterialbutton.Click += new System.EventHandler(this.returnMaterialbutton_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(448, 24);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 12);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "物料描述";
+            // 
+            // materialdescribetextBox
+            // 
+            this.materialdescribetextBox.Location = new System.Drawing.Point(531, 21);
+            this.materialdescribetextBox.Name = "materialdescribetextBox";
+            this.materialdescribetextBox.ReadOnly = true;
+            this.materialdescribetextBox.Size = new System.Drawing.Size(100, 21);
+            this.materialdescribetextBox.TabIndex = 3;
+            // 
             // RrepareUseListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -221,10 +241,12 @@
             this.ClientSize = new System.Drawing.Size(891, 637);
             this.Controls.Add(this.thisNumbertextBox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.stock_placetextBox);
+            this.Controls.Add(this.notgood_placetextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.materialdescribetextBox);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.usedNumbertextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.realNumbertextBox);
@@ -260,11 +282,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox thisNumbertextBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox stock_placetextBox;
+        private System.Windows.Forms.TextBox notgood_placetextBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox usedNumbertextBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Button returnMaterialbutton;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox materialdescribetextBox;
     }
 }

@@ -198,52 +198,51 @@ namespace SaledServices
                     cmd.CommandType = CommandType.Text;
 
                     //先用mpn在bom表中找一遍，如果找不到，然后用mb简称再查一遍，如果都没有，要不输错了，要不bom表不全
-
                     cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8 from " + tableName + " where MPN ='" + this.mpntextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    this.material_mpnComboBox.Text = "";
+                    this.material_mpnComboBox.Items.Clear();
                     while (querySdr.Read())
                     {
                         string material_mpn = querySdr[0].ToString(); ;
                         string temp = querySdr[1].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Text = material_mpn;
+                            this.material_mpnComboBox.Items.Add(material_mpn);
                             continue;
                         } temp = querySdr[2].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Text = material_mpn;
+                            this.material_mpnComboBox.Items.Add(material_mpn);
                             continue;
                         } temp = querySdr[3].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Text = material_mpn;
+                            this.material_mpnComboBox.Items.Add(material_mpn);
                             continue;
                         } temp = querySdr[4].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Text = material_mpn;
+                            this.material_mpnComboBox.Items.Add(material_mpn);
                             continue;
                         } temp = querySdr[5].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Text = material_mpn;
+                            this.material_mpnComboBox.Items.Add(material_mpn);
                             continue;
                         } temp = querySdr[6].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Text = material_mpn;
+                            this.material_mpnComboBox.Items.Add(material_mpn);
                             continue;
                         } temp = querySdr[7].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Text = material_mpn;
+                            this.material_mpnComboBox.Items.Add(material_mpn);
                             continue;
                         } temp = querySdr[8].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Text = material_mpn;
+                            this.material_mpnComboBox.Items.Add(material_mpn);
                             continue;
                         }
                     }
@@ -253,49 +252,49 @@ namespace SaledServices
                     {
                         cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8 from " + tableName + " where mb_brief ='" + this.mb_brieftextBox.Text.Trim() + "'";
                         querySdr = cmd.ExecuteReader();
-                        this.material_mpnComboBox.Text = "";
+                        this.material_mpnComboBox.Items.Clear();
                         while (querySdr.Read())
                         {
                             string material_mpn = querySdr[0].ToString(); ;
                             string temp = querySdr[1].ToString();
                             if (temp != "" && temp.ToLower() == not_good_place.ToLower())
                             {
-                                this.material_mpnComboBox.Text = material_mpn;
+                                this.material_mpnComboBox.Items.Add(material_mpn);
                                 continue;
                             } temp = querySdr[2].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpnComboBox.Text = material_mpn;
+                                this.material_mpnComboBox.Items.Add(material_mpn);
                                 continue;
                             } temp = querySdr[3].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpnComboBox.Text = material_mpn;
+                                this.material_mpnComboBox.Items.Add(material_mpn);
                                 continue;
                             } temp = querySdr[4].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpnComboBox.Text = material_mpn;
+                                this.material_mpnComboBox.Items.Add(material_mpn);
                                 continue;
                             } temp = querySdr[5].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpnComboBox.Text = material_mpn;
+                                this.material_mpnComboBox.Items.Add(material_mpn);
                                 continue;
                             } temp = querySdr[6].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpnComboBox.Text = material_mpn;
+                                this.material_mpnComboBox.Items.Add(material_mpn);
                                 continue;
                             } temp = querySdr[7].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpnComboBox.Text = material_mpn;
+                                this.material_mpnComboBox.Items.Add(material_mpn);
                                 continue;
                             } temp = querySdr[8].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpnComboBox.Text = material_mpn;
+                                this.material_mpnComboBox.Items.Add(material_mpn);
                                 continue;
                             }
                         }
@@ -783,6 +782,7 @@ namespace SaledServices
         private void choose_material_button_Click(object sender, EventArgs e)
         {
             RrepareUseListForm prepareUseList = new RrepareUseListForm(this);
+            prepareUseList.MdiParent = Program.parentForm;
             prepareUseList.Show();
         }
 

@@ -31,7 +31,7 @@ namespace SaledServices
         {
             if (this.workIdInput.Text.Trim() == "" || this.passwordInput.Text.Trim() == "")
             {
-                MessageBox.Show("用户名和密码不能为空");
+                MessageBox.Show("工号和密码不能为空");
                 return;
             }
 

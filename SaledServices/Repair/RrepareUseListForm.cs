@@ -37,7 +37,7 @@ namespace SaledServices.Repair
                 dataGridView1.Columns.Clear();
 
                 // string sqlStr = "select top 100 * from fru_smt_out_stock where requester='"+tester+"'";
-                string sqlStr = "select mb_brief,material_mpn,stock_place,realNumber,usedNumber,Id from request_fru_smt_to_store_table where _status !='request' and _status !='return' and realNumber !='0' and requester='" + LoginForm.currentUser + "'";
+                string sqlStr = "select Id,mb_brief,material_mpn,material_describe,not_good_place,realNumber,usedNumber from request_fru_smt_to_store_table where _status !='request' and _status !='return' and realNumber !='0' and requester='" + LoginForm.currentUser + "'";
 
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
 
@@ -52,18 +52,18 @@ namespace SaledServices.Repair
                 sda.Fill(ds, "request_fru_smt_to_store_table");
                 dataGridView1.DataSource = ds.Tables[0];
                 dataGridView1.RowHeadersVisible = false;
+
+                string[] hTxt = { "ID", "机型", "材料mpn", "物料描述", "不良位置", "已有数量", "使用过的数量" };
+                for (int i = 0; i < hTxt.Length; i++)
+                {
+                    dataGridView1.Columns[i].HeaderText = hTxt[i];
+                    dataGridView1.Columns[i].Name = hTxt[i];
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
-
-            string[] hTxt = { "机型", "材料mpn", "库位","已有数量","使用过的数量","ID" };
-            for (int i = 0; i < hTxt.Length; i++)
-            {
-                dataGridView1.Columns[i].HeaderText = hTxt[i];
-                dataGridView1.Columns[i].Name = hTxt[i];
-            }
+            }            
 
             //数量要减一， 同时如果变成0，数量不显示出来
         }
@@ -74,12 +74,13 @@ namespace SaledServices.Repair
             {
                 return;
             }
-            this.mb_brieftextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
-            this.material_mpntextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
-            this.stock_placetextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
-            this.realNumbertextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
-            this.usedNumbertextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
-            this.idTextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
+            this.idTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
+            this.mb_brieftextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
+            this.material_mpntextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
+            this.materialdescribetextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
+            this.notgood_placetextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
+            this.realNumbertextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
+            this.usedNumbertextBox.Text = dataGridView1.SelectedCells[6].Value.ToString();            
         }
 
         private string totalUseNumber ="";
@@ -127,7 +128,7 @@ namespace SaledServices.Repair
 
         private void choosebutton_Click(object sender, EventArgs e)
         {
-            mParentForm.setPrepareUseDetail(idTextBox.Text, mb_brieftextBox.Text, material_mpntextBox.Text, stock_placetextBox.Text, this.thisNumbertextBox.Text, totalUseNumber);
+            mParentForm.setPrepareUseDetail(idTextBox.Text, mb_brieftextBox.Text, material_mpntextBox.Text, notgood_placetextBox.Text, this.thisNumbertextBox.Text, totalUseNumber);
             this.Close();
         }
 
@@ -145,7 +146,7 @@ namespace SaledServices.Repair
                     cmd.CommandText = "INSERT INTO fru_smt_return_store_record VALUES('"
                         + this.material_mpntextBox.Text.Trim() + "','"
                         + (Int32.Parse(this.realNumbertextBox.Text == "" ? "0" : this.realNumbertextBox.Text) - Int32.Parse(this.totalUseNumber == "" ? "0" : this.totalUseNumber)) + "','"
-                        + this.stock_placetextBox.Text.Trim() + "','"
+                        + this.notgood_placetextBox.Text.Trim() + "','"
                         + LoginForm.currentUser + "','"
                         + DateTime.Now.ToString("yyyy/MM/dd") + "','"
                         + "" + "','"

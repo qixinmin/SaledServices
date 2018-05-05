@@ -83,6 +83,7 @@ Id INT PRIMARY KEY IDENTITY,
 mb_brief NVARCHAR(128), /*机型*/
 not_good_place NVARCHAR(128), /*不良位置*/
 material_mpn NVARCHAR(128), /*材料mpn*/
+material_describe NVARCHAR(128), /*材料描述*/
 number NVARCHAR(128), /*请求数量*/
 realNumber NVARCHAR(128), /*获得的真正数量*/
 requester NVARCHAR(128), /*请求人*/
@@ -480,7 +481,7 @@ _date date, /*日期*/
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
 mb_brief NVARCHAR(128) NOT NULL, /*MB简称*/
-MPN NVARCHAR(128), /*MPN*/
+MPN NVARCHAR(128), /*材料MPN*/
 material_mpn NVARCHAR(128), /*材料MPN*/
 material_box_place NVARCHAR(128), /*料盒位置*/
 material_describe NVARCHAR(128), /*物料描述*/

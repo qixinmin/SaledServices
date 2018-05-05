@@ -46,6 +46,7 @@ namespace SaledServices.Store
                         + this.mb_brieftextBox.Text.Trim() + "','"
                         + this.not_good_placeTextBox.Text.Trim() + "','"
                         + this.materialMpnTextBox.Text.Trim() + "','"
+                        + this.materialDescribetextBox.Text.Trim() + "','"
                         + this.numberTextBox.Text.Trim() + "','"
                         +  "0','"//realNumber, 开始为0
                         + this.requesterTextBox.Text.Trim() + "','"
@@ -228,6 +229,7 @@ namespace SaledServices.Store
                 return;
             }
             this.materialMpnTextBox.Text = dataGridView.SelectedCells[0].Value.ToString();
+            this.materialDescribetextBox.Text = dataGridView.SelectedCells[1].Value.ToString();
         }
 
         private void mb_brieftextBox_KeyPress(object sender, KeyPressEventArgs e)
