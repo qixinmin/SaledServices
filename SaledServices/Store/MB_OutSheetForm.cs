@@ -230,6 +230,11 @@ namespace SaledServices
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridView1.CurrentRow == null)
+            {
+                return;
+            }
+
             this.idTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
             this.vendorcomboBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
             this.productcomboBox.Text = dataGridView1.SelectedCells[2].Value.ToString();           
@@ -444,6 +449,10 @@ namespace SaledServices
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (this.dataGridView2.CurrentRow == null)
+            {
+                return;
+            }
             this.mpnTextBox.Text = dataGridView2.SelectedCells[0].Value.ToString();
             doRequestUsingMpn();
         }

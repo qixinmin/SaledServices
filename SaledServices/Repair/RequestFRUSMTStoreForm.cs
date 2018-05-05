@@ -223,6 +223,10 @@ namespace SaledServices.Store
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridView.CurrentRow == null)
+            {
+                return;
+            }
             this.materialMpnTextBox.Text = dataGridView.SelectedCells[0].Value.ToString();
         }
     }

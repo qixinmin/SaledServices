@@ -312,6 +312,11 @@ namespace SaledServices
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridView1.CurrentRow == null)
+            {
+                return;
+            }
+
             this.idTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
             this.buy_order_serial_noComboBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
             this.vendorTextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
@@ -528,6 +533,11 @@ namespace SaledServices
 
         private void dataGridViewToReturn_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (this.dataGridViewToReturn.CurrentRow == null)
+            {
+                return;
+            }
+
             this.mpnTextBox.Text = dataGridViewToReturn.SelectedCells[1].Value.ToString();
             this.stock_placetextBox.Text = "";
             simulateMpnEnter();

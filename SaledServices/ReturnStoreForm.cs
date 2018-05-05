@@ -197,6 +197,11 @@ namespace SaledServices
 
         private void dataGridViewToReturn_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (this.dataGridViewToReturn.CurrentRow == null)
+            {
+                return;
+            }
+
             try
             {
                 this.return_file_noTextBox.Text = generateFileNo();

@@ -219,6 +219,11 @@ namespace SaledServices
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridView1.CurrentRow == null)
+            {
+                return;
+            }
+
             this.idTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
 
             this.vendorTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();

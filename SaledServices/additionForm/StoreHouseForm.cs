@@ -131,6 +131,11 @@ namespace SaledServices
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridView1.CurrentRow == null)
+            {
+                return;
+            }
+
             this.numTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
             this.storeHouseTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
         }

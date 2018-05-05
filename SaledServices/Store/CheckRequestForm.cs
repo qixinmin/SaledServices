@@ -52,6 +52,11 @@ namespace SaledServices.Store
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridView1.CurrentRow == null)
+            {
+                return;
+            }
+
             this.idTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
             this.mb_brieftextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
             this.not_good_placetextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
