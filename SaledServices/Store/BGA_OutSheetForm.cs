@@ -88,6 +88,7 @@ namespace SaledServices
 
                 clearTexts();
                 query_Click(null, null);
+                MessageBox.Show("BGA出库成功！");
             }
             catch (Exception ex)
             {
@@ -356,7 +357,7 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
 
-                string sql = "select mpn,stock_place,input_number,isdeclare from bga_in_stock where bga_describe='" + this.bga_brieftextBox.Text + "'";
+                string sql = "select mpn,stock_place,input_number,vendor,bga_describe,isdeclare from bga_in_stock where bga_describe='" + this.bga_brieftextBox.Text + "'";
                 
                 if (this.vendorcomboBox.Text != "")
                 {
@@ -379,7 +380,7 @@ namespace SaledServices
                 dataGridView2.RowHeadersVisible = false;
                 mConn.Close();
 
-                string[] hTxt = { "MPN", "库位", "已有数量", "是否申报" };
+                string[] hTxt = { "MPN", "库位", "已有数量", "厂商","描述","是否申报" };
                 for (int i = 0; i < hTxt.Length; i++)
                 {
                     dataGridView2.Columns[i].HeaderText = hTxt[i];
@@ -439,7 +440,7 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select distinct vendor from bga_in_stock where bga_describe ='"+this.bga_brieftextBox.Text+"'";
+                    cmd.CommandText = "select distinct vendor from bga_in_stock where bga_describe like '%"+this.bga_brieftextBox.Text+"%'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
@@ -451,7 +452,7 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select distinct product from bga_in_stock where  bga_describe ='" + this.bga_brieftextBox.Text + "'";
+                    cmd.CommandText = "select distinct product from bga_in_stock where  bga_describe like '%" + this.bga_brieftextBox.Text + "%'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
