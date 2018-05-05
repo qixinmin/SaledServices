@@ -202,21 +202,38 @@ namespace SaledServices
                 return;
             }
 
-            string substr = str.Substring(str.Length-8, 6);
-            string inTime = "20"+substr.Substring(0, 2) +"/"+ substr.Substring(2, 2) +"/"+ substr.Substring(4, 2);
-            this.order_out_dateTextBox.Text = inTime;
-
-            DateTime dt1 = DateTime.Parse(inTime);
-            DateTime dt2 = DateTime.Now;
-
-            TimeSpan ts = dt2.Subtract(dt1);
-            if (ts.TotalDays < 0)
+            string substr = "";
+            string inTime = "";
+            try
             {
-                MessageBox.Show("请检测当前机器的时间是否正确！");
-                return;
+                substr = str.Substring(str.Length - 8, 6);
+                inTime = "20" + substr.Substring(0, 2) + "/" + substr.Substring(2, 2) + "/" + substr.Substring(4, 2);
+                this.order_out_dateTextBox.Text = inTime;
             }
-            
-            this.order_receive_dateTextBox.Text = dt2.ToString("yyyy/MM/dd");
+            catch (Exception ex)
+            {
+                MessageBox.Show("订单号码时间格式错误, 设置默认值！");
+                this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            }
+
+            try
+            {
+                DateTime dt1 = DateTime.Parse(inTime);
+                DateTime dt2 = DateTime.Now;
+
+                TimeSpan ts = dt2.Subtract(dt1);
+                if (ts.TotalDays < 0)
+                {
+                    MessageBox.Show("请检测当前机器的时间是否正确！");
+                    return;
+                }
+                this.order_receive_dateTextBox.Text = dt2.ToString("yyyy/MM/dd");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("订单号码时间格式错误, 设置默认值！");
+                this.order_receive_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            }
       
             doQueryAfterSelection();
         }
@@ -297,7 +314,8 @@ namespace SaledServices
             if (e.KeyChar == System.Convert.ToChar(13))
             {
                 string customSerialNo = this.custom_serial_noTextBox.Text;
-
+                customSerialNo = Regex.Replace(customSerialNo, "[^a-zA-Z0-9]", "");
+                this.custom_serial_noTextBox.Text = customSerialNo;
                 if (customSerialNo.StartsWith("8S"))
                 {
                     if (customSerialNo.Length != 23)
@@ -583,11 +601,16 @@ namespace SaledServices
                 || this.macTextBox.Text == ""
                 || this.custom_faultComboBox.Text == ""
                 || this.guaranteeComboBox.Text == ""
-                || this.customResponsibilityComboBox.Text == ""
+                //|| this.customResponsibilityComboBox.Text == ""
                 || this.lenovo_custom_service_noTextBox.Text == ""
                 || this.lenovo_maintenance_noTextBox.Text == ""
                 || this.lenovo_repair_noTextBox.Text == ""
                 || this.whole_machine_noTextBox.Text == "")
+            {
+                return true;
+            }
+
+            if (customResponsibilityComboBox.Enabled == true && customResponsibilityComboBox.Text == "")
             {
                 return true;
             }
@@ -696,8 +719,26 @@ namespace SaledServices
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;                    
+
+                    cmd.CommandText = "select receivedNum from receiveOrder where orderno = '" + this.custom_orderComboBox.Text
+                         + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
+                   
+                    int receivedNum = 0;
+                    string status = "open";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        receivedNum = Int32.Parse(querySdr[0].ToString());                           
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = "update receiveOrder set _status = '" + status + "',receivedNum = '" + (receivedNum - 1) + "' "
+                                + "where orderno = '" + this.custom_orderComboBox.Text
+                                + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+
                     cmd.CommandText = "Delete from " + tableName + " where id = " + dataGridView1.SelectedCells[0].Value.ToString();
-                    cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -912,6 +953,10 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
+                string mactext = this.macTextBox.Text.Trim();
+                mactext = Regex.Replace(mactext, "[^a-zA-Z0-9]", "");
+                this.macTextBox.Text = mactext;
+
                 if (this.macTextBox.Text.Length != 12)
                 {
                     this.macTextBox.SelectAll();
@@ -981,6 +1026,19 @@ namespace SaledServices
                         MessageBox.Show("故障代码" + this.custom_faultComboBox.Text.Trim() + "不存在");
                     }
                 }
+            }
+        }
+
+        private void guaranteeComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (this.guaranteeComboBox.Text.Trim() == "保内")
+            {
+                customResponsibilityComboBox.Text = "";
+                customResponsibilityComboBox.Enabled = false;
+            }
+            else 
+            {
+                customResponsibilityComboBox.Enabled = true;
             }
         }
     }

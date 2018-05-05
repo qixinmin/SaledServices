@@ -37,7 +37,7 @@ namespace SaledServices.Repair
                 dataGridView1.Columns.Clear();
 
                 // string sqlStr = "select top 100 * from fru_smt_out_stock where requester='"+tester+"'";
-                string sqlStr = "select mb_brief,material_mpn,stock_place,realNumber,usedNumber,Id from request_fru_smt_to_store_table where _status !='request' and _status !='return' /*where requester='tester'*/";
+                string sqlStr = "select mb_brief,material_mpn,stock_place,realNumber,usedNumber,Id from request_fru_smt_to_store_table where _status !='request' and _status !='return' and realNumber !='0' and requester='" + LoginForm.currentUser + "'";
 
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
 
@@ -70,6 +70,10 @@ namespace SaledServices.Repair
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridView1.CurrentRow == null)
+            {
+                return;
+            }
             this.mb_brieftextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
             this.material_mpntextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
             this.stock_placetextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();

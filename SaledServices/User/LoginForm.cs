@@ -27,7 +27,7 @@ namespace SaledServices
 
         private void login_Click(object sender, EventArgs e)
         {
-            if (this.usernameInput.Text.Trim() == "" || this.passwordInput.Text.Trim() == "")
+            if (this.workIdInput.Text.Trim() == "" || this.passwordInput.Text.Trim() == "")
             {
                 MessageBox.Show("用户名和密码不能为空");
                 return;
@@ -39,7 +39,7 @@ namespace SaledServices
                 mConn.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select Id, username, _password, super_manager, bga,repair,test_all ,test1,test2 ,receive_return, store,outlook,running,obe  from users where username = '" + usernameInput.Text.Trim()
+                cmd.CommandText = "select Id, username, _password, super_manager, bga,repair,test_all ,test1,test2 ,receive_return, store,outlook,running,obe  from users where workId = '" + workIdInput.Text.Trim()
                     + "' and _password ='" + this.passwordInput.Text.Trim() + "'";
                 cmd.CommandType = CommandType.Text;
 
@@ -66,13 +66,13 @@ namespace SaledServices
 
                 if (temp == "")
                 {
-                    MessageBox.Show("用户名与密码不匹配");
+                    MessageBox.Show("工号与密码不匹配");
                     mConn.Close();
                     return;
                 }
                 else
                 {
-                    currentUser = this.usernameInput.Text.Trim();//记录用户名
+                    currentUser = temp;//记录用户名
 
                     this.Hide();
                   

@@ -258,6 +258,22 @@ declare_number NVARCHAR(128), /*报关单号*/
 custom_request_number NVARCHAR(128), /*申请单号*/
 )
 
+/*bga维修序列记录*/
+CREATE TABLE bga_wait_record_table(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+bgatype NVARCHAR(128), /*bga类型*/
+/*BGA不良(维修 初始状态） -> code 1
+
+BGA待换（bga维修 初始状态）-> code 2
+更换OK待测量 （bga维修转维修站)-> code 3
+更换NG（bga维修转维修站）-> code 4
+
+BGA更换OK待测（维修）-> code 5
+BGA更换报废（维修，板子报废 需主管确认->录入不良品库）-> code 6*/
+
+bga_status NVARCHAR(128) NOT NULL,
+)
 
 /*bga待维修记录*/
 CREATE TABLE bga_wait_record_table(
@@ -429,10 +445,10 @@ CREATE TABLE LCFC71BOM_table(
 Id INT PRIMARY KEY IDENTITY, 
 _date date, /*日期*/
 mb_brief NVARCHAR(128) NOT NULL, /*MB简称*/
-material_vendor_pn NVARCHAR(128) NOT NULL, /*材料厂商PN*/
-material_mpn NVARCHAR(128) NOT NULL, /*材料MPN*/
-_description NVARCHAR(128) NOT NULL, /*Description*/
-price NVARCHAR(128) NOT NULL/*price*/
+material_vendor_pn NVARCHAR(128), /*材料厂商PN*/
+material_mpn NVARCHAR(128), /*材料MPN*/
+_description NVARCHAR(128), /*Description*/
+price NVARCHAR(128)/*price*/
 )
 
 CREATE TABLE COMPAL_MBBOM_table(

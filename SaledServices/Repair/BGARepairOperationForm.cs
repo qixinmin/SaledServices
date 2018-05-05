@@ -18,6 +18,7 @@ namespace SaledServices
 
             loadAdditionInfomation();
             repairertextBox.Text = LoginForm.currentUser;
+            repair_datetextBox.Text =  DateTime.Now.ToString("yyyy/MM/dd");
         }
 
         private void loadAdditionInfomation()//TODO
@@ -132,7 +133,6 @@ namespace SaledServices
                     this.bgaRepair_resultcomboBox.Focus();
                     bgarepairertextBox.Text = LoginForm.currentUser;
                     bgarepairDatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
-
                 }
             }
         }

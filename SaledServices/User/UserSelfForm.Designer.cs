@@ -145,9 +145,9 @@
             this.permissionPanel.Controls.Add(this.repairCheckBox);
             this.permissionPanel.Controls.Add(this.bgaCheckBox);
             this.permissionPanel.Controls.Add(this.super_checkBox);
-            this.permissionPanel.Location = new System.Drawing.Point(241, 273);
+            this.permissionPanel.Location = new System.Drawing.Point(494, 12);
             this.permissionPanel.Name = "permissionPanel";
-            this.permissionPanel.Size = new System.Drawing.Size(292, 269);
+            this.permissionPanel.Size = new System.Drawing.Size(292, 245);
             this.permissionPanel.TabIndex = 8;
             // 
             // obecheckBox
@@ -309,7 +309,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(170, 288);
+            this.label5.Location = new System.Drawing.Point(406, 47);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 10;
@@ -319,7 +319,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 554);
+            this.ClientSize = new System.Drawing.Size(846, 555);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.permissionPanel);

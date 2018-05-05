@@ -44,7 +44,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label1.Location = new System.Drawing.Point(92, 120);
+            this.label1.Location = new System.Drawing.Point(92, 80);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 20);
@@ -55,7 +55,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(95, 417);
+            this.dataGridView1.Location = new System.Drawing.Point(99, 218);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
@@ -66,7 +66,7 @@
             // 
             // materialNameTextBox
             // 
-            this.materialNameTextBox.Location = new System.Drawing.Point(263, 115);
+            this.materialNameTextBox.Location = new System.Drawing.Point(263, 75);
             this.materialNameTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.materialNameTextBox.Name = "materialNameTextBox";
             this.materialNameTextBox.Size = new System.Drawing.Size(164, 30);
@@ -75,7 +75,7 @@
             // add
             // 
             this.add.Font = new System.Drawing.Font("SimSun", 15F);
-            this.add.Location = new System.Drawing.Point(95, 302);
+            this.add.Location = new System.Drawing.Point(95, 128);
             this.add.Margin = new System.Windows.Forms.Padding(5);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(145, 55);
@@ -87,7 +87,7 @@
             // query
             // 
             this.query.Font = new System.Drawing.Font("SimSun", 15F);
-            this.query.Location = new System.Drawing.Point(260, 302);
+            this.query.Location = new System.Drawing.Point(260, 128);
             this.query.Margin = new System.Windows.Forms.Padding(5);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(132, 55);
@@ -99,7 +99,7 @@
             // modify
             // 
             this.modify.Font = new System.Drawing.Font("SimSun", 15F);
-            this.modify.Location = new System.Drawing.Point(422, 302);
+            this.modify.Location = new System.Drawing.Point(422, 128);
             this.modify.Margin = new System.Windows.Forms.Padding(5);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(138, 55);
@@ -111,7 +111,7 @@
             // delete
             // 
             this.delete.Font = new System.Drawing.Font("SimSun", 15F);
-            this.delete.Location = new System.Drawing.Point(588, 302);
+            this.delete.Location = new System.Drawing.Point(588, 128);
             this.delete.Margin = new System.Windows.Forms.Padding(5);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(125, 55);
@@ -122,7 +122,7 @@
             // 
             // numTextBox
             // 
-            this.numTextBox.Location = new System.Drawing.Point(263, 50);
+            this.numTextBox.Location = new System.Drawing.Point(263, 23);
             this.numTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.numTextBox.Name = "numTextBox";
             this.numTextBox.ReadOnly = true;
@@ -133,7 +133,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label2.Location = new System.Drawing.Point(95, 50);
+            this.label2.Location = new System.Drawing.Point(95, 23);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 20);

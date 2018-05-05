@@ -51,7 +51,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label1.Location = new System.Drawing.Point(436, 107);
+            this.label1.Location = new System.Drawing.Point(436, 59);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 20);
@@ -64,7 +64,7 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(95, 330);
+            this.dataGridView1.Location = new System.Drawing.Point(109, 215);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -76,7 +76,7 @@
             // 
             // placeTextBox
             // 
-            this.placeTextBox.Location = new System.Drawing.Point(588, 104);
+            this.placeTextBox.Location = new System.Drawing.Point(588, 56);
             this.placeTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.placeTextBox.Name = "placeTextBox";
             this.placeTextBox.Size = new System.Drawing.Size(164, 30);
@@ -85,7 +85,7 @@
             // choose
             // 
             this.choose.Font = new System.Drawing.Font("SimSun", 15F);
-            this.choose.Location = new System.Drawing.Point(519, 253);
+            this.choose.Location = new System.Drawing.Point(496, 150);
             this.choose.Margin = new System.Windows.Forms.Padding(5);
             this.choose.Name = "choose";
             this.choose.Size = new System.Drawing.Size(145, 55);
@@ -97,7 +97,7 @@
             // query
             // 
             this.query.Font = new System.Drawing.Font("SimSun", 15F);
-            this.query.Location = new System.Drawing.Point(260, 253);
+            this.query.Location = new System.Drawing.Point(192, 150);
             this.query.Margin = new System.Windows.Forms.Padding(5);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(150, 55);
@@ -110,7 +110,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label2.Location = new System.Drawing.Point(95, 62);
+            this.label2.Location = new System.Drawing.Point(95, 14);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 20);
@@ -119,7 +119,7 @@
             // 
             // numTextBox
             // 
-            this.numTextBox.Location = new System.Drawing.Point(243, 62);
+            this.numTextBox.Location = new System.Drawing.Point(243, 14);
             this.numTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.numTextBox.Name = "numTextBox";
             this.numTextBox.ReadOnly = true;
@@ -130,7 +130,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label3.Location = new System.Drawing.Point(91, 104);
+            this.label3.Location = new System.Drawing.Point(91, 56);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 20);
@@ -141,7 +141,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label4.Location = new System.Drawing.Point(436, 158);
+            this.label4.Location = new System.Drawing.Point(436, 110);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 20);
@@ -152,7 +152,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label5.Location = new System.Drawing.Point(91, 158);
+            this.label5.Location = new System.Drawing.Point(91, 110);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 20);
@@ -161,7 +161,7 @@
             // 
             // numbertextBox
             // 
-            this.numbertextBox.Location = new System.Drawing.Point(588, 155);
+            this.numbertextBox.Location = new System.Drawing.Point(588, 107);
             this.numbertextBox.Margin = new System.Windows.Forms.Padding(5);
             this.numbertextBox.Name = "numbertextBox";
             this.numbertextBox.ReadOnly = true;
@@ -170,7 +170,7 @@
             // 
             // mpntextBox
             // 
-            this.mpntextBox.Location = new System.Drawing.Point(243, 158);
+            this.mpntextBox.Location = new System.Drawing.Point(243, 110);
             this.mpntextBox.Margin = new System.Windows.Forms.Padding(5);
             this.mpntextBox.Name = "mpntextBox";
             this.mpntextBox.ReadOnly = true;
@@ -181,7 +181,7 @@
             // 
             this.releasePlacebutton.Enabled = false;
             this.releasePlacebutton.Font = new System.Drawing.Font("SimSun", 15F);
-            this.releasePlacebutton.Location = new System.Drawing.Point(746, 358);
+            this.releasePlacebutton.Location = new System.Drawing.Point(737, 333);
             this.releasePlacebutton.Margin = new System.Windows.Forms.Padding(5);
             this.releasePlacebutton.Name = "releasePlacebutton";
             this.releasePlacebutton.Size = new System.Drawing.Size(125, 55);
@@ -193,7 +193,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(584, 62);
+            this.label6.Location = new System.Drawing.Point(584, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(129, 20);
             this.label6.TabIndex = 7;
@@ -202,7 +202,7 @@
             // houseComboBox
             // 
             this.houseComboBox.FormattingEnabled = true;
-            this.houseComboBox.Location = new System.Drawing.Point(243, 113);
+            this.houseComboBox.Location = new System.Drawing.Point(243, 65);
             this.houseComboBox.Name = "houseComboBox";
             this.houseComboBox.Size = new System.Drawing.Size(164, 28);
             this.houseComboBox.TabIndex = 8;

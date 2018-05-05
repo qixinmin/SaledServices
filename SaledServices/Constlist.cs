@@ -28,8 +28,8 @@ namespace SaledServices
 
     public class Constlist
     {
-        public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
-        //public static string ConStr = "server=192.168.1.116;database=SaledService;uid=admin;pwd=admin";
+        //public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
+        public static string ConStr = "server=192.168.8.56;database=SaledService;uid=admin;pwd=admin";
 
         public static string table_MBMaterialCompare = "MB物料对照表";
         public static string table_name_MBMaterialCompare = "MBMaterialCompare";
@@ -387,6 +387,22 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        public static void deleteFile(string path, string filename)
+        {
+            try
+            {
+                if (File.Exists(path + filename))
+                {
+                    File.Delete(path + filename);
+                }                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
 
         //规则是0-9，a-z 累加， a =10
         public static string getTimeByChar(bool isYear, char ch)

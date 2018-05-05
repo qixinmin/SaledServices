@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,7 +60,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.not_good_placetextBox = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.material_mpntextBox = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.material_71pntextBox = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -112,6 +111,7 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.material_mpnComboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -179,7 +179,6 @@
             this.tableLayoutPanel2.Controls.Add(this.label18, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.not_good_placetextBox, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.label19, 0, 4);
-            this.tableLayoutPanel2.Controls.Add(this.material_mpntextBox, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.label20, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.material_71pntextBox, 1, 5);
             this.tableLayoutPanel2.Controls.Add(this.label21, 0, 6);
@@ -203,6 +202,7 @@
             this.tableLayoutPanel2.Controls.Add(this.label15, 2, 8);
             this.tableLayoutPanel2.Controls.Add(this.mbfa1richTextBox, 3, 8);
             this.tableLayoutPanel2.Controls.Add(this.choose_material_button, 1, 9);
+            this.tableLayoutPanel2.Controls.Add(this.material_mpnComboBox, 1, 4);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
@@ -515,16 +515,6 @@
             this.label19.TabIndex = 23;
             this.label19.Text = "材料MPN";
             // 
-            // material_mpntextBox
-            // 
-            this.material_mpntextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.material_mpntextBox.Location = new System.Drawing.Point(197, 174);
-            this.material_mpntextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.material_mpntextBox.Name = "material_mpntextBox";
-            this.material_mpntextBox.ReadOnly = true;
-            this.material_mpntextBox.Size = new System.Drawing.Size(202, 26);
-            this.material_mpntextBox.TabIndex = 24;
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -836,8 +826,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1110,6 +1100,15 @@
             this.checkBox1.Text = "+5VALW前短";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // material_mpnComboBox
+            // 
+            this.material_mpnComboBox.FormattingEnabled = true;
+            this.material_mpnComboBox.Location = new System.Drawing.Point(196, 173);
+            this.material_mpnComboBox.Name = "material_mpnComboBox";
+            this.material_mpnComboBox.Size = new System.Drawing.Size(203, 24);
+            this.material_mpnComboBox.TabIndex = 46;
+            this.material_mpnComboBox.SelectedValueChanged += new System.EventHandler(this.material_mpnComboBox_SelectedValueChanged);
+            // 
             // RepairOperationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1161,7 +1160,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox not_good_placetextBox;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox material_mpntextBox;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox material_typetextBox;
@@ -1220,5 +1218,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox ECOtextBox;
         private System.Windows.Forms.Button choose_material_button;
+        private System.Windows.Forms.ComboBox material_mpnComboBox;
     }
 }

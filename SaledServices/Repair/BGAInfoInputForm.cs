@@ -16,6 +16,7 @@ namespace SaledServices
         {
             InitializeComponent();
             this.repairertextBox.Text = LoginForm.currentUser;
+            repair_datetextBox.Text  = DateTime.Now.ToString("yyyy/MM/dd");
         }
 
         private void track_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -161,6 +162,11 @@ namespace SaledServices
 
         private void CPU_CheckedChanged(object sender, EventArgs e)
         {
+            if (this.VGA.Checked == false && this.CPU.Checked == false && this.PCH.Checked == false)
+            {
+                return;
+            }
+
             this.BGA_placetextBox.ReadOnly = false;
             this.BGA_placetextBox.Text = "";
             string bga_mpn = "";

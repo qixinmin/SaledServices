@@ -76,9 +76,9 @@ namespace SaledServices.Store
            public string materialName{get;set;}
             public string materialDescribe{get;set;}
         }
+
         private void not_good_placeTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
+        {            
             if (e.KeyChar == System.Convert.ToChar(13))
             {
                 bool error = false;
@@ -102,7 +102,6 @@ namespace SaledServices.Store
                     List<useClass> list = new List<useClass>();
                     if (this.mb_brieftextBox.Text != "")
                     {
-
                         cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8,material_describe from " + Constlist.table_name_LCFC_MBBOM + " where mb_brief ='" + this.mb_brieftextBox.Text.Trim() + "'";
                         SqlDataReader querySdr = cmd.ExecuteReader();
                         

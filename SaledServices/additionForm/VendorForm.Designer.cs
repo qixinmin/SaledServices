@@ -46,8 +46,8 @@
             // 
             // query
             // 
-            this.query.Location = new System.Drawing.Point(282, 407);
-            this.query.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.query.Location = new System.Drawing.Point(268, 380);
+            this.query.Margin = new System.Windows.Forms.Padding(5);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(125, 38);
             this.query.TabIndex = 0;
@@ -57,8 +57,8 @@
             // 
             // modify
             // 
-            this.modify.Location = new System.Drawing.Point(467, 407);
-            this.modify.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.modify.Location = new System.Drawing.Point(453, 380);
+            this.modify.Margin = new System.Windows.Forms.Padding(5);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(125, 38);
             this.modify.TabIndex = 1;
@@ -72,7 +72,7 @@
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(48, 20);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -82,8 +82,8 @@
             // 
             // add
             // 
-            this.add.Location = new System.Drawing.Point(83, 407);
-            this.add.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.add.Location = new System.Drawing.Point(69, 380);
+            this.add.Margin = new System.Windows.Forms.Padding(5);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(125, 38);
             this.add.TabIndex = 4;
@@ -94,7 +94,7 @@
             // changshangTextBox
             // 
             this.changshangTextBox.Location = new System.Drawing.Point(123, 62);
-            this.changshangTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.changshangTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.changshangTextBox.Name = "changshangTextBox";
             this.changshangTextBox.Size = new System.Drawing.Size(164, 30);
             this.changshangTextBox.TabIndex = 5;
@@ -102,7 +102,7 @@
             // kehubieTextBox
             // 
             this.kehubieTextBox.Location = new System.Drawing.Point(123, 117);
-            this.kehubieTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.kehubieTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.kehubieTextBox.Name = "kehubieTextBox";
             this.kehubieTextBox.Size = new System.Drawing.Size(164, 30);
             this.kehubieTextBox.TabIndex = 6;
@@ -135,8 +135,8 @@
             this.groupPanel.Controls.Add(this.label2);
             this.groupPanel.Controls.Add(this.kehubieTextBox);
             this.groupPanel.Controls.Add(this.label1);
-            this.groupPanel.Location = new System.Drawing.Point(63, 488);
-            this.groupPanel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupPanel.Location = new System.Drawing.Point(60, 428);
+            this.groupPanel.Margin = new System.Windows.Forms.Padding(5);
             this.groupPanel.Name = "groupPanel";
             this.groupPanel.Size = new System.Drawing.Size(343, 200);
             this.groupPanel.TabIndex = 9;
@@ -144,7 +144,7 @@
             // numTextBox
             // 
             this.numTextBox.Location = new System.Drawing.Point(123, 7);
-            this.numTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.numTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.numTextBox.Name = "numTextBox";
             this.numTextBox.ReadOnly = true;
             this.numTextBox.Size = new System.Drawing.Size(164, 30);
@@ -162,8 +162,8 @@
             // 
             // delete
             // 
-            this.delete.Location = new System.Drawing.Point(648, 407);
-            this.delete.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.delete.Location = new System.Drawing.Point(634, 380);
+            this.delete.Margin = new System.Windows.Forms.Padding(5);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(125, 38);
             this.delete.TabIndex = 10;
@@ -175,7 +175,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1078, 790);
+            this.ClientSize = new System.Drawing.Size(1078, 749);
             this.Controls.Add(this.delete);
             this.Controls.Add(this.groupPanel);
             this.Controls.Add(this.add);
@@ -183,7 +183,7 @@
             this.Controls.Add(this.modify);
             this.Controls.Add(this.query);
             this.Font = new System.Drawing.Font("SimSun", 15F);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "VendorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "厂商与客户别";

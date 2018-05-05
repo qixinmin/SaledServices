@@ -43,7 +43,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(92, 120);
+            this.label1.Location = new System.Drawing.Point(95, 69);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 20);
@@ -54,8 +54,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(95, 417);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(96, 188);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -65,16 +65,16 @@
             // 
             // storeHouseTextBox
             // 
-            this.storeHouseTextBox.Location = new System.Drawing.Point(218, 115);
-            this.storeHouseTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.storeHouseTextBox.Location = new System.Drawing.Point(221, 64);
+            this.storeHouseTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.storeHouseTextBox.Name = "storeHouseTextBox";
             this.storeHouseTextBox.Size = new System.Drawing.Size(164, 30);
             this.storeHouseTextBox.TabIndex = 2;
             // 
             // add
             // 
-            this.add.Location = new System.Drawing.Point(95, 302);
-            this.add.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.add.Location = new System.Drawing.Point(96, 126);
+            this.add.Margin = new System.Windows.Forms.Padding(5);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(125, 38);
             this.add.TabIndex = 3;
@@ -84,8 +84,8 @@
             // 
             // query
             // 
-            this.query.Location = new System.Drawing.Point(260, 302);
-            this.query.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.query.Location = new System.Drawing.Point(261, 126);
+            this.query.Margin = new System.Windows.Forms.Padding(5);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(125, 38);
             this.query.TabIndex = 3;
@@ -95,8 +95,8 @@
             // 
             // modify
             // 
-            this.modify.Location = new System.Drawing.Point(422, 302);
-            this.modify.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.modify.Location = new System.Drawing.Point(423, 126);
+            this.modify.Margin = new System.Windows.Forms.Padding(5);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(125, 38);
             this.modify.TabIndex = 3;
@@ -106,8 +106,8 @@
             // 
             // delete
             // 
-            this.delete.Location = new System.Drawing.Point(588, 302);
-            this.delete.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.delete.Location = new System.Drawing.Point(589, 126);
+            this.delete.Margin = new System.Windows.Forms.Padding(5);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(125, 38);
             this.delete.TabIndex = 3;
@@ -117,8 +117,8 @@
             // 
             // numTextBox
             // 
-            this.numTextBox.Location = new System.Drawing.Point(218, 52);
-            this.numTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.numTextBox.Location = new System.Drawing.Point(221, 24);
+            this.numTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.numTextBox.Name = "numTextBox";
             this.numTextBox.ReadOnly = true;
             this.numTextBox.Size = new System.Drawing.Size(164, 30);
@@ -127,7 +127,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(95, 52);
+            this.label2.Location = new System.Drawing.Point(98, 24);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 20);
@@ -138,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(928, 812);
+            this.ClientSize = new System.Drawing.Size(928, 749);
             this.Controls.Add(this.numTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.delete);
@@ -149,7 +149,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("SimSun", 15F);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "StoreHouseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "仓库别";

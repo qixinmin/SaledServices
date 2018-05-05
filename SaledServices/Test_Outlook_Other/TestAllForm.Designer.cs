@@ -43,8 +43,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cpuFreqtextBox = new System.Windows.Forms.TextBox();
             this.cpuTypetextBox = new System.Windows.Forms.TextBox();
-            this.confirmbutton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.confirmbutton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,8 +56,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.84713F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.936306F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.25478F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.12102F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.23567F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.46497F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tracker_bar_textBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 2, 0);
@@ -71,8 +72,9 @@
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.cpuFreqtextBox, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.cpuTypetextBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.confirmbutton, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.button1, 5, 2);
+            this.tableLayoutPanel1.Controls.Add(this.confirmbutton, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.button2, 4, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
@@ -94,16 +96,16 @@
             // tracker_bar_textBox
             // 
             this.tracker_bar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tracker_bar_textBox.Location = new System.Drawing.Point(66, 3);
+            this.tracker_bar_textBox.Location = new System.Drawing.Point(65, 3);
             this.tracker_bar_textBox.Name = "tracker_bar_textBox";
-            this.tracker_bar_textBox.Size = new System.Drawing.Size(244, 21);
+            this.tracker_bar_textBox.Size = new System.Drawing.Size(242, 21);
             this.tracker_bar_textBox.TabIndex = 1;
             this.tracker_bar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tracker_bar_textBox_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(316, 0);
+            this.label2.Location = new System.Drawing.Point(313, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 2;
@@ -112,16 +114,16 @@
             // testerTextBox
             // 
             this.testerTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.testerTextBox.Location = new System.Drawing.Point(394, 3);
+            this.testerTextBox.Location = new System.Drawing.Point(390, 3);
             this.testerTextBox.Name = "testerTextBox";
             this.testerTextBox.ReadOnly = true;
-            this.testerTextBox.Size = new System.Drawing.Size(153, 21);
+            this.testerTextBox.Size = new System.Drawing.Size(151, 21);
             this.testerTextBox.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(553, 0);
+            this.label3.Location = new System.Drawing.Point(547, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 2;
@@ -130,10 +132,10 @@
             // testdatetextBox
             // 
             this.testdatetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.testdatetextBox.Location = new System.Drawing.Point(656, 3);
+            this.testdatetextBox.Location = new System.Drawing.Point(696, 3);
             this.testdatetextBox.Name = "testdatetextBox";
             this.testdatetextBox.ReadOnly = true;
-            this.testdatetextBox.Size = new System.Drawing.Size(126, 21);
+            this.testdatetextBox.Size = new System.Drawing.Size(86, 21);
             this.testdatetextBox.TabIndex = 1;
             // 
             // label6
@@ -148,16 +150,16 @@
             // keyidtextBox
             // 
             this.keyidtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.keyidtextBox.Location = new System.Drawing.Point(66, 253);
+            this.keyidtextBox.Location = new System.Drawing.Point(65, 253);
             this.keyidtextBox.Name = "keyidtextBox";
             this.keyidtextBox.ReadOnly = true;
-            this.keyidtextBox.Size = new System.Drawing.Size(244, 21);
+            this.keyidtextBox.Size = new System.Drawing.Size(242, 21);
             this.keyidtextBox.TabIndex = 4;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(316, 250);
+            this.label7.Location = new System.Drawing.Point(313, 250);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 12);
             this.label7.TabIndex = 6;
@@ -166,16 +168,16 @@
             // KEYSERIALtextBox
             // 
             this.KEYSERIALtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KEYSERIALtextBox.Location = new System.Drawing.Point(394, 253);
+            this.KEYSERIALtextBox.Location = new System.Drawing.Point(390, 253);
             this.KEYSERIALtextBox.Name = "KEYSERIALtextBox";
             this.KEYSERIALtextBox.ReadOnly = true;
-            this.KEYSERIALtextBox.Size = new System.Drawing.Size(153, 21);
+            this.KEYSERIALtextBox.Size = new System.Drawing.Size(151, 21);
             this.KEYSERIALtextBox.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(316, 125);
+            this.label5.Location = new System.Drawing.Point(313, 125);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 12);
             this.label5.TabIndex = 10;
@@ -193,40 +195,50 @@
             // cpuFreqtextBox
             // 
             this.cpuFreqtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cpuFreqtextBox.Location = new System.Drawing.Point(394, 128);
+            this.cpuFreqtextBox.Location = new System.Drawing.Point(390, 128);
             this.cpuFreqtextBox.Name = "cpuFreqtextBox";
             this.cpuFreqtextBox.ReadOnly = true;
-            this.cpuFreqtextBox.Size = new System.Drawing.Size(153, 21);
+            this.cpuFreqtextBox.Size = new System.Drawing.Size(151, 21);
             this.cpuFreqtextBox.TabIndex = 7;
             // 
             // cpuTypetextBox
             // 
             this.cpuTypetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cpuTypetextBox.Location = new System.Drawing.Point(66, 128);
+            this.cpuTypetextBox.Location = new System.Drawing.Point(65, 128);
             this.cpuTypetextBox.Name = "cpuTypetextBox";
             this.cpuTypetextBox.ReadOnly = true;
-            this.cpuTypetextBox.Size = new System.Drawing.Size(244, 21);
+            this.cpuTypetextBox.Size = new System.Drawing.Size(242, 21);
             this.cpuTypetextBox.TabIndex = 8;
-            // 
-            // confirmbutton
-            // 
-            this.confirmbutton.Location = new System.Drawing.Point(553, 253);
-            this.confirmbutton.Name = "confirmbutton";
-            this.confirmbutton.Size = new System.Drawing.Size(72, 23);
-            this.confirmbutton.TabIndex = 1;
-            this.confirmbutton.Text = "确认OK";
-            this.confirmbutton.UseVisualStyleBackColor = true;
-            this.confirmbutton.Click += new System.EventHandler(this.confirmbutton_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(656, 253);
+            this.button1.Location = new System.Drawing.Point(696, 253);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(72, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "确认Fail";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // confirmbutton
+            // 
+            this.confirmbutton.Location = new System.Drawing.Point(547, 253);
+            this.confirmbutton.Name = "confirmbutton";
+            this.confirmbutton.Size = new System.Drawing.Size(107, 23);
+            this.confirmbutton.TabIndex = 1;
+            this.confirmbutton.Text = "确认测试OK";
+            this.confirmbutton.UseVisualStyleBackColor = true;
+            this.confirmbutton.Click += new System.EventHandler(this.confirmbutton_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(547, 128);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(107, 92);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "确认生成文件，并准备重启";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // TestAllForm
             // 
@@ -262,5 +274,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox cpuFreqtextBox;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

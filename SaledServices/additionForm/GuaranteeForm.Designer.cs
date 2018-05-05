@@ -44,7 +44,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label1.Location = new System.Drawing.Point(92, 120);
+            this.label1.Location = new System.Drawing.Point(85, 56);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 20);
@@ -55,8 +55,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(95, 417);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(89, 201);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -66,8 +66,8 @@
             // 
             // guarantee_describeTextBox
             // 
-            this.guarantee_describeTextBox.Location = new System.Drawing.Point(267, 118);
-            this.guarantee_describeTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.guarantee_describeTextBox.Location = new System.Drawing.Point(260, 54);
+            this.guarantee_describeTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.guarantee_describeTextBox.Name = "guarantee_describeTextBox";
             this.guarantee_describeTextBox.Size = new System.Drawing.Size(164, 30);
             this.guarantee_describeTextBox.TabIndex = 2;
@@ -75,8 +75,8 @@
             // add
             // 
             this.add.Font = new System.Drawing.Font("SimSun", 15F);
-            this.add.Location = new System.Drawing.Point(95, 302);
-            this.add.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.add.Location = new System.Drawing.Point(90, 115);
+            this.add.Margin = new System.Windows.Forms.Padding(5);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(155, 58);
             this.add.TabIndex = 3;
@@ -87,8 +87,8 @@
             // query
             // 
             this.query.Font = new System.Drawing.Font("SimSun", 15F);
-            this.query.Location = new System.Drawing.Point(260, 302);
-            this.query.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.query.Location = new System.Drawing.Point(255, 115);
+            this.query.Margin = new System.Windows.Forms.Padding(5);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(152, 58);
             this.query.TabIndex = 3;
@@ -99,8 +99,8 @@
             // modify
             // 
             this.modify.Font = new System.Drawing.Font("SimSun", 15F);
-            this.modify.Location = new System.Drawing.Point(422, 302);
-            this.modify.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.modify.Location = new System.Drawing.Point(417, 115);
+            this.modify.Margin = new System.Windows.Forms.Padding(5);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(132, 58);
             this.modify.TabIndex = 3;
@@ -111,8 +111,8 @@
             // delete
             // 
             this.delete.Font = new System.Drawing.Font("SimSun", 15F);
-            this.delete.Location = new System.Drawing.Point(588, 302);
-            this.delete.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.delete.Location = new System.Drawing.Point(583, 115);
+            this.delete.Margin = new System.Windows.Forms.Padding(5);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(125, 58);
             this.delete.TabIndex = 3;
@@ -122,8 +122,8 @@
             // 
             // numTextBox
             // 
-            this.numTextBox.Location = new System.Drawing.Point(267, 60);
-            this.numTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.numTextBox.Location = new System.Drawing.Point(260, 14);
+            this.numTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.numTextBox.Name = "numTextBox";
             this.numTextBox.ReadOnly = true;
             this.numTextBox.Size = new System.Drawing.Size(164, 30);
@@ -133,7 +133,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label2.Location = new System.Drawing.Point(95, 53);
+            this.label2.Location = new System.Drawing.Point(88, 7);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 20);
@@ -144,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(928, 812);
+            this.ClientSize = new System.Drawing.Size(928, 749);
             this.Controls.Add(this.numTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.delete);
@@ -155,7 +155,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("SimSun", 15F);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "GuaranteeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "保内/保外";

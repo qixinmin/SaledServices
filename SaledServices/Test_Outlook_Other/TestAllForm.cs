@@ -21,6 +21,10 @@ namespace SaledServices.Test_Outlook
             testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
         }
 
+        string track_serial_no = "", product = "";
+        string customMaterialNo = "", vendor_serail_no = "", mac = "", uuid = "", custom_serial_no = "", mb_brief = "";
+        string KEYID = "", KEYSERIAL = "";
+        string cpu_type = "", cpu_freq = "", dpk_type = "", dpkpn = "", mpn = "";
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
@@ -44,7 +48,7 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "select track_serial_no,product from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    string track_serial_no = "", product = "";
+                    track_serial_no = ""; product = "";
                     while (querySdr.Read())
                     {
                         track_serial_no = querySdr[0].ToString();
@@ -77,7 +81,7 @@ namespace SaledServices.Test_Outlook
                             cmd.CommandText = "select custommaterialNo, vendor_serail_no,mac,uuid,custom_serial_no,mb_brief  from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                             querySdr = cmd.ExecuteReader();
-                            string customMaterialNo = "", vendor_serail_no = "", mac = "", uuid = "", custom_serial_no = "", mb_brief = "";
+                            customMaterialNo = ""; vendor_serail_no = ""; mac = ""; uuid = ""; custom_serial_no = ""; mb_brief = "";
 
                             while (querySdr.Read())
                             {
@@ -93,7 +97,7 @@ namespace SaledServices.Test_Outlook
 
                             if (customMaterialNo != "")
                             {
-                                string cpu_type = "", cpu_freq = "", dpk_type = "", dpkpn = "", mpn = "";
+                                cpu_type = ""; cpu_freq = ""; dpk_type = ""; dpkpn = ""; mpn = "";
                                 cmd.CommandText = "select cpu_type,cpu_freq,dpk_type,dpkpn, mpn from MBMaterialCompare where custommaterialNo='" + customMaterialNo + "'";
 
                                 querySdr = cmd.ExecuteReader();
@@ -113,7 +117,7 @@ namespace SaledServices.Test_Outlook
                                 this.testerTextBox.Text = "tester";
                                 this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
-                                string KEYID = "", KEYSERIAL = "";
+                                KEYID = ""; KEYSERIAL = "";
                                 if (dpk_type != "NOK" && dpkpn != "")//此时需要查找导入的dpk表格，查找对应的KEYI KEYSERIAL
                                 {
                                     //首先判断这个板子有没有来过，若来过则重新拿号给他，否则去新的
@@ -174,29 +178,6 @@ namespace SaledServices.Test_Outlook
                                 tempKeySerial = KEYSERIAL;
                                 int lastEm = tempKeySerial.LastIndexOf('-');
                                 this.KEYSERIALtextBox.Text = "XXXXX-XXXXX-XXXXX-XXXXX-" + tempKeySerial.Substring(lastEm, 5);
-
-                                //SET MBID=RIBM160907010247     跟踪条码
-                                //SET SN=1021948402900          厂商序号
-                                //SET SKU=45101201065           MPN
-                                //SET MAC=28D24475FE86          MAC
-                                //SET UUID=11111111111111111111111111111111  UUID
-                                //SET MB11S=8SSB20A29572L1HF4440062  客户序号
-                                //SET OA3KEY=N/A    KEYID
-                                //SET OA3PID=N/A    KEYSERIAL
-                                //SET FRUPN=04X5152  客户料号
-                                //SET MODELID=VIUX2  MB简称
-                                string totalStr = "SET MBID=" + track_serial_no + "\r\n"
-                                                + "SET SN=" + vendor_serail_no + "\r\n"
-                                                + "SET SKU=" + mpn + "\r\n"
-                                                + "SET MAC=" + mac + "\r\n"
-                                                + "SET UUID=" + uuid + "\r\n"
-                                                + "SET MB11S=" + custom_serial_no + "\r\n"
-                                                + "SET OA3KEY=" + KEYID + "\r\n"
-                                                + "SET OA3PID=" + KEYSERIAL + "\r\n"
-                                                + "SET FRUPN=" + customMaterialNo + "\r\n"
-                                                + "SET MODELID=" + mb_brief;
-                                Untils.createFile("D:\\fru\\", "BOM.bat", totalStr);
-                                Untils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
                             }
                             else
                             {
@@ -248,10 +229,16 @@ namespace SaledServices.Test_Outlook
                 MessageBox.Show("追踪条码的内容为空，请检查！");
                 return;
             }
+            string generateFile = "D:\\fru\\DATE.TXT";
+            if (File.Exists(generateFile) == false)
+            {
+                MessageBox.Show("是否已经做过相关操作，并重启过机器！");
+                return;
+            }
 
             try
             {
-                StreamReader sr = new StreamReader("D:\\fru\\DATE.TXT", Encoding.Default);
+                StreamReader sr = new StreamReader(generateFile, Encoding.Default);
                 String line;
                 while ((line = sr.ReadLine()) != null)
                 {
@@ -338,6 +325,43 @@ namespace SaledServices.Test_Outlook
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (KEYID == "" || KEYSERIAL == "")
+            {
+                MessageBox.Show("序列号还没有下载，请检查操作！");
+                return;
+            }
+
+            //SET MBID=RIBM160907010247     跟踪条码
+            //SET SN=1021948402900          厂商序号
+            //SET SKU=45101201065           MPN
+            //SET MAC=28D24475FE86          MAC
+            //SET UUID=11111111111111111111111111111111  UUID
+            //SET MB11S=8SSB20A29572L1HF4440062  客户序号
+            //SET OA3KEY=N/A    KEYID
+            //SET OA3PID=N/A    KEYSERIAL
+            //SET FRUPN=04X5152  客户料号
+            //SET MODELID=VIUX2  MB简称
+            string totalStr = "SET MBID=" + track_serial_no + "\r\n"
+                            + "SET SN=" + vendor_serail_no + "\r\n"
+                            + "SET SKU=" + mpn + "\r\n"
+                            + "SET MAC=" + mac + "\r\n"
+                            + "SET UUID=" + uuid + "\r\n"
+                            + "SET MB11S=" + custom_serial_no + "\r\n"
+                            + "SET OA3KEY=" + KEYID + "\r\n"
+                            + "SET OA3PID=" + KEYSERIAL + "\r\n"
+                            + "SET FRUPN=" + customMaterialNo + "\r\n"
+                            + "SET MODELID=" + mb_brief + "\r\n"
+                            + "SET DPK=" + dpk_type;
+            Untils.createFile("D:\\fru\\", "BOM.bat", totalStr);
+            Untils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
+
+            //清空变量
+            KEYID = ""; this.keyidtextBox.Text = "";
+            KEYSERIAL = ""; this.KEYSERIALtextBox.Text = "";
         }
     }
 }

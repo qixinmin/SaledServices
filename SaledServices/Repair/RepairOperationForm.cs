@@ -195,134 +195,134 @@ namespace SaledServices
 
                     cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8 from " + tableName + " where MPN ='" + this.mpntextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    this.material_mpntextBox.Text = "";
+                    this.material_mpnComboBox.Text = "";
                     while (querySdr.Read())
                     {
                         string material_mpn = querySdr[0].ToString(); ;
                         string temp = querySdr[1].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpntextBox.Text = material_mpn;
-                            break;
+                            this.material_mpnComboBox.Text = material_mpn;
+                            continue;
                         } temp = querySdr[2].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpntextBox.Text = material_mpn;
-                            break;
+                            this.material_mpnComboBox.Text = material_mpn;
+                            continue;
                         } temp = querySdr[3].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpntextBox.Text = material_mpn;
-                            break;
+                            this.material_mpnComboBox.Text = material_mpn;
+                            continue;
                         } temp = querySdr[4].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpntextBox.Text = material_mpn;
-                            break;
+                            this.material_mpnComboBox.Text = material_mpn;
+                            continue;
                         } temp = querySdr[5].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpntextBox.Text = material_mpn;
-                            break;
+                            this.material_mpnComboBox.Text = material_mpn;
+                            continue;
                         } temp = querySdr[6].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpntextBox.Text = material_mpn;
-                            break;
+                            this.material_mpnComboBox.Text = material_mpn;
+                            continue;
                         } temp = querySdr[7].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpntextBox.Text = material_mpn;
-                            break;
+                            this.material_mpnComboBox.Text = material_mpn;
+                            continue;
                         } temp = querySdr[8].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpntextBox.Text = material_mpn;
-                            break;
+                            this.material_mpnComboBox.Text = material_mpn;
+                            continue;
                         }
                     }
                     querySdr.Close();
 
-                    if (this.material_mpntextBox.Text == "")
+                    if (this.material_mpnComboBox.Items.Count == 0)
                     {
                         cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8 from " + tableName + " where mb_brief ='" + this.mb_brieftextBox.Text.Trim() + "'";
                         querySdr = cmd.ExecuteReader();
-                        this.material_mpntextBox.Text = "";
+                        this.material_mpnComboBox.Text = "";
                         while (querySdr.Read())
                         {
                             string material_mpn = querySdr[0].ToString(); ;
                             string temp = querySdr[1].ToString();
                             if (temp != "" && temp.ToLower() == not_good_place.ToLower())
                             {
-                                this.material_mpntextBox.Text = material_mpn;
-                                break;
+                                this.material_mpnComboBox.Text = material_mpn;
+                                continue;
                             } temp = querySdr[2].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpntextBox.Text = material_mpn;
-                                break;
+                                this.material_mpnComboBox.Text = material_mpn;
+                                continue;
                             } temp = querySdr[3].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpntextBox.Text = material_mpn;
-                                break;
+                                this.material_mpnComboBox.Text = material_mpn;
+                                continue;
                             } temp = querySdr[4].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpntextBox.Text = material_mpn;
-                                break;
+                                this.material_mpnComboBox.Text = material_mpn;
+                                continue;
                             } temp = querySdr[5].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpntextBox.Text = material_mpn;
-                                break;
+                                this.material_mpnComboBox.Text = material_mpn;
+                                continue;
                             } temp = querySdr[6].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpntextBox.Text = material_mpn;
-                                break;
+                                this.material_mpnComboBox.Text = material_mpn;
+                                continue;
                             } temp = querySdr[7].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpntextBox.Text = material_mpn;
-                                break;
+                                this.material_mpnComboBox.Text = material_mpn;
+                                continue;
                             } temp = querySdr[8].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpntextBox.Text = material_mpn;
-                                break;
+                                this.material_mpnComboBox.Text = material_mpn;
+                                continue;
                             }
                         }
                         querySdr.Close();
                     }
 
-                    if (this.material_mpntextBox.Text.Trim() == "")
+                    if (this.material_mpnComboBox.Items.Count == 0)
                     {
                         error = true;
                         MessageBox.Show("是否输入错误的位置信息，或者bom表信息不全！");
                     }
-                    else
-                    {
-                        cmd.CommandText = "select material_vendor_pn from LCFC71BOM_table where material_mpn='" + this.material_mpntextBox.Text.Trim() + "'";
+                    //else
+                    //{
+                    //    cmd.CommandText = "select material_vendor_pn from LCFC71BOM_table where material_mpn='" + this.material_mpnComboBox.Text.Trim() + "'";
 
-                        querySdr = cmd.ExecuteReader();
+                    //    querySdr = cmd.ExecuteReader();
 
-                        string material_71pn_txt = "";
-                        while (querySdr.Read())
-                        {
-                            material_71pn_txt = querySdr[0].ToString();
-                            if (material_71pn_txt != "")
-                            {
-                                this.material_71pntextBox.Text = material_71pn_txt;
-                            }
-                            else
-                            {
-                                error = true;
-                                MessageBox.Show("LCFC71BOM表中" + this.material_mpntextBox.Text.Trim() + "信息不全！");
-                            }
-                        }
-                        querySdr.Close();
-                    }
+                    //    string material_71pn_txt = "";
+                    //    while (querySdr.Read())
+                    //    {
+                    //        material_71pn_txt = querySdr[0].ToString();
+                    //        if (material_71pn_txt != "")
+                    //        {
+                    //            this.material_71pntextBox.Text = material_71pn_txt;
+                    //        }
+                    //        else
+                    //        {
+                    //            error = true;
+                    //            MessageBox.Show("LCFC71BOM表中" + this.material_mpnComboBox.Text.Trim() + "信息不全！");
+                    //        }
+                    //    }
+                    //    querySdr.Close();
+                    //}
 
                     mConn.Close();
                 }
@@ -333,8 +333,8 @@ namespace SaledServices
 
                 if (!error)
                 {
-                    material_mpntextBox.Focus();
-                    material_mpntextBox.SelectAll();
+                    material_mpnComboBox.Focus();
+                    material_mpnComboBox.SelectAll();
                 }
             }
         }
@@ -482,7 +482,7 @@ namespace SaledServices
             string short_cut_txt = getShortCutText();
             string software_update_txt = this.software_updatecomboBox.Text.Trim();
             string not_good_place_txt = this.not_good_placetextBox.Text.Trim();
-            string material_mpn_txt = this.material_mpntextBox.Text.Trim();
+            string material_mpn_txt = this.material_mpnComboBox.Text.Trim();
             string material_71pn_txt = this.material_71pntextBox.Text.Trim();
             string material_type_txt = this.material_typetextBox.Text.Trim();
             string fault_type_txt = this.fault_typecomboBox.Text.Trim();
@@ -520,7 +520,6 @@ namespace SaledServices
                     return;
                 }
             }
-
 
             try
             {
@@ -627,7 +626,7 @@ namespace SaledServices
                 uncheckShortCut();
                 this.software_updatecomboBox.Text = "";
                 this.not_good_placetextBox.Text = "";
-                this.material_mpntextBox.Text = "";
+                this.material_mpnComboBox.Text = "";
                 this.material_71pntextBox.Text = "";
                 this.material_typetextBox.Text = "";
                 this.fault_typecomboBox.Text = "";
@@ -642,7 +641,7 @@ namespace SaledServices
                 {
                     this.software_updatecomboBox.Enabled = true;
                     this.not_good_placetextBox.Enabled = true;
-                    this.material_mpntextBox.Enabled = true;
+                    this.material_mpnComboBox.Enabled = true;
                     this.fault_typecomboBox.Enabled = true;
                     this.actioncomboBox.Enabled = true;
                     this.mbfa1richTextBox.Enabled = true;
@@ -714,7 +713,7 @@ namespace SaledServices
             {
                 this.software_updatecomboBox.Enabled = false;
                 this.not_good_placetextBox.Enabled = false;
-                this.material_mpntextBox.Enabled = false;
+                this.material_mpnComboBox.Enabled = false;
                 this.fault_typecomboBox.Enabled = false;
                 this.actioncomboBox.Enabled = false;
                 this.mbfa1richTextBox.Enabled = false;
@@ -744,7 +743,7 @@ namespace SaledServices
             {
                 this.software_updatecomboBox.Enabled = true;
                 this.not_good_placetextBox.Enabled = true;
-                this.material_mpntextBox.Enabled = true;
+                this.material_mpnComboBox.Enabled = true;
                 this.fault_typecomboBox.Enabled = true;
                 this.actioncomboBox.Enabled = true;
                 this.mbfa1richTextBox.Enabled = true;
@@ -789,6 +788,49 @@ namespace SaledServices
             mPrepareUseDetail.stock_place = stock_place;
             mPrepareUseDetail.thisUseNumber = thisUseNumber;
             mPrepareUseDetail.totalUseNumber = totalUseNumber;
+        }
+
+        private void material_mpnComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (this.material_mpnComboBox.Text == "")
+            {
+                MessageBox.Show("请选择一个值！");
+                return;
+            }
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "select material_vendor_pn from LCFC71BOM_table where material_mpn='" + this.material_mpnComboBox.Text.Trim() + "'";
+
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string material_71pn_txt = "";
+                    while (querySdr.Read())
+                    {
+                        material_71pn_txt = querySdr[0].ToString();
+                        if (material_71pn_txt != "")
+                        {
+                            this.material_71pntextBox.Text = material_71pn_txt;
+                        }
+                        else
+                        {
+                            MessageBox.Show("LCFC71BOM表中" + this.material_mpnComboBox.Text.Trim() + "信息不全！");
+                        }
+                    }
+                    querySdr.Close();
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

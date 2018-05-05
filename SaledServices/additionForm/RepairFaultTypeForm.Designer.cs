@@ -42,8 +42,8 @@
             // 
             // numTextBox
             // 
-            this.numTextBox.Location = new System.Drawing.Point(406, 42);
-            this.numTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.numTextBox.Location = new System.Drawing.Point(349, 15);
+            this.numTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.numTextBox.Name = "numTextBox";
             this.numTextBox.ReadOnly = true;
             this.numTextBox.Size = new System.Drawing.Size(218, 26);
@@ -52,7 +52,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(242, 42);
+            this.label2.Location = new System.Drawing.Point(185, 15);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(24, 16);
@@ -61,8 +61,8 @@
             // 
             // delete
             // 
-            this.delete.Location = new System.Drawing.Point(898, 376);
-            this.delete.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.delete.Location = new System.Drawing.Point(834, 112);
+            this.delete.Margin = new System.Windows.Forms.Padding(6);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(166, 50);
             this.delete.TabIndex = 17;
@@ -72,8 +72,8 @@
             // 
             // modify
             // 
-            this.modify.Location = new System.Drawing.Point(678, 376);
-            this.modify.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.modify.Location = new System.Drawing.Point(614, 112);
+            this.modify.Margin = new System.Windows.Forms.Padding(6);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(166, 50);
             this.modify.TabIndex = 18;
@@ -83,8 +83,8 @@
             // 
             // query
             // 
-            this.query.Location = new System.Drawing.Point(462, 376);
-            this.query.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.query.Location = new System.Drawing.Point(398, 112);
+            this.query.Margin = new System.Windows.Forms.Padding(6);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(166, 50);
             this.query.TabIndex = 16;
@@ -94,8 +94,8 @@
             // 
             // add
             // 
-            this.add.Location = new System.Drawing.Point(242, 376);
-            this.add.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.add.Location = new System.Drawing.Point(178, 112);
+            this.add.Margin = new System.Windows.Forms.Padding(6);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(166, 50);
             this.add.TabIndex = 15;
@@ -105,8 +105,8 @@
             // 
             // faultTypeTextBox
             // 
-            this.faultTypeTextBox.Location = new System.Drawing.Point(406, 126);
-            this.faultTypeTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.faultTypeTextBox.Location = new System.Drawing.Point(349, 61);
+            this.faultTypeTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.faultTypeTextBox.Name = "faultTypeTextBox";
             this.faultTypeTextBox.Size = new System.Drawing.Size(218, 26);
             this.faultTypeTextBox.TabIndex = 14;
@@ -115,8 +115,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(242, 530);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dataGridView1.Location = new System.Drawing.Point(178, 174);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -126,7 +126,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(238, 134);
+            this.label1.Location = new System.Drawing.Point(185, 71);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 16);
@@ -137,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1302, 850);
+            this.ClientSize = new System.Drawing.Size(1302, 749);
             this.Controls.Add(this.numTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.delete);
@@ -148,7 +148,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("SimSun", 12F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RepairFaultTypeForm";
             this.Text = "维修故障类别";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

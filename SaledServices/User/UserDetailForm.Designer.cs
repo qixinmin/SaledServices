@@ -42,6 +42,8 @@
             this.super_checkBox = new System.Windows.Forms.CheckBox();
             this.permissionPanel = new System.Windows.Forms.Panel();
             this.storeCheckBox = new System.Windows.Forms.CheckBox();
+            this.obecheckBox = new System.Windows.Forms.CheckBox();
+            this.runningcheckBox = new System.Windows.Forms.CheckBox();
             this.outlookCheckBox = new System.Windows.Forms.CheckBox();
             this.receive_returnCheckBox = new System.Windows.Forms.CheckBox();
             this.test2CheckBox = new System.Windows.Forms.CheckBox();
@@ -51,8 +53,6 @@
             this.bgaCheckBox = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.workIdTextBox = new System.Windows.Forms.TextBox();
-            this.runningcheckBox = new System.Windows.Forms.CheckBox();
-            this.obecheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.permissionPanel.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +60,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(60, 73);
+            this.label1.Location = new System.Drawing.Point(60, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 20);
             this.label1.TabIndex = 0;
@@ -68,7 +68,7 @@
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(185, 70);
+            this.idTextBox.Location = new System.Drawing.Point(185, 11);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.ReadOnly = true;
             this.idTextBox.Size = new System.Drawing.Size(100, 30);
@@ -77,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(51, 137);
+            this.label2.Location = new System.Drawing.Point(51, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 20);
             this.label2.TabIndex = 2;
@@ -85,7 +85,7 @@
             // 
             // userNameTextBox
             // 
-            this.userNameTextBox.Location = new System.Drawing.Point(185, 127);
+            this.userNameTextBox.Location = new System.Drawing.Point(185, 68);
             this.userNameTextBox.Name = "userNameTextBox";
             this.userNameTextBox.Size = new System.Drawing.Size(145, 30);
             this.userNameTextBox.TabIndex = 3;
@@ -93,7 +93,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(51, 213);
+            this.label3.Location = new System.Drawing.Point(51, 154);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 20);
             this.label3.TabIndex = 2;
@@ -101,14 +101,14 @@
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(185, 203);
+            this.passwordTextBox.Location = new System.Drawing.Point(185, 144);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(145, 30);
             this.passwordTextBox.TabIndex = 3;
             // 
             // add
             // 
-            this.add.Location = new System.Drawing.Point(41, 313);
+            this.add.Location = new System.Drawing.Point(41, 264);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(118, 63);
             this.add.TabIndex = 4;
@@ -118,7 +118,7 @@
             // 
             // query
             // 
-            this.query.Location = new System.Drawing.Point(212, 313);
+            this.query.Location = new System.Drawing.Point(212, 264);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(118, 63);
             this.query.TabIndex = 4;
@@ -128,7 +128,7 @@
             // 
             // modify
             // 
-            this.modify.Location = new System.Drawing.Point(367, 313);
+            this.modify.Location = new System.Drawing.Point(367, 264);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(118, 63);
             this.modify.TabIndex = 4;
@@ -138,7 +138,7 @@
             // 
             // delete
             // 
-            this.delete.Location = new System.Drawing.Point(522, 313);
+            this.delete.Location = new System.Drawing.Point(522, 264);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(118, 63);
             this.delete.TabIndex = 4;
@@ -150,8 +150,9 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(41, 399);
+            this.dataGridView1.Location = new System.Drawing.Point(41, 350);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(599, 277);
@@ -181,9 +182,9 @@
             this.permissionPanel.Controls.Add(this.repairCheckBox);
             this.permissionPanel.Controls.Add(this.bgaCheckBox);
             this.permissionPanel.Controls.Add(this.super_checkBox);
-            this.permissionPanel.Location = new System.Drawing.Point(367, 23);
+            this.permissionPanel.Location = new System.Drawing.Point(367, 11);
             this.permissionPanel.Name = "permissionPanel";
-            this.permissionPanel.Size = new System.Drawing.Size(292, 269);
+            this.permissionPanel.Size = new System.Drawing.Size(292, 247);
             this.permissionPanel.TabIndex = 7;
             // 
             // storeCheckBox
@@ -195,6 +196,26 @@
             this.storeCheckBox.TabIndex = 6;
             this.storeCheckBox.Text = "库存";
             this.storeCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // obecheckBox
+            // 
+            this.obecheckBox.AutoSize = true;
+            this.obecheckBox.Location = new System.Drawing.Point(215, 182);
+            this.obecheckBox.Name = "obecheckBox";
+            this.obecheckBox.Size = new System.Drawing.Size(58, 24);
+            this.obecheckBox.TabIndex = 6;
+            this.obecheckBox.Text = "OBE";
+            this.obecheckBox.UseVisualStyleBackColor = true;
+            // 
+            // runningcheckBox
+            // 
+            this.runningcheckBox.AutoSize = true;
+            this.runningcheckBox.Location = new System.Drawing.Point(107, 182);
+            this.runningcheckBox.Name = "runningcheckBox";
+            this.runningcheckBox.Size = new System.Drawing.Size(98, 24);
+            this.runningcheckBox.TabIndex = 6;
+            this.runningcheckBox.Text = "Running";
+            this.runningcheckBox.UseVisualStyleBackColor = true;
             // 
             // outlookCheckBox
             // 
@@ -269,7 +290,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(51, 177);
+            this.label4.Location = new System.Drawing.Point(51, 118);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 20);
             this.label4.TabIndex = 2;
@@ -277,30 +298,10 @@
             // 
             // workIdTextBox
             // 
-            this.workIdTextBox.Location = new System.Drawing.Point(185, 167);
+            this.workIdTextBox.Location = new System.Drawing.Point(185, 108);
             this.workIdTextBox.Name = "workIdTextBox";
             this.workIdTextBox.Size = new System.Drawing.Size(145, 30);
             this.workIdTextBox.TabIndex = 3;
-            // 
-            // runningcheckBox
-            // 
-            this.runningcheckBox.AutoSize = true;
-            this.runningcheckBox.Location = new System.Drawing.Point(107, 182);
-            this.runningcheckBox.Name = "runningcheckBox";
-            this.runningcheckBox.Size = new System.Drawing.Size(98, 24);
-            this.runningcheckBox.TabIndex = 6;
-            this.runningcheckBox.Text = "Running";
-            this.runningcheckBox.UseVisualStyleBackColor = true;
-            // 
-            // obecheckBox
-            // 
-            this.obecheckBox.AutoSize = true;
-            this.obecheckBox.Location = new System.Drawing.Point(215, 182);
-            this.obecheckBox.Name = "obecheckBox";
-            this.obecheckBox.Size = new System.Drawing.Size(58, 24);
-            this.obecheckBox.TabIndex = 6;
-            this.obecheckBox.Text = "OBE";
-            this.obecheckBox.UseVisualStyleBackColor = true;
             // 
             // UserDetailForm
             // 
