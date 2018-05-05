@@ -20,11 +20,43 @@ namespace SaledServices
         public StoreHouseInnerForm()
         {
             InitializeComponent();
+            loadAdditionInfomation();
+        }
+
+        private void loadAdditionInfomation()
+        {
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select distinct house from " + tableName;
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.houseComboBox.Items.Add(temp);
+                    }
+                }
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void add_Click(object sender, EventArgs e)
         {
-            if (this.houseTextBox.Text.Trim() == "" || this.placeTextBox.Text.Trim() == "")
+            if (this.houseComboBox.Text.Trim() == "" || this.placeTextBox.Text.Trim() == "")
             {
                 MessageBox.Show("库房或储位内容为空!");
                 return;
@@ -39,7 +71,7 @@ namespace SaledServices
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + this.houseTextBox.Text.Trim() + "','" + this.placeTextBox.Text.Trim() + "','','')";
+                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + this.houseComboBox.Text.Trim() + "','" + this.placeTextBox.Text.Trim() + "','','')";
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
                 }
@@ -66,15 +98,15 @@ namespace SaledServices
 
                 string sqlStr = "select top 100 * from " + tableName;
 
-                if (this.houseTextBox.Text.Trim() != "")
+                if (this.houseComboBox.Text.Trim() != "")
                 {
                     if (!sqlStr.Contains("where"))
                     {
-                        sqlStr += " where house= '" + houseTextBox.Text.Trim() + "' ";
+                        sqlStr += " where house= '" + houseComboBox.Text.Trim() + "' ";
                     }
                     else
                     {
-                        sqlStr += " and house= '" + houseTextBox.Text.Trim() + "' ";
+                        sqlStr += " and house= '" + houseComboBox.Text.Trim() + "' ";
                     }
                 }
 
@@ -121,7 +153,7 @@ namespace SaledServices
             DataTable dt = ds.Tables[tableName];
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.idTextBox.Text.Trim());
-            dr["house"] = this.houseTextBox.Text.Trim();
+            dr["house"] = this.houseComboBox.Text.Trim();
             dr["place"] = this.placeTextBox.Text.Trim();
             dr["mpn"] = this.mpntextBox.Text.Trim();
             dr["number"] = this.numbertextBox.Text.Trim();
@@ -169,7 +201,7 @@ namespace SaledServices
             }
 
             this.idTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
-            this.houseTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
+            this.houseComboBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
             this.placeTextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
             this.mpntextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
             this.numbertextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
@@ -204,6 +236,14 @@ namespace SaledServices
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void placeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                query_Click(null, null);
             }
         }
     }
