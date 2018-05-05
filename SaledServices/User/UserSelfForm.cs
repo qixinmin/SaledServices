@@ -38,6 +38,11 @@ namespace SaledServices.User
             loadUserInfo();
         }
 
+        public static bool isSuperManager()
+        {
+            return super_manager == "True";
+        }
+
         private void loadUserInfo()
         {
             try

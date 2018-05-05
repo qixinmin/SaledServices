@@ -62,6 +62,7 @@
             this.mb_brieftextBox.Name = "mb_brieftextBox";
             this.mb_brieftextBox.Size = new System.Drawing.Size(100, 21);
             this.mb_brieftextBox.TabIndex = 6;
+            this.mb_brieftextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mb_brieftextBox_KeyPress);
             // 
             // label3
             // 

@@ -451,6 +451,7 @@ _description NVARCHAR(128), /*Description*/
 price NVARCHAR(128)/*price*/
 )
 
+/*
 CREATE TABLE COMPAL_MBBOM_table(
 Id INT PRIMARY KEY IDENTITY, 
 _date date, /*日期*/
@@ -471,7 +472,7 @@ L6 NVARCHAR(128) , /*L6*/
 L7 NVARCHAR(128) , /*L7*/
 L8 NVARCHAR(128)  /*L8*/ 
 )
-
+*/
 
 CREATE TABLE LCFC_MBBOM_table(
 Id INT PRIMARY KEY IDENTITY, 

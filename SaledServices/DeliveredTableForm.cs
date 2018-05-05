@@ -26,6 +26,12 @@ namespace SaledServices
             loadAdditionInfomation();
 
             inputUserTextBox.Text = LoginForm.currentUser;
+
+            if (User.UserSelfForm.isSuperManager() == false)
+            {
+                this.modify.Visible = false;
+                this.delete.Visible = false;
+            }
         }
 
         private void loadAdditionInfomation()

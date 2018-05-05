@@ -27,6 +27,12 @@ namespace SaledServices
             this.input_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
             loadAdditionInfomation();
+
+            if (User.UserSelfForm.isSuperManager() == false)
+            {
+                this.modify.Visible = false;
+                this.delete.Visible = false;
+            }
         }
 
         private void loadAdditionInfomation()

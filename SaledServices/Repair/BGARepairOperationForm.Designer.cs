@@ -87,8 +87,8 @@
             this.newSntextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.add = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.modify = new System.Windows.Forms.Button();
+            this.delete = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
@@ -727,8 +727,8 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.Controls.Add(this.add, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button3, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button4, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.modify, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.delete, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.query, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 427);
@@ -751,29 +751,29 @@
             this.add.UseVisualStyleBackColor = true;
             this.add.Click += new System.EventHandler(this.add_Click);
             // 
-            // button3
+            // modify
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(657, 4);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(200, 37);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "修改";
-            this.button3.UseVisualStyleBackColor = true;
+            this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.modify.Enabled = false;
+            this.modify.Location = new System.Drawing.Point(657, 4);
+            this.modify.Margin = new System.Windows.Forms.Padding(4);
+            this.modify.Name = "modify";
+            this.modify.Size = new System.Drawing.Size(200, 37);
+            this.modify.TabIndex = 1;
+            this.modify.Text = "修改";
+            this.modify.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // delete
             // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button4.Enabled = false;
-            this.button4.Location = new System.Drawing.Point(961, 4);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(200, 37);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "删除";
-            this.button4.UseVisualStyleBackColor = true;
+            this.delete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.delete.Enabled = false;
+            this.delete.Location = new System.Drawing.Point(961, 4);
+            this.delete.Margin = new System.Windows.Forms.Padding(4);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(200, 37);
+            this.delete.TabIndex = 1;
+            this.delete.Text = "删除";
+            this.delete.UseVisualStyleBackColor = true;
             // 
             // query
             // 
@@ -869,8 +869,8 @@
         private System.Windows.Forms.TextBox mb_make_dateTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button add;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button modify;
+        private System.Windows.Forms.Button delete;
         private System.Windows.Forms.Button query;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label7;

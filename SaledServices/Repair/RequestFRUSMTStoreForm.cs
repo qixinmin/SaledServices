@@ -229,6 +229,15 @@ namespace SaledServices.Store
             }
             this.materialMpnTextBox.Text = dataGridView.SelectedCells[0].Value.ToString();
         }
+
+        private void mb_brieftextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                not_good_placeTextBox.Focus();
+                not_good_placeTextBox.SelectAll();
+            }
+        }
     }
 }
 

@@ -26,6 +26,12 @@ namespace SaledServices
             inputerTextBox.Text = LoginForm.currentUser;
             this.input_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
             loadAdditionInfomation();
+
+            if (User.UserSelfForm.isSuperManager() == false)
+            {
+                this.modify.Visible = false;
+                this.delete.Visible = false;
+            }
         }
 
         private void loadAdditionInfomation()
@@ -396,6 +402,8 @@ namespace SaledServices
                 }
                 querySdr.Close();
 
+                
+
                 cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
                 querySdr = cmd.ExecuteReader();
                 string house = "", place = "",Id="", number="";
@@ -421,6 +429,16 @@ namespace SaledServices
                 {
                     this.stock_placetextBox.Enabled = true;
                 }
+
+                string all_mb_briefs = "";
+                cmd.CommandText = "select mb_brief from LCFC_MBBOM_table where MPN='" + this.mpnTextBox.Text.Trim() + "' and vendor ='"+this.vendorTextBox+"'";
+                querySdr = cmd.ExecuteReader();              
+                while (querySdr.Read())
+                {
+                    all_mb_briefs += querySdr[0].ToString() +",";                    
+                }
+                querySdr.Close();
+                this.mb_brieftextBox.Text = all_mb_briefs;
 
                 mConn.Close();
             }

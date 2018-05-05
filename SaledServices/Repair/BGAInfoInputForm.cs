@@ -17,6 +17,13 @@ namespace SaledServices
             InitializeComponent();
             this.repairertextBox.Text = LoginForm.currentUser;
             repair_datetextBox.Text  = DateTime.Now.ToString("yyyy/MM/dd");
+
+            if (User.UserSelfForm.isSuperManager() == false)
+            {
+                this.modify.Visible = false;
+                this.delete.Visible = false;
+            }
+            
         }
 
         private void track_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)

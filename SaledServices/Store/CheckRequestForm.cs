@@ -110,12 +110,12 @@ namespace SaledServices.Store
                     if (requestNumber <= totalCurentNumber)
                     {
                         processRequestbutton.Enabled = true;
-                        waitbutton.Enabled = false;
+                        //waitbutton.Enabled = false;
                     }
                     else
                     {
                         processRequestbutton.Enabled = false;
-                        waitbutton.Enabled = true;
+                        //waitbutton.Enabled = true;
                     }
                 }
                 else

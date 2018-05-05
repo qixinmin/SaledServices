@@ -23,6 +23,8 @@ namespace SaledServices
             InitializeComponent();
             mParent = parent;
             this.ControlBox = false;
+            this.workIdInput.Focus();
+            this.workIdInput.SelectAll();
         }
 
         private void login_Click(object sender, EventArgs e)
@@ -179,6 +181,23 @@ namespace SaledServices
             //{
             //    //网络失败
             //}
+        }
+
+        private void workIdInput_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                this.passwordInput.Focus();
+                this.passwordInput.SelectAll();
+            }
+        }
+
+        private void passwordInput_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                login_Click(null, null);
+            }
         }
                 
     }

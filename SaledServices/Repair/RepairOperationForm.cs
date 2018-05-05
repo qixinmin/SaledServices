@@ -22,6 +22,12 @@ namespace SaledServices
 
             repairertextBox.Text = LoginForm.currentUser;
             mPrepareUseDetail = new PrepareUseDetail();
+
+            if (User.UserSelfForm.isSuperManager() == false)
+            {
+                this.modify.Visible = false;
+                this.delete.Visible = false;
+            }
         }
 
         private void loadAdditionInfomation()
