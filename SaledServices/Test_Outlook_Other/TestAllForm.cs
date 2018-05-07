@@ -379,94 +379,34 @@ namespace SaledServices.Test_Outlook
                     File.Copy(fileInput,@"C:\OA3\FileInput.xml",true);
                 }
 
-                fileInput = dir + "CHKCPU.BAT";
-                if (File.Exists(fileInput))
-                {
-                    File.Copy(fileInput, @"C:\CHKCPU\CHKCPU.BAT", true);
-                }
-
-                fileInput = dir + "CPUPN.txt";
-                if (File.Exists(fileInput))
-                {
-                    File.Copy(fileInput, @"C:\CHKCPU\CPUPN.txt", true);
-                }
+                downloadFiles(@"C:\CHKCPU\CPUPN.txt",@"C:\CHKCPU\CHKCPU.BAT");
             }            
-            //C:\OA3\ copy FileInput 到C:\OA3\
-            //copy  CHKCPU CPUPN2个文件C:\CHKCPU\
 
-            //运行CHKCPU
-            try
-            {
-                string targetDir = string.Format(@"C:\CHKCPU\");//this is where testChange.bat lies
-                Process proc = new Process();
-                proc.StartInfo.WorkingDirectory = targetDir;
-                proc.StartInfo.FileName = "CHKCPU.BAT";
-               // proc.StartInfo.Arguments = string.Format("10");//this is argument
-                //proc.StartInfo.CreateNoWindow = true;
-                //proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
-                proc.Start();
-                proc.WaitForExit();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
-            }
+            runBatFile(@"C:\CHKCPU\", "CHKCPU.BAT");
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             button2_Click(null, null);//fru
-           
-            //copy  CHKCPU CPUPN2个文件C:\CHKCPU\
-            //运行CHKCPU
 
-            string dir = Directory.GetCurrentDirectory() + "\\Files\\";
-            if (Directory.Exists(dir))
-            {
-                string fileInput = dir + "CHKCPU.BAT";
-                if (File.Exists(fileInput))
-                {
-                    File.Copy(fileInput, @"C:\CHKCPU\CHKCPU.BAT", true);
-                }
+            downloadFiles(@"C:\CHKCPU\CPUPN.txt", @"C:\CHKCPU\CHKCPU.BAT");
 
-                fileInput = dir + "CPUPN.txt";
-                if (File.Exists(fileInput))
-                {
-                    File.Copy(fileInput, @"C:\CHKCPU\CPUPN.txt", true);
-                }
-            }
-
-            //C:\OA3\ copy FileInput 到C:\OA3\
-            //copy  CHKCPU CPUPN2个文件C:\CHKCPU\
-
-            //运行CHKCPU
-            try
-            {
-                string targetDir = string.Format(@"C:\CHKCPU\");//this is where testChange.bat lies
-                Process proc = new Process();
-                proc.StartInfo.WorkingDirectory = targetDir;
-                proc.StartInfo.FileName = "CHKCPU.BAT";
-                // proc.StartInfo.Arguments = string.Format("10");//this is argument
-                //proc.StartInfo.CreateNoWindow = true;
-                //proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
-                proc.Start();
-                proc.WaitForExit();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
-            }
+            runBatFile(@"C:\CHKCPU\", "CHKCPU.BAT");
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            //运行C:\CHKDPK\CHKDPK.bat 生成DPK.txt
+            runBatFile(@"C:\CHKDPK\", "CHKDPK.BAT");
+        }
+
+        private void runBatFile(string path, string filename)
+        {
             try
             {
-                string targetDir = string.Format(@"C:\CHKDPK\");//this is where testChange.bat lies
+                string targetDir = string.Format(path);//this is where testChange.bat lies
                 Process proc = new Process();
                 proc.StartInfo.WorkingDirectory = targetDir;
-                proc.StartInfo.FileName = "CHKDPK.BAT";
+                proc.StartInfo.FileName = filename;
                 // proc.StartInfo.Arguments = string.Format("10");//this is argument
                 //proc.StartInfo.CreateNoWindow = true;
                 //proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
@@ -478,5 +418,62 @@ namespace SaledServices.Test_Outlook
                 Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
             }
         }
+
+        private void downloadFiles(string cpupnfile, string chkcpufile)
+        {
+            try
+            {
+                if (File.Exists(cpupnfile))
+                {
+                    File.Delete(cpupnfile);
+                }
+                if (File.Exists(chkcpufile))
+                {
+                    File.Delete(chkcpufile);
+                }
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "SELECT cpupn, chkcpu FROM " + tableName;
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        byte[] cpupn = (byte[])reader.GetValue(0);
+                        byte[] chkcpu = (byte[])reader.GetValue(1);
+
+                        string saveFileName = cpupnfile;
+                        int arraysize = new int();
+                        arraysize = cpupn.GetUpperBound(0);
+                        FileStream fs = new FileStream(saveFileName, FileMode.OpenOrCreate, FileAccess.Write);
+                        fs.Write(cpupn, 0, arraysize);
+                        fs.Close();
+
+                        saveFileName = chkcpufile;
+                        arraysize = chkcpu.GetUpperBound(0);
+                        fs = new FileStream(saveFileName, FileMode.OpenOrCreate, FileAccess.Write);
+                        fs.Write(chkcpu, 0, arraysize);
+                        fs.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+      
     }
 }

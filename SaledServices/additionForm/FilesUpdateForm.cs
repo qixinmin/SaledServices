@@ -140,14 +140,14 @@ namespace SaledServices
                         byte[] cpupn = (byte[])reader.GetValue(0);
                         byte[] chkcpu = (byte[])reader.GetValue(1);
 
-                        string saveFileName = @"D:\cpupn.txt";
+                        string saveFileName = @"D:\CPUPN.txt";
                         int arraysize = new int();
                         arraysize = cpupn.GetUpperBound(0);
                         FileStream fs = new FileStream(saveFileName, FileMode.OpenOrCreate, FileAccess.Write);
                         fs.Write(cpupn, 0, arraysize);
                         fs.Close();
 
-                        saveFileName = @"D:\chkcpu.txt";
+                        saveFileName = @"D:\CHKCPU.BAT";
                         arraysize = chkcpu.GetUpperBound(0);
                         fs = new FileStream(saveFileName, FileMode.OpenOrCreate, FileAccess.Write);
                         fs.Write(chkcpu, 0, arraysize);
