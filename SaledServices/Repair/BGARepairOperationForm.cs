@@ -208,36 +208,47 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select top 1 countNum from bga_repair_record_table where track_serial_no='" + track_serial_no_txt + "' and bgaType='" + bgatype_txt + "' and countNum='" + countNum_txt + "' order by Id desc";
+                    cmd.CommandText = "select top 1 bga_repair_result from bga_repair_record_table where track_serial_no='" + track_serial_no_txt + "'  order by Id desc";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    int countNum = 0;
+                    string previousbgastatus = "";
                     while (querySdr.Read())
                     {
-                        countNum = Int32.Parse(querySdr[0].ToString());
+                        previousbgastatus = querySdr[0].ToString();
                     }
                     querySdr.Close();
 
-                    if (countNum == 0)//没有查到记录
+                    if (previousbgastatus == "")//没有查到记录
                     {
                         if (bgaRepairResult_txt != "BGA待换")
                         {
-                            MessageBox.Show("之前没有BGA待换记录，状态不对，需要记录为BGA待换！");
+                            MessageBox.Show("之前没有BGA待换记录，状态不对，需要记录为 BGA待换！");
+                            clearInput();
                             conn.Close();
                             return;
                         }
                     }
 
-                    if (countNum > 0)//保证之前有个记录，说明刷过了
+                    if (previousbgastatus == "BGA待换")//保证之前有个记录，说明刷过了
                     {
                         if (bgaRepairResult_txt == "BGA待换")
                         {
                             MessageBox.Show("之前已经有BGA待换记录，状态不对！");
+                            clearInput();
                             conn.Close();
                             return;
                         }
                     }
-
+                    else//除bga待换外其他各种情况
+                    {
+                        if (bgaRepairResult_txt != "BGA待换")
+                        {
+                            MessageBox.Show("之前没有BGA待换记录，状态不对，需要记录为 BGA待换！");
+                            clearInput();
+                            conn.Close();
+                            return;
+                        }
+                    }
 
                     if (this.oldSntextBox.ReadOnly == false && this.oldSntextBox.Text == "")
                     {
@@ -250,6 +261,7 @@ namespace SaledServices
                     {
                         MessageBox.Show("换上的BGA SN的输入为空，请检查!");
                         conn.Close();
+
                         return;
                     }
 
@@ -304,11 +316,44 @@ namespace SaledServices
 
             if (error == false)
             {
-                MessageBox.Show("添加维修数据成功");
+                MessageBox.Show("添加BGA维修数据成功");
                 this.bgaRepair_resultcomboBox.Text = "";
                 this.track_serial_noTextBox.Text = "";
                 query_Click(null, null);
             }
+        }
+
+        private void clearInput()
+        {
+            this.track_serial_noTextBox.Text = "";
+            this.vendorTextBox.Text = "";
+            this.producttextBox.Text = "";
+            this.sourcetextBox.Text = "";
+            this.ordernotextBox.Text = "";
+            this.receivedatetextBox.Text = "";
+            this.mb_brieftextBox.Text = "";
+            this.custom_serial_notextBox.Text = "";
+            this.vendor_serail_notextBox.Text = "";
+            this.mpntextBox.Text = "";
+            this.mb_make_dateTextBox.Text = "";
+            this.customFaulttextBox.Text = "";
+            this.fault_describetextBox.Text = "";
+            this.mbfa1label.Text = "";
+            this.shortcutlabel.Text = "";
+
+            this.bgatypetextBox.Text = "";
+
+            this.BGAPNtextBox.Text = "";
+            this.BGA_placetextBox.Text = "";
+            this.bga_brieftextBox.Text = "";
+
+           
+            this.repair_datetextBox.Text = "";
+
+            this.bgarepairertextBox.Text = "";
+
+            this.bgaRepair_resultcomboBox.Text = "";
+            bgaRepair_resultcomboBox.SelectedIndex = -1;
         }
 
         private void query_Click(object sender, EventArgs e)

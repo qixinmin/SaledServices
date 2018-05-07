@@ -128,7 +128,20 @@ namespace SaledServices
 
                     if (bga_repair_result != "" && bga_repair_result == "BGA待换")
                     {
-                        MessageBox.Show("BGA的状态不应该是BGA待换！");
+                        MessageBox.Show("BGA的状态不应该是BGA待换，BGA的维修状态还没有完成！！！");
+                        this.vendorTextBox.Text = "";
+                        this.producttextBox.Text = "";
+                        this.sourcetextBox.Text = "";
+                        this.ordernotextBox.Text = "";
+                        this.receivedatetextBox.Text = "";
+                        this.mb_describetextBox.Text = "";
+                        this.mb_brieftextBox.Text = "";
+                        this.custom_serial_notextBox.Text = "";
+                        this.vendor_serail_notextBox.Text = "";
+                        this.mpntextBox.Text = "";
+                        this.mb_make_dateTextBox.Text = "";
+                        this.customFaulttextBox.Text = "";
+                        this.ECOtextBox.Text = "";
                         mConn.Close();
                         return;
                     }
@@ -447,66 +460,103 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select top 1 countNum from bga_wait_record_table where track_serial_no='" + track_serial_no_txt + "' and bgatype='" + bgaType + "' and _status='BGA不良' order by Id desc";
-
+                    //事先查询板子的状态，1.序列号不存在，则可以查入 2.若之前的记录是在（BGA更换不良/BGA更换OK待测）也可以插入 其他情况不可以
+                    cmd.CommandText = "select top 1 _status from bga_wait_record_table where track_serial_no='" + track_serial_no_txt + "' order by Id desc";
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    int countNum = 0;
+                    string previousStatus = "";
                     while (querySdr.Read())
                     {
-                        countNum = Int32.Parse(querySdr[0].ToString());
+                        previousStatus = querySdr[0].ToString();
                     }
                     querySdr.Close();
 
-                    if (countNum == 0)
+                    if (previousStatus == "")
                     {
-                        if (status != "BGA不良")
+                        if (this.statusComboBox.Text != "BGA不良")
                         {
-                            MessageBox.Show("状态输入框不对！应该是BGA不良");
+                            error = true;
+                            MessageBox.Show("状态输入框错误，之前是:" + previousStatus);
                             conn.Close();
                             return;
                         }
                     }
-
-                    if (status != "BGA不良" && countNum > 0)//说明板子修好了,从BGA维修哪里回来了
+                    else if (previousStatus == "BGA不良")
                     {
-                        //countNum = countNum;
+                        if (this.statusComboBox.Text == "BGA不良")
+                        {
+                            error = true;
+                            MessageBox.Show("状态输入框错误，之前是:" + previousStatus);
+                            conn.Close();
+                            return;
+                        }
+                        else//其他三种情况（BGA更换不良、BGA更换OK待测、BGA更换报废)，查询BGA的维修记录
+                        {
+                            cmd.CommandText = "select top 1 bga_repair_result from bga_repair_record_table where track_serial_no='" + track_serial_no_txt + "' order by Id desc";
+                            querySdr = cmd.ExecuteReader();
+                            string bgarepairStatus = "";
+                            while (querySdr.Read())
+                            {
+                                bgarepairStatus = querySdr[0].ToString();
+                            }
+                            querySdr.Close();
+                            if (bgarepairStatus == "更换OK待测量" || bgarepairStatus == "更换NG")
+                            {
+                                error = false;
+                            }
+                            else
+                            {
+                                error = true;
+                                MessageBox.Show("BGA站别维修状态不对！现在是:" + bgarepairStatus);
+                                conn.Close();
+                                return;
+                            }
+                        }
                     }
-                    else
+                    else //previousStatus其他三种情况（BGA更换不良、BGA更换OK待测、BGA更换报废)，查询BGA的维修记录
                     {
-                        countNum = countNum + 1;
+                        if (this.statusComboBox.Text != "BGA不良")
+                        {
+                            error = true;
+                            MessageBox.Show("状态输入框错误，之前是:" + previousStatus);
+                            conn.Close();
+                            return;
+                        }                       
                     }
 
-                    cmd.CommandText = "INSERT INTO bga_wait_record_table VALUES('"
-                        + track_serial_no_txt + "','"
-                        + status + "','"
-                        + vendor_txt + "','"
-                        + product_txt + "','"
-                        + source_txt + "','"
-                        + orderno_txt + "','"
-                        + receivedate_txt + "','"
-                        + mb_describe_txt + "','"
-                        + mb_brief_txt + "','"
-                        + custom_serial_no_txt + "','"
-                        + vendor_serail_no_txt + "','"
-                        + mpn_txt + "','"
-                        + mb_make_date_txt + "','"
-                        + customFault_txt + "','"
-                        + ECO_txt + "','"
-                        + mbfa1rich_txt + "','"
-                        + short_cut_txt + "','"
-                        + bgaType + "','"
-                        + BGAPN_txt + "','"
-                        + BGA_place_txt + "','"
-                        + bga_brief_txt + "','"
-                        + repairer_txt + "','"
-                        + repair_date_txt + "','"
-                        + countNum + "')";//在原来的基础上加1
-                    
-                    cmd.ExecuteNonQuery();
+                    if (error == false)
+                    {
+                        cmd.CommandText = "INSERT INTO bga_wait_record_table VALUES('"
+                           + track_serial_no_txt + "','"
+                           + status + "','"
+                           + vendor_txt + "','"
+                           + product_txt + "','"
+                           + source_txt + "','"
+                           + orderno_txt + "','"
+                           + receivedate_txt + "','"
+                           + mb_describe_txt + "','"
+                           + mb_brief_txt + "','"
+                           + custom_serial_no_txt + "','"
+                           + vendor_serail_no_txt + "','"
+                           + mpn_txt + "','"
+                           + mb_make_date_txt + "','"
+                           + customFault_txt + "','"
+                           + ECO_txt + "','"
+                           + mbfa1rich_txt + "','"
+                           + short_cut_txt + "','"
+                           + bgaType + "','"
+                           + BGAPN_txt + "','"
+                           + BGA_place_txt + "','"
+                           + bga_brief_txt + "','"
+                           + repairer_txt + "','"
+                           + repair_date_txt + "','"
+                           + "0" + "')";
 
-                    cmd.CommandText = "update stationInformation set station = 'BGA', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                              + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "update stationInformation set station = 'BGA', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                                  + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                        cmd.ExecuteNonQuery();
+                    }
                 }
                 else
                 {
@@ -527,13 +577,36 @@ namespace SaledServices
                 MessageBox.Show("添加维修数据成功");
 
                 this.track_serial_noTextBox.Text = "";
-                this.statusComboBox.Text = "";
+                this.statusComboBox.SelectedIndex = -1;
                 
                 this.mpntextBox.Text = "";                
                 
                 this.BGAPNtextBox.Text = "";
                 this.BGA_placetextBox.Text = "";
                 this.bga_brieftextBox.Text = "";
+
+                this.vendorTextBox.Text = "";
+                this.producttextBox.Text = "";
+                this.sourcetextBox.Text = "";
+                this.ordernotextBox.Text = "";
+                this.receivedatetextBox.Text = "";
+                this.mb_describetextBox.Text = "";
+                this.mb_brieftextBox.Text = "";
+                this.custom_serial_notextBox.Text = "";
+                this.vendor_serail_notextBox.Text = "";
+                this.mpntextBox.Text = "";
+                this.mb_make_dateTextBox.Text = "";
+                this.customFaulttextBox.Text = "";
+
+                this.mbfa1richTextBox.Text = "";
+
+                this.ECOtextBox.Text = "";
+                this.BGAPNtextBox.Text = "";
+                this.BGA_placetextBox.Text = "";
+                this.bga_brieftextBox.Text = "";
+
+                //this.repairertextBox.Text = "";
+                this.repair_datetextBox.Text = "";
                
                 //this.repairertextBox.Text = "";
                 this.repair_datetextBox.Text = "";
