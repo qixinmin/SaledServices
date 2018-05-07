@@ -1,0 +1,206 @@
+
+
+:START
+C:
+CD\CHKCPU
+SET CPUFLAG=ERR
+CALL BOM.BAT
+
+
+if "%MODELID%" == "BTUU1" GOTO CHECK
+if "%MODELID%" == "AIUU2" GOTO CHECK
+if "%MODELID%" == "ACLU0" GOTO CHECK
+if "%MODELID%" == "ACLU7" GOTO CHECK
+if "%MODELID%" == "ACLU9" GOTO CHECK
+if "%MODELID%" == "ACLU1" GOTO CHECK
+if "%MODELID%" == "ACLU2" GOTO CHECK
+if "%MODELID%" == "ACLU3" GOTO CHECK
+if "%MODELID%" == "ACLU4" GOTO CHECK
+if "%MODELID%" == "BCLU0" GOTO CHECK
+if "%MODELID%" == "BY410" GOTO CHECK
+if "%MODELID%" == "ACLUA" GOTO CHECK
+if "%MODELID%" == "ACLUB" GOTO CHECK
+if "%MODELID%" == "ACLUJ" GOTO CHECK
+if "%MODELID%" == "ACLUK" GOTO CHECK
+if "%MODELID%" == "AIUU0" GOTO CHECK
+if "%MODELID%" == "VIUU3" GOTO CHECK
+if "%MODELID%" == "BG501" GOTO CHECK
+if "%MODELID%" == "AIUU3" GOTO CHECK
+if "%MODELID%" == "BG504" GOTO CHECK
+if "%MODELID%" == "BG404" GOTO CHECK
+if "%MODELID%" == "BG401" GOTO CHECK
+if "%MODELID%" == "AIUU1" GOTO CHECK
+if "%MODELID%" == "VIUU4" GOTO CHECK
+if "%MODELID%" == "AILZ1" GOTO CHECK
+if "%MODELID%" == "ACLU8" GOTO CHECK
+if "%MODELID%" == "ACLUG" GOTO CHECK
+if "%MODELID%" == "BY510" GOTO CHECK
+if "%MODELID%" == "BMWQ2" GOTO CHECK
+if "%MODELID%" == "BY511" GOTO CHECK
+if "%MODELID%" == "BMWC1" GOTO CHECK
+if "%MODELID%" == "BMWC2" GOTO CHECK
+if "%MODELID%" == "BMWQ1" GOTO CHECK
+if "%MODELID%" == "BMWQ3" GOTO CHECK
+if "%MODELID%" == "BMWQ4" GOTO CHECK
+if "%MODELID%" == "CY510" GOTO CHECK
+if "%MODELID%" == "CG510" GOTO CHECK
+if "%MODELID%" == "CG410" GOTO CHECK
+if "%MODELID%" == "BYG40" GOTO CHECK
+if "%MODELID%" == "BYG43" GOTO CHECK
+if "%MODELID%" == "CY420" GOTO CHECK
+if "%MODELID%" == "BY710" GOTO CHECK
+if "%MODELID%" == "CMX40" GOTO CHECK
+if "%MODELID%" == "CG411" GOTO CHECK
+if "%MODELID%" == "CYG11" GOTO CHECK
+if "%MODELID%" == "CB510" GOTO CHECK
+if "%MODELID%" == "CZ511" GOTO CHECK
+if "%MODELID%" == "CG520" GOTO CHECK
+if "%MODELID%" == "CG521" GOTO CHECK
+if "%MODELID%" == "CYG41" GOTO CHECK
+if "%MODELID%" == "BYG42" GOTO CHECK
+if "%MODELID%" == "CZ513" GOTO CHECK
+if "%MODELID%" == "CG413" GOTO CHECK
+if "%MODELID%" == "CG516" GOTO CHECK
+if "%MODELID%" == "DYG21" GOTO CHECK
+if "%MODELID%" == "CYG50" GOTO CHECK
+if "%MODELID%" == "DMX51" GOTO CHECK
+if "%MODELID%" == "DG51E" GOTO CHECK
+if "%MODELID%" == "DY720" GOTO CHECK
+if "%MODELID%" == "DMX50" GOTO CHECK
+if "%MODELID%" == "DY512" GOTO CHECK
+if "%MODELID%" == "CG513" GOTO CHECK
+if "%MODELID%" == "CTA00" GOTO CHECK
+if "%MODELID%" == "CTA10" GOTO CHECK
+if "%MODELID%" == "CTA01" GOTO CHECK
+if "%MODELID%" == "CG41B" GOTO CHECK
+if "%MODELID%" == "DG52A" GOTO CHECK
+if "%MODELID%" == "DG42A" GOTO CHECK
+if "%MODELID%" == "DG525" GOTO CHECK
+if "%MODELID%" == "DG526" GOTO CHECK
+if "%MODELID%" == "DY730" GOTO CHECK
+if "%MODELID%" == "DY520" GOTO CHECK
+if "%MODELID%" == "DY510" GOTO CHECK
+if "%MODELID%" == "BY513" GOTO CHECK
+if "%MODELID%" == "DG521" GOTO CHECK
+if "%MODELID%" == "DG524" GOTO CHECK
+if "%MODELID%" == "DG424" GOTO CHECK
+if "%MODELID%" == "DY515" GOTO CHECK
+if "%MODELID%" == "ES322" GOTO CHECK
+if "%MODELID%" == "DG522" GOTO CHECK
+if "%MODELID%" == "AIA25" GOTO CHECK
+if "%MODELID%" == "AIA20" GOTO CHECK
+if "%MODELID%" == "AIA30" GOTO CHECK
+if "%MODELID%" == "AIA10" GOTO CHECK
+if "%MODELID%" == "AIA11" GOTO CHECK
+if "%MODELID%" == "CCA20" GOTO CHECK
+if "%MODELID%" == "CCA21" GOTO CHECK
+if "%MODELID%" == "ASA00" GOTO CHECK
+if "%MODELID%" == "AAA51" GOTO CHECK
+if "%MODELID%" == "AAA71" GOTO CHECK
+if "%MODELID%" == "CTA00" GOTO CHECK
+if "%MODELID%" == "CTA01" GOTO CHECK
+if "%MODELID%" == "CTA10" GOTO CHECK
+if "%MODELID%" == "DCA20" GOTO CHECK
+if "%MODELID%" == "DCA21" GOTO CHECK
+if "%MODELID%" == "DCA30" GOTO CHECK
+if "%MODELID%" == "DCA31" GOTO CHECK
+if "%MODELID%" == "EZ511" GOTO CHECK
+if "%MODELID%" == "DYG60" GOTO CHECK
+if "%MODELID%" == "DXA00" GOTO CHECK
+if "%MODELID%" == "DZ521" GOTO CHECK
+if "%MODELID%" == "EG526" GOTO CHECK	
+GOTO NOCPU
+
+
+
+
+:CHECK
+for /f "tokens=1,2,3 delims=	" %%a in (CPUPN.TXT) do (if "%%a" == "%MBPN%" SET BOMCPU=%%b&SET BOMCPUHZ=%%c&&GOTO GET_CPU_DATA)
+if not defined BOMCPU GOTO MISSSKU
+
+
+:GET_CPU_DATA
+IF EXIST ERROR.TXT DEL ERROR.TXT
+IF EXIST CPUCHK.TXT DEL CPUCHK.TXT
+CPUINFO.EXE >CPUCHK.TXT
+IF NOT EXIST CPUCHK.TXT GOTO START
+
+:CPUMODEL
+IF EXIST ERROR.TXT DEL ERROR.TXT
+STRCMP /F:CPUCHK.TXT /C:"%BOMCPU%"
+IF EXIST ERROR.TXT GOTO CPUFAIL
+
+:CPUFRE
+IF "%BOMCPUHZ%" == "N/A" GOTO CPUOK
+
+STRCMP /F:CPUCHK.TXT /C:"%BOMCPUHZ%"
+IF EXIST ERROR.TXT GOTO CPUFAIL
+GOTO CPUOK
+
+
+
+
+:NOCPU
+@ECHO.-----------------------------------------------------------------
+
+@ECHO This M/B was not the onboard CPU PLS double check 
+@ECHO This M/B was not the onboard CPU PLS double check 
+@ECHO This M/B was not the onboard CPU PLS double check 
+@ECHO.-----------------------------------------------------------------
+
+ShowErr.exe M NOCPU.BMP
+pause
+goto writeDPK
+
+:MISSSKU
+SET CPUFLAG=MISSSKU
+CLS
+
+@ECHO.-----------------------------------------------------------------
+
+@ECHO  CPUPN=%CPUPN%.MBSN=%MBPN%. not exist in CPUPN.txt
+@ECHO  HDIMB=%HDIMB%. not exist in CPUPN.txt
+@ECHO  Please CHECK PROGRAMS BY QA /SWDL update
+@ECHO.-----------------------------------------------------------------
+ShowErr.exe M MISSPN.BMP
+pause
+pause
+GOTO START
+
+:CPUFAIL
+SET CPUFLAG=CPUFAIL
+CLS
+@echo.-----------------------------------------------------------------
+@ECHO SFIS BOM:%BOMCPU%
+@ECHO QA   BOM:CPU error
+@ECHO Please call auditor to check
+@echo.-----------------------------------------------------------------
+ShowErr.exe M CPUERROR.BMP
+pause
+pause
+GOTO START
+
+:CPUOK
+@echo.-----------------------------------------------------------------
+@ECHO CPU CHECK OK
+@ECHO CPU CHECK OK
+@ECHO CPU CHECK OK
+@echo.-----------------------------------------------------------------
+PAUSE
+:writeDPK
+CALL BOM.BAT
+
+set OS=%DPK:~0,6%
+IF /I "%OS%" == "NOK" GOTO NODPK
+
+
+
+CALL C:\OA3\OA3KEY.BAT
+
+PAUSE
+END
+
+:NODPK
+ShowErr.exe M NODPK.BMP
+PAUSE
+:END 

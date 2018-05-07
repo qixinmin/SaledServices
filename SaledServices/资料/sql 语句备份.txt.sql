@@ -18,6 +18,11 @@ ECO NVARCHAR(128), /*ECO*/
 repairer NVARCHAR(128) NOT NULL, /*维修人*/
 repair_date date, /*修复日期*/
 )
+/*存储文件数据库*/
+CREATE TABLE TestCpu(
+    cpupn image,
+    chkcpu image 
+)
 
 /*不良品入库表*/
 CREATE TABLE fault_mb_enter_record_table(

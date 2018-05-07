@@ -46,6 +46,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.confirmbutton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,12 +78,16 @@
             this.tableLayoutPanel1.Controls.Add(this.button1, 5, 2);
             this.tableLayoutPanel1.Controls.Add(this.confirmbutton, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.button2, 4, 1);
+            this.tableLayoutPanel1.Controls.Add(this.button3, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.button4, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(this.button5, 5, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(879, 358);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -141,7 +148,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 280);
+            this.label6.Location = new System.Drawing.Point(3, 260);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 12);
             this.label6.TabIndex = 5;
@@ -150,7 +157,7 @@
             // keyidtextBox
             // 
             this.keyidtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.keyidtextBox.Location = new System.Drawing.Point(73, 283);
+            this.keyidtextBox.Location = new System.Drawing.Point(73, 263);
             this.keyidtextBox.Name = "keyidtextBox";
             this.keyidtextBox.ReadOnly = true;
             this.keyidtextBox.Size = new System.Drawing.Size(211, 21);
@@ -159,7 +166,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(290, 280);
+            this.label7.Location = new System.Drawing.Point(290, 260);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 12);
             this.label7.TabIndex = 6;
@@ -168,7 +175,7 @@
             // KEYSERIALtextBox
             // 
             this.KEYSERIALtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KEYSERIALtextBox.Location = new System.Drawing.Point(369, 283);
+            this.KEYSERIALtextBox.Location = new System.Drawing.Point(369, 263);
             this.KEYSERIALtextBox.Name = "KEYSERIALtextBox";
             this.KEYSERIALtextBox.ReadOnly = true;
             this.KEYSERIALtextBox.Size = new System.Drawing.Size(168, 21);
@@ -177,7 +184,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(290, 140);
+            this.label5.Location = new System.Drawing.Point(290, 130);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 12);
             this.label5.TabIndex = 10;
@@ -186,7 +193,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 140);
+            this.label4.Location = new System.Drawing.Point(3, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 12);
             this.label4.TabIndex = 9;
@@ -195,7 +202,7 @@
             // cpuFreqtextBox
             // 
             this.cpuFreqtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cpuFreqtextBox.Location = new System.Drawing.Point(369, 143);
+            this.cpuFreqtextBox.Location = new System.Drawing.Point(369, 133);
             this.cpuFreqtextBox.Name = "cpuFreqtextBox";
             this.cpuFreqtextBox.ReadOnly = true;
             this.cpuFreqtextBox.Size = new System.Drawing.Size(168, 21);
@@ -204,7 +211,7 @@
             // cpuTypetextBox
             // 
             this.cpuTypetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cpuTypetextBox.Location = new System.Drawing.Point(73, 143);
+            this.cpuTypetextBox.Location = new System.Drawing.Point(73, 133);
             this.cpuTypetextBox.Name = "cpuTypetextBox";
             this.cpuTypetextBox.ReadOnly = true;
             this.cpuTypetextBox.Size = new System.Drawing.Size(211, 21);
@@ -212,7 +219,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(682, 283);
+            this.button1.Location = new System.Drawing.Point(682, 263);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(72, 23);
             this.button1.TabIndex = 1;
@@ -222,7 +229,7 @@
             // 
             // confirmbutton
             // 
-            this.confirmbutton.Location = new System.Drawing.Point(543, 283);
+            this.confirmbutton.Location = new System.Drawing.Point(543, 263);
             this.confirmbutton.Name = "confirmbutton";
             this.confirmbutton.Size = new System.Drawing.Size(107, 23);
             this.confirmbutton.TabIndex = 1;
@@ -232,13 +239,43 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(543, 143);
+            this.button2.Location = new System.Drawing.Point(543, 133);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 92);
             this.button2.TabIndex = 1;
             this.button2.Text = "确认生成文件，并准备重启";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(369, 319);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(107, 23);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "仁宝OA3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(543, 319);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(107, 23);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "联宝OA3";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(682, 319);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(107, 23);
+            this.button5.TabIndex = 1;
+            this.button5.Text = "DPK烧录检查";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // TestAllForm
             // 
@@ -275,5 +312,8 @@
         private System.Windows.Forms.TextBox cpuFreqtextBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }

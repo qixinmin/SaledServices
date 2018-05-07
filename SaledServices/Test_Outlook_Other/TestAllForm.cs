@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Diagnostics;
 
 namespace SaledServices.Test_Outlook
 {
@@ -229,7 +230,7 @@ namespace SaledServices.Test_Outlook
                 MessageBox.Show("追踪条码的内容为空，请检查！");
                 return;
             }
-            string generateFile = "D:\\fru\\DATE.TXT";
+            string generateFile = "D:\\fru\\DPK.txt";
             if (File.Exists(generateFile) == false)
             {
                 MessageBox.Show("是否已经做过相关操作，并重启过机器！");
@@ -359,9 +360,123 @@ namespace SaledServices.Test_Outlook
             Untils.createFile("D:\\fru\\", "BOM.bat", totalStr);
             Untils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
 
+            Untils.createFile("C:\\CHKCPU\\", "BOM.bat", totalStr);
+
             //清空变量
             KEYID = ""; this.keyidtextBox.Text = "";
             KEYSERIAL = ""; this.KEYSERIALtextBox.Text = "";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            button2_Click(null, null);//fru
+            string dir = Directory.GetCurrentDirectory()+"\\Files\\";
+            if (Directory.Exists(dir))
+            {
+                string fileInput = dir + "FileInput.xml";
+                if (File.Exists(fileInput))
+                {
+                    File.Copy(fileInput,@"C:\OA3\FileInput.xml",true);
+                }
+
+                fileInput = dir + "CHKCPU.BAT";
+                if (File.Exists(fileInput))
+                {
+                    File.Copy(fileInput, @"C:\CHKCPU\CHKCPU.BAT", true);
+                }
+
+                fileInput = dir + "CPUPN.txt";
+                if (File.Exists(fileInput))
+                {
+                    File.Copy(fileInput, @"C:\CHKCPU\CPUPN.txt", true);
+                }
+            }            
+            //C:\OA3\ copy FileInput 到C:\OA3\
+            //copy  CHKCPU CPUPN2个文件C:\CHKCPU\
+
+            //运行CHKCPU
+            try
+            {
+                string targetDir = string.Format(@"C:\CHKCPU\");//this is where testChange.bat lies
+                Process proc = new Process();
+                proc.StartInfo.WorkingDirectory = targetDir;
+                proc.StartInfo.FileName = "CHKCPU.BAT";
+               // proc.StartInfo.Arguments = string.Format("10");//this is argument
+                //proc.StartInfo.CreateNoWindow = true;
+                //proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                proc.Start();
+                proc.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            button2_Click(null, null);//fru
+           
+            //copy  CHKCPU CPUPN2个文件C:\CHKCPU\
+            //运行CHKCPU
+
+            string dir = Directory.GetCurrentDirectory() + "\\Files\\";
+            if (Directory.Exists(dir))
+            {
+                string fileInput = dir + "CHKCPU.BAT";
+                if (File.Exists(fileInput))
+                {
+                    File.Copy(fileInput, @"C:\CHKCPU\CHKCPU.BAT", true);
+                }
+
+                fileInput = dir + "CPUPN.txt";
+                if (File.Exists(fileInput))
+                {
+                    File.Copy(fileInput, @"C:\CHKCPU\CPUPN.txt", true);
+                }
+            }
+
+            //C:\OA3\ copy FileInput 到C:\OA3\
+            //copy  CHKCPU CPUPN2个文件C:\CHKCPU\
+
+            //运行CHKCPU
+            try
+            {
+                string targetDir = string.Format(@"C:\CHKCPU\");//this is where testChange.bat lies
+                Process proc = new Process();
+                proc.StartInfo.WorkingDirectory = targetDir;
+                proc.StartInfo.FileName = "CHKCPU.BAT";
+                // proc.StartInfo.Arguments = string.Format("10");//this is argument
+                //proc.StartInfo.CreateNoWindow = true;
+                //proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                proc.Start();
+                proc.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //运行C:\CHKDPK\CHKDPK.bat 生成DPK.txt
+            try
+            {
+                string targetDir = string.Format(@"C:\CHKDPK\");//this is where testChange.bat lies
+                Process proc = new Process();
+                proc.StartInfo.WorkingDirectory = targetDir;
+                proc.StartInfo.FileName = "CHKDPK.BAT";
+                // proc.StartInfo.Arguments = string.Format("10");//this is argument
+                //proc.StartInfo.CreateNoWindow = true;
+                //proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;//这里设置DOS窗口不显示，经实践可行
+                proc.Start();
+                proc.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
+            }
         }
     }
 }

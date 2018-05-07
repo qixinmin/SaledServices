@@ -42,6 +42,8 @@
             this.lCFC71BOM表查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dPKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.故障代码表查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.定时任务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.文件数据库操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,7 +94,6 @@
             this.出库入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表头ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.定时任务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,7 +167,8 @@
             this.lCFC71BOM表查看ToolStripMenuItem,
             this.dPKToolStripMenuItem,
             this.故障代码表查看ToolStripMenuItem,
-            this.定时任务ToolStripMenuItem});
+            this.定时任务ToolStripMenuItem,
+            this.文件数据库操作ToolStripMenuItem});
             this.FunctionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -220,6 +222,20 @@
             this.故障代码表查看ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.故障代码表查看ToolStripMenuItem.Text = "故障代码表查看";
             this.故障代码表查看ToolStripMenuItem.Click += new System.EventHandler(this.故障代码表查看ToolStripMenuItem_Click);
+            // 
+            // 定时任务ToolStripMenuItem
+            // 
+            this.定时任务ToolStripMenuItem.Name = "定时任务ToolStripMenuItem";
+            this.定时任务ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.定时任务ToolStripMenuItem.Text = "定时任务";
+            this.定时任务ToolStripMenuItem.Click += new System.EventHandler(this.定时任务ToolStripMenuItem_Click);
+            // 
+            // 文件数据库操作ToolStripMenuItem
+            // 
+            this.文件数据库操作ToolStripMenuItem.Name = "文件数据库操作ToolStripMenuItem";
+            this.文件数据库操作ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.文件数据库操作ToolStripMenuItem.Text = "文件数据库操作";
+            this.文件数据库操作ToolStripMenuItem.Click += new System.EventHandler(this.文件数据库操作ToolStripMenuItem_Click);
             // 
             // receiveReturnStoreMenuItem
             // 
@@ -623,13 +639,6 @@
             this.工单表体ToolStripMenuItem.Text = "工单表体";
             this.工单表体ToolStripMenuItem.Click += new System.EventHandler(this.工单表体ToolStripMenuItem_Click);
             // 
-            // 定时任务ToolStripMenuItem
-            // 
-            this.定时任务ToolStripMenuItem.Name = "定时任务ToolStripMenuItem";
-            this.定时任务ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.定时任务ToolStripMenuItem.Text = "定时任务";
-            this.定时任务ToolStripMenuItem.Click += new System.EventHandler(this.定时任务ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -718,6 +727,7 @@
         private System.Windows.Forms.ToolStripMenuItem 不良品出入库管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 材料名称ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 定时任务ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 文件数据库操作ToolStripMenuItem;
     }
 }
 

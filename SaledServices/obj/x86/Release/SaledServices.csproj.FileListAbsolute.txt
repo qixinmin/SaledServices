@@ -169,3 +169,7 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.csproj
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.MaterialNameForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FRU_OutSheetForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.TimerCheckForm.resources
+D:\维修系统\SaledServices\SaledServices\bin\Release\Files\CPUPN.txt
+D:\维修系统\SaledServices\SaledServices\bin\Release\Files\FileInput.xml
+D:\维修系统\SaledServices\SaledServices\bin\Release\Files\CHKCPU.BAT
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FilesUpdateForm.resources

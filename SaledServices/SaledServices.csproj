@@ -195,6 +195,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="additionForm\FileInputStream.cs" />
+    <Compile Include="additionForm\FilesUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\FilesUpdateForm.Designer.cs">
+      <DependentUpon>FilesUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="additionForm\MaterialNameForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -538,6 +545,9 @@
     <Compile Include="additionForm\VendorForm.Designer.cs">
       <DependentUpon>VendorForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="additionForm\FilesUpdateForm.resx">
+      <DependentUpon>FilesUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="additionForm\MaterialNameForm.resx">
       <DependentUpon>MaterialNameForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -718,6 +728,9 @@
     <Compile Include="CustomsContentClass\RealStockClass.cs" />
     <Compile Include="CustomsContentClass\StockInOutClass.cs" />
     <Compile Include="CustomsContentClass\WorkListBodyClass.cs" />
+    <None Include="Files\CHKCPU.BAT">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -751,6 +764,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Files\CPUPN.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\FileInput.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="wheat_128px_1169807_easyicon.net.ico" />
     <Content Include="资料\2.ico" />
     <None Include="资料\sql 语句备份.txt.sql" />

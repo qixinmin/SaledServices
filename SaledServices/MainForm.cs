@@ -993,5 +993,21 @@ namespace SaledServices
 
             allForm.Add(timerCheckForm);
         }
+
+        private FilesUpdateForm filesUpdateForm;
+        private void 文件数据库操作ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (filesUpdateForm == null || filesUpdateForm.IsDisposed)
+            {
+                filesUpdateForm = new FilesUpdateForm();
+                filesUpdateForm.MdiParent = this;
+            }
+
+            // filesUpdateForm.WindowState = FormWindowState.Maximized;
+            filesUpdateForm.BringToFront();
+            filesUpdateForm.Show();
+
+            allForm.Add(filesUpdateForm);
+        }
     }
 }
