@@ -514,6 +514,7 @@
             // 
             // bgaRepair_resultcomboBox
             // 
+            this.bgaRepair_resultcomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.bgaRepair_resultcomboBox.FormattingEnabled = true;
             this.bgaRepair_resultcomboBox.Items.AddRange(new object[] {
             "BGA待换",

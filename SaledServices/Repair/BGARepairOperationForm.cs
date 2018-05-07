@@ -222,7 +222,7 @@ namespace SaledServices
                     {
                         if (bgaRepairResult_txt != "BGA待换")
                         {
-                            MessageBox.Show("之前没有BGA待换记录，状态不对！");
+                            MessageBox.Show("之前没有BGA待换记录，状态不对，需要记录为BGA待换！");
                             conn.Close();
                             return;
                         }

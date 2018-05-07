@@ -758,10 +758,11 @@
             // 
             // material_mpnComboBox
             // 
+            this.material_mpnComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.material_mpnComboBox.FormattingEnabled = true;
             this.material_mpnComboBox.Location = new System.Drawing.Point(196, 173);
             this.material_mpnComboBox.Name = "material_mpnComboBox";
-            this.material_mpnComboBox.Size = new System.Drawing.Size(203, 24);
+            this.material_mpnComboBox.Size = new System.Drawing.Size(204, 24);
             this.material_mpnComboBox.TabIndex = 46;
             this.material_mpnComboBox.SelectedValueChanged += new System.EventHandler(this.material_mpnComboBox_SelectedValueChanged);
             // 

@@ -139,12 +139,37 @@ namespace SaledServices
 
                 conn.Close();
                 query_Click(null,null);
+                clearInput();
                 MessageBox.Show("FRU出库成功！");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void clearInput()
+        {
+            this.vendorcomboBox.Text = "";
+            this.buy_typeTextBox.Text = "";
+            this.productcomboBox.Text = "";
+            this.material_typeTextBox.Text = "";
+            this.mpnTextBox.Text = "";
+            this.mb_brieftextBox.Text = "";
+            this.material_nameTextBox.Text = "";
+            this.vendormaterialNoTextBox.Text = "";
+            this.describeTextBox.Text = "";
+            this.isDeclareTextBox.Text = "";
+
+            this.stock_out_numTextBox.Text = "";
+            this.pricePerTextBox.Text = "";
+            this.stock_placetextBox.Text = "";
+            this.takertextBox.Text = "";
+            this.inputerTextBox.Text = "";
+            this.use_describetextBox.Text = "";
+            this.notetextBox.Text = "";
+            this.input_dateTextBox.Text = "";
+            this.currentStockNumbertextBox.Text = "";
         }
 
         private void query_Click(object sender, EventArgs e)
@@ -487,6 +512,20 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
+                stock_out_numTextBox_Leave(null, null);
+            }
+        }
+
+        private void stock_out_numTextBox_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.stock_out_numTextBox.Text == "")
+                {
+                    MessageBox.Show("请输入数量！");
+                    return;
+                }
+
                 double requestNumber = Double.Parse(this.stock_out_numTextBox.Text);
                 double currentNumber = Double.Parse(this.currentStockNumbertextBox.Text.Trim());
                 if (requestNumber > currentNumber)
@@ -503,6 +542,10 @@ namespace SaledServices
                     this.stock_out_numTextBox.Focus();
                     return;
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
     }

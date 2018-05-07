@@ -450,7 +450,7 @@ namespace SaledServices
                     cmd.CommandText = "select top 1 countNum from bga_wait_record_table where track_serial_no='" + track_serial_no_txt + "' and bgatype='" + bgaType + "' and _status='BGA不良' order by Id desc";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    int countNum = 0;                 
+                    int countNum = 0;
                     while (querySdr.Read())
                     {
                         countNum = Int32.Parse(querySdr[0].ToString());
@@ -467,7 +467,7 @@ namespace SaledServices
                         }
                     }
 
-                    if (status != "BGA不良" && countNum > 0)//说明板子修好了,从VGA哪里回来了
+                    if (status != "BGA不良" && countNum > 0)//说明板子修好了,从BGA维修哪里回来了
                     {
                         //countNum = countNum;
                     }

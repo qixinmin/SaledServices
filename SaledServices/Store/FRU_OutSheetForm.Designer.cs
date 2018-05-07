@@ -92,7 +92,7 @@
             // add
             // 
             this.add.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.add.Location = new System.Drawing.Point(422, 9);
+            this.add.Location = new System.Drawing.Point(421, 9);
             this.add.Margin = new System.Windows.Forms.Padding(4);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(100, 31);
@@ -104,7 +104,7 @@
             // query
             // 
             this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.query.Location = new System.Drawing.Point(709, 9);
+            this.query.Location = new System.Drawing.Point(708, 9);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(100, 31);
@@ -116,7 +116,7 @@
             // modify
             // 
             this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.modify.Location = new System.Drawing.Point(957, 9);
+            this.modify.Location = new System.Drawing.Point(956, 9);
             this.modify.Margin = new System.Windows.Forms.Padding(4);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(100, 31);
@@ -374,6 +374,7 @@
             this.stock_out_numTextBox.Size = new System.Drawing.Size(158, 26);
             this.stock_out_numTextBox.TabIndex = 20;
             this.stock_out_numTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stock_out_numTextBox_KeyPress);
+            this.stock_out_numTextBox.Leave += new System.EventHandler(this.stock_out_numTextBox_Leave);
             // 
             // label19
             // 
@@ -611,7 +612,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.9325F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.85227F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.75F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 248F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 251F));
             this.tableLayoutPanel2.Controls.Add(this.delete, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.modify, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.query, 2, 0);
@@ -629,7 +630,7 @@
             // queryStock
             // 
             this.queryStock.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.queryStock.Location = new System.Drawing.Point(114, 9);
+            this.queryStock.Location = new System.Drawing.Point(113, 9);
             this.queryStock.Margin = new System.Windows.Forms.Padding(4);
             this.queryStock.Name = "queryStock";
             this.queryStock.Size = new System.Drawing.Size(100, 31);
