@@ -225,6 +225,12 @@
     <Compile Include="additionForm\StoreHouseForm.Designer.cs">
       <DependentUpon>StoreHouseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="additionForm\TimerCheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\TimerCheckForm.Designer.cs">
+      <DependentUpon>TimerCheckForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repair\BGAInfoInputForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -555,6 +561,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\CustomFaultForm.resx">
       <DependentUpon>CustomFaultForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\TimerCheckForm.resx">
+      <DependentUpon>TimerCheckForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\BGAInfoInputForm.resx">
       <DependentUpon>BGAInfoInputForm.cs</DependentUpon>

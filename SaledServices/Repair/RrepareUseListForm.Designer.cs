@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.choosebutton = new System.Windows.Forms.Button();
             this.refreshbutton = new System.Windows.Forms.Button();
@@ -49,14 +49,16 @@
             this.returnMaterialbutton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.materialdescribetextBox = new System.Windows.Forms.TextBox();
+            this.requestQuerybutton = new System.Windows.Forms.Button();
+            this.havedbutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -72,7 +74,7 @@
             // choosebutton
             // 
             this.choosebutton.Enabled = false;
-            this.choosebutton.Location = new System.Drawing.Point(763, 185);
+            this.choosebutton.Location = new System.Drawing.Point(763, 297);
             this.choosebutton.Name = "choosebutton";
             this.choosebutton.Size = new System.Drawing.Size(75, 23);
             this.choosebutton.TabIndex = 1;
@@ -82,7 +84,7 @@
             // 
             // refreshbutton
             // 
-            this.refreshbutton.Location = new System.Drawing.Point(763, 241);
+            this.refreshbutton.Location = new System.Drawing.Point(763, 326);
             this.refreshbutton.Name = "refreshbutton";
             this.refreshbutton.Size = new System.Drawing.Size(75, 23);
             this.refreshbutton.TabIndex = 1;
@@ -101,7 +103,7 @@
             // 
             // mb_brieftextBox
             // 
-            this.mb_brieftextBox.Location = new System.Drawing.Point(66, 21);
+            this.mb_brieftextBox.Location = new System.Drawing.Point(95, 21);
             this.mb_brieftextBox.Name = "mb_brieftextBox";
             this.mb_brieftextBox.Size = new System.Drawing.Size(100, 21);
             this.mb_brieftextBox.TabIndex = 3;
@@ -109,7 +111,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(189, 27);
+            this.label2.Location = new System.Drawing.Point(224, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 12);
             this.label2.TabIndex = 2;
@@ -117,7 +119,7 @@
             // 
             // material_mpntextBox
             // 
-            this.material_mpntextBox.Location = new System.Drawing.Point(260, 24);
+            this.material_mpntextBox.Location = new System.Drawing.Point(307, 24);
             this.material_mpntextBox.Name = "material_mpntextBox";
             this.material_mpntextBox.Size = new System.Drawing.Size(100, 21);
             this.material_mpntextBox.TabIndex = 3;
@@ -133,7 +135,7 @@
             // 
             // realNumbertextBox
             // 
-            this.realNumbertextBox.Location = new System.Drawing.Point(88, 69);
+            this.realNumbertextBox.Location = new System.Drawing.Point(95, 66);
             this.realNumbertextBox.Name = "realNumbertextBox";
             this.realNumbertextBox.ReadOnly = true;
             this.realNumbertextBox.Size = new System.Drawing.Size(100, 21);
@@ -142,7 +144,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(201, 128);
+            this.label4.Location = new System.Drawing.Point(224, 124);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 12);
             this.label4.TabIndex = 2;
@@ -150,7 +152,7 @@
             // 
             // thisNumbertextBox
             // 
-            this.thisNumbertextBox.Location = new System.Drawing.Point(284, 122);
+            this.thisNumbertextBox.Location = new System.Drawing.Point(307, 118);
             this.thisNumbertextBox.Name = "thisNumbertextBox";
             this.thisNumbertextBox.Size = new System.Drawing.Size(100, 21);
             this.thisNumbertextBox.TabIndex = 3;
@@ -159,7 +161,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(30, 131);
+            this.label5.Location = new System.Drawing.Point(30, 121);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 2;
@@ -167,7 +169,7 @@
             // 
             // notgood_placetextBox
             // 
-            this.notgood_placetextBox.Location = new System.Drawing.Point(95, 125);
+            this.notgood_placetextBox.Location = new System.Drawing.Point(95, 115);
             this.notgood_placetextBox.Name = "notgood_placetextBox";
             this.notgood_placetextBox.ReadOnly = true;
             this.notgood_placetextBox.Size = new System.Drawing.Size(100, 21);
@@ -193,7 +195,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(647, 128);
+            this.label7.Location = new System.Drawing.Point(484, 124);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(17, 12);
             this.label7.TabIndex = 2;
@@ -201,7 +203,7 @@
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(681, 119);
+            this.idTextBox.Location = new System.Drawing.Point(531, 118);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.ReadOnly = true;
             this.idTextBox.Size = new System.Drawing.Size(100, 21);
@@ -209,7 +211,7 @@
             // 
             // returnMaterialbutton
             // 
-            this.returnMaterialbutton.Location = new System.Drawing.Point(763, 296);
+            this.returnMaterialbutton.Location = new System.Drawing.Point(763, 355);
             this.returnMaterialbutton.Name = "returnMaterialbutton";
             this.returnMaterialbutton.Size = new System.Drawing.Size(75, 23);
             this.returnMaterialbutton.TabIndex = 1;
@@ -234,6 +236,26 @@
             this.materialdescribetextBox.Size = new System.Drawing.Size(100, 21);
             this.materialdescribetextBox.TabIndex = 3;
             // 
+            // requestQuerybutton
+            // 
+            this.requestQuerybutton.Location = new System.Drawing.Point(763, 155);
+            this.requestQuerybutton.Name = "requestQuerybutton";
+            this.requestQuerybutton.Size = new System.Drawing.Size(85, 56);
+            this.requestQuerybutton.TabIndex = 1;
+            this.requestQuerybutton.Text = "申请查询";
+            this.requestQuerybutton.UseVisualStyleBackColor = true;
+            this.requestQuerybutton.Click += new System.EventHandler(this.requestQuerybutton_Click);
+            // 
+            // havedbutton
+            // 
+            this.havedbutton.Location = new System.Drawing.Point(760, 218);
+            this.havedbutton.Name = "havedbutton";
+            this.havedbutton.Size = new System.Drawing.Size(102, 46);
+            this.havedbutton.TabIndex = 1;
+            this.havedbutton.Text = "已有材料查询";
+            this.havedbutton.UseVisualStyleBackColor = true;
+            this.havedbutton.Click += new System.EventHandler(this.havedbutton_Click);
+            // 
             // RrepareUseListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -257,6 +279,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.refreshbutton);
             this.Controls.Add(this.returnMaterialbutton);
+            this.Controls.Add(this.havedbutton);
+            this.Controls.Add(this.requestQuerybutton);
             this.Controls.Add(this.choosebutton);
             this.Controls.Add(this.dataGridView1);
             this.Name = "RrepareUseListForm";
@@ -290,5 +314,7 @@
         private System.Windows.Forms.Button returnMaterialbutton;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox materialdescribetextBox;
+        private System.Windows.Forms.Button requestQuerybutton;
+        private System.Windows.Forms.Button havedbutton;
     }
 }

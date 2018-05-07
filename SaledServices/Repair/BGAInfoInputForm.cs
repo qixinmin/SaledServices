@@ -380,6 +380,17 @@ namespace SaledServices
                 MessageBox.Show("输入的内容有空，请检查！");
                 return;
             }
+            if (this.VGA.Checked == false && this.CPU.Checked == false && this.PCH.Checked == false)
+            {
+                MessageBox.Show("VGA,CPU, PCH 必须选择一个！");
+                return;
+            }
+
+            if (this.BGA_placetextBox.Text == "")
+            {
+                MessageBox.Show("BGA位置必须输入信息!");
+                return;
+            }
 
             bool error = false;
             //1.包含NTF的逻辑， 所有输入的有效信息均为NTF， 2. 若第一次输入信息没有输入完毕，需提醒并把某些字段清空即可
@@ -584,6 +595,86 @@ namespace SaledServices
             tableLayoutPanel4.GetType().
                GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
                SetValue(tableLayoutPanel4, true, null);
+        }
+
+        private void checkPlace()
+        {
+            if (this.vendorTextBox.Text == "" || this.mb_brieftextBox.Text == "")
+            {
+                MessageBox.Show("请先输入条形码！");
+                return;
+            }
+
+            if (this.BGA_placetextBox.Text == "")
+            {
+                MessageBox.Show("请先输入BGA位置！");
+                return;
+            }
+
+            string tableName = "";
+            tableName = Constlist.table_name_LCFC_MBBOM;
+
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select L1 from " + tableName + " where mb_brief ='" + this.mb_brieftextBox.Text.Trim() + "' and vendor='" + this.vendorTextBox.Text.Trim() + "'";
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                string not_good_place = this.BGA_placetextBox.Text.Trim();
+                bool exist = false;
+                while (querySdr.Read())
+                {
+                    string temp = querySdr[0].ToString();
+                    if (temp != "" && temp.ToLower() == not_good_place.ToLower())
+                    {
+                        exist = true;
+                        break;
+                    }
+                }
+                querySdr.Close();
+
+                if (exist == false)
+                {
+                    this.BGA_placetextBox.Focus();
+                    this.BGA_placetextBox.SelectAll();
+                    MessageBox.Show("是否输入错误的位置信息，或者bom表信息不全！");
+                }
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private void BGA_placetextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                checkPlace();
+            }
+        }
+
+        private void statusComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (this.statusComboBox.Text == "BGA不良")
+            {
+                this.customFaulttextBox.ReadOnly = false;
+            }
+            else
+            {
+                this.customFaulttextBox.ReadOnly = true;
+            }
+        }
+
+        private void BGA_placetextBox_Leave(object sender, EventArgs e)
+        {
+            checkPlace();
         }
     }
 }

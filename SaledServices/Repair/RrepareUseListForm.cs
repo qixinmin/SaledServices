@@ -63,7 +63,7 @@ namespace SaledServices.Repair
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }            
+            }
 
             //数量要减一， 同时如果变成0，数量不显示出来
         }
@@ -128,6 +128,16 @@ namespace SaledServices.Repair
 
         private void choosebutton_Click(object sender, EventArgs e)
         {
+            if (this.material_mpntextBox.Text == "" || this.realNumbertextBox.Text == "")
+            {
+                MessageBox.Show("请选择一行做为使用！");
+                return;
+            }
+            if (this.thisNumbertextBox.Text == "")
+            {
+                MessageBox.Show("请输入使用数量！");
+                return;
+            }
             mParentForm.setPrepareUseDetail(idTextBox.Text, mb_brieftextBox.Text, material_mpntextBox.Text, notgood_placetextBox.Text, this.thisNumbertextBox.Text, totalUseNumber);
             this.Close();
         }
@@ -168,6 +178,65 @@ namespace SaledServices.Repair
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void requestQuerybutton_Click(object sender, EventArgs e)
+        {
+            this.refreshbutton.Enabled = false;
+            this.choosebutton.Enabled = false;
+            this.returnMaterialbutton.Enabled = false;
+
+            try
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.Columns.Clear();
+
+                // string sqlStr = "select top 100 * from fru_smt_out_stock where requester='"+tester+"'";
+                string sqlStr = "select Id,mb_brief,material_mpn,material_describe,not_good_place,realNumber,usedNumber from request_fru_smt_to_store_table where _status ='request' and requester='" + LoginForm.currentUser + "'";
+
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandText = sqlStr;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataAdapter sda = new SqlDataAdapter();
+                sda.SelectCommand = cmd;
+                DataSet ds = new DataSet();
+                sda.Fill(ds, "request_fru_smt_to_store_table");
+                dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.RowHeadersVisible = false;
+
+                string[] hTxt = { "ID", "机型", "材料mpn", "物料描述", "不良位置", "已有数量", "使用过的数量" };
+                for (int i = 0; i < hTxt.Length; i++)
+                {
+                    dataGridView1.Columns[i].HeaderText = hTxt[i];
+                    dataGridView1.Columns[i].Name = hTxt[i];
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            //数量要减一， 同时如果变成0，数量不显示出来
+        }
+
+        private void havedbutton_Click(object sender, EventArgs e)
+        {
+            this.refreshbutton.Enabled = true;
+            if (this.mParentForm != null)
+            {
+                this.choosebutton.Enabled = true;
+            }
+            else
+            {
+                this.choosebutton.Enabled = false;
+            }
+            
+            this.returnMaterialbutton.Enabled = true;
+            refreshbutton_Click(null, null);
         }
     }
 }

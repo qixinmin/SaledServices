@@ -100,13 +100,33 @@ namespace SaledServices
 
                 conn.Close();
                 query_Click(null, null);
+                clearInput();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
             MessageBox.Show("出库成功,请关闭本界面！");
-
+        }
+        private void clearInput()
+        {
+            this.vendorTextBox.Text = "";
+            this.buy_typeTextBox.Text = "";
+            this.productTextBox.Text = "";
+            this.material_typeTextBox.Text = "";
+            this.mpnTextBox.Text = "";
+            this.mb_brieftextBox.Text = "";
+            this.material_nameTextBox.Text = "";
+            this.vendormaterialNoTextBox.Text = "";
+            this.describeTextBox.Text = "";
+            this.isDeclareTextBox.Text = "";
+            this.stock_out_numTextBox.Text = "";
+            this.pricePerTextBox.Text = "";
+            this.stock_placetextBox.Text = "";
+            this.takertextBox.Text = "";
+            this.inputerTextBox.Text = "";
+            this.use_describetextBox.Text = "";
+            this.input_dateTextBox.Text = "";
         }
 
         private void query_Click(object sender, EventArgs e)

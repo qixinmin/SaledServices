@@ -28,8 +28,8 @@ namespace SaledServices
 
     public class Constlist
     {
-        public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
-        //public static string ConStr = "server=192.168.8.56;database=SaledService;uid=admin;pwd=admin";
+        //public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
+        public static string ConStr = "server=192.168.8.56;database=SaledService;uid=admin;pwd=admin";
 
         public static string table_MBMaterialCompare = "MB物料对照表";
         public static string table_name_MBMaterialCompare = "MBMaterialCompare";

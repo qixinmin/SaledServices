@@ -168,3 +168,4 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Vendor
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.csproj.GenerateResource.Cache
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.MaterialNameForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FRU_OutSheetForm.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.TimerCheckForm.resources

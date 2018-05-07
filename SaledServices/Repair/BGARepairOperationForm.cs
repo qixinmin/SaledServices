@@ -372,7 +372,7 @@ namespace SaledServices
             else
             {
                 this.oldSntextBox.Clear();
-                this.oldSntextBox.ReadOnly = true; ;
+                this.oldSntextBox.ReadOnly = true;
                 this.newSntextBox.Clear();
                 this.newSntextBox.ReadOnly = true;
             }

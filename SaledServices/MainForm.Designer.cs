@@ -92,6 +92,7 @@
             this.出库入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表头ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.定时任务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -164,7 +165,8 @@
             this.lCFCMBBOM查看ToolStripMenuItem,
             this.lCFC71BOM表查看ToolStripMenuItem,
             this.dPKToolStripMenuItem,
-            this.故障代码表查看ToolStripMenuItem});
+            this.故障代码表查看ToolStripMenuItem,
+            this.定时任务ToolStripMenuItem});
             this.FunctionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -233,14 +235,14 @@
             // 收货ToolStripMenuItem
             // 
             this.收货ToolStripMenuItem.Name = "收货ToolStripMenuItem";
-            this.收货ToolStripMenuItem.Size = new System.Drawing.Size(152, 32);
+            this.收货ToolStripMenuItem.Size = new System.Drawing.Size(124, 32);
             this.收货ToolStripMenuItem.Text = "收货";
             this.收货ToolStripMenuItem.Click += new System.EventHandler(this.收货ToolStripMenuItem_Click);
             // 
             // returnStoreMenuItem
             // 
             this.returnStoreMenuItem.Name = "returnStoreMenuItem";
-            this.returnStoreMenuItem.Size = new System.Drawing.Size(152, 32);
+            this.returnStoreMenuItem.Size = new System.Drawing.Size(124, 32);
             this.returnStoreMenuItem.Text = "还货";
             this.returnStoreMenuItem.Click += new System.EventHandler(this.returnStoreMenuItem_Click);
             // 
@@ -621,6 +623,13 @@
             this.工单表体ToolStripMenuItem.Text = "工单表体";
             this.工单表体ToolStripMenuItem.Click += new System.EventHandler(this.工单表体ToolStripMenuItem_Click);
             // 
+            // 定时任务ToolStripMenuItem
+            // 
+            this.定时任务ToolStripMenuItem.Name = "定时任务ToolStripMenuItem";
+            this.定时任务ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.定时任务ToolStripMenuItem.Text = "定时任务";
+            this.定时任务ToolStripMenuItem.Click += new System.EventHandler(this.定时任务ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -708,6 +717,7 @@
         private System.Windows.Forms.ToolStripMenuItem oBEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 不良品出入库管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 材料名称ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 定时任务ToolStripMenuItem;
     }
 }
 

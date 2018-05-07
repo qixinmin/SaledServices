@@ -142,7 +142,7 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select orderno, custom_materialNo,storehouse, ordertime,ordernum , receivedNum, returnNum from receiveOrder where vendor='" + vendorStr 
+                cmd.CommandText = "select orderno, custom_materialNo,storehouse, ordertime, ordernum, receivedNum, returnNum from receiveOrder where vendor='" + vendorStr 
                     + "' and product ='" + productStr + "' and _status = 'close'";
                 cmd.CommandType = CommandType.Text;
 

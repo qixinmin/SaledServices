@@ -260,7 +260,7 @@ custom_request_number NVARCHAR(128), /*申请单号*/
 )
 
 /*bga维修序列记录*/
-CREATE TABLE bga_wait_record_table(
+CREATE TABLE todo_table(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
 bgatype NVARCHAR(128), /*bga类型*/
