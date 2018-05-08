@@ -78,9 +78,9 @@
             this.tableLayoutPanel1.Controls.Add(this.button1, 5, 2);
             this.tableLayoutPanel1.Controls.Add(this.confirmbutton, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.button2, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button3, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.button4, 4, 3);
             this.tableLayoutPanel1.Controls.Add(this.button5, 5, 3);
+            this.tableLayoutPanel1.Controls.Add(this.button3, 3, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;

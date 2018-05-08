@@ -39,6 +39,10 @@ namespace SaledServices.Test_Outlook
 
                 try
                 {
+                    Untils.deleteFile("D:\\fru\\", "BOM.bat");
+                    Untils.deleteFile("D:\\fru\\", "BOM.NSH");
+                    Untils.deleteFile("D:\\fru\\", "DPK.TXT");
+
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                     mConn.Open();
 
@@ -115,7 +119,7 @@ namespace SaledServices.Test_Outlook
 
                                 this.cpuTypetextBox.Text = cpu_type;
                                 this.cpuFreqtextBox.Text = cpu_freq;
-                                this.testerTextBox.Text = "tester";
+                                this.testerTextBox.Text = LoginForm.currentUser;
                                 this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
                                 KEYID = ""; KEYSERIAL = "";
@@ -178,7 +182,7 @@ namespace SaledServices.Test_Outlook
 
                                 tempKeySerial = KEYSERIAL;
                                 int lastEm = tempKeySerial.LastIndexOf('-');
-                                this.KEYSERIALtextBox.Text = "XXXXX-XXXXX-XXXXX-XXXXX-" + tempKeySerial.Substring(lastEm, 5);
+                                this.KEYSERIALtextBox.Text = "XXXXX-XXXXX-XXXXX-XXXXX-" + tempKeySerial.Substring(lastEm+1, 5);
                             }
                             else
                             {
@@ -233,7 +237,7 @@ namespace SaledServices.Test_Outlook
             string generateFile = "D:\\fru\\DPK.txt";
             if (File.Exists(generateFile) == false)
             {
-                MessageBox.Show("是否已经做过相关操作，并重启过机器！");
+                MessageBox.Show("D:\\fru\\DPK.txt文件不存在！");
                 return;
             }
 
@@ -243,10 +247,11 @@ namespace SaledServices.Test_Outlook
                 String line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    Console.WriteLine(line.ToString());
+                  //  Console.WriteLine(line.ToString());
+                    break;
                 }
                 sr.Close();
-                if (tempKeySerial != "" && line.Contains(tempKeySerial))
+                if (tempKeySerial != "" && line != null && line.Contains(tempKeySerial))
                 {
                 }
                 else
@@ -264,6 +269,26 @@ namespace SaledServices.Test_Outlook
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string Id = "";
+                    while (querySdr.Read())
+                    {
+                        Id = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+                    if (Id != "")
+                    {
+                        MessageBox.Show("此序列号已经存在！");
+                        this.tracker_bar_textBox.Text = "";
+                        this.cpuFreqtextBox.Text = "";
+                        this.cpuTypetextBox.Text = "";
+                        this.keyidtextBox.Text = "";
+                        this.KEYSERIALtextBox.Text = "";
+                        conn.Close();
+                        return;
+                    }
 
                     
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
@@ -352,8 +377,8 @@ namespace SaledServices.Test_Outlook
                             + "SET MAC=" + mac + "\r\n"
                             + "SET UUID=" + uuid + "\r\n"
                             + "SET MB11S=" + custom_serial_no + "\r\n"
-                            + "SET OA3KEY=" + KEYID + "\r\n"
-                            + "SET OA3PID=" + KEYSERIAL + "\r\n"
+                            + "SET OA3KEY=" + KEYSERIAL + "\r\n"
+                            + "SET OA3PID=" + KEYID + "\r\n"
                             + "SET FRUPN=" + customMaterialNo + "\r\n"
                             + "SET MODELID=" + mb_brief + "\r\n"
                             + "SET DPK=" + dpk_type;
@@ -398,6 +423,7 @@ namespace SaledServices.Test_Outlook
         {
             runBatFile(@"C:\CHKDPK\", "CHKDPK.BAT");
             confirmbutton_Click(null, null);
+            this.Close();
         }
 
         private void runBatFile(string path, string filename)
@@ -441,7 +467,7 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "SELECT cpupn, chkcpu FROM " + tableName;
+                    cmd.CommandText = "SELECT cpupn, chkcpu FROM TestCpu";
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {

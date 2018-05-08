@@ -33,7 +33,11 @@ namespace SaledServices
             timer.Interval = 1000;//执行间隔时间,单位为毫秒  
             timer.Start();
             //timer.Enabled判断timer是否在运行
-            timer.Elapsed += new System.Timers.ElapsedEventHandler(Timer1_Elapsed); 
+            timer.Elapsed += new System.Timers.ElapsedEventHandler(Timer1_Elapsed);
+
+            Version ApplicationVersion = new Version(Application.ProductVersion);
+            string ss = ApplicationVersion.ToString();
+            this.Text += ss;
         }
 
         private void Timer1_Elapsed(object sender, System.Timers.ElapsedEventArgs e)

@@ -65,7 +65,7 @@ namespace SaledServices.Test_Outlook
 
                         if (customMaterialNo != "")
                         {
-                            this.testerTextBox.Text = "tester";
+                            this.testerTextBox.Text = LoginForm.currentUser;
                             this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
                         }
                         else
@@ -107,6 +107,22 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
+                    cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string Id = "";
+                    while (querySdr.Read())
+                    {
+                        Id = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+                    if (Id != "")
+                    {
+                        MessageBox.Show("此序列号已经存在！");
+                        this.tracker_bar_textBox.Text = "";
+                        conn.Close();
+                        return;
+                    }
+
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
                         + this.testerTextBox.Text.Trim() + "','"
@@ -130,6 +146,7 @@ namespace SaledServices.Test_Outlook
             {
                 MessageBox.Show(ex.ToString());
             }
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
