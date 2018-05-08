@@ -44,6 +44,7 @@
             this.故障代码表查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.定时任务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.文件数据库操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cID操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,7 +95,9 @@
             this.出库入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表头ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cID操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cID操作合肥ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.收货合肥ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.还货合肥ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -170,7 +173,8 @@
             this.故障代码表查看ToolStripMenuItem,
             this.定时任务ToolStripMenuItem,
             this.文件数据库操作ToolStripMenuItem,
-            this.cID操作ToolStripMenuItem});
+            this.cID操作ToolStripMenuItem,
+            this.cID操作合肥ToolStripMenuItem});
             this.FunctionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -239,11 +243,20 @@
             this.文件数据库操作ToolStripMenuItem.Text = "文件数据库操作";
             this.文件数据库操作ToolStripMenuItem.Click += new System.EventHandler(this.文件数据库操作ToolStripMenuItem_Click);
             // 
+            // cID操作ToolStripMenuItem
+            // 
+            this.cID操作ToolStripMenuItem.Name = "cID操作ToolStripMenuItem";
+            this.cID操作ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.cID操作ToolStripMenuItem.Text = "CID操作上海";
+            this.cID操作ToolStripMenuItem.Click += new System.EventHandler(this.cID操作ToolStripMenuItem_Click);
+            // 
             // receiveReturnStoreMenuItem
             // 
             this.receiveReturnStoreMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.收货ToolStripMenuItem,
-            this.returnStoreMenuItem});
+            this.returnStoreMenuItem,
+            this.收货合肥ToolStripMenuItem,
+            this.还货合肥ToolStripMenuItem});
             this.receiveReturnStoreMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.receiveReturnStoreMenuItem.Name = "receiveReturnStoreMenuItem";
             this.receiveReturnStoreMenuItem.Size = new System.Drawing.Size(84, 31);
@@ -253,15 +266,15 @@
             // 收货ToolStripMenuItem
             // 
             this.收货ToolStripMenuItem.Name = "收货ToolStripMenuItem";
-            this.收货ToolStripMenuItem.Size = new System.Drawing.Size(152, 32);
-            this.收货ToolStripMenuItem.Text = "收货";
+            this.收货ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.收货ToolStripMenuItem.Text = "收货上海";
             this.收货ToolStripMenuItem.Click += new System.EventHandler(this.收货ToolStripMenuItem_Click);
             // 
             // returnStoreMenuItem
             // 
             this.returnStoreMenuItem.Name = "returnStoreMenuItem";
-            this.returnStoreMenuItem.Size = new System.Drawing.Size(152, 32);
-            this.returnStoreMenuItem.Text = "还货";
+            this.returnStoreMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.returnStoreMenuItem.Text = "还货上海";
             this.returnStoreMenuItem.Click += new System.EventHandler(this.returnStoreMenuItem_Click);
             // 
             // 维修ToolStripMenuItem
@@ -641,12 +654,26 @@
             this.工单表体ToolStripMenuItem.Text = "工单表体";
             this.工单表体ToolStripMenuItem.Click += new System.EventHandler(this.工单表体ToolStripMenuItem_Click);
             // 
-            // cID操作ToolStripMenuItem
+            // cID操作合肥ToolStripMenuItem
             // 
-            this.cID操作ToolStripMenuItem.Name = "cID操作ToolStripMenuItem";
-            this.cID操作ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.cID操作ToolStripMenuItem.Text = "CID操作";
-            this.cID操作ToolStripMenuItem.Click += new System.EventHandler(this.cID操作ToolStripMenuItem_Click);
+            this.cID操作合肥ToolStripMenuItem.Name = "cID操作合肥ToolStripMenuItem";
+            this.cID操作合肥ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.cID操作合肥ToolStripMenuItem.Text = "CID操作合肥";
+            this.cID操作合肥ToolStripMenuItem.Click += new System.EventHandler(this.cID操作合肥ToolStripMenuItem_Click);
+            // 
+            // 收货合肥ToolStripMenuItem
+            // 
+            this.收货合肥ToolStripMenuItem.Name = "收货合肥ToolStripMenuItem";
+            this.收货合肥ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.收货合肥ToolStripMenuItem.Text = "收货合肥";
+            this.收货合肥ToolStripMenuItem.Click += new System.EventHandler(this.收货合肥ToolStripMenuItem_Click);
+            // 
+            // 还货合肥ToolStripMenuItem
+            // 
+            this.还货合肥ToolStripMenuItem.Name = "还货合肥ToolStripMenuItem";
+            this.还货合肥ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.还货合肥ToolStripMenuItem.Text = "还货合肥";
+            this.还货合肥ToolStripMenuItem.Click += new System.EventHandler(this.还货合肥ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -738,6 +765,9 @@
         private System.Windows.Forms.ToolStripMenuItem 定时任务ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 文件数据库操作ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cID操作ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cID操作合肥ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 收货合肥ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 还货合肥ToolStripMenuItem;
     }
 }
 

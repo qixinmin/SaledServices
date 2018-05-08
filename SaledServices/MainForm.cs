@@ -1011,8 +1011,24 @@ namespace SaledServices
             allForm.Add(filesUpdateForm);
         }
 
-        private CIDInputForm cidInputForm;
+        private InputCIDShanghaiForm cidInputshanghaiForm;
         private void cID操作ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (cidInputshanghaiForm == null || cidInputshanghaiForm.IsDisposed)
+            {
+                cidInputshanghaiForm = new InputCIDShanghaiForm();
+                cidInputshanghaiForm.MdiParent = this;
+            }
+
+            cidInputshanghaiForm.WindowState = FormWindowState.Maximized;
+            cidInputshanghaiForm.BringToFront();
+            cidInputshanghaiForm.Show();
+
+            allForm.Add(cidInputshanghaiForm);
+        }
+        
+        private CIDInputForm cidInputForm;
+        private void cID操作合肥ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (cidInputForm == null || cidInputForm.IsDisposed)
             {
@@ -1025,6 +1041,16 @@ namespace SaledServices
             cidInputForm.Show();
 
             allForm.Add(cidInputForm);
+        }
+
+        private void 收货合肥ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 还货合肥ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

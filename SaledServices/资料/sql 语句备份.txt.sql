@@ -534,7 +534,9 @@ _status NVARCHAR(128),/*--状态*/
 custom_res_type NVARCHAR(128),/*--客责类别*/
 response_describe NVARCHAR(128),/*--客责描述*/
 tat NVARCHAR(128),/*--TAT*/
-inputuser NVARCHAR(128)/*还货人*/
+inputuser NVARCHAR(128),/*还货人*/
+lenovo_maintenance_no NVARCHAR(128),/*联想维修站编号*/
+lenovo_repair_no NVARCHAR(128),/*联想维修单编号*/
 )
 
 
@@ -675,12 +677,24 @@ adddate date,/*添加日期*/
 inputuser NVARCHAR(128),/*添加人*/
 )
 
-/*收货单*/
+/*cid描述*/
 CREATE TABLE cidRecord(
 Id INT PRIMARY KEY IDENTITY,
 track_serial_no NVARCHAR(128) NOT NULL,/*跟踪条码*/
-orderno NVARCHAR(128) NOT NULL,/*订单编号*/
-custom_materialNo NVARCHAR(128) NOT NULL,/*客户料号*/
+vendor NVARCHAR(128) NOT NULL, /*厂商*/
+product NVARCHAR(128) NOT NULL, /*客户别*/
+custom_order NVARCHAR(128) NOT NULL,/*订单编号*/
+custommaterialNo NVARCHAR(128) NOT NULL,/*客户料号*/
+custom_serial_no NVARCHAR(128) NOT NULL,/*客户序号*/
+mb_brief NVARCHAR(128) NOT NULL,/*mb简称*/
+mpn NVARCHAR(128) NOT NULL,/*厂商料号*/
+order_receive_date date,/*收货日期*/
+custom_fault NVARCHAR(128) NOT NULL,/*客户故障*/
+custom_res_type NVARCHAR(128),/*--客责类别*/
+customResponsibility NVARCHAR(128) NOT NULL,/*客责描述*/
+short_cut NVARCHAR(128) NOT NULL, /*短路电压*/
+inputuser NVARCHAR(128),/*录入人*/
+inputdate NVARCHAR(128)/*录入日期*/
 )
 
 /*收货单*/

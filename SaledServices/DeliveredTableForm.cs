@@ -444,7 +444,7 @@ namespace SaledServices
                             this.guaranteeComboBox.Text = "";
                             this.guaranteeComboBox.Enabled = true;
                             this.customResponsibilityComboBox.Text = "";
-                            this.customResponsibilityComboBox.Enabled = true;
+                            //this.customResponsibilityComboBox.Enabled = true;
                         }
                     }
                 }

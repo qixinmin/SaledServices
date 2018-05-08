@@ -48,9 +48,26 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
+
+                    cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string cidExist = "";
+                    while (querySdr.Read())
+                    {
+                        cidExist = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (cidExist != "")
+                    {
+                        MessageBox.Show("此序列号已经在CID中，不能走下面的流程！");
+                        mConn.Close();
+                        return;
+                    }
+
                     cmd.CommandText = "select custommaterialNo, source_brief,custom_order,order_receive_date,custom_serial_no,vendor_serail_no, mb_make_date,custom_fault from DeliveredTable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
 
-                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    querySdr = cmd.ExecuteReader();
                     string customMaterialNo = "";
                     string sourceBrief = "", customOrder = "", order_receive_date = "", custom_serial_no = "", vendor_serial_no = "", mb_make_date = "", custom_fault = "";
                     while (querySdr.Read())

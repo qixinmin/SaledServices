@@ -219,6 +219,12 @@
     <Compile Include="additionForm\RepairFaultTypeForm.Designer.cs">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Repair\RepairOperationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Repair\RepairOperationForm.Designer.cs">
+      <DependentUpon>RepairOperationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="additionForm\ReturnStoreCustomRespForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -379,11 +385,11 @@
     <Compile Include="additionForm\SourceForm.Designer.cs">
       <DependentUpon>SourceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Repair\RepairOperationForm.cs">
+    <Compile Include="additionForm\InputCIDShanghaiForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Repair\RepairOperationForm.Designer.cs">
-      <DependentUpon>RepairOperationForm.cs</DependentUpon>
+    <Compile Include="additionForm\InputCIDShanghaiForm.Designer.cs">
+      <DependentUpon>InputCIDShanghaiForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Repair\RrepareUseListForm.cs">
       <SubType>Form</SubType>
@@ -562,6 +568,9 @@
     <EmbeddedResource Include="additionForm\RepairFaultTypeForm.resx">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Repair\RepairOperationForm.resx">
+      <DependentUpon>RepairOperationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="additionForm\ReturnStoreCustomRespForm.resx">
       <DependentUpon>ReturnStoreCustomRespForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -640,8 +649,8 @@
     <EmbeddedResource Include="additionForm\SourceForm.resx">
       <DependentUpon>SourceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Repair\RepairOperationForm.resx">
-      <DependentUpon>RepairOperationForm.cs</DependentUpon>
+    <EmbeddedResource Include="additionForm\InputCIDShanghaiForm.resx">
+      <DependentUpon>InputCIDShanghaiForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\RrepareUseListForm.resx">
       <DependentUpon>RrepareUseListForm.cs</DependentUpon>
