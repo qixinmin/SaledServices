@@ -20,6 +20,7 @@ repair_date date, /*修复日期*/
 )
 /*存储文件数据库*/
 CREATE TABLE TestCpu(
+    id varchar(10),
     cpupn image,
     chkcpu image 
 )
@@ -620,22 +621,21 @@ outlook  NVARCHAR(128) NOT NULL,
 running  NVARCHAR(128) NOT NULL,
 obe  NVARCHAR(128) NOT NULL,
 )
-/*客户别*/
 
+/*客户别*/
 CREATE TABLE vendorProduct(Id INT PRIMARY KEY IDENTITY, vendor NVARCHAR(128) NOT NULL, product NVARCHAR(128) NOT NULL)
 
-
-
+/*
 INSERT INTO users VALUES('Value1','Value1','Value1')
 
-修改列名：
+/*修改列名：*/
 sp_rename 'DeliveredTable.vendormaterialNo',mpn,'column'
 
-表中添加列
+/*表中添加列*/
 alter table MBMaterialCompare add inputuser NVARCHAR(128)
 
-倒叙查询最新的数据：
-select top 9 * from receiveOrder order by id desc
+/*倒叙查询最新的数据：*/
+select top 9 * from receiveOrder order by id desc*/
 
 /*MB物料对照表*/
 CREATE TABLE MBMaterialCompare(
@@ -676,6 +676,14 @@ inputuser NVARCHAR(128),/*添加人*/
 )
 
 /*收货单*/
+CREATE TABLE cidRecord(
+Id INT PRIMARY KEY IDENTITY,
+track_serial_no NVARCHAR(128) NOT NULL,/*跟踪条码*/
+orderno NVARCHAR(128) NOT NULL,/*订单编号*/
+custom_materialNo NVARCHAR(128) NOT NULL,/*客户料号*/
+)
+
+/*收货单*/
 CREATE TABLE receiveOrder(
 Id INT PRIMARY KEY IDENTITY,
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
@@ -697,6 +705,8 @@ returnNum NVARCHAR(128), /*还货数量*/
 declare_unit NVARCHAR(128), /*申报单位*/
 declare_number NVARCHAR(128), /*报关单号*/
 custom_request_number NVARCHAR(128), /*申请单号*/
+
+cid_number NVARCHAR(128), /*废弃数量*/
 )
 
 

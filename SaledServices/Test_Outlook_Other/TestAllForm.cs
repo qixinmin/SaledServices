@@ -219,7 +219,7 @@ namespace SaledServices.Test_Outlook
                     MessageBox.Show(ex.ToString());
                 }
 
-                MessageBox.Show("成功生成BOM文档，请重启机器！");
+                //MessageBox.Show("成功生成BOM文档，请重启机器！");
             }
         }
         string tempKeySerial = "";
@@ -251,7 +251,7 @@ namespace SaledServices.Test_Outlook
                 }
                 else
                 {
-                    MessageBox.Show("文件不存在或者内容与序列号不匹配， 是否重启过机器？");
+                    MessageBox.Show("文件不存在或者DPK内容与序列号不匹配， 请重新烧录！");
                     return;
                 }
 
@@ -397,6 +397,7 @@ namespace SaledServices.Test_Outlook
         private void button5_Click(object sender, EventArgs e)
         {
             runBatFile(@"C:\CHKDPK\", "CHKDPK.BAT");
+            confirmbutton_Click(null, null);
         }
 
         private void runBatFile(string path, string filename)

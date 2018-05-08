@@ -358,16 +358,18 @@ namespace SaledServices
 
 
                     //在更新收货表的同时，需要同时更新导入的表格收货数量，不然数据会乱掉
-                    cmd.CommandText = "select _status, ordernum, receivedNum, returnNum from receiveOrder where orderno = '" + this.ordernoTextBox.Text
+                    cmd.CommandText = "select _status, ordernum, receivedNum, returnNum,cid_number from receiveOrder where orderno = '" + this.ordernoTextBox.Text
                            + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
 
-                    int receivedNum = 0, returnNum =0;
+                    int receivedNum = 0, returnNum =0,cidNum=0;
                     string status = "close";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     bool isDone = false;
                     while (querySdr.Read())
-                    {                       
+                    {
+                        cidNum = Int32.Parse(querySdr[4].ToString());
                         receivedNum = Int32.Parse(querySdr[2].ToString());
+                        int leftNum = receivedNum - cidNum;
                         if (querySdr[3].ToString() == "")
                         {
                             returnNum = 0;
@@ -377,12 +379,12 @@ namespace SaledServices
                             returnNum = Int32.Parse(querySdr[3].ToString());
                         }
 
-                        if (returnNum >= receivedNum)
+                        if (returnNum >= leftNum)
                         {
                             MessageBox.Show("本料号已经还完！");
                             isDone = true;
                         }
-                        else if (receivedNum == returnNum + 1)
+                        else if (leftNum == returnNum + 1)
                         {
                             status = "return";
                         }                        

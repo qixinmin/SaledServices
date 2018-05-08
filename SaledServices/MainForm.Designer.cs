@@ -94,6 +94,7 @@
             this.出库入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表头ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cID操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -168,7 +169,8 @@
             this.dPKToolStripMenuItem,
             this.故障代码表查看ToolStripMenuItem,
             this.定时任务ToolStripMenuItem,
-            this.文件数据库操作ToolStripMenuItem});
+            this.文件数据库操作ToolStripMenuItem,
+            this.cID操作ToolStripMenuItem});
             this.FunctionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -251,14 +253,14 @@
             // 收货ToolStripMenuItem
             // 
             this.收货ToolStripMenuItem.Name = "收货ToolStripMenuItem";
-            this.收货ToolStripMenuItem.Size = new System.Drawing.Size(124, 32);
+            this.收货ToolStripMenuItem.Size = new System.Drawing.Size(152, 32);
             this.收货ToolStripMenuItem.Text = "收货";
             this.收货ToolStripMenuItem.Click += new System.EventHandler(this.收货ToolStripMenuItem_Click);
             // 
             // returnStoreMenuItem
             // 
             this.returnStoreMenuItem.Name = "returnStoreMenuItem";
-            this.returnStoreMenuItem.Size = new System.Drawing.Size(124, 32);
+            this.returnStoreMenuItem.Size = new System.Drawing.Size(152, 32);
             this.returnStoreMenuItem.Text = "还货";
             this.returnStoreMenuItem.Click += new System.EventHandler(this.returnStoreMenuItem_Click);
             // 
@@ -639,6 +641,13 @@
             this.工单表体ToolStripMenuItem.Text = "工单表体";
             this.工单表体ToolStripMenuItem.Click += new System.EventHandler(this.工单表体ToolStripMenuItem_Click);
             // 
+            // cID操作ToolStripMenuItem
+            // 
+            this.cID操作ToolStripMenuItem.Name = "cID操作ToolStripMenuItem";
+            this.cID操作ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.cID操作ToolStripMenuItem.Text = "CID操作";
+            this.cID操作ToolStripMenuItem.Click += new System.EventHandler(this.cID操作ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -728,6 +737,7 @@
         private System.Windows.Forms.ToolStripMenuItem 材料名称ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 定时任务ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 文件数据库操作ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cID操作ToolStripMenuItem;
     }
 }
 

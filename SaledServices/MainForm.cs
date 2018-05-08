@@ -1009,5 +1009,21 @@ namespace SaledServices
 
             allForm.Add(filesUpdateForm);
         }
+
+        private CIDInputForm cidInputForm;
+        private void cID操作ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (cidInputForm == null || cidInputForm.IsDisposed)
+            {
+                cidInputForm = new CIDInputForm();
+                cidInputForm.MdiParent = this;
+            }
+
+            cidInputForm.WindowState = FormWindowState.Maximized;
+            cidInputForm.BringToFront();
+            cidInputForm.Show();
+
+            allForm.Add(cidInputForm);
+        }
     }
 }

@@ -340,7 +340,7 @@ namespace SaledServices
                                 "0" + "','" +
                                 DateTime.Now.ToString("1900/01/01") + "','" +
                                 "open" + "','" +
-                                storeHouse + "','0',"+"'"+declare_unit+"','"+declare_number+"','"+custom_request_number+"')";
+                                storeHouse + "','0',"+"'"+declare_unit+"','"+declare_number+"','"+custom_request_number+"','0')";
 
                             insertCmd.ExecuteNonQuery();
                         }

@@ -1,6 +1,6 @@
 ﻿namespace SaledServices
 {
-    partial class FaultMBStoreForm
+    partial class CIDInputForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label12 = new System.Windows.Forms.Label();
@@ -61,18 +61,16 @@
             this.producttextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.vendorTextBox = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.stockplacetextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.track_serial_noTextBox = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.typecomboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.add = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label14 = new System.Windows.Forms.Label();
+            this.custommaterialNoTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -137,12 +135,10 @@
             this.tableLayoutPanel2.Controls.Add(this.producttextBox, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.vendorTextBox, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.label14, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.stockplacetextBox, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.track_serial_noTextBox, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.label15, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.typecomboBox, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.track_serial_noTextBox, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label14, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.custommaterialNoTextBox, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
@@ -443,29 +439,10 @@
             this.vendorTextBox.Size = new System.Drawing.Size(202, 26);
             this.vendorTextBox.TabIndex = 43;
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 120);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(40, 16);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "库位";
-            // 
-            // stockplacetextBox
-            // 
-            this.stockplacetextBox.Location = new System.Drawing.Point(197, 124);
-            this.stockplacetextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.stockplacetextBox.Name = "stockplacetextBox";
-            this.stockplacetextBox.Size = new System.Drawing.Size(202, 26);
-            this.stockplacetextBox.TabIndex = 43;
-            this.stockplacetextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stockplacetextBox_KeyPress);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 61);
+            this.label1.Location = new System.Drawing.Point(6, 2);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 16);
@@ -474,37 +451,13 @@
             // 
             // track_serial_noTextBox
             // 
-            this.track_serial_noTextBox.Location = new System.Drawing.Point(197, 65);
+            this.track_serial_noTextBox.Location = new System.Drawing.Point(197, 6);
             this.track_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.track_serial_noTextBox.Name = "track_serial_noTextBox";
             this.track_serial_noTextBox.Size = new System.Drawing.Size(202, 26);
-            this.track_serial_noTextBox.TabIndex = 1;
-            this.track_serial_noTextBox.Enter += new System.EventHandler(this.track_serial_noTextBox_Enter);
+            this.track_serial_noTextBox.TabIndex = 1;            
             this.track_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.track_serial_noTextBox_KeyPress);
-            this.track_serial_noTextBox.Leave += new System.EventHandler(this.track_serial_noTextBox_Leave);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 2);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(40, 16);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "类型";
-            // 
-            // typecomboBox
-            // 
-            this.typecomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.typecomboBox.FormattingEnabled = true;
-            this.typecomboBox.Items.AddRange(new object[] {
-            "入库",
-            "出库"});
-            this.typecomboBox.Location = new System.Drawing.Point(196, 5);
-            this.typecomboBox.Name = "typecomboBox";
-            this.typecomboBox.Size = new System.Drawing.Size(203, 24);
-            this.typecomboBox.TabIndex = 44;
-            this.typecomboBox.SelectedIndexChanged += new System.EventHandler(this.typecomboBox_SelectedIndexChanged);
+            
             // 
             // tableLayoutPanel3
             // 
@@ -533,7 +486,7 @@
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(168, 40);
             this.add.TabIndex = 0;
-            this.add.Text = "不良品出入库";
+            this.add.Text = "确认CID";
             this.add.UseVisualStyleBackColor = true;
             this.add.Click += new System.EventHandler(this.add_Click);
             // 
@@ -546,7 +499,7 @@
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(197, 40);
             this.modify.TabIndex = 1;
-            this.modify.Text = "出入库修改";
+            this.modify.Text = "修改";
             this.modify.UseVisualStyleBackColor = true;
             // 
             // delete
@@ -558,7 +511,7 @@
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(189, 40);
             this.delete.TabIndex = 1;
-            this.delete.Text = "出入库删除";
+            this.delete.Text = "删除";
             this.delete.UseVisualStyleBackColor = true;
             // 
             // query
@@ -569,15 +522,15 @@
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(171, 40);
             this.query.TabIndex = 1;
-            this.query.Text = "出入库查询";
+            this.query.Text = "查询";
             this.query.UseVisualStyleBackColor = true;
             this.query.Click += new System.EventHandler(this.query_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -589,7 +542,26 @@
             this.dataGridView1.Size = new System.Drawing.Size(1216, 240);
             this.dataGridView1.TabIndex = 4;
             // 
-            // FaultMBStoreForm
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 61);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(72, 16);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "客户料号";
+            // 
+            // custommaterialNoTextBox
+            // 
+            this.custommaterialNoTextBox.Location = new System.Drawing.Point(197, 65);
+            this.custommaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.custommaterialNoTextBox.Name = "custommaterialNoTextBox";
+            this.custommaterialNoTextBox.ReadOnly = true;
+            this.custommaterialNoTextBox.Size = new System.Drawing.Size(202, 26);
+            this.custommaterialNoTextBox.TabIndex = 43;
+            // 
+            // CIDInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -597,9 +569,9 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("SimSun", 12F);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FaultMBStoreForm";
+            this.Name = "CIDInputForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "不良品出入库";
+            this.Text = "CID输入界面";
             this.Load += new System.EventHandler(this.RepairOperationForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -653,8 +625,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox ECOtextBox;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox stockplacetextBox;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox typecomboBox;
+        private System.Windows.Forms.TextBox custommaterialNoTextBox;
     }
 }

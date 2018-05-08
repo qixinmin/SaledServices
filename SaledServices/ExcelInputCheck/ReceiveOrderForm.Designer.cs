@@ -75,6 +75,8 @@
             this.declare_numbertextBox = new System.Windows.Forms.TextBox();
             this.custom_request_numbertextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.cidNumberTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -397,7 +399,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1021, 144);
+            this.label14.Location = new System.Drawing.Point(1021, 191);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(24, 16);
@@ -407,7 +409,7 @@
             // idTextBox
             // 
             this.idTextBox.Enabled = false;
-            this.idTextBox.Location = new System.Drawing.Point(1190, 148);
+            this.idTextBox.Location = new System.Drawing.Point(1190, 195);
             this.idTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.ReadOnly = true;
@@ -523,8 +525,10 @@
             this.tableLayoutPanel3.Controls.Add(this.declare_unittextBox, 7, 0);
             this.tableLayoutPanel3.Controls.Add(this.declare_numbertextBox, 7, 1);
             this.tableLayoutPanel3.Controls.Add(this.custom_request_numbertextBox, 7, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label14, 6, 3);
-            this.tableLayoutPanel3.Controls.Add(this.idTextBox, 7, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label14, 6, 4);
+            this.tableLayoutPanel3.Controls.Add(this.idTextBox, 7, 4);
+            this.tableLayoutPanel3.Controls.Add(this.label20, 6, 3);
+            this.tableLayoutPanel3.Controls.Add(this.cidNumberTextBox, 7, 3);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -618,6 +622,26 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1362, 53);
             this.tableLayoutPanel2.TabIndex = 9;
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(1021, 144);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(64, 16);
+            this.label20.TabIndex = 4;
+            this.label20.Text = "Cid数量";
+            // 
+            // cidNumberTextBox
+            // 
+            this.cidNumberTextBox.Enabled = false;
+            this.cidNumberTextBox.Location = new System.Drawing.Point(1190, 148);
+            this.cidNumberTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.cidNumberTextBox.Name = "cidNumberTextBox";
+            this.cidNumberTextBox.ReadOnly = true;
+            this.cidNumberTextBox.Size = new System.Drawing.Size(165, 26);
+            this.cidNumberTextBox.TabIndex = 5;
+            // 
             // ReceiveOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -689,5 +713,7 @@
         private System.Windows.Forms.TextBox declare_unittextBox;
         private System.Windows.Forms.TextBox declare_numbertextBox;
         private System.Windows.Forms.TextBox custom_request_numbertextBox;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox cidNumberTextBox;
     }
 }
