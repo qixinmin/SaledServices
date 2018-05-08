@@ -43,6 +43,11 @@ namespace SaledServices.User
             return super_manager == "True";
         }
 
+        public static bool isInTest()
+        {
+            return test_all == "True" || test1 == "True";
+        }
+
         private void loadUserInfo()
         {
             try

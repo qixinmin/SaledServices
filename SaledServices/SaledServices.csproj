@@ -736,7 +736,9 @@
     <Compile Include="CustomsContentClass\RealStockClass.cs" />
     <Compile Include="CustomsContentClass\StockInOutClass.cs" />
     <Compile Include="CustomsContentClass\WorkListBodyClass.cs" />
-    <None Include="Files\CHKCPU.BAT" />
+    <None Include="Files\syncTime.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -770,7 +772,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Files\CPUPN.txt" />
     <Content Include="Files\FileInput.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

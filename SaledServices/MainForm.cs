@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using SaledServices.CustomsExport;
 using SaledServices.additionForm;
+using System.Diagnostics;
+using System.IO;
 
 namespace SaledServices
 {
@@ -36,8 +38,7 @@ namespace SaledServices
             timer.Elapsed += new System.Timers.ElapsedEventHandler(Timer1_Elapsed);
 
             Version ApplicationVersion = new Version(Application.ProductVersion);
-            string ss = ApplicationVersion.ToString();
-            this.Text += ss;
+            this.Text += ApplicationVersion.ToString();           
         }
 
         private void Timer1_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -145,16 +146,13 @@ namespace SaledServices
 
             this.LogoutMenuItem.Enabled = true;
         }
-
        
         private void LoginMenuItem_Click(object sender, EventArgs e)
-        {
-           
+        {           
         }
 
         private void VendorChangeMenuItem_Click(object sender, EventArgs e)
-        {
-            
+        {            
         }
 
         private void ExcelImportMenuItem_Click(object sender, EventArgs e)
@@ -187,8 +185,7 @@ namespace SaledServices
         }
 
         private void receiveOrderMenuItem_Click(object sender, EventArgs e)
-        { 
-           
+        {            
         }
 
         private SourceForm sourceForm;

@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using SaledServices.User;
 using RestSharp;
+using System.IO;
+using System.Diagnostics;
 
 
 namespace SaledServices
@@ -151,7 +153,25 @@ namespace SaledServices
             }
             catch (Exception ex)
             { }
-            
+
+
+            if (User.UserSelfForm.isInTest())
+            {
+                try
+                {
+                    string dir = Directory.GetCurrentDirectory() + "\\Files\\";
+                    string targetDir = string.Format(dir);//this is where testChange.bat lies
+                    Process proc = new Process();
+                    proc.StartInfo.WorkingDirectory = targetDir;
+                    proc.StartInfo.FileName = "syncTime.bat";
+                    proc.Start();
+                    proc.WaitForExit();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

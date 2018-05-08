@@ -289,7 +289,6 @@ namespace SaledServices.Test_Outlook
                         conn.Close();
                         return;
                     }
-
                     
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
