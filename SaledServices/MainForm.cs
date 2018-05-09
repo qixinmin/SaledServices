@@ -1052,5 +1052,15 @@ namespace SaledServices
         {
 
         }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            cID操作ToolStripMenuItem_Click(null, null);
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            cID操作ToolStripMenuItem_Click(null, null);
+        }
     }
 }

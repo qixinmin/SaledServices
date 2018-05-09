@@ -45,13 +45,18 @@
             this.定时任务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.文件数据库操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cID操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cID操作合肥ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.收货合肥ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.还货合肥ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.维修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.库房领料申请ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA维修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测试ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,9 +100,6 @@
             this.出库入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表头ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cID操作合肥ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.收货合肥ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.还货合肥ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -250,13 +252,21 @@
             this.cID操作ToolStripMenuItem.Text = "CID操作上海";
             this.cID操作ToolStripMenuItem.Click += new System.EventHandler(this.cID操作ToolStripMenuItem_Click);
             // 
+            // cID操作合肥ToolStripMenuItem
+            // 
+            this.cID操作合肥ToolStripMenuItem.Name = "cID操作合肥ToolStripMenuItem";
+            this.cID操作合肥ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.cID操作合肥ToolStripMenuItem.Text = "CID操作合肥";
+            this.cID操作合肥ToolStripMenuItem.Click += new System.EventHandler(this.cID操作合肥ToolStripMenuItem_Click);
+            // 
             // receiveReturnStoreMenuItem
             // 
             this.receiveReturnStoreMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.收货ToolStripMenuItem,
             this.returnStoreMenuItem,
             this.收货合肥ToolStripMenuItem,
-            this.还货合肥ToolStripMenuItem});
+            this.还货合肥ToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.receiveReturnStoreMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.receiveReturnStoreMenuItem.Name = "receiveReturnStoreMenuItem";
             this.receiveReturnStoreMenuItem.Size = new System.Drawing.Size(84, 31);
@@ -266,23 +276,45 @@
             // 收货ToolStripMenuItem
             // 
             this.收货ToolStripMenuItem.Name = "收货ToolStripMenuItem";
-            this.收货ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.收货ToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
             this.收货ToolStripMenuItem.Text = "收货上海";
             this.收货ToolStripMenuItem.Click += new System.EventHandler(this.收货ToolStripMenuItem_Click);
             // 
             // returnStoreMenuItem
             // 
             this.returnStoreMenuItem.Name = "returnStoreMenuItem";
-            this.returnStoreMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.returnStoreMenuItem.Size = new System.Drawing.Size(198, 32);
             this.returnStoreMenuItem.Text = "还货上海";
             this.returnStoreMenuItem.Click += new System.EventHandler(this.returnStoreMenuItem_Click);
+            // 
+            // 收货合肥ToolStripMenuItem
+            // 
+            this.收货合肥ToolStripMenuItem.Name = "收货合肥ToolStripMenuItem";
+            this.收货合肥ToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.收货合肥ToolStripMenuItem.Text = "收货合肥";
+            this.收货合肥ToolStripMenuItem.Click += new System.EventHandler(this.收货合肥ToolStripMenuItem_Click);
+            // 
+            // 还货合肥ToolStripMenuItem
+            // 
+            this.还货合肥ToolStripMenuItem.Name = "还货合肥ToolStripMenuItem";
+            this.还货合肥ToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
+            this.还货合肥ToolStripMenuItem.Text = "还货合肥";
+            this.还货合肥ToolStripMenuItem.Click += new System.EventHandler(this.还货合肥ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(198, 32);
+            this.toolStripMenuItem1.Text = "CID操作上海";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // 维修ToolStripMenuItem
             // 
             this.维修ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.维修界面ToolStripMenuItem,
             this.bGAToolStripMenuItem,
-            this.库房领料申请ToolStripMenuItem});
+            this.库房领料申请ToolStripMenuItem,
+            this.toolStripMenuItem2});
             this.维修ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.维修ToolStripMenuItem.Name = "维修ToolStripMenuItem";
             this.维修ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -308,6 +340,13 @@
             this.库房领料申请ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
             this.库房领料申请ToolStripMenuItem.Text = "SMT领料申请";
             this.库房领料申请ToolStripMenuItem.Click += new System.EventHandler(this.库房领料申请ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(246, 32);
+            this.toolStripMenuItem2.Text = "CID操作上海";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // bGA维修ToolStripMenuItem
             // 
@@ -654,27 +693,6 @@
             this.工单表体ToolStripMenuItem.Text = "工单表体";
             this.工单表体ToolStripMenuItem.Click += new System.EventHandler(this.工单表体ToolStripMenuItem_Click);
             // 
-            // cID操作合肥ToolStripMenuItem
-            // 
-            this.cID操作合肥ToolStripMenuItem.Name = "cID操作合肥ToolStripMenuItem";
-            this.cID操作合肥ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.cID操作合肥ToolStripMenuItem.Text = "CID操作合肥";
-            this.cID操作合肥ToolStripMenuItem.Click += new System.EventHandler(this.cID操作合肥ToolStripMenuItem_Click);
-            // 
-            // 收货合肥ToolStripMenuItem
-            // 
-            this.收货合肥ToolStripMenuItem.Name = "收货合肥ToolStripMenuItem";
-            this.收货合肥ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
-            this.收货合肥ToolStripMenuItem.Text = "收货合肥";
-            this.收货合肥ToolStripMenuItem.Click += new System.EventHandler(this.收货合肥ToolStripMenuItem_Click);
-            // 
-            // 还货合肥ToolStripMenuItem
-            // 
-            this.还货合肥ToolStripMenuItem.Name = "还货合肥ToolStripMenuItem";
-            this.还货合肥ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
-            this.还货合肥ToolStripMenuItem.Text = "还货合肥";
-            this.还货合肥ToolStripMenuItem.Click += new System.EventHandler(this.还货合肥ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -687,7 +705,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "进销存系统";
+            this.Text = "上海进销存系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.AllMenuStrip.ResumeLayout(false);
@@ -768,6 +786,8 @@
         private System.Windows.Forms.ToolStripMenuItem cID操作合肥ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 收货合肥ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 还货合肥ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }
 

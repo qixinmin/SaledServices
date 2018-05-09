@@ -740,3 +740,4 @@ book_number NVARCHAR(128), /*账册编号*/
 electronic_number NVARCHAR(128), /*电子账册号*/
 )
 
+/*SELECT NAME FROM SYSOBJECTS WHERE TYPE='U'SELECT * FROM INFORMATION_SCHEMA.TABLES  列出所有表格*/

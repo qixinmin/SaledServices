@@ -361,6 +361,28 @@ namespace SaledServices
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    SqlDataReader querySdr = null;
+                    if (statusComboBox.Text.Trim() == "不良品")
+                    {
+                        cmd.CommandText = "select Id from cidRecord where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                        querySdr = cmd.ExecuteReader();
+                        string isExist = "";
+                        while (querySdr.Read())
+                        {
+                            isExist = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+
+                        if (isExist == "")
+                        {
+                            MessageBox.Show("不良品的序列号不在CID库中，请检查！");
+                            conn.Close();
+                            return;
+                        }
+                    }
+
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +                        
                         this.vendorComboBox.Text.Trim() + "','" +
                         this.productComboBox.Text.Trim() + "','" +
@@ -382,9 +404,8 @@ namespace SaledServices
                         this.lenovo_maintenance_noTextBox.Text.Trim() + "','" +
                         this.lenovo_repair_noTextBox.Text.Trim() + 
                         "')";
-                    cmd.CommandType = CommandType.Text;
+                    
                     cmd.ExecuteNonQuery();
-
 
                     //在更新收货表的同时，需要同时更新导入的表格收货数量，不然数据会乱掉
                     cmd.CommandText = "select _status, ordernum, receivedNum, returnNum,cid_number from receiveOrder where orderno = '" + this.ordernoTextBox.Text
@@ -392,7 +413,7 @@ namespace SaledServices
 
                     int receivedNum = 0, returnNum =0,cidNum=0;
                     string status = "close";
-                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    querySdr = cmd.ExecuteReader();
                     bool isDone = false;
                     while (querySdr.Read())
                     {
