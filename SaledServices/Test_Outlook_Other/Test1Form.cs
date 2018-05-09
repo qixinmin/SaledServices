@@ -446,7 +446,7 @@ namespace SaledServices.Test_Outlook
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
-                    MessageBox.Show("4");
+
                     cmd.CommandText = "SELECT cpupn, chkcpu FROM TestCpu";
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
@@ -463,9 +463,9 @@ namespace SaledServices.Test_Outlook
 
                         saveFileName = chkcpufile;
                         arraysize = chkcpu.GetUpperBound(0);
-                        FileStream  fs2 = new FileStream(saveFileName, FileMode.OpenOrCreate, FileAccess.Write);
-                        fs2.Write(chkcpu, 0, arraysize);
-                        fs2.Close();
+                        fs = new FileStream(saveFileName, FileMode.OpenOrCreate, FileAccess.Write);
+                        fs.Write(chkcpu, 0, arraysize);
+                        fs.Close();
                     }
                 }
                 else
