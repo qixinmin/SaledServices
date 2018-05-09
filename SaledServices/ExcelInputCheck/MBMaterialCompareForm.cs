@@ -235,11 +235,49 @@ namespace SaledServices
         {
             try
             {
+                string sqlStr = "select * from " + tableName;
+
+                if (this.custommaterialNotextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where custommaterialNo like '%" + custommaterialNotextBox.Text.Trim() + "%' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and custommaterialNo like '%" + custommaterialNotextBox.Text.Trim() + "%' ";
+                    }
+                }
+
+                if (this.mbBriefTextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where mb_brief like '%" + mbBriefTextBox.Text.Trim() + "%' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and mb_brief like '%" + mbBriefTextBox.Text.Trim() + "%' ";
+                    }
+                }
+
+                if (this.mpnTextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where mpn like '%" + mpnTextBox.Text.Trim() + "%' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and mpn like '%" + mpnTextBox.Text.Trim() + "%' ";
+                    }
+                }
+
                 mConn = new SqlConnection(Constlist.ConStr);
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select * from " + tableName;
+                cmd.CommandText = sqlStr;
                 cmd.CommandType = CommandType.Text;
 
                 sda = new SqlDataAdapter();

@@ -48,6 +48,16 @@ namespace SaledServices.User
             return test_all == "True" || test1 == "True";
         }
 
+        public static bool isReceiveReturn()
+        {
+            return receive_return == "True";
+        }
+
+        public static bool isOutlook()
+        {
+            return outlook == "True";
+        }
+
         private void loadUserInfo()
         {
             try

@@ -171,6 +171,7 @@
             // 
             // mbBriefTextBox
             // 
+            this.mbBriefTextBox.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.mbBriefTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mbBriefTextBox.Location = new System.Drawing.Point(156, 68);
             this.mbBriefTextBox.Margin = new System.Windows.Forms.Padding(4);
@@ -199,6 +200,7 @@
             // 
             // mpnTextBox
             // 
+            this.mpnTextBox.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.mpnTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mpnTextBox.Location = new System.Drawing.Point(156, 130);
             this.mpnTextBox.Margin = new System.Windows.Forms.Padding(4);
@@ -237,6 +239,7 @@
             // 
             // custommaterialNotextBox
             // 
+            this.custommaterialNotextBox.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.custommaterialNotextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.custommaterialNotextBox.Location = new System.Drawing.Point(156, 192);
             this.custommaterialNotextBox.Margin = new System.Windows.Forms.Padding(4);

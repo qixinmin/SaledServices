@@ -38,7 +38,7 @@ namespace SaledServices
             timer.Elapsed += new System.Timers.ElapsedEventHandler(Timer1_Elapsed);
 
             Version ApplicationVersion = new Version(Application.ProductVersion);
-            this.Text += ApplicationVersion.ToString();           
+            this.Text += ApplicationVersion.ToString();
         }
 
         private void Timer1_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -1061,6 +1061,11 @@ namespace SaledServices
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             cID操作ToolStripMenuItem_Click(null, null);
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            PrintUtils.disposePrinter();
         }
     }
 }

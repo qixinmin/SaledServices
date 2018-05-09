@@ -150,7 +150,6 @@ namespace SaledServices
                         this.mb_make_dateTextBox.Text = mb_make_date;
                         this.customFaulttextBox.Text = custom_fault;
                         this.ECOtextBox.Text = eco;
-                       // this.repairertextBox.Text = "tester";
                         this.repair_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
                     }
                     else

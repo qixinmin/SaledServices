@@ -28,7 +28,7 @@ namespace SaledServices
 
     public class Constlist
     {
-        //public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
+       // public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
         public static string ConStr = "server=192.168.8.56;database=SaledService;uid=admin;pwd=admin";
 
         public static string table_MBMaterialCompare = "MB物料对照表";
@@ -62,45 +62,57 @@ namespace SaledServices
         public static string table_name_users_sheet = "users";
     }
 
-    public class Untils
+    public class PrintUtils
     {
+        static LabelManager2.Application labApp = null;
+        static LabelManager2.Document doc = null;
         public static void InitCodesoftForReturn()
         {
-
-            LabelManager2.Application labApp = new LabelManager2.Application();
-            LabelManager2.Document doc = null;
-            //string labFileName = System.Windows.Forms.Application.StartupPath + @"\barJapLab.Lab";
-            string labFileName = @"D:\维修系统\测试专用\test.Lab";
             try
             {
+                labApp = new LabelManager2.Application();
+                string labFileName = @"D:\printLab\test.Lab";
                 if (!File.Exists(labFileName))
                 {
-                    MessageBox.Show("沒有找到標簽模板文件：barJapLab.Lab,請聯系系統管理員", "溫馨提示");
+                    MessageBox.Show("沒有找到標簽模板文件：" + labFileName + ",請聯系系統管理員", "溫馨提示");
                     return;
-                }
-                labApp = new LabelManager2.Application();
-                
+                }                                   
+
                 labApp.Documents.Open(labFileName, false);// 调用设计好的label文件
                 doc = labApp.ActiveDocument;
-                doc.Printer.SwitchTo("a");//打印机名字，自定义，可以修改
-                
-                doc.Variables.FormVariables.Item("hbj3").Value = "ABCDEFG";
-                doc.Variables.FormVariables.Item("hbj1").Value = "HIJKLMN";
-                doc.Variables.FormVariables.Item("hbj2").Value = "OPQRSTU";
-
-                doc.PrintDocument(); //打印一次
-                doc.FormFeed(); //结束打印
+                doc.Printer.SwitchTo("codesoft");//打印机名字，自定义，可以修改               
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
             finally
             {
+            }
+        }
 
+        public static void printCustomMaterialNo(string customMaterial)
+        {
+            if (labApp == null)
+            {
+                InitCodesoftForReturn();
             }
 
+            doc.Variables.FormVariables.Item("customMaterial").Value = customMaterial;
+            doc.PrintDocument(); //打印一次
+            doc.FormFeed(); //结束打印
         }
+
+        public static void disposePrinter()
+        {
+            doc.Close();
+            labApp.Quit();            
+        }
+    }
+
+    public class Untils
+    {
+       
         public static void createOpeningStockXML(OpeningStockClass openingStockClass, string fileName)
         {
             StringBuilder xmlResult = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
@@ -566,35 +578,35 @@ namespace SaledServices
                 case 'p':
                     ret = "23";
                     break;
-                case 'q':
+                //case 'q':
+                //    ret = "24";
+                //    break;
+                case 'r':
                     ret = "24";
                     break;
-                case 'r':
+                case 's':
                     ret = "25";
                     break;
-                case 's':
+                case 't':
                     ret = "26";
                     break;
-                case 't':
+                //case 'u':
+                //    ret = "28";
+                //    break;
+                case 'v':
                     ret = "27";
                     break;
-                case 'u':
-                    ret = "28";
-                    break;
-                case 'v':
-                    ret = "29";
-                    break;
                 case 'w':
-                    ret = "30";
+                    ret = "38";
                     break;
                 case 'x':
-                    ret = "31";
+                    ret = "39";
                     break;
                 case 'y':
-                    ret = "32";
+                    ret = "30";
                     break;
                 case 'z':
-                    ret = "33";
+                    ret = "31";
                     break;
             }
 

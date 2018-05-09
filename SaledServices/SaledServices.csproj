@@ -782,7 +782,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Files\FileInput.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="wheat_128px_1169807_easyicon.net.ico" />
     <Content Include="资料\2.ico" />

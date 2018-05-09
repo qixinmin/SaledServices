@@ -227,7 +227,7 @@ number  NVARCHAR(128) NOT NULL,/*订单数量*/
 pricePer NVARCHAR(128) NOT NULL,/*单价*/
 isdeclare NVARCHAR(128), /*是否报关*/
 
-mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
+mb_brief NVARCHAR(1280) NOT NULL,/*MB简称*/
 material_name  NVARCHAR(128) NOT NULL,/*材料名称*/
 stock_in_num  NVARCHAR(128),/*入库数量*/
 totalMoney  NVARCHAR(128),/*金额合计*/

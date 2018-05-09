@@ -11,6 +11,7 @@ using SaledServices.User;
 using RestSharp;
 using System.IO;
 using System.Diagnostics;
+using System.Threading;
 
 
 namespace SaledServices
@@ -172,11 +173,18 @@ namespace SaledServices
                     Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
                 }
             }
+
+            //调用打印机初始化工作
+            //Thread mythread = new Thread(printerInit);
+            //mythread.Start();
         }
+        
+        //private static void printerInit()
+        //{           
+        //}
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Untils.InitCodesoftForReturn();
             //string address = "";
             //string sn = "BOXID(7位)";
             //RestClient client = new RestClient(address);            

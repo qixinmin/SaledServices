@@ -210,18 +210,18 @@ namespace SaledServices
 
             string substr = "";
             string inTime = "";
-            try
-            {
-                substr = str.Substring(str.Length - 8, 6);
-                inTime = "20" + substr.Substring(0, 2) + "/" + substr.Substring(2, 2) + "/" + substr.Substring(4, 2);
-                this.order_out_dateTextBox.Text = inTime;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("订单号码时间格式错误, 设置默认值！");
-                this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
-            }
-
+            //try
+            //{
+            //    substr = str.Substring(str.Length - 8, 6);
+            //    inTime = "20" + substr.Substring(0, 2) + "/" + substr.Substring(2, 2) + "/" + substr.Substring(4, 2);
+            //    this.order_out_dateTextBox.Text = inTime;
+            //}
+            //catch (Exception ex)
+            //{
+            //    //MessageBox.Show("订单号码时间格式错误, 设置默认值！");
+            //    this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            //}
+            this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
             try
             {
                 DateTime dt1 = DateTime.Parse(inTime);
@@ -237,7 +237,7 @@ namespace SaledServices
             }
             catch (Exception ex)
             {
-                MessageBox.Show("订单号码时间格式错误, 设置默认值！");
+                //MessageBox.Show("订单号码时间格式错误, 设置默认值！");
                 this.order_receive_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
             }
       

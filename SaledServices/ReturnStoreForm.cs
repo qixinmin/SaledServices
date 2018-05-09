@@ -586,6 +586,10 @@ namespace SaledServices
             tableLayoutPanel4.GetType().
                 GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
                 SetValue(tableLayoutPanel4, true, null);
+
+            tableLayoutPanel5.GetType().
+                GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+                SetValue(tableLayoutPanel5, true, null);
         }
 
         private void track_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -759,6 +763,16 @@ namespace SaledServices
         private void dataGridViewToReturn_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void print_Click(object sender, EventArgs e)
+        {
+            if (this.custommaterialNoTextBox.Text == "")
+            {
+                MessageBox.Show("客户料号为空!");
+                return;
+            }
+            PrintUtils.printCustomMaterialNo(this.custommaterialNoTextBox.Text);
         }
     }
 }

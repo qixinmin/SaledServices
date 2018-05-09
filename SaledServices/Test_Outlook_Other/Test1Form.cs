@@ -359,6 +359,7 @@ namespace SaledServices.Test_Outlook
         private void button3_Click(object sender, EventArgs e)
         {
             button2_Click(null, null);//fru
+            
             string dir = Directory.GetCurrentDirectory() + "\\Files\\";
             if (Directory.Exists(dir))
             {
@@ -367,15 +368,24 @@ namespace SaledServices.Test_Outlook
                 {
                     File.Copy(fileInput, @"C:\OA3\FileInput.xml", true);
                 }
-
+                
                 downloadFiles(@"C:\CHKCPU\CPUPN.txt", @"C:\CHKCPU\CHKCPU.BAT");
+                runBatFile(@"C:\CHKCPU\", "CHKCPU.BAT");
             }
-
-            runBatFile(@"C:\CHKCPU\", "CHKCPU.BAT");
+            else 
+            {
+                MessageBox.Show(dir + "不存在！");
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (KEYID == "" || KEYSERIAL == "")
+            {
+                MessageBox.Show("序列号还没有下载，请检查操作！");
+                return;
+            }
+
             button2_Click(null, null);//fru
 
             downloadFiles(@"C:\CHKCPU\CPUPN.txt", @"C:\CHKCPU\CHKCPU.BAT");
@@ -385,6 +395,12 @@ namespace SaledServices.Test_Outlook
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (KEYID == "" || KEYSERIAL == "")
+            {
+                MessageBox.Show("序列号还没有下载，请检查操作！");
+                return;
+            }
+
             runBatFile(@"C:\CHKDPK\", "CHKDPK.BAT");
             confirmbutton_Click(null, null);
             this.Close();
@@ -424,13 +440,13 @@ namespace SaledServices.Test_Outlook
                 }
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
                 conn.Open();
-
+                
                 if (conn.State == ConnectionState.Open)
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
-
+                    MessageBox.Show("4");
                     cmd.CommandText = "SELECT cpupn, chkcpu FROM TestCpu";
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
@@ -447,9 +463,9 @@ namespace SaledServices.Test_Outlook
 
                         saveFileName = chkcpufile;
                         arraysize = chkcpu.GetUpperBound(0);
-                        fs = new FileStream(saveFileName, FileMode.OpenOrCreate, FileAccess.Write);
-                        fs.Write(chkcpu, 0, arraysize);
-                        fs.Close();
+                        FileStream  fs2 = new FileStream(saveFileName, FileMode.OpenOrCreate, FileAccess.Write);
+                        fs2.Write(chkcpu, 0, arraysize);
+                        fs2.Close();
                     }
                 }
                 else
