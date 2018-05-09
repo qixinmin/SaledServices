@@ -252,6 +252,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1346, 363);
             this.tableLayoutPanel1.TabIndex = 2;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // label18
             // 
@@ -818,10 +819,11 @@
             // 
             // inputUserTextBox
             // 
+            this.inputUserTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inputUserTextBox.Location = new System.Drawing.Point(1121, 294);
             this.inputUserTextBox.Name = "inputUserTextBox";
             this.inputUserTextBox.ReadOnly = true;
-            this.inputUserTextBox.Size = new System.Drawing.Size(100, 26);
+            this.inputUserTextBox.Size = new System.Drawing.Size(219, 26);
             this.inputUserTextBox.TabIndex = 7;
             // 
             // label3

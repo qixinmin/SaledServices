@@ -142,9 +142,10 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select orderno, custom_materialNo,mb_brief,receivedNum,returnNum,ordertime from receiveOrder where vendor='" + vendorStr 
-                    + "' and product ='" + productStr + "' and _status = 'close'";
                 cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select orderno, custom_materialNo,mb_brief,receivedNum,returnNum,ordertime from receiveOrder where vendor='" + vendorStr 
+                    + "' and product ='" + productStr + "' and _status = 'close'";                
 
                 SqlDataAdapter sda = new SqlDataAdapter();
                 sda.SelectCommand = cmd;
@@ -230,10 +231,21 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
+                    cmd.CommandText = "select storehouse from receiveOrder where vendor='" + vendorStr
+                    + "' and product ='" + productStr + "' and _status = 'close'"; 
+
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        this.storehouseTextBox.Text = querySdr[0].ToString();                      
+                    }
+                    querySdr.Close();
+                    
+
                     cmd.CommandText = "select dpk_type, mpn, replace_custom_materialNo from MBMaterialCompare where custommaterialNo = '"
                         + this.custommaterialNoTextBox.Text.Trim() + "'";
 
-                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
                         this.dpkpnTextBox.Text = querySdr[0].ToString();
@@ -319,16 +331,16 @@ namespace SaledServices
             if (checkIsNull())
             {
                 MessageBox.Show("输入的内容为空, 请检查！");
+                return;                
+            }
 
-                if (this.matertiallibMpnTextBox.Text.Trim() != this.bommpnTextBox.Text.Trim())
-                {
-                    MessageBox.Show("收获表中的mpn与物料对照表的mpn不一致，请检查！");
-                    this.track_serial_noTextBox.Text = "";
-                    this.track_serial_noTextBox.Focus();
-                    this.custom_serial_noTextBox.Text = "";
-                    return;
-                }
-                
+            if (this.matertiallibMpnTextBox.Text.Trim() != this.bommpnTextBox.Text.Trim())
+            {
+                MessageBox.Show("收获表中的mpn与物料对照表的mpn不一致，请检查！");
+                this.track_serial_noTextBox.Text = "";
+                this.track_serial_noTextBox.Focus();
+                this.custom_serial_noTextBox.Text = "";
+                return;
             }
 
             if (statusComboBox.Text.Trim() == "不良品")
@@ -605,7 +617,7 @@ namespace SaledServices
                         }
                     }
                    
-                    cmd.CommandText = "select custom_serial_no, vendor_serail_no,mpn ,storehouse,lenovo_maintenance_no,lenovo_repair_no from DeliveredTable where track_serial_no = '"
+                    cmd.CommandText = "select custom_serial_no, vendor_serail_no,mpn ,lenovo_maintenance_no,lenovo_repair_no from DeliveredTable where track_serial_no = '"
                         + this.track_serial_noTextBox.Text + "'";
 
                     querySdr = cmd.ExecuteReader();
@@ -613,10 +625,9 @@ namespace SaledServices
                     {
                         this.custom_serial_noTextBox.Text = querySdr[0].ToString();
                         this.vendor_serail_noTextBox.Text = querySdr[1].ToString();
-                        this.matertiallibMpnTextBox.Text = querySdr[2].ToString(); 
-                        this.storehouseTextBox.Text = querySdr[3].ToString();
-                        this.lenovo_maintenance_noTextBox.Text = querySdr[4].ToString();
-                        this.lenovo_repair_noTextBox.Text = querySdr[5].ToString();
+                        this.matertiallibMpnTextBox.Text = querySdr[2].ToString();              
+                        this.lenovo_maintenance_noTextBox.Text = querySdr[3].ToString();
+                        this.lenovo_repair_noTextBox.Text = querySdr[4].ToString();
                     }
                     querySdr.Close();
 

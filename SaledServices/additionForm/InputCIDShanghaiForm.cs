@@ -245,12 +245,10 @@ namespace SaledServices
             tableLayoutPanel4.GetType().
                 GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
                 SetValue(tableLayoutPanel4, true, null);
-        }
-       
+        }       
 
         private void add_Click(object sender, EventArgs e)
         {
-
             if (custom_res_typecomboBox.Text == "")
             {
                 MessageBox.Show("客责类别的内容为空，请检查！");
@@ -411,6 +409,11 @@ namespace SaledServices
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void delete_Click(object sender, EventArgs e)
         {
 
         }
