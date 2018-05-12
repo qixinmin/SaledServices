@@ -28,7 +28,7 @@ namespace SaledServices
 
     public class Constlist
     {
-       // public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
+        //public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
         public static string ConStr = "server=192.168.8.56;database=SaledService;uid=admin;pwd=admin";
 
         public static string table_MBMaterialCompare = "MB物料对照表";
@@ -105,8 +105,11 @@ namespace SaledServices
 
         public static void disposePrinter()
         {
-            doc.Close();
-            labApp.Quit();            
+            if (doc != null)
+            {
+                doc.Close();
+                labApp.Quit();
+            }
         }
     }
 
@@ -597,10 +600,10 @@ namespace SaledServices
                     ret = "27";
                     break;
                 case 'w':
-                    ret = "38";
+                    ret = "28";
                     break;
                 case 'x':
-                    ret = "39";
+                    ret = "29";
                     break;
                 case 'y':
                     ret = "30";

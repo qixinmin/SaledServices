@@ -660,7 +660,7 @@ namespace SaledServices
                                 {
                                     string temp = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, j]).Value2.ToString();
                                     DateTime strDate = DateTime.FromOADate(double.Parse(temp));
-                                    s += strDate.ToString("yyyy-MM-dd");
+                                    s += strDate.ToString("yyyy/MM/dd");
                                 }
                                 else
                                 {

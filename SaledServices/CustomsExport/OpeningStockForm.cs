@@ -51,7 +51,7 @@ namespace SaledServices.CustomsExport
                 querySdr.Close();
 
                 //选择主板信息
-                cmd.CommandText = "select custom_order, track_serial_no,order_receive_date from DeliveredTable";
+                cmd.CommandText = "select custom_order, track_serial_no,order_receive_date from DeliveredTable where order_receive_date between '" + DateTime.Now.ToString("yyyy/MM/dd") + "' and '" + DateTime.Now.ToString("yyyy/MM/dd")+"'";
                 querySdr = cmd.ExecuteReader();
                
                 while (querySdr.Read())
@@ -73,9 +73,8 @@ namespace SaledServices.CustomsExport
                 querySdr.Close();
 
                 //选择库存信息，库存分几种，现在只看frusmt的，其他待做
-                cmd.CommandText = "select mpn,stock_in_num,input_date,stock_place from fru_smt_in_stock where isdeclare='是'";
+                cmd.CommandText = "select mpn,stock_in_num,input_date,stock_place from fru_smt_in_stock where isdeclare='是' and input_date between '" + DateTime.Now.ToString("yyyy/MM/dd") + "' and '" + DateTime.Now.ToString("yyyy/MM/dd")+"'";
                 querySdr = cmd.ExecuteReader();
-
                 while (querySdr.Read())
                 {
                     StoreInit init1 = new StoreInit();

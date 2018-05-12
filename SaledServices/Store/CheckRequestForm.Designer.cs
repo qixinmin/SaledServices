@@ -170,9 +170,9 @@
             // 
             this.requestNumbertextBox.Location = new System.Drawing.Point(686, 31);
             this.requestNumbertextBox.Name = "requestNumbertextBox";
-            this.requestNumbertextBox.ReadOnly = true;
             this.requestNumbertextBox.Size = new System.Drawing.Size(100, 21);
             this.requestNumbertextBox.TabIndex = 12;
+            this.requestNumbertextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.requestNumbertextBox_KeyPress);
             // 
             // label6
             // 

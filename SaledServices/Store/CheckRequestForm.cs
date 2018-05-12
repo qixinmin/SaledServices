@@ -64,10 +64,14 @@ namespace SaledServices.Store
             this.requestNumbertextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
             this.requestertextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
             this.dateTextBox.Text = dataGridView1.SelectedCells[6].Value.ToString();
-            this.statustextBox.Text  = dataGridView1.SelectedCells[7].Value.ToString(); 
+            this.statustextBox.Text  = dataGridView1.SelectedCells[7].Value.ToString();
 
+            processRequest();
+        }
+
+        private void processRequest()
+        {
             //根据mpn查询库位的剩余数量，如果不满足条件，则直接disable处理情况，只负责更新状态
-
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -109,7 +113,7 @@ namespace SaledServices.Store
                     int requestNumber = Int32.Parse(this.requestNumbertextBox.Text.Trim());
                     int totalCurentNumber = Int32.Parse(number);
                     this.currentNumbertextBox.Text = number;
-                    this.stockplacetextBox.Text = house+","+place;
+                    this.stockplacetextBox.Text = house + "," + place;
 
                     if (requestNumber <= totalCurentNumber)
                     {
@@ -188,6 +192,14 @@ namespace SaledServices.Store
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void requestNumbertextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                processRequest();
             }
         }
     }

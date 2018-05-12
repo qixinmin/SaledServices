@@ -18,6 +18,7 @@ namespace SaledServices.Test_Outlook
             InitializeComponent();
             testerTextBox.Text = LoginForm.currentUser;
             testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            this.tracker_bar_textBox.Focus();
         }
 
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)

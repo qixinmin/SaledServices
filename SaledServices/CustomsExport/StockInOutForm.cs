@@ -51,7 +51,7 @@ namespace SaledServices.CustomsExport
                 querySdr.Close();
 
                 //板子入库信息,过滤条件是今天DateTime.Now.ToString("yyyy/MM/dd")
-                cmd.CommandText = "select track_serial_no,order_receive_date ,declare_unit, declare_number, custom_request_number from DeliveredTable inner join receiveOrder on DeliveredTable.custom_order = receiveOrder.orderno where order_receive_date='" + today + "'";
+                cmd.CommandText = "select track_serial_no,order_receive_date ,declare_unit, declare_number, custom_request_number from DeliveredTable inner join receiveOrder on DeliveredTable.custom_order = receiveOrder.orderno where order_receive_date between '" + today + "' and '" + today + "'";
                 querySdr = cmd.ExecuteReader();
 
                 while (querySdr.Read())

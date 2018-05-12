@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.add = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
@@ -71,10 +71,12 @@
             this.notetextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.orderNumberTextBox = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.stock_in_numTextBox = new System.Windows.Forms.TextBox();
             this.vendor_serial_noTextBox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.stock_in_numTextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.track_serial_noTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewToReturn = new System.Windows.Forms.DataGridView();
@@ -366,10 +368,12 @@
             this.tableLayoutPanel3.Controls.Add(this.productTextBox, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.label6, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.material_typeTextBox, 1, 4);
-            this.tableLayoutPanel3.Controls.Add(this.label13, 4, 4);
             this.tableLayoutPanel3.Controls.Add(this.label22, 4, 3);
-            this.tableLayoutPanel3.Controls.Add(this.stock_in_numTextBox, 5, 4);
             this.tableLayoutPanel3.Controls.Add(this.vendor_serial_noTextBox, 5, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label13, 4, 5);
+            this.tableLayoutPanel3.Controls.Add(this.stock_in_numTextBox, 5, 5);
+            this.tableLayoutPanel3.Controls.Add(this.label8, 4, 4);
+            this.tableLayoutPanel3.Controls.Add(this.track_serial_noTextBox, 5, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -407,7 +411,7 @@
             this.buy_order_serial_noComboBox.FormattingEnabled = true;
             this.buy_order_serial_noComboBox.Location = new System.Drawing.Point(175, 6);
             this.buy_order_serial_noComboBox.Name = "buy_order_serial_noComboBox";
-            this.buy_order_serial_noComboBox.Size = new System.Drawing.Size(148, 24);
+            this.buy_order_serial_noComboBox.Size = new System.Drawing.Size(159, 24);
             this.buy_order_serial_noComboBox.TabIndex = 6;
             this.buy_order_serial_noComboBox.SelectedValueChanged += new System.EventHandler(this.buy_order_serial_noComboBox_SelectedValueChanged);
             // 
@@ -564,16 +568,6 @@
             this.orderNumberTextBox.Size = new System.Drawing.Size(158, 26);
             this.orderNumberTextBox.TabIndex = 5;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(683, 178);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(72, 16);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "入库数量";
-            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -584,15 +578,6 @@
             this.label22.TabIndex = 16;
             this.label22.Text = "厂商序号";
             // 
-            // stock_in_numTextBox
-            // 
-            this.stock_in_numTextBox.Location = new System.Drawing.Point(852, 182);
-            this.stock_in_numTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.stock_in_numTextBox.Name = "stock_in_numTextBox";
-            this.stock_in_numTextBox.Size = new System.Drawing.Size(158, 26);
-            this.stock_in_numTextBox.TabIndex = 20;
-            this.stock_in_numTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stock_in_numTextBox_KeyPress);
-            // 
             // vendor_serial_noTextBox
             // 
             this.vendor_serial_noTextBox.Location = new System.Drawing.Point(852, 143);
@@ -600,7 +585,44 @@
             this.vendor_serial_noTextBox.Name = "vendor_serial_noTextBox";
             this.vendor_serial_noTextBox.Size = new System.Drawing.Size(158, 26);
             this.vendor_serial_noTextBox.TabIndex = 20;
-            this.vendor_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stock_in_numTextBox_KeyPress);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(683, 219);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(72, 16);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "入库数量";
+            // 
+            // stock_in_numTextBox
+            // 
+            this.stock_in_numTextBox.Location = new System.Drawing.Point(852, 223);
+            this.stock_in_numTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.stock_in_numTextBox.Name = "stock_in_numTextBox";
+            this.stock_in_numTextBox.ReadOnly = true;
+            this.stock_in_numTextBox.Size = new System.Drawing.Size(158, 26);
+            this.stock_in_numTextBox.TabIndex = 20;
+            this.stock_in_numTextBox.Text = "1";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(683, 178);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(72, 16);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "跟踪条码";
+            // 
+            // track_serial_noTextBox
+            // 
+            this.track_serial_noTextBox.Location = new System.Drawing.Point(852, 182);
+            this.track_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.track_serial_noTextBox.Name = "track_serial_noTextBox";
+            this.track_serial_noTextBox.Size = new System.Drawing.Size(158, 26);
+            this.track_serial_noTextBox.TabIndex = 20;
             // 
             // tableLayoutPanel2
             // 
@@ -651,14 +673,13 @@
             this.dataGridViewToReturn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewToReturn.Size = new System.Drawing.Size(560, 416);
             this.dataGridViewToReturn.TabIndex = 8;
-            this.dataGridViewToReturn.VirtualMode = true;
             this.dataGridViewToReturn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewToReturn_CellClick);
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -748,5 +769,7 @@
         private System.Windows.Forms.TextBox vendor_serial_noTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox orderNumberTextBox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox track_serial_noTextBox;
     }
 }

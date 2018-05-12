@@ -192,7 +192,7 @@
             this.checkBoxMakeNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxMakeNew.AutoSize = true;
             this.checkBoxMakeNew.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxMakeNew.Location = new System.Drawing.Point(92, 14);
+            this.checkBoxMakeNew.Location = new System.Drawing.Point(132, 14);
             this.checkBoxMakeNew.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxMakeNew.Name = "checkBoxMakeNew";
             this.checkBoxMakeNew.Size = new System.Drawing.Size(120, 16);
@@ -206,7 +206,7 @@
             this.return_file_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.return_file_noTextBox.Name = "return_file_noTextBox";
             this.return_file_noTextBox.ReadOnly = true;
-            this.return_file_noTextBox.Size = new System.Drawing.Size(80, 26);
+            this.return_file_noTextBox.Size = new System.Drawing.Size(120, 26);
             this.return_file_noTextBox.TabIndex = 11;
             // 
             // label5

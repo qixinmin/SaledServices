@@ -108,11 +108,36 @@ namespace SaledServices
         {
             try
             {
+                string sqlStr = "select * from " + tableName;
+                if (vendorTextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where vendor= '" + vendorTextBox.Text.Trim() + "' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and vendor= '" + vendorTextBox.Text.Trim() + "' ";
+                    }
+                }
+
+                if (productTextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where product= '" + productTextBox.Text.Trim() + "' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and product= '" + productTextBox.Text.Trim() + "' ";
+                    }
+                }
+
                 mConn = new SqlConnection(Constlist.ConStr);
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select * from " + tableName;
+                cmd.CommandText =sqlStr;
                 cmd.CommandType = CommandType.Text;
 
                 sda = new SqlDataAdapter();

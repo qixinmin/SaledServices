@@ -28,6 +28,7 @@ namespace SaledServices
                 this.modify.Visible = false;
                 this.delete.Visible = false;
             }
+            track_serial_noTextBox.Focus();
         }
 
         private void loadAdditionInfomation()

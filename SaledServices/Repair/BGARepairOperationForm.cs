@@ -20,12 +20,12 @@ namespace SaledServices
             repairertextBox.Text = LoginForm.currentUser;
             repair_datetextBox.Text =  DateTime.Now.ToString("yyyy/MM/dd");
 
-
             if (User.UserSelfForm.isSuperManager() == false)
             {
                 this.modify.Visible = false;
                 this.delete.Visible = false;
             }
+            track_serial_noTextBox.Focus();
         }
 
         private void loadAdditionInfomation()//TODO

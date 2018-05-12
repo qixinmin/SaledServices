@@ -86,7 +86,7 @@ stock_place NVARCHAR(128),/*库位*/
 
 CREATE TABLE request_fru_smt_to_store_table(
 Id INT PRIMARY KEY IDENTITY, 
-mb_brief NVARCHAR(128), /*机型*/
+mb_brief NVARCHAR(1280), /*机型*/
 not_good_place NVARCHAR(128), /*不良位置*/
 material_mpn NVARCHAR(128), /*材料mpn*/
 material_describe NVARCHAR(128), /*材料描述*/
@@ -96,27 +96,28 @@ requester NVARCHAR(128), /*请求人*/
 _date date, /*请求日期*/
 _status NVARCHAR(128), /*状态, request/close/part/wait,return*/
 usedNumber NVARCHAR(128), /*使用的数量,是个累加数量*/
-stock_place NVARCHAR(128),/*库位*/
+stock_place NVARCHAR(128),/*库位->剩余数量*/
 processer NVARCHAR(128), /*处理人*/
 processe_date date, /*处理日期*/
 )
 
 CREATE TABLE mb_out_stock(
 Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
 mpn NVARCHAR(128) NOT NULL, /*MPN*/
 mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
 describe NVARCHAR(128) NOT NULL,/*描述*/
-
 custom_serial_no NVARCHAR(128) NOT NULL,/*客户序号*/
 vendor_serial_no NVARCHAR(128) NOT NULL,/*厂商序号*/
+vendormaterialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
+custommaterialNo NVARCHAR(128) NOT NULL,/*客户料号->输入*/
+dpk_type NVARCHAR(128),/*DPK类型 物料对照表带出*/
+dpkpn NVARCHAR(128),/*DPKPN 物料对照表带出*/
 stock_place NVARCHAR(128),/*库位*/
-out_number  NVARCHAR(128),/*出库数量*/
 isdeclare NVARCHAR(128), /*是否报关*/
-
 note NVARCHAR(128),/*备注*/
-
 taker NVARCHAR(128),/*领用人*/
 inputer  NVARCHAR(128),/*输入人*/
 input_date date,/*日期*/
@@ -143,6 +144,7 @@ isdeclare NVARCHAR(128), /*是否报关*/
 mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
 custom_serial_no NVARCHAR(128) NOT NULL,/*客户序号*/
 vendor_serial_no NVARCHAR(128) NOT NULL,/*厂商序号*/
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
 
 note NVARCHAR(128),/*备注*/
 inputer  NVARCHAR(128),/*输入人*/
@@ -198,7 +200,7 @@ buy_type NVARCHAR(128) NOT NULL, /*采购类别*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
 material_type NVARCHAR(128) NOT NULL, /*材料大类*/
 mpn NVARCHAR(128) NOT NULL, /*MPN*/
-mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
+mb_brief NVARCHAR(1280) NOT NULL,/*MB简称*/
 material_name  NVARCHAR(128) NOT NULL,/*材料名称*/
 vendormaterialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
 describe NVARCHAR(128) NOT NULL,/*描述*/

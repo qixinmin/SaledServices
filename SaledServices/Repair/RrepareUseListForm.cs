@@ -80,7 +80,17 @@ namespace SaledServices.Repair
             this.materialdescribetextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
             this.notgood_placetextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
             this.realNumbertextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
-            this.usedNumbertextBox.Text = dataGridView1.SelectedCells[6].Value.ToString();            
+
+            try
+            {
+                int usedNum = Int32.Parse(dataGridView1.SelectedCells[6].Value.ToString());
+                this.usedNumbertextBox.Text = usedNum+"";      
+            }
+            catch (Exception ex)
+            {
+                this.usedNumbertextBox.Text = "0";
+            }
+                  
         }
 
         private string totalUseNumber ="";
@@ -89,40 +99,45 @@ namespace SaledServices.Repair
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                //检查输入的数量不能大于能使用的数量
-                if (this.realNumbertextBox.Text == "")
-                {
-                    MessageBox.Show("存储的数量请点击出来！");
-                    return;
-                }
+                calculateNum();
+            }
+        }
 
-                if (this.thisNumbertextBox.Text == "")
-                {
-                    MessageBox.Show("要使用的数量请填入！");
-                    return;
-                }
+        private void calculateNum()
+        {
+            //检查输入的数量不能大于能使用的数量
+            if (this.realNumbertextBox.Text == "")
+            {
+                MessageBox.Show("存储的数量请点击出来！");
+                return;
+            }
 
-                try 
-                {
-                    int totalNumber = Int32.Parse(this.realNumbertextBox.Text);
-                    int usedNumber = Int32.Parse(this.usedNumbertextBox.Text);
-                    int thisTryToUse = Int32.Parse(this.thisNumbertextBox.Text);
+            if (this.thisNumbertextBox.Text == "")
+            {
+                MessageBox.Show("要使用的数量请填入！");
+                return;
+            }
 
-                    if (thisTryToUse + usedNumber > totalNumber)
-                    {
-                        MessageBox.Show("输入的数量不能大于能使用的数量!");
-                        this.thisNumbertextBox.Clear();
-                        this.thisNumbertextBox.Focus();
-                    }
-                    else
-                    {
-                        totalUseNumber = (thisTryToUse + usedNumber).ToString();
-                    }
-                }
-                catch (Exception ex)
+            try
+            {
+                int totalNumber = Int32.Parse(this.realNumbertextBox.Text);
+                int usedNumber = Int32.Parse(this.usedNumbertextBox.Text);
+                int thisTryToUse = Int32.Parse(this.thisNumbertextBox.Text);
+
+                if (thisTryToUse + usedNumber > totalNumber)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("输入的数量不能大于能使用的数量!");
+                    this.thisNumbertextBox.Clear();
+                    this.thisNumbertextBox.Focus();
                 }
+                else
+                {
+                    totalUseNumber = (thisTryToUse + usedNumber).ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -237,6 +252,11 @@ namespace SaledServices.Repair
             
             this.returnMaterialbutton.Enabled = true;
             refreshbutton_Click(null, null);
+        }
+
+        private void thisNumbertextBox_Leave(object sender, EventArgs e)
+        {
+            calculateNum();
         }
     }
 }

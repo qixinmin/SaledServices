@@ -475,7 +475,7 @@ namespace SaledServices
         private bool checkIsNull()
         {
             if (custommaterialNoTextBox.Text.Trim() == ""
-                || this.replace_custom_materialNotextBox.Text.Trim() == ""
+               // || this.replace_custom_materialNotextBox.Text.Trim() == ""
                 || this.track_serial_noTextBox.Text.Trim() == ""
                 || this.custom_serial_noTextBox.Text.Trim() == ""
                 || this.statusComboBox.Text.Trim() == ""
@@ -611,9 +611,24 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
+                    cmd.CommandText = "select Id from " + tableName + " where track_serial_no = '" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string returnExist = "";
+                    while (querySdr.Read())
+                    {
+                        returnExist = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+                    if (returnExist != "")
+                    {
+                        MessageBox.Show("此序列号已经还货了，请检查！");
+                        mConn.Close();
+                        return;
+                    }
+
                     //先检查CID，如果在cid存在，则跳过站别检查
                     cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
-                    SqlDataReader querySdr = cmd.ExecuteReader();
+                     querySdr = cmd.ExecuteReader();
                     string cidExist = "";
                     while (querySdr.Read())
                     {
@@ -627,7 +642,12 @@ namespace SaledServices
                         //增加站别检查，如果没有经过最后一站，则认为此板子有问题，不能归还 
                         //cmd.CommandText = "select track_serial_no from outlookcheck where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
                         //暂时从Test2走
-                        cmd.CommandText = "select track_serial_no from test2table where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                        string currentUsedTable="test2table";
+                        if (this.productComboBox.Text == "DT" || productComboBox.Text == "AIO" || productComboBox.Text == "TBG")
+                        {
+                            currentUsedTable ="testalltable";
+                        }
+                        cmd.CommandText = "select track_serial_no from "+currentUsedTable+" where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
                         querySdr = cmd.ExecuteReader();                       
                         while (querySdr.Read())
                         {
@@ -664,17 +684,24 @@ namespace SaledServices
                         string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
                         string replacedCustomSerial = this.replace_custom_materialNotextBox.Text.TrimStart('0');
 
-                        if (this.custom_serial_noTextBox.Text.ToLower().Contains(customSerial.ToLower()) == false
-                            || this.custom_serial_noTextBox.Text.ToLower().Contains(replacedCustomSerial.ToLower()))
+                        if (this.custom_serial_noTextBox.Text.ToLower().Contains(customSerial.ToLower()))
                         {
-                            this.track_serial_noTextBox.Focus();
-                            this.track_serial_noTextBox.SelectAll();
-
-                            this.custom_serial_noTextBox.Text = "";
-
-                            MessageBox.Show("在" + this.productComboBox.Text + "下客户序号没有包含客户料号, 请检查追踪条码是否正确");
-                            return;
                         }
+                        else
+                        {
+                            if(this.custom_serial_noTextBox.Text.ToLower().Contains(replacedCustomSerial.ToLower()))
+                            {
+                            }
+                            else
+                            {
+                                MessageBox.Show("在" + this.productComboBox.Text + "下客户序号没有包含客户料号, 请检查追踪条码是否正确");
+                                this.track_serial_noTextBox.Focus();
+                                this.track_serial_noTextBox.SelectAll();
+
+                                this.custom_serial_noTextBox.Text = "";                                
+                                return;
+                            }
+                        }                          
                     }                   
                 }
                 catch (Exception ex)

@@ -74,9 +74,9 @@
             this.declare_unittextBox = new System.Windows.Forms.TextBox();
             this.declare_numbertextBox = new System.Windows.Forms.TextBox();
             this.custom_request_numbertextBox = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label20 = new System.Windows.Forms.Label();
             this.cidNumberTextBox = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -602,26 +602,6 @@
             this.custom_request_numbertextBox.Size = new System.Drawing.Size(165, 26);
             this.custom_request_numbertextBox.TabIndex = 5;
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Controls.Add(this.add, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.query, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.modify, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.delete, 3, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 253);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1362, 53);
-            this.tableLayoutPanel2.TabIndex = 9;
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -641,6 +621,26 @@
             this.cidNumberTextBox.ReadOnly = true;
             this.cidNumberTextBox.Size = new System.Drawing.Size(165, 26);
             this.cidNumberTextBox.TabIndex = 5;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Controls.Add(this.add, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.query, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.modify, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.delete, 3, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 253);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1362, 53);
+            this.tableLayoutPanel2.TabIndex = 9;
             // 
             // ReceiveOrderForm
             // 

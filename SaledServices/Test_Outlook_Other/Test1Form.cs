@@ -21,12 +21,14 @@ namespace SaledServices.Test_Outlook
             InitializeComponent();
             testerTextBox.Text = LoginForm.currentUser;
             testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            this.tracker_bar_textBox.Focus();
         }
         string tempKeySerial="";
-        string track_serial_no = "";
+        string track_serial_no = "",product;
         string customMaterialNo = "", vendor_serail_no = "", mac = "", uuid = "", custom_serial_no = "", mb_brief = "";
         string KEYID = "", KEYSERIAL = "";
         string cpu_type = "", cpu_freq = "", dpk_type = "", dpkpn = "", mpn = "";
+        bool existBuffer = false, existRepair = false;
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
@@ -55,30 +57,65 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "select track_serial_no,product from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    track_serial_no = "";
-                    string product = "";
-                    while (querySdr.Read())
+                    track_serial_no = ""; product = "";
+                    this.bomdownload.Enabled = false; this.buffertest.Enabled = false; this.isburn.Enabled = false;
+                    if (querySdr.HasRows == false)
                     {
-                        track_serial_no = querySdr[0].ToString();
-                        product = querySdr[1].ToString();
+                        querySdr.Close();
+                        MessageBox.Show("本条形码不在维修表中，现在检查buffer表！");
+
+                        cmd.CommandText = "select track_serial_no,product from mb_out_stock where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows == false)
+                        {
+                            MessageBox.Show("本条形码不在buffer出库表中，请检查！");
+                            querySdr.Close();
+                            mConn.Close();
+                            return;
+                        }
+                        else
+                        {
+                            while (querySdr.Read())
+                            {
+                                track_serial_no = querySdr[0].ToString();
+                                product = querySdr[1].ToString();
+                            }
+                            querySdr.Close();
+                            existBuffer = true;
+                            this.buffertest.Enabled = true;
+                            this.isburn.Enabled = true;
+                        }
                     }
-                    querySdr.Close();
-
-                    cmd.CommandText = "select top 1 _status from bga_wait_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "' order by Id desc";
-
-                    querySdr = cmd.ExecuteReader();
-                    string bgastatus = "";                  
-                    while (querySdr.Read())
+                    else
                     {
-                        bgastatus = querySdr[0].ToString();                       
+                        while (querySdr.Read())
+                        {
+                            track_serial_no = querySdr[0].ToString();
+                            product = querySdr[1].ToString();
+                        }
+                        querySdr.Close();
+                        this.bomdownload.Enabled = true;
+                        existRepair = true;
                     }
-                    querySdr.Close();
-
-                    if (bgastatus == "BGA不良")
+                    if (existRepair)
                     {
-                        MessageBox.Show("BGA的维修记录没有结束，请检查！");
-                        mConn.Close();
-                        return;
+                        cmd.CommandText = "select top 1 _status from bga_wait_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "' order by Id desc";
+
+                        querySdr = cmd.ExecuteReader();
+                        string bgastatus = "";
+                        while (querySdr.Read())
+                        {
+                            bgastatus = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+
+                        if (bgastatus == "BGA不良")
+                        {
+                            MessageBox.Show("BGA的维修记录没有结束，请检查！");
+                            querySdr.Close();
+                            mConn.Close();
+                            return;
+                        }
                     }
 
                     //当是LBG的时候，需要分1与2test站别，否则只需要设置一个testall站别
@@ -177,16 +214,19 @@ namespace SaledServices.Test_Outlook
                                 }
                                 else 
                                 {
-                                    KEYID = "N/A";
-                                    KEYSERIAL = "N/A";
+                                    KEYID = "NOK";
+                                    KEYSERIAL = "NOK";
                                 }
 
                                 this.keyidtextBox.Text = KEYID;
 
                                 tempKeySerial = KEYSERIAL;
-                                int lastEm = tempKeySerial.LastIndexOf('-');
-                                this.KEYSERIALtextBox.Text = "XXXXX-XXXXX-XXXXX-XXXXX-" + tempKeySerial.Substring(lastEm+1, 5);
-                               
+                                this.KEYSERIALtextBox.Text = KEYSERIAL;
+                                if (KEYID != "NOK")
+                                {
+                                    int lastEm = tempKeySerial.LastIndexOf('-');
+                                    this.KEYSERIALtextBox.Text = "XXXXX-XXXXX-XXXXX-XXXXX-" + tempKeySerial.Substring(lastEm + 1, 5);
+                                }
                             }
                             else
                             {
@@ -474,6 +514,92 @@ namespace SaledServices.Test_Outlook
                 }
 
                 conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void buffertest_Click(object sender, EventArgs e)
+        {
+            if (KEYID == "NOK")
+            {
+                //过站
+                makePassInfo();
+            }
+            else
+            {
+                //判断是否下载
+                if (isburn.Checked)
+                {
+                    button4_Click(null, null);
+                }
+                else
+                {
+                    makePassInfo();
+                }
+            }
+        }
+
+        private void makePassInfo()
+        {
+            if (this.tracker_bar_textBox.Text.Trim() == "")
+            {
+                MessageBox.Show("追踪条码的内容为空，请检查！");
+                return;
+            }
+
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string Id = "";
+                    while (querySdr.Read())
+                    {
+                        Id = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (Id != "")
+                    {
+                        MessageBox.Show("此序列号已经存在！");
+                        this.tracker_bar_textBox.Text = "";
+                        this.cpuFreqtextBox.Text = "";
+                        this.cpuTypetextBox.Text = "";
+                        this.keyidtextBox.Text = "";
+                        this.KEYSERIALtextBox.Text = "";
+                        conn.Close();
+                        return;
+                    }
+
+                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
+                        + this.tracker_bar_textBox.Text.Trim() + "','"
+                        + this.testerTextBox.Text.Trim() + "','"
+                        + this.testdatetextBox.Text.Trim()
+                        + "')";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "update stationInformation set station = 'Test1', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+                MessageBox.Show("插入测试All数据OK");
             }
             catch (Exception ex)
             {

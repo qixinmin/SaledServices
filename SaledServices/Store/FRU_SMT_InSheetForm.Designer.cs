@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.add = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
@@ -54,7 +54,6 @@
             this.pricePerTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label7 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.stock_in_numTextBox = new System.Windows.Forms.TextBox();
             this.buy_order_serial_noComboBox = new System.Windows.Forms.ComboBox();
@@ -63,9 +62,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.totalMoneyTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
-            this.mb_brieftextBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.inputerTextBox = new System.Windows.Forms.TextBox();
@@ -74,6 +71,9 @@
             this.label20 = new System.Windows.Forms.Label();
             this.input_dateTextBox = new System.Windows.Forms.TextBox();
             this.notetextBox = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.mb_brieftextBox = new System.Windows.Forms.TextBox();
             this.material_namecomboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -403,16 +403,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1362, 241);
             this.tableLayoutPanel3.TabIndex = 9;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(683, 50);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 16);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "材料名称";
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -490,16 +480,6 @@
             this.label14.TabIndex = 7;
             this.label14.Text = "ID";
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(683, 97);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(56, 16);
-            this.label18.TabIndex = 11;
-            this.label18.Text = "MB简称";
-            // 
             // idTextBox
             // 
             this.idTextBox.Enabled = false;
@@ -509,16 +489,6 @@
             this.idTextBox.ReadOnly = true;
             this.idTextBox.Size = new System.Drawing.Size(165, 26);
             this.idTextBox.TabIndex = 18;
-            // 
-            // mb_brieftextBox
-            // 
-            this.mb_brieftextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mb_brieftextBox.Location = new System.Drawing.Point(852, 101);
-            this.mb_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mb_brieftextBox.Multiline = true;
-            this.mb_brieftextBox.Name = "mb_brieftextBox";
-            this.mb_brieftextBox.Size = new System.Drawing.Size(158, 47);
-            this.mb_brieftextBox.TabIndex = 24;
             // 
             // label15
             // 
@@ -596,6 +566,36 @@
             this.notetextBox.Size = new System.Drawing.Size(158, 26);
             this.notetextBox.TabIndex = 17;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(683, 97);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(56, 16);
+            this.label18.TabIndex = 11;
+            this.label18.Text = "MB简称";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(683, 50);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(72, 16);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "材料名称";
+            // 
+            // mb_brieftextBox
+            // 
+            this.mb_brieftextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mb_brieftextBox.Location = new System.Drawing.Point(852, 101);
+            this.mb_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.mb_brieftextBox.Multiline = true;
+            this.mb_brieftextBox.Name = "mb_brieftextBox";
+            this.mb_brieftextBox.Size = new System.Drawing.Size(158, 47);
+            this.mb_brieftextBox.TabIndex = 24;
+            // 
             // material_namecomboBox
             // 
             this.material_namecomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -659,8 +659,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;

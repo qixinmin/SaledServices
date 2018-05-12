@@ -169,8 +169,7 @@ namespace SaledServices
         }
 
         private void RepairOperationForm_Load(object sender, EventArgs e)
-        {
-            
+        {            
             tableLayoutPanel1.GetType().
              GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
              SetValue(tableLayoutPanel1, true, null);

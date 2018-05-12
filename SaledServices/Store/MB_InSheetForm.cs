@@ -79,7 +79,13 @@ namespace SaledServices
             {
                 MessageBox.Show("库位为空，请检查！");
                 return;
-            }           
+            }
+
+            if (this.track_serial_noTextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("跟踪条码为空，请检查！");
+                return;
+            }  
 
             try
             {
@@ -132,11 +138,7 @@ namespace SaledServices
                         }
                         break;
                     }
-                    querySdr.Close();
-
-                    //更新采购表里面的数量与状态
-                    cmd.CommandText = "update stock_in_sheet set _status = '" + status + "',stock_in_num = '" + (in_number_int + this_enter_number) + "' where mpn='" + this.mpnTextBox.Text.Trim() + "' and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim() + "'";
-                    cmd.ExecuteNonQuery();
+                    querySdr.Close();                    
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
                         this.buy_order_serial_noComboBox.Text.Trim() + "','" +
@@ -155,10 +157,15 @@ namespace SaledServices
                         this.mb_brieftextBox.Text.Trim() + "','" +
                         this.custom_serial_noTextBox.Text.Trim() + "','" +
                         this.vendor_serial_noTextBox.Text.Trim() + "','" +
+                        this.track_serial_noTextBox.Text.Trim() + "','" +
                         this.notetextBox.Text.Trim() + "','" +
                         this.inputerTextBox.Text.Trim() + "','" +
                         DateTime.Now.ToString("yyyy/MM/dd") + "')";
 
+                    cmd.ExecuteNonQuery();
+
+                    //更新采购表里面的数量与状态
+                    cmd.CommandText = "update stock_in_sheet set _status = '" + status + "',stock_in_num = '" + (in_number_int + this_enter_number) + "' where mpn='" + this.mpnTextBox.Text.Trim() + "' and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
 
                     //更新库存占用记录，保证库房的信息被更新
@@ -245,7 +252,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "订单数量", "入库数量", "库位","单价", "是否报关", "MB简称", "客户序号", "厂商序号", "备注", "输入人", "日期" };
+            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "订单数量", "入库数量", "库位","单价", "是否报关", "MB简称", "客户序号", "厂商序号","跟踪条码", "备注", "输入人", "日期" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -267,9 +274,9 @@ namespace SaledServices
             dr["mpn"] = this.mpnTextBox.Text.Trim();
             dr["vendormaterialNo"] = this.vendormaterialNoTextBox.Text.Trim();
             dr["describe"] = this.describeTextBox.Text.Trim();
-             dr["number"] = this.orderNumberTextBox.Text.Trim();
+            dr["number"] = this.orderNumberTextBox.Text.Trim();
             dr["input_number"] = this.stock_in_numTextBox.Text.Trim();
-             dr["stock_place"]= this.stock_placetextBox.Text.Trim();
+            dr["stock_place"]= this.stock_placetextBox.Text.Trim();
 
             dr["pricePer"] = this.pricePerTextBox.Text.Trim();
             dr["isdeclare"] = this.isDeclareTextBox.Text.Trim();
@@ -278,7 +285,7 @@ namespace SaledServices
            
             dr["custom_serial_no"] = this.custom_serial_noTextBox.Text.Trim();
             dr["vendor_serial_no"] = this.vendor_serial_noTextBox.Text.Trim();
-           
+            dr["track_serial_no"] = this.track_serial_noTextBox.Text.Trim();
            
             dr["note"] = this.notetextBox.Text.Trim();      
             dr["inputer"] = this.inputerTextBox.Text.Trim();
@@ -340,9 +347,12 @@ namespace SaledServices
             this.mb_brieftextBox.Text = dataGridView1.SelectedCells[14].Value.ToString();
             this.custom_serial_noTextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
             this.vendor_serial_noTextBox.Text = dataGridView1.SelectedCells[16].Value.ToString();
-            this.notetextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
-            this.inputerTextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();
-            this.input_dateTextBox.Text = dataGridView1.SelectedCells[19].Value.ToString();
+
+            this.track_serial_noTextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
+
+            this.notetextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();
+            this.inputerTextBox.Text = dataGridView1.SelectedCells[19].Value.ToString();
+            this.input_dateTextBox.Text = dataGridView1.SelectedCells[20].Value.ToString();
         }
 
         private void ReceiveOrderForm_Load(object sender, EventArgs e)
@@ -404,8 +414,7 @@ namespace SaledServices
                 querySdr.Close();
 
                 if (house != "" && place != "")
-                {
-                    
+                {                    
                     this.stock_placetextBox.Text = house + "," + place;
                     this.stock_placetextBox.Enabled = false;
                    
@@ -442,7 +451,7 @@ namespace SaledServices
         private void clearInputText()
         {
             //this.mb_brieftextBox.Text = "";
-            this.stock_in_numTextBox.Text = "";
+            //this.stock_in_numTextBox.Text = "";
             //this.stock_placetextBox.Text = "";
             this.notetextBox.Text = "";
         }
@@ -551,25 +560,7 @@ namespace SaledServices
 
         private void stock_in_numTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == System.Convert.ToChar(13))
-            {
-                double order_number_int = Double.Parse(this.orderNumberTextBox.Text);
-                double this_enter_number = Double.Parse(this.stock_in_numTextBox.Text.Trim());
-                if (this_enter_number > order_number_int)
-                {
-                    MessageBox.Show("输入数量大于订单数量!");
-                    this.stock_in_numTextBox.Clear();
-                    this.stock_in_numTextBox.Focus();
-                    return;
-                }
-                if (this_enter_number == 0)
-                {
-                    MessageBox.Show("输入数量不能为0!");
-                    this.stock_in_numTextBox.Clear();
-                    this.stock_in_numTextBox.Focus();
-                    return;
-                }
-            }
+
         }
 
         public void setChooseStock(string id, string house, string place)
