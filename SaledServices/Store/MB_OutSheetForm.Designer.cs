@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.add = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
@@ -42,43 +42,43 @@
             this.describeTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label19 = new System.Windows.Forms.Label();
-            this.stock_placetextBox = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.takertextBox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.input_dateTextBox = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.notetextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.inputerTextBox = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.mb_brieftextBox = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.isDeclareTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.custom_serial_notextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.vendor_serial_notextBox = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.queryStock = new System.Windows.Forms.Button();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.track_serial_noTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.custommaterialNoTextBox = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.isDeclareTextBox = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.mb_brieftextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.takertextBox = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.notetextBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dpkpntextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.dpk_typeTextBox = new System.Windows.Forms.TextBox();
             this.vendorTextBox = new System.Windows.Forms.TextBox();
             this.productTextBox = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.stock_placetextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.vendormaterialNotextBox = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.queryStock = new System.Windows.Forms.Button();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -90,7 +90,7 @@
             // add
             // 
             this.add.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.add.Location = new System.Drawing.Point(419, 9);
+            this.add.Location = new System.Drawing.Point(418, 9);
             this.add.Margin = new System.Windows.Forms.Padding(4);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(100, 31);
@@ -102,7 +102,7 @@
             // query
             // 
             this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.query.Location = new System.Drawing.Point(704, 9);
+            this.query.Location = new System.Drawing.Point(703, 9);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(100, 31);
@@ -114,7 +114,7 @@
             // modify
             // 
             this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.modify.Location = new System.Drawing.Point(950, 9);
+            this.modify.Location = new System.Drawing.Point(949, 9);
             this.modify.Margin = new System.Windows.Forms.Padding(4);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(100, 31);
@@ -126,7 +126,7 @@
             // delete
             // 
             this.delete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.delete.Location = new System.Drawing.Point(1183, 9);
+            this.delete.Location = new System.Drawing.Point(1182, 9);
             this.delete.Margin = new System.Windows.Forms.Padding(4);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(100, 31);
@@ -200,8 +200,8 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -276,43 +276,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1362, 241);
             this.tableLayoutPanel3.TabIndex = 9;
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(683, 97);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(40, 16);
-            this.label19.TabIndex = 10;
-            this.label19.Text = "库位";
-            // 
-            // stock_placetextBox
-            // 
-            this.stock_placetextBox.Location = new System.Drawing.Point(852, 101);
-            this.stock_placetextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.stock_placetextBox.Name = "stock_placetextBox";
-            this.stock_placetextBox.ReadOnly = true;
-            this.stock_placetextBox.Size = new System.Drawing.Size(158, 26);
-            this.stock_placetextBox.TabIndex = 19;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 97);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 16);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "领用人";
-            // 
-            // takertextBox
-            // 
-            this.takertextBox.Location = new System.Drawing.Point(176, 101);
-            this.takertextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.takertextBox.Name = "takertextBox";
-            this.takertextBox.Size = new System.Drawing.Size(158, 26);
-            this.takertextBox.TabIndex = 22;
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -332,24 +295,6 @@
             this.input_dateTextBox.ReadOnly = true;
             this.input_dateTextBox.Size = new System.Drawing.Size(158, 26);
             this.input_dateTextBox.TabIndex = 23;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(7, 144);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(40, 16);
-            this.label20.TabIndex = 15;
-            this.label20.Text = "备注";
-            // 
-            // notetextBox
-            // 
-            this.notetextBox.Location = new System.Drawing.Point(176, 148);
-            this.notetextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.notetextBox.Name = "notetextBox";
-            this.notetextBox.Size = new System.Drawing.Size(158, 26);
-            this.notetextBox.TabIndex = 17;
             // 
             // label14
             // 
@@ -390,45 +335,6 @@
             this.inputerTextBox.Size = new System.Drawing.Size(158, 26);
             this.inputerTextBox.TabIndex = 22;
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(7, 191);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(56, 16);
-            this.label18.TabIndex = 11;
-            this.label18.Text = "MB简称";
-            // 
-            // mb_brieftextBox
-            // 
-            this.mb_brieftextBox.Location = new System.Drawing.Point(176, 195);
-            this.mb_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mb_brieftextBox.Name = "mb_brieftextBox";
-            this.mb_brieftextBox.ReadOnly = true;
-            this.mb_brieftextBox.Size = new System.Drawing.Size(158, 26);
-            this.mb_brieftextBox.TabIndex = 24;
-            this.mb_brieftextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mb_brieftextBox_KeyPress);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(1021, 191);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(72, 16);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "是否报关";
-            // 
-            // isDeclareTextBox
-            // 
-            this.isDeclareTextBox.Location = new System.Drawing.Point(1190, 195);
-            this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.isDeclareTextBox.Name = "isDeclareTextBox";
-            this.isDeclareTextBox.ReadOnly = true;
-            this.isDeclareTextBox.Size = new System.Drawing.Size(158, 26);
-            this.isDeclareTextBox.TabIndex = 26;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -467,93 +373,6 @@
             this.vendor_serial_notextBox.Size = new System.Drawing.Size(158, 26);
             this.vendor_serial_notextBox.TabIndex = 26;
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 5;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.4849F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.9325F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.85227F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.75F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 256F));
-            this.tableLayoutPanel2.Controls.Add(this.delete, 4, 0);
-            this.tableLayoutPanel2.Controls.Add(this.modify, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.query, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.add, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.queryStock, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 253);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1362, 49);
-            this.tableLayoutPanel2.TabIndex = 9;
-            // 
-            // queryStock
-            // 
-            this.queryStock.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.queryStock.Location = new System.Drawing.Point(113, 9);
-            this.queryStock.Margin = new System.Windows.Forms.Padding(4);
-            this.queryStock.Name = "queryStock";
-            this.queryStock.Size = new System.Drawing.Size(100, 31);
-            this.queryStock.TabIndex = 0;
-            this.queryStock.Text = "查询库存";
-            this.queryStock.UseVisualStyleBackColor = true;
-            this.queryStock.Click += new System.EventHandler(this.queryStock_Click);
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.73021F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.26979F));
-            this.tableLayoutPanel4.Controls.Add(this.dataGridView1, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.dataGridView2, 0, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 309);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1364, 437);
-            this.tableLayoutPanel4.TabIndex = 11;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(505, 4);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(855, 429);
-            this.dataGridView1.TabIndex = 10;
-            this.dataGridView1.VirtualMode = true;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(4, 4);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(493, 429);
-            this.dataGridView2.TabIndex = 10;
-            this.dataGridView2.VirtualMode = true;
-            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -591,6 +410,81 @@
             this.custommaterialNoTextBox.Size = new System.Drawing.Size(158, 26);
             this.custommaterialNoTextBox.TabIndex = 24;
             this.custommaterialNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custommaterialNoTextBox_KeyPress);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(1021, 191);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(72, 16);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "是否报关";
+            // 
+            // isDeclareTextBox
+            // 
+            this.isDeclareTextBox.Location = new System.Drawing.Point(1190, 195);
+            this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.isDeclareTextBox.Name = "isDeclareTextBox";
+            this.isDeclareTextBox.ReadOnly = true;
+            this.isDeclareTextBox.Size = new System.Drawing.Size(158, 26);
+            this.isDeclareTextBox.TabIndex = 26;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(7, 191);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(56, 16);
+            this.label18.TabIndex = 11;
+            this.label18.Text = "MB简称";
+            // 
+            // mb_brieftextBox
+            // 
+            this.mb_brieftextBox.Location = new System.Drawing.Point(176, 195);
+            this.mb_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.mb_brieftextBox.Name = "mb_brieftextBox";
+            this.mb_brieftextBox.ReadOnly = true;
+            this.mb_brieftextBox.Size = new System.Drawing.Size(158, 26);
+            this.mb_brieftextBox.TabIndex = 24;
+            this.mb_brieftextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mb_brieftextBox_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 97);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 16);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "领用人";
+            // 
+            // takertextBox
+            // 
+            this.takertextBox.Location = new System.Drawing.Point(176, 101);
+            this.takertextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.takertextBox.Name = "takertextBox";
+            this.takertextBox.Size = new System.Drawing.Size(158, 26);
+            this.takertextBox.TabIndex = 22;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(7, 144);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(40, 16);
+            this.label20.TabIndex = 15;
+            this.label20.Text = "备注";
+            // 
+            // notetextBox
+            // 
+            this.notetextBox.Location = new System.Drawing.Point(176, 148);
+            this.notetextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.notetextBox.Name = "notetextBox";
+            this.notetextBox.Size = new System.Drawing.Size(158, 26);
+            this.notetextBox.TabIndex = 17;
             // 
             // label10
             // 
@@ -648,6 +542,25 @@
             this.productTextBox.Size = new System.Drawing.Size(158, 26);
             this.productTextBox.TabIndex = 5;
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(683, 97);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(40, 16);
+            this.label19.TabIndex = 10;
+            this.label19.Text = "库位";
+            // 
+            // stock_placetextBox
+            // 
+            this.stock_placetextBox.Location = new System.Drawing.Point(852, 101);
+            this.stock_placetextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.stock_placetextBox.Name = "stock_placetextBox";
+            this.stock_placetextBox.ReadOnly = true;
+            this.stock_placetextBox.Size = new System.Drawing.Size(158, 26);
+            this.stock_placetextBox.TabIndex = 19;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -666,6 +579,93 @@
             this.vendormaterialNotextBox.ReadOnly = true;
             this.vendormaterialNotextBox.Size = new System.Drawing.Size(158, 26);
             this.vendormaterialNotextBox.TabIndex = 5;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.4849F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.9325F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.85227F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.75F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 258F));
+            this.tableLayoutPanel2.Controls.Add(this.delete, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.modify, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.query, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.add, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.queryStock, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 253);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1362, 49);
+            this.tableLayoutPanel2.TabIndex = 9;
+            // 
+            // queryStock
+            // 
+            this.queryStock.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.queryStock.Location = new System.Drawing.Point(112, 9);
+            this.queryStock.Margin = new System.Windows.Forms.Padding(4);
+            this.queryStock.Name = "queryStock";
+            this.queryStock.Size = new System.Drawing.Size(100, 31);
+            this.queryStock.TabIndex = 0;
+            this.queryStock.Text = "查询库存";
+            this.queryStock.UseVisualStyleBackColor = true;
+            this.queryStock.Click += new System.EventHandler(this.queryStock_Click);
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.73021F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.26979F));
+            this.tableLayoutPanel4.Controls.Add(this.dataGridView1, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.dataGridView2, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 309);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1364, 437);
+            this.tableLayoutPanel4.TabIndex = 11;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(505, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(855, 429);
+            this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.VirtualMode = true;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.Location = new System.Drawing.Point(4, 4);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowTemplate.Height = 23;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(493, 429);
+            this.dataGridView2.TabIndex = 10;
+            this.dataGridView2.VirtualMode = true;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // MB_OutSheetForm
             // 

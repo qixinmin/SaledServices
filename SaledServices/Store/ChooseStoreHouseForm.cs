@@ -30,7 +30,6 @@ namespace SaledServices
 
         private void loadAdditionInfomation()
         {
-
             try
             {
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -72,9 +71,7 @@ namespace SaledServices
                 dataGridView1.DataSource = null;
                 dataGridView1.Columns.Clear();
 
-                string sqlStr = "select top 100 * from " + tableName +" where mpn=''";
-
-                
+                string sqlStr = "select top 100 * from " + tableName +" where mpn=''";                
 
                 if (this.placeTextBox.Text.Trim() != "")
                 {
@@ -170,6 +167,7 @@ namespace SaledServices
             this.placeTextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
             this.mpntextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
             this.numbertextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
+            this.choose.Enabled = true;
         }
 
         private void releasePlacebutton_Click(object sender, EventArgs e)
@@ -211,6 +209,7 @@ namespace SaledServices
                 MessageBox.Show("请选择一个库位!");
                 return;
             }
+
             if (mFromFrom is FRU_SMT_InSheetForm)
             {
                 ((FRU_SMT_InSheetForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseComboBox.Text.Trim(), this.placeTextBox.Text.Trim());
@@ -273,6 +272,14 @@ namespace SaledServices
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void placeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                query_Click(null, null);
             }
         }
     }

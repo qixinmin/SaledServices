@@ -222,6 +222,7 @@ namespace SaledServices
 
                 clearTexts();
                 query_Click(null, null);
+                MessageBox.Show("出库成功！");
             }
             catch (Exception ex)
             {
@@ -244,6 +245,9 @@ namespace SaledServices
             this.notetextBox.Text = "";
             this.takertextBox.Text = "";          
             this.input_dateTextBox.Text = "";
+            this.custom_serial_notextBox.Text = "";
+            this.track_serial_noTextBox.Text = "";
+            this.vendor_serial_notextBox.Text = "";
         }
 
         private void query_Click(object sender, EventArgs e)

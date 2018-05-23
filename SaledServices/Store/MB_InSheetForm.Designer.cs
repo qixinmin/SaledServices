@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.add = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
@@ -280,6 +280,7 @@
             this.buy_typeTextBox.ReadOnly = true;
             this.buy_typeTextBox.Size = new System.Drawing.Size(158, 26);
             this.buy_typeTextBox.TabIndex = 5;
+            this.buy_typeTextBox.TextChanged += new System.EventHandler(this.buy_typeTextBox_TextChanged);
             // 
             // describeTextBox
             // 
@@ -405,6 +406,7 @@
             this.custom_serial_noTextBox.Name = "custom_serial_noTextBox";
             this.custom_serial_noTextBox.Size = new System.Drawing.Size(158, 26);
             this.custom_serial_noTextBox.TabIndex = 25;
+            this.custom_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_serial_noTextBox_KeyPress);
             // 
             // buy_order_serial_noComboBox
             // 
@@ -585,6 +587,7 @@
             this.vendor_serial_noTextBox.Name = "vendor_serial_noTextBox";
             this.vendor_serial_noTextBox.Size = new System.Drawing.Size(158, 26);
             this.vendor_serial_noTextBox.TabIndex = 20;
+            this.vendor_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vendor_serial_noTextBox_KeyPress);
             // 
             // label13
             // 
@@ -623,6 +626,7 @@
             this.track_serial_noTextBox.Name = "track_serial_noTextBox";
             this.track_serial_noTextBox.Size = new System.Drawing.Size(158, 26);
             this.track_serial_noTextBox.TabIndex = 20;
+            this.track_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.track_serial_noTextBox_KeyPress);
             // 
             // tableLayoutPanel2
             // 
@@ -678,8 +682,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;

@@ -182,6 +182,26 @@ namespace SaledServices
                     }
                     cmd.CommandText = "update store_house set mpn = '" + this.mpnTextBox.Text.Trim() + "',number = '" + stockNumber + "' where house='"+chooseStock.house+"' and place='"+chooseStock.place+"'";
                     cmd.ExecuteNonQuery();
+
+                    if (status == "close")
+                    {
+                        this.custom_serial_noTextBox.Text = "";
+                        this.track_serial_noTextBox.Text = "";
+                        this.vendor_serial_noTextBox.Text = "";
+                        this.notetextBox.Text = "";
+
+                        this.vendorTextBox.Text = "";
+                        this.productTextBox.Text = "";
+                        this.buy_typeTextBox.Text = "";
+                        this.vendormaterialNoTextBox.Text = "";
+                        this.pricePerTextBox.Text = "";
+                        this.isDeclareTextBox.Text = "";
+                        this.stock_placetextBox.Text = "";
+                        this.mb_brieftextBox.Text = "";
+                        this.orderNumberTextBox.Text = "";
+                        this.mpnTextBox.Text = "";
+                        this.describeTextBox.Text = "";
+                    }
                 }
                 else
                 {
@@ -192,6 +212,7 @@ namespace SaledServices
 
                 doQueryAfterSelection();
                 clearInputText();
+                MessageBox.Show("收货成功！");
             }
             catch (Exception ex)
             {
@@ -445,14 +466,14 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            clearInputText();
+            
         }
 
         private void clearInputText()
         {
-            //this.mb_brieftextBox.Text = "";
-            //this.stock_in_numTextBox.Text = "";
-            //this.stock_placetextBox.Text = "";
+            this.custom_serial_noTextBox.Text = "";
+            this.track_serial_noTextBox.Text = "";
+            this.vendor_serial_noTextBox.Text = "";
             this.notetextBox.Text = "";
         }
 
@@ -581,6 +602,61 @@ namespace SaledServices
                 csform.MdiParent = Program.parentForm;
                 csform.Show();
             }
+        }
+
+        private void custom_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                //22/23
+                if (custom_serial_noTextBox.Text.Length != 22 &&this.custom_serial_noTextBox.Text.Length != 23)
+                {
+                    MessageBox.Show("客户序号长度不对");
+                    this.custom_serial_noTextBox.Focus();
+                    this.custom_serial_noTextBox.SelectAll();
+                    return;
+                }
+                this.vendor_serial_noTextBox.SelectAll();
+                this.vendor_serial_noTextBox.Focus();
+            }
+        }
+
+        private void vendor_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                //13
+                if (vendor_serial_noTextBox.Text.Length != 13)
+                {
+                    MessageBox.Show("厂商序号长度不对");
+                    this.vendor_serial_noTextBox.Focus();
+                    this.vendor_serial_noTextBox.SelectAll();
+                    return;
+                }
+
+                this.track_serial_noTextBox.SelectAll();
+                this.track_serial_noTextBox.Focus();
+            }
+        }
+
+        private void track_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                //16
+                if (track_serial_noTextBox.Text.Length != 16)
+                {
+                    MessageBox.Show("厂商序号长度不对");
+                    this.track_serial_noTextBox.Focus();
+                    this.track_serial_noTextBox.SelectAll();
+                    return;
+                }
+            }
+        }
+
+        private void buy_typeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

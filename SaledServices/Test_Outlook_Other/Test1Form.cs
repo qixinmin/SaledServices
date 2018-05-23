@@ -123,22 +123,39 @@ namespace SaledServices.Test_Outlook
                     {
                         if (track_serial_no != "")
                         {
-                            cmd.CommandText = "select custommaterialNo, vendor_serail_no,mac,uuid,custom_serial_no,mb_brief from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                            customMaterialNo = ""; vendor_serail_no = ""; mac = ""; uuid = ""; custom_serial_no = ""; mb_brief = "";
 
-                            querySdr = cmd.ExecuteReader();
-
-                            customMaterialNo = ""; vendor_serail_no = ""; mac = ""; uuid = ""; custom_serial_no = ""; mb_brief = "";                           
-                            while (querySdr.Read())
+                            if (existRepair)
                             {
-                                customMaterialNo = querySdr[0].ToString();
-                                vendor_serail_no = querySdr[1].ToString();
+                                cmd.CommandText = "select custommaterialNo, vendor_serail_no,mac,uuid,custom_serial_no,mb_brief from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                                querySdr = cmd.ExecuteReader();
+                                while (querySdr.Read())
+                                {
+                                    customMaterialNo = querySdr[0].ToString();
+                                    vendor_serail_no = querySdr[1].ToString();
 
-                                mac = querySdr[2].ToString();
-                                uuid = querySdr[3].ToString();
-                                custom_serial_no = querySdr[4].ToString();
-                                mb_brief = querySdr[5].ToString();
+                                    mac = querySdr[2].ToString();
+                                    uuid = querySdr[3].ToString();
+                                    custom_serial_no = querySdr[4].ToString();
+                                    mb_brief = querySdr[5].ToString();
+                                }
+                                querySdr.Close();
                             }
-                            querySdr.Close();
+                            else if (existBuffer)
+                            {
+                                cmd.CommandText = "select custommaterialNo, vendor_serial_no,custom_serial_no,mb_brief from mb_out_stock where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                                querySdr = cmd.ExecuteReader();
+                                while (querySdr.Read())
+                                {
+                                    customMaterialNo = querySdr[0].ToString();
+                                    vendor_serail_no = querySdr[1].ToString();
+
+                                    custom_serial_no = querySdr[2].ToString();
+                                    mb_brief = querySdr[3].ToString();
+                                }
+                                querySdr.Close();
+                            }
+                           
 
                             if (customMaterialNo != "")
                             {

@@ -638,7 +638,6 @@ namespace SaledServices
                 {
                     dateIndex = 6;
                 }
-                                
 
                 if (conn.State == ConnectionState.Open)
                 {
@@ -696,7 +695,6 @@ namespace SaledServices
                 {
                     MessageBox.Show("SaledService is not opened");
                 }
-
 
                 conn.Close();
                 transaction.Dispose();                

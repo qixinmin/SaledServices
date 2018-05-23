@@ -12,6 +12,7 @@ using RestSharp;
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
+using System.Collections;
 
 
 namespace SaledServices
@@ -183,32 +184,59 @@ namespace SaledServices
         //{           
         //}
 
+        private void parseMesReturn(string content)
+        {
+            string trimSet = content.Replace("SET ", "");
+            MessageBox.Show(":"+trimSet+":");
+            string[] keyValue = trimSet.Split(new char[]{'=','\n'});
+
+            Hashtable hstContent = new Hashtable();
+            for (int i = 0; i < keyValue.Length; i = i + 2)
+            {
+                hstContent.Add(keyValue[i].Trim(), keyValue[i + 1].Trim()) ;
+            }
+
+            if (hstContent["MSG"].ToString() == "OK")
+            {
+
+            }            
+
+                   
+            foreach (string str in keyValue)
+            {
+                MessageBox.Show(str.Trim());
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            //string address = "";
-            //string sn = "BOXID(7位)";
-            //RestClient client = new RestClient(address);            
+            parseMesReturn("SET THRESHOLD=98.99%(对比阀值)\n"+"SET PORTIDBOM=8C16451DE86B");
 
-            //RestRequest request = new RestRequest("resource/{id}", RestSharp.Method.POST);
-            //request.AddBody("SET SN=" + sn + "\r\nSET LINE_NAME=1ASSYA\r\nSET GOURP_NAME=ASSY_ISI");          
-            //client.Timeout = 500;
-            //try
-            //{
-            //    IRestResponseresponse = client.Execute(request);
-            //    var content = response.Content; // raw content as string
+            string address = "http://192.168.1.1";
+            string sn = "BOXID(7位)";
+            RestClient client = new RestClient(address);
 
-            //    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            //    {
-            //    }
-            //    else if (response.StatusCode == System.Net.HttpStatusCode.RequestTimeout)
-            //    {
-            //        //网络失败
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    //网络失败
-            //}
+            RestRequest request = new RestRequest(RestSharp.Method.POST);
+            request.AddBody("SET SN=" + sn + "\r\nSET LINE_NAME=1ASSYA\r\nSET GOURP_NAME=ASSY_ISI");
+            client.Timeout = 500;//ms
+            try
+            {
+                IRestResponse response = client.Execute(request);
+                var content = response.Content; // raw content as string
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    //内容解析
+                }
+                else// if (response.StatusCode == System.Net.HttpStatusCode.RequestTimeout)
+                {
+                    MessageBox.Show(response.StatusCode.ToString());
+                    //网络失败
+                }
+            }
+            catch (Exception ex)
+            {
+                //网络失败
+            }
         }
 
         private void workIdInput_KeyPress(object sender, KeyPressEventArgs e)

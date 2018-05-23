@@ -43,13 +43,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cpuFreqtextBox = new System.Windows.Forms.TextBox();
             this.cpuTypetextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.bomdownload = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.buffertest = new System.Windows.Forms.Button();
             this.isburn = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.bomdownload = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -218,37 +218,6 @@
             this.cpuTypetextBox.Size = new System.Drawing.Size(214, 21);
             this.cpuTypetextBox.TabIndex = 8;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(693, 142);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 31);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "确认Fail";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // bomdownload
-            // 
-            this.bomdownload.Enabled = false;
-            this.bomdownload.Location = new System.Drawing.Point(552, 337);
-            this.bomdownload.Name = "bomdownload";
-            this.bomdownload.Size = new System.Drawing.Size(126, 36);
-            this.bomdownload.TabIndex = 1;
-            this.bomdownload.Text = "BOM下载";
-            this.bomdownload.UseVisualStyleBackColor = true;
-            this.bomdownload.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(693, 337);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(107, 36);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "DPK烧录检查";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // button3
             // 
             this.button3.Enabled = false;
@@ -259,6 +228,15 @@
             this.button3.Text = "仁宝OA3";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.buffertest);
+            this.panel1.Controls.Add(this.isburn);
+            this.panel1.Location = new System.Drawing.Point(375, 337);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(171, 36);
+            this.panel1.TabIndex = 13;
             // 
             // buffertest
             // 
@@ -282,14 +260,36 @@
             this.isburn.Text = "是否烧录";
             this.isburn.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // bomdownload
             // 
-            this.panel1.Controls.Add(this.buffertest);
-            this.panel1.Controls.Add(this.isburn);
-            this.panel1.Location = new System.Drawing.Point(375, 337);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(171, 36);
-            this.panel1.TabIndex = 13;
+            this.bomdownload.Enabled = false;
+            this.bomdownload.Location = new System.Drawing.Point(552, 337);
+            this.bomdownload.Name = "bomdownload";
+            this.bomdownload.Size = new System.Drawing.Size(126, 36);
+            this.bomdownload.TabIndex = 1;
+            this.bomdownload.Text = "BOM下载";
+            this.bomdownload.UseVisualStyleBackColor = true;
+            this.bomdownload.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(693, 337);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(107, 36);
+            this.button5.TabIndex = 1;
+            this.button5.Text = "DPK烧录检查";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(693, 142);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 31);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "确认Fail";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // TestAllForm
             // 

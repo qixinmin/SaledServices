@@ -676,7 +676,28 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
+                    if (this.custom_serial_noTextBox.Text == "")//说明板子从buffer库出来的
+                    {
+                        cmd.CommandText = "select custom_serial_no, vendor_serial_no,mpn from mb_out_stock where track_serial_no = '"
+                      + this.track_serial_noTextBox.Text + "'";
+
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            this.custom_serial_noTextBox.Text = querySdr[0].ToString();
+                            this.vendor_serail_noTextBox.Text = querySdr[1].ToString();
+                            this.matertiallibMpnTextBox.Text = querySdr[2].ToString();
+                            this.lenovo_maintenance_noTextBox.Text = "";
+                            this.lenovo_repair_noTextBox.Text = "";
+                        }
+                        querySdr.Close();
+                    }
                     mConn.Close();
+
+                    if (this.custom_serial_noTextBox.Text == "")
+                    {
+                        MessageBox.Show("客户序号不能为空，严重，检查！");
+                    }
 
                     if (this.productComboBox.Text != "TBG" && this.productComboBox.Text != "DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
                     {
