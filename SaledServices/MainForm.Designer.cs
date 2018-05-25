@@ -49,8 +49,6 @@
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.收货合肥ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.还货合肥ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.维修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,12 +92,6 @@
             this.材料名称ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.海关ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.期初库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.实盘库存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.出库入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.工单表头ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.工单表体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,8 +112,7 @@
             this.oBEToolStripMenuItem,
             this.库存管理ToolStripMenuItem,
             this.additionMenuItem,
-            this.报表ToolStripMenuItem,
-            this.海关ToolStripMenuItem});
+            this.报表ToolStripMenuItem});
             this.AllMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.AllMenuStrip.Name = "AllMenuStrip";
             this.AllMenuStrip.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
@@ -264,8 +255,6 @@
             this.receiveReturnStoreMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.收货ToolStripMenuItem,
             this.returnStoreMenuItem,
-            this.收货合肥ToolStripMenuItem,
-            this.还货合肥ToolStripMenuItem,
             this.toolStripMenuItem1});
             this.receiveReturnStoreMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.receiveReturnStoreMenuItem.Name = "receiveReturnStoreMenuItem";
@@ -286,20 +275,6 @@
             this.returnStoreMenuItem.Size = new System.Drawing.Size(198, 32);
             this.returnStoreMenuItem.Text = "还货上海";
             this.returnStoreMenuItem.Click += new System.EventHandler(this.returnStoreMenuItem_Click);
-            // 
-            // 收货合肥ToolStripMenuItem
-            // 
-            this.收货合肥ToolStripMenuItem.Name = "收货合肥ToolStripMenuItem";
-            this.收货合肥ToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
-            this.收货合肥ToolStripMenuItem.Text = "收货合肥";
-            this.收货合肥ToolStripMenuItem.Click += new System.EventHandler(this.收货合肥ToolStripMenuItem_Click);
-            // 
-            // 还货合肥ToolStripMenuItem
-            // 
-            this.还货合肥ToolStripMenuItem.Name = "还货合肥ToolStripMenuItem";
-            this.还货合肥ToolStripMenuItem.Size = new System.Drawing.Size(198, 32);
-            this.还货合肥ToolStripMenuItem.Text = "还货合肥";
-            this.还货合肥ToolStripMenuItem.Click += new System.EventHandler(this.还货合肥ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -645,54 +620,6 @@
             this.报表1ToolStripMenuItem.Text = "RMA欠货表";
             this.报表1ToolStripMenuItem.Click += new System.EventHandler(this.报表1ToolStripMenuItem_Click);
             // 
-            // 海关ToolStripMenuItem
-            // 
-            this.海关ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.期初库存ToolStripMenuItem,
-            this.实盘库存ToolStripMenuItem,
-            this.出库入库ToolStripMenuItem,
-            this.工单表头ToolStripMenuItem,
-            this.工单表体ToolStripMenuItem});
-            this.海关ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
-            this.海关ToolStripMenuItem.Name = "海关ToolStripMenuItem";
-            this.海关ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
-            this.海关ToolStripMenuItem.Text = "海关";
-            // 
-            // 期初库存ToolStripMenuItem
-            // 
-            this.期初库存ToolStripMenuItem.Name = "期初库存ToolStripMenuItem";
-            this.期初库存ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
-            this.期初库存ToolStripMenuItem.Text = "期初库存";
-            this.期初库存ToolStripMenuItem.Click += new System.EventHandler(this.期初库存ToolStripMenuItem_Click);
-            // 
-            // 实盘库存ToolStripMenuItem
-            // 
-            this.实盘库存ToolStripMenuItem.Name = "实盘库存ToolStripMenuItem";
-            this.实盘库存ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
-            this.实盘库存ToolStripMenuItem.Text = "实盘库存";
-            this.实盘库存ToolStripMenuItem.Click += new System.EventHandler(this.实盘库存ToolStripMenuItem_Click);
-            // 
-            // 出库入库ToolStripMenuItem
-            // 
-            this.出库入库ToolStripMenuItem.Name = "出库入库ToolStripMenuItem";
-            this.出库入库ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
-            this.出库入库ToolStripMenuItem.Text = "出库入库";
-            this.出库入库ToolStripMenuItem.Click += new System.EventHandler(this.出库入库ToolStripMenuItem_Click);
-            // 
-            // 工单表头ToolStripMenuItem
-            // 
-            this.工单表头ToolStripMenuItem.Name = "工单表头ToolStripMenuItem";
-            this.工单表头ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
-            this.工单表头ToolStripMenuItem.Text = "工单表头";
-            this.工单表头ToolStripMenuItem.Click += new System.EventHandler(this.工单表头ToolStripMenuItem_Click);
-            // 
-            // 工单表体ToolStripMenuItem
-            // 
-            this.工单表体ToolStripMenuItem.Name = "工单表体ToolStripMenuItem";
-            this.工单表体ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
-            this.工单表体ToolStripMenuItem.Text = "工单表体";
-            this.工单表体ToolStripMenuItem.Click += new System.EventHandler(this.工单表体ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -762,13 +689,7 @@
         private System.Windows.Forms.ToolStripMenuItem mBToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bGA入库记录ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bGA出库记录ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 期初库存ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 实盘库存ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 出库入库ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 工单表头ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 工单表体ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 出库请求查看ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 海关ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 企业固定信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 库房领料申请ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 还货请求查看ToolStripMenuItem;
@@ -785,8 +706,6 @@
         private System.Windows.Forms.ToolStripMenuItem 文件数据库操作ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cID操作ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cID操作合肥ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 收货合肥ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 还货合肥ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }

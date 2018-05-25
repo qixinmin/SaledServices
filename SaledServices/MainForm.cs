@@ -137,8 +137,7 @@ namespace SaledServices
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
                     this.FunctionMenuItem,           
                     this.additionMenuItem,
-                    this.报表ToolStripMenuItem,
-                    this.海关ToolStripMenuItem
+                    this.报表ToolStripMenuItem,                   
                     });
 
                     break;

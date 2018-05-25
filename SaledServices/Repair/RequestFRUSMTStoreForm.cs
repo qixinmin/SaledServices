@@ -46,7 +46,7 @@ namespace SaledServices.Store
                         + this.mb_brieftextBox.Text.Trim() + "','"
                         + this.not_good_placeTextBox.Text.Trim() + "','"
                         + this.materialMpnTextBox.Text.Trim() + "','"
-                        + this.materialDescribetextBox.Text.Trim() + "','"
+                        + this.materialDescribetextBox.Text.Trim().Replace('\'','_') + "','"
                         + this.numberTextBox.Text.Trim() + "','"
                         +  "0','"//realNumber, 开始为0
                         + this.requesterTextBox.Text.Trim() + "','"
@@ -76,6 +76,7 @@ namespace SaledServices.Store
         {
            public string materialName{get;set;}
             public string materialDescribe{get;set;}
+            public string storeNum { get; set; }
         }
 
         private void not_good_placeTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -183,6 +184,17 @@ namespace SaledServices.Store
                     }
                     else
                     {
+                        foreach (useClass temp in list)
+                        {
+                            cmd.CommandText = "select number from store_house where mpn ='" + temp.materialName + "'";
+                            SqlDataReader querySdr = cmd.ExecuteReader();
+                            while (querySdr.Read())
+                            {
+                                temp.storeNum = querySdr[0].ToString();
+                            }
+                            querySdr.Close();
+                        }
+
                         dataGridView.DataSource = list;
                     }
                     //else

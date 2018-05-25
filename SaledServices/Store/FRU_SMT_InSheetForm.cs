@@ -97,6 +97,14 @@ namespace SaledServices
                 MessageBox.Show("库位为空，请检查！");
                 return;
             }
+
+            if (chooseStock.house == "")
+            {
+                MessageBox.Show("请选择库位为空，而不要手动输入，请检查！");
+                this.stock_placetextBox.Text = "";
+                this.stock_placetextBox.Focus();
+                return;
+            }
             if (this.totalMoneyTextBox.Text.Trim() == "")
             {
                 MessageBox.Show("金额为空，请输入数量后回车！");
@@ -184,6 +192,9 @@ namespace SaledServices
                     }
                     cmd.CommandText = "update store_house set mpn = '" + this.mpnTextBox.Text.Trim() + "',number = '" + stockNumber + "' where house='"+chooseStock.house+"' and place='"+chooseStock.place+"'";
                     cmd.ExecuteNonQuery();
+
+                    //清除历史缓存，保证下次选择是新的
+                    chooseStock.house = "";
                 }
                 else
                 {
@@ -383,7 +394,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,number,pricePer,material_name,isdeclare from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,number,pricePer,material_name,isdeclare from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "' and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim()+ "'";
 
                 SqlDataReader querySdr = cmd.ExecuteReader();
 
@@ -424,7 +435,14 @@ namespace SaledServices
                     chooseStock.Id = Id;
                     chooseStock.house = house;
                     chooseStock.place = place;
-                    chooseStock.number = number;
+                    if (number.Trim() == "")
+                    {
+                        chooseStock.number = "0";
+                    }
+                    else
+                    {
+                        chooseStock.number = number;
+                    }
                 }
                 else
                 {
@@ -566,6 +584,11 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
+                if (this.numberTextBox.Text == "" || this.stock_in_numTextBox.Text.Trim() =="")
+                {
+                    MessageBox.Show("数量为空!");
+                    return;
+                }
                 double order_number_int = Double.Parse(this.numberTextBox.Text);
                 double this_enter_number = Double.Parse(this.stock_in_numTextBox.Text.Trim());
                 if (this_enter_number > order_number_int)

@@ -1,5 +1,34 @@
-/*不良品出库表*/
-CREATE TABLE fault_mb_out_record_table(
+
+/*不良品MB/SMT/BGA出库记录*/
+CREATE TABLE mb_smt_bga_ng_out_house_table(
+Id INT PRIMARY KEY IDENTITY, 
+mpn NVARCHAR(128) NOT NULL,/*料号*/
+in_number NVARCHAR(128), /*入库数量*/
+input_date date, /*输入日期*/
+declare_unit NVARCHAR(128), /*申报单位,需要转换*/
+declare_number NVARCHAR(128), /*报关单号*/
+custom_request_number NVARCHAR(128), /*申请单号*/
+)
+
+/*不良品SMT/BGA入库记录*/
+CREATE TABLE smt_bga_ng_in_house_table(
+Id INT PRIMARY KEY IDENTITY, 
+mpn NVARCHAR(128) NOT NULL,/*料号*/
+in_number NVARCHAR(128), /*入库数量*/
+input_date date, /*输入日期*/
+)
+
+/*SMT/BGA不良品库房信息 把MB不良品库也放入一起*/
+CREATE TABLE store_house_ng(
+Id INT PRIMARY KEY IDENTITY, 
+house NVARCHAR(128), /*库房*/
+place NVARCHAR(128), /*储位,储位的名称开始字母可以区分可以存储的类型，fru/smt, bga, mb*/
+mpn NVARCHAR(128), /*存储料号(如果是MB则对应客户料号)*/
+number NVARCHAR(128), /*已存数量,不限数量的，可以累积*/
+)
+
+/*MB不良品出库表记录*/
+/*CREATE TABLE fault_mb_out_record_table(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
 vendor NVARCHAR(128) NOT NULL, /*厂商*/

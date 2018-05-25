@@ -85,17 +85,17 @@ namespace SaledServices
                 dataGridView1.DataSource = null;
                 dataGridView1.Columns.Clear();
 
-                string sqlStr =  "select top 100 * from " + tableName;
+                string sqlStr =  "select * from " + tableName;
 
                 if (vendorTextBox.Text.Trim() != "")
                 {
                     if (!sqlStr.Contains("where"))
                     {
-                        sqlStr += " where vendor= '" + vendorTextBox.Text.Trim() + "' ";
+                        sqlStr += " where vendor like '%" + vendorTextBox.Text.Trim() + "%' ";
                     }
                     else
                     {
-                        sqlStr += " and vendor= '" + vendorTextBox.Text.Trim() + "' ";
+                        sqlStr += " and vendor like '%" + vendorTextBox.Text.Trim() + "%'";
                     }
                 }
 
@@ -103,11 +103,23 @@ namespace SaledServices
                 {
                     if (!sqlStr.Contains("where"))
                     {
-                        sqlStr += " where product= '" + productTextBox.Text.Trim() + "' ";
+                        sqlStr += " where product like '%" + productTextBox.Text.Trim() + "%' ";
                     }
                     else
                     {
-                        sqlStr += " and product= '" + productTextBox.Text.Trim() + "' ";
+                        sqlStr += " and product like '%" + productTextBox.Text.Trim() + "%' ";
+                    }
+                }
+
+                if (mpnTextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where mpn like '%" + mpnTextBox.Text.Trim() + "%' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and mpn like '%" + mpnTextBox.Text.Trim() + "%' ";
                     }
                 }
 
@@ -137,6 +149,21 @@ namespace SaledServices
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
                 dataGridView1.Columns[i].Name = hTxt[i];
             }
+
+            this.buy_order_serial_noTextBox.Text = "";
+            this.vendorTextBox.Text = "";
+            this.buy_typeTextBox.Text = "";
+            this.productTextBox.Text = "";
+            this.material_typeTextBox.Text = "";
+           // this.mpnTextBox.Text = "";
+            this.vendormaterialNoTextBox.Text = "";
+            this.describeTextBox.Text = "";
+            this.numberTextBox.Text = "";
+            this.pricePerTextBox.Text = "";
+            this.material_nameTextBox.Text = "";
+            this.totalMoneyTextBox.Text = "";
+            this.stock_in_numTextBox.Text = "";
+            this.isDeclareTextBox.Text = "";                    
         }
 
         private void modify_Click(object sender, EventArgs e)
@@ -242,6 +269,14 @@ namespace SaledServices
             tableLayoutPanel3.GetType().
                 GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
                 SetValue(tableLayoutPanel3, true, null);
+        }
+
+        private void mpnTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                query_Click(null, null);
+            }
         }
     }
 }

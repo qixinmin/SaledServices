@@ -126,6 +126,8 @@ namespace SaledServices
                         this.track_serial_noTextBox.SelectAll();
                         MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
                         error = true;
+                        mConn.Close();
+                        return;
                     }
 
                     //查询bga的维修记录，如果有bga的维修记录，则取最后一条，判断状态是否是不是“BGA待换”，否则提示报错，然后把相关bga的内容填入相应内容中去

@@ -54,9 +54,28 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select track_serial_no,product from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
+                    string station = "";
+                    while (querySdr.Read())
+                    {
+                        station = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (station != "维修" && station != "BGA")
+                    {
+                        MessageBox.Show("板子已经经过站别" + station);
+                        mConn.Close();
+                        this.tracker_bar_textBox.Focus();
+                        this.tracker_bar_textBox.SelectAll();
+                        return;
+                    }
+
+                    cmd.CommandText = "select track_serial_no,product from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                    querySdr = cmd.ExecuteReader();
                     track_serial_no = ""; product = "";
                     this.bomdownload.Enabled = false; this.buffertest.Enabled = false; this.isburn.Enabled = false;
                     if (querySdr.HasRows == false)
@@ -176,6 +195,10 @@ namespace SaledServices.Test_Outlook
                                 this.cpuFreqtextBox.Text = cpu_freq;
                                 this.testerTextBox.Text = LoginForm.currentUser;
                                 this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+
+                                this.bomdownload.Enabled = true;
+                                this.button1.Enabled = true;
+                                this.button5.Enabled = true;
 
                                 KEYID = ""; KEYSERIAL = "";
                                 if (dpk_type != "NOK" && dpkpn != "")//此时需要查找导入的dpk表格，查找对应的KEYI KEYSERIAL
@@ -362,25 +385,25 @@ namespace SaledServices.Test_Outlook
                         }
                     }
 
-                    cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-                    querySdr = cmd.ExecuteReader();
-                    string Id = "";
-                    while (querySdr.Read())
-                    {
-                        Id = querySdr[0].ToString();
-                    }
-                    querySdr.Close();
-                    if (Id != "")
-                    {
-                        MessageBox.Show("此序列号已经存在！");
-                        this.tracker_bar_textBox.Text = "";
-                        this.cpuFreqtextBox.Text = "";
-                        this.cpuTypetextBox.Text = "";
-                        this.keyidtextBox.Text = "";
-                        this.KEYSERIALtextBox.Text = "";
-                        conn.Close();
-                        return;
-                    }
+                    //cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    //querySdr = cmd.ExecuteReader();
+                    //string Id = "";
+                    //while (querySdr.Read())
+                    //{
+                    //    Id = querySdr[0].ToString();
+                    //}
+                    //querySdr.Close();
+                    //if (Id != "")
+                    //{
+                    //    MessageBox.Show("此序列号已经存在！");
+                    //    this.tracker_bar_textBox.Text = "";
+                    //    this.cpuFreqtextBox.Text = "";
+                    //    this.cpuTypetextBox.Text = "";
+                    //    this.keyidtextBox.Text = "";
+                    //    this.KEYSERIALtextBox.Text = "";
+                    //    conn.Close();
+                    //    return;
+                    //}
                     
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
@@ -436,7 +459,7 @@ namespace SaledServices.Test_Outlook
                 }
 
                 conn.Close();
-                MessageBox.Show("插入测试2数据OK");
+                MessageBox.Show("已插入测试2 Fail 数据, 現在需要把板子給維修人員");
             }
             catch (Exception ex)
             {

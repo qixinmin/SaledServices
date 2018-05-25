@@ -41,45 +41,67 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select track_serial_no from test1table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    string track_serial_no = "";
+                    string station = "";
                     while (querySdr.Read())
                     {
-                        track_serial_no = querySdr[0].ToString();
+                        station = querySdr[0].ToString();
                     }
                     querySdr.Close();
 
-                    if (track_serial_no != "")
+                    if (station != "Test1")
                     {
-                        cmd.CommandText = "select custommaterialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-
-                        querySdr = cmd.ExecuteReader();
-                        string customMaterialNo = "";
-
-                        while (querySdr.Read())
-                        {
-                            customMaterialNo = querySdr[0].ToString();
-                        }
-                        querySdr.Close();
-
-                        if (customMaterialNo != "")
-                        {
-                            this.testerTextBox.Text = LoginForm.currentUser;
-                            this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
-                        }
-                        else
-                        {
-                            this.tracker_bar_textBox.Focus();
-                            this.tracker_bar_textBox.SelectAll();
-                            MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
-                        }
+                        MessageBox.Show("板子已经经过站别" + station);
+                        mConn.Close();
+                        this.tracker_bar_textBox.Focus();
+                        this.tracker_bar_textBox.SelectAll();
+                        return;
                     }
-                    else 
-                    {
-                        MessageBox.Show("此追踪条码没有Test1的记录！");
-                    }
+
+                    //cmd.CommandText = "select track_serial_no from test1table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                    //SqlDataReader querySdr = cmd.ExecuteReader();
+                    //string track_serial_no = "";
+                    //while (querySdr.Read())
+                    //{
+                    //    track_serial_no = querySdr[0].ToString();
+                    //}
+                    //querySdr.Close();
+
+                    //if (track_serial_no != "")
+                    //{
+                    //    cmd.CommandText = "select custommaterialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                    //    querySdr = cmd.ExecuteReader();
+                    //    string customMaterialNo = "";
+
+                    //    while (querySdr.Read())
+                    //    {
+                    //        customMaterialNo = querySdr[0].ToString();
+                    //    }
+                    //    querySdr.Close();
+
+                    //    if (customMaterialNo != "")
+                    //    {
+                    //        this.testerTextBox.Text = LoginForm.currentUser;
+                    //        this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                    //    }
+                    //    else
+                    //    {
+                    //        this.tracker_bar_textBox.Focus();
+                    //        this.tracker_bar_textBox.SelectAll();
+                    //        MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
+                    //    }
+                    //}
+                    //else 
+                    //{
+                    //    MessageBox.Show("此追踪条码没有Test1的记录！");
+                    //}
+
+                    this.testerTextBox.Text = LoginForm.currentUser;
+                    this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
                     mConn.Close();
                 }
                 catch (Exception ex)
@@ -179,7 +201,7 @@ namespace SaledServices.Test_Outlook
                 }
 
                 conn.Close();
-                MessageBox.Show("插入测试2数据OK");
+                MessageBox.Show("插入测试2 Fail数据, 現在需要把板子給維修人員");
             }
             catch (Exception ex)
             {

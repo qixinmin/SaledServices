@@ -332,7 +332,7 @@ namespace SaledServices
 
             if (error == false)
             {
-                MessageBox.Show("添加维修数据成功");
+                MessageBox.Show("添加CID数据成功");
 
                 this.track_serial_noTextBox.Text = "";
                 this.vendorTextBox.Text = "";

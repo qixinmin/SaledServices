@@ -153,6 +153,7 @@
             // 
             // vendorTextBox
             // 
+            this.vendorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vendorTextBox.Location = new System.Drawing.Point(176, 138);
             this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendorTextBox.Name = "vendorTextBox";
@@ -242,6 +243,7 @@
             // 
             // productTextBox
             // 
+            this.productTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.productTextBox.Location = new System.Drawing.Point(176, 178);
             this.productTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.productTextBox.Name = "productTextBox";
@@ -251,6 +253,7 @@
             // 
             // vendormaterialNoTextBox
             // 
+            this.vendormaterialNoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vendormaterialNoTextBox.Location = new System.Drawing.Point(514, 46);
             this.vendormaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendormaterialNoTextBox.Name = "vendormaterialNoTextBox";
@@ -260,6 +263,7 @@
             // 
             // mpnTextBox
             // 
+            this.mpnTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mpnTextBox.Location = new System.Drawing.Point(176, 46);
             this.mpnTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mpnTextBox.Name = "mpnTextBox";
@@ -270,6 +274,7 @@
             // 
             // material_typeTextBox
             // 
+            this.material_typeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.material_typeTextBox.Location = new System.Drawing.Point(176, 218);
             this.material_typeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_typeTextBox.Name = "material_typeTextBox";
@@ -279,6 +284,7 @@
             // 
             // buy_typeTextBox
             // 
+            this.buy_typeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buy_typeTextBox.Location = new System.Drawing.Point(514, 7);
             this.buy_typeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.buy_typeTextBox.Name = "buy_typeTextBox";
@@ -299,6 +305,7 @@
             // 
             // pricePerTextBox
             // 
+            this.pricePerTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pricePerTextBox.Location = new System.Drawing.Point(514, 178);
             this.pricePerTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.pricePerTextBox.Name = "pricePerTextBox";
@@ -405,6 +412,7 @@
             // 
             // material_nameTextBox
             // 
+            this.material_nameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.material_nameTextBox.Location = new System.Drawing.Point(852, 85);
             this.material_nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_nameTextBox.Name = "material_nameTextBox";
@@ -424,6 +432,7 @@
             // 
             // stock_in_numTextBox
             // 
+            this.stock_in_numTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stock_in_numTextBox.Enabled = false;
             this.stock_in_numTextBox.Location = new System.Drawing.Point(852, 138);
             this.stock_in_numTextBox.Margin = new System.Windows.Forms.Padding(4);
@@ -434,10 +443,11 @@
             // 
             // buy_order_serial_noComboBox
             // 
+            this.buy_order_serial_noComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buy_order_serial_noComboBox.FormattingEnabled = true;
             this.buy_order_serial_noComboBox.Location = new System.Drawing.Point(175, 6);
             this.buy_order_serial_noComboBox.Name = "buy_order_serial_noComboBox";
-            this.buy_order_serial_noComboBox.Size = new System.Drawing.Size(148, 24);
+            this.buy_order_serial_noComboBox.Size = new System.Drawing.Size(160, 24);
             this.buy_order_serial_noComboBox.TabIndex = 6;
             this.buy_order_serial_noComboBox.SelectedValueChanged += new System.EventHandler(this.buy_order_serial_noComboBox_SelectedValueChanged);
             // 
@@ -453,6 +463,7 @@
             // 
             // isDeclareTextBox
             // 
+            this.isDeclareTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.isDeclareTextBox.Location = new System.Drawing.Point(852, 7);
             this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.isDeclareTextBox.Name = "isDeclareTextBox";
@@ -482,6 +493,7 @@
             // 
             // idTextBox
             // 
+            this.idTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.idTextBox.Enabled = false;
             this.idTextBox.Location = new System.Drawing.Point(1190, 85);
             this.idTextBox.Margin = new System.Windows.Forms.Padding(4);
@@ -492,6 +504,7 @@
             // 
             // bga_brieftextBox
             // 
+            this.bga_brieftextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bga_brieftextBox.Location = new System.Drawing.Point(852, 46);
             this.bga_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
             this.bga_brieftextBox.Name = "bga_brieftextBox";
@@ -521,19 +534,21 @@
             // 
             // inputerTextBox
             // 
+            this.inputerTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inputerTextBox.Location = new System.Drawing.Point(1190, 138);
             this.inputerTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.inputerTextBox.Name = "inputerTextBox";
             this.inputerTextBox.ReadOnly = true;
-            this.inputerTextBox.Size = new System.Drawing.Size(158, 26);
+            this.inputerTextBox.Size = new System.Drawing.Size(165, 26);
             this.inputerTextBox.TabIndex = 22;
             // 
             // stock_placetextBox
             // 
+            this.stock_placetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stock_placetextBox.Location = new System.Drawing.Point(1190, 7);
             this.stock_placetextBox.Margin = new System.Windows.Forms.Padding(4);
             this.stock_placetextBox.Name = "stock_placetextBox";
-            this.stock_placetextBox.Size = new System.Drawing.Size(158, 26);
+            this.stock_placetextBox.Size = new System.Drawing.Size(165, 26);
             this.stock_placetextBox.TabIndex = 19;
             this.stock_placetextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stock_placetextBox_KeyPress);
             // 
@@ -559,20 +574,22 @@
             // 
             // input_dateTextBox
             // 
+            this.input_dateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.input_dateTextBox.Enabled = false;
             this.input_dateTextBox.Location = new System.Drawing.Point(1190, 178);
             this.input_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.input_dateTextBox.Name = "input_dateTextBox";
             this.input_dateTextBox.ReadOnly = true;
-            this.input_dateTextBox.Size = new System.Drawing.Size(158, 26);
+            this.input_dateTextBox.Size = new System.Drawing.Size(165, 26);
             this.input_dateTextBox.TabIndex = 23;
             // 
             // notetextBox
             // 
+            this.notetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.notetextBox.Location = new System.Drawing.Point(1190, 46);
             this.notetextBox.Margin = new System.Windows.Forms.Padding(4);
             this.notetextBox.Name = "notetextBox";
-            this.notetextBox.Size = new System.Drawing.Size(158, 26);
+            this.notetextBox.Size = new System.Drawing.Size(165, 26);
             this.notetextBox.TabIndex = 17;
             // 
             // label21
@@ -644,6 +661,7 @@
             // 
             // bgaSnTextBox
             // 
+            this.bgaSnTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bgaSnTextBox.Enabled = false;
             this.bgaSnTextBox.Location = new System.Drawing.Point(852, 178);
             this.bgaSnTextBox.Margin = new System.Windows.Forms.Padding(4);
@@ -664,6 +682,7 @@
             // 
             // orderNumberTextBox
             // 
+            this.orderNumberTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.orderNumberTextBox.Location = new System.Drawing.Point(514, 138);
             this.orderNumberTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.orderNumberTextBox.Name = "orderNumberTextBox";
@@ -718,9 +737,8 @@
             this.dataGridViewToReturn.ReadOnly = true;
             this.dataGridViewToReturn.RowTemplate.Height = 23;
             this.dataGridViewToReturn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewToReturn.Size = new System.Drawing.Size(590, 416);
+            this.dataGridViewToReturn.Size = new System.Drawing.Size(591, 416);
             this.dataGridViewToReturn.TabIndex = 8;
-            this.dataGridViewToReturn.VirtualMode = true;
             this.dataGridViewToReturn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewToReturn_CellClick);
             // 
             // dataGridView1
@@ -731,13 +749,13 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(602, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(603, 4);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(758, 416);
+            this.dataGridView1.Size = new System.Drawing.Size(757, 416);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.VirtualMode = true;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
@@ -749,7 +767,7 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("SimSun", 12F);
+            this.Font = new System.Drawing.Font("宋体", 12F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BGA_InSheetForm";
             this.Text = "BGA入库表";

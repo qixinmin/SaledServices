@@ -161,6 +161,13 @@ namespace SaledServices.Store
             frusmtout.Show();
             frusmtout.doRequestUsingMpn();
 
+            //清空数据，防止误操作
+            this.materialMpnTextBox.Text = "";
+
+            this.mb_brieftextBox.Text = "";
+            this.not_good_placetextBox.Text = "";
+            this.requestNumbertextBox.Text = "";
+            this.statustextBox.Text = "";
             //在处理完请求后需要把本条记录状态修改为close或其他状态
 
         }

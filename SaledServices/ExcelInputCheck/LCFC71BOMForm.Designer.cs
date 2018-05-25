@@ -178,6 +178,7 @@
             this.material_mpnTextBox.Name = "material_mpnTextBox";
             this.material_mpnTextBox.Size = new System.Drawing.Size(163, 26);
             this.material_mpnTextBox.TabIndex = 5;
+            this.material_mpnTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.material_mpnTextBox_KeyPress);
             // 
             // descriptionTextBox
             // 

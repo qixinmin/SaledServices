@@ -77,8 +77,22 @@ namespace SaledServices
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + this.houseComboBox.Text.Trim() + "','" + this.placeTextBox.Text.Trim() + "','','')";
                     cmd.CommandType = CommandType.Text;
+
+                    //首先判断是否存在
+                    string sqlStr = "select * from " + tableName + " where house= '" + this.houseComboBox.Text.Trim().ToUpper() + "' and place = '" + this.placeTextBox.Text.Trim().ToUpper() + "'";
+                    cmd.CommandText = sqlStr;
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        querySdr.Close();
+                        conn.Close();
+                        MessageBox.Show("相同的库位已经有了，请检查！");
+                        return;
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + this.houseComboBox.Text.Trim() + "','" + this.placeTextBox.Text.Trim() + "','','')";                    
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -125,6 +139,18 @@ namespace SaledServices
                     else
                     {
                         sqlStr += " and place like '%" + placeTextBox.Text.Trim() + "%' ";
+                    }
+                }
+
+                if (this.mpntextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where mpn like '%" + mpntextBox.Text.Trim() + "%' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and mpn like '%" + mpntextBox.Text.Trim() + "%' ";
                     }
                 }
 

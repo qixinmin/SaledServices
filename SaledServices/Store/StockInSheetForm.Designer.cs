@@ -143,6 +143,7 @@
             // 
             // vendorTextBox
             // 
+            this.vendorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vendorTextBox.Location = new System.Drawing.Point(176, 54);
             this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendorTextBox.Name = "vendorTextBox";
@@ -245,12 +246,13 @@
             this.label12.Location = new System.Drawing.Point(7, 144);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(32, 16);
+            this.label12.Size = new System.Drawing.Size(80, 16);
             this.label12.TabIndex = 4;
-            this.label12.Text = "MPN";
+            this.label12.Text = "MPN(模糊)";
             // 
             // productTextBox
             // 
+            this.productTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.productTextBox.Location = new System.Drawing.Point(176, 101);
             this.productTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.productTextBox.Name = "productTextBox";
@@ -259,6 +261,7 @@
             // 
             // vendormaterialNoTextBox
             // 
+            this.vendormaterialNoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vendormaterialNoTextBox.Location = new System.Drawing.Point(514, 54);
             this.vendormaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendormaterialNoTextBox.Name = "vendormaterialNoTextBox";
@@ -267,14 +270,17 @@
             // 
             // mpnTextBox
             // 
+            this.mpnTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mpnTextBox.Location = new System.Drawing.Point(176, 148);
             this.mpnTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mpnTextBox.Name = "mpnTextBox";
             this.mpnTextBox.Size = new System.Drawing.Size(158, 26);
             this.mpnTextBox.TabIndex = 5;
+            this.mpnTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mpnTextBox_KeyPress);
             // 
             // material_typeTextBox
             // 
+            this.material_typeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.material_typeTextBox.Location = new System.Drawing.Point(176, 195);
             this.material_typeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_typeTextBox.Name = "material_typeTextBox";
@@ -283,6 +289,7 @@
             // 
             // buy_typeTextBox
             // 
+            this.buy_typeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buy_typeTextBox.Location = new System.Drawing.Point(514, 7);
             this.buy_typeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.buy_typeTextBox.Name = "buy_typeTextBox";
@@ -291,6 +298,7 @@
             // 
             // buy_order_serial_noTextBox
             // 
+            this.buy_order_serial_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buy_order_serial_noTextBox.Location = new System.Drawing.Point(176, 7);
             this.buy_order_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.buy_order_serial_noTextBox.Name = "buy_order_serial_noTextBox";
@@ -299,6 +307,7 @@
             // 
             // describeTextBox
             // 
+            this.describeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.describeTextBox.Location = new System.Drawing.Point(514, 101);
             this.describeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.describeTextBox.Name = "describeTextBox";
@@ -307,6 +316,7 @@
             // 
             // numberTextBox
             // 
+            this.numberTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numberTextBox.Location = new System.Drawing.Point(514, 148);
             this.numberTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.numberTextBox.Name = "numberTextBox";
@@ -315,6 +325,7 @@
             // 
             // pricePerTextBox
             // 
+            this.pricePerTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pricePerTextBox.Location = new System.Drawing.Point(514, 195);
             this.pricePerTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.pricePerTextBox.Name = "pricePerTextBox";
@@ -323,10 +334,11 @@
             // 
             // isDeclareTextBox
             // 
+            this.isDeclareTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.isDeclareTextBox.Location = new System.Drawing.Point(1190, 7);
             this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.isDeclareTextBox.Name = "isDeclareTextBox";
-            this.isDeclareTextBox.Size = new System.Drawing.Size(163, 26);
+            this.isDeclareTextBox.Size = new System.Drawing.Size(165, 26);
             this.isDeclareTextBox.TabIndex = 5;
             // 
             // label8
@@ -341,6 +353,7 @@
             // 
             // totalMoneyTextBox
             // 
+            this.totalMoneyTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.totalMoneyTextBox.Location = new System.Drawing.Point(852, 54);
             this.totalMoneyTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.totalMoneyTextBox.Name = "totalMoneyTextBox";
@@ -359,6 +372,7 @@
             // 
             // stock_in_numTextBox
             // 
+            this.stock_in_numTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stock_in_numTextBox.Location = new System.Drawing.Point(852, 101);
             this.stock_in_numTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.stock_in_numTextBox.Name = "stock_in_numTextBox";
@@ -396,6 +410,7 @@
             // 
             // idTextBox
             // 
+            this.idTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.idTextBox.Enabled = false;
             this.idTextBox.Location = new System.Drawing.Point(1190, 195);
             this.idTextBox.Margin = new System.Windows.Forms.Padding(4);
@@ -426,6 +441,7 @@
             // 
             // input_dateTextBox
             // 
+            this.input_dateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.input_dateTextBox.Enabled = false;
             this.input_dateTextBox.Location = new System.Drawing.Point(852, 195);
             this.input_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
@@ -520,6 +536,7 @@
             // 
             // inputerTextBox
             // 
+            this.inputerTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inputerTextBox.Location = new System.Drawing.Point(852, 148);
             this.inputerTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.inputerTextBox.Name = "inputerTextBox";
@@ -539,6 +556,7 @@
             // 
             // material_nameTextBox
             // 
+            this.material_nameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.material_nameTextBox.Location = new System.Drawing.Point(852, 7);
             this.material_nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.material_nameTextBox.Name = "material_nameTextBox";
@@ -577,6 +595,7 @@
             // 
             // custom_request_numbertextBox
             // 
+            this.custom_request_numbertextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.custom_request_numbertextBox.Enabled = false;
             this.custom_request_numbertextBox.Location = new System.Drawing.Point(1190, 148);
             this.custom_request_numbertextBox.Margin = new System.Windows.Forms.Padding(4);
@@ -587,6 +606,7 @@
             // 
             // declare_numbertextBox
             // 
+            this.declare_numbertextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.declare_numbertextBox.Enabled = false;
             this.declare_numbertextBox.Location = new System.Drawing.Point(1190, 101);
             this.declare_numbertextBox.Margin = new System.Windows.Forms.Padding(4);
@@ -597,6 +617,7 @@
             // 
             // declare_unittextBox
             // 
+            this.declare_unittextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.declare_unittextBox.Enabled = false;
             this.declare_unittextBox.Location = new System.Drawing.Point(1190, 54);
             this.declare_unittextBox.Margin = new System.Windows.Forms.Padding(4);

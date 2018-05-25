@@ -75,17 +75,17 @@ namespace SaledServices
                 dataGridView1.DataSource = null;
                 dataGridView1.Columns.Clear();
 
-                string sqlStr =  "select top 100 * from " + tableName;
+                string sqlStr =  "select * from " + tableName;
 
-                if (vendorTextBox.Text.Trim() != "")
+                if (material_mpnTextBox.Text.Trim() != "")
                 {
                     if (!sqlStr.Contains("where"))
                     {
-                        sqlStr += " where vendor= '" + vendorTextBox.Text.Trim() + "' ";
+                        sqlStr += " where material_mpn like '%" + material_mpnTextBox.Text.Trim() + "%' ";
                     }
                     else
                     {
-                        sqlStr += " and vendor= '" + vendorTextBox.Text.Trim() + "' ";
+                        sqlStr += " and material_mpn like '%" + material_mpnTextBox.Text.Trim() + "%' ";
                     }
                 }
 
@@ -225,6 +225,22 @@ namespace SaledServices
                 GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
                 SetValue(tableLayoutPanel3, true, null);            
             
+        }
+
+        private void query_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                query_Click(null, null);
+            }
+        }
+
+        private void material_mpnTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                query_Click(null, null);
+            }
         }
     }
 }

@@ -52,7 +52,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(102, 72);
+            this.label1.Location = new System.Drawing.Point(96, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 12);
             this.label1.TabIndex = 0;
@@ -69,11 +69,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(102, 105);
+            this.label3.Location = new System.Drawing.Point(96, 105);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.Size = new System.Drawing.Size(89, 12);
             this.label3.TabIndex = 0;
-            this.label3.Text = "维修位置";
+            this.label3.Text = "维修位置(回车)";
             // 
             // not_good_placeTextBox
             // 
@@ -105,7 +105,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(102, 141);
+            this.label4.Location = new System.Drawing.Point(96, 141);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 0;
@@ -137,7 +137,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(102, 218);
+            this.label5.Location = new System.Drawing.Point(96, 218);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 15;
@@ -146,7 +146,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(102, 182);
+            this.label2.Location = new System.Drawing.Point(96, 182);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 16;
@@ -189,24 +189,24 @@
             // 
             // materialMpnTextBox
             // 
-            this.materialMpnTextBox.Location = new System.Drawing.Point(393, 40);
+            this.materialMpnTextBox.Location = new System.Drawing.Point(362, 37);
             this.materialMpnTextBox.Name = "materialMpnTextBox";
             this.materialMpnTextBox.ReadOnly = true;
-            this.materialMpnTextBox.Size = new System.Drawing.Size(100, 21);
+            this.materialMpnTextBox.Size = new System.Drawing.Size(116, 21);
             this.materialMpnTextBox.TabIndex = 6;
             // 
             // materialDescribetextBox
             // 
-            this.materialDescribetextBox.Location = new System.Drawing.Point(589, 40);
+            this.materialDescribetextBox.Location = new System.Drawing.Point(543, 37);
             this.materialDescribetextBox.Name = "materialDescribetextBox";
             this.materialDescribetextBox.ReadOnly = true;
-            this.materialDescribetextBox.Size = new System.Drawing.Size(100, 21);
+            this.materialDescribetextBox.Size = new System.Drawing.Size(208, 21);
             this.materialDescribetextBox.TabIndex = 6;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(505, 40);
+            this.label7.Location = new System.Drawing.Point(484, 43);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 12);
             this.label7.TabIndex = 15;

@@ -661,6 +661,10 @@ namespace SaledServices
                             return;
                         }
                     }
+                    else
+                    {
+                        statusComboBox.Text = "不良品";
+                    }
                    
                     cmd.CommandText = "select custom_serial_no, vendor_serail_no,mpn ,lenovo_maintenance_no,lenovo_repair_no from DeliveredTable where track_serial_no = '"
                         + this.track_serial_noTextBox.Text + "'";

@@ -87,6 +87,14 @@ namespace SaledServices
                 return;
             }
 
+            if (chooseStock.house == "")
+            {
+                MessageBox.Show("请选择库位为空，而不要手动输入，请检查！");
+                this.stock_placetextBox.Text = "";
+                this.stock_placetextBox.Focus();
+                return;
+            }
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -183,6 +191,9 @@ namespace SaledServices
                     }
                     cmd.CommandText = "update store_house set mpn = '" + this.mpnTextBox.Text.Trim() + "',number = '" + stockNumber + "' where house='"+chooseStock.house+"' and place='"+chooseStock.place+"'";
                     cmd.ExecuteNonQuery();
+
+                    //清除历史缓存，保证下次选择是新的
+                    chooseStock.house = "";
                 }
                 else
                 {
@@ -378,7 +389,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,pricePer,material_name,isdeclare,number from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "' and material_type in ('BGA')";
+                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,pricePer,material_name,isdeclare,number from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "' and material_type in ('BGA') and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim()+ "'";
 
                 SqlDataReader querySdr = cmd.ExecuteReader();
 

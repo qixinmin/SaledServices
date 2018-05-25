@@ -102,6 +102,7 @@
             this.query.Text = "查询";
             this.query.UseVisualStyleBackColor = true;
             this.query.Click += new System.EventHandler(this.query_Click);
+            this.query.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.query_KeyPress);
             // 
             // modify
             // 
@@ -276,6 +277,7 @@
             this.material_mpnTextBox.Name = "material_mpnTextBox";
             this.material_mpnTextBox.Size = new System.Drawing.Size(163, 26);
             this.material_mpnTextBox.TabIndex = 5;
+            this.material_mpnTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.material_mpnTextBox_KeyPress);
             // 
             // material_box_placeTextBox
             // 

@@ -475,6 +475,29 @@ namespace SaledServices
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "select vendor from " + this.tableName + " where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string existTrack = "";
+                    while (querySdr.Read())
+                    {
+                        existTrack = querySdr[0].ToString();
+                    }
+                    if (existTrack != "")
+                    {
+                        this.track_serial_noTextBox.Focus();
+                        this.track_serial_noTextBox.SelectAll();
+                        querySdr.Close();
+                        conn.Close();
+                        clearInputContent();
+                        MessageBox.Show("跟踪条码：" + this.track_serial_noTextBox.Text + " 已经被使用过，请检测是否有错误!");
+                        return;
+                    }
+                    else
+                    {
+                        querySdr.Close();
+                    }                    
+
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + 
                         this.vendorTextBox.Text.Trim() + "','" +
                         this.productTextBox.Text.Trim() + "','" +
@@ -496,7 +519,7 @@ namespace SaledServices
                         this.mb_describeTextBox.Text.Trim() + "','" +
                         this.mb_make_dateTextBox.Text.Trim() + "','" +
                         this.warranty_periodTextBox.Text.Trim() + "','" +
-                        this.custom_faultComboBox.Text.Trim() + "','" +
+                        this.custom_faultComboBox.Text.Trim().Replace('\'', '_') + "','" +
                         this.guaranteeComboBox.Text.Trim() + "','" +
                         this.customResponsibilityComboBox.Text.Trim() + "','" +
                         this.lenovo_custom_service_noTextBox.Text.Trim() + "','" +
@@ -519,7 +542,7 @@ namespace SaledServices
                     int orderNum;
                     int receivedNum=0;
                     string status = "open";
-                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
                         if (querySdr[0].ToString() == "close")

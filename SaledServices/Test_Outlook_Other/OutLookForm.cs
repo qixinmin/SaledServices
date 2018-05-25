@@ -74,6 +74,8 @@ namespace SaledServices.Test_Outlook
                         {
                             this.testerTextBox.Text = LoginForm.currentUser;
                             this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                            this.confirmbutton.Enabled = true;
+                            this.button1.Enabled = true;
                         }
                         else
                         {
@@ -148,7 +150,7 @@ namespace SaledServices.Test_Outlook
                 }
 
                 conn.Close();
-                MessageBox.Show("插入测试2数据OK");
+                MessageBox.Show("插入外观站数据OK");
             }
             catch (Exception ex)
             {
@@ -186,7 +188,8 @@ namespace SaledServices.Test_Outlook
                 }
 
                 conn.Close();
-                MessageBox.Show("插入测试2数据OK");
+                MessageBox.Show("插入外观 Fail数据, 現在需要把板子給維修人員");
+                this.tracker_bar_textBox.Text = "";
             }
             catch (Exception ex)
             {

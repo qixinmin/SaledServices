@@ -54,9 +54,28 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select track_serial_no,product from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
+                    string station = "";
+                    while (querySdr.Read())
+                    {
+                        station = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (station != "维修" && station != "BGA")
+                    {
+                        MessageBox.Show("板子已经经过站别" + station);
+                        mConn.Close();
+                        this.tracker_bar_textBox.Focus();
+                        this.tracker_bar_textBox.SelectAll();
+                        return;
+                    }
+
+                    cmd.CommandText = "select track_serial_no,product from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                    querySdr = cmd.ExecuteReader();
                     track_serial_no = ""; product = "";
                     this.bomdownload.Enabled = false; this.buffertest.Enabled = false; this.isburn.Enabled = false;
                     if (querySdr.HasRows == false)

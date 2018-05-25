@@ -28,8 +28,8 @@ namespace SaledServices
 
     public class Constlist
     {
-        //public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
-        public static string ConStr = "server=192.168.8.56;database=SaledService;uid=admin;pwd=admin";
+        public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
+        //public static string ConStr = "server=192.168.8.56;database=SaledService;uid=admin;pwd=admin";
 
         public static string table_MBMaterialCompare = "MB物料对照表";
         public static string table_name_MBMaterialCompare = "MBMaterialCompare";
@@ -298,7 +298,7 @@ namespace SaledServices
                 xmlResult.AppendFormat("<GOODS_NATURE>{0}</GOODS_NATURE> \n", storeTrans.goods_nature);
                 xmlResult.AppendFormat("<COP_G_NO>{0}</COP_G_NO>\n", storeTrans.cop_g_no);
                 xmlResult.AppendFormat("<QTY>{0}</QTY>\n", storeTrans.qty);
-                xmlResult.AppendFormat("<UNIT>{0}</UNIT>\n", storeTrans.qty);
+                xmlResult.AppendFormat("<UNIT>{0}</UNIT>\n", storeTrans.unit);
                 xmlResult.AppendFormat("<EMS_NO>{0}</EMS_NO>\n", storeTrans.emo_no);
 
                 xmlResult.Append("</WORK_ORDER_HEAD>\n");
@@ -347,7 +347,7 @@ namespace SaledServices
                 xmlResult.AppendFormat("<GOODS_NATURE>{0}</GOODS_NATURE> \n", storeTrans.goods_nature);
                 xmlResult.AppendFormat("<COP_G_NO>{0}</COP_G_NO>\n", storeTrans.cop_g_no);
                 xmlResult.AppendFormat("<QTY>{0}</QTY>\n", storeTrans.qty);
-                xmlResult.AppendFormat("<UNIT>{0}</UNIT>\n", storeTrans.qty);
+                xmlResult.AppendFormat("<UNIT>{0}</UNIT>\n", storeTrans.unit);
                 xmlResult.AppendFormat("<EMS_NO>{0}</EMS_NO>\n", storeTrans.emo_no);
 
                 xmlResult.Append("</WORK_ORDER_LIST>\n");
