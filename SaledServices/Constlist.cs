@@ -5,6 +5,10 @@ using System.Text;
 using System.IO;
 using System.Windows.Forms;
 using SaledServices.CustomsContentClass;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace SaledServices
 {
@@ -28,8 +32,8 @@ namespace SaledServices
 
     public class Constlist
     {
-        //public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
-        public static string ConStr = "server=192.168.8.56;database=SaledService;uid=admin;pwd=admin";
+        public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
+        //public static string ConStr = "server=192.168.8.56;database=SaledService;uid=admin;pwd=admin";
 
         public static string table_MBMaterialCompare = "MB物料对照表";
         public static string table_name_MBMaterialCompare = "MBMaterialCompare";
@@ -344,7 +348,7 @@ namespace SaledServices
                 xmlResult.AppendFormat("<UNIT>{0}</UNIT>\n", storeInit.unit);
                 xmlResult.AppendFormat("<GOODS_NATURE>{0}</GOODS_NATURE>\n", storeInit.goods_nature);
                 xmlResult.AppendFormat("<BOM_VERSION>{0}</BOM_VERSION>\n", storeInit.bom_version);
-                xmlResult.AppendFormat("<STOCK_DATE>{0}</STOCK_DATE>\n", storeInit.stock_date);
+               // xmlResult.AppendFormat("<STOCK_DATE>{0}</STOCK_DATE>\n", storeInit.stock_date);
                 xmlResult.AppendFormat("<DATA_TYPE>{0}</DATA_TYPE>\n", storeInit.date_type);
 
                 xmlResult.AppendFormat("<WHS_CODE>{0}</WHS_CODE>\n", storeInit.whs_code);

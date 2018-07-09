@@ -51,6 +51,7 @@
             this.materialdescribetextBox = new System.Windows.Forms.TextBox();
             this.requestQuerybutton = new System.Windows.Forms.Button();
             this.havedbutton = new System.Windows.Forms.Button();
+            this.statusbutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,10 +75,9 @@
             // choosebutton
             // 
             this.choosebutton.Enabled = false;
-            this.choosebutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.choosebutton.Location = new System.Drawing.Point(763, 297);
+            this.choosebutton.Location = new System.Drawing.Point(763, 377);
             this.choosebutton.Name = "choosebutton";
-            this.choosebutton.Size = new System.Drawing.Size(99, 37);
+            this.choosebutton.Size = new System.Drawing.Size(85, 37);
             this.choosebutton.TabIndex = 1;
             this.choosebutton.Text = "使用";
             this.choosebutton.UseVisualStyleBackColor = true;
@@ -85,9 +85,9 @@
             // 
             // refreshbutton
             // 
-            this.refreshbutton.Location = new System.Drawing.Point(763, 355);
+            this.refreshbutton.Location = new System.Drawing.Point(763, 420);
             this.refreshbutton.Name = "refreshbutton";
-            this.refreshbutton.Size = new System.Drawing.Size(99, 28);
+            this.refreshbutton.Size = new System.Drawing.Size(85, 34);
             this.refreshbutton.TabIndex = 1;
             this.refreshbutton.Text = "刷新";
             this.refreshbutton.UseVisualStyleBackColor = true;
@@ -213,9 +213,9 @@
             // 
             // returnMaterialbutton
             // 
-            this.returnMaterialbutton.Location = new System.Drawing.Point(763, 398);
+            this.returnMaterialbutton.Location = new System.Drawing.Point(763, 460);
             this.returnMaterialbutton.Name = "returnMaterialbutton";
-            this.returnMaterialbutton.Size = new System.Drawing.Size(99, 28);
+            this.returnMaterialbutton.Size = new System.Drawing.Size(85, 32);
             this.returnMaterialbutton.TabIndex = 1;
             this.returnMaterialbutton.Text = "归还到库存";
             this.returnMaterialbutton.UseVisualStyleBackColor = true;
@@ -242,7 +242,7 @@
             // 
             this.requestQuerybutton.Location = new System.Drawing.Point(763, 155);
             this.requestQuerybutton.Name = "requestQuerybutton";
-            this.requestQuerybutton.Size = new System.Drawing.Size(99, 57);
+            this.requestQuerybutton.Size = new System.Drawing.Size(85, 56);
             this.requestQuerybutton.TabIndex = 1;
             this.requestQuerybutton.Text = "申请查询";
             this.requestQuerybutton.UseVisualStyleBackColor = true;
@@ -250,13 +250,23 @@
             // 
             // havedbutton
             // 
-            this.havedbutton.Location = new System.Drawing.Point(760, 218);
+            this.havedbutton.Location = new System.Drawing.Point(760, 301);
             this.havedbutton.Name = "havedbutton";
             this.havedbutton.Size = new System.Drawing.Size(102, 46);
             this.havedbutton.TabIndex = 1;
             this.havedbutton.Text = "已有材料查询";
             this.havedbutton.UseVisualStyleBackColor = true;
             this.havedbutton.Click += new System.EventHandler(this.havedbutton_Click);
+            // 
+            // statusbutton
+            // 
+            this.statusbutton.Location = new System.Drawing.Point(763, 230);
+            this.statusbutton.Name = "statusbutton";
+            this.statusbutton.Size = new System.Drawing.Size(85, 56);
+            this.statusbutton.TabIndex = 1;
+            this.statusbutton.Text = "状态查询";
+            this.statusbutton.UseVisualStyleBackColor = true;
+            this.statusbutton.Click += new System.EventHandler(this.statusbutton_Click);
             // 
             // RrepareUseListForm
             // 
@@ -282,6 +292,7 @@
             this.Controls.Add(this.refreshbutton);
             this.Controls.Add(this.returnMaterialbutton);
             this.Controls.Add(this.havedbutton);
+            this.Controls.Add(this.statusbutton);
             this.Controls.Add(this.requestQuerybutton);
             this.Controls.Add(this.choosebutton);
             this.Controls.Add(this.dataGridView1);
@@ -318,5 +329,6 @@
         private System.Windows.Forms.TextBox materialdescribetextBox;
         private System.Windows.Forms.Button requestQuerybutton;
         private System.Windows.Forms.Button havedbutton;
+        private System.Windows.Forms.Button statusbutton;
     }
 }

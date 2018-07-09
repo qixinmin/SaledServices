@@ -12,8 +12,9 @@ namespace SaledServices.Repair
 {
     public partial class RrepareUseListForm : Form
     {
-        private RepairOperationForm mParentForm;
-        public RrepareUseListForm(RepairOperationForm parentForm)
+        private Form mParentForm;
+        public int fromIndex = -1;
+        public RrepareUseListForm(Form parentForm)
         {
             InitializeComponent();
             refreshbutton_Click(null, null);
@@ -112,11 +113,11 @@ namespace SaledServices.Repair
                 return;
             }
 
-            if (this.thisNumbertextBox.Text == "")
-            {
-                MessageBox.Show("要使用的数量请填入！");
-                return;
-            }
+                if (this.thisNumbertextBox.Text == "")
+                {
+                    MessageBox.Show("要使用的数量请填入！");
+                    return;
+                }
 
             try
             {
@@ -153,7 +154,16 @@ namespace SaledServices.Repair
                 MessageBox.Show("请输入使用数量！");
                 return;
             }
-            mParentForm.setPrepareUseDetail(idTextBox.Text, mb_brieftextBox.Text, material_mpntextBox.Text, notgood_placetextBox.Text, this.thisNumbertextBox.Text, totalUseNumber);
+
+            if (mParentForm is RepairOperationForm)
+            {
+                ((RepairOperationForm)mParentForm).setPrepareUseDetail(idTextBox.Text, mb_brieftextBox.Text, material_mpntextBox.Text, notgood_placetextBox.Text, this.thisNumbertextBox.Text, totalUseNumber, fromIndex);
+            }
+            //else if (mParentForm is Test_Outlook.OutLookForm)
+            //{
+            //    ((Test_Outlook.OutLookForm)mParentForm).setPrepareUseDetail(idTextBox.Text, mb_brieftextBox.Text, material_mpntextBox.Text, notgood_placetextBox.Text, this.thisNumbertextBox.Text, totalUseNumber, fromIndex);
+            //}
+            
             this.Close();
         }
 
@@ -168,9 +178,41 @@ namespace SaledServices.Repair
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    //查询之前的数量，已数据库的数据为准
+                    cmd.CommandText = " select realNumber,usedNumber from request_fru_smt_to_store_table where Id='" + idTextBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string realNum = "", usedNum = "";
+                    if (querySdr.HasRows)
+                    {
+                        while (querySdr.Read())
+                        {
+                            realNum = querySdr[0].ToString();
+                            usedNum = querySdr[1].ToString();
+                        }
+                    }
+                    querySdr.Close();
+                    int realNumInt = 0, usedNumInt = 0;
+                    try
+                    {
+                        realNumInt = Int32.Parse(realNum);
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+
+                    try
+                    {
+                        usedNumInt = Int32.Parse(usedNum);
+                    }
+                    catch (Exception ex)
+                    {
+                        usedNumInt = 0;
+                    }
                     cmd.CommandText = "INSERT INTO fru_smt_return_store_record VALUES('"
                         + this.material_mpntextBox.Text.Trim() + "','"
-                        + (Int32.Parse(this.realNumbertextBox.Text == "" ? "0" : this.realNumbertextBox.Text) - Int32.Parse(this.totalUseNumber == "" ? "0" : this.totalUseNumber)) + "','"
+                        +(realNumInt-usedNumInt) + "','"
                         + this.notgood_placetextBox.Text.Trim() + "','"
                         + LoginForm.currentUser + "','"
                         + DateTime.Now.ToString("yyyy/MM/dd") + "','"
@@ -178,7 +220,7 @@ namespace SaledServices.Repair
                         + "" + "','"
                         + "request" + "','"
                         + idTextBox.Text.Trim() + "')";
-                    cmd.CommandType = CommandType.Text;
+                   
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -257,6 +299,47 @@ namespace SaledServices.Repair
         private void thisNumbertextBox_Leave(object sender, EventArgs e)
         {
             calculateNum();
+        }
+
+        private void statusbutton_Click(object sender, EventArgs e)
+        {
+            this.refreshbutton.Enabled = false;
+            this.choosebutton.Enabled = false;
+            this.returnMaterialbutton.Enabled = false;
+
+            try
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.Columns.Clear();
+
+                // string sqlStr = "select top 100 * from fru_smt_out_stock where requester='"+tester+"'";
+                string sqlStr = "select Id,mb_brief,material_mpn,material_describe,not_good_place,realNumber,_status from request_fru_smt_to_store_table where _status !='request' and requester='" + LoginForm.currentUser + "'";
+
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandText = sqlStr;
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataAdapter sda = new SqlDataAdapter();
+                sda.SelectCommand = cmd;
+                DataSet ds = new DataSet();
+                sda.Fill(ds, "request_fru_smt_to_store_table");
+                dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.RowHeadersVisible = false;
+
+                string[] hTxt = { "ID", "机型", "材料mpn", "物料描述", "不良位置", "已有数量","状态" };
+                for (int i = 0; i < hTxt.Length; i++)
+                {
+                    dataGridView1.Columns[i].HeaderText = hTxt[i];
+                    dataGridView1.Columns[i].Name = hTxt[i];
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

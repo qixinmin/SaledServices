@@ -13,7 +13,11 @@ namespace SaledServices
 {
     public partial class RepairOperationForm : Form
     {
-        private PrepareUseDetail mPrepareUseDetail;
+        private PrepareUseDetail mPrepareUseDetail1 = null;
+        private PrepareUseDetail mPrepareUseDetail2 = null;
+        private PrepareUseDetail mPrepareUseDetail3 = null;
+        private PrepareUseDetail mPrepareUseDetail4 = null;
+        private PrepareUseDetail mPrepareUseDetail5 = null;
         public RepairOperationForm()
         {
             InitializeComponent();
@@ -21,7 +25,6 @@ namespace SaledServices
             loadAdditionInfomation();
 
             repairertextBox.Text = LoginForm.currentUser;
-            mPrepareUseDetail = new PrepareUseDetail();
 
             if (User.UserSelfForm.isSuperManager() == false)
             {
@@ -74,7 +77,7 @@ namespace SaledServices
                     error = true;
                     return;
                 }
-
+                this.track_serial_noTextBox.Text = this.track_serial_noTextBox.Text.ToUpper();//防止输入小写字符
                 try
                 {
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -83,7 +86,6 @@ namespace SaledServices
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
-
 
                     cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
@@ -152,6 +154,11 @@ namespace SaledServices
                         this.customFaulttextBox.Text = custom_fault;
                         this.ECOtextBox.Text = eco;
                         this.repair_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+
+                        if (Untils.isTimeError(this.repair_datetextBox.Text.Trim()))
+                        {
+                            this.add.Enabled = false;
+                        }
                     }
                     else
                     {  
@@ -175,11 +182,58 @@ namespace SaledServices
                 }
             }
         }
+        private bool checkRepeat(string str1, string str2, string str3, string str4, string str5)
+        {
+            if (str1 != "" && (str1 == str2 || str1 == str3 || str1 == str4 || str1 == str5))
+            {
+                return true;
+            }
 
+            if (str2 != "" && (str2 == str3 || str2 == str4 || str2 == str5))
+            {
+                return true;
+            }
+
+            if (str3 != "" && (str3 == str4 || str3 == str5))
+            {
+                return true;
+            }
+
+            if (str4 != "" && (str4 == str5))
+            {
+                return true;
+            }
+
+            return false;
+        }
         private void not_good_placetextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
+                TextBox not_good_place1 = (TextBox)sender;
+
+                ComboBox relatedCombo = null;
+                if (not_good_place1.Name.EndsWith("1"))
+                {
+                    relatedCombo = this.material_mpnComboBox1;
+                }
+                else if (not_good_place1.Name.EndsWith("2"))
+                {
+                    relatedCombo = this.material_mpnComboBox2;
+                }
+                else if (not_good_place1.Name.EndsWith("3"))
+                {
+                    relatedCombo = this.material_mpnComboBox3;
+                }
+                else if (not_good_place1.Name.EndsWith("4"))
+                {
+                    relatedCombo = this.material_mpnComboBox4;
+                }
+                else if (not_good_place1.Name.EndsWith("5"))
+                {
+                    relatedCombo = this.material_mpnComboBox5;
+                }
+
                 bool error = false;
                 if (this.track_serial_noTextBox.Text.Trim() == "")
                 {
@@ -187,24 +241,23 @@ namespace SaledServices
                     this.track_serial_noTextBox.Focus();
                     return;
                 }
-                if (this.not_good_placetextBox.Text.Trim() == "")
+
+                if (not_good_place1.Text.Trim() == "")
                 {
                     MessageBox.Show("请先输入内容");
-                    this.not_good_placetextBox.Focus();
+                    not_good_place1.Focus();
                     return;
                 }
 
-                string tableName = "";
-                //if (this.vendorTextBox.Text.Trim() == "LCFC")
-                //{
-                    tableName = Constlist.table_name_LCFC_MBBOM;
-                //}
-                //else if (this.vendorTextBox.Text.Trim() == "COMPAL")
-                //{
-                //    tableName = Constlist.table_name_COMPAL_MBBOM;
-                //}
+                if (checkRepeat(not_good_placetextBox1.Text, not_good_placetextBox2.Text, not_good_placetextBox3.Text, not_good_placetextBox4.Text, not_good_placetextBox5.Text))
+                {
+                    MessageBox.Show("输入的不良位置有重复内容！");
+                    return;
+                }
 
-                string not_good_place = this.not_good_placetextBox.Text.Trim();
+                string tableName = Constlist.table_name_LCFC_MBBOM;
+
+                string not_good_place = not_good_place1.Text.Trim();
                 try
                 {
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -217,134 +270,112 @@ namespace SaledServices
                     //先用mpn在bom表中找一遍，如果找不到，然后用mb简称再查一遍，如果都没有，要不输错了，要不bom表不全
                     cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8 from " + tableName + " where MPN ='" + this.mpntextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    this.material_mpnComboBox.Items.Clear();
+                    relatedCombo.Items.Clear();
                     while (querySdr.Read())
                     {
                         string material_mpn = querySdr[0].ToString(); ;
                         string temp = querySdr[1].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Items.Add(material_mpn);
+                            relatedCombo.Items.Add(material_mpn);
                             continue;
                         } temp = querySdr[2].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Items.Add(material_mpn);
+                            relatedCombo.Items.Add(material_mpn);
                             continue;
                         } temp = querySdr[3].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Items.Add(material_mpn);
+                            relatedCombo.Items.Add(material_mpn);
                             continue;
                         } temp = querySdr[4].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Items.Add(material_mpn);
+                            relatedCombo.Items.Add(material_mpn);
                             continue;
                         } temp = querySdr[5].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Items.Add(material_mpn);
+                            relatedCombo.Items.Add(material_mpn);
                             continue;
                         } temp = querySdr[6].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Items.Add(material_mpn);
+                            relatedCombo.Items.Add(material_mpn);
                             continue;
                         } temp = querySdr[7].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Items.Add(material_mpn);
+                            relatedCombo.Items.Add(material_mpn);
                             continue;
                         } temp = querySdr[8].ToString();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            this.material_mpnComboBox.Items.Add(material_mpn);
+                            relatedCombo.Items.Add(material_mpn);
                             continue;
                         }
                     }
                     querySdr.Close();
 
-                    if (this.material_mpnComboBox.Items.Count == 0)
+                    if (relatedCombo.Items.Count == 0)
                     {
                         cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8 from " + tableName + " where mb_brief ='" + this.mb_brieftextBox.Text.Trim() + "'";
                         querySdr = cmd.ExecuteReader();
-                        this.material_mpnComboBox.Items.Clear();
+                        relatedCombo.Items.Clear();
                         while (querySdr.Read())
                         {
                             string material_mpn = querySdr[0].ToString(); ;
                             string temp = querySdr[1].ToString();
                             if (temp != "" && temp.ToLower() == not_good_place.ToLower())
                             {
-                                this.material_mpnComboBox.Items.Add(material_mpn);
+                                relatedCombo.Items.Add(material_mpn);
                                 continue;
                             } temp = querySdr[2].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpnComboBox.Items.Add(material_mpn);
+                                relatedCombo.Items.Add(material_mpn);
                                 continue;
                             } temp = querySdr[3].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpnComboBox.Items.Add(material_mpn);
+                                relatedCombo.Items.Add(material_mpn);
                                 continue;
                             } temp = querySdr[4].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpnComboBox.Items.Add(material_mpn);
+                                relatedCombo.Items.Add(material_mpn);
                                 continue;
                             } temp = querySdr[5].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpnComboBox.Items.Add(material_mpn);
+                                relatedCombo.Items.Add(material_mpn);
                                 continue;
                             } temp = querySdr[6].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpnComboBox.Items.Add(material_mpn);
+                                relatedCombo.Items.Add(material_mpn);
                                 continue;
                             } temp = querySdr[7].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpnComboBox.Items.Add(material_mpn);
+                                relatedCombo.Items.Add(material_mpn);
                                 continue;
                             } temp = querySdr[8].ToString();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                this.material_mpnComboBox.Items.Add(material_mpn);
+                                relatedCombo.Items.Add(material_mpn);
                                 continue;
                             }
                         }
                         querySdr.Close();
                     }
 
-                    if (this.material_mpnComboBox.Items.Count == 0)
+                    if (relatedCombo.Items.Count == 0)
                     {
                         error = true;
                         MessageBox.Show("是否输入错误的位置信息，或者bom表信息不全！");
-                    }
-                    //else
-                    //{
-                    //    cmd.CommandText = "select material_vendor_pn from LCFC71BOM_table where material_mpn='" + this.material_mpnComboBox.Text.Trim() + "'";
-
-                    //    querySdr = cmd.ExecuteReader();
-
-                    //    string material_71pn_txt = "";
-                    //    while (querySdr.Read())
-                    //    {
-                    //        material_71pn_txt = querySdr[0].ToString();
-                    //        if (material_71pn_txt != "")
-                    //        {
-                    //            this.material_71pntextBox.Text = material_71pn_txt;
-                    //        }
-                    //        else
-                    //        {
-                    //            error = true;
-                    //            MessageBox.Show("LCFC71BOM表中" + this.material_mpnComboBox.Text.Trim() + "信息不全！");
-                    //        }
-                    //    }
-                    //    querySdr.Close();
-                    //}
+                    }                    
 
                     mConn.Close();
                 }
@@ -353,10 +384,10 @@ namespace SaledServices
                     MessageBox.Show(ex.ToString());
                 }
 
-                if (!error)
+                if (error)
                 {
-                    material_mpnComboBox.Focus();
-                    material_mpnComboBox.SelectAll();
+                    relatedCombo.Focus();
+                    relatedCombo.SelectAll();
                 }
             }
         }
@@ -381,6 +412,9 @@ namespace SaledServices
             this.checkBox16.Checked = false;
             this.checkBox17.Checked = false;
             this.checkBox18.Checked = false;
+            //this.checkBox19.Checked = false;
+            //this.checkBox20.Checked = false;
+            //this.checkBox21.Checked = false;
             this.textBox1.Text = "";
         }
 
@@ -399,7 +433,6 @@ namespace SaledServices
             {
                 retStr += checkBox3.Text.Trim() + ",";
             }
-
             if (checkBox4.Checked)
             {
                 retStr += checkBox4.Text.Trim() + ",";
@@ -454,6 +487,16 @@ namespace SaledServices
             {
                 retStr += checkBox18.Text.Trim() + ",";
             } 
+            //if (checkBox19.Checked)
+            //{
+            //    retStr += checkBox19.Text.Trim() + ",";
+            //} if (checkBox20.Checked)
+            //{
+            //    retStr += checkBox20.Text.Trim() + ",";
+            //} if (checkBox21.Checked)
+            //{
+            //    retStr += checkBox21.Text.Trim() + ",";
+            //} 
             if (this.textBox1.Text != "")
             {
                 retStr += textBox1.Text.Trim() + ",";
@@ -462,10 +505,8 @@ namespace SaledServices
             return retStr;
         }
 
-
         private void RepairOperationForm_Load(object sender, EventArgs e)
-        {
-            
+        {            
             tableLayoutPanel1.GetType().
              GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
              SetValue(tableLayoutPanel1, true, null);
@@ -475,12 +516,13 @@ namespace SaledServices
             tableLayoutPanel3.GetType().
                 GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
                 SetValue(tableLayoutPanel3, true, null);
-
             tableLayoutPanel4.GetType().
                 GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
                 SetValue(tableLayoutPanel4, true, null);
-        }
-       
+            tableLayoutPanel5.GetType().
+                GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
+                SetValue(tableLayoutPanel5, true, null);
+        }       
 
         private void add_Click(object sender, EventArgs e)
         {
@@ -510,9 +552,9 @@ namespace SaledServices
             string mbfa1rich_txt = this.mbfa1richTextBox.Text.Trim();
             string short_cut_txt = getShortCutText();
             string software_update_txt = this.software_updatecomboBox.Text.Trim();
-            string not_good_place_txt = this.not_good_placetextBox.Text.Trim();
-            string material_mpn_txt = this.material_mpnComboBox.Text.Trim();
-            string material_71pn_txt = this.material_71pntextBox.Text.Trim();
+            //string not_good_place_txt = this.not_good_placetextBox.Text.Trim();
+            //string material_mpn_txt = this.material_mpnComboBox.Text.Trim();
+            //string material_71pn_txt = this.material_71pntextBox.Text.Trim();
             string material_type_txt = this.material_typetextBox.Text.Trim();
             string fault_type_txt = this.fault_typecomboBox.Text.Trim();
             string action_txt = this.actioncomboBox.Text.Trim();
@@ -530,18 +572,14 @@ namespace SaledServices
 
                 mbfa1rich_txt = "NTF";
                 software_update_txt = "NTF";
-                not_good_place_txt = "NTF";
-                material_mpn_txt = "NTF";
-                material_71pn_txt = "NTF";
                 material_type_txt = "NTF";
                 fault_type_txt = "NTF";
                 action_txt = "NTF";
             }
-            else //“非NTF状态
+            else //非NTF状态
             {
                 isNTF = false;
                 if (fault_describetextBox.Text.Trim() == ""
-                    || not_good_placetextBox.Text.Trim() == ""
                     || fault_typecomboBox.Text.Trim() == ""
                     || actioncomboBox.Text.Trim() == "")
                 {
@@ -561,36 +599,242 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
+                    //检查所有要是使用的数据，如果超过所拥有的数量，则不能生产任何记录
+
+
+                   
+                    if (mPrepareUseDetail1!=null && mPrepareUseDetail1.Id != null)
+                    {
+                        //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
+                        cmd.CommandText = "select usedNumber,realNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail1.Id + "'";
+                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        string usedNumberStr = "";
+                        while (querySdr.Read())
+                        {
+                            usedNumberStr = querySdr[0].ToString();                            
+                        }
+                        querySdr.Close();
+                        int usedNumberInt=0;
+                        try
+                        {
+                            usedNumberInt = Int32.Parse(mPrepareUseDetail1.thisUseNumber);
+                            usedNumberInt += Int32.Parse(usedNumberStr);                        
+                        }
+                        catch (Exception ex)
+                        {  
+                        }
+
+                        //更新预领料表的数量
+                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
+                                  + "where Id = '" + mPrepareUseDetail1.Id + "'";
+                        cmd.ExecuteNonQuery();
+
+                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                           + repairer_txt + "','"
+                           + repair_date_txt + "','"
+                           + track_serial_no_txt + "','"
+                           + mPrepareUseDetail1.material_mpn + "','"
+                           + mPrepareUseDetail1.thisUseNumber + "','"
+                           + mPrepareUseDetail1.stock_place + "')";
+                        cmd.ExecuteNonQuery();
+
+                        //使用完毕需要清空
+                        mPrepareUseDetail1.Id = null;
+                    }
+
+                    if (mPrepareUseDetail2 != null && mPrepareUseDetail2.Id != null)
+                    { 
+                        //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
+                        cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail2.Id + "'";
+                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        string usedNumberStr = "";
+                        while (querySdr.Read())
+                        {
+                            usedNumberStr = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                        int usedNumberInt = 0;
+                        try
+                        {
+                            usedNumberInt = Int32.Parse(mPrepareUseDetail2.thisUseNumber);
+                            usedNumberInt += Int32.Parse(usedNumberStr);
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+
+                        //更新预领料表的数量
+                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
+                                  + "where Id = '" + mPrepareUseDetail2.Id + "'";
+                        cmd.ExecuteNonQuery();
+
+                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                           + repairer_txt + "','"
+                           + repair_date_txt + "','"
+                           + track_serial_no_txt + "','"
+                           + mPrepareUseDetail2.material_mpn + "','"
+                           + mPrepareUseDetail2.thisUseNumber + "','"
+                           + mPrepareUseDetail2.stock_place + "')";
+                        cmd.ExecuteNonQuery();
+
+                        //使用完毕需要清空
+                        mPrepareUseDetail2.Id = null;
+                    }
+
+                    if (mPrepareUseDetail3 != null && mPrepareUseDetail3.Id != null)
+                    {
+
+                        //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
+                        cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail3.Id + "'";
+                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        string usedNumberStr = "";
+                        while (querySdr.Read())
+                        {
+                            usedNumberStr = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                        int usedNumberInt = 0;
+                        try
+                        {
+                            usedNumberInt = Int32.Parse(mPrepareUseDetail3.thisUseNumber);
+                            usedNumberInt += Int32.Parse(usedNumberStr);
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+
+                        //更新预领料表的数量
+                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
+                                  + "where Id = '" + mPrepareUseDetail3.Id + "'";
+                        cmd.ExecuteNonQuery();
+
+
+                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                           + repairer_txt + "','"
+                           + repair_date_txt + "','"
+                           + track_serial_no_txt + "','"
+                           + mPrepareUseDetail3.material_mpn + "','"
+                           + mPrepareUseDetail3.thisUseNumber + "','"
+                           + mPrepareUseDetail3.stock_place + "')";
+                        cmd.ExecuteNonQuery();
+
+                        //使用完毕需要清空
+                        mPrepareUseDetail3.Id = null;
+                    }
+
+                    if (mPrepareUseDetail4 != null && mPrepareUseDetail4.Id != null)
+                    {
+                        //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
+                        cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail4.Id + "'";
+                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        string usedNumberStr = "";
+                        while (querySdr.Read())
+                        {
+                            usedNumberStr = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                        int usedNumberInt = 0;
+                        try
+                        {
+                            usedNumberInt = Int32.Parse(mPrepareUseDetail4.thisUseNumber);
+                            usedNumberInt += Int32.Parse(usedNumberStr);
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+
+                        //更新预领料表的数量
+                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
+                                  + "where Id = '" + mPrepareUseDetail4.Id + "'";
+                        cmd.ExecuteNonQuery();
+
+                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                           + repairer_txt + "','"
+                           + repair_date_txt + "','"
+                           + track_serial_no_txt + "','"
+                           + mPrepareUseDetail4.material_mpn + "','"
+                           + mPrepareUseDetail4.thisUseNumber + "','"
+                           + mPrepareUseDetail4.stock_place + "')";
+                        cmd.ExecuteNonQuery();
+
+                        //使用完毕需要清空
+                        mPrepareUseDetail4.Id = null;
+                    }
+
+                    if (mPrepareUseDetail5 != null && mPrepareUseDetail5.Id != null)
+                    {
+                        //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
+                        cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail5.Id + "'";
+                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        string usedNumberStr = "";
+                        while (querySdr.Read())
+                        {
+                            usedNumberStr = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                        int usedNumberInt = 0;
+                        try
+                        {
+                            usedNumberInt = Int32.Parse(mPrepareUseDetail5.thisUseNumber);
+                            usedNumberInt += Int32.Parse(usedNumberStr);
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+
+                        //更新预领料表的数量
+                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
+                                  + "where Id = '" + mPrepareUseDetail5.Id + "'";
+                        cmd.ExecuteNonQuery();
+
+                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                           + repairer_txt + "','"
+                           + repair_date_txt + "','"
+                           + track_serial_no_txt + "','"
+                           + mPrepareUseDetail5.material_mpn + "','"
+                           + mPrepareUseDetail5.thisUseNumber + "','"
+                           + mPrepareUseDetail5.stock_place + "')";
+                        cmd.ExecuteNonQuery();
+
+                        //使用完毕需要清空
+                        mPrepareUseDetail5.Id = null;
+                    }
+
                     cmd.CommandText = "INSERT INTO repair_record_table VALUES('"
-                        + track_serial_no_txt + "','"
-                        + vendor_txt + "','"
-                        + product_txt + "','"
-                        + source_txt + "','"
-                        + orderno_txt + "','"
-                        + receivedate_txt + "','"
-                        + mb_describe_txt + "','"
-                        + mb_brief_txt + "','"
-                        + custom_serial_no_txt + "','"
-                        + vendor_serail_no_txt + "','"
-                        + mpn_txt + "','"
-                        + mb_make_date_txt + "','"
-                        + customFault_txt + "','"
-                        + fault_describe_txt + "','"
-                        + mbfa1rich_txt + "','"
-                        + short_cut_txt + "','"
-                        + software_update_txt + "','"
-                        + not_good_place_txt + "','"
-                        + material_mpn_txt + "','"
-                        + material_71pn_txt + "','"
-                        + material_type_txt + "','"
-                        + fault_type_txt + "','"
-                        + action_txt + "','"
-                      
-                        + ECO_txt + "','"
-                        + repair_result_txt + "','"
-                        + repairer_txt + "','"
-                        + repair_date_txt + "')";
-                    
+                       + track_serial_no_txt + "','"
+                       + vendor_txt + "','"
+                       + product_txt + "','"
+                       + source_txt + "','"
+                       + orderno_txt + "','"
+                       + receivedate_txt + "','"
+                       + mb_describe_txt + "','"
+                       + mb_brief_txt + "','"
+                       + custom_serial_no_txt + "','"
+                       + vendor_serail_no_txt + "','"
+                       + mpn_txt + "','"
+                       + mb_make_date_txt + "','"
+                       + customFault_txt + "','"
+                       + fault_describe_txt + "','"
+                       + mbfa1rich_txt + "','"
+                       + short_cut_txt + "','"
+                       + software_update_txt + "','"
+                       + "" + "','"
+                       + "" + "','"
+                       + "" + "','"
+                       + material_type_txt + "','"
+                       + fault_type_txt + "','"
+                       + action_txt + "','"
+
+                       + ECO_txt + "','"
+                       + repair_result_txt + "','"
+                       + repairer_txt + "','"
+                       + repair_date_txt + "')";
+
                     cmd.ExecuteNonQuery();
 
                     //更新维修站别
@@ -598,26 +842,6 @@ namespace SaledServices
                                + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
 
-                    if (mPrepareUseDetail.Id != null)
-                    {
-                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
-                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
-                           + repair_result_txt + "','"
-                           + repair_date_txt + "','"
-                           + track_serial_no_txt + "','"
-                           + mPrepareUseDetail.material_mpn + "','"
-                           + mPrepareUseDetail.thisUseNumber + "','"
-                           + mPrepareUseDetail.stock_place + "')";
-                        cmd.ExecuteNonQuery();
-
-                        //更新预领料表的数量
-                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + mPrepareUseDetail.totalUseNumber + "' "
-                                  + "where Id = '" + mPrepareUseDetail.Id + "'";
-                        cmd.ExecuteNonQuery();
-
-                        //使用完毕需要清空
-                        mPrepareUseDetail.Id = null;
-                    }
                 }
                 else
                 {
@@ -654,23 +878,39 @@ namespace SaledServices
                 this.mbfa1richTextBox.Text = "";
                 uncheckShortCut();
                 this.software_updatecomboBox.Text = "";
-                this.not_good_placetextBox.Text = "";
-                this.material_mpnComboBox.Text = "";
-                this.material_71pntextBox.Text = "";
+
+                not_good_placetextBox1.Text = "";
+                material_mpnComboBox1.Items.Clear();
+                material_71pntextBox1.Text = "";
+                useNum1.Text = "";
+                not_good_placetextBox2.Text = "";
+                material_mpnComboBox2.Items.Clear();
+                material_71pntextBox2.Text = "";
+                useNum2.Text = "";
+                not_good_placetextBox3.Text = "";
+                material_mpnComboBox3.Items.Clear();
+                material_71pntextBox3.Text = "";
+                useNum3.Text = "";
+                not_good_placetextBox4.Text = "";
+                material_mpnComboBox4.Items.Clear();
+                material_71pntextBox4.Text = "";
+                useNum4.Text = "";
+                not_good_placetextBox5.Text = "";
+                material_mpnComboBox5.Items.Clear();
+                material_71pntextBox5.Text = "";
+                useNum5.Text = "";
                 this.material_typetextBox.Text = "";
                 this.fault_typecomboBox.Text = "";
                 this.actioncomboBox.Text = "";
                
                 this.ECOtextBox.Text = "";
                 this.repair_resultcomboBox.Text = "";
-                //this.repairertextBox.Text = "";
                 this.repair_datetextBox.Text = "";
 
                 if (isNTF)//非NTF复位
                 {
                     this.software_updatecomboBox.Enabled = true;
-                    this.not_good_placetextBox.Enabled = true;
-                    this.material_mpnComboBox.Enabled = true;
+                    tableLayoutPanel5.Enabled = true;
                     this.fault_typecomboBox.Enabled = true;
                     this.actioncomboBox.Enabled = true;
                     this.mbfa1richTextBox.Enabled = true;
@@ -694,6 +934,9 @@ namespace SaledServices
                     this.checkBox16.Enabled = true;
                     this.checkBox17.Enabled = true;
                     this.checkBox18.Enabled = true;
+                    //this.checkBox19.Enabled = true;
+                    //this.checkBox20.Enabled = true;
+                    //this.checkBox21.Enabled = true;
                     this.textBox1.Enabled = true;
                 }
 
@@ -757,8 +1000,7 @@ namespace SaledServices
             if (this.repair_resultcomboBox.Text.Contains("NTF"))
             {
                 this.software_updatecomboBox.Enabled = false;
-                this.not_good_placetextBox.Enabled = false;
-                this.material_mpnComboBox.Enabled = false;
+                tableLayoutPanel5.Enabled = false;
                 this.fault_typecomboBox.Enabled = false;
                 this.actioncomboBox.Enabled = false;
                 this.mbfa1richTextBox.Enabled = false;
@@ -782,13 +1024,15 @@ namespace SaledServices
                 this.checkBox16.Enabled = false;
                 this.checkBox17.Enabled = false;
                 this.checkBox18.Enabled = false;
+                //this.checkBox19.Enabled = false;
+                //this.checkBox20.Enabled = false;
+                //this.checkBox21.Enabled = false;
                 this.textBox1.Enabled = false;                
             }
             else
             {
                 this.software_updatecomboBox.Enabled = true;
-                this.not_good_placetextBox.Enabled = true;
-                this.material_mpnComboBox.Enabled = true;
+                tableLayoutPanel5.Enabled = true;
                 this.fault_typecomboBox.Enabled = true;
                 this.actioncomboBox.Enabled = true;
                 this.mbfa1richTextBox.Enabled = true;
@@ -812,6 +1056,9 @@ namespace SaledServices
                 this.checkBox16.Enabled = true;
                 this.checkBox17.Enabled = true;
                 this.checkBox18.Enabled = true;
+                //this.checkBox19.Enabled = true;
+                //this.checkBox20.Enabled = true;
+                //this.checkBox21.Enabled = true;
                 this.textBox1.Enabled = true;
 
                 this.software_updatecomboBox.Focus();
@@ -823,26 +1070,169 @@ namespace SaledServices
         {
             RrepareUseListForm prepareUseList = new RrepareUseListForm(this);
             prepareUseList.MdiParent = Program.parentForm;
+            Button currentButton = (Button)sender;
+            if (currentButton.Name.EndsWith("1"))
+            {
+                prepareUseList.fromIndex = 1;
+            }
+            else if (currentButton.Name.EndsWith("2"))
+            {
+                prepareUseList.fromIndex = 2;
+            }
+            else if (currentButton.Name.EndsWith("3"))
+            {
+                prepareUseList.fromIndex = 3;
+            }
+            else if (currentButton.Name.EndsWith("4"))
+            {
+                prepareUseList.fromIndex = 4;
+            }
+            else if (currentButton.Name.EndsWith("5"))
+            {
+                prepareUseList.fromIndex = 5;
+            }
             prepareUseList.Show();
         }
 
-        public void setPrepareUseDetail(string id, string mb_brief, string material_mpn, string stock_place, string thisUseNumber, string totalUseNumber)
+        public void setPrepareUseDetail(string id, string mb_brief, string material_mpn, string stock_place, string thisUseNumber, string totalUseNumber, int index)
         {
-            mPrepareUseDetail.Id = id;
-            mPrepareUseDetail.mb_brief = mb_brief;
-            mPrepareUseDetail.material_mpn = material_mpn;
-            mPrepareUseDetail.stock_place = stock_place;
-            mPrepareUseDetail.thisUseNumber = thisUseNumber;
-            mPrepareUseDetail.totalUseNumber = totalUseNumber;
+            switch (index)
+            {
+                case 1:
+                    if (material_mpnComboBox1.Text == "" || material_mpnComboBox1.Text != material_mpn)
+                    {
+                        MessageBox.Show("当前的MPN内容为空或不与选择的MPN相同！");
+                        if (mPrepareUseDetail1 != null)
+                        {
+                            mPrepareUseDetail1 = null;
+                        }
+                        return;
+                    }
+                    
+                    mPrepareUseDetail1 = new PrepareUseDetail();
+                    mPrepareUseDetail1.Id = id;
+                    mPrepareUseDetail1.mb_brief = mb_brief;
+                    mPrepareUseDetail1.material_mpn = material_mpn;
+                    mPrepareUseDetail1.stock_place = stock_place;
+                    mPrepareUseDetail1.thisUseNumber = thisUseNumber;
+                    mPrepareUseDetail1.totalUseNumber = totalUseNumber;
+                    this.useNum1.Text = thisUseNumber;
+                    
+                    break;
+                case 2:
+                    if (material_mpnComboBox2.Text == "" || material_mpnComboBox2.Text != material_mpn)
+                    {
+                        MessageBox.Show("当前的MPN内容为空或不与选择的MPN相同！");
+                        if (mPrepareUseDetail2 != null)
+                        {
+                            mPrepareUseDetail2 = null;
+                        }
+                        return;
+                    }
+                    mPrepareUseDetail2 = new PrepareUseDetail();
+                    mPrepareUseDetail2.Id = id;
+                    mPrepareUseDetail2.mb_brief = mb_brief;
+                    mPrepareUseDetail2.material_mpn = material_mpn;
+                    mPrepareUseDetail2.stock_place = stock_place;
+                    mPrepareUseDetail2.thisUseNumber = thisUseNumber;
+                    mPrepareUseDetail2.totalUseNumber = totalUseNumber;
+                    this.useNum2.Text = thisUseNumber;
+                    
+                    break;
+                case 3:
+                    if (material_mpnComboBox3.Text == "" || material_mpnComboBox3.Text != material_mpn)
+                    {
+                        MessageBox.Show("当前的MPN内容为空或不与选择的MPN相同！");
+                        if (mPrepareUseDetail3 != null)
+                        {
+                            mPrepareUseDetail3 = null;
+                        }
+                        return;
+                    }
+                    mPrepareUseDetail3 = new PrepareUseDetail();
+                    mPrepareUseDetail3.Id = id;
+                    mPrepareUseDetail3.mb_brief = mb_brief;
+                    mPrepareUseDetail3.material_mpn = material_mpn;
+                    mPrepareUseDetail3.stock_place = stock_place;
+                    mPrepareUseDetail3.thisUseNumber = thisUseNumber;
+                    mPrepareUseDetail3.totalUseNumber = totalUseNumber;
+                    this.useNum3.Text = thisUseNumber;
+
+                    break;
+                case 4:
+                    if (material_mpnComboBox4.Text == "" || material_mpnComboBox4.Text != material_mpn)
+                    {
+                        MessageBox.Show("当前的MPN内容为空或不与选择的MPN相同！");
+                        if (mPrepareUseDetail4 != null)
+                        {
+                            mPrepareUseDetail4 = null;
+                        }
+                        return;
+                    }
+                    mPrepareUseDetail4 = new PrepareUseDetail();
+                    mPrepareUseDetail4.Id = id;
+                    mPrepareUseDetail4.mb_brief = mb_brief;
+                    mPrepareUseDetail4.material_mpn = material_mpn;
+                    mPrepareUseDetail4.stock_place = stock_place;
+                    mPrepareUseDetail4.thisUseNumber = thisUseNumber;
+                    mPrepareUseDetail4.totalUseNumber = totalUseNumber;
+                    this.useNum4.Text = thisUseNumber;
+                    
+                    break;
+                case 5:
+                    if (material_mpnComboBox5.Text == "" || material_mpnComboBox5.Text != material_mpn)
+                    {
+                        MessageBox.Show("当前的MPN内容为空或不与选择的MPN相同！");
+                        if (mPrepareUseDetail5 != null)
+                        {
+                            mPrepareUseDetail5 = null;
+                        }
+                        return;
+                    }
+                    mPrepareUseDetail5 = new PrepareUseDetail();
+                    mPrepareUseDetail5.Id = id;
+                    mPrepareUseDetail5.mb_brief = mb_brief;
+                    mPrepareUseDetail5.material_mpn = material_mpn;
+                    mPrepareUseDetail5.stock_place = stock_place;
+                    mPrepareUseDetail5.thisUseNumber = thisUseNumber;
+                    mPrepareUseDetail5.totalUseNumber = totalUseNumber;
+                    this.useNum5.Text = thisUseNumber;
+                    
+                    break;
+            }            
         }
 
         private void material_mpnComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (this.material_mpnComboBox.Text == "")
+            ComboBox relatedCombo = (ComboBox)sender;
+
+            if (relatedCombo.Text == "")
             {
                 MessageBox.Show("请选择一个值！");
                 return;
             }
+            TextBox current71pn = null;
+            if (relatedCombo.Name.EndsWith("1"))
+            {
+                current71pn = this.material_71pntextBox1;
+            }
+            else if (relatedCombo.Name.EndsWith("2"))
+            {
+                current71pn = this.material_71pntextBox2;
+            }
+            else if (relatedCombo.Name.EndsWith("3"))
+            {
+                current71pn = this.material_71pntextBox3;
+            }
+            else if (relatedCombo.Name.EndsWith("4"))
+            {
+                current71pn = this.material_71pntextBox4;
+            }
+            else if (relatedCombo.Name.EndsWith("5"))
+            {
+                current71pn = this.material_71pntextBox5;
+            }
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -853,23 +1243,24 @@ namespace SaledServices
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "select material_vendor_pn from LCFC71BOM_table where material_mpn='" + this.material_mpnComboBox.Text.Trim() + "'";
+                    cmd.CommandText = "select material_vendor_pn from LCFC71BOM_table where material_mpn='" + relatedCombo.Text.Trim() + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string material_71pn_txt = "";
                     while (querySdr.Read())
                     {
                         material_71pn_txt = querySdr[0].ToString();
-                        if (material_71pn_txt != "")
-                        {
-                            this.material_71pntextBox.Text = material_71pn_txt;
-                        }
-                        else
-                        {
-                            MessageBox.Show("LCFC71BOM表中" + this.material_mpnComboBox.Text.Trim() + "信息不全！");
-                        }
                     }
                     querySdr.Close();
+
+                    if (material_71pn_txt != "")
+                    {
+                        current71pn.Text = material_71pn_txt;
+                    }
+                    else
+                    {
+                        MessageBox.Show("LCFC71BOM表中" + relatedCombo.Text.Trim() + "信息不全！");
+                    }
                 }
                 conn.Close();
             }
@@ -877,6 +1268,46 @@ namespace SaledServices
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void clear1_Click(object sender, EventArgs e)
+        {
+            this.not_good_placetextBox1.Text = "";
+            this.material_mpnComboBox1.Text = "";
+            this.material_71pntextBox1.Text = "";
+            this.useNum1.Text = "";
+        }
+
+        private void clear2_Click(object sender, EventArgs e)
+        {
+            this.not_good_placetextBox2.Text = "";
+            this.material_mpnComboBox2.Text = "";
+            this.material_71pntextBox2.Text = "";
+            this.useNum2.Text = "";
+        }
+
+        private void clear3_Click(object sender, EventArgs e)
+        {
+            this.not_good_placetextBox3.Text = "";
+            this.material_mpnComboBox3.Text = "";
+            this.material_71pntextBox3.Text = "";
+            this.useNum3.Text = "";
+        }
+
+        private void clear4_Click(object sender, EventArgs e)
+        {
+            this.not_good_placetextBox4.Text = "";
+            this.material_mpnComboBox4.Text = "";
+            this.material_71pntextBox4.Text = "";
+            this.useNum4.Text = "";
+        }
+
+        private void clear5_Click(object sender, EventArgs e)
+        {
+            this.not_good_placetextBox5.Text = "";
+            this.material_mpnComboBox5.Text = "";
+            this.material_71pntextBox5.Text = "";
+            this.useNum5.Text = "";
         }
     }
 }
