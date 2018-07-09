@@ -11,6 +11,7 @@ using SaledServices.CustomsExport;
 using SaledServices.additionForm;
 using System.Diagnostics;
 using System.IO;
+using SaledServices.Export;
 
 namespace SaledServices
 {
@@ -1065,6 +1066,37 @@ namespace SaledServices
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             PrintUtils.disposePrinter();
+        }
+
+        private ReceiveOrderExport roexport;
+        private void 收货信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (roexport == null || roexport.IsDisposed)
+            {
+                roexport = new ReceiveOrderExport();
+                roexport.MdiParent = this;
+            }
+
+           // roexport.WindowState = FormWindowState.Maximized;
+            roexport.BringToFront();
+            roexport.Show();
+
+            allForm.Add(roexport);
+        }
+        private DatabaseForm databaseForm;
+        private void 数据库备份ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (databaseForm == null || databaseForm.IsDisposed)
+            {
+                databaseForm = new DatabaseForm();
+                databaseForm.MdiParent = this;
+            }
+
+          //  databaseForm.WindowState = FormWindowState.Maximized;
+            databaseForm.BringToFront();
+            databaseForm.Show();
+
+            allForm.Add(databaseForm);
         }
     }
 }

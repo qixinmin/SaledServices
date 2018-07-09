@@ -46,7 +46,7 @@ customFault NVARCHAR(128) NOT NULL, /*客户故障*/
 ECO NVARCHAR(128), /*ECO*/
 repairer NVARCHAR(128) NOT NULL, /*维修人*/
 repair_date date, /*修复日期*/
-)
+)*/
 /*存储文件数据库*/
 CREATE TABLE TestCpu(
     id varchar(10),
@@ -233,7 +233,6 @@ mb_brief NVARCHAR(1280) NOT NULL,/*MB简称*/
 material_name  NVARCHAR(128) NOT NULL,/*材料名称*/
 vendormaterialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
 describe NVARCHAR(128) NOT NULL,/*描述*/
-isdeclare NVARCHAR(128), /*是否报关*/
 stock_out_num  NVARCHAR(128),/*出库数量*/
 pricePer NVARCHAR(128) NOT NULL,/*单价*/
 stock_place NVARCHAR(128),/*库位*/
@@ -256,7 +255,6 @@ vendormaterialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
 describe NVARCHAR(128) NOT NULL,/*描述*/
 number  NVARCHAR(128) NOT NULL,/*订单数量*/
 pricePer NVARCHAR(128) NOT NULL,/*单价*/
-isdeclare NVARCHAR(128), /*是否报关*/
 
 mb_brief NVARCHAR(1280) NOT NULL,/*MB简称*/
 material_name  NVARCHAR(128) NOT NULL,/*材料名称*/
@@ -289,11 +287,6 @@ _status NVARCHAR(128),/*状态 open/close*/
 
 inputer  NVARCHAR(128),/*输入人*/
 input_date  date,/*日期*/
-isdeclare NVARCHAR(128), /*是否报关*/
-
-declare_unit NVARCHAR(128), /*申报单位*/
-declare_number NVARCHAR(128), /*报关单号*/
-custom_request_number NVARCHAR(128), /*申请单号*/
 )
 
 /*bga维修序列记录*/
@@ -746,10 +739,6 @@ receivedate date,/*收货日期*/
 _status NVARCHAR(128) NOT NULL,/*订单状态*/
 storehouse NVARCHAR(128) NOT NULL,/*库别*/
 returnNum NVARCHAR(128), /*还货数量*/
-
-declare_unit NVARCHAR(128), /*申报单位*/
-declare_number NVARCHAR(128), /*报关单号*/
-custom_request_number NVARCHAR(128), /*申请单号*/
 
 cid_number NVARCHAR(128), /*废弃数量*/
 )

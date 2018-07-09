@@ -27,6 +27,12 @@ namespace SaledServices
             InitializeComponent();
             inputerTextBox.Text = LoginForm.currentUser;
             this.input_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+
+            if (Untils.isTimeError(this.input_dateTextBox.Text.Trim()))
+            {
+                this.add.Enabled = false;
+            }
+
             loadInformation();
 
             if (User.UserSelfForm.isSuperManager() == false)
@@ -456,6 +462,16 @@ namespace SaledServices
                 {
                     sql += " and material_name like '%" + this.material_nameTextBox.Text + "%'";
                 }
+
+                if (this.mpnTextBox.Text != "")
+                {
+                    sql += " and mpn like '%" + this.mpnTextBox.Text + "%'";
+                }
+
+                //if (this.describeTextBox.Text != "")
+                //{
+                //    sql = " and describe like '%" + this.describeTextBox.Text + "%'";
+                //}
 
                 cmd.CommandText = sql;
                 cmd.CommandType = CommandType.Text;

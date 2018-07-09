@@ -58,8 +58,6 @@ namespace SaledServices
                         this.material_nameTextBox.Text.Trim() + "','" +
                         this.vendormaterialNoTextBox.Text.Trim() + "','" +
                         this.describeTextBox.Text.Trim() + "','" +
-                        this.isDeclareTextBox.Text.Trim() + "','" +
-
                         this.stock_out_numTextBox.Text.Trim() + "','" +
                         this.pricePerTextBox.Text.Trim() + "','" +
                         this.stock_placetextBox.Text.Trim() + "','" +
@@ -119,7 +117,6 @@ namespace SaledServices
             this.material_nameTextBox.Text = "";
             this.vendormaterialNoTextBox.Text = "";
             this.describeTextBox.Text = "";
-            this.isDeclareTextBox.Text = "";
             this.stock_out_numTextBox.Text = "";
             this.pricePerTextBox.Text = "";
             this.stock_placetextBox.Text = "";
@@ -181,7 +178,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "ID", "厂商", "采购类别", "客户别", "材料大类", "MPN", "MB简称", "材料名称", "厂商料号", "描述", "是否报关", "出库数量", "单价", "库位", "领用人", "出库人", "用途", "备注", "出库日期"};
+            string[] hTxt = { "ID", "厂商", "采购类别", "客户别", "材料大类", "MPN", "MB简称", "材料名称", "厂商料号", "描述", "出库数量", "单价", "库位", "领用人", "出库人", "用途", "备注", "出库日期"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -204,7 +201,6 @@ namespace SaledServices
             dr["material_name"]= this.material_nameTextBox.Text.Trim();
             dr["vendormaterialNo"] = this.vendormaterialNoTextBox.Text.Trim();
             dr["describe"] = this.describeTextBox.Text.Trim();
-            dr["isdeclare"] = this.isDeclareTextBox.Text.Trim();
             dr["stock_out_num"]= this.stock_out_numTextBox.Text.Trim();
             dr["pricePer"] = this.pricePerTextBox.Text.Trim();
             dr["stock_place"] = this.stock_placetextBox.Text.Trim();
@@ -263,16 +259,15 @@ namespace SaledServices
             this.material_nameTextBox.Text = dataGridView1.SelectedCells[7].Value.ToString();
             this.vendormaterialNoTextBox.Text = dataGridView1.SelectedCells[8].Value.ToString();
             this.describeTextBox.Text = dataGridView1.SelectedCells[9].Value.ToString();
-            this.isDeclareTextBox.Text= dataGridView1.SelectedCells[10].Value.ToString();
-            this.stock_out_numTextBox.Text= dataGridView1.SelectedCells[11].Value.ToString();
-            this.pricePerTextBox.Text= dataGridView1.SelectedCells[12].Value.ToString();
+            this.stock_out_numTextBox.Text= dataGridView1.SelectedCells[10].Value.ToString();
+            this.pricePerTextBox.Text= dataGridView1.SelectedCells[11].Value.ToString();
    
-            this.stock_placetextBox.Text= dataGridView1.SelectedCells[13].Value.ToString();
-            this.takertextBox.Text= dataGridView1.SelectedCells[14].Value.ToString();
-            this.inputerTextBox.Text= dataGridView1.SelectedCells[15].Value.ToString();
-            this.use_describetextBox.Text = dataGridView1.SelectedCells[16].Value.ToString();
-            this.notetextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
-            this.input_dateTextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();
+            this.stock_placetextBox.Text= dataGridView1.SelectedCells[12].Value.ToString();
+            this.takertextBox.Text= dataGridView1.SelectedCells[13].Value.ToString();
+            this.inputerTextBox.Text= dataGridView1.SelectedCells[14].Value.ToString();
+            this.use_describetextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
+            this.notetextBox.Text = dataGridView1.SelectedCells[16].Value.ToString();
+            this.input_dateTextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
 
         }
 
@@ -350,7 +345,7 @@ namespace SaledServices
                         this.stock_out_numTextBox.Text = this.requestNumber;
                     }
 
-                    cmd.CommandText = "select vendor,product,mb_brief,describe,isdeclare,material_type,vendormaterialNo,material_name,buy_type  from fru_smt_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select vendor,product,mb_brief,describe,material_type,vendormaterialNo,material_name,buy_type  from fru_smt_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();
 
                     bool existData = false;
@@ -361,11 +356,10 @@ namespace SaledServices
                         this.productTextBox.Text = querySdr[1].ToString();
                         this.mb_brieftextBox.Text = querySdr[2].ToString();
                         this.describeTextBox.Text = querySdr[3].ToString();
-                        this.isDeclareTextBox.Text = querySdr[4].ToString();
-                        this.material_typeTextBox.Text = querySdr[5].ToString();
-                        this.vendormaterialNoTextBox.Text = querySdr[6].ToString();
-                        this.material_nameTextBox.Text = querySdr[7].ToString();
-                        this.buy_typeTextBox.Text = querySdr[8].ToString();
+                        this.material_typeTextBox.Text = querySdr[4].ToString();
+                        this.vendormaterialNoTextBox.Text = querySdr[5].ToString();
+                        this.material_nameTextBox.Text = querySdr[6].ToString();
+                        this.buy_typeTextBox.Text = querySdr[7].ToString();
                         break;
                     }
                     querySdr.Close();

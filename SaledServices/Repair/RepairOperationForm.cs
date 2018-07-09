@@ -599,10 +599,7 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    //检查所有要是使用的数据，如果超过所拥有的数量，则不能生产任何记录
-
-
-                   
+                    //检查所有要是使用的数据，如果超过所拥有的数量，则不能生产任何记录                   
                     if (mPrepareUseDetail1!=null && mPrepareUseDetail1.Id != null)
                     {
                         //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
@@ -1204,6 +1201,8 @@ namespace SaledServices
 
         private void material_mpnComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
+            return;//
+
             ComboBox relatedCombo = (ComboBox)sender;
 
             if (relatedCombo.Text == "")

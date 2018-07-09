@@ -57,8 +57,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.stock_in_numTextBox = new System.Windows.Forms.TextBox();
             this.buy_order_serial_noComboBox = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.isDeclareTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.totalMoneyTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -366,8 +364,6 @@
             this.tableLayoutPanel3.Controls.Add(this.vendormaterialNoTextBox, 3, 1);
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.buy_order_serial_noComboBox, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label17, 4, 0);
-            this.tableLayoutPanel3.Controls.Add(this.isDeclareTextBox, 5, 0);
             this.tableLayoutPanel3.Controls.Add(this.label8, 4, 4);
             this.tableLayoutPanel3.Controls.Add(this.totalMoneyTextBox, 5, 4);
             this.tableLayoutPanel3.Controls.Add(this.label14, 6, 2);
@@ -431,25 +427,6 @@
             this.buy_order_serial_noComboBox.Size = new System.Drawing.Size(160, 24);
             this.buy_order_serial_noComboBox.TabIndex = 6;
             this.buy_order_serial_noComboBox.SelectedValueChanged += new System.EventHandler(this.buy_order_serial_noComboBox_SelectedValueChanged);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(683, 3);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(72, 16);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "是否报关";
-            // 
-            // isDeclareTextBox
-            // 
-            this.isDeclareTextBox.Location = new System.Drawing.Point(852, 7);
-            this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.isDeclareTextBox.Name = "isDeclareTextBox";
-            this.isDeclareTextBox.ReadOnly = true;
-            this.isDeclareTextBox.Size = new System.Drawing.Size(158, 26);
-            this.isDeclareTextBox.TabIndex = 26;
             // 
             // label8
             // 
@@ -736,8 +713,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox totalMoneyTextBox;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox isDeclareTextBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox mb_brieftextBox;

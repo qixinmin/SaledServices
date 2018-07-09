@@ -300,10 +300,6 @@ namespace SaledServices
                             //订单数量
                             string orderNum = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 4]).Value2.ToString();
 
-                            string declare_unit = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 5]).Value2.ToString();
-                            string declare_number = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 6]).Value2.ToString();
-                            string custom_request_number = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 7]).Value2.ToString();
-
                             customMaterialNo = appendString(customMaterialNo);
                             string querysql = "select vendor,product,mb_brief,vendormaterialNo,mb_descripe from " + Constlist.table_name_MBMaterialCompare +
                                 " where custommaterialNo ='" + customMaterialNo + "'";
@@ -340,7 +336,7 @@ namespace SaledServices
                                 "0" + "','" +
                                 DateTime.Now.ToString("1900/01/01") + "','" +
                                 "open" + "','" +
-                                storeHouse + "','0',"+"'"+declare_unit+"','"+declare_number+"','"+custom_request_number+"','0')";
+                                storeHouse + "','0')";
 
                             insertCmd.ExecuteNonQuery();
                         }

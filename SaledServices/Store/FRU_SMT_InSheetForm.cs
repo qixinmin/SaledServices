@@ -98,7 +98,7 @@ namespace SaledServices
                 return;
             }
 
-            if (chooseStock.house == "")
+            if (chooseStock.house == "" ||chooseStock.house == null)
             {
                 MessageBox.Show("请选择库位为空，而不要手动输入，请检查！");
                 this.stock_placetextBox.Text = "";
@@ -165,7 +165,6 @@ namespace SaledServices
                         this.describeTextBox.Text.Trim() + "','" +
                         this.numberTextBox.Text.Trim() + "','" +
                         this.pricePerTextBox.Text.Trim() + "','" +
-                        this.isDeclareTextBox.Text.Trim() + "','" +
 
                         this.mb_brieftextBox.Text.Trim() + "','" +
                         this.material_namecomboBox.Text.Trim() + "','" +
@@ -267,7 +266,7 @@ namespace SaledServices
             }
 
 
-            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "订单数量", "单价", "是否报关", "MB简称", "材料名称", "入库数量", "合计金额", "库位", "备注", "输入人", "日期" };
+            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "订单数量", "单价", "MB简称", "材料名称", "入库数量", "合计金额", "库位", "备注", "输入人", "日期" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -291,8 +290,6 @@ namespace SaledServices
             dr["describe"] = this.describeTextBox.Text.Trim();
             dr["number"] = this.numberTextBox.Text.Trim();
             dr["pricePer"] = this.pricePerTextBox.Text.Trim();
-            dr["isdeclare"] = this.isDeclareTextBox.Text.Trim();
-
 
             dr["mb_brief"] = this.mb_brieftextBox.Text.Trim();
             dr["material_name"] = this.material_namecomboBox.Text.Trim();
@@ -354,17 +351,15 @@ namespace SaledServices
             this.numberTextBox.Text = dataGridView1.SelectedCells[9].Value.ToString();
             this.pricePerTextBox.Text = dataGridView1.SelectedCells[10].Value.ToString();
 
-            this.isDeclareTextBox.Text = dataGridView1.SelectedCells[11].Value.ToString();
+            this.mb_brieftextBox.Text= dataGridView1.SelectedCells[11].Value.ToString();
+            this.material_namecomboBox.Text= dataGridView1.SelectedCells[12].Value.ToString();
+            this.stock_in_numTextBox.Text= dataGridView1.SelectedCells[13].Value.ToString();
 
-            this.mb_brieftextBox.Text= dataGridView1.SelectedCells[12].Value.ToString();
-            this.material_namecomboBox.Text= dataGridView1.SelectedCells[13].Value.ToString();
-            this.stock_in_numTextBox.Text= dataGridView1.SelectedCells[14].Value.ToString();
-
-            this.totalMoneyTextBox.Text= dataGridView1.SelectedCells[15].Value.ToString();
-            this.stock_placetextBox.Text= dataGridView1.SelectedCells[16].Value.ToString();
-            this.notetextBox.Text= dataGridView1.SelectedCells[17].Value.ToString();
-            this.inputerTextBox.Text= dataGridView1.SelectedCells[18].Value.ToString();
-            this.input_dateTextBox.Text = dataGridView1.SelectedCells[19].Value.ToString();
+            this.totalMoneyTextBox.Text= dataGridView1.SelectedCells[14].Value.ToString();
+            this.stock_placetextBox.Text= dataGridView1.SelectedCells[15].Value.ToString();
+            this.notetextBox.Text= dataGridView1.SelectedCells[16].Value.ToString();
+            this.inputerTextBox.Text= dataGridView1.SelectedCells[17].Value.ToString();
+            this.input_dateTextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();
         }
 
         private void ReceiveOrderForm_Load(object sender, EventArgs e)
@@ -394,7 +389,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,number,pricePer,material_name,isdeclare from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "' and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim()+ "'";
+                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,number,pricePer,material_name from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "' and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim()+ "'";
 
                 SqlDataReader querySdr = cmd.ExecuteReader();
 
@@ -410,11 +405,8 @@ namespace SaledServices
                     this.numberTextBox.Text = querySdr[7].ToString();
                     this.pricePerTextBox.Text = querySdr[8].ToString();
                     this.material_namecomboBox.Text = querySdr[9].ToString();
-                    this.isDeclareTextBox.Text = querySdr[10].ToString();
                 }
                 querySdr.Close();
-
-                
 
                 cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
                 querySdr = cmd.ExecuteReader();
@@ -623,7 +615,7 @@ namespace SaledServices
         private void stock_placetextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
-            {
+            {   
                 //打开选择界面，并把结果返回到本界面来
                 ChooseStoreHouseForm csform = new ChooseStoreHouseForm(this);
                 csform.MdiParent = Program.parentForm;

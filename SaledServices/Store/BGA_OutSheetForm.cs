@@ -35,6 +35,18 @@ namespace SaledServices
 
         private void add_Click(object sender, EventArgs e)
         {
+            if (this.takertextBox.Text == "")
+            {
+                MessageBox.Show("领用人为空!");
+                return;
+            }
+
+            if (this.stock_out_numTextBox.Text == "")
+            {
+                MessageBox.Show("领用数量为空!");
+                return;
+            }
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);

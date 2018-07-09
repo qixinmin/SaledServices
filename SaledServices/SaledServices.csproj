@@ -201,6 +201,12 @@
     <Compile Include="additionForm\CIDInputForm.Designer.cs">
       <DependentUpon>CIDInputForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="additionForm\DatabaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\DatabaseForm.Designer.cs">
+      <DependentUpon>DatabaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="additionForm\FilesUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,18 @@
     </Compile>
     <Compile Include="additionForm\RepairFaultTypeForm.Designer.cs">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\ExportDatabaseToExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\ExportDatabaseToExcel.designer.cs">
+      <DependentUpon>ExportDatabaseToExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\ReceiveOrderExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\ReceiveOrderExport.designer.cs">
+      <DependentUpon>ReceiveOrderExport.cs</DependentUpon>
     </Compile>
     <Compile Include="Repair\RepairOperationForm.cs">
       <SubType>Form</SubType>
@@ -559,6 +577,9 @@
     <EmbeddedResource Include="additionForm\CIDInputForm.resx">
       <DependentUpon>CIDInputForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\DatabaseForm.resx">
+      <DependentUpon>DatabaseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="additionForm\FilesUpdateForm.resx">
       <DependentUpon>FilesUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -567,6 +588,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\RepairFaultTypeForm.resx">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\ExportDatabaseToExcel.resx">
+      <DependentUpon>ExportDatabaseToExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\ReceiveOrderExport.resx">
+      <DependentUpon>ReceiveOrderExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\RepairOperationForm.resx">
       <DependentUpon>RepairOperationForm.cs</DependentUpon>

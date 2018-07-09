@@ -35,6 +35,11 @@ namespace SaledServices.Test_Outlook
 
                 try
                 {
+                    if (Untils.isTimeError(testdatetextBox.Text.Trim()))
+                    {
+                        this.confirmbutton.Enabled = false;
+                    }
+
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                     mConn.Open();
 
@@ -68,6 +73,8 @@ namespace SaledServices.Test_Outlook
                         {
                             this.testerTextBox.Text = LoginForm.currentUser;
                             this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                            this.confirmbutton.Enabled = true;
+                            this.button1.Enabled = true;
                         }
                         else
                         {
@@ -142,6 +149,8 @@ namespace SaledServices.Test_Outlook
 
                 conn.Close();
                 MessageBox.Show("插入OBE数据OK");
+                this.confirmbutton.Enabled = false;
+                this.button1.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -167,6 +176,23 @@ namespace SaledServices.Test_Outlook
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
+
+                    //防止重复入库
+                    cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string Id = "";
+                    while (querySdr.Read())
+                    {
+                        Id = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+                    if (Id != "")
+                    {
+                        MessageBox.Show("此序列号已经存在！");
+                        this.tracker_bar_textBox.Text = "";
+                        conn.Close();
+                        return;
+                    }
 
                     cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
