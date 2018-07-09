@@ -411,19 +411,55 @@ namespace SaledServices.Test_Outlook
             //SET OA3PID=N/A    KEYSERIAL
             //SET FRUPN=04X5152  客户料号
             //SET MODELID=VIUX2  MB简称
-            string totalStr = "SET MBID=" + track_serial_no + "\r\n"
-                            + "SET SN=" + vendor_serail_no + "\r\n"
-                            + "SET SKU=" + mpn + "\r\n"
-                            + "SET MAC=" + mac + "\r\n"
-                            + "SET UUID=" + uuid + "\r\n"
-                            + "SET MB11S=" + custom_serial_no + "\r\n"
-                            + "SET OA3KEY=" + KEYSERIAL + "\r\n"
-                            + "SET OA3PID=" + KEYID + "\r\n"
-                            + "SET FRUPN=" + customMaterialNo + "\r\n"
-                            + "SET MODELID=" + mb_brief + "\r\n"
-                            + "SET DPK=" + dpk_type;
-            Untils.createFile("D:\\fru\\", "BOM.bat", totalStr);
+
+            string tempCustomMaterialNo = "";
+            //if (customMaterialNo.Length == 10 && customMaterialNo.StartsWith("000"))
+            //{
+            //    tempCustomMaterialNo = customMaterialNo.Substring(3);
+            //}
+            string totalStr = "SET -v MBID " + track_serial_no + "\r\n"
+                            + "SET -v SN " + vendor_serail_no + "\r\n"
+                            + "SET -v SKU " + mpn + "\r\n"
+                            + "SET -v MAC " + mac + "\r\n"
+                            + "SET -v UUID " + uuid + "\r\n"
+                            + "SET -v MB11S " + custom_serial_no + "\r\n"
+                            + "SET -v OA3KEY " + KEYSERIAL + "\r\n"
+                            + "SET -v OA3PID " + KEYID + "\r\n"
+                            + "SET -v DPKNO " + KEYSERIAL + "\r\n"
+                            + "SET -v DPKID " + KEYID + "\r\n"
+                            + "SET -v FRUPN " + tempCustomMaterialNo + "\r\n"
+                            + "SET -v MODELID " + mb_brief + "\r\n"
+                            + "SET -v DPK " + dpk_type;
             Untils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
+
+            totalStr = "SET MBID=" + track_serial_no + "\r\n"
+                           + "SET SN=" + vendor_serail_no + "\r\n"
+                           + "SET SKU=" + mpn + "\r\n"
+                           + "SET MAC=" + mac + "\r\n"
+                           + "SET UUID=" + uuid + "\r\n"
+                           + "SET MB11S=" + custom_serial_no + "\r\n"
+                           + "SET OA3KEY=" + KEYSERIAL + "\r\n"
+                           + "SET OA3PID=" + KEYID + "\r\n"
+                           + "SET DPKNO=" + KEYSERIAL + "\r\n"
+                           + "SET DPKID=" + KEYID + "\r\n"
+                           + "SET FRUPN=" + tempCustomMaterialNo + "\r\n"
+                           + "SET MODELID=" + mb_brief + "\r\n"
+                           + "SET DPK=" + dpk_type;
+            Untils.createFile("D:\\fru\\", "BOM.bat", totalStr);
+
+            //string totalStr = "SET MBID=" + track_serial_no + "\r\n"
+            //                + "SET SN=" + vendor_serail_no + "\r\n"
+            //                + "SET SKU=" + mpn + "\r\n"
+            //                + "SET MAC=" + mac + "\r\n"
+            //                + "SET UUID=" + uuid + "\r\n"
+            //                + "SET MB11S=" + custom_serial_no + "\r\n"
+            //                + "SET OA3KEY=" + KEYSERIAL + "\r\n"
+            //                + "SET OA3PID=" + KEYID + "\r\n"
+            //                + "SET FRUPN=" + customMaterialNo + "\r\n"
+            //                + "SET MODELID=" + mb_brief + "\r\n"
+            //                + "SET DPK=" + dpk_type;
+            //Untils.createFile("D:\\fru\\", "BOM.bat", totalStr);
+            //Untils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
 
             Untils.createFile("C:\\CHKCPU\\", "BOM.bat", totalStr);
 

@@ -28,8 +28,8 @@ namespace SaledServices
 
     public class Constlist
     {
-        public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
-        //public static string ConStr = "server=192.168.8.56;database=SaledService;uid=admin;pwd=admin";
+        //public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
+        public static string ConStr = "server=192.168.8.56;database=SaledService;uid=admin;pwd=admin";
 
         public static string table_MBMaterialCompare = "MB物料对照表";
         public static string table_name_MBMaterialCompare = "MBMaterialCompare";
@@ -113,9 +113,161 @@ namespace SaledServices
         }
     }
 
+    public class ExportExcelContent
+    {
+        public List<string> contentArray;       
+    }
     public class Untils
     {
-       
+
+        public static bool isTimeError(string nowDate)
+        {
+            try
+            {
+                DateTime timeStart = Convert.ToDateTime(nowDate);
+
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandText = "select top 1 receivedate from receiveOrder order by receivedate desc ";
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                string oldTime = "";
+                while (querySdr.Read())
+                {
+                    oldTime = querySdr[0].ToString();
+                }
+
+                querySdr.Close();
+
+                mConn.Close();
+
+                DateTime timeOld = Convert.ToDateTime(oldTime);
+
+                if (DateTime.Compare(timeStart, timeOld) < 0) //判断日期大小
+                {
+                    MessageBox.Show("当前日期不对，请检查");
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }           
+
+            return false;
+        }
+
+
+        public static void setValue(ref Microsoft.Office.Interop.Excel.Worksheet xSheet, int column, int row,Object content)
+        {
+            if(content is ExportExcelContent)
+            {
+                ExportExcelContent temp = (ExportExcelContent)content;
+                xSheet.Cells[column][row] = temp.contentArray[column - 1];
+            }
+        }
+
+        //title list的长度要保证与内容contentArray的长度一致
+        public static void createExcel(string filepathname, List<string> titleList, List<Object> contentList)
+        {
+            //1.创建Applicaton对象
+            Microsoft.Office.Interop.Excel.Application xApp = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbook workBook;
+
+            xApp.Visible = false;
+            xApp.DisplayAlerts = false;  
+
+            if (File.Exists(filepathname))
+            {
+                workBook = xApp.Workbooks.Open(filepathname, 0, false, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+            }
+            else
+            {
+                workBook = xApp.Workbooks.Add(true);
+            }
+
+            //3.指定要操作的Sheet
+            Microsoft.Office.Interop.Excel.Worksheet xSheet = (Microsoft.Office.Interop.Excel.Worksheet)workBook.Worksheets[1];
+            Microsoft.Office.Interop.Excel.Range range;
+
+            //4.向相应对位置写入相应的数据
+            for (int column = 1; column <= titleList.Count; column++)
+            {
+                xSheet.Cells[column][1] = titleList[column - 1];
+            }            
+           
+            object[,] saRet = new object[contentList.Count , titleList.Count]; //row,column
+
+            for (int row = 0; row < contentList.Count ; row++)
+            {
+                for (int column = 0; column < titleList.Count; column++)
+                {
+                    saRet[row, column] = ((ExportExcelContent)contentList[row]).contentArray[column];
+                }
+            }
+
+            //for (int row = 2; row <= contentList.Count + 1; row++)           
+            //{
+            //    for (int column = 1; column <= titleList.Count; column++)
+            //    {
+            //        setValue(ref xSheet,column, row, contentList[row - 2]);
+            //    }
+            //}
+
+            //range = xSheet.get_Range(xSheet.Cells[2, 1], xSheet.Cells[contentList.Count+1, titleList.Count]);//此方案有问题，改成下面的方案range[,]方案
+
+            range = xSheet.Range[xSheet.Cells[2, 1], xSheet.Cells[contentList.Count + 1, titleList.Count]];
+
+           
+           
+            range.NumberFormatLocal = "@";
+            range.Value2 = saRet;
+
+            xSheet.Columns.EntireColumn.AutoFit();//列宽自适应
+
+            //5.保存保存WorkBook
+            workBook.SaveAs(filepathname);
+            //6.从内存中关闭Excel对象
+            xSheet = null;
+            //关闭EXCEL的提示框
+            xApp.DisplayAlerts = false;
+            //Excel从内存中退出        
+            try
+            {
+                workBook.Close();
+                xApp.Quit();
+                IntPtr intptr = new IntPtr(xApp.Hwnd);
+                int id;
+                GetWindowThreadProcessId(intptr, out id);
+                var p = Process.GetProcessById(id);
+                if (p != null)
+                {
+                    p.Kill();
+                }
+            }
+            catch (Exception ex)
+            { }
+            MessageBox.Show("导出" + filepathname + "成功！");
+        }
+
+        [DllImport("User32.dll")]
+        public static extern int GetWindowThreadProcessId(IntPtr hWnd, out int ProcessId);
+
+        public static string getCustomDate(string inputDate)
+        {
+            return DateTime.Parse(inputDate).ToString("yyyy-MM-dd"); // DateTime.Now.ToString("yyyy-MM-dd");
+        }
+
+        public static string getCustomCurrentDate()
+        {
+            return DateTime.Now.ToString("yyyy-MM-dd");
+        }
+
         public static void createOpeningStockXML(OpeningStockClass openingStockClass, string fileName)
         {
             StringBuilder xmlResult = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
@@ -192,7 +344,7 @@ namespace SaledServices
                 xmlResult.AppendFormat("<UNIT>{0}</UNIT>\n", storeInit.unit);
                 xmlResult.AppendFormat("<GOODS_NATURE>{0}</GOODS_NATURE>\n", storeInit.goods_nature);
                 xmlResult.AppendFormat("<BOM_VERSION>{0}</BOM_VERSION>\n", storeInit.bom_version);
-                xmlResult.AppendFormat("<CHECK_DATE>{0}</CHECK_DATE>\n", storeInit.check_date);
+                xmlResult.AppendFormat("<STOCK_DATE>{0}</STOCK_DATE>\n", storeInit.stock_date);
                 xmlResult.AppendFormat("<DATA_TYPE>{0}</DATA_TYPE>\n", storeInit.date_type);
 
                 xmlResult.AppendFormat("<WHS_CODE>{0}</WHS_CODE>\n", storeInit.whs_code);
