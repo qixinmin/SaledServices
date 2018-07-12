@@ -336,7 +336,7 @@ namespace SaledServices
                                 "0" + "','" +
                                 DateTime.Now.ToString("1900/01/01") + "','" +
                                 "open" + "','" +
-                                storeHouse + "','0')";
+                                storeHouse + "','0','0')";
 
                             insertCmd.ExecuteNonQuery();
                         }

@@ -427,7 +427,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,pricePer,isdeclare,number from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "' and material_type in ('MB') and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim() + "'";
+                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,pricePer,number from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "' and material_type in ('MB') and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim() + "'";
 
                 SqlDataReader querySdr = cmd.ExecuteReader();
 
@@ -440,9 +440,8 @@ namespace SaledServices
                     this.material_typeTextBox.Text = querySdr[4].ToString();
                     this.vendormaterialNoTextBox.Text = querySdr[5].ToString();
                     this.describeTextBox.Text = querySdr[6].ToString();
-                    this.pricePerTextBox.Text = querySdr[7].ToString();
-                    this.isDeclareTextBox.Text = querySdr[8].ToString();
-                    this.orderNumberTextBox.Text = querySdr[9].ToString();
+                    this.pricePerTextBox.Text = querySdr[7].ToString();;
+                    this.orderNumberTextBox.Text = querySdr[8].ToString();
                 }
                 querySdr.Close();
 

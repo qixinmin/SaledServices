@@ -63,7 +63,7 @@
             // dateTimePickerend
             // 
             this.dateTimePickerend.Location = new System.Drawing.Point(200, 168);
-            this.dateTimePickerend.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dateTimePickerend.Margin = new System.Windows.Forms.Padding(5);
             this.dateTimePickerend.Name = "dateTimePickerend";
             this.dateTimePickerend.Size = new System.Drawing.Size(331, 30);
             this.dateTimePickerend.TabIndex = 5;
@@ -71,7 +71,7 @@
             // dateTimePickerstart
             // 
             this.dateTimePickerstart.Location = new System.Drawing.Point(200, 88);
-            this.dateTimePickerstart.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dateTimePickerstart.Margin = new System.Windows.Forms.Padding(5);
             this.dateTimePickerstart.Name = "dateTimePickerstart";
             this.dateTimePickerstart.Size = new System.Drawing.Size(331, 30);
             this.dateTimePickerstart.TabIndex = 4;
@@ -79,7 +79,7 @@
             // chooseFolder
             // 
             this.chooseFolder.Location = new System.Drawing.Point(575, 277);
-            this.chooseFolder.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.chooseFolder.Margin = new System.Windows.Forms.Padding(5);
             this.chooseFolder.Name = "chooseFolder";
             this.chooseFolder.Size = new System.Drawing.Size(125, 38);
             this.chooseFolder.TabIndex = 8;
@@ -100,7 +100,7 @@
             // pathTextBox
             // 
             this.pathTextBox.Location = new System.Drawing.Point(200, 280);
-            this.pathTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pathTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.pathTextBox.Name = "pathTextBox";
             this.pathTextBox.ReadOnly = true;
             this.pathTextBox.Size = new System.Drawing.Size(331, 30);
@@ -125,7 +125,7 @@
             "MB良品入库表",
             "MB良品出库表"});
             this.datasourceComboBox.Location = new System.Drawing.Point(200, 20);
-            this.datasourceComboBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.datasourceComboBox.Margin = new System.Windows.Forms.Padding(5);
             this.datasourceComboBox.Name = "datasourceComboBox";
             this.datasourceComboBox.Size = new System.Drawing.Size(331, 28);
             this.datasourceComboBox.TabIndex = 10;
@@ -145,7 +145,7 @@
             // 
             this.exportToExcel.Font = new System.Drawing.Font("SimSun", 15F);
             this.exportToExcel.Location = new System.Drawing.Point(768, 395);
-            this.exportToExcel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.exportToExcel.Margin = new System.Windows.Forms.Padding(5);
             this.exportToExcel.Name = "exportToExcel";
             this.exportToExcel.Size = new System.Drawing.Size(323, 152);
             this.exportToExcel.TabIndex = 8;
@@ -169,7 +169,7 @@
             this.Controls.Add(this.dateTimePickerend);
             this.Controls.Add(this.dateTimePickerstart);
             this.Font = new System.Drawing.Font("SimSun", 15F);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ExportDatabaseToExcel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "选择";
