@@ -491,11 +491,14 @@ namespace SaledServices.Test_Outlook
             //SET FRUPN=04X5152  客户料号
             //SET MODELID=VIUX2  MB简称
 
-            string tempCustomMaterialNo = "";
-            //if (customMaterialNo.Length == 10 && customMaterialNo.StartsWith("000"))
-            //{
-            //    tempCustomMaterialNo = customMaterialNo.Substring(3);
-            //}
+            string tempCustomMaterialNo = customMaterialNo;
+            if (customMaterialNo.Length == 10 && customMaterialNo.StartsWith("000"))
+            {
+                if (product == "TBG")
+                {
+                    tempCustomMaterialNo = customMaterialNo.Substring(3);
+                }                
+            }
             string totalStr = "SET -v MBID " + track_serial_no + "\r\n"
                             + "SET -v SN " + vendor_serail_no + "\r\n"
                             + "SET -v SKU " + mpn + "\r\n"

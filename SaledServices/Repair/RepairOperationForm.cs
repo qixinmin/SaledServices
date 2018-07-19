@@ -875,25 +875,30 @@ namespace SaledServices
                 this.mbfa1richTextBox.Text = "";
                 uncheckShortCut();
                 this.software_updatecomboBox.Text = "";
-
+                
                 not_good_placetextBox1.Text = "";
                 material_mpnComboBox1.Items.Clear();
+                material_mpnComboBox1.Text = "";
                 material_71pntextBox1.Text = "";
                 useNum1.Text = "";
                 not_good_placetextBox2.Text = "";
                 material_mpnComboBox2.Items.Clear();
+                material_mpnComboBox2.Text = "";
                 material_71pntextBox2.Text = "";
                 useNum2.Text = "";
                 not_good_placetextBox3.Text = "";
                 material_mpnComboBox3.Items.Clear();
+                material_mpnComboBox3.Text = "";
                 material_71pntextBox3.Text = "";
                 useNum3.Text = "";
                 not_good_placetextBox4.Text = "";
                 material_mpnComboBox4.Items.Clear();
+                material_mpnComboBox4.Text="";
                 material_71pntextBox4.Text = "";
                 useNum4.Text = "";
                 not_good_placetextBox5.Text = "";
                 material_mpnComboBox5.Items.Clear();
+                material_mpnComboBox5.Text="";
                 material_71pntextBox5.Text = "";
                 useNum5.Text = "";
                 this.material_typetextBox.Text = "";
