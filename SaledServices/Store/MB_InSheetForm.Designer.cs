@@ -55,6 +55,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.custom_serial_noTextBox = new System.Windows.Forms.TextBox();
             this.buy_order_serial_noComboBox = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.isDeclareTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
@@ -79,8 +81,6 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewToReturn = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label17 = new System.Windows.Forms.Label();
-            this.isDeclareTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -417,6 +417,25 @@
             this.buy_order_serial_noComboBox.TabIndex = 6;
             this.buy_order_serial_noComboBox.SelectedValueChanged += new System.EventHandler(this.buy_order_serial_noComboBox_SelectedValueChanged);
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(683, 3);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(72, 16);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "是否报关";
+            // 
+            // isDeclareTextBox
+            // 
+            this.isDeclareTextBox.Location = new System.Drawing.Point(852, 7);
+            this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.isDeclareTextBox.Name = "isDeclareTextBox";
+            this.isDeclareTextBox.ReadOnly = true;
+            this.isDeclareTextBox.Size = new System.Drawing.Size(158, 26);
+            this.isDeclareTextBox.TabIndex = 26;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -452,7 +471,6 @@
             this.mb_brieftextBox.Location = new System.Drawing.Point(852, 45);
             this.mb_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mb_brieftextBox.Name = "mb_brieftextBox";
-            this.mb_brieftextBox.ReadOnly = true;
             this.mb_brieftextBox.Size = new System.Drawing.Size(158, 26);
             this.mb_brieftextBox.TabIndex = 24;
             // 
@@ -678,25 +696,6 @@
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.VirtualMode = true;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(683, 3);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(72, 16);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "是否报关";
-            // 
-            // isDeclareTextBox
-            // 
-            this.isDeclareTextBox.Location = new System.Drawing.Point(852, 7);
-            this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.isDeclareTextBox.Name = "isDeclareTextBox";
-            this.isDeclareTextBox.ReadOnly = true;
-            this.isDeclareTextBox.Size = new System.Drawing.Size(158, 26);
-            this.isDeclareTextBox.TabIndex = 26;
             // 
             // MB_InSheetForm
             // 
