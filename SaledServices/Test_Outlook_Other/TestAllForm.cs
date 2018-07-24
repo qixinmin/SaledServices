@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace SaledServices.Test_Outlook
 {
@@ -491,6 +492,8 @@ namespace SaledServices.Test_Outlook
             //SET FRUPN=04X5152  客户料号
             //SET MODELID=VIUX2  MB简称
 
+            string newMac = Regex.Replace(mac, "([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})", "$1-$2-$3-$4-$5-$6");
+
             string tempCustomMaterialNo = customMaterialNo;
             if (customMaterialNo.Length == 10 && customMaterialNo.StartsWith("000"))
             {
@@ -502,7 +505,7 @@ namespace SaledServices.Test_Outlook
             string totalStr = "SET -v MBID " + track_serial_no + "\r\n"
                             + "SET -v SN " + vendor_serail_no + "\r\n"
                             + "SET -v SKU " + mpn + "\r\n"
-                            + "SET -v MAC " + mac + "\r\n"
+                            + "SET -v MAC " + newMac + "\r\n"
                             + "SET -v UUID " + uuid + "\r\n"
                             + "SET -v MB11S " + custom_serial_no + "\r\n"
                             + "SET -v OA3KEY " + KEYSERIAL + "\r\n"
@@ -517,7 +520,7 @@ namespace SaledServices.Test_Outlook
             totalStr = "SET MBID=" + track_serial_no + "\r\n"
                            + "SET SN=" + vendor_serail_no + "\r\n"
                            + "SET SKU=" + mpn + "\r\n"
-                           + "SET MAC=" + mac + "\r\n"
+                           + "SET MAC=" + newMac + "\r\n"
                            + "SET UUID=" + uuid + "\r\n"
                            + "SET MB11S=" + custom_serial_no + "\r\n"
                            + "SET OA3KEY=" + KEYSERIAL + "\r\n"
