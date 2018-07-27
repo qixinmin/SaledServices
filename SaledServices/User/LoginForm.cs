@@ -85,6 +85,8 @@ namespace SaledServices
                     //根据user的权限，添加对应的menu，有多少权限对应多少menu
                     mParent.clearAllMenu();
 
+
+
                     if (User.UserSelfForm.super_manager == "True")
                     {
                         mParent.appendMenu(MenuType.Self);

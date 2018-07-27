@@ -12,6 +12,7 @@ using SaledServices.additionForm;
 using System.Diagnostics;
 using System.IO;
 using SaledServices.Export;
+using SaledServices.Test_Outlook;
 
 namespace SaledServices
 {
@@ -143,6 +144,14 @@ namespace SaledServices
 
                     break;
             }
+
+            this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
+                    this.查询ToolStripMenuItem
+                    });
+
+            this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
+                    this.bGA维修ToolStripMenuItem
+                    });
 
             this.LogoutMenuItem.Enabled = true;
         }
@@ -1097,6 +1106,22 @@ namespace SaledServices
             databaseForm.Show();
 
             allForm.Add(databaseForm);
+        }
+
+        private StationCheckForm stationCheckForm;
+        private void 站别查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (stationCheckForm == null || stationCheckForm.IsDisposed)
+            {
+                stationCheckForm = new StationCheckForm();
+                stationCheckForm.MdiParent = this;
+            }
+
+            //  databaseForm.WindowState = FormWindowState.Maximized;
+            stationCheckForm.BringToFront();
+            stationCheckForm.Show();
+
+            allForm.Add(stationCheckForm);
         }
     }
 }

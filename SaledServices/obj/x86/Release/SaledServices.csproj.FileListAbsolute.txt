@@ -68,3 +68,5 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.exe
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.DatabaseForm.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.csprojResolveAssemblyReference.cache
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.StationCheckForm.resources

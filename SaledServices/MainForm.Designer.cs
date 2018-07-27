@@ -45,6 +45,7 @@
             this.定时任务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.文件数据库操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cID操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.数据库备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,8 +92,9 @@
             this.材料名称ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.数据库备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,7 +115,8 @@
             this.oBEToolStripMenuItem,
             this.库存管理ToolStripMenuItem,
             this.additionMenuItem,
-            this.报表ToolStripMenuItem});
+            this.报表ToolStripMenuItem,
+            this.查询ToolStripMenuItem});
             this.AllMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.AllMenuStrip.Name = "AllMenuStrip";
             this.AllMenuStrip.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
@@ -243,6 +246,13 @@
             this.cID操作ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.cID操作ToolStripMenuItem.Text = "CID操作上海";
             this.cID操作ToolStripMenuItem.Click += new System.EventHandler(this.cID操作ToolStripMenuItem_Click);
+            // 
+            // 数据库备份ToolStripMenuItem
+            // 
+            this.数据库备份ToolStripMenuItem.Name = "数据库备份ToolStripMenuItem";
+            this.数据库备份ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.数据库备份ToolStripMenuItem.Text = "数据库备份";
+            this.数据库备份ToolStripMenuItem.Click += new System.EventHandler(this.数据库备份ToolStripMenuItem_Click);
             // 
             // receiveReturnStoreMenuItem
             // 
@@ -611,16 +621,9 @@
             // 报表1ToolStripMenuItem
             // 
             this.报表1ToolStripMenuItem.Name = "报表1ToolStripMenuItem";
-            this.报表1ToolStripMenuItem.Size = new System.Drawing.Size(191, 32);
+            this.报表1ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
             this.报表1ToolStripMenuItem.Text = "RMA欠货表";
             this.报表1ToolStripMenuItem.Click += new System.EventHandler(this.报表1ToolStripMenuItem_Click);
-            // 
-            // 数据库备份ToolStripMenuItem
-            // 
-            this.数据库备份ToolStripMenuItem.Name = "数据库备份ToolStripMenuItem";
-            this.数据库备份ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.数据库备份ToolStripMenuItem.Text = "数据库备份";
-            this.数据库备份ToolStripMenuItem.Click += new System.EventHandler(this.数据库备份ToolStripMenuItem_Click);
             // 
             // 收货信息导出ToolStripMenuItem
             // 
@@ -628,6 +631,23 @@
             this.收货信息导出ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
             this.收货信息导出ToolStripMenuItem.Text = "收货信息导出";
             this.收货信息导出ToolStripMenuItem.Click += new System.EventHandler(this.收货信息导出ToolStripMenuItem_Click);
+            // 
+            // 查询ToolStripMenuItem
+            // 
+            this.查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.站别查询ToolStripMenuItem});
+            this.查询ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
+            this.查询ToolStripMenuItem.Name = "查询ToolStripMenuItem";
+            this.查询ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
+            this.查询ToolStripMenuItem.Text = "查询";
+            // 
+            // 站别查询ToolStripMenuItem
+            // 
+            this.站别查询ToolStripMenuItem.Name = "站别查询ToolStripMenuItem";
+            this.站别查询ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.站别查询ToolStripMenuItem.Text = "站别查询";
+            this.站别查询ToolStripMenuItem.Click += new System.EventHandler(this.站别查询ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -717,6 +737,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem 收货信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据库备份ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 查询ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 站别查询ToolStripMenuItem;
     }
 }
 
