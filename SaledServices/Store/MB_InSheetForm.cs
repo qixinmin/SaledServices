@@ -114,8 +114,37 @@ namespace SaledServices
                         querySdr = cmd.ExecuteReader();
                         if(querySdr.HasRows)
                         {
+                            querySdr.Close();
                             conn.Close();
                             MessageBox.Show("此板子客户序号已经存在数据库中了，请检查是否重复！");
+                            return;
+                        }
+                        querySdr.Close();
+                    }
+
+                    if (this.track_serial_noTextBox.Text != "")
+                    {
+                        cmd.CommandText = "select * from " + tableName + " where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows)
+                        {
+                            querySdr.Close();
+                            conn.Close();
+                            MessageBox.Show("此板子跟踪序号已经存在数据库中了，请检查是否重复！");
+                            return;
+                        }
+                        querySdr.Close();
+                    }
+
+                    if (this.vendor_serial_noTextBox.Text != "")
+                    {
+                        cmd.CommandText = "select * from " + tableName + " where vendor_serial_no='" + this.vendor_serial_noTextBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows)
+                        {
+                            querySdr.Close();
+                            conn.Close();
+                            MessageBox.Show("此板子厂商序号已经存在数据库中了，请检查是否重复！");
                             return;
                         }
                         querySdr.Close();
@@ -639,6 +668,41 @@ namespace SaledServices
                     this.custom_serial_noTextBox.SelectAll();
                     return;
                 }
+
+                try
+                {
+                    SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                    conn.Open();
+
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.Connection = conn;
+                        cmd.CommandType = CommandType.Text;
+
+                        SqlDataReader querySdr = null;
+
+                        if (this.vendor_serial_noTextBox.Text != "")
+                        {
+                            cmd.CommandText = "select * from " + tableName + " where custom_serial_no='" + this.custom_serial_noTextBox.Text.Trim() + "'";
+                            querySdr = cmd.ExecuteReader();
+                            if (querySdr.HasRows)
+                            {
+                                querySdr.Close();
+                                conn.Close();
+                                MessageBox.Show("客户序号已经存在数据库中了，请检查是否重复！");
+                                return;
+                            }
+                            querySdr.Close();
+                        }
+                    }
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
                 this.vendor_serial_noTextBox.SelectAll();
                 this.vendor_serial_noTextBox.Focus();
             }
@@ -657,6 +721,40 @@ namespace SaledServices
                     return;
                 }
 
+                try
+                {
+                    SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                    conn.Open();
+
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.Connection = conn;
+                        cmd.CommandType = CommandType.Text;
+
+                        SqlDataReader querySdr = null;
+
+                        if (this.vendor_serial_noTextBox.Text != "")
+                        {
+                            cmd.CommandText = "select * from " + tableName + " where vendor_serial_no='" + this.vendor_serial_noTextBox.Text.Trim() + "'";
+                            querySdr = cmd.ExecuteReader();
+                            if (querySdr.HasRows)
+                            {
+                                querySdr.Close();
+                                conn.Close();
+                                MessageBox.Show("此板子厂商序号已经存在数据库中了，请检查是否重复！");
+                                return;
+                            }
+                            querySdr.Close();
+                        }
+                    }
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
                 this.track_serial_noTextBox.SelectAll();
                 this.track_serial_noTextBox.Focus();
             }
@@ -669,10 +767,44 @@ namespace SaledServices
                 //16
                 if (track_serial_noTextBox.Text.Length != 16)
                 {
-                    MessageBox.Show("厂商序号长度不对");
+                    MessageBox.Show("跟踪条码长度不对");
                     this.track_serial_noTextBox.Focus();
                     this.track_serial_noTextBox.SelectAll();
                     return;
+                }
+
+                try
+                {
+                    SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                    conn.Open();
+
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.Connection = conn;
+                        cmd.CommandType = CommandType.Text;
+
+                        SqlDataReader querySdr=null;                       
+
+                        if (this.track_serial_noTextBox.Text != "")
+                        {
+                            cmd.CommandText = "select * from " + tableName + " where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                            querySdr = cmd.ExecuteReader();
+                            if (querySdr.HasRows)
+                            {
+                                querySdr.Close();
+                                conn.Close();
+                                MessageBox.Show("此板子跟踪序号已经存在数据库中了，请检查是否重复！");
+                                return;
+                            }
+                            querySdr.Close();
+                        }
+                    }
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
