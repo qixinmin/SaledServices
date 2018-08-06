@@ -578,8 +578,15 @@ namespace SaledServices
 
                         cmd.ExecuteNonQuery();
 
-                        cmd.CommandText = "update stationInformation set station = 'BGA', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
-                                  + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                        string stationInfo = "BGA";
+                        if (status == "BGA更换OK待测" || status == "BGA更换报废")
+                        {
+                            stationInfo = "维修";
+                        }
+
+                        cmd.CommandText = "update stationInformation set station = '" + stationInfo + "', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                                      + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -653,8 +660,23 @@ namespace SaledServices
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
 
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = mConn;
-                cmd.CommandText = "select * from bga_wait_record_table";
+                cmd.Connection = mConn;              
+
+                string sqlStr = "select * from bga_wait_record_table";
+
+                if (this.track_serial_noTextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where track_serial_no= '" + track_serial_noTextBox.Text.Trim() + "' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and track_serial_no= '" + track_serial_noTextBox.Text.Trim() + "' ";
+                    }
+                }
+
+                cmd.CommandText = sqlStr;
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -677,6 +699,7 @@ namespace SaledServices
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
             }
+            MessageBox.Show("查询完毕");
         }
 
         private void BGAInfoInputForm_Load(object sender, EventArgs e)

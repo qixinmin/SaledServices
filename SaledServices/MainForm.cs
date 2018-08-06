@@ -1052,16 +1052,6 @@ namespace SaledServices
             allForm.Add(cidInputForm);
         }
 
-        private void 收货合肥ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void 还货合肥ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             cID操作ToolStripMenuItem_Click(null, null);
@@ -1123,5 +1113,87 @@ namespace SaledServices
 
             allForm.Add(stationCheckForm);
         }
+
+        private StoreHouseInnerNGForm storeHouseInnerNGForm;
+        private void 不良品库房储位管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (storeHouseInnerNGForm == null || storeHouseInnerNGForm.IsDisposed)
+            {
+                storeHouseInnerNGForm = new StoreHouseInnerNGForm();
+                storeHouseInnerNGForm.MdiParent = this;
+            }
+
+            //  databaseForm.WindowState = FormWindowState.Maximized;
+            storeHouseInnerNGForm.BringToFront();
+            storeHouseInnerNGForm.Show();
+
+            allForm.Add(storeHouseInnerNGForm);
+        }
+
+        private FaultBatchMBInStoreForm faultBatchMBInStoreForm;
+        private void mB不良品批量入库ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (faultBatchMBInStoreForm == null || faultBatchMBInStoreForm.IsDisposed)
+            {
+                faultBatchMBInStoreForm = new FaultBatchMBInStoreForm();
+                faultBatchMBInStoreForm.MdiParent = this;
+            }
+
+            //  databaseForm.WindowState = FormWindowState.Maximized;
+            faultBatchMBInStoreForm.BringToFront();
+            faultBatchMBInStoreForm.Show();
+
+            allForm.Add(faultBatchMBInStoreForm);
+        }
+
+        private FaultBatchMBOutStoreForm faultBatchMBOutStoreForm;
+        private void mB不良品批量出库ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (faultBatchMBOutStoreForm == null || faultBatchMBOutStoreForm.IsDisposed)
+            {
+                faultBatchMBOutStoreForm = new FaultBatchMBOutStoreForm();
+                faultBatchMBOutStoreForm.MdiParent = this;
+            }
+
+            //databaseForm.WindowState = FormWindowState.Maximized;
+            faultBatchMBOutStoreForm.BringToFront();
+            faultBatchMBOutStoreForm.Show();
+
+            allForm.Add(faultBatchMBOutStoreForm);
+        }
+
+        private FaultMBConfirmForm faultMBConfirmForm;
+        private void mB报废判定ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (faultMBConfirmForm == null || faultMBConfirmForm.IsDisposed)
+            {
+                faultMBConfirmForm = new FaultMBConfirmForm();
+                faultMBConfirmForm.MdiParent = this;
+            }
+
+            //faultMBConfirmForm.WindowState = FormWindowState.Maximized;
+            faultMBConfirmForm.BringToFront();
+            faultMBConfirmForm.Show();
+
+            allForm.Add(faultMBConfirmForm);
+        }
+
+        private FaultMBRecordForm faultMBRecordForm;
+        private void mB不良品入库ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (faultMBRecordForm == null || faultMBRecordForm.IsDisposed)
+            {
+                faultMBRecordForm = new FaultMBRecordForm();
+                faultMBRecordForm.MdiParent = this;
+            }
+
+            faultMBRecordForm.WindowState = FormWindowState.Maximized;
+            faultMBRecordForm.BringToFront();
+            faultMBRecordForm.Show();
+
+            allForm.Add(faultMBRecordForm);
+        }
+
+        
     }
 }

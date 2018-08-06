@@ -87,8 +87,30 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+
+                    cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
+                    string stationInfo = "";
+                    while (querySdr.Read())
+                    {
+                        stationInfo = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if(stationInfo == "维修" || stationInfo == "收货")                   
+                    {
+                        this.add.Enabled = true;                       
+                    }
+                    else
+                    {
+                        MessageBox.Show("此序列号的站别已经在:" + stationInfo + "，不能走下面的流程！");
+                        mConn.Close();
+                        this.add.Enabled = false;
+                        return;
+                    }
+
+                    cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
                     string cidExist = "";
                     while (querySdr.Read())
                     {
@@ -274,42 +296,42 @@ namespace SaledServices
                     while (querySdr.Read())
                     {
                         string material_mpn = querySdr[0].ToString(); ;
-                        string temp = querySdr[1].ToString();
+                        string temp = querySdr[1].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             relatedCombo.Items.Add(material_mpn);
                             continue;
-                        } temp = querySdr[2].ToString();
+                        } temp = querySdr[2].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             relatedCombo.Items.Add(material_mpn);
                             continue;
-                        } temp = querySdr[3].ToString();
+                        } temp = querySdr[3].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             relatedCombo.Items.Add(material_mpn);
                             continue;
-                        } temp = querySdr[4].ToString();
+                        } temp = querySdr[4].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             relatedCombo.Items.Add(material_mpn);
                             continue;
-                        } temp = querySdr[5].ToString();
+                        } temp = querySdr[5].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             relatedCombo.Items.Add(material_mpn);
                             continue;
-                        } temp = querySdr[6].ToString();
+                        } temp = querySdr[6].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             relatedCombo.Items.Add(material_mpn);
                             continue;
-                        } temp = querySdr[7].ToString();
+                        } temp = querySdr[7].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             relatedCombo.Items.Add(material_mpn);
                             continue;
-                        } temp = querySdr[8].ToString();
+                        } temp = querySdr[8].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
                             relatedCombo.Items.Add(material_mpn);
@@ -326,42 +348,42 @@ namespace SaledServices
                         while (querySdr.Read())
                         {
                             string material_mpn = querySdr[0].ToString(); ;
-                            string temp = querySdr[1].ToString();
+                            string temp = querySdr[1].ToString().Trim();
                             if (temp != "" && temp.ToLower() == not_good_place.ToLower())
                             {
                                 relatedCombo.Items.Add(material_mpn);
                                 continue;
-                            } temp = querySdr[2].ToString();
+                            } temp = querySdr[2].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 relatedCombo.Items.Add(material_mpn);
                                 continue;
-                            } temp = querySdr[3].ToString();
+                            } temp = querySdr[3].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 relatedCombo.Items.Add(material_mpn);
                                 continue;
-                            } temp = querySdr[4].ToString();
+                            } temp = querySdr[4].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 relatedCombo.Items.Add(material_mpn);
                                 continue;
-                            } temp = querySdr[5].ToString();
+                            } temp = querySdr[5].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 relatedCombo.Items.Add(material_mpn);
                                 continue;
-                            } temp = querySdr[6].ToString();
+                            } temp = querySdr[6].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 relatedCombo.Items.Add(material_mpn);
                                 continue;
-                            } temp = querySdr[7].ToString();
+                            } temp = querySdr[7].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 relatedCombo.Items.Add(material_mpn);
                                 continue;
-                            } temp = querySdr[8].ToString();
+                            } temp = querySdr[8].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
                                 relatedCombo.Items.Add(material_mpn);

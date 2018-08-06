@@ -156,7 +156,9 @@ namespace SaledServices
                 mConn.Close();
             }
             catch (Exception ex)
-            { }
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
 
             if (User.UserSelfForm.isInTest())

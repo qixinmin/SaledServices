@@ -69,3 +69,8 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.exe
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.DatabaseForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.StationCheckForm.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.StoreHouseInnerNGForm.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FaultMBConfirmForm.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FaultMBRecordForm.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FaultBatchMBInStoreForm.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FaultBatchMBOutStoreForm.resources

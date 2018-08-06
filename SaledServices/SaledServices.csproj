@@ -237,6 +237,12 @@
     <Compile Include="Export\ReceiveOrderExport.designer.cs">
       <DependentUpon>ReceiveOrderExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Repair\FaultMBConfirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Repair\FaultMBConfirmForm.Designer.cs">
+      <DependentUpon>FaultMBConfirmForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repair\RepairOperationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -421,6 +427,18 @@
     <Compile Include="ReturnStoreForm.Designer.cs">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\FaultBatchMBOutStoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\FaultBatchMBOutStoreForm.designer.cs">
+      <DependentUpon>FaultBatchMBOutStoreForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\FaultMBRecordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\FaultMBRecordForm.designer.cs">
+      <DependentUpon>FaultMBRecordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Store\CheckRequestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -450,6 +468,12 @@
     </Compile>
     <Compile Include="Store\BGA_OutSheetForm.Designer.cs">
       <DependentUpon>BGA_OutSheetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\FaultBatchMBInStoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\FaultBatchMBInStoreForm.designer.cs">
+      <DependentUpon>FaultBatchMBInStoreForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Store\FRU_OutSheetForm.cs">
       <SubType>Form</SubType>
@@ -504,6 +528,12 @@
     </Compile>
     <Compile Include="Store\FRU_SMT_OutSheetForm.Designer.cs">
       <DependentUpon>FRU_SMT_OutSheetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\StoreHouseInnerNGForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\StoreHouseInnerNGForm.designer.cs">
+      <DependentUpon>StoreHouseInnerNGForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Test_Outlook_Other\ObeForm.cs">
       <SubType>Form</SubType>
@@ -601,6 +631,9 @@
     <EmbeddedResource Include="Export\ReceiveOrderExport.resx">
       <DependentUpon>ReceiveOrderExport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Repair\FaultMBConfirmForm.resx">
+      <DependentUpon>FaultMBConfirmForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Repair\RepairOperationForm.resx">
       <DependentUpon>RepairOperationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -691,6 +724,12 @@
     <EmbeddedResource Include="ReturnStoreForm.resx">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Store\FaultBatchMBOutStoreForm.resx">
+      <DependentUpon>FaultBatchMBOutStoreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\FaultMBRecordForm.resx">
+      <DependentUpon>FaultMBRecordForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Store\CheckRequestForm.resx">
       <DependentUpon>CheckRequestForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -705,6 +744,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Store\BGA_OutSheetForm.resx">
       <DependentUpon>BGA_OutSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\FaultBatchMBInStoreForm.resx">
+      <DependentUpon>FaultBatchMBInStoreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\FRU_OutSheetForm.resx">
       <DependentUpon>FRU_OutSheetForm.cs</DependentUpon>
@@ -732,6 +774,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Store\FRU_SMT_OutSheetForm.resx">
       <DependentUpon>FRU_SMT_OutSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\StoreHouseInnerNGForm.resx">
+      <DependentUpon>StoreHouseInnerNGForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test_Outlook_Other\ObeForm.resx">
       <DependentUpon>ObeForm.cs</DependentUpon>

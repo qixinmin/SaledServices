@@ -599,7 +599,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FaultMBStoreForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "不良品出入库";
+            this.Text = "不良品MB出入库";
             this.Load += new System.EventHandler(this.RepairOperationForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

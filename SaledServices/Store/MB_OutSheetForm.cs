@@ -54,10 +54,20 @@ namespace SaledServices
                         cmd.Connection = conn;
                         cmd.CommandType = CommandType.Text;
 
+                        cmd.CommandText = "select Id from "+tableName+" where track_serial_no='" + this.track_serial_noTextBox.Text + "'";
+                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows)
+                        {
+                            MessageBox.Show("此序列号已经出过啦，请检查！");
+                            querySdr.Close();
+                            conn.Close();
+                            return;
+                        }
+
                         //需要更新库房对应储位的数量 减去 本次出库的数量
                         //根据mpn查对应的查询
                         cmd.CommandText = "select mb_brief,vendor,product,custom_serial_no,vendor_serial_no,mpn,stock_place,describe,vendormaterialNo,isdeclare from mb_in_stock where track_serial_no='" + this.track_serial_noTextBox.Text + "'";
-                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        querySdr = cmd.ExecuteReader();
                         if (querySdr.HasRows == false)
                         {
                             MessageBox.Show("此序列号不包含在收货表中，请检查！");
@@ -87,7 +97,6 @@ namespace SaledServices
                     }
 
                     conn.Close();
-
             
                     query_Click(null, null);
                 }
@@ -160,6 +169,12 @@ namespace SaledServices
             if (this.track_serial_noTextBox.Text == "" || this.custommaterialNoTextBox.Text == ""||this.takertextBox.Text=="")
             {
                 MessageBox.Show("要输入的内容为空！");
+                return;
+            }
+
+            if (this.input_dateTextBox.Text.Trim().StartsWith("1900"))
+            {
+                MessageBox.Show("时间不对"+this.input_dateTextBox.Text.Trim());
                 return;
             }
 

@@ -1,4 +1,6 @@
 
+
+
 /*不良品MB/SMT/BGA出库记录*/
 CREATE TABLE mb_smt_bga_ng_out_house_table(
 Id INT PRIMARY KEY IDENTITY, 
@@ -25,6 +27,26 @@ house NVARCHAR(128), /*库房*/
 place NVARCHAR(128), /*储位,储位的名称开始字母可以区分可以存储的类型，fru/smt, bga, mb*/
 mpn NVARCHAR(128), /*存储料号(如果是MB则对应客户料号)*/
 number NVARCHAR(128), /*已存数量,不限数量的，可以累积*/
+)
+
+CREATE TABLE store_house_ng_in(
+Id INT PRIMARY KEY IDENTITY, 
+house NVARCHAR(128), /*库房*/
+place NVARCHAR(128), /*储位,储位的名称开始字母可以区分可以存储的类型，fru/smt, bga, mb*/
+mpn NVARCHAR(128), /*存储料号(如果是MB则对应客户料号)*/
+number NVARCHAR(128), /*已存数量,不限数量的，可以累积*/
+inputer NVARCHAR(128) NOT NULL, /*入库人*/
+input_date date, /*输入日期*/
+)
+
+CREATE TABLE store_house_ng_out(
+Id INT PRIMARY KEY IDENTITY, 
+house NVARCHAR(128), /*库房*/
+place NVARCHAR(128), /*储位,储位的名称开始字母可以区分可以存储的类型，fru/smt, bga, mb*/
+mpn NVARCHAR(128), /*存储料号(如果是MB则对应客户料号)*/
+number NVARCHAR(128), /*已存数量,不限数量的，可以累积*/
+inputer NVARCHAR(128) NOT NULL, /*入库人*/
+input_date date, /*输入日期*/
 )
 
 /*MB不良品出库表记录*/
@@ -58,21 +80,39 @@ CREATE TABLE TestCpu(
 CREATE TABLE fault_mb_enter_record_table(
 Id INT PRIMARY KEY IDENTITY, 
 track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+vendor_sn NVARCHAR(128) NOT NULL, /*厂商sn*/
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
 product NVARCHAR(128) NOT NULL, /*客户别*/
-source NVARCHAR(128) NOT NULL, /*来源*/
-orderno NVARCHAR(128) NOT NULL, /*订单编号*/
-receivedate date, /*收货日期*/
-mb_describe NVARCHAR(128), /*MB描述*/
 mb_brief NVARCHAR(128), /*MB简称*/
-custom_serial_no NVARCHAR(128) NOT NULL, /*客户序号*/
-vendor_serail_no NVARCHAR(128) NOT NULL, /*厂商序号*/
 mpn NVARCHAR(128) NOT NULL, /*MPN*/
-mb_make_date date, /*MB生产日期*/
-customFault NVARCHAR(128) NOT NULL, /*客户故障*/
-ECO NVARCHAR(128), /*ECO*/
-repairer NVARCHAR(128) NOT NULL, /*维修人*/
-repair_date date, /*修复日期*/
+mb_describe NVARCHAR(128), /*MB描述*/
+
+_status NVARCHAR(128), /**/
+pch_brief NVARCHAR(128), /*PCH描述*/
+vga_brief NVARCHAR(128), /*VGA描述*/
+cpu_brief NVARCHAR(128), /*CPU描述*/
+
+repairer NVARCHAR(128) NOT NULL, /*入库人*/
+repair_date date, /*入库日期*/
+)
+
+/*不良品主板确认表*/
+CREATE TABLE fault_mb_confirm_table(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+vendor_sn NVARCHAR(128) NOT NULL, /*厂商sn*/
+vendor NVARCHAR(128) NOT NULL, /*厂商*/
+product NVARCHAR(128) NOT NULL, /*客户别*/
+mb_brief NVARCHAR(128), /*MB简称*/
+mpn NVARCHAR(128) NOT NULL, /*MPN*/
+mb_describe NVARCHAR(128), /*MB描述*/
+
+fault_describe NVARCHAR(128), /*不良现象*/
+fault_place NVARCHAR(128), /*不良位置*/
+fault_reason NVARCHAR(128), /*报废原因*/
+
+confirmer NVARCHAR(128) NOT NULL, /*判定人*/
+confirm_date date, /*判定日期*/
 )
 
 
