@@ -1171,7 +1171,7 @@ namespace SaledServices
                 faultMBConfirmForm.MdiParent = this;
             }
 
-            //faultMBConfirmForm.WindowState = FormWindowState.Maximized;
+            faultMBConfirmForm.WindowState = FormWindowState.Maximized;
             faultMBConfirmForm.BringToFront();
             faultMBConfirmForm.Show();
 

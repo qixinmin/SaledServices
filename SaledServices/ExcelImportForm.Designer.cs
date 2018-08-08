@@ -42,6 +42,7 @@
             this.LCFC_MBBOMradioButton = new System.Windows.Forms.RadioButton();
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
+            this.ngstoreInfoImport = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +80,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.userInputRadioButton);
+            this.panel1.Controls.Add(this.ngstoreInfoImport);
             this.panel1.Controls.Add(this.storeInfoImportradioButton);
             this.panel1.Controls.Add(this.stock_in_sheetradioButton);
             this.panel1.Controls.Add(this.faultTableRadioButton);
@@ -96,7 +98,7 @@
             // userInputRadioButton
             // 
             this.userInputRadioButton.AutoSize = true;
-            this.userInputRadioButton.Location = new System.Drawing.Point(22, 397);
+            this.userInputRadioButton.Location = new System.Drawing.Point(22, 438);
             this.userInputRadioButton.Name = "userInputRadioButton";
             this.userInputRadioButton.Size = new System.Drawing.Size(147, 24);
             this.userInputRadioButton.TabIndex = 4;
@@ -109,10 +111,10 @@
             this.storeInfoImportradioButton.AutoSize = true;
             this.storeInfoImportradioButton.Location = new System.Drawing.Point(22, 347);
             this.storeInfoImportradioButton.Name = "storeInfoImportradioButton";
-            this.storeInfoImportradioButton.Size = new System.Drawing.Size(147, 24);
+            this.storeInfoImportradioButton.Size = new System.Drawing.Size(187, 24);
             this.storeInfoImportradioButton.TabIndex = 4;
             this.storeInfoImportradioButton.TabStop = true;
-            this.storeInfoImportradioButton.Text = "库房储位导入";
+            this.storeInfoImportradioButton.Text = "良品库房储位导入";
             this.storeInfoImportradioButton.UseVisualStyleBackColor = true;
             // 
             // stock_in_sheetradioButton
@@ -194,6 +196,17 @@
             this.mbmaterial.Text = "MB物料对照表";
             this.mbmaterial.UseVisualStyleBackColor = true;
             // 
+            // ngstoreInfoImport
+            // 
+            this.ngstoreInfoImport.AutoSize = true;
+            this.ngstoreInfoImport.Location = new System.Drawing.Point(22, 386);
+            this.ngstoreInfoImport.Name = "ngstoreInfoImport";
+            this.ngstoreInfoImport.Size = new System.Drawing.Size(207, 24);
+            this.ngstoreInfoImport.TabIndex = 4;
+            this.ngstoreInfoImport.TabStop = true;
+            this.ngstoreInfoImport.Text = "不良品库房储位导入";
+            this.ngstoreInfoImport.UseVisualStyleBackColor = true;
+            // 
             // ExcelImportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -231,5 +244,6 @@
         private System.Windows.Forms.RadioButton stock_in_sheetradioButton;
         private System.Windows.Forms.RadioButton storeInfoImportradioButton;
         private System.Windows.Forms.RadioButton userInputRadioButton;
+        private System.Windows.Forms.RadioButton ngstoreInfoImport;
     }
 }

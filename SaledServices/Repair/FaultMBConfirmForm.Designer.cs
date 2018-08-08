@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -254,6 +254,7 @@
             this.fault_describetextBox.Name = "fault_describetextBox";
             this.fault_describetextBox.Size = new System.Drawing.Size(398, 26);
             this.fault_describetextBox.TabIndex = 43;
+            this.fault_describetextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fault_describetextBox_KeyPress);
             // 
             // label23
             // 
@@ -294,6 +295,7 @@
             this.faultPlaceTextBox.Name = "faultPlaceTextBox";
             this.faultPlaceTextBox.Size = new System.Drawing.Size(398, 26);
             this.faultPlaceTextBox.TabIndex = 45;
+            this.faultPlaceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.faultPlaceTextBox_KeyPress);
             // 
             // label7
             // 
@@ -446,8 +448,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;

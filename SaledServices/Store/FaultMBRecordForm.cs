@@ -102,7 +102,7 @@ namespace SaledServices
                     querySdr.Close();
 
                     //确定库位
-                    cmd.CommandText = "select Id,house, place from store_house_ng_buffer_mb where mpn='" + this.mpntextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select Id,house, place from store_house_ng where mpn='" + this.mpntextBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();
                     string id="",house="",place="";
                     while (querySdr.Read())
@@ -123,6 +123,9 @@ namespace SaledServices
                 {
                     MessageBox.Show(ex.ToString());
                 }
+
+                this.vendorSnTextBox.SelectAll();
+                this.vendorSnTextBox.Focus();                
             }
         }
 
@@ -180,6 +183,9 @@ namespace SaledServices
                 {
                     MessageBox.Show(ex.ToString());
                 }
+
+                this.statustextBox.SelectAll();
+                this.statustextBox.Focus();
             }
         }
 
@@ -202,6 +208,12 @@ namespace SaledServices
             if (this.track_serial_noTextBox.Text.Trim() == "" || this.vendorSnTextBox.Text.Trim()=="")
             {
                 MessageBox.Show("跟踪条码或厂商SN为空！");
+                return;
+            }
+
+            if (chooseStock.Id == "")
+            {
+                MessageBox.Show("库位要选择，不能手动输入！");
                 return;
             }
 
@@ -238,14 +250,11 @@ namespace SaledServices
                         + this.producttextBox.Text.Trim() + "','"
                         + this.mb_brieftextBox.Text.Trim() + "','"
                         + this.mpntextBox.Text.Trim() + "','"
-                        + this.mb_brieftextBox.Text.Trim() + "','"
-
+                        + this.mbdescribeTextBox.Text.Trim() + "','"
                         + this.statustextBox.Text.Trim() + "','"
                         + this.PCHbrieftextBox.Text.Trim() + "','"
                         + this.VGAbreiftextBox.Text.Trim() + "','"
-                        + this.CPUbrieTtextBox.Text.Trim() + "','"
-
-                        + this.statustextBox.Text.Trim() + "','"    
+                        + this.CPUbrieTtextBox.Text.Trim() + "','"                     
                         + this.inputertextBox.Text.Trim() + "','"
                         + this.input_datetextBox.Text.Trim() + "')";
                     
@@ -301,6 +310,7 @@ namespace SaledServices
                 MessageBox.Show("添不良品库数据成功");
 
                 this.track_serial_noTextBox.Text = "";
+                this.vendorSnTextBox.Text = "";
                 this.vendorTextBox.Text = "";
                 this.producttextBox.Text = "";
               
@@ -318,6 +328,7 @@ namespace SaledServices
 
                 stockplacetextBox.Text = "";
                 stockplacetextBox.Enabled = true;
+                chooseStock.Id = "";
             }
         }
 
@@ -367,7 +378,7 @@ namespace SaledServices
             if (e.KeyChar == System.Convert.ToChar(13))
             {   
                 //打开选择界面，并把结果返回到本界面来
-                ChooseStoreHouseForm csform = new ChooseStoreHouseForm(this, "store_house_ng_buffer_mb");
+                ChooseStoreHouseForm csform = new ChooseStoreHouseForm(this, "store_house_ng");
                 csform.MdiParent = Program.parentForm;
                 csform.Show();
             }

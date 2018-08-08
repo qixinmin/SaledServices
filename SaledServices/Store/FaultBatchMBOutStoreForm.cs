@@ -230,6 +230,11 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
+                if (mpnTextBox.Text.Trim() == "")
+                {
+                    MessageBox.Show("MPN的内容不能为空！");
+                    return;
+                }
                 try
                 {
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);

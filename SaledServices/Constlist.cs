@@ -32,8 +32,8 @@ namespace SaledServices
 
     public class Constlist
     {
-        public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
-        //public static string ConStr = "server=192.168.8.56;database=SaledService;uid=admin;pwd=admin";
+        //public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
+        public static string ConStr = "server=192.168.8.56;database=SaledService;uid=admin;pwd=admin";
 
         public static string table_MBMaterialCompare = "MB物料对照表";
         public static string table_name_MBMaterialCompare = "MBMaterialCompare";
@@ -61,6 +61,9 @@ namespace SaledServices
 
         public static string table_stock_house = "库房";
         public static string table_name_store_house_sheet = "store_house";
+
+        public static string table_stock_ng_house = "不良品库房";
+        public static string table_name_store_ng_house_sheet = "store_house_ng";
 
         public static string table_users = "用户导入";
         public static string table_name_users_sheet = "users";

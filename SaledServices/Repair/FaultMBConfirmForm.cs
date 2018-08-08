@@ -51,30 +51,9 @@ namespace SaledServices
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
-
-                    cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
-                    SqlDataReader querySdr = cmd.ExecuteReader();
-                    string stationInfo = "";
-                    while (querySdr.Read())
-                    {
-                        stationInfo = querySdr[0].ToString();
-                    }
-                    querySdr.Close();
-
-                    if(stationInfo == "维修" || stationInfo == "收货")                   
-                    {
-                        this.add.Enabled = true;                       
-                    }
-                    else
-                    {
-                        MessageBox.Show("此序列号的站别已经在:" + stationInfo + "，不能走下面的流程！");
-                        mConn.Close();
-                        this.add.Enabled = false;
-                        return;
-                    }
-
+                   
                     cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
-                    querySdr = cmd.ExecuteReader();
+                    SqlDataReader querySdr = cmd.ExecuteReader();
                     if (querySdr.HasRows)
                     {
                         querySdr.Close();
@@ -83,6 +62,7 @@ namespace SaledServices
                         MessageBox.Show("此跟踪条码的已经记录过了，不能走下面的流程！");
                         return;
                     }
+                    querySdr.Close();
                     this.add.Enabled = true;
 
                     cmd.CommandText = "select custommaterialNo from DeliveredTable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
@@ -129,7 +109,33 @@ namespace SaledServices
                         this.track_serial_noTextBox.SelectAll();
                         MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
                         error = true;
+                        mConn.Close();
+                        this.add.Enabled = false;
+                        return;
                     }
+
+
+                    cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    string stationInfo = "";
+                    while (querySdr.Read())
+                    {
+                        stationInfo = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (stationInfo == "维修" || stationInfo == "收货")
+                    {
+                        this.add.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("此序列号的站别已经在:" + stationInfo + "，不能走下面的流程！");
+                        mConn.Close();
+                        this.add.Enabled = false;
+                        return;
+                    }
+
                     mConn.Close();
                 }
                 catch (Exception ex)
@@ -146,11 +152,28 @@ namespace SaledServices
             }
         }
 
+        private void fault_describetextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                this.faultPlaceTextBox.SelectAll();
+                this.faultPlaceTextBox.Focus();
+            }
+        }
+
+        private void faultPlaceTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                this.faultReasonRichTextBox.SelectAll();
+                this.faultReasonRichTextBox.Focus();
+            }
+        }
+
         private void vendorSnTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-
                 try
                 {
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -178,6 +201,9 @@ namespace SaledServices
                 {
                     MessageBox.Show(ex.ToString());
                 }
+
+                this.fault_describetextBox.SelectAll();
+                this.fault_describetextBox.Focus();
             }
         }
 
@@ -262,6 +288,7 @@ namespace SaledServices
                 MessageBox.Show("添加报废判定成功");
 
                 this.track_serial_noTextBox.Text = "";
+                this.vendorSnTextBox.Text = "";
                 this.vendorTextBox.Text = "";
                 this.producttextBox.Text = "";
                 
@@ -269,6 +296,7 @@ namespace SaledServices
                 this.mb_brieftextBox.Text = "";              
                 this.mpntextBox.Text = "";               
                 this.fault_describetextBox.Text = "";
+                this.faultPlaceTextBox.Text = "";
                 this.faultReasonRichTextBox.Text = "";
                
                 this.confrim_datetextBox.Text = "";
@@ -324,6 +352,8 @@ namespace SaledServices
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
             }
         }
+
+       
 
        
     }
