@@ -38,6 +38,12 @@ namespace SaledServices.Store
                 return;
             }
 
+            if (Int32.Parse(this.numberTextBox.Text.Trim()) > chooseTotalNum)
+            {
+                MessageBox.Show("输入的数量大于库存数量！");
+                return;
+            }
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -193,35 +199,17 @@ namespace SaledServices.Store
                         {
                             cmd.CommandText = "select number from store_house where mpn ='" + temp.materialName + "'";
                             SqlDataReader querySdr = cmd.ExecuteReader();
+                            string storeNum = "0";
                             while (querySdr.Read())
                             {
-                                temp.storeNum = querySdr[0].ToString();
+                                 storeNum = querySdr[0].ToString();
                             }
+                            temp.storeNum = storeNum;
                             querySdr.Close();
                         }
 
                         dataGridView.DataSource = list;
                     }
-                    //else
-                    //{
-                    //    cmd.CommandText = "select material_vendor_pn from LCFC71BOM_table where material_mpn='" + this.material_mpntextBox.Text.Trim() + "'";
-                    //    querySdr = cmd.ExecuteReader();
-                    //    string material_71pn_txt = "";
-                    //    while (querySdr.Read())
-                    //    {
-                    //        material_71pn_txt = querySdr[0].ToString();
-                    //        if (material_71pn_txt != "")
-                    //        {
-                    //            this.material_71pntextBox.Text = material_71pn_txt;
-                    //        }
-                    //        else
-                    //        {
-                    //            error = true;
-                    //            MessageBox.Show("LCFC71BOM表中" + this.material_mpntextBox.Text.Trim() + "信息不全！");
-                    //        }
-                    //    }
-                    //    querySdr.Close();
-                    //}
 
                     mConn.Close();
                 }
@@ -239,12 +227,22 @@ namespace SaledServices.Store
             prepareUseList.Show();
         }
 
+        int chooseTotalNum = 0;
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView.CurrentRow == null)
             {
                 return;
             }
+
+            //先判断数量，如果数量不对，则不能选择
+            chooseTotalNum =Int32.Parse(dataGridView.SelectedCells[2].Value.ToString());
+            if (chooseTotalNum <= 0)
+            {
+                MessageBox.Show("库存不足，不能选择！");
+                return;
+            }
+
             this.materialMpnTextBox.Text = dataGridView.SelectedCells[0].Value.ToString();
             this.materialDescribetextBox.Text = dataGridView.SelectedCells[1].Value.ToString();
         }
