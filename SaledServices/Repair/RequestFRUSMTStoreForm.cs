@@ -26,7 +26,6 @@ namespace SaledServices.Store
             }
         }
 
-        string status = "request";
         private void requestbutton_Click(object sender, EventArgs e)
         {
             if (this.mb_brieftextBox.Text.Trim() == "" 
@@ -59,15 +58,32 @@ namespace SaledServices.Store
                         + this.materialMpnTextBox.Text.Trim() + "','"
                         + this.materialDescribetextBox.Text.Trim().Replace('\'','_') + "','"
                         + this.numberTextBox.Text.Trim() + "','"
-                        +  "0','"//realNumber, 开始为0
+                        + this.numberTextBox.Text.Trim() + "','"//realNumber, 开始为跟申请数量一样
                         + this.requesterTextBox.Text.Trim() + "','"
                         + DateTime.Now.ToString("yyyy/MM/dd") + "','"
-                        + status + "','"
+                        + "close" + "','"
                         + "" + "','"
                         + "" + "','"
                         + "" + "','"
                         + "" + "')";
                     cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+
+                    //需要更新库房对应储位的数量 减去 本次出库的数量
+                    //根据mpn查对应的查询
+                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.materialMpnTextBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string house = "", place = "", Id = "", number = "";
+                    while (querySdr.Read())
+                    {
+                        house = querySdr[0].ToString();
+                        place = querySdr[1].ToString();
+                        Id = querySdr[2].ToString();
+                        number = querySdr[3].ToString();
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = "update store_house set number = '" + (Int32.Parse(number) - Int32.Parse(this.numberTextBox.Text)) + "'  where house='" + house + "' and place='" + place + "'";
                     cmd.ExecuteNonQuery();
                 }
                 else

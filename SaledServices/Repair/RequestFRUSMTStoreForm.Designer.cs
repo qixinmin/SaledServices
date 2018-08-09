@@ -89,7 +89,7 @@
             this.requestbutton.Name = "requestbutton";
             this.requestbutton.Size = new System.Drawing.Size(76, 23);
             this.requestbutton.TabIndex = 8;
-            this.requestbutton.Text = "发出请求";
+            this.requestbutton.Text = "领取材料";
             this.requestbutton.UseVisualStyleBackColor = true;
             this.requestbutton.Click += new System.EventHandler(this.requestbutton_Click);
             // 

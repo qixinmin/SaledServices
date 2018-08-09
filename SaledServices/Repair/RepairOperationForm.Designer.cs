@@ -181,9 +181,9 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.96951F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.67683F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.5122F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.433735F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.87682F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.88006F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.996758F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1235, 749);
             this.tableLayoutPanel1.TabIndex = 0;
@@ -257,7 +257,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.03732F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.03732F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.03732F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1221, 266);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1221, 263);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
@@ -762,12 +762,12 @@
             this.tableLayoutPanel3.Controls.Add(this.delete, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.query, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(7, 570);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(7, 585);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1221, 43);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1221, 28);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // add
@@ -776,7 +776,7 @@
             this.add.Location = new System.Drawing.Point(58, 4);
             this.add.Margin = new System.Windows.Forms.Padding(4);
             this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(189, 35);
+            this.add.Size = new System.Drawing.Size(189, 20);
             this.add.TabIndex = 0;
             this.add.Text = "新增";
             this.add.UseVisualStyleBackColor = true;
@@ -789,7 +789,7 @@
             this.modify.Location = new System.Drawing.Point(651, 4);
             this.modify.Margin = new System.Windows.Forms.Padding(4);
             this.modify.Name = "modify";
-            this.modify.Size = new System.Drawing.Size(223, 35);
+            this.modify.Size = new System.Drawing.Size(223, 20);
             this.modify.TabIndex = 1;
             this.modify.Text = "修改";
             this.modify.UseVisualStyleBackColor = true;
@@ -801,7 +801,7 @@
             this.delete.Location = new System.Drawing.Point(956, 4);
             this.delete.Margin = new System.Windows.Forms.Padding(4);
             this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(224, 35);
+            this.delete.Size = new System.Drawing.Size(224, 20);
             this.delete.TabIndex = 1;
             this.delete.Text = "删除";
             this.delete.UseVisualStyleBackColor = true;
@@ -812,7 +812,7 @@
             this.query.Location = new System.Drawing.Point(359, 4);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
-            this.query.Size = new System.Drawing.Size(197, 35);
+            this.query.Size = new System.Drawing.Size(197, 20);
             this.query.TabIndex = 1;
             this.query.Text = "查询";
             this.query.UseVisualStyleBackColor = true;
@@ -827,12 +827,12 @@
             this.tableLayoutPanel4.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label16, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(7, 449);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(7, 451);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1221, 110);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1221, 123);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // panel1
@@ -860,7 +860,7 @@
             this.panel1.Location = new System.Drawing.Point(200, 6);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1015, 98);
+            this.panel1.Size = new System.Drawing.Size(1015, 111);
             this.panel1.TabIndex = 18;
             // 
             // textBox1
@@ -1072,7 +1072,7 @@
             // label16
             // 
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label16.Location = new System.Drawing.Point(60, 43);
+            this.label16.Location = new System.Drawing.Point(60, 50);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(75, 23);
@@ -1144,7 +1144,7 @@
             this.tableLayoutPanel5.Controls.Add(this.clear4, 9, 3);
             this.tableLayoutPanel5.Controls.Add(this.clear5, 9, 4);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(6, 283);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(6, 280);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 5;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -1152,7 +1152,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1223, 156);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1223, 161);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
             // label24
@@ -1168,7 +1168,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(6, 32);
+            this.label25.Location = new System.Drawing.Point(6, 33);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(80, 16);
@@ -1178,7 +1178,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(6, 62);
+            this.label26.Location = new System.Drawing.Point(6, 64);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(80, 16);
@@ -1188,7 +1188,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(6, 92);
+            this.label31.Location = new System.Drawing.Point(6, 95);
             this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(80, 16);
@@ -1198,7 +1198,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(6, 122);
+            this.label32.Location = new System.Drawing.Point(6, 126);
             this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(80, 16);
@@ -1218,7 +1218,7 @@
             // not_good_placetextBox2
             // 
             this.not_good_placetextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.not_good_placetextBox2.Location = new System.Drawing.Point(110, 36);
+            this.not_good_placetextBox2.Location = new System.Drawing.Point(110, 37);
             this.not_good_placetextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.not_good_placetextBox2.Name = "not_good_placetextBox2";
             this.not_good_placetextBox2.Size = new System.Drawing.Size(146, 26);
@@ -1228,7 +1228,7 @@
             // not_good_placetextBox3
             // 
             this.not_good_placetextBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.not_good_placetextBox3.Location = new System.Drawing.Point(110, 66);
+            this.not_good_placetextBox3.Location = new System.Drawing.Point(110, 68);
             this.not_good_placetextBox3.Margin = new System.Windows.Forms.Padding(4);
             this.not_good_placetextBox3.Name = "not_good_placetextBox3";
             this.not_good_placetextBox3.Size = new System.Drawing.Size(146, 26);
@@ -1238,7 +1238,7 @@
             // not_good_placetextBox4
             // 
             this.not_good_placetextBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.not_good_placetextBox4.Location = new System.Drawing.Point(110, 96);
+            this.not_good_placetextBox4.Location = new System.Drawing.Point(110, 99);
             this.not_good_placetextBox4.Margin = new System.Windows.Forms.Padding(4);
             this.not_good_placetextBox4.Name = "not_good_placetextBox4";
             this.not_good_placetextBox4.Size = new System.Drawing.Size(146, 26);
@@ -1248,7 +1248,7 @@
             // not_good_placetextBox5
             // 
             this.not_good_placetextBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.not_good_placetextBox5.Location = new System.Drawing.Point(110, 126);
+            this.not_good_placetextBox5.Location = new System.Drawing.Point(110, 130);
             this.not_good_placetextBox5.Margin = new System.Windows.Forms.Padding(4);
             this.not_good_placetextBox5.Name = "not_good_placetextBox5";
             this.not_good_placetextBox5.Size = new System.Drawing.Size(146, 26);
@@ -1268,7 +1268,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(267, 32);
+            this.label34.Location = new System.Drawing.Point(267, 33);
             this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(72, 16);
@@ -1278,7 +1278,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(267, 62);
+            this.label35.Location = new System.Drawing.Point(267, 64);
             this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(72, 16);
@@ -1288,7 +1288,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(267, 92);
+            this.label36.Location = new System.Drawing.Point(267, 95);
             this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(72, 16);
@@ -1298,7 +1298,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(267, 122);
+            this.label37.Location = new System.Drawing.Point(267, 126);
             this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(72, 16);
@@ -1317,7 +1317,7 @@
             // material_mpnComboBox2
             // 
             this.material_mpnComboBox2.FormattingEnabled = true;
-            this.material_mpnComboBox2.Location = new System.Drawing.Point(366, 35);
+            this.material_mpnComboBox2.Location = new System.Drawing.Point(366, 36);
             this.material_mpnComboBox2.Name = "material_mpnComboBox2";
             this.material_mpnComboBox2.Size = new System.Drawing.Size(113, 24);
             this.material_mpnComboBox2.TabIndex = 46;
@@ -1326,7 +1326,7 @@
             // material_mpnComboBox3
             // 
             this.material_mpnComboBox3.FormattingEnabled = true;
-            this.material_mpnComboBox3.Location = new System.Drawing.Point(366, 65);
+            this.material_mpnComboBox3.Location = new System.Drawing.Point(366, 67);
             this.material_mpnComboBox3.Name = "material_mpnComboBox3";
             this.material_mpnComboBox3.Size = new System.Drawing.Size(113, 24);
             this.material_mpnComboBox3.TabIndex = 46;
@@ -1335,7 +1335,7 @@
             // material_mpnComboBox4
             // 
             this.material_mpnComboBox4.FormattingEnabled = true;
-            this.material_mpnComboBox4.Location = new System.Drawing.Point(366, 95);
+            this.material_mpnComboBox4.Location = new System.Drawing.Point(366, 98);
             this.material_mpnComboBox4.Name = "material_mpnComboBox4";
             this.material_mpnComboBox4.Size = new System.Drawing.Size(113, 24);
             this.material_mpnComboBox4.TabIndex = 46;
@@ -1344,7 +1344,7 @@
             // material_mpnComboBox5
             // 
             this.material_mpnComboBox5.FormattingEnabled = true;
-            this.material_mpnComboBox5.Location = new System.Drawing.Point(366, 125);
+            this.material_mpnComboBox5.Location = new System.Drawing.Point(366, 129);
             this.material_mpnComboBox5.Name = "material_mpnComboBox5";
             this.material_mpnComboBox5.Size = new System.Drawing.Size(113, 24);
             this.material_mpnComboBox5.TabIndex = 46;
@@ -1364,7 +1364,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(489, 32);
+            this.label39.Location = new System.Drawing.Point(489, 33);
             this.label39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(80, 16);
@@ -1385,7 +1385,7 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(489, 62);
+            this.label40.Location = new System.Drawing.Point(489, 64);
             this.label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(80, 16);
@@ -1396,7 +1396,7 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(489, 92);
+            this.label41.Location = new System.Drawing.Point(489, 95);
             this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(80, 16);
@@ -1407,7 +1407,7 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(489, 122);
+            this.label42.Location = new System.Drawing.Point(489, 126);
             this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(80, 16);
@@ -1417,7 +1417,7 @@
             // 
             // material_71pntextBox2
             // 
-            this.material_71pntextBox2.Location = new System.Drawing.Point(601, 36);
+            this.material_71pntextBox2.Location = new System.Drawing.Point(601, 37);
             this.material_71pntextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.material_71pntextBox2.Name = "material_71pntextBox2";
             this.material_71pntextBox2.ReadOnly = true;
@@ -1427,7 +1427,7 @@
             // 
             // material_71pntextBox3
             // 
-            this.material_71pntextBox3.Location = new System.Drawing.Point(601, 66);
+            this.material_71pntextBox3.Location = new System.Drawing.Point(601, 68);
             this.material_71pntextBox3.Margin = new System.Windows.Forms.Padding(4);
             this.material_71pntextBox3.Name = "material_71pntextBox3";
             this.material_71pntextBox3.ReadOnly = true;
@@ -1437,7 +1437,7 @@
             // 
             // material_71pntextBox4
             // 
-            this.material_71pntextBox4.Location = new System.Drawing.Point(601, 96);
+            this.material_71pntextBox4.Location = new System.Drawing.Point(601, 99);
             this.material_71pntextBox4.Margin = new System.Windows.Forms.Padding(4);
             this.material_71pntextBox4.Name = "material_71pntextBox4";
             this.material_71pntextBox4.ReadOnly = true;
@@ -1447,7 +1447,7 @@
             // 
             // material_71pntextBox5
             // 
-            this.material_71pntextBox5.Location = new System.Drawing.Point(601, 126);
+            this.material_71pntextBox5.Location = new System.Drawing.Point(601, 130);
             this.material_71pntextBox5.Margin = new System.Windows.Forms.Padding(4);
             this.material_71pntextBox5.Name = "material_71pntextBox5";
             this.material_71pntextBox5.ReadOnly = true;
@@ -1477,7 +1477,7 @@
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(727, 32);
+            this.label44.Location = new System.Drawing.Point(727, 33);
             this.label44.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(80, 16);
@@ -1487,7 +1487,7 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(727, 62);
+            this.label45.Location = new System.Drawing.Point(727, 64);
             this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(80, 16);
@@ -1497,7 +1497,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(727, 92);
+            this.label46.Location = new System.Drawing.Point(727, 95);
             this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(80, 16);
@@ -1507,7 +1507,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(727, 122);
+            this.label47.Location = new System.Drawing.Point(727, 126);
             this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(80, 16);
@@ -1516,7 +1516,7 @@
             // 
             // useNum2
             // 
-            this.useNum2.Location = new System.Drawing.Point(826, 36);
+            this.useNum2.Location = new System.Drawing.Point(826, 37);
             this.useNum2.Margin = new System.Windows.Forms.Padding(4);
             this.useNum2.Name = "useNum2";
             this.useNum2.ReadOnly = true;
@@ -1525,7 +1525,7 @@
             // 
             // useNum3
             // 
-            this.useNum3.Location = new System.Drawing.Point(826, 66);
+            this.useNum3.Location = new System.Drawing.Point(826, 68);
             this.useNum3.Margin = new System.Windows.Forms.Padding(4);
             this.useNum3.Name = "useNum3";
             this.useNum3.ReadOnly = true;
@@ -1534,7 +1534,7 @@
             // 
             // useNum4
             // 
-            this.useNum4.Location = new System.Drawing.Point(826, 96);
+            this.useNum4.Location = new System.Drawing.Point(826, 99);
             this.useNum4.Margin = new System.Windows.Forms.Padding(4);
             this.useNum4.Name = "useNum4";
             this.useNum4.ReadOnly = true;
@@ -1543,7 +1543,7 @@
             // 
             // useNum5
             // 
-            this.useNum5.Location = new System.Drawing.Point(826, 126);
+            this.useNum5.Location = new System.Drawing.Point(826, 130);
             this.useNum5.Margin = new System.Windows.Forms.Padding(4);
             this.useNum5.Name = "useNum5";
             this.useNum5.ReadOnly = true;
@@ -1556,7 +1556,7 @@
             this.choose_material_button1.Font = new System.Drawing.Font("SimSun", 10F);
             this.choose_material_button1.Location = new System.Drawing.Point(959, 5);
             this.choose_material_button1.Name = "choose_material_button1";
-            this.choose_material_button1.Size = new System.Drawing.Size(133, 22);
+            this.choose_material_button1.Size = new System.Drawing.Size(133, 23);
             this.choose_material_button1.TabIndex = 45;
             this.choose_material_button1.Text = "选择材料1";
             this.choose_material_button1.UseVisualStyleBackColor = true;
@@ -1566,9 +1566,9 @@
             // 
             this.choose_material_button2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.choose_material_button2.Font = new System.Drawing.Font("SimSun", 10F);
-            this.choose_material_button2.Location = new System.Drawing.Point(959, 35);
+            this.choose_material_button2.Location = new System.Drawing.Point(959, 36);
             this.choose_material_button2.Name = "choose_material_button2";
-            this.choose_material_button2.Size = new System.Drawing.Size(133, 22);
+            this.choose_material_button2.Size = new System.Drawing.Size(133, 23);
             this.choose_material_button2.TabIndex = 45;
             this.choose_material_button2.Text = "选择材料2";
             this.choose_material_button2.UseVisualStyleBackColor = true;
@@ -1578,9 +1578,9 @@
             // 
             this.choose_material_button3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.choose_material_button3.Font = new System.Drawing.Font("SimSun", 10F);
-            this.choose_material_button3.Location = new System.Drawing.Point(959, 65);
+            this.choose_material_button3.Location = new System.Drawing.Point(959, 67);
             this.choose_material_button3.Name = "choose_material_button3";
-            this.choose_material_button3.Size = new System.Drawing.Size(133, 22);
+            this.choose_material_button3.Size = new System.Drawing.Size(133, 23);
             this.choose_material_button3.TabIndex = 45;
             this.choose_material_button3.Text = "选择材料3";
             this.choose_material_button3.UseVisualStyleBackColor = true;
@@ -1590,9 +1590,9 @@
             // 
             this.choose_material_button4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.choose_material_button4.Font = new System.Drawing.Font("SimSun", 10F);
-            this.choose_material_button4.Location = new System.Drawing.Point(959, 95);
+            this.choose_material_button4.Location = new System.Drawing.Point(959, 98);
             this.choose_material_button4.Name = "choose_material_button4";
-            this.choose_material_button4.Size = new System.Drawing.Size(133, 22);
+            this.choose_material_button4.Size = new System.Drawing.Size(133, 23);
             this.choose_material_button4.TabIndex = 45;
             this.choose_material_button4.Text = "选择材料4";
             this.choose_material_button4.UseVisualStyleBackColor = true;
@@ -1602,9 +1602,9 @@
             // 
             this.choose_material_button5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.choose_material_button5.Font = new System.Drawing.Font("SimSun", 10F);
-            this.choose_material_button5.Location = new System.Drawing.Point(959, 125);
+            this.choose_material_button5.Location = new System.Drawing.Point(959, 129);
             this.choose_material_button5.Name = "choose_material_button5";
-            this.choose_material_button5.Size = new System.Drawing.Size(133, 26);
+            this.choose_material_button5.Size = new System.Drawing.Size(133, 27);
             this.choose_material_button5.TabIndex = 45;
             this.choose_material_button5.Text = "选择材料5";
             this.choose_material_button5.UseVisualStyleBackColor = true;
@@ -1615,7 +1615,7 @@
             this.clear1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clear1.Location = new System.Drawing.Point(1100, 5);
             this.clear1.Name = "clear1";
-            this.clear1.Size = new System.Drawing.Size(118, 22);
+            this.clear1.Size = new System.Drawing.Size(118, 23);
             this.clear1.TabIndex = 47;
             this.clear1.Text = "清除选择1";
             this.clear1.UseVisualStyleBackColor = true;
@@ -1624,9 +1624,9 @@
             // clear2
             // 
             this.clear2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clear2.Location = new System.Drawing.Point(1100, 35);
+            this.clear2.Location = new System.Drawing.Point(1100, 36);
             this.clear2.Name = "clear2";
-            this.clear2.Size = new System.Drawing.Size(118, 22);
+            this.clear2.Size = new System.Drawing.Size(118, 23);
             this.clear2.TabIndex = 47;
             this.clear2.Text = "清除选择2";
             this.clear2.UseVisualStyleBackColor = true;
@@ -1635,9 +1635,9 @@
             // clear3
             // 
             this.clear3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clear3.Location = new System.Drawing.Point(1100, 65);
+            this.clear3.Location = new System.Drawing.Point(1100, 67);
             this.clear3.Name = "clear3";
-            this.clear3.Size = new System.Drawing.Size(118, 22);
+            this.clear3.Size = new System.Drawing.Size(118, 23);
             this.clear3.TabIndex = 47;
             this.clear3.Text = "清除选择3";
             this.clear3.UseVisualStyleBackColor = true;
@@ -1646,9 +1646,9 @@
             // clear4
             // 
             this.clear4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clear4.Location = new System.Drawing.Point(1100, 95);
+            this.clear4.Location = new System.Drawing.Point(1100, 98);
             this.clear4.Name = "clear4";
-            this.clear4.Size = new System.Drawing.Size(118, 22);
+            this.clear4.Size = new System.Drawing.Size(118, 23);
             this.clear4.TabIndex = 47;
             this.clear4.Text = "清除选择4";
             this.clear4.UseVisualStyleBackColor = true;
@@ -1657,9 +1657,9 @@
             // clear5
             // 
             this.clear5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clear5.Location = new System.Drawing.Point(1100, 125);
+            this.clear5.Location = new System.Drawing.Point(1100, 129);
             this.clear5.Name = "clear5";
-            this.clear5.Size = new System.Drawing.Size(118, 26);
+            this.clear5.Size = new System.Drawing.Size(118, 27);
             this.clear5.TabIndex = 47;
             this.clear5.Text = "清除选择5";
             this.clear5.UseVisualStyleBackColor = true;

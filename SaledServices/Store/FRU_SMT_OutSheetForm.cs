@@ -48,7 +48,7 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
+                    cmd.CommandText = "INSERT INTO fru_smt_out_stock VALUES('" +
                         this.vendorTextBox.Text.Trim() + "','" +
                         this.buy_typeTextBox.Text.Trim() + "','" +
                         this.productTextBox.Text.Trim() + "','" +
