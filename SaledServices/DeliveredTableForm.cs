@@ -117,9 +117,9 @@ namespace SaledServices
             }
         }
 
-        private void simulateEnter()
+        private void simulateEnter(string custommaterialNo)
         {
-            if (custom_orderComboBox.Text == "" || custommaterialNoTextBox.Text == "")
+            if (custom_orderComboBox.Text == "" || custommaterialNo == "")
             {
                 MessageBox.Show("无效订单编号");
                 return;
@@ -135,7 +135,7 @@ namespace SaledServices
                 cmd.CommandType = CommandType.Text;
 
                 cmd.CommandText = "select vendor, product, storehouse, _status from receiveOrder where orderno = '" + this.custom_orderComboBox.Text
-                    + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
+                    + "' and custom_materialNo = '" + custommaterialNo + "'";
 
                 SqlDataReader querySdr = cmd.ExecuteReader();
 
@@ -151,7 +151,7 @@ namespace SaledServices
                 if (status == "open")
                 {
                     cmd.CommandText = "select custom_machine_type,mb_brief,dpk_type,mpn,mb_descripe,warranty_period from MBMaterialCompare where custommaterialNo ='"
-                        + this.custommaterialNoTextBox.Text + "'";
+                        + custommaterialNo + "'";
 
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
@@ -196,7 +196,49 @@ namespace SaledServices
         {
             if (e.KeyChar == 13)
             {
-                simulateEnter();
+                simulateEnter(this.custommaterialNoTextBox.Text.Trim());
+            }
+        }
+
+        private void custommaterialNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                
+                int row = dataGridViewWaitToReturn.Rows.Count;
+                for (int i = 0; i < row; i++)
+                {
+                    dataGridViewWaitToReturn.Rows[i].Selected = false;
+                }
+
+                int count = 0;
+                
+                currentMaterialNo = this.custommaterialNoTextBox.Text.Trim();
+                for (int i = 0; i < row; i++)
+                {
+                    string queryedStr = dataGridViewWaitToReturn.Rows[i].Cells[1].Value.ToString();
+                    if (queryedStr.EndsWith(currentMaterialNo))
+                    {
+                        count++;                        
+                        this.custommaterialNoTextBox.Text = queryedStr;
+                        dataGridViewWaitToReturn.Rows[i].Selected = true;
+                    }
+                }
+                if (count > 1 || count == 0)
+                {
+                    this.custommaterialNoTextBox.Text = this.currentMaterialNo = "";
+                    MessageBox.Show("你输入的不存在或者不唯一，请重新输入！");
+
+                    for (int i = 0; i < row; i++)
+                    {                       
+                        dataGridViewWaitToReturn.Rows[i].Selected = false;                        
+                    }
+                }
+                else
+                {
+                    this.currentMaterialNo = this.custommaterialNoTextBox.Text;
+                    simulateEnter(this.currentMaterialNo);
+                }
             }
         }
 
@@ -579,24 +621,61 @@ namespace SaledServices
                         + this.track_serial_noTextBox.Text.Trim() + "','收货','"
                         + DateTime.Now.ToString("yyyy/MM/dd") + "')";
                     cmd.ExecuteNonQuery();
+
+                    conn.Close();
+
+                    MessageBox.Show("收货成功！");
+
+                    clearInputContent();
+                    doQueryAfterSelection();
+                    queryLatest(true);
+
+                    if (status != "close")
+                    {
+                        this.custommaterialNoTextBox.Text = this.currentMaterialNo;
+                        simulateEnter(this.currentMaterialNo);
+
+                        int row = dataGridViewWaitToReturn.Rows.Count;
+                        for (int i = 0; i < row; i++)
+                        {
+                            if (currentMaterialNo == dataGridViewWaitToReturn.Rows[i].Cells[1].Value.ToString())
+                            {                              
+                                dataGridViewWaitToReturn.Rows[i].Selected = true;
+                            }                           
+                        }   
+                    }
+                    else
+                    {
+                        this.currentMaterialNo = "";
+                        clearOrderReleatedInfo();
+                    }
                 }
                 else
                 {
                     MessageBox.Show("SaledService is not opened");
                 }
-
-                conn.Close();
-
-                MessageBox.Show("收货成功！");
-
-                clearInputContent();
-                doQueryAfterSelection();
-                queryLatest(true);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void clearOrderReleatedInfo()
+        {
+            this.vendorTextBox.Text = "";
+            this.productTextBox.Text = "";
+            this.storehouseTextBox.Text = "";
+
+            this.custom_machine_typeTextBox.Text = "";
+            this.mb_briefTextBox.Text = "";
+            this.dpk_statusTextBox.Text = "";
+            this.mpnTextBox.Text = "";
+            this.mb_describeTextBox.Text = "";
+            this.warranty_periodTextBox.Text = "";
+            this.numTextBox.Text = "";
+            this.mb_make_dateTextBox.Text = "";
+            this.order_out_dateTextBox.Text = "";
         }
 
         private void clearInputContent()
@@ -704,11 +783,6 @@ namespace SaledServices
             DataTable dt = ds.Tables[tableName];
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.numTextBox.Text.Trim());
-
-
-
-
-
 
             dr["vendor"] = this.vendorTextBox.Text.Trim();
             dr["product"] = this.productTextBox.Text.Trim();
@@ -1045,14 +1119,15 @@ namespace SaledServices
             }
         }
 
+        string currentMaterialNo = "";
         private void dataGridViewWaitToReturn_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (this.dataGridViewWaitToReturn.CurrentRow == null)
             {
                 return;
             }
-            this.custommaterialNoTextBox.Text = dataGridViewWaitToReturn.SelectedCells[1].Value.ToString();
-            simulateEnter();
+            currentMaterialNo = this.custommaterialNoTextBox.Text = dataGridViewWaitToReturn.SelectedCells[1].Value.ToString();
+            simulateEnter(this.custommaterialNoTextBox.Text.Trim());
         }
 
         private void custom_faultComboBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -1090,5 +1165,7 @@ namespace SaledServices
         {
 
         }
+
+       
     }
 }
