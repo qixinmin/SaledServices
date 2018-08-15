@@ -84,7 +84,7 @@ namespace SaledServices.CustomsExport
 
             openingstock.workOrderHeadList = storeInitList;
 
-            Untils.createWorkListHeadXML(openingstock, "D:\\test_worklisthead.xml");
+            Utils.createWorkListHeadXML(openingstock, "D:\\test_worklisthead.xml");
 
             MessageBox.Show("finish");
         }

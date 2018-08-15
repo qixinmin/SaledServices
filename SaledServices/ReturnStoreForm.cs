@@ -218,7 +218,7 @@ namespace SaledServices
                // this.storehouseTextBox.Text = dataGridViewToReturn.SelectedCells[2].Value.ToString();
                 this.return_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
-                if (Untils.isTimeError(this.return_dateTextBox.Text.Trim()))
+                if (Utils.isTimeError(this.return_dateTextBox.Text.Trim()))
                 {
                     this.returnStore.Enabled = false;
                 }

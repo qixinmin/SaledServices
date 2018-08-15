@@ -125,8 +125,11 @@ namespace SaledServices
                         this.track_serial_noTextBox.Focus();
                         this.track_serial_noTextBox.SelectAll();
                         MessageBox.Show("追踪条码的内容不在待维修记录表中或待维修记录的状态不是BGA不良，请检查！");
+                        this.add.Enabled = false;
                         return;
                     }
+
+                    this.add.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -141,7 +144,7 @@ namespace SaledServices
                     bgarepairertextBox.Text = LoginForm.currentUser;
                     bgarepairDatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
-                    if (Untils.isTimeError(this.bgarepairDatetextBox.Text.Trim()))
+                    if (Utils.isTimeError(this.bgarepairDatetextBox.Text.Trim()))
                     {
                         this.add.Enabled = false;
                     }

@@ -82,11 +82,15 @@ namespace SaledServices.Test_Outlook
                             this.tracker_bar_textBox.Focus();
                             this.tracker_bar_textBox.SelectAll();
                             MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
+                            this.confirmbutton.Enabled = false;
+                            this.button1.Enabled = false;
                         }
                     }
                     else 
                     {
                         MessageBox.Show("追踪条码的不在测试列表中，请检查！");
+                        this.confirmbutton.Enabled = false;
+                        this.button1.Enabled = false;
                     }
                     mConn.Close();
                 }

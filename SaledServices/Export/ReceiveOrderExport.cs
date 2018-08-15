@@ -101,7 +101,7 @@ namespace SaledServices.Export
                 contentList.Add(ctest1);
             }
 
-            Untils.createExcel("D:\\recieveOrderExort.xlsx", titleList, contentList);
+            Utils.createExcel("D:\\recieveOrderExort.xlsx", titleList, contentList);
         }
     }
 

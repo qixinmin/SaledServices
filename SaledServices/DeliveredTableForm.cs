@@ -83,6 +83,7 @@ namespace SaledServices
                     }
                 }
                 querySdr.Close();
+                guaranteeComboBox.SelectedIndex = 0;
 
                 cmd.CommandText = "select distinct responsibility_describe from customResponsibility";
                 querySdr = cmd.ExecuteReader();
@@ -204,6 +205,12 @@ namespace SaledServices
         {
             if (e.KeyChar == 13)
             {
+
+                if (!Utils.IsNumAndEnCh(this.custommaterialNoTextBox.Text))
+                {
+                    MessageBox.Show("包含非字符与数字的字符，请检查！");
+                    return;
+                }
                 
                 int row = dataGridViewWaitToReturn.Rows.Count;
                 for (int i = 0; i < row; i++)
@@ -265,7 +272,7 @@ namespace SaledServices
             //}
             this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
-            if (Untils.isTimeError(this.order_out_dateTextBox.Text.Trim()))
+            if (Utils.isTimeError(this.order_out_dateTextBox.Text.Trim()))
             {
                 this.add.Enabled = false;
             }
@@ -367,6 +374,11 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
+                if (!Utils.IsNumAndEnCh(this.custom_serial_noTextBox.Text))
+                {
+                    MessageBox.Show("包含非字符与数字的字符，请检查！");
+                    return;
+                }
                 string customSerialNo = this.custom_serial_noTextBox.Text;
                 customSerialNo = Regex.Replace(customSerialNo, "[^a-zA-Z0-9]", "");
                 this.custom_serial_noTextBox.Text = customSerialNo;
@@ -459,9 +471,9 @@ namespace SaledServices
                     MessageBox.Show(ex.ToString());
                 }
 
-                string year = Untils.getTimeByChar(true, Convert.ToChar(subData.Substring(0, 1)));
-                string mouth = Untils.getTimeByChar(false, Convert.ToChar(subData.Substring(1, 1)));
-                string day = Untils.getTimeByChar(false, Convert.ToChar(subData.Substring(2, 1)));
+                string year = Utils.getTimeByChar(true, Convert.ToChar(subData.Substring(0, 1)));
+                string mouth = Utils.getTimeByChar(false, Convert.ToChar(subData.Substring(1, 1)));
+                string day = Utils.getTimeByChar(false, Convert.ToChar(subData.Substring(2, 1)));
                 this.mb_make_dateTextBox.Text = year + "/" + mouth + "/" + day;
 
                 try
@@ -683,8 +695,8 @@ namespace SaledServices
             this.custommaterialNoTextBox.Text = "";
 
             this.custom_orderComboBox.Text = "";
-            this.source_briefComboBox.Text = "";
-            this.source_briefComboBox.SelectedIndex = -1;
+            //this.source_briefComboBox.Text = "";
+            //this.source_briefComboBox.SelectedIndex = -1;
             this.track_serial_noTextBox.Text = "";
             this.custom_serial_noTextBox.Text = "";
             this.vendor_serail_noTextBox.Text = "";
@@ -692,8 +704,8 @@ namespace SaledServices
             this.macTextBox.Text = "";
             this.custom_faultComboBox.Text = "";
             this.custom_faultComboBox.SelectedIndex = -1;
-            this.guaranteeComboBox.Text = "";
-            this.guaranteeComboBox.SelectedIndex = -1;
+            //this.guaranteeComboBox.Text = "";
+            //this.guaranteeComboBox.SelectedIndex = -1;
             this.customResponsibilityComboBox.Text = "";
             this.customResponsibilityComboBox.SelectedIndex = -1;
             this.lenovo_custom_service_noTextBox.Text = "";
@@ -924,6 +936,18 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
+                if (this.track_serial_noTextBox.Text.Trim().Length != 16)
+                {
+                    MessageBox.Show("跟踪条码的长度不是16位!");
+                    return;
+                }
+
+                if (!Utils.IsNumAndEnCh(this.track_serial_noTextBox.Text))
+                {
+                    MessageBox.Show("包含非字符与数字的字符，请检查！");
+                    return;
+                }
+
                 //检查跟踪条码是否在系统中存在过，否则报错
                 string vendor = "";
                 try
@@ -980,6 +1004,12 @@ namespace SaledServices
                     this.vendor_serail_noTextBox.SelectAll();
                     MessageBox.Show("厂商序号的内容长度不是32位，请检查！");
                     return; 
+                }
+
+                if (!Utils.IsNumAndEnCh(this.vendor_serail_noTextBox.Text))
+                {
+                    MessageBox.Show("包含非字符与数字的字符，请检查！");
+                    return;
                 }
 
 
@@ -1067,6 +1097,12 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
+                if (!Utils.IsNumAndEnCh(this.macTextBox.Text))
+                {
+                    MessageBox.Show("包含非字符与数字的字符，请检查！");
+                    return;
+                }
+
                 string mactext = this.macTextBox.Text.Trim();
                 mactext = Regex.Replace(mactext, "[^a-zA-Z0-9]", "");
                 this.macTextBox.Text = mactext;
@@ -1150,15 +1186,15 @@ namespace SaledServices
 
         private void guaranteeComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (this.guaranteeComboBox.Text.Trim() == "保内")
-            {
-                customResponsibilityComboBox.Text = "";
-                customResponsibilityComboBox.Enabled = false;
-            }
-            else 
-            {
-                customResponsibilityComboBox.Enabled = true;
-            }
+            //if (this.guaranteeComboBox.Text.Trim() == "保内")
+            //{
+            //    customResponsibilityComboBox.Text = "";
+            //    customResponsibilityComboBox.Enabled = false;
+            //}
+            //else 
+            //{
+            //    customResponsibilityComboBox.Enabled = true;
+            //}
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)

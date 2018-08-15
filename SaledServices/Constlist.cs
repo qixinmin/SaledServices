@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Data.SqlClient;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace SaledServices
 {
@@ -124,8 +125,16 @@ namespace SaledServices
     {
         public List<string> contentArray;       
     }
-    public class Untils
+
+    public class Utils
     {
+        public static bool IsNumAndEnCh(string input)
+        {
+            string pattern = @"^[A-Za-z0-9]+$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(input);
+        } 
+
         public static bool isTimeError(string nowDate)
         {
             try

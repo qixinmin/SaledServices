@@ -109,7 +109,7 @@ namespace SaledServices.CustomsExport
 
             openingstock.storeAmountList = storeInitList;
 
-            Untils.createRealStockXML(openingstock, "D:\\test_realstock.xml");
+            Utils.createRealStockXML(openingstock, "D:\\test_realstock.xml");
             MessageBox.Show("finish");
         }
     }

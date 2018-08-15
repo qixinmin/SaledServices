@@ -35,7 +35,7 @@ namespace SaledServices.Test_Outlook
 
                 try
                 {
-                    if (Untils.isTimeError(testdatetextBox.Text.Trim()))
+                    if (Utils.isTimeError(testdatetextBox.Text.Trim()))
                     {
                         this.confirmbutton.Enabled = false;
                     }
@@ -81,11 +81,15 @@ namespace SaledServices.Test_Outlook
                             this.tracker_bar_textBox.Focus();
                             this.tracker_bar_textBox.SelectAll();
                             MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
+                            this.confirmbutton.Enabled = false;
+                            this.button1.Enabled = false;
                         }
                     }
                     else 
                     {
                         MessageBox.Show("板子已经经过站别" + station);
+                        this.confirmbutton.Enabled = false;
+                        this.button1.Enabled = false;
                     }
                     mConn.Close();
                 }

@@ -38,6 +38,7 @@ namespace SaledServices
                 {
                     this.track_serial_noTextBox.Focus();
                     MessageBox.Show("追踪条码的内容为空，请检查！");
+                    this.add.Enabled = false;
                     error = true;
                     return;
                 }
@@ -98,7 +99,7 @@ namespace SaledServices
                         this.mb_brieftextBox.Text = mb_brief;                       
                         this.mpntextBox.Text = mpn;
 
-                        if (Untils.isTimeError(this.confrim_datetextBox.Text.Trim()))
+                        if (Utils.isTimeError(this.confrim_datetextBox.Text.Trim()))
                         {
                             this.add.Enabled = false;
                         }
@@ -137,6 +138,8 @@ namespace SaledServices
                     }
 
                     mConn.Close();
+
+                    this.add.Enabled = true;
                 }
                 catch (Exception ex)
                 {

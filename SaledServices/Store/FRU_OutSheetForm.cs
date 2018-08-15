@@ -28,7 +28,7 @@ namespace SaledServices
             inputerTextBox.Text = LoginForm.currentUser;
             this.input_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
-            if (Untils.isTimeError(this.input_dateTextBox.Text.Trim()))
+            if (Utils.isTimeError(this.input_dateTextBox.Text.Trim()))
             {
                 this.add.Enabled = false;
             }

@@ -108,6 +108,7 @@ namespace SaledServices
                         this.add.Enabled = false;
                         return;
                     }
+                    
 
                     cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();
@@ -121,13 +122,15 @@ namespace SaledServices
                     if (cidExist != "")
                     {
                         MessageBox.Show("此序列号已经在CID中，不能走下面的流程！");
+                        this.add.Enabled = false;
                         mConn.Close();
                         return;
                     }
+                    
 
                     cmd.CommandText = "select custommaterialNo, source_brief,custom_order,order_receive_date,custom_serial_no,vendor_serail_no, mb_make_date,custom_fault from DeliveredTable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
 
-                     querySdr = cmd.ExecuteReader();
+                    querySdr = cmd.ExecuteReader();
                     string customMaterialNo = "";
                     string sourceBrief = "", customOrder = "", order_receive_date = "", custom_serial_no = "", vendor_serial_no = "", mb_make_date = "", custom_fault = "";
                     while (querySdr.Read())
@@ -177,7 +180,7 @@ namespace SaledServices
                         this.ECOtextBox.Text = eco;
                         this.repair_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
-                        if (Untils.isTimeError(this.repair_datetextBox.Text.Trim()))
+                        if (Utils.isTimeError(this.repair_datetextBox.Text.Trim()))
                         {
                             this.add.Enabled = false;
                         }
@@ -187,8 +190,10 @@ namespace SaledServices
                         this.track_serial_noTextBox.Focus();
                         this.track_serial_noTextBox.SelectAll();
                         MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
+                        this.add.Enabled = false;
                         error = true;
                     }
+                    this.add.Enabled = true;
                     mConn.Close();
                 }
                 catch (Exception ex)

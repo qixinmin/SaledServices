@@ -44,14 +44,14 @@ namespace SaledServices.Test_Outlook
 
                 try
                 {
-                    if (Untils.isTimeError(testdatetextBox.Text.Trim()))
+                    if (Utils.isTimeError(testdatetextBox.Text.Trim()))
                     {
                         this.bomdownload.Enabled = false;
                     }
 
-                    Untils.deleteFile("D:\\fru\\", "BOM.bat");
-                    Untils.deleteFile("D:\\fru\\", "BOM.NSH");
-                    Untils.deleteFile("D:\\fru\\", "DPK.TXT");
+                    Utils.deleteFile("D:\\fru\\", "BOM.bat");
+                    Utils.deleteFile("D:\\fru\\", "BOM.NSH");
+                    Utils.deleteFile("D:\\fru\\", "DPK.TXT");
 
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                     mConn.Open();
@@ -76,8 +76,11 @@ namespace SaledServices.Test_Outlook
                         mConn.Close();
                         this.tracker_bar_textBox.Focus();
                         this.tracker_bar_textBox.SelectAll();
+                        this.bomdownload.Enabled = false;
                         return;
                     }
+
+                    this.bomdownload.Enabled = true;
 
                     cmd.CommandText = "select track_serial_no,product from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
@@ -221,7 +224,7 @@ namespace SaledServices.Test_Outlook
                                     }
                                     querySdr.Close();
 
-                                    if (burn_date != "" && Untils.in90Days(burn_date)) //不为空且在90天内
+                                    if (burn_date != "" && Utils.in90Days(burn_date)) //不为空且在90天内
                                     {
                                         //KEYID,KEYSERIAL按之前的序列号，其他内容不变
                                     }
@@ -515,7 +518,7 @@ namespace SaledServices.Test_Outlook
                             + "SET -v FRUPN " + tempCustomMaterialNo + "\r\n"
                             + "SET -v MODELID " + mb_brief + "\r\n"
                             + "SET -v DPK " + dpk_type;
-            Untils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
+            Utils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
 
             totalStr = "SET MBID=" + track_serial_no + "\r\n"
                            + "SET SN=" + vendor_serail_no + "\r\n"
@@ -530,10 +533,10 @@ namespace SaledServices.Test_Outlook
                            + "SET FRUPN=" + tempCustomMaterialNo + "\r\n"
                            + "SET MODELID=" + mb_brief + "\r\n"
                            + "SET DPK=" + dpk_type;
-            Untils.createFile("D:\\fru\\", "BOM.bat", totalStr);
+            Utils.createFile("D:\\fru\\", "BOM.bat", totalStr);
 
 
-            Untils.createFile("C:\\CHKCPU\\", "BOM.bat", totalStr);
+            Utils.createFile("C:\\CHKCPU\\", "BOM.bat", totalStr);
 
             //清空变量
             //KEYID = ""; 

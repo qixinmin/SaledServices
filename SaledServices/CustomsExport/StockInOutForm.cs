@@ -145,7 +145,7 @@ namespace SaledServices.CustomsExport
             openingstock.status = status;
 
             openingstock.storeTransList = storeInitList;
-            Untils.createStockInOutXML(openingstock, "D:\\test_stockinout.xml");
+            Utils.createStockInOutXML(openingstock, "D:\\test_stockinout.xml");
             MessageBox.Show("finish");
         }
     }

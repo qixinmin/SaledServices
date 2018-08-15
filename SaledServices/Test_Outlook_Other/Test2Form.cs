@@ -34,7 +34,7 @@ namespace SaledServices.Test_Outlook
 
                 try
                 {
-                    if (Untils.isTimeError(testdatetextBox.Text.Trim()))
+                    if (Utils.isTimeError(testdatetextBox.Text.Trim()))
                     {
                         this.confirmbutton.Enabled = false;
                     }
@@ -62,9 +62,12 @@ namespace SaledServices.Test_Outlook
                         mConn.Close();
                         this.tracker_bar_textBox.Focus();
                         this.tracker_bar_textBox.SelectAll();
+                        this.confirmbutton.Enabled = false;
+                        this.button1.Enabled = false;
                         return;
                     }
-
+                    this.confirmbutton.Enabled = true;
+                    this.button1.Enabled = true;
                     //cmd.CommandText = "select track_serial_no from test1table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                     //SqlDataReader querySdr = cmd.ExecuteReader();

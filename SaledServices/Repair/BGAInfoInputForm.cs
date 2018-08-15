@@ -36,6 +36,7 @@ namespace SaledServices
                 {
                     this.track_serial_noTextBox.Focus();
                     MessageBox.Show("追踪条码的内容为空，请检查！");
+                    this.add.Enabled = false;
                     error = true;
                     return;
                 }
@@ -62,6 +63,7 @@ namespace SaledServices
                     if (cidExist != "")
                     {
                         MessageBox.Show("此序列号已经在CID中，不能走下面的流程！");
+                        this.add.Enabled = false;
                         mConn.Close();
                         return;
                     }
@@ -120,7 +122,7 @@ namespace SaledServices
          
                         this.repair_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
-                        if (Untils.isTimeError(this.repair_datetextBox.Text.Trim()))
+                        if (Utils.isTimeError(this.repair_datetextBox.Text.Trim()))
                         {
                             this.add.Enabled = false;
                         }
@@ -130,6 +132,7 @@ namespace SaledServices
                         this.track_serial_noTextBox.Focus();
                         this.track_serial_noTextBox.SelectAll();
                         MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
+                        this.add.Enabled = false;
                         error = true;
                         mConn.Close();
                         return;
@@ -189,7 +192,7 @@ namespace SaledServices
                             this.PCH.Checked = true;
                         }
                     }
-
+                    this.add.Enabled = true;
                     mConn.Close();
                 }
                 catch (Exception ex)

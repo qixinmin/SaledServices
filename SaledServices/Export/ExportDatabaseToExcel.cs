@@ -228,7 +228,7 @@ namespace SaledServices.Export
                 {
                     path += "\\";
                 }
-                Untils.createExcel(path + this.datasourceComboBox.Text + ".xlsx", titleList, contentList);
+                Utils.createExcel(path + this.datasourceComboBox.Text + ".xlsx", titleList, contentList);
                 this.Cursor = Cursors.Default;
             }
             catch (Exception ex)
