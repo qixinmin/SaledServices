@@ -218,8 +218,7 @@ namespace SaledServices
                     dataGridViewWaitToReturn.Rows[i].Selected = false;
                 }
 
-                int count = 0;
-                
+                int count = 0;                
                 currentMaterialNo = this.custommaterialNoTextBox.Text.Trim();
                 for (int i = 0; i < row; i++)
                 {

@@ -203,19 +203,14 @@ namespace SaledServices
             }
         }
 
-        private void dataGridViewToReturn_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void simulateEnter(string custommaterialNo,string orderNo, string tat)
         {
-            if (this.dataGridViewToReturn.CurrentRow == null)
-            {
-                return;
-            }
-
             try
             {
                 this.return_file_noTextBox.Text = generateFileNo();
-                this.ordernoTextBox.Text = dataGridViewToReturn.SelectedCells[0].Value.ToString();
-                this.custommaterialNoTextBox.Text = dataGridViewToReturn.SelectedCells[1].Value.ToString();
-               // this.storehouseTextBox.Text = dataGridViewToReturn.SelectedCells[2].Value.ToString();
+                this.ordernoTextBox.Text = orderNo;// dataGridViewToReturn.SelectedCells[0].Value.ToString();
+                this.custommaterialNoTextBox.Text = custommaterialNo;// dataGridViewToReturn.SelectedCells[1].Value.ToString();
+                // this.storehouseTextBox.Text = dataGridViewToReturn.SelectedCells[2].Value.ToString();
                 this.return_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
 
                 if (Utils.isTimeError(this.return_dateTextBox.Text.Trim()))
@@ -223,7 +218,7 @@ namespace SaledServices
                     this.returnStore.Enabled = false;
                 }
 
-                this.tatTextBox.Text = dataGridViewToReturn.SelectedCells[5].Value.ToString();
+                this.tatTextBox.Text = tat;// dataGridViewToReturn.SelectedCells[5].Value.ToString();
 
 
                 //根据输入的客户料号，查询MB物料对照表找到dpk状态与mpn
@@ -237,15 +232,14 @@ namespace SaledServices
                     cmd.CommandType = CommandType.Text;
 
                     cmd.CommandText = "select storehouse from receiveOrder where vendor='" + vendorStr
-                    + "' and product ='" + productStr + "' and _status = 'close'"; 
+                    + "' and product ='" + productStr + "' and _status = 'close'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
-                        this.storehouseTextBox.Text = querySdr[0].ToString();                      
+                        this.storehouseTextBox.Text = querySdr[0].ToString();
                     }
                     querySdr.Close();
-                    
 
                     cmd.CommandText = "select dpk_type, mpn, replace_custom_materialNo from MBMaterialCompare where custommaterialNo = '"
                         + this.custommaterialNoTextBox.Text.Trim() + "'";
@@ -259,7 +253,7 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    mConn.Close();                   
+                    mConn.Close();
                 }
                 catch (Exception ex)
                 {
@@ -268,6 +262,19 @@ namespace SaledServices
             }
             catch (Exception ex)
             { MessageBox.Show(ex.ToString()); }
+        }
+
+        private void dataGridViewToReturn_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.dataGridViewToReturn.CurrentRow == null)
+            {
+                return;
+            }
+
+            currentMaterialNo = this.custommaterialNoTextBox.Text = dataGridViewToReturn.SelectedCells[1].Value.ToString();
+            orderNo = this.ordernoTextBox.Text = dataGridViewToReturn.SelectedCells[0].Value.ToString();
+            tat = this.tatTextBox.Text = dataGridViewToReturn.SelectedCells[5].Value.ToString();
+            simulateEnter(this.custommaterialNoTextBox.Text.Trim(), orderNo, tat);
         }
 
         private string generateFileNo()
@@ -442,7 +449,7 @@ namespace SaledServices
                         else if (leftNum == returnNum + 1)
                         {
                             status = "return";
-                        }                        
+                        }
                     }
                     querySdr.Close();
 
@@ -453,11 +460,35 @@ namespace SaledServices
                                     + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
 
                         cmd.ExecuteNonQuery();
+                        
+                        //dataGridViewToReturn里面的数据要更新
+                        doQueryAfterSelection();
+                        clearInputData();
+
                         if (status == "return")
                         {
+                            custommaterialNoTextBox.Text = "";
+                            dpkpnTextBox.Text = "";
+                            bommpnTextBox.Text = "";
+                            storehouseTextBox.Text = "";
+                            ordernoTextBox.Text = "";
+                            tatTextBox.Text = "";
                             MessageBox.Show("本料号已经还完！");
                         }
-                    }
+                        else
+                        {  
+                            simulateEnter(this.currentMaterialNo, this.orderNo, this.tat);
+
+                            int row = dataGridViewToReturn.Rows.Count;
+                            for (int i = 0; i < row; i++)
+                            {
+                                if (currentMaterialNo == dataGridViewToReturn.Rows[i].Cells[1].Value.ToString())
+                                {
+                                    dataGridViewToReturn.Rows[i].Selected = true;
+                                }
+                            }   
+                        }
+                    }           
                 }
                 else
                 {
@@ -471,9 +502,6 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            //dataGridViewToReturn里面的数据要更新
-            doQueryAfterSelection();
-            clearInputData();
             queryLastest(true);
         }
 
@@ -510,22 +538,22 @@ namespace SaledServices
 
         private void clearInputData()
         {
-            custommaterialNoTextBox.Text = "";
+            //custommaterialNoTextBox.Text = "";
+            //dpkpnTextBox.Text = "";
+            //bommpnTextBox.Text = "";
+            //storehouseTextBox.Text = "";
+            //ordernoTextBox.Text = "";
+            //tatTextBox.Text = "";
+
             replace_custom_materialNotextBox.Text = "";
             track_serial_noTextBox.Text = "";
 
             custom_serial_noTextBox.Text = "";
             custom_res_typeComboBox.SelectedIndex = -1;
             response_describeComboBox.SelectedIndex = -1;
-            dpkpnTextBox.Text = "";
-
+         
             vendor_serail_noTextBox.Text = "";
-            bommpnTextBox.Text = "";
-            storehouseTextBox.Text = "";
             return_dateTextBox.Text = "";
-
-            ordernoTextBox.Text = "";
-            tatTextBox.Text = "";
         }
 
 
@@ -744,12 +772,50 @@ namespace SaledServices
             }
         }
 
+        string currentMaterialNo, orderNo, tat;
         private void custommaterialNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                this.track_serial_noTextBox.Focus();
-                this.track_serial_noTextBox.SelectAll();
+                int row = dataGridViewToReturn.Rows.Count;
+                for (int i = 0; i < row; i++)
+                {
+                    dataGridViewToReturn.Rows[i].Selected = false;
+                }
+
+                int count = 0;
+                currentMaterialNo = this.custommaterialNoTextBox.Text.Trim();
+                for (int i = 0; i < row; i++)
+                {
+                    string queryedStr = dataGridViewToReturn.Rows[i].Cells[1].Value.ToString();
+                    if (queryedStr.EndsWith(currentMaterialNo))
+                    {
+                        count++;
+                        this.custommaterialNoTextBox.Text = queryedStr;
+                        orderNo = this.ordernoTextBox.Text = dataGridViewToReturn.Rows[i].Cells[0].Value.ToString();
+                        tat = this.tatTextBox.Text = dataGridViewToReturn.Rows[i].Cells[5].Value.ToString();
+
+                        dataGridViewToReturn.Rows[i].Selected = true;
+                    }
+                }
+                if (count > 1 || count == 0)
+                {
+                    this.custommaterialNoTextBox.Text = this.currentMaterialNo = "";
+                    MessageBox.Show("你输入的不存在或者不唯一，请重新输入！");
+
+                    for (int i = 0; i < row; i++)
+                    {
+                        dataGridViewToReturn.Rows[i].Selected = false;
+                    }
+                }
+                else
+                {
+                    this.currentMaterialNo = this.custommaterialNoTextBox.Text;
+                    simulateEnter(this.currentMaterialNo, orderNo, tat);
+
+                    this.track_serial_noTextBox.Focus();
+                    this.track_serial_noTextBox.SelectAll();
+                }
             }
         }
 
