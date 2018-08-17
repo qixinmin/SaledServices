@@ -78,6 +78,7 @@
             this.mBToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.库房储位管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.不良品库房储位管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mB不良品入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mB不良品批量入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mB不良品批量出库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.additionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,7 +99,7 @@
             this.收货信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mB不良品入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -519,6 +520,13 @@
             this.不良品库房储位管理ToolStripMenuItem.Text = "不良品库房储位管理";
             this.不良品库房储位管理ToolStripMenuItem.Click += new System.EventHandler(this.不良品库房储位管理ToolStripMenuItem_Click);
             // 
+            // mB不良品入库ToolStripMenuItem
+            // 
+            this.mB不良品入库ToolStripMenuItem.Name = "mB不良品入库ToolStripMenuItem";
+            this.mB不良品入库ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.mB不良品入库ToolStripMenuItem.Text = "MB不良品入库";
+            this.mB不良品入库ToolStripMenuItem.Click += new System.EventHandler(this.mB不良品入库ToolStripMenuItem_Click);
+            // 
             // mB不良品批量入库ToolStripMenuItem
             // 
             this.mB不良品批量入库ToolStripMenuItem.Name = "mB不良品批量入库ToolStripMenuItem";
@@ -664,7 +672,8 @@
             // 查询ToolStripMenuItem
             // 
             this.查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.站别查询ToolStripMenuItem});
+            this.站别查询ToolStripMenuItem,
+            this.dOA查询ToolStripMenuItem});
             this.查询ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.查询ToolStripMenuItem.Name = "查询ToolStripMenuItem";
             this.查询ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -677,12 +686,12 @@
             this.站别查询ToolStripMenuItem.Text = "站别查询";
             this.站别查询ToolStripMenuItem.Click += new System.EventHandler(this.站别查询ToolStripMenuItem_Click);
             // 
-            // mB不良品入库ToolStripMenuItem
+            // dOA查询ToolStripMenuItem
             // 
-            this.mB不良品入库ToolStripMenuItem.Name = "mB不良品入库ToolStripMenuItem";
-            this.mB不良品入库ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.mB不良品入库ToolStripMenuItem.Text = "MB不良品入库";
-            this.mB不良品入库ToolStripMenuItem.Click += new System.EventHandler(this.mB不良品入库ToolStripMenuItem_Click);
+            this.dOA查询ToolStripMenuItem.Name = "dOA查询ToolStripMenuItem";
+            this.dOA查询ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.dOA查询ToolStripMenuItem.Text = "多返查询";
+            this.dOA查询ToolStripMenuItem.Click += new System.EventHandler(this.dOA查询ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -779,6 +788,7 @@
         private System.Windows.Forms.ToolStripMenuItem mB报废判定ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mB不良品批量出库ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mB不良品入库ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dOA查询ToolStripMenuItem;
     }
 }
 

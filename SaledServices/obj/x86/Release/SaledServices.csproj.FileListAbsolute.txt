@@ -74,4 +74,4 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FaultM
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FaultMBRecordForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FaultBatchMBInStoreForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FaultBatchMBOutStoreForm.resources
-D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.csprojResolveAssemblyReference.cache
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.MultiReturnQueryForm.resources

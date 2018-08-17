@@ -1194,6 +1194,20 @@ namespace SaledServices
             allForm.Add(faultMBRecordForm);
         }
 
-        
+        private MultiReturnQueryForm multiReturnQueryForm;
+        private void dOA查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (multiReturnQueryForm == null || multiReturnQueryForm.IsDisposed)
+            {
+                multiReturnQueryForm = new MultiReturnQueryForm();
+                multiReturnQueryForm.MdiParent = this;
+            }
+
+            multiReturnQueryForm.WindowState = FormWindowState.Maximized;
+            multiReturnQueryForm.BringToFront();
+            multiReturnQueryForm.Show();
+
+            allForm.Add(multiReturnQueryForm);
+        }
     }
 }

@@ -201,6 +201,12 @@
     <Compile Include="additionForm\CIDInputForm.Designer.cs">
       <DependentUpon>CIDInputForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="additionForm\MultiReturnQueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\MultiReturnQueryForm.Designer.cs">
+      <DependentUpon>MultiReturnQueryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="additionForm\DatabaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -612,6 +618,9 @@
     </Compile>
     <EmbeddedResource Include="additionForm\CIDInputForm.resx">
       <DependentUpon>CIDInputForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\MultiReturnQueryForm.resx">
+      <DependentUpon>MultiReturnQueryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\DatabaseForm.resx">
       <DependentUpon>DatabaseForm.cs</DependentUpon>

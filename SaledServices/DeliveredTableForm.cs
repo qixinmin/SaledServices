@@ -1070,6 +1070,20 @@ namespace SaledServices
                         return;
                     }
 
+                    cmd.CommandText = "select vendor from " + this.tableName + " where vendor_serail_no = '" + this.vendor_serail_noTextBox.Text+ "'";
+                    querySdr = cmd.ExecuteReader();
+                    int count = 0;
+                    while (querySdr.Read())
+                    {
+                        count++;
+                    }
+                    querySdr.Close();
+
+                    if (count !=0)
+                    {
+                        MessageBox.Show("此客户序号已经来过【"+count+"】次，请记录下来");
+                    }
+
                     mConn.Close();
                 }
                 catch (Exception ex)
