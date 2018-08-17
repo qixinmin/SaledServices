@@ -471,9 +471,36 @@ namespace SaledServices
                     MessageBox.Show(ex.ToString());
                 }
 
-                string year = Utils.getTimeByChar(true, Convert.ToChar(subData.Substring(0, 1)));
-                string mouth = Utils.getTimeByChar(false, Convert.ToChar(subData.Substring(1, 1)));
-                string day = Utils.getTimeByChar(false, Convert.ToChar(subData.Substring(2, 1)));
+                string year, mouth, day;
+                vendor = this.vendorTextBox.Text.Trim();
+                if (vendor == "COMPAL")
+                {
+                    year = Utils.getTimeByCharCompal(true, Convert.ToChar(subData.Substring(0, 1)));
+                    mouth = Utils.getTimeByCharCompal(false, Convert.ToChar(subData.Substring(1, 1)));
+                    day = Utils.getTimeByCharCompal(false, Convert.ToChar(subData.Substring(2, 1)));
+
+                    if(day == "31")
+                    {
+                         switch (mouth)
+                        {
+                             //case "2":
+                             case "4":
+                             case "6":
+                             case "9":
+                             case "11":
+                                 day = "30";
+                                 break;
+                        }
+                    }                   
+                }
+                else
+                {
+                    year = Utils.getTimeByChar(true, Convert.ToChar(subData.Substring(0, 1)));
+                    mouth = Utils.getTimeByChar(false, Convert.ToChar(subData.Substring(1, 1)));
+                    day = Utils.getTimeByChar(false, Convert.ToChar(subData.Substring(2, 1)));
+                }
+
+              
                 this.mb_make_dateTextBox.Text = year + "/" + mouth + "/" + day;
 
                 try
@@ -1002,7 +1029,7 @@ namespace SaledServices
                 if (this.vendor_serail_noTextBox.Text.Length != 13)
                 {
                     this.vendor_serail_noTextBox.SelectAll();
-                    MessageBox.Show("厂商序号的内容长度不是32位，请检查！");
+                    MessageBox.Show("厂商序号的内容长度不是13位，请检查！");
                     return; 
                 }
 
@@ -1063,7 +1090,7 @@ namespace SaledServices
             {
                 if (this.uuidTextBox.Text.Length > 32)
                 {
-                    string[] temp = this.uuidTextBox.Text.Split(' ');
+                    string[] temp = this.uuidTextBox.Text.Split(new char[]{' ',';'});
                     foreach (string str in temp)
                     {
                         if (str.Length == 32)
@@ -1195,6 +1222,7 @@ namespace SaledServices
             //{
             //    customResponsibilityComboBox.Enabled = true;
             //}
+            customResponsibilityComboBox.Enabled = true;
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)

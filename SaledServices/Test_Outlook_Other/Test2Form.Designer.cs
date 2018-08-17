@@ -121,6 +121,7 @@
             // 
             // confirmbutton
             // 
+            this.confirmbutton.Enabled = false;
             this.confirmbutton.Location = new System.Drawing.Point(437, 165);
             this.confirmbutton.Name = "confirmbutton";
             this.confirmbutton.Size = new System.Drawing.Size(72, 23);
@@ -131,6 +132,7 @@
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(546, 165);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(72, 23);
