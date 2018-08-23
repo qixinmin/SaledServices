@@ -189,7 +189,7 @@ namespace SaledServices
                     {
                         stockNumber = this.numberTextBox.Text;
                     }
-                    cmd.CommandText = "update store_house set mpn = '" + this.mpnTextBox.Text.Trim() + "',number = '" + stockNumber + "' where house='"+chooseStock.house+"' and place='"+chooseStock.place+"'";
+                    cmd.CommandText = "update store_house set mpn = '" + this.mpnTextBox.Text.Trim()+"_"+this.vendorTextBox.Text.Trim() + "',number = '" + stockNumber + "' where house='"+chooseStock.house+"' and place='"+chooseStock.place+"'";
                     cmd.ExecuteNonQuery();
 
                     //清除历史缓存，保证下次选择是新的
@@ -408,7 +408,8 @@ namespace SaledServices
                 }
                 querySdr.Close();
 
-                cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                cmd.CommandText = "select house,place,Id,number from store_house where mpn='" 
+                    + this.mpnTextBox.Text.Trim()+"_"+this.vendorTextBox.Text.Trim()+ "'";
                 querySdr = cmd.ExecuteReader();
                 string house = "", place = "",Id="", number="";
                 while (querySdr.Read())

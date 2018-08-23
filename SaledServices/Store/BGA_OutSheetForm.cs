@@ -76,7 +76,7 @@ namespace SaledServices
 
                     //需要更新库房对应储位的数量 减去 本次出库的数量
                     //根据mpn查对应的查询
-                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim()+"_"+this.vendorcomboBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string house = "", place = "", Id = "", number = "";
                     while (querySdr.Read())
@@ -290,7 +290,7 @@ namespace SaledServices
                     cmd.CommandType = CommandType.Text;
 
                     //查询库位和数量
-                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim()+"_"+this.vendorcomboBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string house = "", place = "", Id = "", number = "";
                     while (querySdr.Read())

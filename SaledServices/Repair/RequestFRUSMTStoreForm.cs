@@ -131,13 +131,13 @@ namespace SaledServices.Store
                     List<useClass> list = new List<useClass>();
                     if (this.mb_brieftextBox.Text != "")
                     {
-                        cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8,material_describe from " + Constlist.table_name_LCFC_MBBOM + " where mb_brief ='" + this.mb_brieftextBox.Text.Trim() + "'";
+                        cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8,material_describe,vendor from " + Constlist.table_name_LCFC_MBBOM + " where mb_brief ='" + this.mb_brieftextBox.Text.Trim() + "'";
                         SqlDataReader querySdr = cmd.ExecuteReader();
                         
                         while (querySdr.Read())
                         {
                             useClass useclass = new useClass();
-                            string material_mpn = querySdr[0].ToString();
+                            string material_mpn = querySdr[0].ToString() + "_" + querySdr[10].ToString();
                             string temp = querySdr[1].ToString().Trim();
                             string matertialDes = querySdr[9].ToString();
                            

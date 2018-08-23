@@ -63,7 +63,7 @@ namespace SaledServices
                             conn.Close();
                             return;
                         }
-
+                        querySdr.Close();
                         //需要更新库房对应储位的数量 减去 本次出库的数量
                         //根据mpn查对应的查询
                         cmd.CommandText = "select mb_brief,vendor,product,custom_serial_no,vendor_serial_no,mpn,stock_place,describe,vendormaterialNo,isdeclare from mb_in_stock where track_serial_no='" + this.track_serial_noTextBox.Text + "'";
@@ -75,7 +75,7 @@ namespace SaledServices
                             conn.Close();
                             return;
                         }
-
+                        
                         while (querySdr.Read())
                         {
                             this.mb_brieftextBox.Text = querySdr[0].ToString();

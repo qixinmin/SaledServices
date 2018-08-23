@@ -48,8 +48,6 @@
             this.describeTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.isDeclareTextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.stock_out_numTextBox = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -92,7 +90,7 @@
             // add
             // 
             this.add.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.add.Location = new System.Drawing.Point(421, 9);
+            this.add.Location = new System.Drawing.Point(420, 9);
             this.add.Margin = new System.Windows.Forms.Padding(4);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(100, 31);
@@ -104,7 +102,7 @@
             // query
             // 
             this.query.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.query.Location = new System.Drawing.Point(708, 9);
+            this.query.Location = new System.Drawing.Point(707, 9);
             this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(100, 31);
@@ -116,7 +114,7 @@
             // modify
             // 
             this.modify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.modify.Location = new System.Drawing.Point(956, 9);
+            this.modify.Location = new System.Drawing.Point(954, 9);
             this.modify.Margin = new System.Windows.Forms.Padding(4);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(100, 31);
@@ -128,7 +126,7 @@
             // delete
             // 
             this.delete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.delete.Location = new System.Drawing.Point(1186, 9);
+            this.delete.Location = new System.Drawing.Point(1185, 9);
             this.delete.Margin = new System.Windows.Forms.Padding(4);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(100, 31);
@@ -292,8 +290,6 @@
             this.tableLayoutPanel3.Controls.Add(this.vendormaterialNoTextBox, 3, 2);
             this.tableLayoutPanel3.Controls.Add(this.label9, 2, 3);
             this.tableLayoutPanel3.Controls.Add(this.describeTextBox, 3, 3);
-            this.tableLayoutPanel3.Controls.Add(this.label17, 2, 4);
-            this.tableLayoutPanel3.Controls.Add(this.isDeclareTextBox, 3, 4);
             this.tableLayoutPanel3.Controls.Add(this.label13, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.stock_out_numTextBox, 5, 0);
             this.tableLayoutPanel3.Controls.Add(this.label19, 4, 2);
@@ -336,25 +332,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1362, 241);
             this.tableLayoutPanel3.TabIndex = 9;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(345, 191);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(72, 16);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "是否报关";
-            // 
-            // isDeclareTextBox
-            // 
-            this.isDeclareTextBox.Location = new System.Drawing.Point(514, 195);
-            this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.isDeclareTextBox.Name = "isDeclareTextBox";
-            this.isDeclareTextBox.ReadOnly = true;
-            this.isDeclareTextBox.Size = new System.Drawing.Size(158, 26);
-            this.isDeclareTextBox.TabIndex = 26;
             // 
             // label13
             // 
@@ -612,7 +589,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.9325F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.85227F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.75F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 251F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 252F));
             this.tableLayoutPanel2.Controls.Add(this.delete, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.modify, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.query, 2, 0);
@@ -740,8 +717,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox inputerTextBox;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox isDeclareTextBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox material_nameTextBox;
         private System.Windows.Forms.Label label18;
