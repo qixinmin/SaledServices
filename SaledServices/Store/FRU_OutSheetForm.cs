@@ -143,8 +143,9 @@ namespace SaledServices
                 }
 
                 conn.Close();
-                query_Click(null,null);
+                query_Click(null,null);               
                 clearInput();
+                queryStock_Click(null, null);
                 MessageBox.Show("FRU出库成功！");
             }
             catch (Exception ex)
@@ -441,8 +442,10 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
+                
+                List<useClass> list = new List<useClass>();
+                string sql = "select mpn,stock_place,stock_in_num,vendor,describe from fru_smt_in_stock where vendor='" + this.vendorcomboBox.Text + "' and material_type='FRU'";
 
-                string sql = "select mpn,stock_place,stock_in_num,vendor, describe from fru_smt_in_stock where vendor='" + this.vendorcomboBox.Text + "' and material_type='FRU'";
                 if (this.productcomboBox.Text != "")
                 {
                     sql += " and product='" + this.productcomboBox.Text + "'";
@@ -463,19 +466,37 @@ namespace SaledServices
                     sql += " and mpn like '%" + this.mpnTextBox.Text + "%'";
                 }
 
-                //if (this.describeTextBox.Text != "")
-                //{
-                //    sql = " and describe like '%" + this.describeTextBox.Text + "%'";
-                //}
-
                 cmd.CommandText = sql;
                 cmd.CommandType = CommandType.Text;
+                SqlDataReader querySdr = cmd.ExecuteReader();
 
-                SqlDataAdapter sda = new SqlDataAdapter();
-                sda.SelectCommand = cmd;
-                DataSet ds = new DataSet();
-                sda.Fill(ds, "stock_in_sheet");
-                dataGridView2.DataSource = ds.Tables[0];
+                while (querySdr.Read())
+                {
+                    useClass useclass = new useClass();
+                    useclass.mpn = querySdr[0].ToString();
+                    useclass.stock_place = querySdr[1].ToString();
+                    useclass.stock_in_num = querySdr[2].ToString();
+                    useclass.vendor = querySdr[3].ToString();
+                    useclass.describe = querySdr[4].ToString();
+                    list.Add(useclass);                       
+                }
+                querySdr.Close();
+
+                foreach (useClass temp in list)
+                {
+                    cmd.CommandText = "select number from store_house where mpn ='" + temp.mpn+"_"+temp.vendor + "'";
+                    querySdr = cmd.ExecuteReader();
+                    string storeNum = "0";
+                    while (querySdr.Read())
+                    {
+                        storeNum = querySdr[0].ToString();
+                    }
+                    temp.stock_in_num = storeNum;
+                    querySdr.Close();
+                }
+
+                dataGridView2.DataSource = list;
+           
                 dataGridView2.RowHeadersVisible = false;
                 mConn.Close();
 
@@ -559,5 +580,14 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
         }
+    }
+    
+    class useClass
+    {
+        public string mpn { get; set; }
+        public string stock_place { get; set; }
+        public string stock_in_num { get; set; }
+        public string vendor { get; set; }
+        public string describe { get; set; }
     }
 }

@@ -475,8 +475,8 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                this.stock_placetextBox.Text = "";//此次需要事前清除
-                simulateMpnEnter();
+                //this.stock_placetextBox.Text = "";//此次需要事前清除
+                doQueryAfterSelection();
             }
         }
 
@@ -502,7 +502,15 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
                 //加入条件判断，只显示未收完的货物
-                cmd.CommandText = "select material_type,mpn, vendormaterialNo, number, stock_in_num from stock_in_sheet where buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text + "' and _status='open' and material_type in ('SMT','FRU')";
+                string sql = "select top 50 material_type,mpn, vendormaterialNo, number, stock_in_num from stock_in_sheet where buy_order_serial_no='"
+                    + this.buy_order_serial_noComboBox.Text + "' and _status='open' and material_type in ('SMT','FRU')";
+
+                if (this.mpnTextBox.Text != "")
+                {
+                    sql += " and mpn like '%" + this.mpnTextBox.Text + "%'";
+                }
+                
+                cmd.CommandText = sql;
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();
