@@ -172,7 +172,7 @@ namespace SaledServices
                 return;
             }
 
-            if (this.input_dateTextBox.Text.Trim().StartsWith("1900"))
+            if (this.input_dateTextBox.Text.Trim() == "" || this.input_dateTextBox.Text.Trim().StartsWith("1900"))
             {
                 MessageBox.Show("时间不对"+this.input_dateTextBox.Text.Trim());
                 return;
@@ -259,7 +259,7 @@ namespace SaledServices
             this.isDeclareTextBox.Text = "";
             this.notetextBox.Text = "";
             this.takertextBox.Text = "";          
-            this.input_dateTextBox.Text = "";
+           // this.input_dateTextBox.Text = "";
             this.custom_serial_notextBox.Text = "";
             this.track_serial_noTextBox.Text = "";
             this.vendor_serial_notextBox.Text = "";
@@ -272,7 +272,7 @@ namespace SaledServices
                 dataGridView1.DataSource = null;
                 dataGridView1.Columns.Clear();
 
-                string sqlStr =  "select top 100 * from " + tableName;
+                string sqlStr =  "select top 100 * from " + tableName +" order by Id desc";
 
                 //if (this.vendorcomboBox.Text.Trim() != "")
                 //{

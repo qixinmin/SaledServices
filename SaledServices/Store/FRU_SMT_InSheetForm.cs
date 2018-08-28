@@ -201,9 +201,9 @@ namespace SaledServices
                 }
 
                 conn.Close();
-
-                doQueryAfterSelection();
+               
                 clearInputText();
+                doQueryAfterSelection();
                 this.mb_brieftextBox.Text = "";
             }
             catch (Exception ex)
@@ -459,14 +459,24 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            clearInputText();
+            //clearInputText();
         }
 
         private void clearInputText()
         {
-            //this.mb_brieftextBox.Text = "";
+            this.mb_brieftextBox.Text = "";
             this.totalMoneyTextBox.Text = "";
             this.stock_in_numTextBox.Text = "";
+            this.mpnTextBox.Text = "";
+            this.vendorTextBox.Text = "";
+            this.productTextBox.Text = "";
+            this.material_typeTextBox.Text = "";
+            this.buy_typeTextBox.Text = "";
+            this.vendormaterialNoTextBox.Text = "";
+            this.describeTextBox.Text = "";
+            this.numberTextBox.Text = "";
+            this.pricePerTextBox.Text = "";
+            this.stock_placetextBox.Text = "";
            
             this.notetextBox.Text = "";
         }
