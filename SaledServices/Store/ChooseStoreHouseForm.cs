@@ -91,6 +91,18 @@ namespace SaledServices
                     }
                 }
 
+                if (this.houseComboBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where house like '%" + houseComboBox.Text.Trim() + "%' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and house like '%" + houseComboBox.Text.Trim() + "%' ";
+                    }
+                }
+
                 mConn = new SqlConnection(Constlist.ConStr);
 
                 SqlCommand cmd = new SqlCommand();

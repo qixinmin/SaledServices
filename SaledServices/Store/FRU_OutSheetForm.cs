@@ -170,10 +170,10 @@ namespace SaledServices
             this.pricePerTextBox.Text = "";
             this.stock_placetextBox.Text = "";
             this.takertextBox.Text = "";
-            this.inputerTextBox.Text = "";
+            //this.inputerTextBox.Text = "";
             this.use_describetextBox.Text = "";
             this.notetextBox.Text = "";
-            this.input_dateTextBox.Text = "";
+            //this.input_dateTextBox.Text = "";
             this.currentStockNumbertextBox.Text = "";
         }
 
@@ -536,6 +536,18 @@ namespace SaledServices
                 return;
             }
 
+            if (vendorcomboBox.Text.Trim() == "")
+            {
+                MessageBox.Show("请选择厂商内容！");
+                return;
+            }
+
+            if (productcomboBox.Text.Trim() == "")
+            {
+                MessageBox.Show("请选择客户别内容！");
+                return;
+            }
+
             this.mpnTextBox.Text = dataGridView2.SelectedCells[0].Value.ToString();
             doRequestUsingMpn();
         }
@@ -579,6 +591,11 @@ namespace SaledServices
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void vendorcomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
     
