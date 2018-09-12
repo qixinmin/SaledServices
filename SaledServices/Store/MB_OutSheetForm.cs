@@ -66,7 +66,7 @@ namespace SaledServices
                         querySdr.Close();
                         //需要更新库房对应储位的数量 减去 本次出库的数量
                         //根据mpn查对应的查询
-                        cmd.CommandText = "select mb_brief,vendor,product,custom_serial_no,vendor_serial_no,mpn,stock_place,describe,vendormaterialNo,isdeclare from mb_in_stock where track_serial_no='" + this.track_serial_noTextBox.Text + "'";
+                        cmd.CommandText = "select mb_brief,vendor,product,custom_serial_no,vendor_serial_no,mpn,stock_place,describe,vendormaterialNo from mb_in_stock where track_serial_no='" + this.track_serial_noTextBox.Text + "'";
                         querySdr = cmd.ExecuteReader();
                         if (querySdr.HasRows == false)
                         {
@@ -87,7 +87,6 @@ namespace SaledServices
                             this.stock_placetextBox.Text = querySdr[6].ToString();
                             this.describeTextBox.Text = querySdr[7].ToString();
                             this.vendormaterialNotextBox.Text = querySdr[8].ToString();
-                            this.isDeclareTextBox.Text = querySdr[9].ToString();
                         }
                         querySdr.Close();                       
                     }
@@ -202,8 +201,7 @@ namespace SaledServices
                         this.custommaterialNoTextBox.Text.Trim() + "','" +
                         this.dpk_typeTextBox.Text.Trim() + "','" +
                         this.dpkpntextBox.Text.Trim() + "','" +
-                        this.stock_placetextBox.Text.Trim() + "','" +                      
-                        this.isDeclareTextBox.Text.Trim() + "','" +
+                        this.stock_placetextBox.Text.Trim() + "','" + 
                         this.notetextBox.Text.Trim() + "','" +
                         this.takertextBox.Text.Trim() + "','" +
                         this.inputerTextBox.Text.Trim() + "','" +
@@ -256,7 +254,6 @@ namespace SaledServices
             this.vendormaterialNotextBox.Text = "";
             this.dpk_typeTextBox.Text = "";
             this.dpkpntextBox.Text = "";
-            this.isDeclareTextBox.Text = "";
             this.notetextBox.Text = "";
             this.takertextBox.Text = "";          
            // this.input_dateTextBox.Text = "";
@@ -317,7 +314,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "ID", "厂商", "客户别", "MPN", "MPN简称", "MB描述", "客户序号", "厂商序号", "库位", "出库数量", "是否报关", "备注", "领用人", "出库人", "出库日期" };
+            string[] hTxt = { "ID", "厂商", "客户别", "MPN", "MPN简称", "MB描述", "客户序号", "厂商序号", "库位", "出库数量",  "备注", "领用人", "出库人", "出库日期" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -344,7 +341,6 @@ namespace SaledServices
             dr["dpk_type"] = this.dpk_typeTextBox.Text.Trim();
             dr["dpkpn"] = this.dpkpntextBox.Text.Trim();
             dr["custommaterialNo"] = this.custommaterialNoTextBox.Text.Trim();
-            dr["isdeclare"] = this.isDeclareTextBox.Text.Trim();           
             dr["note"] = this.notetextBox.Text.Trim();
            
             dr["taker"] = this.takertextBox.Text.Trim();
@@ -409,11 +405,10 @@ namespace SaledServices
 
             this.stock_placetextBox.Text= dataGridView1.SelectedCells[13].Value.ToString();
           
-            this.isDeclareTextBox.Text= dataGridView1.SelectedCells[14].Value.ToString();
-            this.notetextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
-            this.takertextBox.Text= dataGridView1.SelectedCells[16].Value.ToString();
-            this.inputerTextBox.Text= dataGridView1.SelectedCells[17].Value.ToString();
-            this.input_dateTextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();
+            this.notetextBox.Text = dataGridView1.SelectedCells[14].Value.ToString();
+            this.takertextBox.Text= dataGridView1.SelectedCells[15].Value.ToString();
+            this.inputerTextBox.Text= dataGridView1.SelectedCells[16].Value.ToString();
+            this.input_dateTextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
         }
 
         private void ReceiveOrderForm_Load(object sender, EventArgs e)

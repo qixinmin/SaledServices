@@ -56,8 +56,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.custom_serial_noTextBox = new System.Windows.Forms.TextBox();
             this.buy_order_serial_noComboBox = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.isDeclareTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
@@ -334,8 +332,6 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel3.Controls.Add(this.label7, 4, 2);
-            this.tableLayoutPanel3.Controls.Add(this.custom_serial_noTextBox, 5, 2);
             this.tableLayoutPanel3.Controls.Add(this.pricePerTextBox, 3, 4);
             this.tableLayoutPanel3.Controls.Add(this.describeTextBox, 3, 2);
             this.tableLayoutPanel3.Controls.Add(this.label11, 2, 0);
@@ -346,12 +342,8 @@
             this.tableLayoutPanel3.Controls.Add(this.vendormaterialNoTextBox, 3, 1);
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.buy_order_serial_noComboBox, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label17, 4, 0);
-            this.tableLayoutPanel3.Controls.Add(this.isDeclareTextBox, 5, 0);
             this.tableLayoutPanel3.Controls.Add(this.label14, 6, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label18, 4, 1);
             this.tableLayoutPanel3.Controls.Add(this.idTextBox, 7, 2);
-            this.tableLayoutPanel3.Controls.Add(this.mb_brieftextBox, 5, 1);
             this.tableLayoutPanel3.Controls.Add(this.label15, 6, 3);
             this.tableLayoutPanel3.Controls.Add(this.label19, 6, 0);
             this.tableLayoutPanel3.Controls.Add(this.inputerTextBox, 7, 3);
@@ -370,12 +362,16 @@
             this.tableLayoutPanel3.Controls.Add(this.productTextBox, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.label6, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.material_typeTextBox, 1, 4);
-            this.tableLayoutPanel3.Controls.Add(this.label22, 4, 3);
-            this.tableLayoutPanel3.Controls.Add(this.vendor_serial_noTextBox, 5, 3);
-            this.tableLayoutPanel3.Controls.Add(this.label13, 4, 5);
-            this.tableLayoutPanel3.Controls.Add(this.stock_in_numTextBox, 5, 5);
-            this.tableLayoutPanel3.Controls.Add(this.label8, 4, 4);
-            this.tableLayoutPanel3.Controls.Add(this.track_serial_noTextBox, 5, 4);
+            this.tableLayoutPanel3.Controls.Add(this.label18, 4, 0);
+            this.tableLayoutPanel3.Controls.Add(this.mb_brieftextBox, 5, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label7, 4, 1);
+            this.tableLayoutPanel3.Controls.Add(this.custom_serial_noTextBox, 5, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label22, 4, 2);
+            this.tableLayoutPanel3.Controls.Add(this.vendor_serial_noTextBox, 5, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label8, 4, 3);
+            this.tableLayoutPanel3.Controls.Add(this.track_serial_noTextBox, 5, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label13, 4, 4);
+            this.tableLayoutPanel3.Controls.Add(this.stock_in_numTextBox, 5, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -393,7 +389,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(683, 79);
+            this.label7.Location = new System.Drawing.Point(683, 41);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 16);
@@ -402,7 +398,7 @@
             // 
             // custom_serial_noTextBox
             // 
-            this.custom_serial_noTextBox.Location = new System.Drawing.Point(852, 83);
+            this.custom_serial_noTextBox.Location = new System.Drawing.Point(852, 45);
             this.custom_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.custom_serial_noTextBox.Name = "custom_serial_noTextBox";
             this.custom_serial_noTextBox.Size = new System.Drawing.Size(158, 26);
@@ -418,25 +414,6 @@
             this.buy_order_serial_noComboBox.TabIndex = 6;
             this.buy_order_serial_noComboBox.SelectedValueChanged += new System.EventHandler(this.buy_order_serial_noComboBox_SelectedValueChanged);
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(683, 3);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(72, 16);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "是否报关";
-            // 
-            // isDeclareTextBox
-            // 
-            this.isDeclareTextBox.Location = new System.Drawing.Point(852, 7);
-            this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.isDeclareTextBox.Name = "isDeclareTextBox";
-            this.isDeclareTextBox.ReadOnly = true;
-            this.isDeclareTextBox.Size = new System.Drawing.Size(158, 26);
-            this.isDeclareTextBox.TabIndex = 26;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -450,7 +427,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(683, 41);
+            this.label18.Location = new System.Drawing.Point(683, 3);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(56, 16);
@@ -469,7 +446,7 @@
             // 
             // mb_brieftextBox
             // 
-            this.mb_brieftextBox.Location = new System.Drawing.Point(852, 45);
+            this.mb_brieftextBox.Location = new System.Drawing.Point(852, 7);
             this.mb_brieftextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mb_brieftextBox.Name = "mb_brieftextBox";
             this.mb_brieftextBox.Size = new System.Drawing.Size(158, 26);
@@ -573,7 +550,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(683, 139);
+            this.label22.Location = new System.Drawing.Point(683, 79);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(72, 16);
@@ -582,7 +559,7 @@
             // 
             // vendor_serial_noTextBox
             // 
-            this.vendor_serial_noTextBox.Location = new System.Drawing.Point(852, 143);
+            this.vendor_serial_noTextBox.Location = new System.Drawing.Point(852, 83);
             this.vendor_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendor_serial_noTextBox.Name = "vendor_serial_noTextBox";
             this.vendor_serial_noTextBox.Size = new System.Drawing.Size(158, 26);
@@ -592,7 +569,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(683, 219);
+            this.label13.Location = new System.Drawing.Point(683, 178);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(72, 16);
@@ -601,7 +578,7 @@
             // 
             // stock_in_numTextBox
             // 
-            this.stock_in_numTextBox.Location = new System.Drawing.Point(852, 223);
+            this.stock_in_numTextBox.Location = new System.Drawing.Point(852, 182);
             this.stock_in_numTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.stock_in_numTextBox.Name = "stock_in_numTextBox";
             this.stock_in_numTextBox.ReadOnly = true;
@@ -612,7 +589,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(683, 178);
+            this.label8.Location = new System.Drawing.Point(683, 139);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(72, 16);
@@ -621,7 +598,7 @@
             // 
             // track_serial_noTextBox
             // 
-            this.track_serial_noTextBox.Location = new System.Drawing.Point(852, 182);
+            this.track_serial_noTextBox.Location = new System.Drawing.Point(852, 143);
             this.track_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.track_serial_noTextBox.Name = "track_serial_noTextBox";
             this.track_serial_noTextBox.Size = new System.Drawing.Size(158, 26);
@@ -775,7 +752,5 @@
         private System.Windows.Forms.TextBox orderNumberTextBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox track_serial_noTextBox;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox isDeclareTextBox;
     }
 }

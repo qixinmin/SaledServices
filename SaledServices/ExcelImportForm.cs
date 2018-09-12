@@ -169,6 +169,13 @@ namespace SaledServices
                 this.importButton.Enabled = true;
                 return;
             }
+            else if (this.updateDBRadio.Checked)
+            {
+                updateDB("updateDB", "store_house");
+                this.importButton.Enabled = true;
+                return;
+            }
+
 
             app = new Microsoft.Office.Interop.Excel.Application();
             app.DisplayAlerts = false;
@@ -362,6 +369,69 @@ namespace SaledServices
             }
 
             this.importButton.Enabled = true;
+        }
+
+        private void updateDB(string sheetName, string tableName)
+        {
+            app = new Microsoft.Office.Interop.Excel.Application();
+            app.DisplayAlerts = false;
+            wbs = app.Workbooks;
+            wb = wbs.Add(filePath.Text);            
+            
+            wb = wbs.Open(filePath.Text, 0, false, 5, string.Empty, string.Empty, 
+                false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, 
+                string.Empty, true, false, 0, true, 1, 0);
+
+            Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
+            int rowLength = ws.UsedRange.Rows.Count;
+            int columnLength = ws.UsedRange.Columns.Count;            
+
+            string s = "";
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+                SqlTransaction transaction = null;
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    transaction = conn.BeginTransaction();
+                    cmd.Transaction = transaction;
+
+                    for (int i = 2; i <= rowLength; i++)
+                    {
+                        //string vendor = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 3]).Value2.ToString();
+                        string mpn = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 4]).Value2.ToString();
+                        string combinMpn = mpn+"_COMPAL";
+                        s = "update store_house set mpn ='"+combinMpn+"' where mpn='"+mpn+"'";
+                        cmd.CommandText = s;
+                        cmd.ExecuteNonQuery();
+
+                    }
+                    transaction.Commit();
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+                transaction.Dispose();
+                conn.Dispose();
+
+                MessageBox.Show("修改" + tableName + "完成！");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(s + "#" + ex.ToString());
+            }
+            finally
+            {
+                wbs.Close();
+            }
         }
         [DllImport("User32.dll")]
         public static extern int GetWindowThreadProcessId(IntPtr hWnd, out int ProcessId);

@@ -56,8 +56,6 @@
             this.track_serial_noTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.custommaterialNoTextBox = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.isDeclareTextBox = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.mb_brieftextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -74,17 +72,17 @@
             this.stock_placetextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.vendormaterialNotextBox = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.queryStock = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.queryStock = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // add
@@ -241,8 +239,6 @@
             this.tableLayoutPanel3.Controls.Add(this.label12, 2, 4);
             this.tableLayoutPanel3.Controls.Add(this.label7, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.custommaterialNoTextBox, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label17, 6, 4);
-            this.tableLayoutPanel3.Controls.Add(this.isDeclareTextBox, 7, 4);
             this.tableLayoutPanel3.Controls.Add(this.label9, 4, 4);
             this.tableLayoutPanel3.Controls.Add(this.describeTextBox, 5, 4);
             this.tableLayoutPanel3.Controls.Add(this.label2, 2, 1);
@@ -411,25 +407,6 @@
             this.custommaterialNoTextBox.TabIndex = 24;
             this.custommaterialNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custommaterialNoTextBox_KeyPress);
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(1021, 191);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(72, 16);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "是否报关";
-            // 
-            // isDeclareTextBox
-            // 
-            this.isDeclareTextBox.Location = new System.Drawing.Point(1190, 195);
-            this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.isDeclareTextBox.Name = "isDeclareTextBox";
-            this.isDeclareTextBox.ReadOnly = true;
-            this.isDeclareTextBox.Size = new System.Drawing.Size(158, 26);
-            this.isDeclareTextBox.TabIndex = 26;
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -580,40 +557,6 @@
             this.vendormaterialNotextBox.Size = new System.Drawing.Size(158, 26);
             this.vendormaterialNotextBox.TabIndex = 5;
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 5;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.4849F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.9325F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.85227F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.75F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 258F));
-            this.tableLayoutPanel2.Controls.Add(this.delete, 4, 0);
-            this.tableLayoutPanel2.Controls.Add(this.modify, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.query, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.add, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.queryStock, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 253);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1362, 49);
-            this.tableLayoutPanel2.TabIndex = 9;
-            // 
-            // queryStock
-            // 
-            this.queryStock.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.queryStock.Location = new System.Drawing.Point(112, 9);
-            this.queryStock.Margin = new System.Windows.Forms.Padding(4);
-            this.queryStock.Name = "queryStock";
-            this.queryStock.Size = new System.Drawing.Size(100, 31);
-            this.queryStock.TabIndex = 0;
-            this.queryStock.Text = "查询库存";
-            this.queryStock.UseVisualStyleBackColor = true;
-            this.queryStock.Click += new System.EventHandler(this.queryStock_Click);
-            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
@@ -667,6 +610,40 @@
             this.dataGridView2.VirtualMode = true;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.4849F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.9325F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.85227F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.75F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 258F));
+            this.tableLayoutPanel2.Controls.Add(this.delete, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.modify, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.query, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.add, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.queryStock, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 253);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1362, 49);
+            this.tableLayoutPanel2.TabIndex = 9;
+            // 
+            // queryStock
+            // 
+            this.queryStock.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.queryStock.Location = new System.Drawing.Point(112, 9);
+            this.queryStock.Margin = new System.Windows.Forms.Padding(4);
+            this.queryStock.Name = "queryStock";
+            this.queryStock.Size = new System.Drawing.Size(100, 31);
+            this.queryStock.TabIndex = 0;
+            this.queryStock.Text = "查询库存";
+            this.queryStock.UseVisualStyleBackColor = true;
+            this.queryStock.Click += new System.EventHandler(this.queryStock_Click);
+            // 
             // MB_OutSheetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -682,10 +659,10 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -709,8 +686,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox inputerTextBox;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox isDeclareTextBox;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox mb_brieftextBox;
         private System.Windows.Forms.Label label19;

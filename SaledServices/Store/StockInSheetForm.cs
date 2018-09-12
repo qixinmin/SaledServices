@@ -56,11 +56,7 @@ namespace SaledServices
                         this.totalMoneyTextBox.Text.Trim() + "','" +
                         this.stock_in_numTextBox.Text.Trim() + "','" +                       
                         this.inputerTextBox.Text.Trim() + "','" +
-                        this.input_dateTextBox.Text.Trim() + "','" +
-                        this.isDeclareTextBox.Text.Trim() + "','" +
-                        this.declare_unittextBox.Text.Trim() + "','" +
-                        this.declare_numbertextBox.Text.Trim() + "','" +
-                        this.custom_request_numbertextBox.Text.Trim() + "')";
+                        this.input_dateTextBox.Text.Trim()  + "')";
 
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
@@ -162,8 +158,7 @@ namespace SaledServices
             this.pricePerTextBox.Text = "";
             this.material_nameTextBox.Text = "";
             this.totalMoneyTextBox.Text = "";
-            this.stock_in_numTextBox.Text = "";
-            this.isDeclareTextBox.Text = "";                    
+            this.stock_in_numTextBox.Text = "";        
         }
 
         private void modify_Click(object sender, EventArgs e)
@@ -187,11 +182,6 @@ namespace SaledServices
             dr["stock_in_num"] = this.stock_in_numTextBox.Text.Trim();
             dr["inputer"] = this.inputerTextBox.Text.Trim();
             dr["input_date"] = this.input_dateTextBox.Text.Trim();
-            dr["isdeclare"] = this.isDeclareTextBox.Text.Trim();
-
-            dr["declare_unit"] = this.declare_unittextBox.Text.Trim();
-            dr["declare_number"] = this.declare_numbertextBox.Text.Trim();
-            dr["custom_request_number"] = this.custom_request_numbertextBox.Text.Trim();
         
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);

@@ -34,6 +34,7 @@
             this.findFile = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.userInputRadioButton = new System.Windows.Forms.RadioButton();
+            this.ngstoreInfoImport = new System.Windows.Forms.RadioButton();
             this.storeInfoImportradioButton = new System.Windows.Forms.RadioButton();
             this.stock_in_sheetradioButton = new System.Windows.Forms.RadioButton();
             this.faultTableRadioButton = new System.Windows.Forms.RadioButton();
@@ -42,7 +43,7 @@
             this.LCFC_MBBOMradioButton = new System.Windows.Forms.RadioButton();
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
-            this.ngstoreInfoImport = new System.Windows.Forms.RadioButton();
+            this.updateDBRadio = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +80,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.updateDBRadio);
             this.panel1.Controls.Add(this.userInputRadioButton);
             this.panel1.Controls.Add(this.ngstoreInfoImport);
             this.panel1.Controls.Add(this.storeInfoImportradioButton);
@@ -92,7 +94,7 @@
             this.panel1.Location = new System.Drawing.Point(20, 149);
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(430, 495);
+            this.panel1.Size = new System.Drawing.Size(433, 495);
             this.panel1.TabIndex = 4;
             // 
             // userInputRadioButton
@@ -105,6 +107,17 @@
             this.userInputRadioButton.TabStop = true;
             this.userInputRadioButton.Text = "用户资料导入";
             this.userInputRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // ngstoreInfoImport
+            // 
+            this.ngstoreInfoImport.AutoSize = true;
+            this.ngstoreInfoImport.Location = new System.Drawing.Point(22, 386);
+            this.ngstoreInfoImport.Name = "ngstoreInfoImport";
+            this.ngstoreInfoImport.Size = new System.Drawing.Size(207, 24);
+            this.ngstoreInfoImport.TabIndex = 4;
+            this.ngstoreInfoImport.TabStop = true;
+            this.ngstoreInfoImport.Text = "不良品库房储位导入";
+            this.ngstoreInfoImport.UseVisualStyleBackColor = true;
             // 
             // storeInfoImportradioButton
             // 
@@ -196,16 +209,16 @@
             this.mbmaterial.Text = "MB物料对照表";
             this.mbmaterial.UseVisualStyleBackColor = true;
             // 
-            // ngstoreInfoImport
+            // updateDBRadio
             // 
-            this.ngstoreInfoImport.AutoSize = true;
-            this.ngstoreInfoImport.Location = new System.Drawing.Point(22, 386);
-            this.ngstoreInfoImport.Name = "ngstoreInfoImport";
-            this.ngstoreInfoImport.Size = new System.Drawing.Size(207, 24);
-            this.ngstoreInfoImport.TabIndex = 4;
-            this.ngstoreInfoImport.TabStop = true;
-            this.ngstoreInfoImport.Text = "不良品库房储位导入";
-            this.ngstoreInfoImport.UseVisualStyleBackColor = true;
+            this.updateDBRadio.AutoSize = true;
+            this.updateDBRadio.Location = new System.Drawing.Point(272, 438);
+            this.updateDBRadio.Name = "updateDBRadio";
+            this.updateDBRadio.Size = new System.Drawing.Size(107, 24);
+            this.updateDBRadio.TabIndex = 5;
+            this.updateDBRadio.TabStop = true;
+            this.updateDBRadio.Text = "更新库存";
+            this.updateDBRadio.UseVisualStyleBackColor = true;
             // 
             // ExcelImportForm
             // 
@@ -245,5 +258,6 @@
         private System.Windows.Forms.RadioButton storeInfoImportradioButton;
         private System.Windows.Forms.RadioButton userInputRadioButton;
         private System.Windows.Forms.RadioButton ngstoreInfoImport;
+        private System.Windows.Forms.RadioButton updateDBRadio;
     }
 }

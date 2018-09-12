@@ -444,7 +444,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 
                 List<useClass> list = new List<useClass>();
-                string sql = "select mpn,stock_place,stock_in_num,vendor,describe from fru_smt_in_stock where vendor='" + this.vendorcomboBox.Text + "' and material_type='FRU'";
+                string sql = "select top 100 mpn,stock_place,stock_in_num,vendor,describe from fru_smt_in_stock where vendor='" + this.vendorcomboBox.Text + "' and material_type='FRU'";
 
                 if (this.productcomboBox.Text != "")
                 {
@@ -473,7 +473,22 @@ namespace SaledServices
                 while (querySdr.Read())
                 {
                     useClass useclass = new useClass();
-                    useclass.mpn = querySdr[0].ToString();
+                    string mpn = querySdr[0].ToString();
+                    
+                    bool exist = false;
+                    foreach(useClass temp in list)
+                    {
+                        if(temp.mpn == mpn)
+                        {
+                            exist = true;
+                            break;
+                        }
+                    }
+                    if(exist)
+                    {
+                        continue;
+                    }
+                    useclass.mpn = mpn;
                     useclass.stock_place = querySdr[1].ToString();
                     useclass.stock_in_num = querySdr[2].ToString();
                     useclass.vendor = querySdr[3].ToString();

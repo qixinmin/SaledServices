@@ -75,6 +75,15 @@ namespace SaledServices
                 return;
             }
 
+            if (this.CPU.Checked || this.bgaSnTextBox.Enabled)
+            {
+                if (this.bgaSnTextBox.Text == "")
+                {
+                    MessageBox.Show("CPU SN号码为空！");
+                    return;
+                }
+            }
+
             if (this.mpnTextBox.Text.Trim() == "" || this.buy_order_serial_noComboBox.Text.Trim() =="")
             {
                 MessageBox.Show("MPN 或订单号为空！");
@@ -84,6 +93,12 @@ namespace SaledServices
             if (this.stock_placetextBox.Text.Trim() == "")
             {
                 MessageBox.Show("库位为空，请检查！");
+                return;
+            }
+
+            if (this.bga_brieftextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("BGA简述不能为空！");
                 return;
             }
 
@@ -164,8 +179,6 @@ namespace SaledServices
                         this.vendormaterialNoTextBox.Text.Trim() + "','" +
                         this.describeTextBox.Text.Trim() + "','" +
                         this.pricePerTextBox.Text.Trim() + "','" +
-                        this.isDeclareTextBox.Text.Trim() + "','" +
-
                         this.bga_brieftextBox.Text.Trim() + "','" +
                         this.orderNumberTextBox.Text.Trim() + "','" +
                         this.stock_in_numTextBox.Text.Trim() + "','" +
@@ -192,8 +205,24 @@ namespace SaledServices
                     cmd.CommandText = "update store_house set mpn = '" + this.mpnTextBox.Text.Trim()+"_"+this.vendorTextBox.Text.Trim() + "',number = '" + stockNumber + "' where house='"+chooseStock.house+"' and place='"+chooseStock.place+"'";
                     cmd.ExecuteNonQuery();
 
-                    //清除历史缓存，保证下次选择是新的
-                    chooseStock.house = "";
+                    if (status == "close")
+                    {
+                        //清除历史缓存，保证下次选择是新的
+                        chooseStock.house = "";
+
+                        this.CPU.Checked = false;
+                        this.PCH.Checked = false;
+                        this.VGA.Checked = false;
+
+                        this.mpnTextBox.Text = "";
+                        this.vendorTextBox.Text = "";
+                        this.material_typeTextBox.Text = "";
+                        this.vendormaterialNoTextBox.Text = "";
+
+                        this.describeTextBox.Text = "";
+                        this.bga_brieftextBox.Text = "";
+                        this.material_nameTextBox.Text = "";
+                    }                  
                 }
                 else
                 {
@@ -264,7 +293,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "单价", "是否报关", "BGA简称", "订单数量","入库数量","BGASN", "库位", "备注", "输入人", "日期" };
+            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "单价",  "BGA简称", "订单数量","入库数量","BGASN", "库位", "备注", "输入人", "日期" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -287,7 +316,6 @@ namespace SaledServices
             dr["vendormaterialNo"] = this.vendormaterialNoTextBox.Text.Trim();
             dr["describe"] = this.describeTextBox.Text.Trim();
             dr["pricePer"] = this.pricePerTextBox.Text.Trim();
-            dr["isdeclare"] = this.isDeclareTextBox.Text.Trim();
 
             dr["bga_describe"] = this.bga_brieftextBox.Text.Trim();
             dr["order_number"] = this.orderNumberTextBox.Text.Trim();
@@ -348,18 +376,17 @@ namespace SaledServices
             this.vendormaterialNoTextBox.Text = dataGridView1.SelectedCells[7].Value.ToString();
             this.describeTextBox.Text = dataGridView1.SelectedCells[8].Value.ToString();
             this.pricePerTextBox.Text = dataGridView1.SelectedCells[9].Value.ToString();
-            this.isDeclareTextBox.Text = dataGridView1.SelectedCells[10].Value.ToString();
-            this.bga_brieftextBox.Text= dataGridView1.SelectedCells[11].Value.ToString();
+            this.bga_brieftextBox.Text= dataGridView1.SelectedCells[10].Value.ToString();
 
-            this.orderNumberTextBox.Text = dataGridView1.SelectedCells[12].Value.ToString();
-            this.stock_in_numTextBox.Text= dataGridView1.SelectedCells[13].Value.ToString();
+            this.orderNumberTextBox.Text = dataGridView1.SelectedCells[11].Value.ToString();
+            this.stock_in_numTextBox.Text= dataGridView1.SelectedCells[12].Value.ToString();
             
-            this.bgaSnTextBox.Text = dataGridView1.SelectedCells[14].Value.ToString();
+            this.bgaSnTextBox.Text = dataGridView1.SelectedCells[13].Value.ToString();
            
-            this.stock_placetextBox.Text= dataGridView1.SelectedCells[15].Value.ToString();
-            this.notetextBox.Text= dataGridView1.SelectedCells[16].Value.ToString();
-            this.inputerTextBox.Text= dataGridView1.SelectedCells[17].Value.ToString();
-            this.input_dateTextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();
+            this.stock_placetextBox.Text= dataGridView1.SelectedCells[14].Value.ToString();
+            this.notetextBox.Text= dataGridView1.SelectedCells[15].Value.ToString();
+            this.inputerTextBox.Text= dataGridView1.SelectedCells[16].Value.ToString();
+            this.input_dateTextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
         }
 
         private void ReceiveOrderForm_Load(object sender, EventArgs e)
@@ -389,7 +416,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,pricePer,material_name,isdeclare,number from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "' and material_type in ('BGA') and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim()+ "'";
+                cmd.CommandText = "select buy_order_serial_no, vendor,buy_type,product,material_type,vendormaterialNo, describe,pricePer,material_name,number from stock_in_sheet where mpn='" + this.mpnTextBox.Text.Trim() + "' and material_type in ('BGA') and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim()+ "'";
 
                 SqlDataReader querySdr = cmd.ExecuteReader();
 
@@ -404,8 +431,7 @@ namespace SaledServices
                     this.describeTextBox.Text = querySdr[6].ToString();
                     this.pricePerTextBox.Text = querySdr[7].ToString();
                     this.material_nameTextBox.Text = querySdr[8].ToString();
-                    this.isDeclareTextBox.Text = querySdr[9].ToString();
-                    this.orderNumberTextBox.Text = querySdr[10].ToString();
+                    this.orderNumberTextBox.Text = querySdr[9].ToString();
                 }
                 querySdr.Close();
 
@@ -449,15 +475,15 @@ namespace SaledServices
 
         private void clearInputText()
         {
-            this.bga_brieftextBox.Text = "";
-            this.stock_in_numTextBox.Text = "";
+          //  this.bga_brieftextBox.Text = "";
+            if (!this.CPU.Checked)
+            {
+                this.stock_in_numTextBox.Text = "";
+            }
+            
             //this.stock_placetextBox.Text = "";
             this.notetextBox.Text = "";
-            this.bgaSnTextBox.Text = "";
-
-            this.CPU.Checked = false;
-            this.PCH.Checked = false;
-            this.VGA.Checked = false;
+            this.bgaSnTextBox.Text = "";         
         }
 
         private void mpnTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -559,6 +585,14 @@ namespace SaledServices
             this.mpnTextBox.Text = dataGridViewToReturn.SelectedCells[1].Value.ToString();
             this.stock_placetextBox.Text = "";
             this.bga_brieftextBox.Text = "";
+
+            this.notetextBox.Text = "";
+            this.bgaSnTextBox.Text = "";
+
+            this.CPU.Checked = false;
+            this.PCH.Checked = false;
+            this.VGA.Checked = false;
+
             simulateMpnEnter();
         }
 
@@ -624,9 +658,10 @@ namespace SaledServices
             {
                 type = "pcb_brief_describe";
                 mpnType = "vendor_pch_mpn";
-                this.stock_in_numTextBox.Enabled = false;
-                this.stock_in_numTextBox.Text = "1";
-                this.bgaSnTextBox.Enabled = true;
+                this.stock_in_numTextBox.Enabled = true;
+             //   this.stock_in_numTextBox.Text = "1";
+                this.bgaSnTextBox.Enabled = false;
+                this.bgaSnTextBox.Clear();
             }
             else if (CPU.Checked )
             {

@@ -54,7 +54,6 @@
             this.describeTextBox = new System.Windows.Forms.TextBox();
             this.numberTextBox = new System.Windows.Forms.TextBox();
             this.pricePerTextBox = new System.Windows.Forms.TextBox();
-            this.isDeclareTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.totalMoneyTextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -68,14 +67,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.inputerTextBox = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.material_nameTextBox = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.custom_request_numbertextBox = new System.Windows.Forms.TextBox();
-            this.declare_numbertextBox = new System.Windows.Forms.TextBox();
-            this.declare_unittextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -332,15 +324,6 @@
             this.pricePerTextBox.Size = new System.Drawing.Size(158, 26);
             this.pricePerTextBox.TabIndex = 5;
             // 
-            // isDeclareTextBox
-            // 
-            this.isDeclareTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.isDeclareTextBox.Location = new System.Drawing.Point(1190, 7);
-            this.isDeclareTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.isDeclareTextBox.Name = "isDeclareTextBox";
-            this.isDeclareTextBox.Size = new System.Drawing.Size(165, 26);
-            this.isDeclareTextBox.TabIndex = 5;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -504,8 +487,6 @@
             this.tableLayoutPanel3.Controls.Add(this.label3, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.vendormaterialNoTextBox, 3, 1);
             this.tableLayoutPanel3.Controls.Add(this.inputerTextBox, 5, 3);
-            this.tableLayoutPanel3.Controls.Add(this.label17, 6, 0);
-            this.tableLayoutPanel3.Controls.Add(this.isDeclareTextBox, 7, 0);
             this.tableLayoutPanel3.Controls.Add(this.material_nameTextBox, 5, 0);
             this.tableLayoutPanel3.Controls.Add(this.buy_order_serial_noTextBox, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.vendorTextBox, 1, 1);
@@ -515,12 +496,6 @@
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label14, 6, 4);
             this.tableLayoutPanel3.Controls.Add(this.idTextBox, 7, 4);
-            this.tableLayoutPanel3.Controls.Add(this.label18, 6, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label19, 6, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label20, 6, 3);
-            this.tableLayoutPanel3.Controls.Add(this.custom_request_numbertextBox, 7, 3);
-            this.tableLayoutPanel3.Controls.Add(this.declare_numbertextBox, 7, 2);
-            this.tableLayoutPanel3.Controls.Add(this.declare_unittextBox, 7, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -544,16 +519,6 @@
             this.inputerTextBox.Size = new System.Drawing.Size(158, 26);
             this.inputerTextBox.TabIndex = 5;
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(1021, 3);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(72, 16);
-            this.label17.TabIndex = 4;
-            this.label17.Text = "是否报关";
-            // 
             // material_nameTextBox
             // 
             this.material_nameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -562,69 +527,6 @@
             this.material_nameTextBox.Name = "material_nameTextBox";
             this.material_nameTextBox.Size = new System.Drawing.Size(158, 26);
             this.material_nameTextBox.TabIndex = 5;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(1021, 50);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(72, 16);
-            this.label18.TabIndex = 4;
-            this.label18.Text = "申报单位";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(1021, 97);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(72, 16);
-            this.label19.TabIndex = 4;
-            this.label19.Text = "报关单号";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(1021, 144);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(72, 16);
-            this.label20.TabIndex = 4;
-            this.label20.Text = "申请单号";
-            // 
-            // custom_request_numbertextBox
-            // 
-            this.custom_request_numbertextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custom_request_numbertextBox.Enabled = false;
-            this.custom_request_numbertextBox.Location = new System.Drawing.Point(1190, 148);
-            this.custom_request_numbertextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.custom_request_numbertextBox.Name = "custom_request_numbertextBox";
-            this.custom_request_numbertextBox.ReadOnly = true;
-            this.custom_request_numbertextBox.Size = new System.Drawing.Size(165, 26);
-            this.custom_request_numbertextBox.TabIndex = 5;
-            // 
-            // declare_numbertextBox
-            // 
-            this.declare_numbertextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.declare_numbertextBox.Enabled = false;
-            this.declare_numbertextBox.Location = new System.Drawing.Point(1190, 101);
-            this.declare_numbertextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.declare_numbertextBox.Name = "declare_numbertextBox";
-            this.declare_numbertextBox.ReadOnly = true;
-            this.declare_numbertextBox.Size = new System.Drawing.Size(165, 26);
-            this.declare_numbertextBox.TabIndex = 5;
-            // 
-            // declare_unittextBox
-            // 
-            this.declare_unittextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.declare_unittextBox.Enabled = false;
-            this.declare_unittextBox.Location = new System.Drawing.Point(1190, 54);
-            this.declare_unittextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.declare_unittextBox.Name = "declare_unittextBox";
-            this.declare_unittextBox.ReadOnly = true;
-            this.declare_unittextBox.Size = new System.Drawing.Size(165, 26);
-            this.declare_unittextBox.TabIndex = 5;
             // 
             // tableLayoutPanel2
             // 
@@ -694,7 +596,6 @@
         private System.Windows.Forms.TextBox describeTextBox;
         private System.Windows.Forms.TextBox numberTextBox;
         private System.Windows.Forms.TextBox pricePerTextBox;
-        private System.Windows.Forms.TextBox isDeclareTextBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox totalMoneyTextBox;
         private System.Windows.Forms.Label label13;
@@ -709,13 +610,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TextBox inputerTextBox;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox material_nameTextBox;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox custom_request_numbertextBox;
-        private System.Windows.Forms.TextBox declare_numbertextBox;
-        private System.Windows.Forms.TextBox declare_unittextBox;
     }
 }

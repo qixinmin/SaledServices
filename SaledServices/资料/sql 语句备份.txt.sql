@@ -185,7 +185,6 @@ custommaterialNo NVARCHAR(128) NOT NULL,/*客户料号->输入*/
 dpk_type NVARCHAR(128),/*DPK类型 物料对照表带出*/
 dpkpn NVARCHAR(128),/*DPKPN 物料对照表带出*/
 stock_place NVARCHAR(128),/*库位*/
-isdeclare NVARCHAR(128), /*是否报关*/
 note NVARCHAR(128),/*备注*/
 taker NVARCHAR(128),/*领用人*/
 inputer  NVARCHAR(128),/*输入人*/
@@ -208,7 +207,6 @@ input_number  NVARCHAR(128),/*入库数量*/
 stock_place NVARCHAR(128),/*库位*/
 
 pricePer NVARCHAR(128) NOT NULL,/*单价*/
-isdeclare NVARCHAR(128), /*是否报关*/
 
 mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
 custom_serial_no NVARCHAR(128) NOT NULL,/*客户序号*/
@@ -230,7 +228,6 @@ bga_describe NVARCHAR(128) NOT NULL,/*BGA描述*/
 
 stock_place NVARCHAR(128),/*库位*/
 out_number  NVARCHAR(128),/*出库数量*/
-isdeclare NVARCHAR(128), /*是否报关*/
 note NVARCHAR(128),/*备注*/
 
 taker NVARCHAR(128),/*领用人*/
@@ -249,7 +246,6 @@ mpn NVARCHAR(128) NOT NULL, /*MPN*/
 vendormaterialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
 describe NVARCHAR(128) NOT NULL,/*描述*/
 pricePer NVARCHAR(128) NOT NULL,/*单价*/
-isdeclare NVARCHAR(128), /*是否报关*/
 
 bga_describe NVARCHAR(128) NOT NULL,/*BGA简述*/
 order_number NVARCHAR(128),/*订单数量*/

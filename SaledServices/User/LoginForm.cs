@@ -213,33 +213,73 @@ namespace SaledServices
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            parseMesReturn("SET THRESHOLD=98.99%(对比阀值)\n"+"SET PORTIDBOM=8C16451DE86B");
-
-            string address = "http://192.168.1.1";
-            string sn = "BOXID(7位)";
-            RestClient client = new RestClient(address);
-
-            RestRequest request = new RestRequest(RestSharp.Method.POST);
-            request.AddBody("SET SN=" + sn + "\r\nSET LINE_NAME=1ASSYA\r\nSET GOURP_NAME=ASSY_ISI");
-            client.Timeout = 500;//ms
+            return;
             try
             {
-                IRestResponse response = client.Execute(request);
-                var content = response.Content; // raw content as string
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+                SqlTransaction transaction = null;
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
 
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    //内容解析
+                    transaction = conn.BeginTransaction();
+                    cmd.Transaction = transaction;
+                    string sql = "select distinct A.mpn, B.vendor from store_house as A left join LCFC_MBBOM_table as B on A.mpn = B.material_mpn";
+                    Dictionary<string,string> mpnDic = new Dictionary<string,string>();
+
+                    cmd.CommandText = sql;
+                    SqlDataReader sqlreader = cmd.ExecuteReader();
+                    while (sqlreader.Read())
+                    {
+                        if(sqlreader[0] !=null && sqlreader[1] !=null &&
+                            sqlreader[0].ToString() !=null &&sqlreader[1].ToString() != null &&
+                            sqlreader[0].ToString().Trim() != "" && sqlreader[1].ToString().Trim() !="" &&
+                            sqlreader[0].ToString().Trim().StartsWith("45") == false &&
+                            sqlreader[0].ToString().Trim().StartsWith("46") == false)
+                        {
+                            try
+                            {
+                                mpnDic.Add(sqlreader[0].ToString(), sqlreader[1].ToString());
+                            }
+                            catch (Exception ex)
+                            {
+                            
+                            }
+                        }                       
+                    }
+                    sqlreader.Close();
+
+                    foreach (string key in mpnDic.Keys)
+                    {
+                        string combinMpn = key + "_" + mpnDic[key];
+                        sql = "update store_house set mpn ='" + combinMpn + "' where mpn='" + key + "'";
+                        cmd.CommandText = sql;
+                        cmd.ExecuteNonQuery();
+
+                    }
+                    transaction.Commit();
                 }
-                else// if (response.StatusCode == System.Net.HttpStatusCode.RequestTimeout)
+                else
                 {
-                    MessageBox.Show(response.StatusCode.ToString());
-                    //网络失败
+                    MessageBox.Show("SaledService is not opened");
                 }
+
+                conn.Close();
+                transaction.Dispose();
+                conn.Dispose();
+
+                MessageBox.Show("修改完成！");
             }
             catch (Exception ex)
             {
-                //网络失败
+                MessageBox.Show("SaledService is not opened");
+            }
+            finally
+            {
+                //wbs.Close();
             }
         }
 

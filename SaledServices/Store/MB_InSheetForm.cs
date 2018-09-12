@@ -191,7 +191,6 @@ namespace SaledServices
                         this.stock_in_numTextBox.Text.Trim() + "','" +
                         this.stock_placetextBox.Text.Trim() + "','" +
                         this.pricePerTextBox.Text.Trim() + "','" +
-                        this.isDeclareTextBox.Text.Trim() + "','" +
                         this.mb_brieftextBox.Text.Trim() + "','" +
                         this.custom_serial_noTextBox.Text.Trim() + "','" +
                         this.vendor_serial_noTextBox.Text.Trim() + "','" +
@@ -248,7 +247,6 @@ namespace SaledServices
                         this.buy_typeTextBox.Text = "";
                         this.vendormaterialNoTextBox.Text = "";
                         this.pricePerTextBox.Text = "";
-                        this.isDeclareTextBox.Text = "";
                         this.stock_placetextBox.Text = "";
                         this.mb_brieftextBox.Text = "";
                         this.orderNumberTextBox.Text = "";
@@ -326,7 +324,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "订单数量", "入库数量", "库位","单价", "是否报关", "MB简称", "客户序号", "厂商序号","跟踪条码", "备注", "输入人", "日期" };
+            string[] hTxt = { "ID", "采购订单编号", "厂商", "采购类别", "客户别", "材料大类", "MPN", "厂商料号", "描述", "订单数量", "入库数量", "库位","单价", "MB简称", "客户序号", "厂商序号","跟踪条码", "备注", "输入人", "日期" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -353,7 +351,6 @@ namespace SaledServices
             dr["stock_place"]= this.stock_placetextBox.Text.Trim();
 
             dr["pricePer"] = this.pricePerTextBox.Text.Trim();
-            dr["isdeclare"] = this.isDeclareTextBox.Text.Trim();
 
             dr["mb_brief"] = this.mb_brieftextBox.Text.Trim();
            
@@ -417,16 +414,15 @@ namespace SaledServices
             this.stock_in_numTextBox.Text = dataGridView1.SelectedCells[10].Value.ToString();
             this.stock_placetextBox.Text = dataGridView1.SelectedCells[11].Value.ToString();
             this.pricePerTextBox.Text = dataGridView1.SelectedCells[12].Value.ToString();
-            this.isDeclareTextBox.Text = dataGridView1.SelectedCells[13].Value.ToString();
-            this.mb_brieftextBox.Text = dataGridView1.SelectedCells[14].Value.ToString();
-            this.custom_serial_noTextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
-            this.vendor_serial_noTextBox.Text = dataGridView1.SelectedCells[16].Value.ToString();
+            this.mb_brieftextBox.Text = dataGridView1.SelectedCells[13].Value.ToString();
+            this.custom_serial_noTextBox.Text = dataGridView1.SelectedCells[14].Value.ToString();
+            this.vendor_serial_noTextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
 
-            this.track_serial_noTextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
+            this.track_serial_noTextBox.Text = dataGridView1.SelectedCells[16].Value.ToString();
 
-            this.notetextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();
-            this.inputerTextBox.Text = dataGridView1.SelectedCells[19].Value.ToString();
-            this.input_dateTextBox.Text = dataGridView1.SelectedCells[20].Value.ToString();
+            this.notetextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
+            this.inputerTextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();
+            this.input_dateTextBox.Text = dataGridView1.SelectedCells[19].Value.ToString();
         }
 
         private void ReceiveOrderForm_Load(object sender, EventArgs e)
