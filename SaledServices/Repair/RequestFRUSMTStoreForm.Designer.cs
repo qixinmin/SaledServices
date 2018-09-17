@@ -47,13 +47,15 @@
             this.materialMpnTextBox = new System.Windows.Forms.TextBox();
             this.materialDescribetextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.materialDestextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(96, 72);
+            this.label1.Location = new System.Drawing.Point(96, 94);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 12);
             this.label1.TabIndex = 0;
@@ -61,7 +63,7 @@
             // 
             // mb_brieftextBox
             // 
-            this.mb_brieftextBox.Location = new System.Drawing.Point(182, 69);
+            this.mb_brieftextBox.Location = new System.Drawing.Point(182, 91);
             this.mb_brieftextBox.Name = "mb_brieftextBox";
             this.mb_brieftextBox.Size = new System.Drawing.Size(100, 21);
             this.mb_brieftextBox.TabIndex = 6;
@@ -70,7 +72,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(96, 105);
+            this.label3.Location = new System.Drawing.Point(96, 127);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 12);
             this.label3.TabIndex = 0;
@@ -78,7 +80,7 @@
             // 
             // not_good_placeTextBox
             // 
-            this.not_good_placeTextBox.Location = new System.Drawing.Point(182, 102);
+            this.not_good_placeTextBox.Location = new System.Drawing.Point(182, 124);
             this.not_good_placeTextBox.Name = "not_good_placeTextBox";
             this.not_good_placeTextBox.Size = new System.Drawing.Size(100, 21);
             this.not_good_placeTextBox.TabIndex = 6;
@@ -106,7 +108,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(96, 141);
+            this.label4.Location = new System.Drawing.Point(96, 166);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 0;
@@ -114,14 +116,14 @@
             // 
             // numberTextBox
             // 
-            this.numberTextBox.Location = new System.Drawing.Point(182, 138);
+            this.numberTextBox.Location = new System.Drawing.Point(182, 163);
             this.numberTextBox.Name = "numberTextBox";
             this.numberTextBox.Size = new System.Drawing.Size(100, 21);
             this.numberTextBox.TabIndex = 6;
             // 
             // dateTextBox
             // 
-            this.dateTextBox.Location = new System.Drawing.Point(182, 215);
+            this.dateTextBox.Location = new System.Drawing.Point(182, 240);
             this.dateTextBox.Name = "dateTextBox";
             this.dateTextBox.ReadOnly = true;
             this.dateTextBox.Size = new System.Drawing.Size(100, 21);
@@ -129,7 +131,7 @@
             // 
             // requesterTextBox
             // 
-            this.requesterTextBox.Location = new System.Drawing.Point(182, 179);
+            this.requesterTextBox.Location = new System.Drawing.Point(182, 204);
             this.requesterTextBox.Name = "requesterTextBox";
             this.requesterTextBox.ReadOnly = true;
             this.requesterTextBox.Size = new System.Drawing.Size(100, 21);
@@ -138,7 +140,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(96, 218);
+            this.label5.Location = new System.Drawing.Point(96, 243);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 15;
@@ -147,7 +149,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(96, 182);
+            this.label2.Location = new System.Drawing.Point(96, 207);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 16;
@@ -185,7 +187,7 @@
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowTemplate.Height = 23;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(452, 223);
+            this.dataGridView.Size = new System.Drawing.Size(630, 240);
             this.dataGridView.TabIndex = 20;
             this.dataGridView.VirtualMode = true;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
@@ -215,11 +217,30 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "材料描述";
             // 
+            // materialDestextBox
+            // 
+            this.materialDestextBox.Location = new System.Drawing.Point(182, 46);
+            this.materialDestextBox.Name = "materialDestextBox";
+            this.materialDestextBox.Size = new System.Drawing.Size(100, 21);
+            this.materialDestextBox.TabIndex = 22;
+            this.materialDestextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.materialDestextBox_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(96, 49);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(89, 12);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "材料描述(模糊)";
+            // 
             // RequestFRUSMTStoreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 509);
+            this.ClientSize = new System.Drawing.Size(942, 554);
+            this.Controls.Add(this.materialDestextBox);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.dateTextBox);
             this.Controls.Add(this.requesterTextBox);
@@ -267,5 +288,7 @@
         private System.Windows.Forms.TextBox materialMpnTextBox;
         private System.Windows.Forms.TextBox materialDescribetextBox;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox materialDestextBox;
+        private System.Windows.Forms.Label label8;
     }
 }

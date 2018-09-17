@@ -58,24 +58,9 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
-                        this.vendorcomboBox.Text.Trim() + "','" +
-                        this.productcomboBox.Text.Trim() + "','" +
-                        this.mpnTextBox.Text.Trim() + "','" +
-                        this.bga_brieftextBox.Text.Trim() + "','" +
-                        this.bgadescribeTextBox.Text.Trim() + "','" +
-                        this.stock_placetextBox.Text.Trim() + "','" +
-                        this.stock_out_numTextBox.Text.Trim() + "','" +
-                        this.notetextBox.Text.Trim() + "','" +
-                        this.takertextBox.Text.Trim() + "','" +
-                        this.inputerTextBox.Text.Trim() + "','" +
-                        this.input_dateTextBox.Text.Trim() + "')";
-                    
-                    cmd.ExecuteNonQuery();                   
-
                     //需要更新库房对应储位的数量 减去 本次出库的数量
                     //根据mpn查对应的查询
-                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim()+"_"+this.vendorcomboBox.Text.Trim() + "'";
+                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "_" + this.vendorcomboBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string house = "", place = "", Id = "", number = "";
                     while (querySdr.Read())
@@ -87,8 +72,32 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "update store_house set number = '" + (Int32.Parse(number) - Int32.Parse(this.stock_out_numTextBox.Text)) + "'  where house='"+ house+"' and place='"+place+"'";
-                    cmd.ExecuteNonQuery();
+                    int currentNum = (Int32.Parse(number) - Int32.Parse(this.stock_out_numTextBox.Text));
+                    if (currentNum >= 0)
+                    {
+
+                        cmd.CommandText = "update store_house set number = '" + currentNum + "'  where house='" + house + "' and place='" + place + "'";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
+                            this.vendorcomboBox.Text.Trim() + "','" +
+                            this.productcomboBox.Text.Trim() + "','" +
+                            this.mpnTextBox.Text.Trim() + "','" +
+                            this.bga_brieftextBox.Text.Trim() + "','" +
+                            this.bgadescribeTextBox.Text.Trim() + "','" +
+                            this.stock_placetextBox.Text.Trim() + "','" +
+                            this.stock_out_numTextBox.Text.Trim() + "','" +
+                            this.notetextBox.Text.Trim() + "','" +
+                            this.takertextBox.Text.Trim() + "','" +
+                            this.inputerTextBox.Text.Trim() + "','" +
+                            this.input_dateTextBox.Text.Trim() + "')";
+
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        MessageBox.Show("数量不对，不能出库！");
+                    }
                 }
                 else
                 {
@@ -364,7 +373,7 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
 
-                string sql = "select mpn,stock_place,input_number,vendor,bga_describe from bga_in_stock where bga_describe like '%" + this.bga_brieftextBox.Text + "%'";
+                string sql = "select distinct mpn,stock_place,input_number,vendor,bga_describe from bga_in_stock where bga_describe like '%" + this.bga_brieftextBox.Text + "%'";
                 
                 if (this.vendorcomboBox.Text != "")
                 {
@@ -387,7 +396,7 @@ namespace SaledServices
                 dataGridView2.RowHeadersVisible = false;
                 mConn.Close();
 
-                string[] hTxt = { "MPN", "库位", "已有数量", "厂商","描述" };
+                string[] hTxt = { "MPN", "库位", "买入数量", "厂商","描述" };
                 for (int i = 0; i < hTxt.Length; i++)
                 {
                     dataGridView2.Columns[i].HeaderText = hTxt[i];
