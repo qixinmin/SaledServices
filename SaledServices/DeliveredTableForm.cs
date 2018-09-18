@@ -1082,6 +1082,55 @@ namespace SaledServices
                     {
                         MessageBox.Show("此客户序号已经来过【"+count+"】次，请记录下来");
                     }
+                    
+                    //根据数据库的内容，把内容查找如果，如果存在，则保修期为15个月，否则默认
+                    cmd.CommandText = "select Id from limit_gurante where MB_COMPAL_SN = '" + this.vendor_serail_noTextBox.Text + "'";
+                    querySdr = cmd.ExecuteReader();
+                    bool existVendorSerial = false;
+                    if (querySdr.HasRows)
+                    {
+                        existVendorSerial = true;
+                        this.warranty_periodTextBox.Text = "15M";
+                    }
+                    querySdr.Close();
+
+                    try
+                    {
+                        DateTime dt1 = Convert.ToDateTime(this.mb_make_dateTextBox.Text);
+                        DateTime dt2 = Convert.ToDateTime(this.order_receive_dateTextBox.Text);
+
+                        string period = this.warranty_periodTextBox.Text;
+                        if (period != "")
+                        {
+                            int warranty = Int32.Parse(period.Substring(0, period.Length - 1));
+
+                            dt1 = dt1.AddMonths(warranty);//生产日期加上保修期
+                            TimeSpan ts = dt2.Subtract(dt1);
+
+                            int overdays = ts.Days;
+
+                            if (overdays >= 0)
+                            {
+                                this.guaranteeComboBox.Text = "保外";
+                                this.guaranteeComboBox.Enabled = false;
+                                this.customResponsibilityComboBox.Text = "过保";
+                                this.customResponsibilityComboBox.Enabled = false;
+                                MessageBox.Show((overdays) + " 天超过， 已经过保!");
+                            }
+                            else
+                            {
+                                this.guaranteeComboBox.Text = "";
+                                this.guaranteeComboBox.Enabled = true;
+                                this.customResponsibilityComboBox.Text = "";
+                                //this.customResponsibilityComboBox.Enabled = true;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("客户料号里面的日期规则不对!");
+                    }
+                    //end 保修期修改
 
                     mConn.Close();
                 }
@@ -1090,12 +1139,10 @@ namespace SaledServices
                     MessageBox.Show(ex.ToString());
                 }
 
-
                 this.uuidTextBox.Focus();
                 this.uuidTextBox.SelectAll();
             }
         }
-
 
         private void uuidTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {

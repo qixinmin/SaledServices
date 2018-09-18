@@ -68,6 +68,9 @@ namespace SaledServices
 
         public static string table_users = "用户导入";
         public static string table_name_users_sheet = "users";
+
+        public static string table_limit_gurante = "15个月";
+        public static string table_limit_gurante_sheet = "limit_gurante";
     }
 
     public class PrintUtils
