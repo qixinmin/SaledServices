@@ -97,6 +97,8 @@ namespace SaledServices
                     else
                     {
                         MessageBox.Show("数量不对，不能出库！");
+                        conn.Close();
+                        return;
                     }
                 }
                 else
@@ -162,6 +164,8 @@ namespace SaledServices
                         sqlStr += " and product= '" + productcomboBox.Text.Trim() + "' ";
                     }
                 }
+
+                sqlStr += " order by Id desc";
 
                 mConn = new SqlConnection(Constlist.ConStr);
 

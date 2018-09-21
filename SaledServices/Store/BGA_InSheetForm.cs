@@ -273,6 +273,8 @@ namespace SaledServices
                     }
                 }
 
+                sqlStr += " order by Id desc";
+
                 mConn = new SqlConnection(Constlist.ConStr);
 
                 SqlCommand cmd = new SqlCommand();
@@ -699,7 +701,8 @@ namespace SaledServices
                 SqlDataReader querySdr = cmd.ExecuteReader();                
                 while (querySdr.Read())
                 {
-                    this.bga_brieftextBox.Text = querySdr[0].ToString();                    
+                    this.bga_brieftextBox.Text = querySdr[0].ToString();
+                    break;
                 }
                 querySdr.Close();
 
