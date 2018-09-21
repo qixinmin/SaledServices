@@ -60,7 +60,7 @@ namespace SaledServices
 
                     //需要更新库房对应储位的数量 减去 本次出库的数量
                     //根据mpn查对应的查询
-                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim() + "_" + this.vendorcomboBox.Text.Trim() + "'";
+                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" +this.mpnTextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string house = "", place = "", Id = "", number = "";
                     while (querySdr.Read())
@@ -80,8 +80,8 @@ namespace SaledServices
                         cmd.ExecuteNonQuery();
 
                         cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
-                            this.vendorcomboBox.Text.Trim() + "','" +
-                            this.productcomboBox.Text.Trim() + "','" +
+                            "" + "','" +
+                            "" + "','" +
                             this.mpnTextBox.Text.Trim() + "','" +
                             this.bga_brieftextBox.Text.Trim() + "','" +
                             this.bgadescribeTextBox.Text.Trim() + "','" +
@@ -110,6 +110,7 @@ namespace SaledServices
 
                 clearTexts();
                 query_Click(null, null);
+                similatorBGABrief();
                 MessageBox.Show("BGA出库成功！");
             }
             catch (Exception ex)
@@ -119,17 +120,16 @@ namespace SaledServices
         }
 
         private void clearTexts()
-        {
-            this.vendorcomboBox.Text = "";
-            this.productcomboBox.Text = "";
+        {           
             this.mpnTextBox.Text = "";
-            this.bga_brieftextBox.Text = "";
+           // this.bga_brieftextBox.Text = "";
             this.bgadescribeTextBox.Text = "";
             this.stock_placetextBox.Text = "";
             this.stock_out_numTextBox.Text = "";
             this.notetextBox.Text = "";
             this.takertextBox.Text = "";          
             this.input_dateTextBox.Text = "";
+            this.currentStockNumbertextBox.Text = "";
         }
 
         private void query_Click(object sender, EventArgs e)
@@ -139,31 +139,7 @@ namespace SaledServices
                 dataGridView1.DataSource = null;
                 dataGridView1.Columns.Clear();
 
-                string sqlStr =  "select top 100 * from " + tableName;
-
-                if (this.vendorcomboBox.Text.Trim() != "")
-                {
-                    if (!sqlStr.Contains("where"))
-                    {
-                        sqlStr += " where vendor= '" + vendorcomboBox.Text.Trim() + "' ";
-                    }
-                    else
-                    {
-                        sqlStr += " and vendor= '" + vendorcomboBox.Text.Trim() + "' ";
-                    }
-                }
-
-                if (this.productcomboBox.Text.Trim() != "")
-                {
-                    if (!sqlStr.Contains("where"))
-                    {
-                        sqlStr += " where product= '" + productcomboBox.Text.Trim() + "' ";
-                    }
-                    else
-                    {
-                        sqlStr += " and product= '" + productcomboBox.Text.Trim() + "' ";
-                    }
-                }
+                string sqlStr =  "select top 100 * from " + tableName;              
 
                 sqlStr += " order by Id desc";
 
@@ -200,8 +176,6 @@ namespace SaledServices
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.idTextBox.Text.Trim());  
            
-            dr["vendor"] = this.vendorcomboBox.Text.Trim();
-            dr["product"] = this.productcomboBox.Text.Trim();
             dr["mpn"] = this.mpnTextBox.Text.Trim();
             dr["bga_brief"]= this.bga_brieftextBox.Text.Trim();
             dr["bga_describe"] = this.bgadescribeTextBox.Text.Trim();
@@ -254,8 +228,8 @@ namespace SaledServices
             }
 
             this.idTextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
-            this.vendorcomboBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
-            this.productcomboBox.Text = dataGridView1.SelectedCells[2].Value.ToString();           
+            //this.vendorcomboBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
+            //this.productcomboBox.Text = dataGridView1.SelectedCells[2].Value.ToString();           
             this.mpnTextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
             this.bga_brieftextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();         
             this.bgadescribeTextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
@@ -297,37 +271,13 @@ namespace SaledServices
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
-
-                    //查询库位和数量
-                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.mpnTextBox.Text.Trim()+"_"+this.vendorcomboBox.Text.Trim() + "'";
+                    
+                    cmd.CommandText = "select bga_describe,describe from bga_in_stock where mpn='" + this.mpnTextBox.Text.Trim().Split('_')[0] + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    string house = "", place = "", Id = "", number = "";
                     while (querySdr.Read())
                     {
-                        house = querySdr[0].ToString();
-                        place = querySdr[1].ToString();
-                        Id = querySdr[2].ToString();
-                        number = querySdr[3].ToString();
-                    }
-                    querySdr.Close();
-
-                    if (house == "" || place == "")
-                    {
-                        MessageBox.Show("此料不在库存里面！");
-                        conn.Close();
-                        return;
-                    }
-                    this.currentStockNumbertextBox.Text = number;
-                    this.stock_placetextBox.Text = house + "," + place;
-
-                    cmd.CommandText = "select vendor,product,bga_describe,describe from bga_in_stock where mpn='" + this.mpnTextBox.Text.Trim() + "'";
-                    querySdr = cmd.ExecuteReader();
-                    while (querySdr.Read())
-                    {
-                        this.vendorcomboBox.Text = querySdr[0].ToString();
-                        this.productcomboBox.Text = querySdr[1].ToString();
-                        this.bga_brieftextBox.Text = querySdr[2].ToString();
-                        this.bgadescribeTextBox.Text = querySdr[3].ToString();
+                        this.bga_brieftextBox.Text = querySdr[0].ToString();
+                        this.bgadescribeTextBox.Text = querySdr[1].ToString();
                         break;
                     }
                     querySdr.Close();
@@ -378,17 +328,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
 
                 string sql = "select distinct mpn,stock_place,input_number,vendor,bga_describe from bga_in_stock where bga_describe like '%" + this.bga_brieftextBox.Text + "%'";
-                
-                if (this.vendorcomboBox.Text != "")
-                {
-                    sql += " and vendor='" + this.vendorcomboBox.Text + "'";
-                }
-                
-                if (this.productcomboBox.Text != "")
-                {
-                    sql += " and product='" + this.productcomboBox.Text + "'";
-                }
-
+            
                 cmd.CommandText = sql;
                 cmd.CommandType = CommandType.Text;
 
@@ -447,51 +387,91 @@ namespace SaledServices
             }
         }
 
+        class useClass
+        {
+            public string mpn ;//{ get; set; }
+            public string vendor;// { get; set; }
+            public string mpnVendor { get; set; }
+            public string storeNum { get; set; }
+
+            public string stockplace { get; set; }
+            public string house ;//{ get; set; }
+            public string place ;//{ get; set; }
+        }
+
         private void bga_brieftextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                try
+                similatorBGABrief();
+            }
+        }
+
+        private void similatorBGABrief()
+        {
+            try
+            {
+                List<useClass> list = new List<useClass>();
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select distinct mpn, vendor from bga_in_stock where bga_describe like '%" + this.bga_brieftextBox.Text + "%'";
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
                 {
-                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
-                    mConn.Open();
-
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = mConn;
-                    cmd.CommandType = CommandType.Text;
-
-                    cmd.CommandText = "select distinct vendor from bga_in_stock where bga_describe like '%"+this.bga_brieftextBox.Text+"%'";
-                    this.vendorcomboBox.Items.Clear();
-                    SqlDataReader querySdr = cmd.ExecuteReader();
-                    while (querySdr.Read())
+                    useClass useclass = new useClass();
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
                     {
-                        string temp = querySdr[0].ToString();
-                        if (temp != "")
-                        {
-                            this.vendorcomboBox.Items.Add(temp);
-                        }
+                        useclass.mpn = temp;
+                        useclass.vendor = querySdr[1].ToString();
+                        useclass.mpnVendor = useclass.mpn + "_" + useclass.vendor;
+                        list.Add(useclass);
                     }
-                    querySdr.Close();
+                }
+                querySdr.Close();
 
-                    cmd.CommandText = "select distinct product from bga_in_stock where  bga_describe like '%" + this.bga_brieftextBox.Text + "%'";
-                    this.productcomboBox.Items.Clear();
+                foreach (useClass temp in list)
+                {
+                    cmd.CommandText = "select house,place,number from store_house where mpn='" + temp.mpn + "_" + temp.vendor + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
-                        string temp = querySdr[0].ToString();
-                        if (temp != "")
+                        int number = Int16.Parse(querySdr[2].ToString());
+                        if (number > 0)
                         {
-                            this.productcomboBox.Items.Add(temp);
+                            temp.house = querySdr[0].ToString();
+                            temp.place = querySdr[1].ToString();
+                            temp.storeNum = querySdr[2].ToString();
+                            temp.stockplace = temp.house + "," + temp.place;
                         }
                     }
                     querySdr.Close();
+                }
 
-                    mConn.Close();
-                }
-                catch (Exception ex)
+                this.dataGridView2.DataSource = null;
+                dataGridView2.Columns.Clear();
+
+                dataGridView2.DataSource = list;
+                dataGridView2.RowHeadersVisible = false;
+
+
+                string[] hTxt = { "MPN_Vendor", "数量", "位置" };
+                for (int i = 0; i < hTxt.Length; i++)
                 {
-                    MessageBox.Show(ex.ToString());
+                    dataGridView2.Columns[i].HeaderText = hTxt[i];
+                    dataGridView2.Columns[i].Name = hTxt[i];
                 }
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -502,6 +482,8 @@ namespace SaledServices
                 return;
             }
             this.mpnTextBox.Text = dataGridView2.SelectedCells[0].Value.ToString();
+            this.currentStockNumbertextBox.Text = dataGridView2.SelectedCells[1].Value.ToString(); ;
+            this.stock_placetextBox.Text = dataGridView2.SelectedCells[2].Value.ToString();
             doRequestUsingMpn();
         }
     }
