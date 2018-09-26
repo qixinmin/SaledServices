@@ -411,7 +411,8 @@ namespace SaledServices
         {
             try
             {
-                List<useClass> list = new List<useClass>();
+                List<useClass> orilist = new List<useClass>();
+                List<useClass> targetList = new List<useClass>();
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                 mConn.Open();
 
@@ -419,7 +420,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select distinct mpn, vendor from bga_in_stock where bga_describe like '%" + this.bga_brieftextBox.Text + "%'";
+                cmd.CommandText = "select distinct mpn, vendor from bga_in_stock where describe like '%" + this.bga_brieftextBox.Text + "%'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -430,12 +431,12 @@ namespace SaledServices
                         useclass.mpn = temp;
                         useclass.vendor = querySdr[1].ToString();
                         useclass.mpnVendor = useclass.mpn + "_" + useclass.vendor;
-                        list.Add(useclass);
+                        orilist.Add(useclass);
                     }
                 }
                 querySdr.Close();
 
-                foreach (useClass temp in list)
+                foreach (useClass temp in orilist)
                 {
                     cmd.CommandText = "select house,place,number from store_house where mpn='" + temp.mpn + "_" + temp.vendor + "'";
                     querySdr = cmd.ExecuteReader();
@@ -448,6 +449,8 @@ namespace SaledServices
                             temp.place = querySdr[1].ToString();
                             temp.storeNum = querySdr[2].ToString();
                             temp.stockplace = temp.house + "," + temp.place;
+
+                            targetList.Add(temp);
                         }
                     }
                     querySdr.Close();
@@ -456,7 +459,7 @@ namespace SaledServices
                 this.dataGridView2.DataSource = null;
                 dataGridView2.Columns.Clear();
 
-                dataGridView2.DataSource = list;
+                dataGridView2.DataSource = targetList;
                 dataGridView2.RowHeadersVisible = false;
 
 

@@ -201,7 +201,6 @@
             this.mpntextBox.Location = new System.Drawing.Point(243, 107);
             this.mpntextBox.Margin = new System.Windows.Forms.Padding(5);
             this.mpntextBox.Name = "mpntextBox";
-            this.mpntextBox.ReadOnly = true;
             this.mpntextBox.Size = new System.Drawing.Size(164, 30);
             this.mpntextBox.TabIndex = 2;
             // 
