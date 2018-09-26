@@ -1209,5 +1209,53 @@ namespace SaledServices
 
             allForm.Add(multiReturnQueryForm);
         }
+
+        private ReturnOrderExport reorexport;
+        private void 还货信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (reorexport == null || reorexport.IsDisposed)
+            {
+                reorexport = new ReturnOrderExport();
+                reorexport.MdiParent = this;
+            }
+
+            // reorexport.WindowState = FormWindowState.Maximized;
+            reorexport.BringToFront();
+            reorexport.Show();
+
+            allForm.Add(reorexport);
+        }
+
+        private BgaInExport bgaInExport;
+        private void bGA收货信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bgaInExport == null || bgaInExport.IsDisposed)
+            {
+                bgaInExport = new BgaInExport();
+                bgaInExport.MdiParent = this;
+            }
+
+            // bgaInExport.WindowState = FormWindowState.Maximized;
+            bgaInExport.BringToFront();
+            bgaInExport.Show();
+
+            allForm.Add(bgaInExport);
+        }
+
+        private BgaOutExport bgaOutExport;
+        private void bGA出库信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bgaOutExport == null || bgaOutExport.IsDisposed)
+            {
+                bgaOutExport = new BgaOutExport();
+                bgaOutExport.MdiParent = this;
+            }
+
+            // bgaOutExport.WindowState = FormWindowState.Maximized;
+            bgaOutExport.BringToFront();
+            bgaOutExport.Show();
+
+            allForm.Add(bgaOutExport);
+        }
     }
 }

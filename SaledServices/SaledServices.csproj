@@ -231,6 +231,24 @@
     <Compile Include="additionForm\RepairFaultTypeForm.Designer.cs">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\BgaOutExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\BgaOutExport.designer.cs">
+      <DependentUpon>BgaOutExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\BgaInExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\BgaInExport.designer.cs">
+      <DependentUpon>BgaInExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\ReturnOrderExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\ReturnOrderExport.designer.cs">
+      <DependentUpon>ReturnOrderExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Export\ExportDatabaseToExcel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -633,6 +651,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\RepairFaultTypeForm.resx">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\BgaOutExport.resx">
+      <DependentUpon>BgaOutExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\BgaInExport.resx">
+      <DependentUpon>BgaInExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\ReturnOrderExport.resx">
+      <DependentUpon>ReturnOrderExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\ExportDatabaseToExcel.resx">
       <DependentUpon>ExportDatabaseToExcel.cs</DependentUpon>
