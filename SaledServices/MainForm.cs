@@ -1257,5 +1257,53 @@ namespace SaledServices
 
             allForm.Add(bgaOutExport);
         }
+
+        private MBInExport mbInExport;
+        private void mB入库信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (mbInExport == null || mbInExport.IsDisposed)
+            {
+                mbInExport = new MBInExport();
+                mbInExport.MdiParent = this;
+            }
+
+            // mbInExport.WindowState = FormWindowState.Maximized;
+            mbInExport.BringToFront();
+            mbInExport.Show();
+
+            allForm.Add(mbInExport);
+        }
+
+        private MBOutExport mbOutExport;
+        private void mB出库信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (mbOutExport == null || mbOutExport.IsDisposed)
+            {
+                mbOutExport = new MBOutExport();
+                mbOutExport.MdiParent = this;
+            }
+
+            // mbOutExport.WindowState = FormWindowState.Maximized;
+            mbOutExport.BringToFront();
+            mbOutExport.Show();
+
+            allForm.Add(mbOutExport);
+        }
+
+        private StoreHouseStatusExport storeHouseStatusExport;
+        private void 库房信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (storeHouseStatusExport == null || storeHouseStatusExport.IsDisposed)
+            {
+                storeHouseStatusExport = new StoreHouseStatusExport();
+                storeHouseStatusExport.MdiParent = this;
+            }
+
+            // storeHouseStatusExport.WindowState = FormWindowState.Maximized;
+            storeHouseStatusExport.BringToFront();
+            storeHouseStatusExport.Show();
+
+            allForm.Add(storeHouseStatusExport);
+        }
     }
 }

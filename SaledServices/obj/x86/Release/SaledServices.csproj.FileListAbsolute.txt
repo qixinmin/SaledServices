@@ -78,3 +78,6 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.MultiR
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.BgaOutExport.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.BgaInExport.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.ReturnOrderExport.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.MBOutExport.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.StoreHouseStatusExport.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.MBInExport.resources

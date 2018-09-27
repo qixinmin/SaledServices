@@ -243,6 +243,24 @@
     <Compile Include="Export\BgaInExport.designer.cs">
       <DependentUpon>BgaInExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\MBOutExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\MBOutExport.designer.cs">
+      <DependentUpon>MBOutExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\StoreHouseStatusExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\StoreHouseStatusExport.designer.cs">
+      <DependentUpon>StoreHouseStatusExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\MBInExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\MBInExport.designer.cs">
+      <DependentUpon>MBInExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Export\ReturnOrderExport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -657,6 +675,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\BgaInExport.resx">
       <DependentUpon>BgaInExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\MBOutExport.resx">
+      <DependentUpon>MBOutExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\StoreHouseStatusExport.resx">
+      <DependentUpon>StoreHouseStatusExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\MBInExport.resx">
+      <DependentUpon>MBInExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\ReturnOrderExport.resx">
       <DependentUpon>ReturnOrderExport.cs</DependentUpon>
