@@ -78,13 +78,35 @@ namespace SaledServices.Export
                     StoreHouseStruct temp = new StoreHouseStruct();
                     temp.Id = querySdr[0].ToString();
                     temp.house = querySdr[1].ToString();
-                    temp.place = querySdr[2].ToString();
-                    temp.mpn = querySdr[3].ToString();
+                    temp.place = querySdr[2].ToString();                   
                     temp.number = querySdr[4].ToString();
+
+                    string[] mpn_vendor = querySdr[3].ToString().Split('_');
+                    if (mpn_vendor.Length > 1)
+                    {
+                        temp.mpn = mpn_vendor[0];
+                        temp.vendor = mpn_vendor[1];
+                    }
+                    else
+                    {
+                        temp.mpn = mpn_vendor[0];
+                    }
 
                     receiveOrderList.Add(temp);                  
                 }
                 querySdr.Close();
+
+                foreach (StoreHouseStruct stockcheck in receiveOrderList)
+                {
+                    cmd.CommandText = "select describe from stock_in_sheet where mpn ='" + stockcheck.mpn.Split('_')[0] + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        stockcheck.describe = querySdr[0].ToString();
+                        break;
+                    }
+                    querySdr.Close();
+                }
 
                 mConn.Close();
             }
@@ -106,7 +128,9 @@ namespace SaledServices.Export
             titleList.Add("库房");
             titleList.Add("储位");
             titleList.Add("存储料号");
+            titleList.Add("厂商");
             titleList.Add("已存数量");
+            titleList.Add("描述");
 
             foreach (StoreHouseStruct stockcheck in StockCheckList)
             {
@@ -116,7 +140,9 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.house);
                 ct1.Add(stockcheck.place);
                 ct1.Add(stockcheck.mpn);
+                ct1.Add(stockcheck.vendor);
                 ct1.Add(stockcheck.number);
+                ct1.Add(stockcheck.describe);
 
                 ctest1.contentArray = ct1;
                 contentList.Add(ctest1);
@@ -133,5 +159,8 @@ namespace SaledServices.Export
         public string place;
         public string mpn;
         public string number;
+
+        public string vendor;
+        public string describe;
     }
 }
