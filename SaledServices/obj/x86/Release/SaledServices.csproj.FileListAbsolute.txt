@@ -81,5 +81,5 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.MBOutExport.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.StoreHouseStatusExport.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.MBInExport.resources
-D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.csprojResolveAssemblyReference.cache
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.exe.licenses
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.StoreHouseStatisticsExport.resources

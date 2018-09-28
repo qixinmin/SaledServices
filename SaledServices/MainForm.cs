@@ -128,6 +128,7 @@ namespace SaledServices
                 case MenuType.Store:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.库存管理ToolStripMenuItem,
+                     this.报表ToolStripMenuItem,       
                    });
                     break;
                 case MenuType.Self:
@@ -1304,6 +1305,22 @@ namespace SaledServices
             storeHouseStatusExport.Show();
 
             allForm.Add(storeHouseStatusExport);
+        }
+
+        private StoreHouseStatisticsExport storeHouseStatisticsExport;
+        private void 库房平衡表信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (storeHouseStatisticsExport == null || storeHouseStatisticsExport.IsDisposed)
+            {
+                storeHouseStatisticsExport = new StoreHouseStatisticsExport();
+                storeHouseStatisticsExport.MdiParent = this;
+            }
+
+            // storeHouseStatisticsExport.WindowState = FormWindowState.Maximized;
+            storeHouseStatisticsExport.BringToFront();
+            storeHouseStatisticsExport.Show();
+
+            allForm.Add(storeHouseStatisticsExport);
         }
     }
 }

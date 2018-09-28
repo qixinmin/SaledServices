@@ -255,6 +255,12 @@
     <Compile Include="Export\BgaInExport.designer.cs">
       <DependentUpon>BgaInExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\StoreHouseStatisticsExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\StoreHouseStatisticsExport.designer.cs">
+      <DependentUpon>StoreHouseStatisticsExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Export\MBOutExport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -687,6 +693,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\BgaInExport.resx">
       <DependentUpon>BgaInExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\StoreHouseStatisticsExport.resx">
+      <DependentUpon>StoreHouseStatisticsExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\MBOutExport.resx">
       <DependentUpon>MBOutExport.cs</DependentUpon>

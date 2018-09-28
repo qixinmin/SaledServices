@@ -91,8 +91,10 @@ namespace SaledServices.Export
                     {
                         temp.mpn = mpn_vendor[0];
                     }
-
-                    receiveOrderList.Add(temp);                  
+                    if (temp.number.Trim() != "")
+                    {
+                        receiveOrderList.Add(temp);
+                    }
                 }
                 querySdr.Close();
 

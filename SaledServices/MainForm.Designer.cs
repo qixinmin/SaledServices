@@ -100,12 +100,13 @@
             this.还货信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA收货信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA出库信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mB入库信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mB出库信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.库房信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.库房平衡表信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -661,7 +662,8 @@
             this.bGA出库信息导出ToolStripMenuItem,
             this.mB入库信息导出ToolStripMenuItem,
             this.mB出库信息导出ToolStripMenuItem,
-            this.库房信息导出ToolStripMenuItem});
+            this.库房信息导出ToolStripMenuItem,
+            this.库房平衡表信息导出ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -670,37 +672,58 @@
             // 报表1ToolStripMenuItem
             // 
             this.报表1ToolStripMenuItem.Name = "报表1ToolStripMenuItem";
-            this.报表1ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.报表1ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.报表1ToolStripMenuItem.Text = "RMA欠货表";
             this.报表1ToolStripMenuItem.Click += new System.EventHandler(this.报表1ToolStripMenuItem_Click);
             // 
             // 收货信息导出ToolStripMenuItem
             // 
             this.收货信息导出ToolStripMenuItem.Name = "收货信息导出ToolStripMenuItem";
-            this.收货信息导出ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.收货信息导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.收货信息导出ToolStripMenuItem.Text = "收货信息导出";
             this.收货信息导出ToolStripMenuItem.Click += new System.EventHandler(this.收货信息导出ToolStripMenuItem_Click);
             // 
             // 还货信息导出ToolStripMenuItem
             // 
             this.还货信息导出ToolStripMenuItem.Name = "还货信息导出ToolStripMenuItem";
-            this.还货信息导出ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.还货信息导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.还货信息导出ToolStripMenuItem.Text = "还货信息导出";
             this.还货信息导出ToolStripMenuItem.Click += new System.EventHandler(this.还货信息导出ToolStripMenuItem_Click);
             // 
             // bGA收货信息导出ToolStripMenuItem
             // 
             this.bGA收货信息导出ToolStripMenuItem.Name = "bGA收货信息导出ToolStripMenuItem";
-            this.bGA收货信息导出ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.bGA收货信息导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.bGA收货信息导出ToolStripMenuItem.Text = "BGA收货信息导出";
             this.bGA收货信息导出ToolStripMenuItem.Click += new System.EventHandler(this.bGA收货信息导出ToolStripMenuItem_Click);
             // 
             // bGA出库信息导出ToolStripMenuItem
             // 
             this.bGA出库信息导出ToolStripMenuItem.Name = "bGA出库信息导出ToolStripMenuItem";
-            this.bGA出库信息导出ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.bGA出库信息导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.bGA出库信息导出ToolStripMenuItem.Text = "BGA出库信息导出";
             this.bGA出库信息导出ToolStripMenuItem.Click += new System.EventHandler(this.bGA出库信息导出ToolStripMenuItem_Click);
+            // 
+            // mB入库信息导出ToolStripMenuItem
+            // 
+            this.mB入库信息导出ToolStripMenuItem.Name = "mB入库信息导出ToolStripMenuItem";
+            this.mB入库信息导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.mB入库信息导出ToolStripMenuItem.Text = "MB入库信息导出";
+            this.mB入库信息导出ToolStripMenuItem.Click += new System.EventHandler(this.mB入库信息导出ToolStripMenuItem_Click);
+            // 
+            // mB出库信息导出ToolStripMenuItem
+            // 
+            this.mB出库信息导出ToolStripMenuItem.Name = "mB出库信息导出ToolStripMenuItem";
+            this.mB出库信息导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.mB出库信息导出ToolStripMenuItem.Text = "MB出库信息导出";
+            this.mB出库信息导出ToolStripMenuItem.Click += new System.EventHandler(this.mB出库信息导出ToolStripMenuItem_Click);
+            // 
+            // 库房信息导出ToolStripMenuItem
+            // 
+            this.库房信息导出ToolStripMenuItem.Name = "库房信息导出ToolStripMenuItem";
+            this.库房信息导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.库房信息导出ToolStripMenuItem.Text = "库房信息导出";
+            this.库房信息导出ToolStripMenuItem.Click += new System.EventHandler(this.库房信息导出ToolStripMenuItem_Click);
             // 
             // 查询ToolStripMenuItem
             // 
@@ -726,26 +749,12 @@
             this.dOA查询ToolStripMenuItem.Text = "多返查询";
             this.dOA查询ToolStripMenuItem.Click += new System.EventHandler(this.dOA查询ToolStripMenuItem_Click);
             // 
-            // mB入库信息导出ToolStripMenuItem
+            // 库房平衡表信息导出ToolStripMenuItem
             // 
-            this.mB入库信息导出ToolStripMenuItem.Name = "mB入库信息导出ToolStripMenuItem";
-            this.mB入库信息导出ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
-            this.mB入库信息导出ToolStripMenuItem.Text = "MB入库信息导出";
-            this.mB入库信息导出ToolStripMenuItem.Click += new System.EventHandler(this.mB入库信息导出ToolStripMenuItem_Click);
-            // 
-            // mB出库信息导出ToolStripMenuItem
-            // 
-            this.mB出库信息导出ToolStripMenuItem.Name = "mB出库信息导出ToolStripMenuItem";
-            this.mB出库信息导出ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
-            this.mB出库信息导出ToolStripMenuItem.Text = "MB出库信息导出";
-            this.mB出库信息导出ToolStripMenuItem.Click += new System.EventHandler(this.mB出库信息导出ToolStripMenuItem_Click);
-            // 
-            // 库房信息导出ToolStripMenuItem
-            // 
-            this.库房信息导出ToolStripMenuItem.Name = "库房信息导出ToolStripMenuItem";
-            this.库房信息导出ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
-            this.库房信息导出ToolStripMenuItem.Text = "库房信息导出";
-            this.库房信息导出ToolStripMenuItem.Click += new System.EventHandler(this.库房信息导出ToolStripMenuItem_Click);
+            this.库房平衡表信息导出ToolStripMenuItem.Name = "库房平衡表信息导出ToolStripMenuItem";
+            this.库房平衡表信息导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.库房平衡表信息导出ToolStripMenuItem.Text = "库房平衡表信息导出";
+            this.库房平衡表信息导出ToolStripMenuItem.Click += new System.EventHandler(this.库房平衡表信息导出ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -849,6 +858,7 @@
         private System.Windows.Forms.ToolStripMenuItem mB入库信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mB出库信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 库房信息导出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 库房平衡表信息导出ToolStripMenuItem;
     }
 }
 
