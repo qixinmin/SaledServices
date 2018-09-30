@@ -191,6 +191,14 @@ namespace SaledServices
                     cmd.ExecuteNonQuery();
 
                     //更新库存占用记录，保证库房的信息被更新
+                    cmd.CommandText = "select number from store_house where mpn = '" + this.mpnTextBox.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();                 
+                    while (querySdr.Read())
+                    {
+                        chooseStock.number = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
                     string stockNumber = "";
                     if (this.stock_placetextBox.Enabled == false)
                     {

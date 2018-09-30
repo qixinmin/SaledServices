@@ -113,11 +113,11 @@ namespace SaledServices.Repair
                 return;
             }
 
-                if (this.thisNumbertextBox.Text == "")
-                {
-                    MessageBox.Show("要使用的数量请填入！");
-                    return;
-                }
+            if (this.thisNumbertextBox.Text == "")
+            {
+                MessageBox.Show("要使用的数量请填入！");
+                return;
+            }
 
             try
             {

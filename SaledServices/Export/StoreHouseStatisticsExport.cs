@@ -142,7 +142,7 @@ namespace SaledServices.Export
                                 while (querySdr.Read())
                                 {
                                     mbinnumber += Int32.Parse(querySdr[0].ToString());
-                                    break;
+                                    //break;
                                 }
                                 querySdr.Close();
                                 stockcheck.buynumber = mbinnumber + "";
@@ -153,7 +153,7 @@ namespace SaledServices.Export
                                 while (querySdr.Read())
                                 {
                                     mboutnumber++;
-                                    break;
+                                    //break;
                                 }
                                 querySdr.Close();
                                 stockcheck.outnumber = mboutnumber + "";
@@ -168,7 +168,7 @@ namespace SaledServices.Export
                                 while (querySdr.Read())
                                 {
                                     bgainnumber += Int32.Parse(querySdr[0].ToString());
-                                    break;
+                                   // break;
                                 }
                                 querySdr.Close();
                                 stockcheck.buynumber = bgainnumber + "";
@@ -179,7 +179,7 @@ namespace SaledServices.Export
                                 while (querySdr.Read())
                                 {
                                     bgaoutnumber += Int32.Parse(querySdr[0].ToString());
-                                    break;
+                                   // break;
                                 }
                                 querySdr.Close();
                                 stockcheck.outnumber = bgaoutnumber + "";
@@ -193,7 +193,7 @@ namespace SaledServices.Export
                                 while (querySdr.Read())
                                 {
                                     bgainnumber += Int32.Parse(querySdr[0].ToString());
-                                    break;
+                                    //break;
                                 }
                                 querySdr.Close();
                                 stockcheck.buynumber = bgainnumber + "";
@@ -204,7 +204,7 @@ namespace SaledServices.Export
                                 while (querySdr.Read())
                                 {
                                     bgaoutnumber += Int32.Parse(querySdr[0].ToString());
-                                    break;
+                                    //break;
                                 }
                                 querySdr.Close();
                                 stockcheck.outnumber = bgaoutnumber + "";
