@@ -225,42 +225,16 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    transaction = conn.BeginTransaction();
-                    cmd.Transaction = transaction;
-                    string sql = "select distinct A.mpn, B.vendor from store_house as A left join LCFC_MBBOM_table as B on A.mpn = B.material_mpn";
-                    Dictionary<string,string> mpnDic = new Dictionary<string,string>();
-
-                    cmd.CommandText = sql;
-                    SqlDataReader sqlreader = cmd.ExecuteReader();
-                    while (sqlreader.Read())
+                  
+                    for (int i = 0; i < 1000; i++)
                     {
-                        if(sqlreader[0] !=null && sqlreader[1] !=null &&
-                            sqlreader[0].ToString() !=null &&sqlreader[1].ToString() != null &&
-                            sqlreader[0].ToString().Trim() != "" && sqlreader[1].ToString().Trim() !="" &&
-                            sqlreader[0].ToString().Trim().StartsWith("45") == false &&
-                            sqlreader[0].ToString().Trim().StartsWith("46") == false)
-                        {
-                            try
-                            {
-                                mpnDic.Add(sqlreader[0].ToString(), sqlreader[1].ToString());
-                            }
-                            catch (Exception ex)
-                            {
-                            
-                            }
-                        }                       
-                    }
-                    sqlreader.Close();
-
-                    foreach (string key in mpnDic.Keys)
-                    {
-                        string combinMpn = key + "_" + mpnDic[key];
-                        sql = "update store_house set mpn ='" + combinMpn + "' where mpn='" + key + "'";
-                        cmd.CommandText = sql;
+                        //记录站别信息
+                        cmd.CommandText = "INSERT INTO stationInformation VALUES('"
+                            + i + "','收货','"
+                            + DateTime.Now.ToString("yyyy/MM/dd") + "')";
                         cmd.ExecuteNonQuery();
-
                     }
-                    transaction.Commit();
+                   
                 }
                 else
                 {

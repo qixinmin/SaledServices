@@ -27,6 +27,7 @@
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -167,6 +168,24 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>wheat_128px_1169807_easyicon.net.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>459F5FA7D239E277B90D20E1A3F9D71AA4552C3E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SaledServices_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CheckBoxComboBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -486,6 +505,12 @@
     </Compile>
     <Compile Include="ReturnStoreForm.Designer.cs">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\MBTransferToFaultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\MBTransferToFaultForm.designer.cs">
+      <DependentUpon>MBTransferToFaultForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Store\FaultBatchMBOutStoreForm.cs">
       <SubType>Form</SubType>
@@ -809,6 +834,9 @@
     <EmbeddedResource Include="ReturnStoreForm.resx">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Store\MBTransferToFaultForm.resx">
+      <DependentUpon>MBTransferToFaultForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Store\FaultBatchMBOutStoreForm.resx">
       <DependentUpon>FaultBatchMBOutStoreForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -914,6 +942,7 @@
     <None Include="Files\syncTime.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -952,6 +981,7 @@
     </Content>
     <Content Include="wheat_128px_1169807_easyicon.net.ico" />
     <Content Include="资料\2.ico" />
+    <None Include="SaledServices_TemporaryKey.pfx" />
     <None Include="资料\sql 语句备份.txt.sql" />
   </ItemGroup>
   <ItemGroup />

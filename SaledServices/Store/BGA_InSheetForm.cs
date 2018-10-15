@@ -197,7 +197,13 @@ namespace SaledServices
                     {
                         chooseStock.number = querySdr[0].ToString();
                     }
+
                     querySdr.Close();
+                    if (chooseStock.number == "")
+                    {
+                        chooseStock.number = "0";
+                        MessageBox.Show("number 变成了0，检测正常吗？");
+                    }
 
                     string stockNumber = "";
                     if (this.stock_placetextBox.Enabled == false)

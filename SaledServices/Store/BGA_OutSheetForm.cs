@@ -442,15 +442,22 @@ namespace SaledServices
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
-                        int number = Int16.Parse(querySdr[2].ToString());
-                        if (number > 0)
+                        try
                         {
-                            temp.house = querySdr[0].ToString();
-                            temp.place = querySdr[1].ToString();
-                            temp.storeNum = querySdr[2].ToString();
-                            temp.stockplace = temp.house + "," + temp.place;
+                            int number = Int16.Parse(querySdr[2].ToString());
+                            if (number > 0)
+                            {
+                                temp.house = querySdr[0].ToString();
+                                temp.place = querySdr[1].ToString();
+                                temp.storeNum = querySdr[2].ToString();
+                                temp.stockplace = temp.house + "," + temp.place;
 
-                            targetList.Add(temp);
+                                targetList.Add(temp);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            continue;
                         }
                     }
                     querySdr.Close();

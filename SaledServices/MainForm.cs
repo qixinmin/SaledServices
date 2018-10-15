@@ -1322,5 +1322,21 @@ namespace SaledServices
 
             allForm.Add(storeHouseStatisticsExport);
         }
+
+        private MBTransferToFaultForm mbTransferToFaultForm;
+        private void mB良品批量转不良品库ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (mbTransferToFaultForm == null || mbTransferToFaultForm.IsDisposed)
+            {
+                mbTransferToFaultForm = new MBTransferToFaultForm();
+                mbTransferToFaultForm.MdiParent = this;
+            }
+
+            // mbTransferToFaultForm.WindowState = FormWindowState.Maximized;
+            mbTransferToFaultForm.BringToFront();
+            mbTransferToFaultForm.Show();
+
+            allForm.Add(mbTransferToFaultForm);
+        }
     }
 }
