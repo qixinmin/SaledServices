@@ -570,7 +570,7 @@ namespace SaledServices
                 }
                 else
                 {
-                    cmd.CommandText = "select * from  " + tableName;
+                    cmd.CommandText = "select top 3 * from  " + tableName;
                 }
                 cmd.CommandType = CommandType.Text;
 

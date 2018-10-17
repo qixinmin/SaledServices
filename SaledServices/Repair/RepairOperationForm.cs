@@ -304,42 +304,66 @@ namespace SaledServices
                         string temp = querySdr[1].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            relatedCombo.Items.Add(material_mpn);
+                            if (relatedCombo.Items.Contains(material_mpn) == false)
+                            {
+                                relatedCombo.Items.Add(material_mpn);
+                            }                            
                             continue;
                         } temp = querySdr[2].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            relatedCombo.Items.Add(material_mpn);
+                            if (relatedCombo.Items.Contains(material_mpn) == false)
+                            {
+                                relatedCombo.Items.Add(material_mpn);
+                            }
                             continue;
                         } temp = querySdr[3].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            relatedCombo.Items.Add(material_mpn);
+                            if (relatedCombo.Items.Contains(material_mpn) == false)
+                            {
+                                relatedCombo.Items.Add(material_mpn);
+                            }
                             continue;
                         } temp = querySdr[4].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            relatedCombo.Items.Add(material_mpn);
+                            if (relatedCombo.Items.Contains(material_mpn) == false)
+                            {
+                                relatedCombo.Items.Add(material_mpn);
+                            }
                             continue;
                         } temp = querySdr[5].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            relatedCombo.Items.Add(material_mpn);
+                            if (relatedCombo.Items.Contains(material_mpn) == false)
+                            {
+                                relatedCombo.Items.Add(material_mpn);
+                            }
                             continue;
                         } temp = querySdr[6].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            relatedCombo.Items.Add(material_mpn);
+                            if (relatedCombo.Items.Contains(material_mpn) == false)
+                            {
+                                relatedCombo.Items.Add(material_mpn);
+                            }
                             continue;
                         } temp = querySdr[7].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            relatedCombo.Items.Add(material_mpn);
+                            if (relatedCombo.Items.Contains(material_mpn) == false)
+                            {
+                                relatedCombo.Items.Add(material_mpn);
+                            }
                             continue;
                         } temp = querySdr[8].ToString().Trim();
                         if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                         {
-                            relatedCombo.Items.Add(material_mpn);
+                            if (relatedCombo.Items.Contains(material_mpn) == false)
+                            {
+                                relatedCombo.Items.Add(material_mpn);
+                            }
                             continue;
                         }
                     }
@@ -356,42 +380,66 @@ namespace SaledServices
                             string temp = querySdr[1].ToString().Trim();
                             if (temp != "" && temp.ToLower() == not_good_place.ToLower())
                             {
-                                relatedCombo.Items.Add(material_mpn);
+                                if (relatedCombo.Items.Contains(material_mpn) == false)
+                                {
+                                    relatedCombo.Items.Add(material_mpn);
+                                }
                                 continue;
                             } temp = querySdr[2].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                relatedCombo.Items.Add(material_mpn);
+                                if (relatedCombo.Items.Contains(material_mpn) == false)
+                                {
+                                    relatedCombo.Items.Add(material_mpn);
+                                }
                                 continue;
                             } temp = querySdr[3].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                relatedCombo.Items.Add(material_mpn);
+                                if (relatedCombo.Items.Contains(material_mpn) == false)
+                                {
+                                    relatedCombo.Items.Add(material_mpn);
+                                }
                                 continue;
                             } temp = querySdr[4].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                relatedCombo.Items.Add(material_mpn);
+                                if (relatedCombo.Items.Contains(material_mpn) == false)
+                                {
+                                    relatedCombo.Items.Add(material_mpn);
+                                }
                                 continue;
                             } temp = querySdr[5].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                relatedCombo.Items.Add(material_mpn);
+                                if (relatedCombo.Items.Contains(material_mpn) == false)
+                                {
+                                    relatedCombo.Items.Add(material_mpn);
+                                }
                                 continue;
                             } temp = querySdr[6].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                relatedCombo.Items.Add(material_mpn);
+                                if (relatedCombo.Items.Contains(material_mpn) == false)
+                                {
+                                    relatedCombo.Items.Add(material_mpn);
+                                }
                                 continue;
                             } temp = querySdr[7].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                relatedCombo.Items.Add(material_mpn);
+                                if (relatedCombo.Items.Contains(material_mpn) == false)
+                                {
+                                    relatedCombo.Items.Add(material_mpn);
+                                }
                                 continue;
                             } temp = querySdr[8].ToString().Trim();
                             if (temp != "" && temp.ToLower().Equals(not_good_place.ToLower()))
                             {
-                                relatedCombo.Items.Add(material_mpn);
+                                if (relatedCombo.Items.Contains(material_mpn) == false)
+                                {
+                                    relatedCombo.Items.Add(material_mpn);
+                                }
                                 continue;
                             }
                         }
@@ -553,7 +601,6 @@ namespace SaledServices
 
         private void add_Click(object sender, EventArgs e)
         {
-
             if (this.mb_brieftextBox.Text == "" || this.vendorTextBox.Text == "")
             {
                 MessageBox.Show("输入完跟踪条码需要回车！");
@@ -626,208 +673,325 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
+                    if (actioncomboBox.Text.Trim() == "更换")
+                    {
+                        try
+                        {
+                            if (useNum1.Text.Trim() != "")
+                            {
+                                if (Int16.Parse(useNum1.Text.Trim()) <= 0)
+                                {
+                                    MessageBox.Show("数量必须大于0");
+                                }
+                            }
+
+                            if (useNum2.Text.Trim() != "")
+                            {
+                                if (Int16.Parse(useNum2.Text.Trim()) <= 0)
+                                {
+                                    MessageBox.Show("数量必须大于0");
+                                }
+                            }
+
+
+                            if (useNum3.Text.Trim() != "")
+                            {
+                                if (Int16.Parse(useNum3.Text.Trim()) <= 0)
+                                {
+                                    MessageBox.Show("数量必须大于0");
+                                }
+                            }
+
+                            if (useNum4.Text.Trim() != "")
+                            {
+                                if (Int16.Parse(useNum4.Text.Trim()) <= 0)
+                                {
+                                    MessageBox.Show("数量必须大于0");
+                                }
+                            }
+
+                            if (useNum5.Text.Trim() != "")
+                            {
+                                if (Int16.Parse(useNum5.Text.Trim()) <= 0)
+                                {
+                                    MessageBox.Show("数量必须大于0");
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("数量格式不对");
+                            return;
+                        }
+                    }
+
+                    if (not_good_placetextBox1.Text.Trim() != "" && material_mpnComboBox1.Text.Trim() != "" && useNum1.Text.Trim() != "")
+                    {
+                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                           + repairer_txt + "','"
+                           + repair_date_txt + "','"
+                           + track_serial_no_txt + "','"
+                           + material_mpnComboBox1.Text.Trim() + "','"
+                           + useNum1.Text.Trim() + "','"
+                           + not_good_placetextBox1.Text.Trim() + "')";
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    if (not_good_placetextBox2.Text.Trim() != "" && material_mpnComboBox2.Text.Trim() != "" && useNum2.Text.Trim() != "")
+                    {
+                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                           + repairer_txt + "','"
+                           + repair_date_txt + "','"
+                           + track_serial_no_txt + "','"
+                           + material_mpnComboBox2.Text.Trim() + "','"
+                           + useNum2.Text.Trim() + "','"
+                           + not_good_placetextBox2.Text.Trim() + "')";
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    if (not_good_placetextBox3.Text.Trim() != "" && material_mpnComboBox3.Text.Trim() != "" && useNum3.Text.Trim() != "")
+                    {
+                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                           + repairer_txt + "','"
+                           + repair_date_txt + "','"
+                           + track_serial_no_txt + "','"
+                           + material_mpnComboBox3.Text.Trim() + "','"
+                           + useNum3.Text.Trim() + "','"
+                           + not_good_placetextBox3.Text.Trim() + "')";
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    if (not_good_placetextBox4.Text.Trim() != "" && material_mpnComboBox4.Text.Trim() != "" && useNum4.Text.Trim() != "")
+                    {
+                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                           + repairer_txt + "','"
+                           + repair_date_txt + "','"
+                           + track_serial_no_txt + "','"
+                           + material_mpnComboBox4.Text.Trim() + "','"
+                           + useNum4.Text.Trim() + "','"
+                           + not_good_placetextBox4.Text.Trim() + "')";
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    if (not_good_placetextBox5.Text.Trim() != "" && material_mpnComboBox5.Text.Trim() != "" && useNum5.Text.Trim() != "")
+                    {
+                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                           + repairer_txt + "','"
+                           + repair_date_txt + "','"
+                           + track_serial_no_txt + "','"
+                           + material_mpnComboBox5.Text.Trim() + "','"
+                           + useNum5.Text.Trim() + "','"
+                           + not_good_placetextBox5.Text.Trim() + "')";
+                        cmd.ExecuteNonQuery();
+                    }                   
+
                     //检查所有要是使用的数据，如果超过所拥有的数量，则不能生产任何记录                   
-                    if (mPrepareUseDetail1!=null && mPrepareUseDetail1.Id != null)
-                    {
-                        //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
-                        cmd.CommandText = "select usedNumber,realNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail1.Id + "'";
-                        SqlDataReader querySdr = cmd.ExecuteReader();
-                        string usedNumberStr = "";
-                        while (querySdr.Read())
-                        {
-                            usedNumberStr = querySdr[0].ToString();                            
-                        }
-                        querySdr.Close();
-                        int usedNumberInt=0;
-                        try
-                        {
-                            usedNumberInt = Int32.Parse(mPrepareUseDetail1.thisUseNumber);
-                            usedNumberInt += Int32.Parse(usedNumberStr);                        
-                        }
-                        catch (Exception ex)
-                        {  
-                        }
+                    //if (mPrepareUseDetail1!=null && mPrepareUseDetail1.Id != null)
+                    //{
+                    //    //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
+                    //    cmd.CommandText = "select usedNumber,realNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail1.Id + "'";
+                    //    SqlDataReader querySdr = cmd.ExecuteReader();
+                    //    string usedNumberStr = "";
+                    //    while (querySdr.Read())
+                    //    {
+                    //        usedNumberStr = querySdr[0].ToString();                            
+                    //    }
+                    //    querySdr.Close();
+                    //    int usedNumberInt=0;
+                    //    try
+                    //    {
+                    //        usedNumberInt = Int32.Parse(mPrepareUseDetail1.thisUseNumber);
+                    //        usedNumberInt += Int32.Parse(usedNumberStr);                        
+                    //    }
+                    //    catch (Exception ex)
+                    //    {  
+                    //    }
 
-                        //更新预领料表的数量
-                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
-                                  + "where Id = '" + mPrepareUseDetail1.Id + "'";
-                        cmd.ExecuteNonQuery();
+                    //    //更新预领料表的数量
+                    //    cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
+                    //              + "where Id = '" + mPrepareUseDetail1.Id + "'";
+                    //    cmd.ExecuteNonQuery();
 
-                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
-                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
-                           + repairer_txt + "','"
-                           + repair_date_txt + "','"
-                           + track_serial_no_txt + "','"
-                           + mPrepareUseDetail1.material_mpn + "','"
-                           + mPrepareUseDetail1.thisUseNumber + "','"
-                           + mPrepareUseDetail1.stock_place + "')";
-                        cmd.ExecuteNonQuery();
+                    //    //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                    //    cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                    //       + repairer_txt + "','"
+                    //       + repair_date_txt + "','"
+                    //       + track_serial_no_txt + "','"
+                    //       + mPrepareUseDetail1.material_mpn + "','"
+                    //       + mPrepareUseDetail1.thisUseNumber + "','"
+                    //       + mPrepareUseDetail1.stock_place + "')";
+                    //    cmd.ExecuteNonQuery();
 
-                        //使用完毕需要清空
-                        mPrepareUseDetail1.Id = null;
-                    }
+                    //    //使用完毕需要清空
+                    //    mPrepareUseDetail1.Id = null;
+                    //}
 
-                    if (mPrepareUseDetail2 != null && mPrepareUseDetail2.Id != null)
-                    { 
-                        //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
-                        cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail2.Id + "'";
-                        SqlDataReader querySdr = cmd.ExecuteReader();
-                        string usedNumberStr = "";
-                        while (querySdr.Read())
-                        {
-                            usedNumberStr = querySdr[0].ToString();
-                        }
-                        querySdr.Close();
-                        int usedNumberInt = 0;
-                        try
-                        {
-                            usedNumberInt = Int32.Parse(mPrepareUseDetail2.thisUseNumber);
-                            usedNumberInt += Int32.Parse(usedNumberStr);
-                        }
-                        catch (Exception ex)
-                        {
-                        }
+                    //if (mPrepareUseDetail2 != null && mPrepareUseDetail2.Id != null)
+                    //{ 
+                    //    //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
+                    //    cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail2.Id + "'";
+                    //    SqlDataReader querySdr = cmd.ExecuteReader();
+                    //    string usedNumberStr = "";
+                    //    while (querySdr.Read())
+                    //    {
+                    //        usedNumberStr = querySdr[0].ToString();
+                    //    }
+                    //    querySdr.Close();
+                    //    int usedNumberInt = 0;
+                    //    try
+                    //    {
+                    //        usedNumberInt = Int32.Parse(mPrepareUseDetail2.thisUseNumber);
+                    //        usedNumberInt += Int32.Parse(usedNumberStr);
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //    }
 
-                        //更新预领料表的数量
-                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
-                                  + "where Id = '" + mPrepareUseDetail2.Id + "'";
-                        cmd.ExecuteNonQuery();
+                    //    //更新预领料表的数量
+                    //    cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
+                    //              + "where Id = '" + mPrepareUseDetail2.Id + "'";
+                    //    cmd.ExecuteNonQuery();
 
-                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
-                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
-                           + repairer_txt + "','"
-                           + repair_date_txt + "','"
-                           + track_serial_no_txt + "','"
-                           + mPrepareUseDetail2.material_mpn + "','"
-                           + mPrepareUseDetail2.thisUseNumber + "','"
-                           + mPrepareUseDetail2.stock_place + "')";
-                        cmd.ExecuteNonQuery();
+                    //    //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                    //    cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                    //       + repairer_txt + "','"
+                    //       + repair_date_txt + "','"
+                    //       + track_serial_no_txt + "','"
+                    //       + mPrepareUseDetail2.material_mpn + "','"
+                    //       + mPrepareUseDetail2.thisUseNumber + "','"
+                    //       + mPrepareUseDetail2.stock_place + "')";
+                    //    cmd.ExecuteNonQuery();
 
-                        //使用完毕需要清空
-                        mPrepareUseDetail2.Id = null;
-                    }
+                    //    //使用完毕需要清空
+                    //    mPrepareUseDetail2.Id = null;
+                    //}
 
-                    if (mPrepareUseDetail3 != null && mPrepareUseDetail3.Id != null)
-                    {
+                    //if (mPrepareUseDetail3 != null && mPrepareUseDetail3.Id != null)
+                    //{
 
-                        //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
-                        cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail3.Id + "'";
-                        SqlDataReader querySdr = cmd.ExecuteReader();
-                        string usedNumberStr = "";
-                        while (querySdr.Read())
-                        {
-                            usedNumberStr = querySdr[0].ToString();
-                        }
-                        querySdr.Close();
-                        int usedNumberInt = 0;
-                        try
-                        {
-                            usedNumberInt = Int32.Parse(mPrepareUseDetail3.thisUseNumber);
-                            usedNumberInt += Int32.Parse(usedNumberStr);
-                        }
-                        catch (Exception ex)
-                        {
-                        }
+                    //    //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
+                    //    cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail3.Id + "'";
+                    //    SqlDataReader querySdr = cmd.ExecuteReader();
+                    //    string usedNumberStr = "";
+                    //    while (querySdr.Read())
+                    //    {
+                    //        usedNumberStr = querySdr[0].ToString();
+                    //    }
+                    //    querySdr.Close();
+                    //    int usedNumberInt = 0;
+                    //    try
+                    //    {
+                    //        usedNumberInt = Int32.Parse(mPrepareUseDetail3.thisUseNumber);
+                    //        usedNumberInt += Int32.Parse(usedNumberStr);
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //    }
 
-                        //更新预领料表的数量
-                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
-                                  + "where Id = '" + mPrepareUseDetail3.Id + "'";
-                        cmd.ExecuteNonQuery();
+                    //    //更新预领料表的数量
+                    //    cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
+                    //              + "where Id = '" + mPrepareUseDetail3.Id + "'";
+                    //    cmd.ExecuteNonQuery();
 
 
-                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
-                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
-                           + repairer_txt + "','"
-                           + repair_date_txt + "','"
-                           + track_serial_no_txt + "','"
-                           + mPrepareUseDetail3.material_mpn + "','"
-                           + mPrepareUseDetail3.thisUseNumber + "','"
-                           + mPrepareUseDetail3.stock_place + "')";
-                        cmd.ExecuteNonQuery();
+                    //    //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                    //    cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                    //       + repairer_txt + "','"
+                    //       + repair_date_txt + "','"
+                    //       + track_serial_no_txt + "','"
+                    //       + mPrepareUseDetail3.material_mpn + "','"
+                    //       + mPrepareUseDetail3.thisUseNumber + "','"
+                    //       + mPrepareUseDetail3.stock_place + "')";
+                    //    cmd.ExecuteNonQuery();
 
-                        //使用完毕需要清空
-                        mPrepareUseDetail3.Id = null;
-                    }
+                    //    //使用完毕需要清空
+                    //    mPrepareUseDetail3.Id = null;
+                    //}
 
-                    if (mPrepareUseDetail4 != null && mPrepareUseDetail4.Id != null)
-                    {
-                        //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
-                        cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail4.Id + "'";
-                        SqlDataReader querySdr = cmd.ExecuteReader();
-                        string usedNumberStr = "";
-                        while (querySdr.Read())
-                        {
-                            usedNumberStr = querySdr[0].ToString();
-                        }
-                        querySdr.Close();
-                        int usedNumberInt = 0;
-                        try
-                        {
-                            usedNumberInt = Int32.Parse(mPrepareUseDetail4.thisUseNumber);
-                            usedNumberInt += Int32.Parse(usedNumberStr);
-                        }
-                        catch (Exception ex)
-                        {
-                        }
+                    //if (mPrepareUseDetail4 != null && mPrepareUseDetail4.Id != null)
+                    //{
+                    //    //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
+                    //    cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail4.Id + "'";
+                    //    SqlDataReader querySdr = cmd.ExecuteReader();
+                    //    string usedNumberStr = "";
+                    //    while (querySdr.Read())
+                    //    {
+                    //        usedNumberStr = querySdr[0].ToString();
+                    //    }
+                    //    querySdr.Close();
+                    //    int usedNumberInt = 0;
+                    //    try
+                    //    {
+                    //        usedNumberInt = Int32.Parse(mPrepareUseDetail4.thisUseNumber);
+                    //        usedNumberInt += Int32.Parse(usedNumberStr);
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //    }
 
-                        //更新预领料表的数量
-                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
-                                  + "where Id = '" + mPrepareUseDetail4.Id + "'";
-                        cmd.ExecuteNonQuery();
+                    //    //更新预领料表的数量
+                    //    cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
+                    //              + "where Id = '" + mPrepareUseDetail4.Id + "'";
+                    //    cmd.ExecuteNonQuery();
 
-                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
-                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
-                           + repairer_txt + "','"
-                           + repair_date_txt + "','"
-                           + track_serial_no_txt + "','"
-                           + mPrepareUseDetail4.material_mpn + "','"
-                           + mPrepareUseDetail4.thisUseNumber + "','"
-                           + mPrepareUseDetail4.stock_place + "')";
-                        cmd.ExecuteNonQuery();
+                    //    //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                    //    cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                    //       + repairer_txt + "','"
+                    //       + repair_date_txt + "','"
+                    //       + track_serial_no_txt + "','"
+                    //       + mPrepareUseDetail4.material_mpn + "','"
+                    //       + mPrepareUseDetail4.thisUseNumber + "','"
+                    //       + mPrepareUseDetail4.stock_place + "')";
+                    //    cmd.ExecuteNonQuery();
 
-                        //使用完毕需要清空
-                        mPrepareUseDetail4.Id = null;
-                    }
+                    //    //使用完毕需要清空
+                    //    mPrepareUseDetail4.Id = null;
+                    //}
 
-                    if (mPrepareUseDetail5 != null && mPrepareUseDetail5.Id != null)
-                    {
-                        //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
-                        cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail5.Id + "'";
-                        SqlDataReader querySdr = cmd.ExecuteReader();
-                        string usedNumberStr = "";
-                        while (querySdr.Read())
-                        {
-                            usedNumberStr = querySdr[0].ToString();
-                        }
-                        querySdr.Close();
-                        int usedNumberInt = 0;
-                        try
-                        {
-                            usedNumberInt = Int32.Parse(mPrepareUseDetail5.thisUseNumber);
-                            usedNumberInt += Int32.Parse(usedNumberStr);
-                        }
-                        catch (Exception ex)
-                        {
-                        }
+                    //if (mPrepareUseDetail5 != null && mPrepareUseDetail5.Id != null)
+                    //{
+                    //    //防止总数不对，实时查询totalUseNumber 并减去本次使用的数量
+                    //    cmd.CommandText = "select usedNumber from request_fru_smt_to_store_table where Id='" + mPrepareUseDetail5.Id + "'";
+                    //    SqlDataReader querySdr = cmd.ExecuteReader();
+                    //    string usedNumberStr = "";
+                    //    while (querySdr.Read())
+                    //    {
+                    //        usedNumberStr = querySdr[0].ToString();
+                    //    }
+                    //    querySdr.Close();
+                    //    int usedNumberInt = 0;
+                    //    try
+                    //    {
+                    //        usedNumberInt = Int32.Parse(mPrepareUseDetail5.thisUseNumber);
+                    //        usedNumberInt += Int32.Parse(usedNumberStr);
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //    }
 
-                        //更新预领料表的数量
-                        cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
-                                  + "where Id = '" + mPrepareUseDetail5.Id + "'";
-                        cmd.ExecuteNonQuery();
+                    //    //更新预领料表的数量
+                    //    cmd.CommandText = "update request_fru_smt_to_store_table set usedNumber = '" + usedNumberInt + "' "
+                    //              + "where Id = '" + mPrepareUseDetail5.Id + "'";
+                    //    cmd.ExecuteNonQuery();
 
-                        //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
-                        cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
-                           + repairer_txt + "','"
-                           + repair_date_txt + "','"
-                           + track_serial_no_txt + "','"
-                           + mPrepareUseDetail5.material_mpn + "','"
-                           + mPrepareUseDetail5.thisUseNumber + "','"
-                           + mPrepareUseDetail5.stock_place + "')";
-                        cmd.ExecuteNonQuery();
+                    //    //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
+                    //    cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
+                    //       + repairer_txt + "','"
+                    //       + repair_date_txt + "','"
+                    //       + track_serial_no_txt + "','"
+                    //       + mPrepareUseDetail5.material_mpn + "','"
+                    //       + mPrepareUseDetail5.thisUseNumber + "','"
+                    //       + mPrepareUseDetail5.stock_place + "')";
+                    //    cmd.ExecuteNonQuery();
 
-                        //使用完毕需要清空
-                        mPrepareUseDetail5.Id = null;
-                    }
+                    //    //使用完毕需要清空
+                    //    mPrepareUseDetail5.Id = null;
+                    //}
 
                     cmd.CommandText = "INSERT INTO repair_record_table VALUES('"
                        + track_serial_no_txt + "','"
@@ -906,27 +1070,27 @@ namespace SaledServices
                 not_good_placetextBox1.Text = "";
                 material_mpnComboBox1.Items.Clear();
                 material_mpnComboBox1.Text = "";
-                material_71pntextBox1.Text = "";
+                //material_71pntextBox1.Text = "";
                 useNum1.Text = "";
                 not_good_placetextBox2.Text = "";
                 material_mpnComboBox2.Items.Clear();
                 material_mpnComboBox2.Text = "";
-                material_71pntextBox2.Text = "";
+                //material_71pntextBox2.Text = "";
                 useNum2.Text = "";
                 not_good_placetextBox3.Text = "";
                 material_mpnComboBox3.Items.Clear();
                 material_mpnComboBox3.Text = "";
-                material_71pntextBox3.Text = "";
+               // material_71pntextBox3.Text = "";
                 useNum3.Text = "";
                 not_good_placetextBox4.Text = "";
                 material_mpnComboBox4.Items.Clear();
                 material_mpnComboBox4.Text="";
-                material_71pntextBox4.Text = "";
+               // material_71pntextBox4.Text = "";
                 useNum4.Text = "";
                 not_good_placetextBox5.Text = "";
                 material_mpnComboBox5.Items.Clear();
                 material_mpnComboBox5.Text="";
-                material_71pntextBox5.Text = "";
+                //material_71pntextBox5.Text = "";
                 useNum5.Text = "";
                 this.material_typetextBox.Text = "";
                 this.fault_typecomboBox.Text = "";
@@ -985,7 +1149,7 @@ namespace SaledServices
                 
                 cmd.CommandType = CommandType.Text;
 
-                string sqlStr = "select * from repair_record_table";
+                string sqlStr = "select top 20 * from repair_record_table";
 
                 if (track_serial_noTextBox.Text.Trim() != "")
                 {
@@ -1233,36 +1397,34 @@ namespace SaledServices
 
         private void material_mpnComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            return;//
-
             ComboBox relatedCombo = (ComboBox)sender;
-
             if (relatedCombo.Text == "")
             {
                 MessageBox.Show("请选择一个值！");
                 return;
             }
-            TextBox current71pn = null;
+            TextBox labeldes = null;
             if (relatedCombo.Name.EndsWith("1"))
             {
-                current71pn = this.material_71pntextBox1;
+                labeldes = this.material_mpn1des;
             }
             else if (relatedCombo.Name.EndsWith("2"))
             {
-                current71pn = this.material_71pntextBox2;
+                labeldes = this.material_mpn2des;
             }
             else if (relatedCombo.Name.EndsWith("3"))
             {
-                current71pn = this.material_71pntextBox3;
+                labeldes = this.material_mpn3des;
             }
             else if (relatedCombo.Name.EndsWith("4"))
             {
-                current71pn = this.material_71pntextBox4;
+                labeldes = this.material_mpn4des;
             }
             else if (relatedCombo.Name.EndsWith("5"))
             {
-                current71pn = this.material_71pntextBox5;
+                labeldes = this.material_mpn5des;
             }
+            labeldes.Text = "";
 
             try
             {
@@ -1274,23 +1436,24 @@ namespace SaledServices
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "select material_vendor_pn from LCFC71BOM_table where material_mpn='" + relatedCombo.Text.Trim() + "'";
+                    cmd.CommandText = "select material_describe from LCFC_MBBOM_table where material_mpn='" + relatedCombo.Text.Trim() + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    string material_71pn_txt = "";
+                    string material_des_txt = "";
                     while (querySdr.Read())
                     {
-                        material_71pn_txt = querySdr[0].ToString();
+                        material_des_txt = querySdr[0].ToString();
+                        break;
                     }
                     querySdr.Close();
 
-                    if (material_71pn_txt != "")
+                    if (material_des_txt != "")
                     {
-                        current71pn.Text = material_71pn_txt;
+                        labeldes.Text = material_des_txt;
                     }
                     else
                     {
-                        MessageBox.Show("LCFC71BOM表中" + relatedCombo.Text.Trim() + "信息不全！");
+                       // MessageBox.Show("LCFC71BOM表中" + material_mpnComboBox1.Text.Trim() + "信息不全！");
                     }
                 }
                 conn.Close();
@@ -1305,7 +1468,7 @@ namespace SaledServices
         {
             this.not_good_placetextBox1.Text = "";
             this.material_mpnComboBox1.Text = "";
-            this.material_71pntextBox1.Text = "";
+          //  this.material_71pntextBox1.Text = "";
             this.useNum1.Text = "";
         }
 
@@ -1313,7 +1476,7 @@ namespace SaledServices
         {
             this.not_good_placetextBox2.Text = "";
             this.material_mpnComboBox2.Text = "";
-            this.material_71pntextBox2.Text = "";
+           // this.material_71pntextBox2.Text = "";
             this.useNum2.Text = "";
         }
 
@@ -1321,7 +1484,7 @@ namespace SaledServices
         {
             this.not_good_placetextBox3.Text = "";
             this.material_mpnComboBox3.Text = "";
-            this.material_71pntextBox3.Text = "";
+          //  this.material_71pntextBox3.Text = "";
             this.useNum3.Text = "";
         }
 
@@ -1329,7 +1492,7 @@ namespace SaledServices
         {
             this.not_good_placetextBox4.Text = "";
             this.material_mpnComboBox4.Text = "";
-            this.material_71pntextBox4.Text = "";
+           // this.material_71pntextBox4.Text = "";
             this.useNum4.Text = "";
         }
 
@@ -1337,8 +1500,10 @@ namespace SaledServices
         {
             this.not_good_placetextBox5.Text = "";
             this.material_mpnComboBox5.Text = "";
-            this.material_71pntextBox5.Text = "";
+            //this.material_71pntextBox5.Text = "";
             this.useNum5.Text = "";
         }
+
+       
     }
 }
