@@ -373,12 +373,12 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                if (!Utils.IsNumAndEnCh(this.custom_serial_noTextBox.Text))
+                if (!Utils.IsNumAndEnCh(this.custom_serial_noTextBox.Text.Trim()))
                 {
                     MessageBox.Show("包含非字符与数字的字符，请检查！");
                     return;
                 }
-                string customSerialNo = this.custom_serial_noTextBox.Text;
+                string customSerialNo = this.custom_serial_noTextBox.Text.Trim();
                 customSerialNo = Regex.Replace(customSerialNo, "[^a-zA-Z0-9]", "");
                 this.custom_serial_noTextBox.Text = customSerialNo;
                 if (customSerialNo.StartsWith("8S"))
@@ -407,7 +407,7 @@ namespace SaledServices
                     //需要去掉前面的非0字段
                     string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
 
-                    if (this.custom_serial_noTextBox.Text.ToLower().Contains(customSerial.ToLower()) == false)
+                    if (this.custom_serial_noTextBox.Text.Trim().ToLower().Contains(customSerial.ToLower()) == false)
                     {
                         MessageBox.Show("在" + this.productTextBox.Text + "下客户序号没有包含客户料号");
                         this.custom_serial_noTextBox.Focus();
@@ -444,7 +444,7 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select vendor from " + this.tableName + " where custom_serial_no = '" + this.custom_serial_noTextBox.Text
+                    cmd.CommandText = "select vendor from " + this.tableName + " where custom_serial_no = '" + this.custom_serial_noTextBox.Text.Trim()
                         + "' and custom_order = '" + this.custom_orderComboBox.Text + "'"; 
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
@@ -582,7 +582,9 @@ namespace SaledServices
                     else
                     {
                         querySdr.Close();
-                    }                    
+                    }
+
+                    this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");//设置为当前日期
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + 
                         this.vendorTextBox.Text.Trim() + "','" +
@@ -713,7 +715,7 @@ namespace SaledServices
             this.warranty_periodTextBox.Text = "";
             this.numTextBox.Text = "";
             this.mb_make_dateTextBox.Text = "";
-            this.order_out_dateTextBox.Text = "";
+            //this.order_out_dateTextBox.Text = "";
         }
 
         private void clearInputContent()

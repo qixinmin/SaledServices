@@ -54,20 +54,33 @@ namespace SaledServices
             int iMinute = 45;
             int iSecond = 00;
             // 设置　 每分钟的开始执行一次  
-            if (intSecond == iSecond)
+            //if (intSecond == iSecond)
+            //{
+            //    Console.WriteLine("每分钟的开始执行一次！");
+            //}
+            //// 设置　每个小时的３０分钟开始执行  
+            //if (intMinute == iMinute && intSecond == iSecond)
+            //{
+            //    Console.WriteLine("每个小时的３０分钟开始执行一次！");
+            //}            
+
+            if (intHour == 11 && intMinute == 40 && intSecond == 00)
             {
-                Console.WriteLine("每分钟的开始执行一次！");
-            }
-            // 设置　每个小时的３０分钟开始执行  
-            if (intMinute == iMinute && intSecond == iSecond)
-            {
-                Console.WriteLine("每个小时的３０分钟开始执行一次！");
+                // Console.WriteLine("在每天１０点３０分开始执行！");
+                if (Utils.GetAddressIP() == "192.168.5.222")
+                {
+                    new DatabaseForm().button1_Click(null, null);
+                }
             }
 
-            // 设置　每天的１０：３０：００开始执行程序  
-            if (intHour == iHour && intMinute == iMinute && intSecond == iSecond)
+            // 设置　每天的17:20开始执行程序  
+            if (intHour == 17 && intMinute == 20 && intSecond == 00)
             {
-                Console.WriteLine("在每天１０点３０分开始执行！");
+               // Console.WriteLine("在每天１０点３０分开始执行！");
+                if (Utils.GetAddressIP() == "192.168.5.222")
+                {
+                    new DatabaseForm().button1_Click(null, null);
+                }
             }        
         }
 

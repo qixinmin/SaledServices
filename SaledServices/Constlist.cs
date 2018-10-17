@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Data.SqlClient;
 using System.Data;
 using System.Text.RegularExpressions;
+using System.Net;
 
 namespace SaledServices
 {
@@ -131,6 +132,25 @@ namespace SaledServices
 
     public class Utils
     {
+        public static string GetAddressIP()
+        {
+            ///获取本地的IP地址
+            string AddressIP = string.Empty;
+            foreach (IPAddress _IPAddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
+            {
+                if (_IPAddress.AddressFamily.ToString() == "InterNetwork")
+                {
+                    AddressIP = _IPAddress.ToString();
+                    if (AddressIP.StartsWith("192.168.1"))
+                    {
+                        break;
+                    }
+                }
+
+            }
+            return AddressIP;
+        }
+
         public static bool IsNumAndEnCh(string input)
         {
             string pattern = @"^[A-Za-z0-9]+$";

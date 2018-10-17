@@ -557,6 +557,7 @@
             this.customResponsibilityComboBox.Name = "customResponsibilityComboBox";
             this.customResponsibilityComboBox.Size = new System.Drawing.Size(212, 24);
             this.customResponsibilityComboBox.TabIndex = 5;
+            this.customResponsibilityComboBox.Text = "正常";
             // 
             // label24
             // 
