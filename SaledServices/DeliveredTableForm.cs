@@ -267,9 +267,9 @@ namespace SaledServices
             //catch (Exception ex)
             //{
             //    //MessageBox.Show("订单号码时间格式错误, 设置默认值！");
-            //    this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            //    this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
             //}
-            this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
             if (Utils.isTimeError(this.order_out_dateTextBox.Text.Trim()))
             {
@@ -287,12 +287,12 @@ namespace SaledServices
                     MessageBox.Show("请检测当前机器的时间是否正确！");
                     return;
                 }
-                this.order_receive_dateTextBox.Text = dt2.ToString("yyyy/MM/dd");
+                this.order_receive_dateTextBox.Text = dt2.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
             }
             catch (Exception ex)
             {
                 //MessageBox.Show("订单号码时间格式错误, 设置默认值！");
-                this.order_receive_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                this.order_receive_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
             }
       
             doQueryAfterSelection();
@@ -584,7 +584,7 @@ namespace SaledServices
                         querySdr.Close();
                     }
 
-                    this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");//设置为当前日期
+                    this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);//设置为当前日期
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + 
                         this.vendorTextBox.Text.Trim() + "','" +
@@ -650,7 +650,7 @@ namespace SaledServices
                     querySdr.Close();
 
                     cmd.CommandText = "update receiveOrder set _status = '" + status + "',receivedNum = '" + (receivedNum + 1) +
-                                "', receivedate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                                "', receivedate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                                 + "where orderno = '" + this.custom_orderComboBox.Text
                                 + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
@@ -659,7 +659,7 @@ namespace SaledServices
                     //记录站别信息
                     cmd.CommandText = "INSERT INTO stationInformation VALUES('"
                         + this.track_serial_noTextBox.Text.Trim() + "','收货','"
-                        + DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                        + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "')";
                     cmd.ExecuteNonQuery();
 
                     conn.Close();
@@ -933,8 +933,8 @@ namespace SaledServices
             this.source_briefComboBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
             this.storehouseTextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
             this.custom_orderComboBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
-            this.order_out_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[6].Value.ToString()).ToString("yyyy/MM/dd");
-            this.order_receive_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[7].Value.ToString()).ToString("yyyy/MM/dd");
+            this.order_out_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[6].Value.ToString()).ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
+            this.order_receive_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[7].Value.ToString()).ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             this.custom_machine_typeTextBox.Text = dataGridView1.SelectedCells[8].Value.ToString();
             this.mb_briefTextBox.Text = dataGridView1.SelectedCells[9].Value.ToString();
             this.custommaterialNoTextBox.Text = dataGridView1.SelectedCells[10].Value.ToString();
@@ -947,7 +947,7 @@ namespace SaledServices
             this.mpnTextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
 
             this.mb_describeTextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();
-            this.mb_make_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[19].Value.ToString()).ToString("yyyy/MM/dd");
+            this.mb_make_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[19].Value.ToString()).ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             this.warranty_periodTextBox.Text = dataGridView1.SelectedCells[20].Value.ToString();
             this.custom_faultComboBox.Text = dataGridView1.SelectedCells[21].Value.ToString();
             this.guaranteeComboBox.Text = dataGridView1.SelectedCells[22].Value.ToString();

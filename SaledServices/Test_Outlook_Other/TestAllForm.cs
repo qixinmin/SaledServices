@@ -20,7 +20,7 @@ namespace SaledServices.Test_Outlook
         {
             InitializeComponent();
             testerTextBox.Text = LoginForm.currentUser;
-            testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             this.tracker_bar_textBox.Focus();
         }
 
@@ -203,7 +203,7 @@ namespace SaledServices.Test_Outlook
                                 this.cpuTypetextBox.Text = cpu_type;
                                 this.cpuFreqtextBox.Text = cpu_freq;
                                 this.testerTextBox.Text = LoginForm.currentUser;
-                                this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
                                 this.bomdownload.Enabled = true;
                                 this.button1.Enabled = true;
@@ -254,7 +254,7 @@ namespace SaledServices.Test_Outlook
                                         else
                                         {
                                             //更新烧录日期与custom_serial_no与使用状态
-                                            cmd.CommandText = "update DPK_table set _status = '已使用', burn_date = '" + DateTime.Now.ToString("yyyy/MM/dd") + "',custom_serial_no = '" + custom_serial_no + "' where Id = '" + id + "'";
+                                            cmd.CommandText = "update DPK_table set _status = '已使用', burn_date = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "',custom_serial_no = '" + custom_serial_no + "' where Id = '" + id + "'";
                                             cmd.ExecuteNonQuery();
                                         }
                                     }
@@ -421,7 +421,7 @@ namespace SaledServices.Test_Outlook
                         + "')";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }
@@ -458,7 +458,7 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }
@@ -723,7 +723,7 @@ namespace SaledServices.Test_Outlook
                         + "')";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }

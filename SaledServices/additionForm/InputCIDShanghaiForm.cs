@@ -20,7 +20,7 @@ namespace SaledServices
             loadAdditionInfomation();
 
             inputertextBox.Text = LoginForm.currentUser;
-            this.inputdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            this.inputdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
             if (User.UserSelfForm.isSuperManager() == false)
             {
                 this.modify.Visible = false;
@@ -97,7 +97,7 @@ namespace SaledServices
                         MessageBox.Show("此序列号已经在CID中，后面将会更新原来的数据！");
                     }
 
-                    cmd.CommandText = "select vendor, product,custom_order,custommaterialNo,custom_serial_no,mb_brief,mpn,order_receive_date from DeliveredTable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select vendor, product,custom_order,custommaterialNo,custom_serial_no,mb_brief,mpn,order_receive_date,custom_fault from DeliveredTable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
 
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
@@ -109,7 +109,8 @@ namespace SaledServices
                         this.custom_serial_notextBox.Text = querySdr[4].ToString();
                         this.mb_brieftextBox.Text = querySdr[5].ToString();
                         this.mpntextBox.Text = querySdr[6].ToString();
-                        this.receivedatetextBox.Text = DateTime.Parse(querySdr[7].ToString()).ToString("yyyy/MM/dd");
+                        this.receivedatetextBox.Text = DateTime.Parse(querySdr[7].ToString()).ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
+                        customFaulttextBox.Text = querySdr[8].ToString();
                     }
                     querySdr.Close();
 
@@ -323,7 +324,7 @@ namespace SaledServices
                     cmd.ExecuteNonQuery();
 
                     //更新维修站别
-                    cmd.CommandText = "update stationInformation set station = 'CID', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    cmd.CommandText = "update stationInformation set station = 'CID', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                                + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }

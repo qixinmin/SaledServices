@@ -231,7 +231,7 @@ namespace SaledServices
                         //记录站别信息
                         cmd.CommandText = "INSERT INTO stationInformation VALUES('"
                             + i + "','收货','"
-                            + DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                            + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "')";
                         cmd.ExecuteNonQuery();
                     }
                    

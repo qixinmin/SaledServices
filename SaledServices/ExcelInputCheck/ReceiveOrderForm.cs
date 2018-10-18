@@ -242,9 +242,9 @@ namespace SaledServices
             this.mb_briefTextBox.Text = dataGridView1.SelectedCells[7].Value.ToString();
             this.vendor_materialNoTextBox.Text = dataGridView1.SelectedCells[8].Value.ToString();
             this.usernameTextBox.Text = dataGridView1.SelectedCells[9].Value.ToString();
-            this.ordertimeTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[10].Value.ToString()).ToString("yyyy/MM/dd");
+            this.ordertimeTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[10].Value.ToString()).ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             this.receivedNumTextBox.Text = dataGridView1.SelectedCells[11].Value.ToString();
-            this.receivedateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[12].Value.ToString()).ToString("yyyy/MM/dd");
+            this.receivedateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[12].Value.ToString()).ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             this.statusTextBox.Text = dataGridView1.SelectedCells[13].Value.ToString();
             this.storeHouseComboBox.Text = dataGridView1.SelectedCells[14].Value.ToString();
             this.returnNumTextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();

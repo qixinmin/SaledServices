@@ -66,7 +66,7 @@ namespace SaledServices
                         + this.mpnTextBox.Text.Trim() + "','"
                             + this.numberTextBox.Text.Trim() + "','"
                             + LoginForm.currentUser + "','"
-                        + DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                        + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "')";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "update store_house_ng set number = '" + (Int32.Parse(number) + Int32.Parse(this.numberTextBox.Text)) + "', mpn='" + this.mpnTextBox.Text.Trim()

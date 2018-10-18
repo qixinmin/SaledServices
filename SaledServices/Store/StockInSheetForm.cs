@@ -21,7 +21,7 @@ namespace SaledServices
         {
             InitializeComponent();
             inputerTextBox.Text = LoginForm.currentUser;
-            this.input_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            this.input_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
             if (User.UserSelfForm.isSuperManager() == false)
             {
@@ -240,7 +240,7 @@ namespace SaledServices
             //status 14
 
             this.inputerTextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
-            this.input_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[16].Value.ToString()).ToString("yyyy/MM/dd");
+            this.input_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[16].Value.ToString()).ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
         }
 
         private void ReceiveOrderForm_Load(object sender, EventArgs e)

@@ -24,7 +24,7 @@ namespace SaledServices
         {
             InitializeComponent();
             inputerTextBox.Text = LoginForm.currentUser;
-            this.input_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            this.input_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
             if (User.UserSelfForm.isSuperManager() == false)
             {
@@ -262,7 +262,7 @@ namespace SaledServices
         {
             try
             {
-                this.input_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                this.input_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
                 conn.Open();
 

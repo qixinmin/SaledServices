@@ -18,7 +18,7 @@ namespace SaledServices
 
             loadAdditionInfomation();
             repairertextBox.Text = LoginForm.currentUser;
-            repair_datetextBox.Text =  DateTime.Now.ToString("yyyy/MM/dd");
+            repair_datetextBox.Text =  DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
             if (User.UserSelfForm.isSuperManager() == false)
             {
@@ -94,12 +94,12 @@ namespace SaledServices
                         this.producttextBox.Text = querySdr[1].ToString();
                         this.sourcetextBox.Text = querySdr[2].ToString();
                         this.ordernotextBox.Text = querySdr[3].ToString();
-                        this.receivedatetextBox.Text = DateTime.Parse(querySdr[4].ToString()).ToString("yyyy/MM/dd");
+                        this.receivedatetextBox.Text = DateTime.Parse(querySdr[4].ToString()).ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
                         this.mb_brieftextBox.Text = querySdr[5].ToString();
                         this.custom_serial_notextBox.Text = querySdr[6].ToString();
                         this.vendor_serail_notextBox.Text = querySdr[7].ToString();
                         this.mpntextBox.Text = querySdr[8].ToString();
-                        this.mb_make_dateTextBox.Text = DateTime.Parse(querySdr[9].ToString()).ToString("yyyy/MM/dd");
+                        this.mb_make_dateTextBox.Text = DateTime.Parse(querySdr[9].ToString()).ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
                         this.customFaulttextBox.Text = querySdr[10].ToString();                   
 
                         this.mbfa1label.Text = querySdr[11].ToString();
@@ -111,7 +111,7 @@ namespace SaledServices
                         this.BGA_placetextBox.Text = querySdr[15].ToString();
                         this.bga_brieftextBox.Text = querySdr[16].ToString();
                         this.repairertextBox.Text = querySdr[17].ToString();
-                        this.repair_datetextBox.Text = DateTime.Parse(querySdr[18].ToString()).ToString("yyyy/MM/dd");
+                        this.repair_datetextBox.Text = DateTime.Parse(querySdr[18].ToString()).ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
                         this.countNumtextBox.Text = querySdr[19].ToString();
 
                         status = querySdr[20].ToString();
@@ -142,7 +142,7 @@ namespace SaledServices
                 {
                     this.bgaRepair_resultcomboBox.Focus();
                     bgarepairertextBox.Text = LoginForm.currentUser;
-                    bgarepairDatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                    bgarepairDatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
                     if (Utils.isTimeError(this.bgarepairDatetextBox.Text.Trim()))
                     {
@@ -200,7 +200,7 @@ namespace SaledServices
             string repair_date_txt = this.repair_datetextBox.Text.Trim();
 
             string bgarepairer_txt = this.bgarepairertextBox.Text.Trim();
-            string bgaRepairDate_txt = DateTime.Now.ToString("yyyy/MM/dd");
+            string bgaRepairDate_txt = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             string bgaRepairResult_txt = this.bgaRepair_resultcomboBox.Text.Trim();
 
             string countNum_txt = this.countNumtextBox.Text.Trim();
@@ -304,7 +304,7 @@ namespace SaledServices
                     
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "update stationInformation set station = 'BGA', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    cmd.CommandText = "update stationInformation set station = 'BGA', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                               + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }

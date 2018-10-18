@@ -19,7 +19,7 @@ namespace SaledServices
             InitializeComponent();
            
             confirmertextBox.Text = LoginForm.currentUser;
-            this.confrim_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            this.confrim_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
             if (User.UserSelfForm.isSuperManager() == false)
             {
@@ -146,7 +146,7 @@ namespace SaledServices
                     MessageBox.Show(ex.ToString());
                 }
 
-                this.confrim_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                this.confrim_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
                 if (!error)
                 {
                     this.vendorSnTextBox.Focus();
@@ -268,7 +268,7 @@ namespace SaledServices
                     cmd.ExecuteNonQuery();
 
                     //更新维修站别
-                    cmd.CommandText = "update stationInformation set station = '报废', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    cmd.CommandText = "update stationInformation set station = '报废', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                                + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }

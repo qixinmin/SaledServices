@@ -211,7 +211,7 @@ namespace SaledServices
                 this.ordernoTextBox.Text = orderNo;// dataGridViewToReturn.SelectedCells[0].Value.ToString();
                 this.custommaterialNoTextBox.Text = custommaterialNo;// dataGridViewToReturn.SelectedCells[1].Value.ToString();
                 // this.storehouseTextBox.Text = dataGridViewToReturn.SelectedCells[2].Value.ToString();
-                this.return_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                this.return_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
                 if (Utils.isTimeError(this.return_dateTextBox.Text.Trim()))
                 {

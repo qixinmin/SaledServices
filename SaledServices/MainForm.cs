@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using SaledServices.CustomsExport;
 using SaledServices.additionForm;
 using System.Diagnostics;
 using System.IO;
@@ -664,101 +663,6 @@ namespace SaledServices
             allForm.Add(checkrequestform);  
         }
 
-
-        private OpeningStockForm openingstockform;
-        private void 期初库存ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (openingstockform == null || openingstockform.IsDisposed)
-            {
-                openingstockform = new OpeningStockForm();
-                openingstockform.MdiParent = this;
-            }
-
-            // openingstockform.WindowState = FormWindowState.Maximized;
-            openingstockform.BringToFront();
-            openingstockform.Show();
-
-            allForm.Add(openingstockform);  
-        }
-
-        private RealStockForm realstockform;
-        private void 实盘库存ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (realstockform == null || realstockform.IsDisposed)
-            {
-                realstockform = new RealStockForm();
-                realstockform.MdiParent = this;
-            }
-
-            // realstockform.WindowState = FormWindowState.Maximized;
-            realstockform.BringToFront();
-            realstockform.Show();
-
-            allForm.Add(realstockform);  
-        }
-
-        private StockInOutForm stockInOutform;
-        private void 出库入库ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (stockInOutform == null || stockInOutform.IsDisposed)
-            {
-                stockInOutform = new StockInOutForm();
-                stockInOutform.MdiParent = this;
-            }
-
-            // stockInOutform.WindowState = FormWindowState.Maximized;
-            stockInOutform.BringToFront();
-            stockInOutform.Show();
-
-            allForm.Add(stockInOutform);
-        }
-
-        private WorkListHeadForm worklistheadform;
-        private void 工单表头ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (worklistheadform == null || worklistheadform.IsDisposed)
-            {
-                worklistheadform = new WorkListHeadForm();
-                worklistheadform.MdiParent = this;
-            }
-
-            // worklistheadform.WindowState = FormWindowState.Maximized;
-            worklistheadform.BringToFront();
-            worklistheadform.Show();
-
-            allForm.Add(worklistheadform);
-        }
-        private WorkListBodyForm worklistbodyform;
-        private void 工单表体ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (worklistbodyform == null || worklistbodyform.IsDisposed)
-            {
-                worklistbodyform = new WorkListBodyForm();
-                worklistbodyform.MdiParent = this;
-            }
-
-            // worklistbodyform.WindowState = FormWindowState.Maximized;
-            worklistbodyform.BringToFront();
-            worklistbodyform.Show();
-
-            allForm.Add(worklistbodyform);
-        }
-
-        private CompanyFixedForm cfform;
-        private void 企业固定信息ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (cfform == null || cfform.IsDisposed)
-            {
-                cfform = new CompanyFixedForm();
-                cfform.MdiParent = this;
-            }
-
-           // cfform.WindowState = FormWindowState.Maximized;
-            cfform.BringToFront();
-            cfform.Show();
-
-            allForm.Add(cfform);  
-        }
 
         private void 库房领料申请ToolStripMenuItem_Click(object sender, EventArgs e)
         {

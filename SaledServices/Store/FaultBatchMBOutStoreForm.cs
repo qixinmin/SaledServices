@@ -81,7 +81,7 @@ namespace SaledServices
                             + this.mpnTextBox.Text.Trim() + "','"
                             + this.numberTextBox.Text.Trim() + "','"
                             + LoginForm.currentUser + "','"
-                            + DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                            + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "')";
 
                         cmd.ExecuteNonQuery();
                         this.storehoustTextBox.Text = "";

@@ -356,7 +356,7 @@ namespace SaledServices
                                 mb_brief + "','" +
                                 vendor_materialNo + "','" +
                                 LoginForm.currentUser + "','" +                                
-                                 DateTime.Now.ToString("yyyy/MM/dd")+ "','" +
+                                 DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo)+ "','" +
                                 "0" + "','" +
                                 DateTime.Now.ToString("1900/01/01") + "','" +
                                 "open" + "','" +
@@ -790,7 +790,7 @@ namespace SaledServices
                                 {
                                     string temp = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, j]).Value2.ToString();
                                     DateTime strDate = DateTime.FromOADate(double.Parse(temp));
-                                    s += strDate.ToString("yyyy/MM/dd");
+                                    s += strDate.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
                                 }
                                 else
                                 {

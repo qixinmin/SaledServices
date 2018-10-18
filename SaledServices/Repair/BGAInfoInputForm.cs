@@ -16,7 +16,7 @@ namespace SaledServices
         {
             InitializeComponent();
             this.repairertextBox.Text = LoginForm.currentUser;
-            repair_datetextBox.Text  = DateTime.Now.ToString("yyyy/MM/dd");
+            repair_datetextBox.Text  = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
             if (User.UserSelfForm.isSuperManager() == false)
             {
@@ -81,7 +81,7 @@ namespace SaledServices
                         order_receive_date = querySdr[3].ToString();
                         custom_serial_no = querySdr[4].ToString();
                         vendor_serial_no = querySdr[5].ToString();
-                        mb_make_date = DateTime.Parse(querySdr[6].ToString()).ToString("yyyy/MM/dd");
+                        mb_make_date = DateTime.Parse(querySdr[6].ToString()).ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
                         custom_fault = querySdr[7].ToString();
 
                     }
@@ -120,7 +120,7 @@ namespace SaledServices
                         this.ECOtextBox.Text = eco;
                     
          
-                        this.repair_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                        this.repair_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
                         if (Utils.isTimeError(this.repair_datetextBox.Text.Trim()))
                         {
@@ -200,7 +200,7 @@ namespace SaledServices
                     MessageBox.Show(ex.ToString());
                 }
 
-                this.repair_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                this.repair_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
                 if (!error)
                 {
                     
@@ -587,7 +587,7 @@ namespace SaledServices
                             stationInfo = "维修";
                         }
 
-                        cmd.CommandText = "update stationInformation set station = '" + stationInfo + "', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                        cmd.CommandText = "update stationInformation set station = '" + stationInfo + "', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                                       + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
 
                         cmd.ExecuteNonQuery();

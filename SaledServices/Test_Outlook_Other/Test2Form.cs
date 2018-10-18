@@ -17,7 +17,7 @@ namespace SaledServices.Test_Outlook
         {
             InitializeComponent();
             testerTextBox.Text = LoginForm.currentUser;
-            testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             this.tracker_bar_textBox.Focus();
         }
 
@@ -94,7 +94,7 @@ namespace SaledServices.Test_Outlook
                     //    if (customMaterialNo != "")
                     //    {
                     //        this.testerTextBox.Text = LoginForm.currentUser;
-                    //        this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                    //        this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
                     //    }
                     //    else
                     //    {
@@ -109,7 +109,7 @@ namespace SaledServices.Test_Outlook
                     //}
 
                     this.testerTextBox.Text = LoginForm.currentUser;
-                    this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                    this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
                     mConn.Close();
                 }
                 catch (Exception ex)
@@ -161,7 +161,7 @@ namespace SaledServices.Test_Outlook
                         + "')";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "update stationInformation set station = 'Test2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    cmd.CommandText = "update stationInformation set station = 'Test2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }
@@ -199,7 +199,7 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }

@@ -24,7 +24,7 @@ namespace SaledServices
             InitializeComponent();
 
             inputerTextBox.Text = LoginForm.currentUser;
-            this.input_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            this.input_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
             loadAdditionInfomation();
 
@@ -197,7 +197,7 @@ namespace SaledServices
                         this.track_serial_noTextBox.Text.Trim() + "','" +
                         this.notetextBox.Text.Trim() + "','" +
                         this.inputerTextBox.Text.Trim() + "','" +
-                        DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                        DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "')";
 
                     cmd.ExecuteNonQuery();
 

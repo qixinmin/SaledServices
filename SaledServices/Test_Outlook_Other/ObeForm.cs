@@ -17,7 +17,7 @@ namespace SaledServices.Test_Outlook
         {
             InitializeComponent();
             testerTextBox.Text = LoginForm.currentUser;
-            testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
             this.tracker_bar_textBox.Focus();
         }
@@ -72,7 +72,7 @@ namespace SaledServices.Test_Outlook
                         if (customMaterialNo != "")
                         {
                             this.testerTextBox.Text = LoginForm.currentUser;
-                            this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                            this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
                             this.confirmbutton.Enabled = true;
                             this.button1.Enabled = true;
                         }
@@ -142,7 +142,7 @@ namespace SaledServices.Test_Outlook
                         + "')";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "update stationInformation set station = 'Obe', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    cmd.CommandText = "update stationInformation set station = 'Obe', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }
@@ -198,7 +198,7 @@ namespace SaledServices.Test_Outlook
                         return;
                     }
 
-                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }

@@ -21,7 +21,7 @@ namespace SaledServices
             InitializeComponent();
 
             inputertextBox.Text = LoginForm.currentUser;
-            this.input_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            this.input_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             mPrepareUseDetail = new PrepareUseDetail();
 
             if (User.UserSelfForm.isSuperManager() == false)

@@ -23,7 +23,7 @@ namespace SaledServices
             loadAdditionInfomation();
 
             inputertextBox.Text = LoginForm.currentUser;
-            this.input_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            this.input_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             mPrepareUseDetail = new PrepareUseDetail();
 
             if (User.UserSelfForm.isSuperManager() == false)
@@ -150,7 +150,7 @@ namespace SaledServices
                         this.customFaulttextBox.Text = custom_fault;
                         this.ECOtextBox.Text = eco;
                         this.inputertextBox.Text = LoginForm.currentUser;
-                        this.input_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                        this.input_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
                     }
                     else
                     {  
@@ -235,7 +235,7 @@ namespace SaledServices
                     cmd.ExecuteNonQuery();
 
                     //更新维修站别
-                    cmd.CommandText = "update stationInformation set station = '不良品库', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                    cmd.CommandText = "update stationInformation set station = '不良品库', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                                + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }

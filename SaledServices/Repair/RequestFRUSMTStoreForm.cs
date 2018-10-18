@@ -17,7 +17,7 @@ namespace SaledServices.Store
         {
             InitializeComponent();
 
-            this.dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            this.dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             requesterTextBox.Text = LoginForm.currentUser;
 
             if (Utils.isTimeError(this.dateTextBox.Text.Trim()))
@@ -60,7 +60,7 @@ namespace SaledServices.Store
                         + this.numberTextBox.Text.Trim() + "','"
                         + this.numberTextBox.Text.Trim() + "','"//realNumber, 开始为跟申请数量一样
                         + this.requesterTextBox.Text.Trim() + "','"
-                        + DateTime.Now.ToString("yyyy/MM/dd") + "','"
+                        + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "','"
                         + "close" + "','"
                         + "" + "','"
                         + "" + "','"

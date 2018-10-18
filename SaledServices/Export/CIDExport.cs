@@ -19,8 +19,8 @@ namespace SaledServices.Export
 
         private void exportxmlbutton_Click(object sender, EventArgs e)
         {
-            DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy/MM/dd"));
-            DateTime time2 = Convert.ToDateTime(this.dateTimePickerend.Value.Date.ToString("yyyy/MM/dd"));
+            DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo));
+            DateTime time2 = Convert.ToDateTime(this.dateTimePickerend.Value.Date.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo));
 
             if (DateTime.Compare(time1, time2) > 0) //判断日期大小
             {
@@ -28,8 +28,8 @@ namespace SaledServices.Export
                 return;
             }
 
-            string startTime = this.dateTimePickerstart.Value.ToString("yyyy/MM/dd");
-            string endTime = this.dateTimePickerend.Value.ToString("yyyy/MM/dd");
+            string startTime = this.dateTimePickerstart.Value.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
+            string endTime = this.dateTimePickerend.Value.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
             List<CidStruct> receiveOrderList = new List<CidStruct>();
 
@@ -69,12 +69,13 @@ namespace SaledServices.Export
 
                 foreach (CidStruct temp in receiveOrderList)
                 {
-                    cmd.CommandText = "select lenovo_maintenance_no,lenovo_custom_service_no from DeliveredTable where track_serial_no='" + temp.track_serial_no + "'";
+                    cmd.CommandText = "select lenovo_maintenance_no,lenovo_custom_service_no,custom_fault from DeliveredTable where track_serial_no='" + temp.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {                        
                         temp.lenovo_maintenance_no = querySdr[0].ToString();
-                        temp.lenovo_custom_service_no = querySdr[1].ToString();      
+                        temp.lenovo_custom_service_no = querySdr[1].ToString();
+                        temp.custom_fault = querySdr[2].ToString();
                     }
                     querySdr.Close();
                 }
@@ -103,6 +104,7 @@ namespace SaledServices.Export
             titleList.Add("MB简称");
             titleList.Add("MPN");
             titleList.Add("收货日期");
+            titleList.Add("客责描述");
             titleList.Add("客责类别");
             titleList.Add("客责描述");
             titleList.Add("短路电压");
@@ -125,6 +127,7 @@ namespace SaledServices.Export
 
                 ct1.Add(stockcheck.mpn);
                 ct1.Add(stockcheck.order_receive_date);
+                ct1.Add(stockcheck.custom_fault);
                 ct1.Add(stockcheck.custom_res_type);
                 ct1.Add(stockcheck.customResponsibility);
                 ct1.Add(stockcheck.short_cut);

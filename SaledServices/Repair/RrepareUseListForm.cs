@@ -215,7 +215,7 @@ namespace SaledServices.Repair
                         +(realNumInt-usedNumInt) + "','"
                         + this.notgood_placetextBox.Text.Trim() + "','"
                         + LoginForm.currentUser + "','"
-                        + DateTime.Now.ToString("yyyy/MM/dd") + "','"
+                        + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "','"
                         + "" + "','"
                         + "" + "','"
                         + "request" + "','"

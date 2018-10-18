@@ -16,7 +16,7 @@ namespace SaledServices.Store
         {
             InitializeComponent();
             requestertextBox.Text = LoginForm.currentUser;
-            this.requestdateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            this.requestdateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             loadInfo();
         }
 
@@ -89,7 +89,7 @@ namespace SaledServices.Store
 
                     //1 修改归还仓库状态
                     cmd.CommandText = "update fru_smt_return_store_record set _status = 'done',processer = '" + requestertextBox.Text.Trim() +
-                                "', processe_date = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                                "', processe_date = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                                 + "where Id = '" + this.idtextBox.Text + "'";
                     cmd.ExecuteNonQuery();
 

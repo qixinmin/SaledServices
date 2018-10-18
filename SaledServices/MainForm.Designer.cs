@@ -641,13 +641,7 @@
             this.厂商信息ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
             this.厂商信息ToolStripMenuItem.Text = "厂商信息";
             this.厂商信息ToolStripMenuItem.Click += new System.EventHandler(this.厂商信息ToolStripMenuItem_Click);
-            // 
-            // 企业固定信息ToolStripMenuItem
-            // 
-            this.企业固定信息ToolStripMenuItem.Name = "企业固定信息ToolStripMenuItem";
-            this.企业固定信息ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
-            this.企业固定信息ToolStripMenuItem.Text = "企业固定信息";
-            this.企业固定信息ToolStripMenuItem.Click += new System.EventHandler(this.企业固定信息ToolStripMenuItem_Click);
+            
             // 
             // 员工管理ToolStripMenuItem
             // 

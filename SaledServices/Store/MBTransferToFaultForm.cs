@@ -89,7 +89,7 @@ namespace SaledServices
                                 + mpn + "','"
                                     + number + "','"
                                     + LoginForm.currentUser + "','"
-                                + DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                                + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "')";
                             cmd.ExecuteNonQuery();
 
                             cmd.CommandText = "update store_house_ng set number = '" + (oldNumber + wantedTotransferNumber) + "' where house='" + houseN + "' and place='" + placeN + "'";
@@ -104,7 +104,7 @@ namespace SaledServices
                                 + mpn + "','"
                                     + wantedTotransferNumber + "','"
                                     + LoginForm.currentUser + "','"
-                                + DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                                + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "')";
                             cmd.ExecuteNonQuery();
 
                             cmd.CommandText = "INSERT INTO  store_house_ng VALUES('" + houseN + "','" + placeN + "','" + mpn + "','" + wantedTotransferNumber + "')";

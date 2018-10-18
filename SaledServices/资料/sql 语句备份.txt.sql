@@ -1,6 +1,6 @@
 CREATE TABLE limit_gurante(
 Id INT PRIMARY KEY IDENTITY, 
-import_date	NVARCHAR(128),
+import_date	date,
 MB_CUST_SN	NVARCHAR(128),
 MB_FRU_PN	NVARCHAR(128),
 MB_COMPAL_PN	NVARCHAR(128),
@@ -8,11 +8,9 @@ MB_COMPAL_SN	NVARCHAR(128),
 SERIAL_NUMBER	NVARCHAR(128),
 MODEL_NAME	NVARCHAR(128),
 PRODUCT_DESC	NVARCHAR(128),
-DUE_DATE	NVARCHAR(128),
+DUE_DATE	date, 
 serial NVARCHAR(128),
 )
-
-
 
 /*不良品MB/SMT/BGA出库记录*/
 CREATE TABLE mb_smt_bga_ng_out_house_table(
@@ -339,23 +337,6 @@ inputer  NVARCHAR(128),/*输入人*/
 input_date  date,/*日期*/
 )
 
-/*bga维修序列记录*/
-CREATE TABLE todo_table(
-Id INT PRIMARY KEY IDENTITY, 
-track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
-bgatype NVARCHAR(128), /*bga类型*/
-/*BGA不良(维修 初始状态） -> code 1
-
-BGA待换（bga维修 初始状态）-> code 2
-更换OK待测量 （bga维修转维修站)-> code 3
-更换NG（bga维修转维修站）-> code 4
-
-BGA更换OK待测（维修）-> code 5
-BGA更换报废（维修，板子报废 需主管确认->录入不良品库）-> code 6*/
-
-bga_status NVARCHAR(128) NOT NULL,
-)
-
 /*bga待维修记录*/
 CREATE TABLE bga_wait_record_table(
 Id INT PRIMARY KEY IDENTITY, 
@@ -532,28 +513,6 @@ _description NVARCHAR(128), /*Description*/
 price NVARCHAR(128)/*price*/
 )
 
-/*
-CREATE TABLE COMPAL_MBBOM_table(
-Id INT PRIMARY KEY IDENTITY, 
-_date date, /*日期*/
-vendor NVARCHAR(128) NOT NULL, /*厂商*/
-product NVARCHAR(128) NOT NULL, /*客户别*/
-mb_brief NVARCHAR(128) NOT NULL, /*MB简称*/
-MPN NVARCHAR(128), /*MPN*/
-material_mpn NVARCHAR(128), /*材料MPN*/
-material_box_place NVARCHAR(128), /*料盒位置*/
-material_describe NVARCHAR(128), /*物料描述*/
-material_num NVARCHAR(128), /*用料数量*/
-L1 NVARCHAR(128) , /*L1*/
-L2 NVARCHAR(128) , /*L2*/
-L3 NVARCHAR(128) , /*L3*/
-L4 NVARCHAR(128) , /*L4*/
-L5 NVARCHAR(128) , /*L5*/
-L6 NVARCHAR(128) , /*L6*/
-L7 NVARCHAR(128) , /*L7*/
-L8 NVARCHAR(128)  /*L8*/ 
-)
-*/
 
 CREATE TABLE LCFC_MBBOM_table(
 Id INT PRIMARY KEY IDENTITY, 
@@ -768,7 +727,7 @@ custom_res_type NVARCHAR(128),/*--客责类别*/
 customResponsibility NVARCHAR(128) NOT NULL,/*客责描述*/
 short_cut NVARCHAR(128) NOT NULL, /*短路电压*/
 inputuser NVARCHAR(128),/*录入人*/
-inputdate NVARCHAR(128)/*录入日期*/
+inputdate date/*录入日期*/
 )
 
 /*收货单*/

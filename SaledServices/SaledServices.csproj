@@ -395,44 +395,6 @@
     <Compile Include="Repair\BGARepairOperationForm.Designer.cs">
       <DependentUpon>BGARepairOperationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomsContentClass\OpeningStockClass.cs" />
-    <Compile Include="CustomsContentClass\WorkListHeadClass.cs" />
-    <Compile Include="CustomsExport\CompanyFixedForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CustomsExport\CompanyFixedForm.Designer.cs">
-      <DependentUpon>CompanyFixedForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomsExport\OpeningStockForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CustomsExport\OpeningStockForm.Designer.cs">
-      <DependentUpon>OpeningStockForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomsExport\RealStockForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CustomsExport\RealStockForm.Designer.cs">
-      <DependentUpon>RealStockForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomsExport\StockInOutForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CustomsExport\StockInOutForm.Designer.cs">
-      <DependentUpon>StockInOutForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomsExport\WorkListBodyForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CustomsExport\WorkListBodyForm.Designer.cs">
-      <DependentUpon>WorkListBodyForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomsExport\WorkListHeadForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CustomsExport\WorkListHeadForm.Designer.cs">
-      <DependentUpon>WorkListHeadForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="DeliveredTableForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -792,24 +754,6 @@
     <EmbeddedResource Include="Repair\BGARepairOperationForm.resx">
       <DependentUpon>BGARepairOperationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomsExport\CompanyFixedForm.resx">
-      <DependentUpon>CompanyFixedForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomsExport\OpeningStockForm.resx">
-      <DependentUpon>OpeningStockForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomsExport\RealStockForm.resx">
-      <DependentUpon>RealStockForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomsExport\StockInOutForm.resx">
-      <DependentUpon>StockInOutForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomsExport\WorkListBodyForm.resx">
-      <DependentUpon>WorkListBodyForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomsExport\WorkListHeadForm.resx">
-      <DependentUpon>WorkListHeadForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DeliveredTableForm.resx">
       <DependentUpon>DeliveredTableForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -954,9 +898,6 @@
     <EmbeddedResource Include="additionForm\VendorForm.resx">
       <DependentUpon>VendorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="CustomsContentClass\RealStockClass.cs" />
-    <Compile Include="CustomsContentClass\StockInOutClass.cs" />
-    <Compile Include="CustomsContentClass\WorkListBodyClass.cs" />
     <None Include="Files\syncTime.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
