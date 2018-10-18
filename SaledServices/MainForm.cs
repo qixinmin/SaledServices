@@ -69,7 +69,7 @@ namespace SaledServices
                 // Console.WriteLine("在每天１０点３０分开始执行！");
                 if (Utils.GetAddressIP() == "192.168.5.222")
                 {
-                    new DatabaseForm().button1_Click(null, null);
+                    new DatabaseForm(false).button1_Click(null, null);
                 }
             }
 
@@ -79,7 +79,7 @@ namespace SaledServices
                // Console.WriteLine("在每天１０点３０分开始执行！");
                 if (Utils.GetAddressIP() == "192.168.5.222")
                 {
-                    new DatabaseForm().button1_Click(null, null);
+                    new DatabaseForm(false).button1_Click(null, null);
                 }
             }        
         }
@@ -482,12 +482,12 @@ namespace SaledServices
             allForm.Add(roForm);
         }
 
-        private ExportExcelForm eef;
+        private RMAExportExcelForm eef;
         private void 报表1ToolStripMenuItem_Click(object sender, EventArgs e)
         {          
             if (eef == null || eef.IsDisposed)
             {
-                eef = new ExportExcelForm();
+                eef = new RMAExportExcelForm();
                 eef.MdiParent = this;
             }
 
@@ -1049,22 +1049,6 @@ namespace SaledServices
 
             allForm.Add(cidInputshanghaiForm);
         }
-        
-        private CIDInputForm cidInputForm;
-        private void cID操作合肥ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (cidInputForm == null || cidInputForm.IsDisposed)
-            {
-                cidInputForm = new CIDInputForm();
-                cidInputForm.MdiParent = this;
-            }
-
-            cidInputForm.WindowState = FormWindowState.Maximized;
-            cidInputForm.BringToFront();
-            cidInputForm.Show();
-
-            allForm.Add(cidInputForm);
-        }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
@@ -1350,6 +1334,22 @@ namespace SaledServices
             mbTransferToFaultForm.Show();
 
             allForm.Add(mbTransferToFaultForm);
+        }
+
+        private DPKExport dPKExport;
+        private void dPK报表导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dPKExport == null || dPKExport.IsDisposed)
+            {
+                dPKExport = new DPKExport();
+                dPKExport.MdiParent = this;
+            }
+
+            // dPKExport.WindowState = FormWindowState.Maximized;
+            dPKExport.BringToFront();
+            dPKExport.Show();
+
+            allForm.Add(dPKExport);
         }
     }
 }

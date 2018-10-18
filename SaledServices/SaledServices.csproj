@@ -226,12 +226,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="additionForm\CIDInputForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="additionForm\CIDInputForm.Designer.cs">
-      <DependentUpon>CIDInputForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="additionForm\MultiReturnQueryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,6 +267,12 @@
     </Compile>
     <Compile Include="Export\BgaInExport.designer.cs">
       <DependentUpon>BgaInExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\DPKExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\DPKExport.designer.cs">
+      <DependentUpon>DPKExport.cs</DependentUpon>
     </Compile>
     <Compile Include="Export\StoreHouseStatisticsExport.cs">
       <SubType>Form</SubType>
@@ -463,11 +463,11 @@
     <Compile Include="ExcelInputCheck\LCFC_MBBOMForm.Designer.cs">
       <DependentUpon>LCFC_MBBOMForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExportExcelForm.cs">
+    <Compile Include="Export\RMAExportExcelForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExportExcelForm.Designer.cs">
-      <DependentUpon>ExportExcelForm.cs</DependentUpon>
+    <Compile Include="Export\RMAExportExcelForm.Designer.cs">
+      <DependentUpon>RMAExportExcelForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ExcelInputCheck\MBMaterialCompareForm.cs">
       <SubType>Form</SubType>
@@ -695,9 +695,6 @@
     <Compile Include="additionForm\VendorForm.Designer.cs">
       <DependentUpon>VendorForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="additionForm\CIDInputForm.resx">
-      <DependentUpon>CIDInputForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="additionForm\MultiReturnQueryForm.resx">
       <DependentUpon>MultiReturnQueryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -718,6 +715,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\BgaInExport.resx">
       <DependentUpon>BgaInExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\DPKExport.resx">
+      <DependentUpon>DPKExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\StoreHouseStatisticsExport.resx">
       <DependentUpon>StoreHouseStatisticsExport.cs</DependentUpon>
@@ -813,8 +813,8 @@
     <EmbeddedResource Include="ExcelInputCheck\LCFC_MBBOMForm.resx">
       <DependentUpon>LCFC_MBBOMForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ExportExcelForm.resx">
-      <DependentUpon>ExportExcelForm.cs</DependentUpon>
+    <EmbeddedResource Include="Export\RMAExportExcelForm.resx">
+      <DependentUpon>RMAExportExcelForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExcelInputCheck\MBMaterialCompareForm.resx">
       <DependentUpon>MBMaterialCompareForm.cs</DependentUpon>

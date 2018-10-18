@@ -554,7 +554,7 @@ namespace SaledServices
                     if (error == false)
                     {
                         cmd.CommandText = "INSERT INTO bga_wait_record_table VALUES('"
-                           + track_serial_no_txt + "','"
+                           + track_serial_no_txt.ToUpper() + "','"
                            + status + "','"
                            + vendor_txt + "','"
                            + product_txt + "','"

@@ -630,8 +630,9 @@ namespace SaledServices
             if (e.KeyChar == System.Convert.ToChar(13))
             {                
                 //跟踪条码可以为空，如果为空则代表本板子是通过库房拿过来替换的，原来的板子没有维修好
-                if (track_serial_noTextBox.Text == "")
+                if (track_serial_noTextBox.Text.Trim() == "")
                 {
+                    MessageBox.Show("跟踪条码为空!");
                     return;
                 }
 

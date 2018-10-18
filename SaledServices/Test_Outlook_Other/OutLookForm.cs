@@ -21,6 +21,8 @@ namespace SaledServices.Test_Outlook
             this.tracker_bar_textBox.Focus();
         }
 
+        string _8sCodes = "";
+
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
@@ -41,13 +43,15 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select product from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.CommandText = "select product,custom_serial_no from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string product = "";
                     while (querySdr.Read())
                     {
                         product = querySdr[0].ToString();
+
+                        _8sCodes = querySdr[1].ToString();
                     }
                     querySdr.Close();
 
@@ -76,6 +80,7 @@ namespace SaledServices.Test_Outlook
                             this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd");
                             this.confirmbutton.Enabled = true;
                             this.button1.Enabled = true;
+                            this.print.Enabled = true;
                         }
                         else
                         {
@@ -84,6 +89,7 @@ namespace SaledServices.Test_Outlook
                             MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
                             this.confirmbutton.Enabled = false;
                             this.button1.Enabled = false;
+                            this.print.Enabled = false;
                         }
                     }
                     else 
@@ -91,6 +97,7 @@ namespace SaledServices.Test_Outlook
                         MessageBox.Show("追踪条码的不在测试列表中，请检查！");
                         this.confirmbutton.Enabled = false;
                         this.button1.Enabled = false;
+                        this.print.Enabled = false;
                     }
                     mConn.Close();
                 }
@@ -199,6 +206,18 @@ namespace SaledServices.Test_Outlook
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void print_Click(object sender, EventArgs e)
+        {
+            if (_8sCodes == "")
+            {
+                MessageBox.Show("客户料号为空!");
+                return;
+            }
+            PrintUtils.printCustomMaterialNo(_8sCodes);
+            _8sCodes = ""; 
+            this.print.Enabled = false;
         }
     }
 }

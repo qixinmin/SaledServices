@@ -94,9 +94,7 @@ namespace SaledServices
 
                     if (cidExist != "")
                     {
-                        MessageBox.Show("此序列号已经在CID中，不能走下面的流程！");
-                        mConn.Close();
-                        return;
+                        MessageBox.Show("此序列号已经在CID中，后面将会更新原来的数据！");
                     }
 
                     cmd.CommandText = "select vendor, product,custom_order,custommaterialNo,custom_serial_no,mb_brief,mpn,order_receive_date from DeliveredTable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
@@ -123,6 +121,7 @@ namespace SaledServices
                         error = true;
                     }
                     mConn.Close();
+                    this.add.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -265,7 +264,7 @@ namespace SaledServices
             }
             bool error = false;
             //1.包含NTF的逻辑， 所有输入的有效信息均为NTF， 2. 若第一次输入信息没有输入完毕，需提醒并把某些字段清空即可
-            string track_serial_no_txt = this.track_serial_noTextBox.Text.Trim();
+            string track_serial_no_txt = this.track_serial_noTextBox.Text.Trim().ToUpper();
             string vendor_txt = this.vendorTextBox.Text.Trim();
             string product_txt = this.producttextBox.Text.Trim();
             string orderno_txt = this.ordernotextBox.Text.Trim();
@@ -279,7 +278,13 @@ namespace SaledServices
             string customResponsibility_txt = this.customResponsibilityrichTextBox.Text.Trim();            
             string short_cut_txt = getShortCutText();
             string inputer_txt = this.inputertextBox.Text.Trim();
-            string repair_date_txt = this.inputdatetextBox.Text.Trim();            
+            string repair_date_txt = this.inputdatetextBox.Text.Trim();
+
+            if (track_serial_no_txt == "" || receivedate_txt == "")
+            {
+                MessageBox.Show("请输入跟踪条码并回车");
+                return;
+            }
 
             try
             {
@@ -291,6 +296,12 @@ namespace SaledServices
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
+
+                    if (track_serial_no_txt != "")
+                    {
+                        cmd.CommandText = "delete from cidRecord where track_serial_no='" + track_serial_no_txt + "'";
+                        cmd.ExecuteNonQuery();
+                    }                   
 
                     cmd.CommandText = "INSERT INTO cidRecord VALUES('"
                         + track_serial_no_txt + "','"

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -739,8 +739,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1608,9 +1608,8 @@
             this.caijian1.BackColor = System.Drawing.Color.LightCoral;
             this.caijian1.Location = new System.Drawing.Point(725, 5);
             this.caijian1.Name = "caijian1";
-            this.caijian1.Size = new System.Drawing.Size(22, 20);
+            this.caijian1.Size = new System.Drawing.Size(15, 14);
             this.caijian1.TabIndex = 49;
-            this.caijian1.Text = "checkBox19";
             this.caijian1.UseVisualStyleBackColor = false;
             // 
             // caijian2
@@ -1619,9 +1618,8 @@
             this.caijian2.BackColor = System.Drawing.Color.LightCoral;
             this.caijian2.Location = new System.Drawing.Point(725, 37);
             this.caijian2.Name = "caijian2";
-            this.caijian2.Size = new System.Drawing.Size(22, 20);
+            this.caijian2.Size = new System.Drawing.Size(15, 14);
             this.caijian2.TabIndex = 50;
-            this.caijian2.Text = "checkBox19";
             this.caijian2.UseVisualStyleBackColor = false;
             // 
             // caijian3
@@ -1630,9 +1628,8 @@
             this.caijian3.BackColor = System.Drawing.Color.LightCoral;
             this.caijian3.Location = new System.Drawing.Point(725, 69);
             this.caijian3.Name = "caijian3";
-            this.caijian3.Size = new System.Drawing.Size(22, 20);
+            this.caijian3.Size = new System.Drawing.Size(15, 14);
             this.caijian3.TabIndex = 51;
-            this.caijian3.Text = "checkBox19";
             this.caijian3.UseVisualStyleBackColor = false;
             // 
             // caijian4
@@ -1641,9 +1638,8 @@
             this.caijian4.BackColor = System.Drawing.Color.LightCoral;
             this.caijian4.Location = new System.Drawing.Point(725, 101);
             this.caijian4.Name = "caijian4";
-            this.caijian4.Size = new System.Drawing.Size(22, 20);
+            this.caijian4.Size = new System.Drawing.Size(15, 14);
             this.caijian4.TabIndex = 52;
-            this.caijian4.Text = "checkBox19";
             this.caijian4.UseVisualStyleBackColor = false;
             // 
             // caijian5
@@ -1652,9 +1648,8 @@
             this.caijian5.BackColor = System.Drawing.Color.LightCoral;
             this.caijian5.Location = new System.Drawing.Point(725, 133);
             this.caijian5.Name = "caijian5";
-            this.caijian5.Size = new System.Drawing.Size(22, 20);
+            this.caijian5.Size = new System.Drawing.Size(15, 14);
             this.caijian5.TabIndex = 53;
-            this.caijian5.Text = "checkBox19";
             this.caijian5.UseVisualStyleBackColor = false;
             // 
             // RepairOperationForm

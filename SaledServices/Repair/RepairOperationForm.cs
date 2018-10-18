@@ -734,8 +734,20 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + material_mpnComboBox1.Text.Trim() + "','"
                            + useNum1.Text.Trim() + "','"
-                           + not_good_placetextBox1.Text.Trim() + "')";
+                           + not_good_placetextBox1.Text.Trim() + "','"+(caijian1.Checked ? "Y":"N")+"')";
                         cmd.ExecuteNonQuery();
+
+                        ////从库房需要减去消耗的材料
+                        //cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox2.Text.Trim() + "'";
+                        //SqlDataReader querySdr = cmd.ExecuteReader();
+                        //string storeNum = "";
+                        //while (querySdr.Read())
+                        //{
+                        //    storeNum = querySdr[0].ToString();
+                        //}
+                        //querySdr.Close();
+
+                        //int left = Int32.Parse(storeNum) - Int32.Parse(useNum1.Text.Trim());                            
                     }
 
                     if (not_good_placetextBox2.Text.Trim() != "" && material_mpnComboBox2.Text.Trim() != "" && useNum2.Text.Trim() != "")
@@ -747,8 +759,10 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + material_mpnComboBox2.Text.Trim() + "','"
                            + useNum2.Text.Trim() + "','"
-                           + not_good_placetextBox2.Text.Trim() + "')";
+                           + not_good_placetextBox2.Text.Trim() + "','" + (caijian2.Checked ? "Y" : "N") + "')";
                         cmd.ExecuteNonQuery();
+
+                        
                     }
 
                     if (not_good_placetextBox3.Text.Trim() != "" && material_mpnComboBox3.Text.Trim() != "" && useNum3.Text.Trim() != "")
@@ -760,7 +774,7 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + material_mpnComboBox3.Text.Trim() + "','"
                            + useNum3.Text.Trim() + "','"
-                           + not_good_placetextBox3.Text.Trim() + "')";
+                           + not_good_placetextBox3.Text.Trim() + "','" + (caijian3.Checked ? "Y" : "N") + "')";
                         cmd.ExecuteNonQuery();
                     }
 
@@ -773,7 +787,7 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + material_mpnComboBox4.Text.Trim() + "','"
                            + useNum4.Text.Trim() + "','"
-                           + not_good_placetextBox4.Text.Trim() + "')";
+                           + not_good_placetextBox4.Text.Trim() + "','" + (caijian4.Checked ? "Y" : "N") + "')";
                         cmd.ExecuteNonQuery();
                     }
 
@@ -786,7 +800,7 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + material_mpnComboBox5.Text.Trim() + "','"
                            + useNum5.Text.Trim() + "','"
-                           + not_good_placetextBox5.Text.Trim() + "')";
+                           + not_good_placetextBox5.Text.Trim() + "','" + (caijian5.Checked ? "Y" : "N") + "')";
                         cmd.ExecuteNonQuery();
                     }                   
 
@@ -1099,6 +1113,12 @@ namespace SaledServices
                 this.ECOtextBox.Text = "";
                 this.repair_resultcomboBox.Text = "";
                 this.repair_datetextBox.Text = "";
+
+                this.material_mpn1des.Text = "";
+                this.material_mpn2des.Text = "";
+                this.material_mpn3des.Text = "";
+                this.material_mpn4des.Text = "";
+                this.material_mpn5des.Text = "";
 
                 if (isNTF)//非NTF复位
                 {

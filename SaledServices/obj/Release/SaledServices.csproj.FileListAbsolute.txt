@@ -2,7 +2,6 @@ D:\维修系统\SaledServices\SaledServices\bin\Release\Files\FileInput.xml
 D:\维修系统\SaledServices\SaledServices\bin\Release\Files\syncTime.bat
 D:\维修系统\SaledServices\SaledServices\bin\Release\SaledServices.exe
 D:\维修系统\SaledServices\SaledServices\bin\Release\SaledServices.pdb
-D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.CIDInputForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.MultiReturnQueryForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.additionForm.DatabaseForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.FilesUpdateForm.resources
@@ -41,7 +40,6 @@ D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.DPKForm.re
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.LCFC71BOMForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.COMPAL_MBBOMForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.LCFC_MBBOMForm.resources
-D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.ExportExcelForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.MBMaterialCompareForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.ReceiveOrderForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.SourceForm.resources
@@ -89,3 +87,5 @@ D:\维修系统\SaledServices\SaledServices\bin\Release\SaledServices.applicatio
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.TrustInfo.xml
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.exe.manifest
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.application
+D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.RMAExportExcelForm.resources
+D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Export.DPKExport.resources

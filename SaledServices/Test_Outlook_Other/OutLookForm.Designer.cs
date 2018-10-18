@@ -37,6 +37,7 @@
             this.testdatetextBox = new System.Windows.Forms.TextBox();
             this.confirmbutton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.print = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +58,7 @@
             this.tableLayoutPanel1.Controls.Add(this.testdatetextBox, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.confirmbutton, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.button1, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.print, 3, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -139,6 +141,17 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // print
+            // 
+            this.print.Enabled = false;
+            this.print.Location = new System.Drawing.Point(303, 157);
+            this.print.Name = "print";
+            this.print.Size = new System.Drawing.Size(94, 44);
+            this.print.TabIndex = 3;
+            this.print.Text = "打印";
+            this.print.UseVisualStyleBackColor = true;
+            this.print.Click += new System.EventHandler(this.print_Click);
+            // 
             // OutLookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -164,5 +177,6 @@
         private System.Windows.Forms.TextBox testdatetextBox;
         private System.Windows.Forms.Button confirmbutton;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button print;
     }
 }

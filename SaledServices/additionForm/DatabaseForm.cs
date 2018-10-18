@@ -13,8 +13,17 @@ namespace SaledServices.additionForm
 {
     public partial class DatabaseForm : Form
     {
+        bool isShow = false;
+
         public DatabaseForm()
         {
+            isShow = true;
+            InitializeComponent();
+        }
+        
+        public DatabaseForm(bool isShown)
+        {
+            isShow = isShown;
             InitializeComponent();
         }
 
@@ -41,7 +50,10 @@ namespace SaledServices.additionForm
                 cmd.ExecuteNonQuery();
                 mConn.Close();
 
-                MessageBox.Show("备份成功到服务器的 " + filename);
+                if (isShow)
+                {
+                    MessageBox.Show("备份成功到服务器的 " + filename);
+                }
             }
             catch (Exception ex)
             {

@@ -83,23 +83,20 @@ namespace SaledServices
             try
             {
                 labApp = new LabelManager2.Application();
-                string labFileName = @"D:\printLab\test.Lab";
+                doc = labApp.ActiveDocument;
+                string labFileName = @"D:\printLab\BAR11.Lab";
                 if (!File.Exists(labFileName))
                 {
                     MessageBox.Show("沒有找到標簽模板文件：" + labFileName + ",請聯系系統管理員", "溫馨提示");
                     return;
-                }                                   
-
+                }             
                 labApp.Documents.Open(labFileName, false);// 调用设计好的label文件
-                doc = labApp.ActiveDocument;
+                
                 doc.Printer.SwitchTo("codesoft");//打印机名字，自定义，可以修改               
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
             }
         }
 
@@ -110,7 +107,7 @@ namespace SaledServices
                 InitCodesoftForReturn();
             }
 
-            doc.Variables.FormVariables.Item("customMaterial").Value = customMaterial;
+            doc.Variables.FormVariables.Item("BAR").Value = customMaterial;
             doc.PrintDocument(); //打印一次
             doc.FormFeed(); //结束打印
         }

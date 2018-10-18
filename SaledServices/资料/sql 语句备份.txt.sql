@@ -164,6 +164,7 @@ track_serial_no NVARCHAR(128),/*跟踪条码*/
 material_mpn NVARCHAR(128), /*材料mpn*/
 thisNumber NVARCHAR(128), /*此次使用的数量*/
 stock_place NVARCHAR(128),/*库位*/
+isUsed NVARCHAR(128),/*是否是拆件*/
 )
 
 CREATE TABLE request_fru_smt_to_store_table(
