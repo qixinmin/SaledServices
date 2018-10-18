@@ -1351,5 +1351,21 @@ namespace SaledServices
 
             allForm.Add(dPKExport);
         }
+
+        private CIDExport cidExport;
+        private void cID报表导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (cidExport == null || cidExport.IsDisposed)
+            {
+                cidExport = new CIDExport();
+                cidExport.MdiParent = this;
+            }
+
+            // cidExport.WindowState = FormWindowState.Maximized;
+            cidExport.BringToFront();
+            cidExport.Show();
+
+            allForm.Add(cidExport);
+        }
     }
 }

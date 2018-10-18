@@ -656,68 +656,95 @@ namespace SaledServices
                     if (returnExist != "")
                     {
                         MessageBox.Show("此序列号已经还货了，请检查！");
+                        this.returnStore.Enabled = false;
                         mConn.Close();
                         return;
                     }
 
-                    //先检查CID，如果在cid存在，则跳过站别检查
-                    cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
-                     querySdr = cmd.ExecuteReader();
-                    string cidExist = "";
+                    cmd.CommandText = "select 跟踪条码,仁宝料号 from CSD_old_data where 跟踪条码 = '" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    bool existOldDatabase = false;
+                    string renbaoliaohao = "";
                     while (querySdr.Read())
                     {
-                        cidExist = querySdr[0].ToString();
+                        existOldDatabase = true;
+                        returnExist = querySdr[0].ToString();
+                        renbaoliaohao = querySdr[1].ToString();
+                        break;
                     }
                     querySdr.Close();
 
-                    string track_serial_no = "";
-                    if (cidExist == "")
+                    if (existOldDatabase)
                     {
-                        //增加站别检查，如果没有经过最后一站，则认为此板子有问题，不能归还 
-                        //cmd.CommandText = "select track_serial_no from outlookcheck where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
-                        //暂时从Test2走
-                        string currentUsedTable="test2table";
-                        if (this.productComboBox.Text == "DT" || productComboBox.Text == "AIO" || productComboBox.Text == "TBG")
+                        if (custommaterialNoTextBox.Text.Trim() == "")
                         {
-                            currentUsedTable ="testalltable";
+                            MessageBox.Show("请先选择料号");
+                            this.returnStore.Enabled = false;
+                            mConn.Close();
+                            return;
                         }
-                        cmd.CommandText = "select track_serial_no from "+currentUsedTable+" where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                        //先查询原来的料号的内容，根据客户料号查询一些列mpn
+                        List<string> mpnList = new List<string>();
+                        cmd.CommandText = "select mpn from MBMaterialCompare where custommaterialNo like '%" + custommaterialNoTextBox.Text.Trim() +"'";
                         querySdr = cmd.ExecuteReader();                       
                         while (querySdr.Read())
                         {
-                            track_serial_no = querySdr[0].ToString();
+                            mpnList.Add(querySdr[0].ToString());
                         }
                         querySdr.Close();
-                        if (track_serial_no == "")
+
+                        if (mpnList.Contains(renbaoliaohao) == false)
                         {
-                            MessageBox.Show("此单没有经过Test2检查站别！");
+                            MessageBox.Show("归还的板子与选择的料号不符合");
+                            this.returnStore.Enabled = false;
                             mConn.Close();
                             return;
                         }
                     }
                     else
                     {
-                        statusComboBox.Text = "不良品";
-                    }
-                   
-                    cmd.CommandText = "select custom_serial_no, vendor_serail_no,mpn ,lenovo_maintenance_no,lenovo_repair_no from DeliveredTable where track_serial_no = '"
-                        + this.track_serial_noTextBox.Text + "'";
+                        //先检查CID，如果在cid存在，则跳过站别检查
+                        cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        string cidExist = "";
+                        while (querySdr.Read())
+                        {
+                            cidExist = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
 
-                    querySdr = cmd.ExecuteReader();
-                    while (querySdr.Read())
-                    {
-                        this.custom_serial_noTextBox.Text = querySdr[0].ToString();
-                        this.vendor_serail_noTextBox.Text = querySdr[1].ToString();
-                        this.matertiallibMpnTextBox.Text = querySdr[2].ToString();              
-                        this.lenovo_maintenance_noTextBox.Text = querySdr[3].ToString();
-                        this.lenovo_repair_noTextBox.Text = querySdr[4].ToString();
-                    }
-                    querySdr.Close();
+                        string track_serial_no = "";
+                        if (cidExist == "")
+                        {
+                            //增加站别检查，如果没有经过最后一站，则认为此板子有问题，不能归还 
+                            //cmd.CommandText = "select track_serial_no from outlookcheck where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                            //暂时从Test2走
+                            string currentUsedTable = "test2table";
+                            if (this.productComboBox.Text == "DT" || productComboBox.Text == "AIO" || productComboBox.Text == "TBG")
+                            {
+                                currentUsedTable = "testalltable";
+                            }
+                            cmd.CommandText = "select track_serial_no from " + currentUsedTable + " where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                            querySdr = cmd.ExecuteReader();
+                            while (querySdr.Read())
+                            {
+                                track_serial_no = querySdr[0].ToString();
+                            }
+                            querySdr.Close();
+                            if (track_serial_no == "")
+                            {
+                                MessageBox.Show("此单没有经过Test2检查站别！");
+                                mConn.Close();
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            statusComboBox.Text = "不良品";
+                        }
 
-                    if (this.custom_serial_noTextBox.Text == "")//说明板子从buffer库出来的
-                    {
-                        cmd.CommandText = "select custom_serial_no, vendor_serial_no,mpn from mb_out_stock where track_serial_no = '"
-                      + this.track_serial_noTextBox.Text + "'";
+                        cmd.CommandText = "select custom_serial_no, vendor_serail_no,mpn ,lenovo_maintenance_no,lenovo_repair_no from DeliveredTable where track_serial_no = '"
+                            + this.track_serial_noTextBox.Text + "'";
 
                         querySdr = cmd.ExecuteReader();
                         while (querySdr.Read())
@@ -725,43 +752,63 @@ namespace SaledServices
                             this.custom_serial_noTextBox.Text = querySdr[0].ToString();
                             this.vendor_serail_noTextBox.Text = querySdr[1].ToString();
                             this.matertiallibMpnTextBox.Text = querySdr[2].ToString();
-                            this.lenovo_maintenance_noTextBox.Text = "";
-                            this.lenovo_repair_noTextBox.Text = "";
+                            this.lenovo_maintenance_noTextBox.Text = querySdr[3].ToString();
+                            this.lenovo_repair_noTextBox.Text = querySdr[4].ToString();
                         }
                         querySdr.Close();
-                    }
-                    mConn.Close();
 
-                    if (this.custom_serial_noTextBox.Text == "")
-                    {
-                        MessageBox.Show("客户序号不能为空，严重，检查！");
-                    }
-
-                    if (this.productComboBox.Text != "TBG" && this.productComboBox.Text != "DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
-                    {
-                        //需要去掉前面的非0字段
-                        string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
-                        string replacedCustomSerial = this.replace_custom_materialNotextBox.Text.TrimStart('0');
-
-                        if (this.custom_serial_noTextBox.Text.ToLower().Contains(customSerial.ToLower()))
+                        if (this.custom_serial_noTextBox.Text == "")//说明板子从buffer库出来的
                         {
+                            cmd.CommandText = "select custom_serial_no, vendor_serial_no,mpn from mb_out_stock where track_serial_no = '"
+                          + this.track_serial_noTextBox.Text + "'";
+
+                            querySdr = cmd.ExecuteReader();
+                            while (querySdr.Read())
+                            {
+                                this.custom_serial_noTextBox.Text = querySdr[0].ToString();
+                                this.vendor_serail_noTextBox.Text = querySdr[1].ToString();
+                                this.matertiallibMpnTextBox.Text = querySdr[2].ToString();
+                                this.lenovo_maintenance_noTextBox.Text = "";
+                                this.lenovo_repair_noTextBox.Text = "";
+                            }
+                            querySdr.Close();
                         }
-                        else
+                        mConn.Close();
+
+                        //从历史数据查询是否匹配
+
+
+                        if (this.custom_serial_noTextBox.Text == "")
                         {
-                            if(this.custom_serial_noTextBox.Text.ToLower().Contains(replacedCustomSerial.ToLower()))
+                            MessageBox.Show("客户序号不能为空，严重，检查！");
+                        }
+
+                        if (this.productComboBox.Text != "TBG" && this.productComboBox.Text != "DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
+                        {
+                            //需要去掉前面的非0字段
+                            string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
+                            string replacedCustomSerial = this.replace_custom_materialNotextBox.Text.TrimStart('0');
+
+                            if (this.custom_serial_noTextBox.Text.ToLower().Contains(customSerial.ToLower()))
                             {
                             }
                             else
                             {
-                                MessageBox.Show("在" + this.productComboBox.Text + "下客户序号没有包含客户料号, 请检查追踪条码是否正确");
-                                this.track_serial_noTextBox.Focus();
-                                this.track_serial_noTextBox.SelectAll();
+                                if (this.custom_serial_noTextBox.Text.ToLower().Contains(replacedCustomSerial.ToLower()))
+                                {
+                                }
+                                else
+                                {
+                                    MessageBox.Show("在" + this.productComboBox.Text + "下客户序号没有包含客户料号, 请检查追踪条码是否正确");
+                                    this.track_serial_noTextBox.Focus();
+                                    this.track_serial_noTextBox.SelectAll();
 
-                                this.custom_serial_noTextBox.Text = "";                                
-                                return;
+                                    this.custom_serial_noTextBox.Text = "";
+                                    return;
+                                }
                             }
-                        }                          
-                    }                   
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {

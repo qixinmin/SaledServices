@@ -268,6 +268,12 @@
     <Compile Include="Export\BgaInExport.designer.cs">
       <DependentUpon>BgaInExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\CIDExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\CIDExport.designer.cs">
+      <DependentUpon>CIDExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Export\RMAExportExcel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -721,6 +727,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\BgaInExport.resx">
       <DependentUpon>BgaInExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\CIDExport.resx">
+      <DependentUpon>CIDExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\RMAExportExcel.resx">
       <DependentUpon>RMAExportExcel.cs</DependentUpon>

@@ -105,10 +105,11 @@
             this.mB出库信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.库房信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.库房平衡表信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dPK报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dPK报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cID报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -674,7 +675,8 @@
             this.mB出库信息导出ToolStripMenuItem,
             this.库房信息导出ToolStripMenuItem,
             this.库房平衡表信息导出ToolStripMenuItem,
-            this.dPK报表导出ToolStripMenuItem});
+            this.dPK报表导出ToolStripMenuItem,
+            this.cID报表导出ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -743,6 +745,13 @@
             this.库房平衡表信息导出ToolStripMenuItem.Text = "库房平衡表信息导出";
             this.库房平衡表信息导出ToolStripMenuItem.Click += new System.EventHandler(this.库房平衡表信息导出ToolStripMenuItem_Click);
             // 
+            // dPK报表导出ToolStripMenuItem
+            // 
+            this.dPK报表导出ToolStripMenuItem.Name = "dPK报表导出ToolStripMenuItem";
+            this.dPK报表导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.dPK报表导出ToolStripMenuItem.Text = "DPK报表导出";
+            this.dPK报表导出ToolStripMenuItem.Click += new System.EventHandler(this.dPK报表导出ToolStripMenuItem_Click);
+            // 
             // 查询ToolStripMenuItem
             // 
             this.查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -767,12 +776,12 @@
             this.dOA查询ToolStripMenuItem.Text = "多返查询";
             this.dOA查询ToolStripMenuItem.Click += new System.EventHandler(this.dOA查询ToolStripMenuItem_Click);
             // 
-            // dPK报表导出ToolStripMenuItem
+            // cID报表导出ToolStripMenuItem
             // 
-            this.dPK报表导出ToolStripMenuItem.Name = "dPK报表导出ToolStripMenuItem";
-            this.dPK报表导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.dPK报表导出ToolStripMenuItem.Text = "DPK报表导出";
-            this.dPK报表导出ToolStripMenuItem.Click += new System.EventHandler(this.dPK报表导出ToolStripMenuItem_Click);
+            this.cID报表导出ToolStripMenuItem.Name = "cID报表导出ToolStripMenuItem";
+            this.cID报表导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.cID报表导出ToolStripMenuItem.Text = "CID报表导出";
+            this.cID报表导出ToolStripMenuItem.Click += new System.EventHandler(this.cID报表导出ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -786,7 +795,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统1017-";
+            this.Text = "上海进销存系统1018-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -879,6 +888,7 @@
         private System.Windows.Forms.ToolStripMenuItem 库房平衡表信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mB良品批量转不良品库ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dPK报表导出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cID报表导出ToolStripMenuItem;
     }
 }
 

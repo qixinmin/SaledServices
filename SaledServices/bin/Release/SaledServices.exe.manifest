@@ -602,14 +602,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SaledServices.exe" size="883200">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SaledServices.exe" size="887808">
       <assemblyIdentity name="SaledServices" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>RX8aG0x1XStv1QKcgMppS/HWbO4=</dsig:DigestValue>
+        <dsig:DigestValue>KvcZwm2HgaYaBHmfvFkUGEvm6rU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
