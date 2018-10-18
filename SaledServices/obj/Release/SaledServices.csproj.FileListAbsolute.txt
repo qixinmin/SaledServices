@@ -89,3 +89,4 @@ D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.exe.manife
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.application
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.RMAExportExcelForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Export.DPKExport.resources
+D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.RMAExportExcel.resources

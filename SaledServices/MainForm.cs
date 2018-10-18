@@ -482,12 +482,12 @@ namespace SaledServices
             allForm.Add(roForm);
         }
 
-        private RMAExportExcelForm eef;
+        private RMAExportExcel eef;
         private void 报表1ToolStripMenuItem_Click(object sender, EventArgs e)
         {          
             if (eef == null || eef.IsDisposed)
             {
-                eef = new RMAExportExcelForm();
+                eef = new RMAExportExcel();
                 eef.MdiParent = this;
             }
 
