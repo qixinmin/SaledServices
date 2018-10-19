@@ -370,17 +370,17 @@ namespace SaledServices.Test_Outlook
                         Id = querySdr[0].ToString();
                     }
                     querySdr.Close();
-                    if (Id != "") 
-                    {
-                        MessageBox.Show("此序列号已经存在！");
-                        this.tracker_bar_textBox.Text = "";
-                        this.cpuFreqtextBox.Text = "";
-                        this.cpuTypetextBox.Text = "";
-                        this.keyidtextBox.Text = "";
-                        this.KEYSERIALtextBox.Text = "";
-                        conn.Close();
-                        return;
-                    }
+                    //if (Id != "") 
+                    //{
+                    //    MessageBox.Show("此序列号已经存在！");
+                    //    this.tracker_bar_textBox.Text = "";
+                    //    this.cpuFreqtextBox.Text = "";
+                    //    this.cpuTypetextBox.Text = "";
+                    //    this.keyidtextBox.Text = "";
+                    //    this.KEYSERIALtextBox.Text = "";
+                    //    conn.Close();
+                    //    return;
+                    //}
                     
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"

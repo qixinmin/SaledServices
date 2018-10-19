@@ -501,7 +501,7 @@ namespace SaledServices
             {
                 MessageBox.Show(ex.ToString());
             }
-
+            this.track_serial_noTextBox.Focus();
             queryLastest(true);
         }
 
@@ -521,7 +521,7 @@ namespace SaledServices
                 || this.ordernoTextBox.Text.Trim() == ""
                 || this.tatTextBox.Text.Trim() == "")
             {
-                return true;
+                return true;  
             }
 
             if (custom_res_typeComboBox.Enabled &&  response_describeComboBox.Enabled)
@@ -661,15 +661,19 @@ namespace SaledServices
                         return;
                     }
 
-                    cmd.CommandText = "select 跟踪条码,仁宝料号 from CSD_old_data where 跟踪条码 = '" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select 跟踪条码,仁宝料号,客户序号,仁宝序号,MB11S from CSD_old_data where 跟踪条码 = '" + this.track_serial_noTextBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();
                     bool existOldDatabase = false;
                     string renbaoliaohao = "";
+                    string renbao_mpn = "", renbao_custom_serial_no = "", renbao_vendor_serial_no = "";
                     while (querySdr.Read())
                     {
                         existOldDatabase = true;
                         returnExist = querySdr[0].ToString();
                         renbaoliaohao = querySdr[1].ToString();
+                        renbao_mpn = querySdr[1].ToString();
+                        renbao_custom_serial_no = querySdr[4].ToString();
+                        renbao_vendor_serial_no = querySdr[3].ToString();
                         break;
                     }
                     querySdr.Close();
@@ -699,6 +703,12 @@ namespace SaledServices
                             this.returnStore.Enabled = false;
                             mConn.Close();
                             return;
+                        }
+                        else
+                        {
+                            this.matertiallibMpnTextBox.Text = renbao_mpn;
+                            this.custom_serial_noTextBox.Text = renbao_custom_serial_no;
+                            this.vendor_serail_noTextBox.Text = renbao_vendor_serial_no;
                         }
                     }
                     else

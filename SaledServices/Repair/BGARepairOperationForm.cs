@@ -364,6 +364,8 @@ namespace SaledServices
 
             this.bgaRepair_resultcomboBox.Text = "";
             bgaRepair_resultcomboBox.SelectedIndex = -1;
+            this.newSntextBox.Text = "";
+            this.oldSntextBox.Text = "";
         }
 
         private void query_Click(object sender, EventArgs e)

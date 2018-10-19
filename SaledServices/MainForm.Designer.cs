@@ -92,7 +92,6 @@
             this.还货客责类别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.维修故障类别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.厂商信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.企业固定信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.员工管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.材料名称ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,10 +105,10 @@
             this.库房信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.库房平衡表信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dPK报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cID报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cID报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -571,7 +570,6 @@
             this.还货客责类别ToolStripMenuItem,
             this.维修故障类别ToolStripMenuItem,
             this.厂商信息ToolStripMenuItem,
-            this.企业固定信息ToolStripMenuItem,
             this.员工管理ToolStripMenuItem,
             this.材料名称ToolStripMenuItem});
             this.additionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
@@ -641,7 +639,6 @@
             this.厂商信息ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
             this.厂商信息ToolStripMenuItem.Text = "厂商信息";
             this.厂商信息ToolStripMenuItem.Click += new System.EventHandler(this.厂商信息ToolStripMenuItem_Click);
-            
             // 
             // 员工管理ToolStripMenuItem
             // 
@@ -746,6 +743,13 @@
             this.dPK报表导出ToolStripMenuItem.Text = "DPK报表导出";
             this.dPK报表导出ToolStripMenuItem.Click += new System.EventHandler(this.dPK报表导出ToolStripMenuItem_Click);
             // 
+            // cID报表导出ToolStripMenuItem
+            // 
+            this.cID报表导出ToolStripMenuItem.Name = "cID报表导出ToolStripMenuItem";
+            this.cID报表导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.cID报表导出ToolStripMenuItem.Text = "CID报表导出";
+            this.cID报表导出ToolStripMenuItem.Click += new System.EventHandler(this.cID报表导出ToolStripMenuItem_Click);
+            // 
             // 查询ToolStripMenuItem
             // 
             this.查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -770,13 +774,6 @@
             this.dOA查询ToolStripMenuItem.Text = "多返查询";
             this.dOA查询ToolStripMenuItem.Click += new System.EventHandler(this.dOA查询ToolStripMenuItem_Click);
             // 
-            // cID报表导出ToolStripMenuItem
-            // 
-            this.cID报表导出ToolStripMenuItem.Name = "cID报表导出ToolStripMenuItem";
-            this.cID报表导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.cID报表导出ToolStripMenuItem.Text = "CID报表导出";
-            this.cID报表导出ToolStripMenuItem.Click += new System.EventHandler(this.cID报表导出ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -789,7 +786,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统1018-";
+            this.Text = "上海进销存系统1019-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -847,7 +844,6 @@
         private System.Windows.Forms.ToolStripMenuItem bGA入库记录ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bGA出库记录ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 出库请求查看ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 企业固定信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 库房领料申请ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 还货请求查看ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bGA维修界面ToolStripMenuItem;
