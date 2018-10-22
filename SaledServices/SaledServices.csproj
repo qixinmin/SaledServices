@@ -274,6 +274,12 @@
     <Compile Include="Export\CIDExport.designer.cs">
       <DependentUpon>CIDExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\RepairRecordExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\RepairRecordExport.designer.cs">
+      <DependentUpon>RepairRecordExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Export\RMAExportExcel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -692,6 +698,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\CIDExport.resx">
       <DependentUpon>CIDExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\RepairRecordExport.resx">
+      <DependentUpon>RepairRecordExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\RMAExportExcel.resx">
       <DependentUpon>RMAExportExcel.cs</DependentUpon>

@@ -85,3 +85,4 @@ D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.exe.manife
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.application
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.exe
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.pdb
+D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Export.RepairRecordExport.resources

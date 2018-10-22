@@ -482,9 +482,12 @@ namespace SaledServices
                             int row = dataGridViewToReturn.Rows.Count;
                             for (int i = 0; i < row; i++)
                             {
-                                if (currentMaterialNo == dataGridViewToReturn.Rows[i].Cells[1].Value.ToString())
+                                if (currentMaterialNo == dataGridViewToReturn.Rows[i].Cells[1].Value.ToString().Trim()
+                                    && this.orderNo == dataGridViewToReturn.Rows[i].Cells[0].Value.ToString().Trim())
                                 {
                                     dataGridViewToReturn.Rows[i].Selected = true;
+                                    dataGridViewToReturn.CurrentCell = dataGridViewToReturn.Rows[i].Cells[0];
+                                    break;
                                 }
                             }   
                         }
@@ -846,7 +849,8 @@ namespace SaledServices
                 for (int i = 0; i < row; i++)
                 {
                     string queryedStr = dataGridViewToReturn.Rows[i].Cells[1].Value.ToString();
-                    if (queryedStr.EndsWith(currentMaterialNo))
+                    if (queryedStr.EndsWith(currentMaterialNo) 
+                        && this.ordernoTextBox.Text.Trim() == dataGridViewToReturn.Rows[i].Cells[0].Value.ToString().Trim())
                     {
                         count++;
                         this.custommaterialNoTextBox.Text = queryedStr;
@@ -854,6 +858,8 @@ namespace SaledServices
                         tat = this.tatTextBox.Text = dataGridViewToReturn.Rows[i].Cells[5].Value.ToString();
 
                         dataGridViewToReturn.Rows[i].Selected = true;
+                        dataGridViewToReturn.CurrentCell = dataGridViewToReturn.Rows[i].Cells[0];
+                        break;
                     }
                 }
                 if (count > 1 || count == 0)

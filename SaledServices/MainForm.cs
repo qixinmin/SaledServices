@@ -1271,5 +1271,21 @@ namespace SaledServices
 
             allForm.Add(cidExport);
         }
+
+        private RepairRecordExport repairRecordExport;
+        private void 维修报表导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (repairRecordExport == null || repairRecordExport.IsDisposed)
+            {
+                repairRecordExport = new RepairRecordExport();
+                repairRecordExport.MdiParent = this;
+            }
+
+            // repairRecordExport.WindowState = FormWindowState.Maximized;
+            repairRecordExport.BringToFront();
+            repairRecordExport.Show();
+
+            allForm.Add(repairRecordExport);
+        }
     }
 }
