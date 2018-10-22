@@ -682,6 +682,11 @@ namespace SaledServices
                                 if (Int16.Parse(useNum1.Text.Trim()) <= 0)
                                 {
                                     MessageBox.Show("数量必须大于0");
+                                    this.add.Enabled = false;
+                                }
+                                else
+                                {
+                                    this.add.Enabled = true;
                                 }
                             }
 
@@ -690,15 +695,24 @@ namespace SaledServices
                                 if (Int16.Parse(useNum2.Text.Trim()) <= 0)
                                 {
                                     MessageBox.Show("数量必须大于0");
+                                    this.add.Enabled = false;
+                                }
+                                else
+                                {
+                                    this.add.Enabled = true;
                                 }
                             }
-
 
                             if (useNum3.Text.Trim() != "")
                             {
                                 if (Int16.Parse(useNum3.Text.Trim()) <= 0)
                                 {
                                     MessageBox.Show("数量必须大于0");
+                                    this.add.Enabled = false;
+                                }
+                                else
+                                {
+                                    this.add.Enabled = true;
                                 }
                             }
 
@@ -707,6 +721,11 @@ namespace SaledServices
                                 if (Int16.Parse(useNum4.Text.Trim()) <= 0)
                                 {
                                     MessageBox.Show("数量必须大于0");
+                                    this.add.Enabled = false;
+                                }
+                                else
+                                {
+                                    this.add.Enabled = true;
                                 }
                             }
 
@@ -715,6 +734,11 @@ namespace SaledServices
                                 if (Int16.Parse(useNum5.Text.Trim()) <= 0)
                                 {
                                     MessageBox.Show("数量必须大于0");
+                                    this.add.Enabled = false;
+                                }
+                                else
+                                {
+                                    this.add.Enabled = true;
                                 }
                             }
                         }
@@ -727,6 +751,151 @@ namespace SaledServices
 
                     if (not_good_placetextBox1.Text.Trim() != "" && material_mpnComboBox1.Text.Trim() != "" && useNum1.Text.Trim() != "")
                     {
+                        if (caijian1.Checked == false)//是从库房拿到的材料
+                        {
+                            //首先判断材料是不是库房存在的材料，如果不是则需要报错
+                            cmd.CommandText = "select Id from store_house where mpn='" + material_mpnComboBox1.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            SqlDataReader querySdr = cmd.ExecuteReader();
+                            if (querySdr.HasRows == false)
+                            {
+                                MessageBox.Show("材料" + material_mpnComboBox1.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "的库房不存在，请联系管理员添加");
+                                querySdr.Close();
+                                conn.Close();
+                                this.add.Enabled = false;
+                                return;
+                            }
+                            else
+                            {
+                                querySdr.Close();
+                                this.add.Enabled = true;
+                            }
+                        }
+                    }
+
+                    if (not_good_placetextBox2.Text.Trim() != "" && material_mpnComboBox2.Text.Trim() != "" && useNum2.Text.Trim() != "")
+                    {
+                        if (caijian2.Checked == false)//是从库房拿到的材料
+                        {
+                            //首先判断材料是不是库房存在的材料，如果不是则需要报错
+                            cmd.CommandText = "select Id from store_house where mpn='" + material_mpnComboBox2.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            SqlDataReader querySdr = cmd.ExecuteReader();
+                            if (querySdr.HasRows == false)
+                            {
+                                MessageBox.Show("材料" + material_mpnComboBox2.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "的库房不存在，请联系管理员添加");
+                                querySdr.Close();
+                                conn.Close();
+                                this.add.Enabled = false;
+                                return;
+                            }
+                            else
+                            {
+                                querySdr.Close();
+                                this.add.Enabled = true;
+                            }
+                        }
+                    }
+
+                    if (not_good_placetextBox3.Text.Trim() != "" && material_mpnComboBox3.Text.Trim() != "" && useNum3.Text.Trim() != "")
+                    {
+                        if (caijian3.Checked == false)//是从库房拿到的材料
+                        {
+                            //首先判断材料是不是库房存在的材料，如果不是则需要报错
+                            cmd.CommandText = "select Id from store_house where mpn='" + material_mpnComboBox3.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            SqlDataReader querySdr = cmd.ExecuteReader();
+                            if (querySdr.HasRows == false)
+                            {
+                                MessageBox.Show("材料" + material_mpnComboBox3.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "的库房不存在，请联系管理员添加");
+                                querySdr.Close();
+                                conn.Close();
+                                this.add.Enabled = false;
+                                return;
+                            }
+                            else
+                            {
+                                querySdr.Close();
+                                this.add.Enabled = true;
+                            }
+                        }
+                    }
+
+                    if (not_good_placetextBox4.Text.Trim() != "" && material_mpnComboBox4.Text.Trim() != "" && useNum4.Text.Trim() != "")
+                    {
+                        if (caijian4.Checked == false)//是从库房拿到的材料
+                        {
+                            //首先判断材料是不是库房存在的材料，如果不是则需要报错
+                            cmd.CommandText = "select Id from store_house where mpn='" + material_mpnComboBox4.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            SqlDataReader querySdr = cmd.ExecuteReader();
+                            if (querySdr.HasRows == false)
+                            {
+                                MessageBox.Show("材料" + material_mpnComboBox4.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "的库房不存在，请联系管理员添加");
+                                querySdr.Close();
+                                conn.Close();
+                                this.add.Enabled = false;
+                                return;
+                            }
+                            else
+                            {
+                                querySdr.Close();
+                                this.add.Enabled = true;
+                            }
+                        }
+                    }
+
+                    if (not_good_placetextBox5.Text.Trim() != "" && material_mpnComboBox5.Text.Trim() != "" && useNum5.Text.Trim() != "")
+                    {
+                        if (caijian5.Checked == false)//是从库房拿到的材料
+                        {
+                            //首先判断材料是不是库房存在的材料，如果不是则需要报错
+                            cmd.CommandText = "select Id from store_house where mpn='" + material_mpnComboBox5.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            SqlDataReader querySdr = cmd.ExecuteReader();
+                            if (querySdr.HasRows == false)
+                            {
+                                MessageBox.Show("材料" + material_mpnComboBox5.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "的库房不存在，请联系管理员添加");
+                                querySdr.Close();
+                                conn.Close();
+                                this.add.Enabled = false;
+                                return;
+                            }
+                            else
+                            {
+                                querySdr.Close();
+                                this.add.Enabled = true;
+                            }
+                        }
+                    }
+
+
+                    if (not_good_placetextBox1.Text.Trim() != "" && material_mpnComboBox1.Text.Trim() != "" && useNum1.Text.Trim() != "")
+                    {
+                        if (caijian1.Checked == false)//是从库房拿到的材料
+                        {
+                            //首先判断材料是不是库房存在的材料，如果不是则需要报错
+                            SqlDataReader querySdr = cmd.ExecuteReader();
+                           
+                            //把库房的数量减掉，可以为负数                             
+                            cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox1.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            querySdr = cmd.ExecuteReader();
+                            int leftNum = 0;
+                            if (querySdr.HasRows)
+                            {
+                                string currentNumber = querySdr[0].ToString();                                  
+                                if (currentNumber == "")
+                                {
+                                    leftNum = 0 - Int16.Parse(useNum1.Text.Trim());
+                                }
+                                else
+                                {
+                                    leftNum = Int16.Parse(currentNumber) -Int16.Parse(useNum1.Text.Trim());
+                                }
+                            }
+                            querySdr.Close();
+
+                            //更新数量
+                            cmd.CommandText = "update store_house set number = '" + leftNum + "' "
+                                + "where mpn='" + material_mpnComboBox1.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            cmd.ExecuteNonQuery();
+                        }
+
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
                            + repairer_txt + "','"
@@ -734,24 +903,41 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + material_mpnComboBox1.Text.Trim() + "','"
                            + useNum1.Text.Trim() + "','"
-                           + not_good_placetextBox1.Text.Trim() + "','"+(caijian1.Checked ? "Y":"N")+"')";
-                        cmd.ExecuteNonQuery();
-
-                        ////从库房需要减去消耗的材料
-                        //cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox2.Text.Trim() + "'";
-                        //SqlDataReader querySdr = cmd.ExecuteReader();
-                        //string storeNum = "";
-                        //while (querySdr.Read())
-                        //{
-                        //    storeNum = querySdr[0].ToString();
-                        //}
-                        //querySdr.Close();
-
-                        //int left = Int32.Parse(storeNum) - Int32.Parse(useNum1.Text.Trim());                            
+                           + not_good_placetextBox1.Text.Trim() + "','" + (caijian1.Checked ? "Y" : "N") + "')";
+                        cmd.ExecuteNonQuery();                       
                     }
 
                     if (not_good_placetextBox2.Text.Trim() != "" && material_mpnComboBox2.Text.Trim() != "" && useNum2.Text.Trim() != "")
                     {
+                        if (caijian2.Checked == false)//是从库房拿到的材料
+                        {
+                            //首先判断材料是不是库房存在的材料，如果不是则需要报错                        
+                            SqlDataReader querySdr = cmd.ExecuteReader();
+                            //把库房的数量减掉，可以为负数                             
+                            cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox2.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            querySdr = cmd.ExecuteReader();
+                            int leftNum = 0;
+                            if (querySdr.HasRows)
+                            {
+                                string currentNumber = querySdr[0].ToString();
+                                if (currentNumber == "")
+                                {
+                                    leftNum = 0 - Int16.Parse(useNum2.Text.Trim());
+                                }
+                                else
+                                {
+                                    leftNum = Int16.Parse(currentNumber) - Int16.Parse(useNum2.Text.Trim());
+                                }
+                            }
+                            querySdr.Close();
+
+                            //更新数量
+                            cmd.CommandText = "update store_house set number = '" + leftNum + "' "
+                                + "where mpn='" + material_mpnComboBox1.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            cmd.ExecuteNonQuery();
+                        }
+
+
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
                            + repairer_txt + "','"
@@ -761,12 +947,39 @@ namespace SaledServices
                            + useNum2.Text.Trim() + "','"
                            + not_good_placetextBox2.Text.Trim() + "','" + (caijian2.Checked ? "Y" : "N") + "')";
                         cmd.ExecuteNonQuery();
-
-                        
                     }
 
                     if (not_good_placetextBox3.Text.Trim() != "" && material_mpnComboBox3.Text.Trim() != "" && useNum3.Text.Trim() != "")
                     {
+
+                        if (caijian3.Checked == false)//是从库房拿到的材料
+                        {
+                            //首先判断材料是不是库房存在的材料，如果不是则需要报错                        
+                            SqlDataReader querySdr = cmd.ExecuteReader();
+                            //把库房的数量减掉，可以为负数                             
+                            cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox3.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            querySdr = cmd.ExecuteReader();
+                            int leftNum = 0;
+                            if (querySdr.HasRows)
+                            {
+                                string currentNumber = querySdr[0].ToString();
+                                if (currentNumber == "")
+                                {
+                                    leftNum = 0 - Int16.Parse(useNum3.Text.Trim());
+                                }
+                                else
+                                {
+                                    leftNum = Int16.Parse(currentNumber) - Int16.Parse(useNum3.Text.Trim());
+                                }
+                            }
+                            querySdr.Close();
+
+                            //更新数量
+                            cmd.CommandText = "update store_house set number = '" + leftNum + "' "
+                                + "where mpn='" + material_mpnComboBox1.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            cmd.ExecuteNonQuery();
+                        }
+
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
                            + repairer_txt + "','"
@@ -780,6 +993,34 @@ namespace SaledServices
 
                     if (not_good_placetextBox4.Text.Trim() != "" && material_mpnComboBox4.Text.Trim() != "" && useNum4.Text.Trim() != "")
                     {
+                        if (caijian4.Checked == false)//是从库房拿到的材料
+                        {
+                            //首先判断材料是不是库房存在的材料，如果不是则需要报错                        
+                            SqlDataReader querySdr = cmd.ExecuteReader();
+                            //把库房的数量减掉，可以为负数                             
+                            cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox4.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            querySdr = cmd.ExecuteReader();
+                            int leftNum = 0;
+                            if (querySdr.HasRows)
+                            {
+                                string currentNumber = querySdr[0].ToString();
+                                if (currentNumber == "")
+                                {
+                                    leftNum = 0 - Int16.Parse(useNum4.Text.Trim());
+                                }
+                                else
+                                {
+                                    leftNum = Int16.Parse(currentNumber) - Int16.Parse(useNum4.Text.Trim());
+                                }
+                            }
+                            querySdr.Close();
+
+                            //更新数量
+                            cmd.CommandText = "update store_house set number = '" + leftNum + "' "
+                                + "where mpn='" + material_mpnComboBox1.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            cmd.ExecuteNonQuery();
+                        }
+
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
                            + repairer_txt + "','"
@@ -793,6 +1034,34 @@ namespace SaledServices
 
                     if (not_good_placetextBox5.Text.Trim() != "" && material_mpnComboBox5.Text.Trim() != "" && useNum5.Text.Trim() != "")
                     {
+                        if (caijian5.Checked == false)//是从库房拿到的材料
+                        {
+                            //首先判断材料是不是库房存在的材料，如果不是则需要报错                        
+                            SqlDataReader querySdr = cmd.ExecuteReader();
+                            //把库房的数量减掉，可以为负数                             
+                            cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox5.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            querySdr = cmd.ExecuteReader();
+                            int leftNum = 0;
+                            if (querySdr.HasRows)
+                            {
+                                string currentNumber = querySdr[0].ToString();
+                                if (currentNumber == "")
+                                {
+                                    leftNum = 0 - Int16.Parse(useNum5.Text.Trim());
+                                }
+                                else
+                                {
+                                    leftNum = Int16.Parse(currentNumber) - Int16.Parse(useNum5.Text.Trim());
+                                }
+                            }
+                            querySdr.Close();
+
+                            //更新数量
+                            cmd.CommandText = "update store_house set number = '" + leftNum + "' "
+                                + "where mpn='" + material_mpnComboBox1.Text.Trim() + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            cmd.ExecuteNonQuery();
+                        }
+
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
                            + repairer_txt + "','"

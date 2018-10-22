@@ -106,10 +106,11 @@
             this.库房平衡表信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dPK报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cID报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.维修报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.维修报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -752,11 +753,19 @@
             this.cID报表导出ToolStripMenuItem.Text = "CID报表导出";
             this.cID报表导出ToolStripMenuItem.Click += new System.EventHandler(this.cID报表导出ToolStripMenuItem_Click);
             // 
+            // 维修报表导出ToolStripMenuItem
+            // 
+            this.维修报表导出ToolStripMenuItem.Name = "维修报表导出ToolStripMenuItem";
+            this.维修报表导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.维修报表导出ToolStripMenuItem.Text = "维修报表导出";
+            this.维修报表导出ToolStripMenuItem.Click += new System.EventHandler(this.维修报表导出ToolStripMenuItem_Click);
+            // 
             // 查询ToolStripMenuItem
             // 
             this.查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.站别查询ToolStripMenuItem,
-            this.dOA查询ToolStripMenuItem});
+            this.dOA查询ToolStripMenuItem,
+            this.信息查询ToolStripMenuItem});
             this.查询ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.查询ToolStripMenuItem.Name = "查询ToolStripMenuItem";
             this.查询ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -776,12 +785,12 @@
             this.dOA查询ToolStripMenuItem.Text = "多返查询";
             this.dOA查询ToolStripMenuItem.Click += new System.EventHandler(this.dOA查询ToolStripMenuItem_Click);
             // 
-            // 维修报表导出ToolStripMenuItem
+            // 信息查询ToolStripMenuItem
             // 
-            this.维修报表导出ToolStripMenuItem.Name = "维修报表导出ToolStripMenuItem";
-            this.维修报表导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.维修报表导出ToolStripMenuItem.Text = "维修报表导出";
-            this.维修报表导出ToolStripMenuItem.Click += new System.EventHandler(this.维修报表导出ToolStripMenuItem_Click);
+            this.信息查询ToolStripMenuItem.Name = "信息查询ToolStripMenuItem";
+            this.信息查询ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.信息查询ToolStripMenuItem.Text = "信息查询";
+            this.信息查询ToolStripMenuItem.Click += new System.EventHandler(this.信息查询ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -889,6 +898,7 @@
         private System.Windows.Forms.ToolStripMenuItem dPK报表导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cID报表导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 维修报表导出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 信息查询ToolStripMenuItem;
     }
 }
 

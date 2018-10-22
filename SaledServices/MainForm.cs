@@ -1287,5 +1287,21 @@ namespace SaledServices
 
             allForm.Add(repairRecordExport);
         }
+
+        private CheckInfoForm checkInfoForm;
+        private void 信息查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (checkInfoForm == null || checkInfoForm.IsDisposed)
+            {
+                checkInfoForm = new CheckInfoForm();
+                checkInfoForm.MdiParent = this;
+            }
+
+            //checkInfoForm.WindowState = FormWindowState.Maximized;
+            checkInfoForm.BringToFront();
+            checkInfoForm.Show();
+
+            allForm.Add(checkInfoForm);
+        }
     }
 }

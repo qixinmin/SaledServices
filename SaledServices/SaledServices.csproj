@@ -600,6 +600,12 @@
     <Compile Include="Store\StoreHouseInnerNGForm.designer.cs">
       <DependentUpon>StoreHouseInnerNGForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Test_Outlook_Other\StationCheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\StationCheckForm.designer.cs">
+      <DependentUpon>StationCheckForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Test_Outlook_Other\ObeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -618,11 +624,11 @@
     <Compile Include="Test_Outlook_Other\OutLookForm.Designer.cs">
       <DependentUpon>OutLookForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Test_Outlook_Other\StationCheckForm.cs">
+    <Compile Include="Test_Outlook_Other\CheckInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Test_Outlook_Other\StationCheckForm.designer.cs">
-      <DependentUpon>StationCheckForm.cs</DependentUpon>
+    <Compile Include="Test_Outlook_Other\CheckInfoForm.designer.cs">
+      <DependentUpon>CheckInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Test_Outlook_Other\Test1Form.cs">
       <SubType>Form</SubType>
@@ -862,6 +868,9 @@
     <EmbeddedResource Include="Store\StoreHouseInnerNGForm.resx">
       <DependentUpon>StoreHouseInnerNGForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook_Other\StationCheckForm.resx">
+      <DependentUpon>StationCheckForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Test_Outlook_Other\ObeForm.resx">
       <DependentUpon>ObeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -871,8 +880,8 @@
     <EmbeddedResource Include="Test_Outlook_Other\OutLookForm.resx">
       <DependentUpon>OutLookForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Test_Outlook_Other\StationCheckForm.resx">
-      <DependentUpon>StationCheckForm.cs</DependentUpon>
+    <EmbeddedResource Include="Test_Outlook_Other\CheckInfoForm.resx">
+      <DependentUpon>CheckInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test_Outlook_Other\Test1Form.resx">
       <DependentUpon>Test1Form.cs</DependentUpon>

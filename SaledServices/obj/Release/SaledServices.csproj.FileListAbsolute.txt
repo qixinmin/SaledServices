@@ -86,3 +86,4 @@ D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.applicatio
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.exe
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.pdb
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Export.RepairRecordExport.resources
+D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Test_Outlook.CheckInfoForm.resources
