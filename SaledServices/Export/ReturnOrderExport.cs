@@ -33,6 +33,10 @@ namespace SaledServices.Export
 
             List<ReturnOrderStruct> receiveOrderList = new List<ReturnOrderStruct>();
 
+            List<goodSumStruct> goodSumStructList = new List<goodSumStruct>();
+
+            List<cidSumStruct> cidSumStructList = new List<cidSumStruct>();
+
             try
             {
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -74,6 +78,100 @@ namespace SaledServices.Export
                 }
                 querySdr.Close();
 
+                if (this.goodsum.Checked)
+                {
+                    foreach (ReturnOrderStruct temp in receiveOrderList)
+                    {
+                        if (temp._status == "良品")
+                        {
+                            goodSumStruct temp1 = new goodSumStruct();
+                            temp1.ramno = temp.orderno;
+                            temp1.returndate = temp.return_date;
+                            temp1.returnfileNo = temp.return_file_no;
+                            temp1.custommaterialNo = temp.custommaterialNo;
+                            if (goodSumStructList.Count == 0)
+                            {
+                                goodSumStructList.Add(temp1);
+                            }
+                            else
+                            {
+                                bool exist = false;
+                                foreach (goodSumStruct oldrecord in goodSumStructList)
+                                {
+                                    if (oldrecord.equals(temp1))
+                                    {
+                                        oldrecord.incrementNum();
+                                        exist = true;
+                                        break;
+                                    }
+                                }
+                                if (exist == false)
+                                {
+                                    goodSumStructList.Add(temp1);
+                                }
+                            }
+
+                        }
+                    }
+                    foreach (goodSumStruct oldrecord in goodSumStructList)
+                    {
+                        cmd.CommandText = "select mb_brief from MBMaterialCompare where custommaterialNo='" + oldrecord.custommaterialNo + "'";
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            oldrecord.mb_brief = querySdr[0].ToString();
+                            break;
+                        }
+                        querySdr.Close();
+                    }
+                }
+                else if (this.cidsum.Checked)
+                {
+                    foreach (ReturnOrderStruct temp in receiveOrderList)
+                    {
+                        if (temp._status == "不良品")
+                        {
+                            cidSumStruct temp1 = new cidSumStruct();
+                            temp1.ramno = temp.orderno;
+                            temp1.returndate = temp.return_date;
+                            temp1.custommaterialNo = temp.custommaterialNo;
+                            if (cidSumStructList.Count == 0)
+                            {
+                                cidSumStructList.Add(temp1);
+                            }
+                            else
+                            {
+                                bool exist = false;
+                                foreach (cidSumStruct oldrecord in cidSumStructList)
+                                {
+                                    if (oldrecord.equals(temp1))
+                                    {
+                                        oldrecord.incrementNum();
+                                        exist = true;
+                                        break;
+                                    }
+                                }
+                                if (exist == false)
+                                {
+                                    cidSumStructList.Add(temp1);
+                                }
+                            }
+                        }
+                    }
+
+                    foreach (cidSumStruct oldrecord in cidSumStructList)
+                    {
+                        cmd.CommandText = "select mb_brief from MBMaterialCompare where custommaterialNo='" + oldrecord.custommaterialNo + "'";
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            oldrecord.mb_brief = querySdr[0].ToString();
+                            break;
+                        }
+                        querySdr.Close();
+                    }
+                }
+
                 mConn.Close();
             }
             catch (Exception ex)
@@ -81,7 +179,18 @@ namespace SaledServices.Export
                 MessageBox.Show(ex.ToString());
             }
 
-            generateExcelToCheck(receiveOrderList, startTime, endTime);
+            if (this.returndetail.Checked)
+            {
+                generateExcelToCheck(receiveOrderList, startTime, endTime);
+            }
+            else if (this.goodsum.Checked)
+            {
+                generategoodExcelToCheck(goodSumStructList, startTime, endTime);
+            }
+            else if (this.cidsum.Checked)
+            {
+                generatecidExcelToCheck(cidSumStructList, startTime, endTime);
+            }           
         }
 
         public void generateExcelToCheck(List<ReturnOrderStruct> StockCheckList, string startTime, string endTime)
@@ -137,6 +246,110 @@ namespace SaledServices.Export
             }
 
             Utils.createExcel("D:\\还货信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+        }
+
+        public void generategoodExcelToCheck(List<goodSumStruct> StockCheckList, string startTime, string endTime)
+        {
+            List<string> titleList = new List<string>();
+            List<Object> contentList = new List<object>();
+
+            titleList.Add("还货时间");
+             titleList.Add("还货文件编号");
+            titleList.Add("订单编号");
+            titleList.Add("客户料号");
+
+            titleList.Add("MB简称");
+            titleList.Add("数量");
+
+            foreach (goodSumStruct stockcheck in StockCheckList)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+
+                ct1.Add(stockcheck.returndate);
+                ct1.Add(stockcheck.returnfileNo);
+                ct1.Add(stockcheck.ramno);
+                ct1.Add(stockcheck.custommaterialNo);
+                ct1.Add(stockcheck.mb_brief);
+                ct1.Add(stockcheck.returnNum.ToString());
+                ctest1.contentArray = ct1;
+                contentList.Add(ctest1);
+            }
+
+            Utils.createExcel("D:\\良品还货清单" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+        }
+
+        public void generatecidExcelToCheck(List<cidSumStruct> StockCheckList, string startTime, string endTime)
+        {
+            List<string> titleList = new List<string>();
+            List<Object> contentList = new List<object>();
+
+            titleList.Add("还货时间");
+            titleList.Add("索赔订单");
+            titleList.Add("客户料号");
+
+            titleList.Add("MB简称");
+            titleList.Add("数量");
+
+            foreach (cidSumStruct stockcheck in StockCheckList)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+
+                ct1.Add(stockcheck.returndate);
+                ct1.Add(stockcheck.ramno);
+                ct1.Add(stockcheck.custommaterialNo);
+                ct1.Add(stockcheck.mb_brief);
+                ct1.Add(stockcheck.returnNum.ToString());
+                ctest1.contentArray = ct1;
+                contentList.Add(ctest1);
+            }
+            Utils.createExcel("D:\\CID还货清单" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+        }
+    }
+
+    public class goodSumStruct
+    {
+        public string returndate;
+        public string returnfileNo;
+        public string ramno;
+        public string custommaterialNo;
+        public string mb_brief;
+        public int returnNum=1;
+
+        public bool equals(goodSumStruct temp)
+        {
+            return (this.returndate == temp.returndate 
+                && this.returnfileNo == temp.returnfileNo 
+                && this.custommaterialNo == temp.custommaterialNo 
+                && this.ramno == temp.ramno);
+        }
+
+        public void incrementNum()
+        {
+            this.returnNum++;
+        }
+       
+    }
+
+    public class cidSumStruct
+    {
+        public string returndate;
+        public string ramno;
+        public string custommaterialNo;
+        public string mb_brief;
+        public int returnNum=1;
+
+        public bool equals(cidSumStruct temp)
+        {
+            return (this.returndate == temp.returndate
+                && this.custommaterialNo == temp.custommaterialNo
+                && this.ramno == temp.ramno);
+        }
+
+        public void incrementNum()
+        {
+            this.returnNum++;
         }
     }
 

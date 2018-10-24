@@ -1,9 +1,17 @@
 D:\维修系统\SaledServices\SaledServices\bin\Release\Files\FileInput.xml
 D:\维修系统\SaledServices\SaledServices\bin\Release\Files\syncTime.bat
+D:\维修系统\SaledServices\SaledServices\bin\Release\SaledServices.exe.config
 D:\维修系统\SaledServices\SaledServices\bin\Release\SaledServices.exe.manifest
 D:\维修系统\SaledServices\SaledServices\bin\Release\SaledServices.application
 D:\维修系统\SaledServices\SaledServices\bin\Release\SaledServices.exe
 D:\维修系统\SaledServices\SaledServices\bin\Release\SaledServices.pdb
+D:\维修系统\SaledServices\SaledServices\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\维修系统\SaledServices\SaledServices\bin\Release\NPOI.dll
+D:\维修系统\SaledServices\SaledServices\bin\Release\NPOI.OOXML.dll
+D:\维修系统\SaledServices\SaledServices\bin\Release\NPOI.OpenXml4Net.dll
+D:\维修系统\SaledServices\SaledServices\bin\Release\NPOI.OpenXmlFormats.dll
+D:\维修系统\SaledServices\SaledServices\obj\Release\Interop.Office.dll
+D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.csproj.ResolveComReference.cache
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.MultiReturnQueryForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.additionForm.DatabaseForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.FilesUpdateForm.resources
@@ -12,6 +20,7 @@ D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.additionFo
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Export.BgaOutExport.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Export.BgaInExport.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Export.CIDExport.resources
+D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Export.RepairRecordExport.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.RMAExportExcel.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Export.DPKExport.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Export.StoreHouseStatisticsExport.resources
@@ -65,10 +74,11 @@ D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.StockInShe
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.FRU_SMT_InSheetForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.FRU_SMT_OutSheetForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.StoreHouseInnerNGForm.resources
+D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Test_Outlook.StationCheckForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Test_Outlook.ObeForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Test_Outlook.RunningForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Test_Outlook.OutLookForm.resources
-D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Test_Outlook.StationCheckForm.resources
+D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Test_Outlook.CheckInfoForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Test_Outlook.Test1Form.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Test_Outlook.Test2Form.resources
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Test_Outlook.TestAllForm.resources
@@ -85,5 +95,3 @@ D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.exe.manife
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.application
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.exe
 D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.pdb
-D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Export.RepairRecordExport.resources
-D:\维修系统\SaledServices\SaledServices\obj\Release\SaledServices.Test_Outlook.CheckInfoForm.resources

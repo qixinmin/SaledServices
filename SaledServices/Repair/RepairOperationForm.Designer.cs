@@ -142,11 +142,6 @@
             this.choose_material_button3 = new System.Windows.Forms.Button();
             this.choose_material_button4 = new System.Windows.Forms.Button();
             this.choose_material_button5 = new System.Windows.Forms.Button();
-            this.clear1 = new System.Windows.Forms.Button();
-            this.clear2 = new System.Windows.Forms.Button();
-            this.clear3 = new System.Windows.Forms.Button();
-            this.clear4 = new System.Windows.Forms.Button();
-            this.clear5 = new System.Windows.Forms.Button();
             this.material_mpn1des = new System.Windows.Forms.TextBox();
             this.material_mpn2des = new System.Windows.Forms.TextBox();
             this.material_mpn3des = new System.Windows.Forms.TextBox();
@@ -452,6 +447,7 @@
             this.repair_resultcomboBox.Items.AddRange(new object[] {
             "NTF待测",
             "修复OK待测",
+            "BGA更换OK待测",
             "报废"});
             this.repair_resultcomboBox.Location = new System.Drawing.Point(198, 40);
             this.repair_resultcomboBox.Margin = new System.Windows.Forms.Padding(4);
@@ -597,6 +593,7 @@
             this.actioncomboBox.FormattingEnabled = true;
             this.actioncomboBox.Items.AddRange(new object[] {
             "BIOS烧录",
+            "BGA",
             "更换",
             "加焊"});
             this.actioncomboBox.Location = new System.Drawing.Point(198, 136);
@@ -605,6 +602,7 @@
             this.actioncomboBox.Size = new System.Drawing.Size(203, 24);
             this.actioncomboBox.TabIndex = 32;
             this.actioncomboBox.Text = "更换";
+            this.actioncomboBox.SelectedIndexChanged += new System.EventHandler(this.actioncomboBox_SelectedIndexChanged);
             // 
             // label22
             // 
@@ -1089,14 +1087,14 @@
             this.tableLayoutPanel5.ColumnCount = 10;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.517609F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.94021F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.534808F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.23751F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.14742F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.241605F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.241605F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.927109F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.54791F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.99181F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.879607F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.22932F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.53972F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.896806F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.978706F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.715806F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.681409F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.638002F));
             this.tableLayoutPanel5.Controls.Add(this.label24, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.label25, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.label26, 0, 2);
@@ -1132,11 +1130,6 @@
             this.tableLayoutPanel5.Controls.Add(this.choose_material_button3, 8, 2);
             this.tableLayoutPanel5.Controls.Add(this.choose_material_button4, 8, 3);
             this.tableLayoutPanel5.Controls.Add(this.choose_material_button5, 8, 4);
-            this.tableLayoutPanel5.Controls.Add(this.clear1, 9, 0);
-            this.tableLayoutPanel5.Controls.Add(this.clear2, 9, 1);
-            this.tableLayoutPanel5.Controls.Add(this.clear3, 9, 2);
-            this.tableLayoutPanel5.Controls.Add(this.clear4, 9, 3);
-            this.tableLayoutPanel5.Controls.Add(this.clear5, 9, 4);
             this.tableLayoutPanel5.Controls.Add(this.material_mpn1des, 4, 0);
             this.tableLayoutPanel5.Controls.Add(this.material_mpn2des, 4, 1);
             this.tableLayoutPanel5.Controls.Add(this.material_mpn3des, 4, 2);
@@ -1212,7 +1205,7 @@
             // not_good_placetextBox1
             // 
             this.not_good_placetextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.not_good_placetextBox1.Location = new System.Drawing.Point(109, 6);
+            this.not_good_placetextBox1.Location = new System.Drawing.Point(111, 6);
             this.not_good_placetextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.not_good_placetextBox1.Name = "not_good_placetextBox1";
             this.not_good_placetextBox1.Size = new System.Drawing.Size(146, 26);
@@ -1222,7 +1215,7 @@
             // not_good_placetextBox2
             // 
             this.not_good_placetextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.not_good_placetextBox2.Location = new System.Drawing.Point(109, 38);
+            this.not_good_placetextBox2.Location = new System.Drawing.Point(111, 38);
             this.not_good_placetextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.not_good_placetextBox2.Name = "not_good_placetextBox2";
             this.not_good_placetextBox2.Size = new System.Drawing.Size(146, 26);
@@ -1232,7 +1225,7 @@
             // not_good_placetextBox3
             // 
             this.not_good_placetextBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.not_good_placetextBox3.Location = new System.Drawing.Point(109, 70);
+            this.not_good_placetextBox3.Location = new System.Drawing.Point(111, 70);
             this.not_good_placetextBox3.Margin = new System.Windows.Forms.Padding(4);
             this.not_good_placetextBox3.Name = "not_good_placetextBox3";
             this.not_good_placetextBox3.Size = new System.Drawing.Size(146, 26);
@@ -1242,7 +1235,7 @@
             // not_good_placetextBox4
             // 
             this.not_good_placetextBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.not_good_placetextBox4.Location = new System.Drawing.Point(109, 102);
+            this.not_good_placetextBox4.Location = new System.Drawing.Point(111, 102);
             this.not_good_placetextBox4.Margin = new System.Windows.Forms.Padding(4);
             this.not_good_placetextBox4.Name = "not_good_placetextBox4";
             this.not_good_placetextBox4.Size = new System.Drawing.Size(146, 26);
@@ -1252,7 +1245,7 @@
             // not_good_placetextBox5
             // 
             this.not_good_placetextBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.not_good_placetextBox5.Location = new System.Drawing.Point(109, 134);
+            this.not_good_placetextBox5.Location = new System.Drawing.Point(111, 134);
             this.not_good_placetextBox5.Margin = new System.Windows.Forms.Padding(4);
             this.not_good_placetextBox5.Name = "not_good_placetextBox5";
             this.not_good_placetextBox5.Size = new System.Drawing.Size(146, 26);
@@ -1262,7 +1255,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(265, 2);
+            this.label33.Location = new System.Drawing.Point(269, 2);
             this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(72, 16);
@@ -1272,7 +1265,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(265, 34);
+            this.label34.Location = new System.Drawing.Point(269, 34);
             this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(72, 16);
@@ -1282,7 +1275,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(265, 66);
+            this.label35.Location = new System.Drawing.Point(269, 66);
             this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(72, 16);
@@ -1292,7 +1285,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(265, 98);
+            this.label36.Location = new System.Drawing.Point(269, 98);
             this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(72, 16);
@@ -1302,7 +1295,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(265, 130);
+            this.label37.Location = new System.Drawing.Point(269, 130);
             this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(72, 16);
@@ -1311,53 +1304,58 @@
             // 
             // material_mpnComboBox1
             // 
+            this.material_mpnComboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.material_mpnComboBox1.FormattingEnabled = true;
-            this.material_mpnComboBox1.Location = new System.Drawing.Point(356, 5);
+            this.material_mpnComboBox1.Location = new System.Drawing.Point(353, 5);
             this.material_mpnComboBox1.Name = "material_mpnComboBox1";
-            this.material_mpnComboBox1.Size = new System.Drawing.Size(113, 24);
+            this.material_mpnComboBox1.Size = new System.Drawing.Size(239, 24);
             this.material_mpnComboBox1.TabIndex = 46;
             this.material_mpnComboBox1.SelectedValueChanged += new System.EventHandler(this.material_mpnComboBox_SelectedValueChanged);
             // 
             // material_mpnComboBox2
             // 
+            this.material_mpnComboBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.material_mpnComboBox2.FormattingEnabled = true;
-            this.material_mpnComboBox2.Location = new System.Drawing.Point(356, 37);
+            this.material_mpnComboBox2.Location = new System.Drawing.Point(353, 37);
             this.material_mpnComboBox2.Name = "material_mpnComboBox2";
-            this.material_mpnComboBox2.Size = new System.Drawing.Size(113, 24);
+            this.material_mpnComboBox2.Size = new System.Drawing.Size(239, 24);
             this.material_mpnComboBox2.TabIndex = 46;
             this.material_mpnComboBox2.SelectedValueChanged += new System.EventHandler(this.material_mpnComboBox_SelectedValueChanged);
             // 
             // material_mpnComboBox3
             // 
+            this.material_mpnComboBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.material_mpnComboBox3.FormattingEnabled = true;
-            this.material_mpnComboBox3.Location = new System.Drawing.Point(356, 69);
+            this.material_mpnComboBox3.Location = new System.Drawing.Point(353, 69);
             this.material_mpnComboBox3.Name = "material_mpnComboBox3";
-            this.material_mpnComboBox3.Size = new System.Drawing.Size(113, 24);
+            this.material_mpnComboBox3.Size = new System.Drawing.Size(239, 24);
             this.material_mpnComboBox3.TabIndex = 46;
             this.material_mpnComboBox3.SelectedValueChanged += new System.EventHandler(this.material_mpnComboBox_SelectedValueChanged);
             // 
             // material_mpnComboBox4
             // 
+            this.material_mpnComboBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.material_mpnComboBox4.FormattingEnabled = true;
-            this.material_mpnComboBox4.Location = new System.Drawing.Point(356, 101);
+            this.material_mpnComboBox4.Location = new System.Drawing.Point(353, 101);
             this.material_mpnComboBox4.Name = "material_mpnComboBox4";
-            this.material_mpnComboBox4.Size = new System.Drawing.Size(113, 24);
+            this.material_mpnComboBox4.Size = new System.Drawing.Size(239, 24);
             this.material_mpnComboBox4.TabIndex = 46;
             this.material_mpnComboBox4.SelectedValueChanged += new System.EventHandler(this.material_mpnComboBox_SelectedValueChanged);
             // 
             // material_mpnComboBox5
             // 
+            this.material_mpnComboBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.material_mpnComboBox5.FormattingEnabled = true;
-            this.material_mpnComboBox5.Location = new System.Drawing.Point(356, 133);
+            this.material_mpnComboBox5.Location = new System.Drawing.Point(353, 133);
             this.material_mpnComboBox5.Name = "material_mpnComboBox5";
-            this.material_mpnComboBox5.Size = new System.Drawing.Size(113, 24);
+            this.material_mpnComboBox5.Size = new System.Drawing.Size(239, 24);
             this.material_mpnComboBox5.TabIndex = 46;
             this.material_mpnComboBox5.SelectedValueChanged += new System.EventHandler(this.material_mpnComboBox_SelectedValueChanged);
             // 
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(788, 2);
+            this.label43.Location = new System.Drawing.Point(937, 2);
             this.label43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(48, 16);
@@ -1366,16 +1364,16 @@
             // 
             // useNum1
             // 
-            this.useNum1.Location = new System.Drawing.Point(852, 6);
+            this.useNum1.Location = new System.Drawing.Point(1011, 6);
             this.useNum1.Margin = new System.Windows.Forms.Padding(4);
             this.useNum1.Name = "useNum1";
-            this.useNum1.Size = new System.Drawing.Size(98, 26);
+            this.useNum1.Size = new System.Drawing.Size(73, 26);
             this.useNum1.TabIndex = 42;
             // 
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(788, 34);
+            this.label44.Location = new System.Drawing.Point(937, 34);
             this.label44.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(48, 16);
@@ -1385,7 +1383,7 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(788, 66);
+            this.label45.Location = new System.Drawing.Point(937, 66);
             this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(48, 16);
@@ -1395,7 +1393,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(788, 98);
+            this.label46.Location = new System.Drawing.Point(937, 98);
             this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(48, 16);
@@ -1405,7 +1403,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(788, 130);
+            this.label47.Location = new System.Drawing.Point(937, 130);
             this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(48, 16);
@@ -1414,43 +1412,43 @@
             // 
             // useNum2
             // 
-            this.useNum2.Location = new System.Drawing.Point(852, 38);
+            this.useNum2.Location = new System.Drawing.Point(1011, 38);
             this.useNum2.Margin = new System.Windows.Forms.Padding(4);
             this.useNum2.Name = "useNum2";
-            this.useNum2.Size = new System.Drawing.Size(98, 26);
+            this.useNum2.Size = new System.Drawing.Size(73, 26);
             this.useNum2.TabIndex = 42;
             // 
             // useNum3
             // 
-            this.useNum3.Location = new System.Drawing.Point(852, 70);
+            this.useNum3.Location = new System.Drawing.Point(1011, 70);
             this.useNum3.Margin = new System.Windows.Forms.Padding(4);
             this.useNum3.Name = "useNum3";
-            this.useNum3.Size = new System.Drawing.Size(98, 26);
+            this.useNum3.Size = new System.Drawing.Size(73, 26);
             this.useNum3.TabIndex = 42;
             // 
             // useNum4
             // 
-            this.useNum4.Location = new System.Drawing.Point(852, 102);
+            this.useNum4.Location = new System.Drawing.Point(1011, 102);
             this.useNum4.Margin = new System.Windows.Forms.Padding(4);
             this.useNum4.Name = "useNum4";
-            this.useNum4.Size = new System.Drawing.Size(98, 26);
+            this.useNum4.Size = new System.Drawing.Size(73, 26);
             this.useNum4.TabIndex = 42;
             // 
             // useNum5
             // 
-            this.useNum5.Location = new System.Drawing.Point(852, 134);
+            this.useNum5.Location = new System.Drawing.Point(1011, 134);
             this.useNum5.Margin = new System.Windows.Forms.Padding(4);
             this.useNum5.Name = "useNum5";
-            this.useNum5.Size = new System.Drawing.Size(98, 26);
+            this.useNum5.Size = new System.Drawing.Size(73, 26);
             this.useNum5.TabIndex = 42;
             // 
             // choose_material_button1
             // 
             this.choose_material_button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.choose_material_button1.Font = new System.Drawing.Font("SimSun", 10F);
-            this.choose_material_button1.Location = new System.Drawing.Point(959, 5);
+            this.choose_material_button1.Location = new System.Drawing.Point(1093, 5);
             this.choose_material_button1.Name = "choose_material_button1";
-            this.choose_material_button1.Size = new System.Drawing.Size(132, 24);
+            this.choose_material_button1.Size = new System.Drawing.Size(99, 24);
             this.choose_material_button1.TabIndex = 45;
             this.choose_material_button1.Text = "选择材料1";
             this.choose_material_button1.UseVisualStyleBackColor = true;
@@ -1460,9 +1458,9 @@
             // 
             this.choose_material_button2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.choose_material_button2.Font = new System.Drawing.Font("SimSun", 10F);
-            this.choose_material_button2.Location = new System.Drawing.Point(959, 37);
+            this.choose_material_button2.Location = new System.Drawing.Point(1093, 37);
             this.choose_material_button2.Name = "choose_material_button2";
-            this.choose_material_button2.Size = new System.Drawing.Size(132, 24);
+            this.choose_material_button2.Size = new System.Drawing.Size(99, 24);
             this.choose_material_button2.TabIndex = 45;
             this.choose_material_button2.Text = "选择材料2";
             this.choose_material_button2.UseVisualStyleBackColor = true;
@@ -1472,9 +1470,9 @@
             // 
             this.choose_material_button3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.choose_material_button3.Font = new System.Drawing.Font("SimSun", 10F);
-            this.choose_material_button3.Location = new System.Drawing.Point(959, 69);
+            this.choose_material_button3.Location = new System.Drawing.Point(1093, 69);
             this.choose_material_button3.Name = "choose_material_button3";
-            this.choose_material_button3.Size = new System.Drawing.Size(132, 24);
+            this.choose_material_button3.Size = new System.Drawing.Size(99, 24);
             this.choose_material_button3.TabIndex = 45;
             this.choose_material_button3.Text = "选择材料3";
             this.choose_material_button3.UseVisualStyleBackColor = true;
@@ -1484,9 +1482,9 @@
             // 
             this.choose_material_button4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.choose_material_button4.Font = new System.Drawing.Font("SimSun", 10F);
-            this.choose_material_button4.Location = new System.Drawing.Point(959, 101);
+            this.choose_material_button4.Location = new System.Drawing.Point(1093, 101);
             this.choose_material_button4.Name = "choose_material_button4";
-            this.choose_material_button4.Size = new System.Drawing.Size(132, 24);
+            this.choose_material_button4.Size = new System.Drawing.Size(99, 24);
             this.choose_material_button4.TabIndex = 45;
             this.choose_material_button4.Text = "选择材料4";
             this.choose_material_button4.UseVisualStyleBackColor = true;
@@ -1496,121 +1494,66 @@
             // 
             this.choose_material_button5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.choose_material_button5.Font = new System.Drawing.Font("SimSun", 10F);
-            this.choose_material_button5.Location = new System.Drawing.Point(959, 133);
+            this.choose_material_button5.Location = new System.Drawing.Point(1093, 133);
             this.choose_material_button5.Name = "choose_material_button5";
-            this.choose_material_button5.Size = new System.Drawing.Size(132, 25);
+            this.choose_material_button5.Size = new System.Drawing.Size(99, 25);
             this.choose_material_button5.TabIndex = 45;
             this.choose_material_button5.Text = "选择材料5";
             this.choose_material_button5.UseVisualStyleBackColor = true;
             this.choose_material_button5.Click += new System.EventHandler(this.choose_material_button_Click);
             // 
-            // clear1
-            // 
-            this.clear1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clear1.Location = new System.Drawing.Point(1099, 5);
-            this.clear1.Name = "clear1";
-            this.clear1.Size = new System.Drawing.Size(119, 24);
-            this.clear1.TabIndex = 47;
-            this.clear1.Text = "清除选择1";
-            this.clear1.UseVisualStyleBackColor = true;
-            this.clear1.Click += new System.EventHandler(this.clear1_Click);
-            // 
-            // clear2
-            // 
-            this.clear2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clear2.Location = new System.Drawing.Point(1099, 37);
-            this.clear2.Name = "clear2";
-            this.clear2.Size = new System.Drawing.Size(119, 24);
-            this.clear2.TabIndex = 47;
-            this.clear2.Text = "清除选择2";
-            this.clear2.UseVisualStyleBackColor = true;
-            this.clear2.Click += new System.EventHandler(this.clear2_Click);
-            // 
-            // clear3
-            // 
-            this.clear3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clear3.Location = new System.Drawing.Point(1099, 69);
-            this.clear3.Name = "clear3";
-            this.clear3.Size = new System.Drawing.Size(119, 24);
-            this.clear3.TabIndex = 47;
-            this.clear3.Text = "清除选择3";
-            this.clear3.UseVisualStyleBackColor = true;
-            this.clear3.Click += new System.EventHandler(this.clear3_Click);
-            // 
-            // clear4
-            // 
-            this.clear4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clear4.Location = new System.Drawing.Point(1099, 101);
-            this.clear4.Name = "clear4";
-            this.clear4.Size = new System.Drawing.Size(119, 24);
-            this.clear4.TabIndex = 47;
-            this.clear4.Text = "清除选择4";
-            this.clear4.UseVisualStyleBackColor = true;
-            this.clear4.Click += new System.EventHandler(this.clear4_Click);
-            // 
-            // clear5
-            // 
-            this.clear5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clear5.Location = new System.Drawing.Point(1099, 133);
-            this.clear5.Name = "clear5";
-            this.clear5.Size = new System.Drawing.Size(119, 25);
-            this.clear5.TabIndex = 47;
-            this.clear5.Text = "清除选择5";
-            this.clear5.UseVisualStyleBackColor = true;
-            this.clear5.Click += new System.EventHandler(this.clear5_Click);
-            // 
             // material_mpn1des
             // 
             this.material_mpn1des.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.material_mpn1des.Location = new System.Drawing.Point(480, 5);
+            this.material_mpn1des.Location = new System.Drawing.Point(600, 5);
             this.material_mpn1des.Name = "material_mpn1des";
             this.material_mpn1des.ReadOnly = true;
-            this.material_mpn1des.Size = new System.Drawing.Size(235, 26);
+            this.material_mpn1des.Size = new System.Drawing.Size(255, 26);
             this.material_mpn1des.TabIndex = 48;
             // 
             // material_mpn2des
             // 
             this.material_mpn2des.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.material_mpn2des.Location = new System.Drawing.Point(480, 37);
+            this.material_mpn2des.Location = new System.Drawing.Point(600, 37);
             this.material_mpn2des.Name = "material_mpn2des";
             this.material_mpn2des.ReadOnly = true;
-            this.material_mpn2des.Size = new System.Drawing.Size(235, 26);
+            this.material_mpn2des.Size = new System.Drawing.Size(255, 26);
             this.material_mpn2des.TabIndex = 48;
             // 
             // material_mpn3des
             // 
             this.material_mpn3des.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.material_mpn3des.Location = new System.Drawing.Point(480, 69);
+            this.material_mpn3des.Location = new System.Drawing.Point(600, 69);
             this.material_mpn3des.Name = "material_mpn3des";
             this.material_mpn3des.ReadOnly = true;
-            this.material_mpn3des.Size = new System.Drawing.Size(235, 26);
+            this.material_mpn3des.Size = new System.Drawing.Size(255, 26);
             this.material_mpn3des.TabIndex = 48;
             // 
             // material_mpn4des
             // 
             this.material_mpn4des.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.material_mpn4des.Location = new System.Drawing.Point(480, 101);
+            this.material_mpn4des.Location = new System.Drawing.Point(600, 101);
             this.material_mpn4des.Name = "material_mpn4des";
             this.material_mpn4des.ReadOnly = true;
-            this.material_mpn4des.Size = new System.Drawing.Size(235, 26);
+            this.material_mpn4des.Size = new System.Drawing.Size(255, 26);
             this.material_mpn4des.TabIndex = 48;
             // 
             // material_mpn5des
             // 
             this.material_mpn5des.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.material_mpn5des.Location = new System.Drawing.Point(480, 133);
+            this.material_mpn5des.Location = new System.Drawing.Point(600, 133);
             this.material_mpn5des.Name = "material_mpn5des";
             this.material_mpn5des.ReadOnly = true;
-            this.material_mpn5des.Size = new System.Drawing.Size(235, 26);
+            this.material_mpn5des.Size = new System.Drawing.Size(255, 26);
             this.material_mpn5des.TabIndex = 48;
             // 
             // caijian1
             // 
             this.caijian1.AutoSize = true;
             this.caijian1.BackColor = System.Drawing.Color.LightCoral;
-            this.caijian1.Location = new System.Drawing.Point(723, 5);
+            this.caijian1.Location = new System.Drawing.Point(863, 5);
             this.caijian1.Name = "caijian1";
-            this.caijian1.Size = new System.Drawing.Size(56, 20);
+            this.caijian1.Size = new System.Drawing.Size(59, 20);
             this.caijian1.TabIndex = 49;
             this.caijian1.Text = "拆件";
             this.toolTip1.SetToolTip(this.caijian1, "拆件打钩");
@@ -1620,9 +1563,9 @@
             // 
             this.caijian2.AutoSize = true;
             this.caijian2.BackColor = System.Drawing.Color.LightCoral;
-            this.caijian2.Location = new System.Drawing.Point(723, 37);
+            this.caijian2.Location = new System.Drawing.Point(863, 37);
             this.caijian2.Name = "caijian2";
-            this.caijian2.Size = new System.Drawing.Size(56, 20);
+            this.caijian2.Size = new System.Drawing.Size(59, 20);
             this.caijian2.TabIndex = 50;
             this.caijian2.Text = "拆件";
             this.toolTip1.SetToolTip(this.caijian2, "拆件打钩");
@@ -1632,9 +1575,9 @@
             // 
             this.caijian3.AutoSize = true;
             this.caijian3.BackColor = System.Drawing.Color.LightCoral;
-            this.caijian3.Location = new System.Drawing.Point(723, 69);
+            this.caijian3.Location = new System.Drawing.Point(863, 69);
             this.caijian3.Name = "caijian3";
-            this.caijian3.Size = new System.Drawing.Size(56, 20);
+            this.caijian3.Size = new System.Drawing.Size(59, 20);
             this.caijian3.TabIndex = 51;
             this.caijian3.Text = "拆件";
             this.toolTip1.SetToolTip(this.caijian3, "拆件打钩");
@@ -1644,9 +1587,9 @@
             // 
             this.caijian4.AutoSize = true;
             this.caijian4.BackColor = System.Drawing.Color.LightCoral;
-            this.caijian4.Location = new System.Drawing.Point(723, 101);
+            this.caijian4.Location = new System.Drawing.Point(863, 101);
             this.caijian4.Name = "caijian4";
-            this.caijian4.Size = new System.Drawing.Size(56, 20);
+            this.caijian4.Size = new System.Drawing.Size(59, 20);
             this.caijian4.TabIndex = 52;
             this.caijian4.Text = "拆件";
             this.toolTip1.SetToolTip(this.caijian4, "拆件打钩");
@@ -1656,9 +1599,9 @@
             // 
             this.caijian5.AutoSize = true;
             this.caijian5.BackColor = System.Drawing.Color.LightCoral;
-            this.caijian5.Location = new System.Drawing.Point(723, 133);
+            this.caijian5.Location = new System.Drawing.Point(863, 133);
             this.caijian5.Name = "caijian5";
-            this.caijian5.Size = new System.Drawing.Size(56, 20);
+            this.caijian5.Size = new System.Drawing.Size(59, 20);
             this.caijian5.TabIndex = 53;
             this.caijian5.Text = "拆件";
             this.toolTip1.SetToolTip(this.caijian5, "拆件打钩");
@@ -1784,11 +1727,6 @@
         private System.Windows.Forms.Button choose_material_button3;
         private System.Windows.Forms.Button choose_material_button4;
         private System.Windows.Forms.Button choose_material_button5;
-        private System.Windows.Forms.Button clear1;
-        private System.Windows.Forms.Button clear2;
-        private System.Windows.Forms.Button clear3;
-        private System.Windows.Forms.Button clear4;
-        private System.Windows.Forms.Button clear5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox checkBox18;

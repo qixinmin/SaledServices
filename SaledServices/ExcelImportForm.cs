@@ -155,6 +155,11 @@ namespace SaledServices
                 sheetName = Constlist.table_limit_gurante;
                 tableName = Constlist.table_limit_gurante_sheet;
             }
+            else if (this.FruBom.Checked)
+            {
+                sheetName = Constlist.table_frubom;
+                tableName = Constlist.table_name_frubom_sheet;
+            }
 
             if (this.LCFC_MBBOMradioButton.Checked)
             {
@@ -183,6 +188,12 @@ namespace SaledServices
             else if (this.guranteCheckRadioButton.Checked)
             {
                 importGuranteCheck(sheetName, tableName);
+                this.importButton.Enabled = true;
+                return;
+            }
+            else if (this.FruBom.Checked)
+            {
+                importFrubomCheck(sheetName, tableName);
                 this.importButton.Enabled = true;
                 return;
             }
@@ -716,6 +727,63 @@ namespace SaledServices
                     bcp.ColumnMappings.Add("PRODUCT_DESC", "PRODUCT_DESC");
                     bcp.ColumnMappings.Add("DUE_DATE", "DUE_DATE");
                     bcp.ColumnMappings.Add("系列", "serial");
+
+                    bcp.WriteToServer(ds.Tables[0]);
+                    bcp.Close();
+
+                    conn.Close();
+                    MessageBox.Show("导入完成");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void importFrubomCheck(string sheetName, string tableName)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                //获取全部数据
+                string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath.Text + ";Extended Properties=Excel 12.0;";
+                OleDbConnection conn = new OleDbConnection(strConn);
+                conn.Open();
+                string strExcel = "";
+                OleDbDataAdapter myCommand = null;
+                strExcel = string.Format("select * from [{0}$]", sheetName);
+                myCommand = new OleDbDataAdapter(strExcel, strConn);
+                myCommand.Fill(ds, sheetName);
+
+                //用bcp导入数据
+                using (System.Data.SqlClient.SqlBulkCopy bcp = new System.Data.SqlClient.SqlBulkCopy(Constlist.ConStr))
+                {
+                    // bcp.SqlRowsCopied += new System.Data.SqlClient.SqlRowsCopiedEventHandler(bcp_SqlRowsCopied);
+                    bcp.BatchSize = 1000;//每次传输的行数
+                    bcp.NotifyAfter = 1000;//进度提示的行数
+                    bcp.DestinationTableName = tableName;//目标表
+
+                    bcp.ColumnMappings.Add("厂商", "vendor");
+                    bcp.ColumnMappings.Add("客户别", "product");
+                    bcp.ColumnMappings.Add("客户料号", "custom_material_no");
+                    bcp.ColumnMappings.Add("可替代料号", "replace_material");
+                    bcp.ColumnMappings.Add("机型", "machine_type");
+                    bcp.ColumnMappings.Add("名称", "name");
+                    bcp.ColumnMappings.Add("客户物料描述", "custommaterialdescribe");
+                    bcp.ColumnMappings.Add("厂商料号", "vendor_material_no");
+                    bcp.ColumnMappings.Add("MPN1", "mpn1");
+                    bcp.ColumnMappings.Add("MPN1描述", "mpn1_des");
+                    bcp.ColumnMappings.Add("MPN2", "mpn2");
+                    bcp.ColumnMappings.Add("MPN2描述", "mpn2_des");
+                    bcp.ColumnMappings.Add("MPN3", "mpn3");
+                    bcp.ColumnMappings.Add("MPN3描述", "mpn3_des");
+                    bcp.ColumnMappings.Add("MPN4", "mpn4");
+                    bcp.ColumnMappings.Add("MPN4描述", "mpn4_des");
+
+                    bcp.ColumnMappings.Add("保修期", "gurantee");
+                    bcp.ColumnMappings.Add("EOL", "eol");
+                    bcp.ColumnMappings.Add("添加日期", "input_date");
 
                     bcp.WriteToServer(ds.Tables[0]);
                     bcp.Close();

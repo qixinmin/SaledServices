@@ -93,7 +93,7 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select Id,short_cut,fault_type,repairer,repair_date,repair_result from repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' order by id desc";
+                    cmd.CommandText = "select Id,short_cut,fault_type,repairer,repair_date,repair_result,software_update from repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' order by id desc";
                     querySdr = cmd.ExecuteReader();
                     repairRecord.fault_describeList = new List<string>();
                     repairRecord.mbfaList = new List<string>();
@@ -105,6 +105,7 @@ namespace SaledServices.Export
                         repairRecord.repairer = querySdr[3].ToString();
                         repairRecord.repair_date = querySdr[4].ToString();
                         repairRecord.repair_result = querySdr[5].ToString();
+                        repairRecord.software_update = querySdr[6].ToString();
                     }
                     querySdr.Close();
 
@@ -213,6 +214,8 @@ namespace SaledServices.Export
 
             titleList.Add("MB生产日期");
             titleList.Add("客户故障");
+            titleList.Add("软体更新");
+
 
             for (int i = 1; i <= 3; i++)
             {
@@ -266,6 +269,7 @@ namespace SaledServices.Export
                 ct1.Add(repaircheck.mpn);
                 ct1.Add(repaircheck.mb_make_date);
                 ct1.Add(repaircheck.custom_fault);
+                ct1.Add(repaircheck.software_update);
 
                 for (int i = 0; i < 3; i++)
                 {
@@ -373,6 +377,8 @@ namespace SaledServices.Export
         public string repair_date;//修复日期 
         public string repair_result;//修复结果
         public string lenovo_maintenance_no;//联想维修站编号
+
+        public string software_update;//软体更新
 
         public string repair_Num;//维修次数
     }

@@ -94,6 +94,7 @@ namespace SaledServices.Export
         {
             List<string> titleList = new List<string>();
             List<Object> contentList = new List<object>();
+          
            
             titleList.Add("跟踪条码");
             titleList.Add("厂商");
@@ -141,6 +142,7 @@ namespace SaledServices.Export
             }
 
             Utils.createExcel("D:\\Cid信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            //Utils.createExcelList(titleList, contentList);
         }
     }
 

@@ -1,3 +1,30 @@
+
+
+
+CREATE TABLE frubomtable(
+Id INT PRIMARY KEY IDENTITY, 
+vendor NVARCHAR(128),/*厂商*/
+product NVARCHAR(128),/*客户别*/
+custom_material_no NVARCHAR(128),/*客户料号*/
+replace_material NVARCHAR(128),/*可替代料号*/
+machine_type NVARCHAR(128),/*机型*/
+name NVARCHAR(128),/*名称*/
+custommaterialdescribe NVARCHAR(128),/*客户物料描述*/
+vendor_material_no NVARCHAR(128),/*厂商料号*/
+mpn1 NVARCHAR(128),/*MPN1*/
+mpn1_des NVARCHAR(128),/*MPN1描述*/
+mpn2 NVARCHAR(128),/*MPN2*/
+mpn2_des NVARCHAR(128),/*MPN2描述*/
+mpn3 NVARCHAR(128),/*MPN3*/
+mpn3_des NVARCHAR(128),/*MPN3描述*/
+mpn4 NVARCHAR(128),/*MPN4*/
+mpn4_des NVARCHAR(128),/*MPN4描述*/
+gurantee NVARCHAR(128),/*保修期*/
+eol NVARCHAR(128),/*EOL*/
+input_date date,/*添加日期*/
+)
+
+
 CREATE TABLE limit_gurante(
 Id INT PRIMARY KEY IDENTITY, 
 import_date	date,
@@ -705,7 +732,7 @@ _status NVARCHAR(128) NOT NULL,/*状态*/
 cpu_type NVARCHAR(128),/*CPU型号*/
 cpu_freq NVARCHAR(128),/*CPU频率*/
 eco NVARCHAR(128),/*ECO*/
-eol NVARCHAR(128),/*EOL*/
+eol NVARCHAR(128),/*材料采购类别*/
 adddate date,/*添加日期*/
 inputuser NVARCHAR(128),/*添加人*/
 )

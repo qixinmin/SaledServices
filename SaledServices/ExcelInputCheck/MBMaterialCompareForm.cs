@@ -241,7 +241,7 @@ namespace SaledServices
         {
             try
             {
-                string sqlStr = "select * from " + tableName;
+                string sqlStr = "select top 1000 * from " + tableName;
 
                 if (this.custommaterialNotextBox.Text.Trim() != "")
                 {
@@ -366,6 +366,43 @@ namespace SaledServices
             tableLayoutPanel3.GetType().
                 GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).
                 SetValue(tableLayoutPanel3, true, null);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (this.mpnTextBox.Text.Trim() == "" || this.statusTextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("修改状态的字段为空");
+                return;
+            }
+
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandText = "update " + tableName + " set _status ='" + this.statusTextBox.Text.Trim() + "'where mpn='" + this.mpnTextBox.Text.Trim()+"'";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+                MessageBox.Show("修改成功！");
+                query_Click(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
     }
 }

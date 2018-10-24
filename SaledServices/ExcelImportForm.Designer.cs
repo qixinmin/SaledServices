@@ -33,7 +33,7 @@
             this.filePath = new System.Windows.Forms.TextBox();
             this.findFile = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.updateDBRadio = new System.Windows.Forms.RadioButton();
+            this.guranteCheckRadioButton = new System.Windows.Forms.RadioButton();
             this.userInputRadioButton = new System.Windows.Forms.RadioButton();
             this.ngstoreInfoImport = new System.Windows.Forms.RadioButton();
             this.storeInfoImportradioButton = new System.Windows.Forms.RadioButton();
@@ -44,14 +44,15 @@
             this.LCFC_MBBOMradioButton = new System.Windows.Forms.RadioButton();
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
-            this.guranteCheckRadioButton = new System.Windows.Forms.RadioButton();
+            this.updateDBRadio = new System.Windows.Forms.RadioButton();
+            this.FruBom = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // importButton
             // 
             this.importButton.Enabled = false;
-            this.importButton.Location = new System.Drawing.Point(479, 448);
+            this.importButton.Location = new System.Drawing.Point(639, 446);
             this.importButton.Margin = new System.Windows.Forms.Padding(5);
             this.importButton.Name = "importButton";
             this.importButton.Size = new System.Drawing.Size(125, 38);
@@ -81,6 +82,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.FruBom);
             this.panel1.Controls.Add(this.guranteCheckRadioButton);
             this.panel1.Controls.Add(this.userInputRadioButton);
             this.panel1.Controls.Add(this.ngstoreInfoImport);
@@ -95,24 +97,24 @@
             this.panel1.Location = new System.Drawing.Point(20, 149);
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(434, 512);
+            this.panel1.Size = new System.Drawing.Size(575, 512);
             this.panel1.TabIndex = 4;
             // 
-            // updateDBRadio
+            // guranteCheckRadioButton
             // 
-            this.updateDBRadio.AutoSize = true;
-            this.updateDBRadio.Location = new System.Drawing.Point(796, 587);
-            this.updateDBRadio.Name = "updateDBRadio";
-            this.updateDBRadio.Size = new System.Drawing.Size(107, 24);
-            this.updateDBRadio.TabIndex = 5;
-            this.updateDBRadio.TabStop = true;
-            this.updateDBRadio.Text = "更新库存";
-            this.updateDBRadio.UseVisualStyleBackColor = true;
+            this.guranteCheckRadioButton.AutoSize = true;
+            this.guranteCheckRadioButton.Location = new System.Drawing.Point(22, 444);
+            this.guranteCheckRadioButton.Name = "guranteCheckRadioButton";
+            this.guranteCheckRadioButton.Size = new System.Drawing.Size(147, 24);
+            this.guranteCheckRadioButton.TabIndex = 5;
+            this.guranteCheckRadioButton.TabStop = true;
+            this.guranteCheckRadioButton.Text = "保修日期检查";
+            this.guranteCheckRadioButton.UseVisualStyleBackColor = true;
             // 
             // userInputRadioButton
             // 
             this.userInputRadioButton.AutoSize = true;
-            this.userInputRadioButton.Location = new System.Drawing.Point(22, 383);
+            this.userInputRadioButton.Location = new System.Drawing.Point(22, 405);
             this.userInputRadioButton.Name = "userInputRadioButton";
             this.userInputRadioButton.Size = new System.Drawing.Size(147, 24);
             this.userInputRadioButton.TabIndex = 4;
@@ -123,7 +125,7 @@
             // ngstoreInfoImport
             // 
             this.ngstoreInfoImport.AutoSize = true;
-            this.ngstoreInfoImport.Location = new System.Drawing.Point(22, 343);
+            this.ngstoreInfoImport.Location = new System.Drawing.Point(22, 365);
             this.ngstoreInfoImport.Name = "ngstoreInfoImport";
             this.ngstoreInfoImport.Size = new System.Drawing.Size(207, 24);
             this.ngstoreInfoImport.TabIndex = 4;
@@ -134,7 +136,7 @@
             // storeInfoImportradioButton
             // 
             this.storeInfoImportradioButton.AutoSize = true;
-            this.storeInfoImportradioButton.Location = new System.Drawing.Point(22, 304);
+            this.storeInfoImportradioButton.Location = new System.Drawing.Point(22, 326);
             this.storeInfoImportradioButton.Name = "storeInfoImportradioButton";
             this.storeInfoImportradioButton.Size = new System.Drawing.Size(187, 24);
             this.storeInfoImportradioButton.TabIndex = 4;
@@ -145,7 +147,7 @@
             // stock_in_sheetradioButton
             // 
             this.stock_in_sheetradioButton.AutoSize = true;
-            this.stock_in_sheetradioButton.Location = new System.Drawing.Point(22, 264);
+            this.stock_in_sheetradioButton.Location = new System.Drawing.Point(22, 286);
             this.stock_in_sheetradioButton.Name = "stock_in_sheetradioButton";
             this.stock_in_sheetradioButton.Size = new System.Drawing.Size(127, 24);
             this.stock_in_sheetradioButton.TabIndex = 4;
@@ -156,7 +158,7 @@
             // faultTableRadioButton
             // 
             this.faultTableRadioButton.AutoSize = true;
-            this.faultTableRadioButton.Location = new System.Drawing.Point(22, 221);
+            this.faultTableRadioButton.Location = new System.Drawing.Point(22, 243);
             this.faultTableRadioButton.Name = "faultTableRadioButton";
             this.faultTableRadioButton.Size = new System.Drawing.Size(127, 24);
             this.faultTableRadioButton.TabIndex = 4;
@@ -167,7 +169,7 @@
             // DPKradioButton
             // 
             this.DPKradioButton.AutoSize = true;
-            this.DPKradioButton.Location = new System.Drawing.Point(22, 179);
+            this.DPKradioButton.Location = new System.Drawing.Point(22, 208);
             this.DPKradioButton.Name = "DPKradioButton";
             this.DPKradioButton.Size = new System.Drawing.Size(57, 24);
             this.DPKradioButton.TabIndex = 4;
@@ -221,16 +223,27 @@
             this.mbmaterial.Text = "MB物料对照表";
             this.mbmaterial.UseVisualStyleBackColor = true;
             // 
-            // guranteCheckRadioButton
+            // updateDBRadio
             // 
-            this.guranteCheckRadioButton.AutoSize = true;
-            this.guranteCheckRadioButton.Location = new System.Drawing.Point(22, 438);
-            this.guranteCheckRadioButton.Name = "guranteCheckRadioButton";
-            this.guranteCheckRadioButton.Size = new System.Drawing.Size(147, 24);
-            this.guranteCheckRadioButton.TabIndex = 5;
-            this.guranteCheckRadioButton.TabStop = true;
-            this.guranteCheckRadioButton.Text = "保修日期检查";
-            this.guranteCheckRadioButton.UseVisualStyleBackColor = true;
+            this.updateDBRadio.AutoSize = true;
+            this.updateDBRadio.Location = new System.Drawing.Point(816, 587);
+            this.updateDBRadio.Name = "updateDBRadio";
+            this.updateDBRadio.Size = new System.Drawing.Size(107, 24);
+            this.updateDBRadio.TabIndex = 5;
+            this.updateDBRadio.TabStop = true;
+            this.updateDBRadio.Text = "更新库存";
+            this.updateDBRadio.UseVisualStyleBackColor = true;
+            // 
+            // FruBom
+            // 
+            this.FruBom.AutoSize = true;
+            this.FruBom.Location = new System.Drawing.Point(22, 173);
+            this.FruBom.Name = "FruBom";
+            this.FruBom.Size = new System.Drawing.Size(87, 24);
+            this.FruBom.TabIndex = 6;
+            this.FruBom.TabStop = true;
+            this.FruBom.Text = "FruBOM";
+            this.FruBom.UseVisualStyleBackColor = true;
             // 
             // ExcelImportForm
             // 
@@ -273,5 +286,6 @@
         private System.Windows.Forms.RadioButton ngstoreInfoImport;
         private System.Windows.Forms.RadioButton updateDBRadio;
         private System.Windows.Forms.RadioButton guranteCheckRadioButton;
+        private System.Windows.Forms.RadioButton FruBom;
     }
 }

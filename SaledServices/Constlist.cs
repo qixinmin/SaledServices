@@ -10,6 +10,8 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Net;
+using NPOI.HSSF;
+using NPOI.HSSF.UserModel;
 
 namespace SaledServices
 {
@@ -71,6 +73,9 @@ namespace SaledServices
 
         public static string table_limit_gurante = "15个月";
         public static string table_limit_gurante_sheet = "limit_gurante";
+
+        public static string table_frubom = "FRUBOM对照表";
+        public static string table_name_frubom_sheet = "frubomtable";
     }
 
     public class PrintUtils
@@ -196,7 +201,6 @@ namespace SaledServices
             return false;
         }
 
-
         public static void setValue(ref Microsoft.Office.Interop.Excel.Worksheet xSheet, int column, int row,Object content)
         {
             if(content is ExportExcelContent)
@@ -204,6 +208,105 @@ namespace SaledServices
                 ExportExcelContent temp = (ExportExcelContent)content;
                 xSheet.Cells[column][row] = temp.contentArray[column - 1];
             }
+        }
+
+        //title list的长度要保证与内容contentArray的长度一致, 一个文件包含多个sheet的尝试
+        public static void createExcelList(List<string> titleList, List<Object> contentList)
+        {
+            HSSFWorkbook hssfworkbook =new HSSFWorkbook();
+
+            HSSFSheet sheet = (HSSFSheet)hssfworkbook.CreateSheet("newsheet");
+            int row = contentList.Count +1;
+            int column = ((ExportExcelContent)(contentList[0])).contentArray.Count;
+         //   int contentListNum = contentList.Count;
+
+            for (int ri = 0; ri < row; ri++)
+            {
+                sheet.CreateRow(ri);
+            }
+            for (int ri = 0; ri < row; ri++)
+            {
+                for (int ci = 0; ci < column; ci++)
+                {
+                    if (ri == 0)
+                    {
+                        
+                        sheet.GetRow(ri).CreateCell(ci).SetCellValue(titleList[ci]);
+                    }
+                    else
+                    {
+                        string content =((ExportExcelContent)(contentList[ri-1])).contentArray[ci];
+                        sheet.GetRow(ri).CreateCell(ci).SetCellValue(content);
+                    }
+                }
+            }
+             for (int ci = 0; ci < column; ci++)
+             {
+                 sheet.AutoSizeColumn(ci);
+             }
+            
+            hssfworkbook.CreateSheet("Sheet1");
+            //sheet.CreateRow(0).CreateCell(0).SetCellValue("This is a Sample");//npoi 的下标从0开始的，原始的从1开始
+
+            //HSSFCell cell = (HSSFCell)sheet.CreateRow(0).CreateCell(0);
+            //cell.SetCellValue(new DateTime(2008, 5, 5));
+
+            //set dateformat
+
+            //HSSFCellStyle cellStyle = (HSSFCellStyle)hssfworkbook.CreateCellStyle();
+
+            //HSSFDataFormat format = (HSSFDataFormat)hssfworkbook.CreateDataFormat();
+
+            //cellStyle.DataFormat = format.GetFormat("yyyy年m月d日");
+
+            //cell.CellStyle = cellStyle;
+
+            // Create arow and put some cells in it. Rows are 0 based.
+            //HSSFRow row = (HSSFRow)sheet.CreateRow(1);
+            //// Create acell and put a value in it.
+            //cell = (HSSFCell)row.CreateCell(1);
+            //// Style thecell with borders all around.
+            //HSSFCellStyle style = (HSSFCellStyle)hssfworkbook.CreateCellStyle();
+
+           
+
+          //  cell.CellStyle = style;
+
+            HSSFSheet sheet2 = (HSSFSheet)hssfworkbook.CreateSheet("Sheet2");
+
+            for (int ri = 0; ri < row; ri++)
+            {
+                sheet2.CreateRow(ri);
+            }
+            for (int ri = 0; ri < row; ri++)
+            {
+                for (int ci = 0; ci < column; ci++)
+                {
+                    if (ri == 0)
+                    {
+
+                        sheet2.GetRow(ri).CreateCell(ci).SetCellValue(titleList[ci]);
+                    }
+                    else
+                    {
+                        string content = ((ExportExcelContent)(contentList[ri - 1])).contentArray[ci];
+                        sheet2.GetRow(ri).CreateCell(ci).SetCellValue(content);
+                    }
+                }
+            }
+            for (int ci = 0; ci < column; ci++)
+            {
+                sheet2.AutoSizeColumn(ci);
+            }
+            
+           // sheet2.CreateRow(0).CreateCell(0).SetCellValue("This2 is a Sample");//npoi 的下标从0开始的，原始的从1开始
+            HSSFSheet sheet3 = (HSSFSheet)hssfworkbook.CreateSheet("Sheet3");
+            sheet3.CreateRow(0).CreateCell(0).SetCellValue("This3 is a Sample");//npoi 的下标从0开始的，原始的从1开始
+            FileStream file = new FileStream(@"D:\test.xls", FileMode.Create);
+
+            hssfworkbook.Write(file);
+
+            file.Close();
         }
 
         //title list的长度要保证与内容contentArray的长度一致
@@ -218,15 +321,23 @@ namespace SaledServices
 
             if (File.Exists(filepathname))
             {
-                workBook = xApp.Workbooks.Open(filepathname, 0, false, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+                try
+                {
+                    File.Delete(filepathname);
+                }
+                catch (Exception ex)
+                {
+                   // MessageBox.Show("删除文件错误");
+                }
+                
+               // workBook = xApp.Workbooks.Open(filepathname, 0, false, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
             }
-            else
-            {
-                workBook = xApp.Workbooks.Add(true);
-            }
+            
+            workBook = xApp.Workbooks.Add(true);
 
             //3.指定要操作的Sheet
             Microsoft.Office.Interop.Excel.Worksheet xSheet = (Microsoft.Office.Interop.Excel.Worksheet)workBook.Worksheets[1];
+            xSheet.Name = "test";//名称读取或修改
             Microsoft.Office.Interop.Excel.Range range;
 
             //4.向相应对位置写入相应的数据

@@ -81,7 +81,7 @@ namespace SaledServices
                 dataGridView1.DataSource = null;
                 dataGridView1.Columns.Clear();
 
-                string sqlStr =  "select * from " + tableName;
+                string sqlStr =  "select top 1000 * from " + tableName;
 
                 if (material_mpnTextBox.Text.Trim() != "")
                 {
