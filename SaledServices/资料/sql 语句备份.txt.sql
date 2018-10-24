@@ -654,6 +654,28 @@ receiver NVARCHAR(128) NOT NULL,/*收件人*/
 receive_date date/*收货日期*/
 )
 
+CREATE TABLE frureturnStore(
+Id INT PRIMARY KEY IDENTITY, 
+orderno NVARCHAR(128) NOT NULL,/*订单编号*/
+vendor NVARCHAR(128) NOT NULL, /*厂商*/
+product NVARCHAR(128) NOT NULL, /*客户别*/
+customermaterialno NVARCHAR(128) NOT NULL,/*客户料号*/
+machine_type NVARCHAR(128) NOT NULL,/*机型*/
+name NVARCHAR(128) NOT NULL, /*名称*/
+customermaterialdes NVARCHAR(1280) NOT NULL,/*客户物料描述*/
+peijian_no NVARCHAR(128) NOT NULL,/*配件序号*/
+customer_serial_no NVARCHAR(128) NOT NULL,/*客户序号*/
+custom_fault NVARCHAR(128) NOT NULL,/*客户故障*/
+make_date date, /*生产日期*/
+gurantee NVARCHAR(128) NOT NULL,/*保内/保外*/
+gurantee_note NVARCHAR(128) NOT NULL,/*保外备注*/
+vendor_material_no NVARCHAR(128) NOT NULL,/*厂商料号*/
+mpn1 NVARCHAR(128) NOT NULL,/*MPN1*/
+receiver NVARCHAR(128) NOT NULL,/*还货人*/
+receive_date date,/*还货日期*/
+tat NVARCHAR(128) NOT NULL,/*时间差*/
+)
+
 
 /*仓库别 来货*/
 CREATE TABLE storehouse(

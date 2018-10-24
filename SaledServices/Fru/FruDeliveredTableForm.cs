@@ -752,7 +752,7 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "update receiveOrder set _status = '" + status + "',receivedNum = '" + (receivedNum - 1) + "' "
+                    cmd.CommandText = "update frureceiveOrder set _status = '" + status + "',receivedNum = '" + (receivedNum - 1) + "' "
                                 + "where orderno = '" + this.ordernoComboBox.Text
                                 + "' and custom_materialNo = '" + this.customermaterialnoTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
