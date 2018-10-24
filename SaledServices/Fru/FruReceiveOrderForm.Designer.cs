@@ -582,7 +582,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FruReceiveOrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "收还货";
+            this.Text = "Fru收还货";
             this.Load += new System.EventHandler(this.ReceiveOrderForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);

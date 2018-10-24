@@ -36,64 +36,40 @@
             this.modify = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.mb_describeTextBox = new System.Windows.Forms.TextBox();
-            this.mb_make_dateTextBox = new System.Windows.Forms.TextBox();
-            this.warranty_periodTextBox = new System.Windows.Forms.TextBox();
+            this.vendor_material_noTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.custom_orderComboBox = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.track_serial_noTextBox = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.custom_serial_noTextBox = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.vendor_serail_noTextBox = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.uuidTextBox = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.macTextBox = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.custom_faultComboBox = new System.Windows.Forms.ComboBox();
+            this.ordernoComboBox = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.numTextBox = new System.Windows.Forms.TextBox();
+            this.mpn1TextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.customermaterialnoTextBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.receive_dateTextBox = new System.Windows.Forms.TextBox();
+            this.receiverTextBox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.peijian_noTextBox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.customer_serial_noTextBox = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.custom_faultTextBox = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.guaranteeComboBox = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.dpk_statusTextBox = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.customResponsibilityComboBox = new System.Windows.Forms.ComboBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.lenovo_custom_service_noTextBox = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.order_out_dateTextBox = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.lenovo_maintenance_noTextBox = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.order_receive_dateTextBox = new System.Windows.Forms.TextBox();
-            this.lenovo_repair_noTextBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.whole_machine_noTextBox = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.custom_machine_typeTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.vendorTextBox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.mb_briefTextBox = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.machine_typeTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.productTextBox = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.mpnTextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.storehouseTextBox = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.inputUserTextBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.source_briefComboBox = new System.Windows.Forms.ComboBox();
-            this.custommaterialNoTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.vendorTextBox = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.make_datedateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.customermaterialdesTextBox = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.gurantee_noteTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -181,72 +157,45 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.Controls.Add(this.label18, 2, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label19, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.label20, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.mb_describeTextBox, 3, 8);
-            this.tableLayoutPanel1.Controls.Add(this.mb_make_dateTextBox, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.warranty_periodTextBox, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.vendor_material_noTextBox, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.custom_orderComboBox, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label12, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.track_serial_noTextBox, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.custom_serial_noTextBox, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label14, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.vendor_serail_noTextBox, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.uuidTextBox, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label16, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.macTextBox, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label21, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.custom_faultComboBox, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.ordernoComboBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label28, 4, 2);
-            this.tableLayoutPanel1.Controls.Add(this.numTextBox, 5, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label22, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.guaranteeComboBox, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.label11, 4, 3);
-            this.tableLayoutPanel1.Controls.Add(this.dpk_statusTextBox, 5, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label23, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.customResponsibilityComboBox, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label24, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lenovo_custom_service_noTextBox, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 4, 5);
-            this.tableLayoutPanel1.Controls.Add(this.order_out_dateTextBox, 5, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label25, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.lenovo_maintenance_noTextBox, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label26, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.order_receive_dateTextBox, 5, 7);
-            this.tableLayoutPanel1.Controls.Add(this.lenovo_repair_noTextBox, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label7, 4, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label27, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.whole_machine_noTextBox, 3, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label8, 4, 6);
-            this.tableLayoutPanel1.Controls.Add(this.custom_machine_typeTextBox, 5, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.vendorTextBox, 3, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label9, 2, 9);
-            this.tableLayoutPanel1.Controls.Add(this.mb_briefTextBox, 3, 9);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 2, 6);
-            this.tableLayoutPanel1.Controls.Add(this.productTextBox, 3, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label17, 4, 4);
-            this.tableLayoutPanel1.Controls.Add(this.mpnTextBox, 5, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 2, 7);
-            this.tableLayoutPanel1.Controls.Add(this.storehouseTextBox, 3, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label29, 4, 8);
-            this.tableLayoutPanel1.Controls.Add(this.inputUserTextBox, 5, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.mpn1TextBox, 5, 2);
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.source_briefComboBox, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.custommaterialNoTextBox, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.customermaterialnoTextBox, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label7, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label29, 4, 4);
+            this.tableLayoutPanel1.Controls.Add(this.receive_dateTextBox, 5, 3);
+            this.tableLayoutPanel1.Controls.Add(this.receiverTextBox, 5, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label12, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.peijian_noTextBox, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.customer_serial_noTextBox, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label21, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.custom_faultTextBox, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label22, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.guaranteeComboBox, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label18, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.nameTextBox, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.machine_typeTextBox, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.productTextBox, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.vendorTextBox, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label19, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.make_datedateTimePicker, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label9, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.customermaterialdesTextBox, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label16, 2, 5);
+            this.tableLayoutPanel1.Controls.Add(this.gurantee_noteTextBox, 3, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 10;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowCount = 7;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -256,70 +205,26 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1346, 363);
             this.tableLayoutPanel1.TabIndex = 2;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label18.Location = new System.Drawing.Point(453, 291);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(69, 20);
-            this.label18.TabIndex = 4;
-            this.label18.Text = "MB描述";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label19.Location = new System.Drawing.Point(899, 3);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(109, 20);
-            this.label19.TabIndex = 4;
-            this.label19.Text = "MB生产日期";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label20.Location = new System.Drawing.Point(899, 39);
+            this.label20.Location = new System.Drawing.Point(899, 54);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(69, 20);
+            this.label20.Size = new System.Drawing.Size(89, 20);
             this.label20.TabIndex = 4;
-            this.label20.Text = "保修期";
+            this.label20.Text = "厂商料号";
             // 
-            // mb_describeTextBox
+            // vendor_material_noTextBox
             // 
-            this.mb_describeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mb_describeTextBox.Location = new System.Drawing.Point(676, 295);
-            this.mb_describeTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mb_describeTextBox.Name = "mb_describeTextBox";
-            this.mb_describeTextBox.ReadOnly = true;
-            this.mb_describeTextBox.Size = new System.Drawing.Size(212, 26);
-            this.mb_describeTextBox.TabIndex = 0;
-            // 
-            // mb_make_dateTextBox
-            // 
-            this.mb_make_dateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mb_make_dateTextBox.Location = new System.Drawing.Point(1122, 7);
-            this.mb_make_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mb_make_dateTextBox.Name = "mb_make_dateTextBox";
-            this.mb_make_dateTextBox.ReadOnly = true;
-            this.mb_make_dateTextBox.Size = new System.Drawing.Size(217, 26);
-            this.mb_make_dateTextBox.TabIndex = 0;
-            // 
-            // warranty_periodTextBox
-            // 
-            this.warranty_periodTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.warranty_periodTextBox.Location = new System.Drawing.Point(1122, 43);
-            this.warranty_periodTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.warranty_periodTextBox.Name = "warranty_periodTextBox";
-            this.warranty_periodTextBox.ReadOnly = true;
-            this.warranty_periodTextBox.Size = new System.Drawing.Size(217, 26);
-            this.warranty_periodTextBox.TabIndex = 0;
+            this.vendor_material_noTextBox.Location = new System.Drawing.Point(1122, 58);
+            this.vendor_material_noTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.vendor_material_noTextBox.Name = "vendor_material_noTextBox";
+            this.vendor_material_noTextBox.ReadOnly = true;
+            this.vendor_material_noTextBox.Size = new System.Drawing.Size(217, 26);
+            this.vendor_material_noTextBox.TabIndex = 0;
             // 
             // label5
             // 
@@ -332,172 +237,163 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "订单编号";
             // 
-            // custom_orderComboBox
+            // ordernoComboBox
             // 
-            this.custom_orderComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custom_orderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.custom_orderComboBox.FormattingEnabled = true;
-            this.custom_orderComboBox.Location = new System.Drawing.Point(230, 7);
-            this.custom_orderComboBox.Margin = new System.Windows.Forms.Padding(4);
-            this.custom_orderComboBox.Name = "custom_orderComboBox";
-            this.custom_orderComboBox.Size = new System.Drawing.Size(212, 24);
-            this.custom_orderComboBox.TabIndex = 6;
-            this.custom_orderComboBox.SelectedValueChanged += new System.EventHandler(this.custom_orderComboBox_SelectedValueChanged);
-            this.custom_orderComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_orderComboBox_KeyPress);
+            this.ordernoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ordernoComboBox.FormattingEnabled = true;
+            this.ordernoComboBox.Location = new System.Drawing.Point(230, 7);
+            this.ordernoComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.ordernoComboBox.Name = "ordernoComboBox";
+            this.ordernoComboBox.Size = new System.Drawing.Size(212, 24);
+            this.ordernoComboBox.TabIndex = 6;
+            this.ordernoComboBox.SelectedValueChanged += new System.EventHandler(this.custom_orderComboBox_SelectedValueChanged);
+            this.ordernoComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_orderComboBox_KeyPress);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label28.Location = new System.Drawing.Point(899, 105);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(49, 20);
+            this.label28.TabIndex = 1;
+            this.label28.Text = "MPN1";
+            // 
+            // mpn1TextBox
+            // 
+            this.mpn1TextBox.Location = new System.Drawing.Point(1122, 109);
+            this.mpn1TextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.mpn1TextBox.Name = "mpn1TextBox";
+            this.mpn1TextBox.ReadOnly = true;
+            this.mpn1TextBox.Size = new System.Drawing.Size(217, 26);
+            this.mpn1TextBox.TabIndex = 0;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label10.Location = new System.Drawing.Point(7, 54);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(89, 20);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "客户料号";
+            // 
+            // customermaterialnoTextBox
+            // 
+            this.customermaterialnoTextBox.BackColor = System.Drawing.Color.Lime;
+            this.customermaterialnoTextBox.Location = new System.Drawing.Point(230, 58);
+            this.customermaterialnoTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.customermaterialnoTextBox.Name = "customermaterialnoTextBox";
+            this.customermaterialnoTextBox.Size = new System.Drawing.Size(212, 26);
+            this.customermaterialnoTextBox.TabIndex = 0;
+            this.customermaterialnoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custommaterialNoTextBox_KeyPress);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label7.Location = new System.Drawing.Point(899, 156);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 20);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "收货日期";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label29.Location = new System.Drawing.Point(899, 207);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(69, 20);
+            this.label29.TabIndex = 1;
+            this.label29.Text = "收货人";
+            // 
+            // receive_dateTextBox
+            // 
+            this.receive_dateTextBox.Location = new System.Drawing.Point(1122, 160);
+            this.receive_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.receive_dateTextBox.Name = "receive_dateTextBox";
+            this.receive_dateTextBox.ReadOnly = true;
+            this.receive_dateTextBox.Size = new System.Drawing.Size(217, 26);
+            this.receive_dateTextBox.TabIndex = 0;
+            // 
+            // receiverTextBox
+            // 
+            this.receiverTextBox.Location = new System.Drawing.Point(1121, 210);
+            this.receiverTextBox.Name = "receiverTextBox";
+            this.receiverTextBox.ReadOnly = true;
+            this.receiverTextBox.Size = new System.Drawing.Size(219, 26);
+            this.receiverTextBox.TabIndex = 7;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label12.Location = new System.Drawing.Point(7, 111);
+            this.label12.Location = new System.Drawing.Point(7, 105);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(89, 20);
             this.label12.TabIndex = 4;
-            this.label12.Text = "跟踪条码";
+            this.label12.Text = "配件序号";
             // 
-            // track_serial_noTextBox
+            // peijian_noTextBox
             // 
-            this.track_serial_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.track_serial_noTextBox.Location = new System.Drawing.Point(230, 115);
-            this.track_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.track_serial_noTextBox.Name = "track_serial_noTextBox";
-            this.track_serial_noTextBox.Size = new System.Drawing.Size(212, 26);
-            this.track_serial_noTextBox.TabIndex = 0;
-            this.track_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.track_serial_noTextBox_KeyPress);
+            this.peijian_noTextBox.Location = new System.Drawing.Point(230, 109);
+            this.peijian_noTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.peijian_noTextBox.Name = "peijian_noTextBox";
+            this.peijian_noTextBox.Size = new System.Drawing.Size(212, 26);
+            this.peijian_noTextBox.TabIndex = 0;
+            this.peijian_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.track_serial_noTextBox_KeyPress);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label13.Location = new System.Drawing.Point(7, 147);
+            this.label13.Location = new System.Drawing.Point(7, 156);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(89, 20);
             this.label13.TabIndex = 4;
             this.label13.Text = "客户序号";
             // 
-            // custom_serial_noTextBox
+            // customer_serial_noTextBox
             // 
-            this.custom_serial_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custom_serial_noTextBox.Location = new System.Drawing.Point(230, 151);
-            this.custom_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.custom_serial_noTextBox.Name = "custom_serial_noTextBox";
-            this.custom_serial_noTextBox.Size = new System.Drawing.Size(212, 26);
-            this.custom_serial_noTextBox.TabIndex = 0;
-            this.custom_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_serial_noTextBox_KeyPress);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label14.Location = new System.Drawing.Point(7, 183);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(89, 20);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "厂商序号";
-            // 
-            // vendor_serail_noTextBox
-            // 
-            this.vendor_serail_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vendor_serail_noTextBox.Location = new System.Drawing.Point(230, 187);
-            this.vendor_serail_noTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.vendor_serail_noTextBox.Name = "vendor_serail_noTextBox";
-            this.vendor_serail_noTextBox.Size = new System.Drawing.Size(212, 26);
-            this.vendor_serail_noTextBox.TabIndex = 0;
-            this.vendor_serail_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vendor_serail_noTextBox_KeyPress);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label15.Location = new System.Drawing.Point(7, 219);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(49, 20);
-            this.label15.TabIndex = 4;
-            this.label15.Text = "UUID";
-            // 
-            // uuidTextBox
-            // 
-            this.uuidTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uuidTextBox.Location = new System.Drawing.Point(230, 223);
-            this.uuidTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.uuidTextBox.Name = "uuidTextBox";
-            this.uuidTextBox.Size = new System.Drawing.Size(212, 26);
-            this.uuidTextBox.TabIndex = 0;
-            this.uuidTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uuidTextBox_KeyPress);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label16.Location = new System.Drawing.Point(7, 255);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(39, 20);
-            this.label16.TabIndex = 4;
-            this.label16.Text = "MAC";
-            // 
-            // macTextBox
-            // 
-            this.macTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.macTextBox.Location = new System.Drawing.Point(230, 259);
-            this.macTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.macTextBox.Name = "macTextBox";
-            this.macTextBox.Size = new System.Drawing.Size(212, 26);
-            this.macTextBox.TabIndex = 0;
-            this.macTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.macTextBox_KeyPress);
+            this.customer_serial_noTextBox.Location = new System.Drawing.Point(230, 160);
+            this.customer_serial_noTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.customer_serial_noTextBox.Name = "customer_serial_noTextBox";
+            this.customer_serial_noTextBox.Size = new System.Drawing.Size(212, 26);
+            this.customer_serial_noTextBox.TabIndex = 0;
+            this.customer_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_serial_noTextBox_KeyPress);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label21.Location = new System.Drawing.Point(7, 291);
+            this.label21.Location = new System.Drawing.Point(7, 207);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(89, 20);
             this.label21.TabIndex = 4;
             this.label21.Text = "客户故障";
             // 
-            // custom_faultComboBox
+            // custom_faultTextBox
             // 
-            this.custom_faultComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custom_faultComboBox.FormattingEnabled = true;
-            this.custom_faultComboBox.Location = new System.Drawing.Point(230, 295);
-            this.custom_faultComboBox.Margin = new System.Windows.Forms.Padding(4);
-            this.custom_faultComboBox.Name = "custom_faultComboBox";
-            this.custom_faultComboBox.Size = new System.Drawing.Size(212, 24);
-            this.custom_faultComboBox.TabIndex = 5;
-            this.custom_faultComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_faultComboBox_KeyPress);
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label28.Location = new System.Drawing.Point(899, 75);
-            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(29, 20);
-            this.label28.TabIndex = 1;
-            this.label28.Text = "ID";
-            // 
-            // numTextBox
-            // 
-            this.numTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numTextBox.Location = new System.Drawing.Point(1122, 79);
-            this.numTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.numTextBox.Name = "numTextBox";
-            this.numTextBox.ReadOnly = true;
-            this.numTextBox.Size = new System.Drawing.Size(217, 26);
-            this.numTextBox.TabIndex = 0;
+            this.custom_faultTextBox.Location = new System.Drawing.Point(230, 211);
+            this.custom_faultTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.custom_faultTextBox.Name = "custom_faultTextBox";
+            this.custom_faultTextBox.Size = new System.Drawing.Size(212, 26);
+            this.custom_faultTextBox.TabIndex = 0;
+            this.custom_faultTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vendor_serail_noTextBox_KeyPress);
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label22.Location = new System.Drawing.Point(7, 327);
+            this.label22.Location = new System.Drawing.Point(7, 258);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(99, 20);
@@ -506,253 +402,59 @@
             // 
             // guaranteeComboBox
             // 
-            this.guaranteeComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guaranteeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.guaranteeComboBox.FormattingEnabled = true;
-            this.guaranteeComboBox.Location = new System.Drawing.Point(230, 331);
+            this.guaranteeComboBox.Location = new System.Drawing.Point(230, 262);
             this.guaranteeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.guaranteeComboBox.Name = "guaranteeComboBox";
             this.guaranteeComboBox.Size = new System.Drawing.Size(212, 24);
             this.guaranteeComboBox.TabIndex = 5;
-            this.guaranteeComboBox.SelectedValueChanged += new System.EventHandler(this.guaranteeComboBox_SelectedValueChanged);
             // 
-            // label11
+            // label18
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label11.Location = new System.Drawing.Point(899, 111);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(79, 20);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "DPK状态";
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label18.Location = new System.Drawing.Point(453, 207);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(49, 20);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "名称";
             // 
-            // dpk_statusTextBox
+            // nameTextBox
             // 
-            this.dpk_statusTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dpk_statusTextBox.Location = new System.Drawing.Point(1122, 115);
-            this.dpk_statusTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.dpk_statusTextBox.Name = "dpk_statusTextBox";
-            this.dpk_statusTextBox.ReadOnly = true;
-            this.dpk_statusTextBox.Size = new System.Drawing.Size(217, 26);
-            this.dpk_statusTextBox.TabIndex = 0;
+            this.nameTextBox.Location = new System.Drawing.Point(676, 211);
+            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.ReadOnly = true;
+            this.nameTextBox.Size = new System.Drawing.Size(212, 26);
+            this.nameTextBox.TabIndex = 0;
             // 
-            // label23
+            // label4
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label23.Location = new System.Drawing.Point(453, 3);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(89, 20);
-            this.label23.TabIndex = 4;
-            this.label23.Text = "客责描述";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label4.Location = new System.Drawing.Point(453, 156);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "机型";
             // 
-            // customResponsibilityComboBox
+            // machine_typeTextBox
             // 
-            this.customResponsibilityComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customResponsibilityComboBox.FormattingEnabled = true;
-            this.customResponsibilityComboBox.Location = new System.Drawing.Point(676, 7);
-            this.customResponsibilityComboBox.Margin = new System.Windows.Forms.Padding(4);
-            this.customResponsibilityComboBox.Name = "customResponsibilityComboBox";
-            this.customResponsibilityComboBox.Size = new System.Drawing.Size(212, 24);
-            this.customResponsibilityComboBox.TabIndex = 5;
-            this.customResponsibilityComboBox.Text = "正常";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label24.Location = new System.Drawing.Point(453, 39);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(129, 20);
-            this.label24.TabIndex = 4;
-            this.label24.Text = "联想客服序号";
-            // 
-            // lenovo_custom_service_noTextBox
-            // 
-            this.lenovo_custom_service_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lenovo_custom_service_noTextBox.Location = new System.Drawing.Point(676, 43);
-            this.lenovo_custom_service_noTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.lenovo_custom_service_noTextBox.Name = "lenovo_custom_service_noTextBox";
-            this.lenovo_custom_service_noTextBox.Size = new System.Drawing.Size(212, 26);
-            this.lenovo_custom_service_noTextBox.TabIndex = 0;
-            this.lenovo_custom_service_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lenovo_custom_service_noTextBox_KeyPress);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label6.Location = new System.Drawing.Point(899, 183);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(129, 20);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "客户出库日期";
-            // 
-            // order_out_dateTextBox
-            // 
-            this.order_out_dateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.order_out_dateTextBox.Location = new System.Drawing.Point(1122, 187);
-            this.order_out_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.order_out_dateTextBox.Name = "order_out_dateTextBox";
-            this.order_out_dateTextBox.ReadOnly = true;
-            this.order_out_dateTextBox.Size = new System.Drawing.Size(217, 26);
-            this.order_out_dateTextBox.TabIndex = 0;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label25.Location = new System.Drawing.Point(453, 75);
-            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(149, 20);
-            this.label25.TabIndex = 4;
-            this.label25.Text = "联想维修站编号";
-            // 
-            // lenovo_maintenance_noTextBox
-            // 
-            this.lenovo_maintenance_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lenovo_maintenance_noTextBox.Location = new System.Drawing.Point(676, 79);
-            this.lenovo_maintenance_noTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.lenovo_maintenance_noTextBox.Name = "lenovo_maintenance_noTextBox";
-            this.lenovo_maintenance_noTextBox.Size = new System.Drawing.Size(212, 26);
-            this.lenovo_maintenance_noTextBox.TabIndex = 0;
-            this.lenovo_maintenance_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lenovo_maintenance_noTextBox_KeyPress);
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label26.Location = new System.Drawing.Point(453, 111);
-            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(149, 20);
-            this.label26.TabIndex = 4;
-            this.label26.Text = "联想维修单编号";
-            // 
-            // order_receive_dateTextBox
-            // 
-            this.order_receive_dateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.order_receive_dateTextBox.Location = new System.Drawing.Point(1122, 259);
-            this.order_receive_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.order_receive_dateTextBox.Name = "order_receive_dateTextBox";
-            this.order_receive_dateTextBox.ReadOnly = true;
-            this.order_receive_dateTextBox.Size = new System.Drawing.Size(217, 26);
-            this.order_receive_dateTextBox.TabIndex = 0;
-            // 
-            // lenovo_repair_noTextBox
-            // 
-            this.lenovo_repair_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lenovo_repair_noTextBox.Location = new System.Drawing.Point(676, 115);
-            this.lenovo_repair_noTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.lenovo_repair_noTextBox.Name = "lenovo_repair_noTextBox";
-            this.lenovo_repair_noTextBox.Size = new System.Drawing.Size(212, 26);
-            this.lenovo_repair_noTextBox.TabIndex = 0;
-            this.lenovo_repair_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lenovo_repair_noTextBox_KeyPress);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label7.Location = new System.Drawing.Point(899, 255);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 20);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "收货日期";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label27.Location = new System.Drawing.Point(453, 147);
-            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(89, 20);
-            this.label27.TabIndex = 4;
-            this.label27.Text = "整机序号";
-            // 
-            // whole_machine_noTextBox
-            // 
-            this.whole_machine_noTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.whole_machine_noTextBox.Location = new System.Drawing.Point(676, 151);
-            this.whole_machine_noTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.whole_machine_noTextBox.Name = "whole_machine_noTextBox";
-            this.whole_machine_noTextBox.Size = new System.Drawing.Size(212, 26);
-            this.whole_machine_noTextBox.TabIndex = 0;
-            this.whole_machine_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.whole_machine_noTextBox_KeyPress);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label8.Location = new System.Drawing.Point(899, 219);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(89, 20);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "客户机型";
-            // 
-            // custom_machine_typeTextBox
-            // 
-            this.custom_machine_typeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custom_machine_typeTextBox.Location = new System.Drawing.Point(1122, 223);
-            this.custom_machine_typeTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.custom_machine_typeTextBox.Name = "custom_machine_typeTextBox";
-            this.custom_machine_typeTextBox.ReadOnly = true;
-            this.custom_machine_typeTextBox.Size = new System.Drawing.Size(217, 26);
-            this.custom_machine_typeTextBox.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(453, 183);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "厂商";
-            // 
-            // vendorTextBox
-            // 
-            this.vendorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vendorTextBox.Location = new System.Drawing.Point(676, 187);
-            this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.vendorTextBox.Name = "vendorTextBox";
-            this.vendorTextBox.ReadOnly = true;
-            this.vendorTextBox.Size = new System.Drawing.Size(212, 26);
-            this.vendorTextBox.TabIndex = 0;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label9.Location = new System.Drawing.Point(453, 327);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 20);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "MB简称";
-            // 
-            // mb_briefTextBox
-            // 
-            this.mb_briefTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mb_briefTextBox.Location = new System.Drawing.Point(676, 331);
-            this.mb_briefTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mb_briefTextBox.Name = "mb_briefTextBox";
-            this.mb_briefTextBox.ReadOnly = true;
-            this.mb_briefTextBox.Size = new System.Drawing.Size(212, 26);
-            this.mb_briefTextBox.TabIndex = 0;
+            this.machine_typeTextBox.Location = new System.Drawing.Point(676, 160);
+            this.machine_typeTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.machine_typeTextBox.Name = "machine_typeTextBox";
+            this.machine_typeTextBox.ReadOnly = true;
+            this.machine_typeTextBox.Size = new System.Drawing.Size(212, 26);
+            this.machine_typeTextBox.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label2.Location = new System.Drawing.Point(453, 219);
+            this.label2.Location = new System.Drawing.Point(453, 105);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 20);
@@ -761,119 +463,90 @@
             // 
             // productTextBox
             // 
-            this.productTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.productTextBox.Location = new System.Drawing.Point(676, 223);
+            this.productTextBox.Location = new System.Drawing.Point(676, 109);
             this.productTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.productTextBox.Name = "productTextBox";
             this.productTextBox.ReadOnly = true;
             this.productTextBox.Size = new System.Drawing.Size(212, 26);
             this.productTextBox.TabIndex = 0;
             // 
-            // label17
+            // label1
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label17.Location = new System.Drawing.Point(899, 147);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(39, 20);
-            this.label17.TabIndex = 4;
-            this.label17.Text = "MPN";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(453, 54);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "厂商";
             // 
-            // mpnTextBox
+            // vendorTextBox
             // 
-            this.mpnTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mpnTextBox.Location = new System.Drawing.Point(1122, 151);
-            this.mpnTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.mpnTextBox.Name = "mpnTextBox";
-            this.mpnTextBox.ReadOnly = true;
-            this.mpnTextBox.Size = new System.Drawing.Size(217, 26);
-            this.mpnTextBox.TabIndex = 0;
+            this.vendorTextBox.Location = new System.Drawing.Point(676, 58);
+            this.vendorTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.vendorTextBox.Name = "vendorTextBox";
+            this.vendorTextBox.ReadOnly = true;
+            this.vendorTextBox.Size = new System.Drawing.Size(212, 26);
+            this.vendorTextBox.TabIndex = 0;
             // 
-            // label4
+            // label19
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label4.Location = new System.Drawing.Point(453, 255);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 20);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "库别";
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label19.Location = new System.Drawing.Point(453, 3);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(89, 20);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "生产日期";
             // 
-            // storehouseTextBox
+            // make_datedateTimePicker
             // 
-            this.storehouseTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.storehouseTextBox.Location = new System.Drawing.Point(676, 259);
-            this.storehouseTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.storehouseTextBox.Name = "storehouseTextBox";
-            this.storehouseTextBox.ReadOnly = true;
-            this.storehouseTextBox.Size = new System.Drawing.Size(212, 26);
-            this.storehouseTextBox.TabIndex = 0;
+            this.make_datedateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.make_datedateTimePicker.Location = new System.Drawing.Point(675, 6);
+            this.make_datedateTimePicker.Name = "make_datedateTimePicker";
+            this.make_datedateTimePicker.Size = new System.Drawing.Size(200, 26);
+            this.make_datedateTimePicker.TabIndex = 8;
             // 
-            // label29
+            // label9
             // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label29.Location = new System.Drawing.Point(899, 291);
-            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(69, 20);
-            this.label29.TabIndex = 1;
-            this.label29.Text = "收货人";
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label9.Location = new System.Drawing.Point(899, 3);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(129, 20);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "客户物料描述";
             // 
-            // inputUserTextBox
+            // customermaterialdesTextBox
             // 
-            this.inputUserTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputUserTextBox.Location = new System.Drawing.Point(1121, 294);
-            this.inputUserTextBox.Name = "inputUserTextBox";
-            this.inputUserTextBox.ReadOnly = true;
-            this.inputUserTextBox.Size = new System.Drawing.Size(219, 26);
-            this.inputUserTextBox.TabIndex = 7;
+            this.customermaterialdesTextBox.Location = new System.Drawing.Point(1122, 7);
+            this.customermaterialdesTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.customermaterialdesTextBox.Name = "customermaterialdesTextBox";
+            this.customermaterialdesTextBox.ReadOnly = true;
+            this.customermaterialdesTextBox.Size = new System.Drawing.Size(212, 26);
+            this.customermaterialdesTextBox.TabIndex = 0;
             // 
-            // label3
+            // label16
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label3.Location = new System.Drawing.Point(7, 75);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 20);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "来源";
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label16.Location = new System.Drawing.Point(453, 258);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(49, 20);
+            this.label16.TabIndex = 4;
+            this.label16.Text = "备注";
             // 
-            // label10
+            // gurantee_noteTextBox
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(7, 39);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 20);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "客户料号";
-            // 
-            // source_briefComboBox
-            // 
-            this.source_briefComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.source_briefComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.source_briefComboBox.FormattingEnabled = true;
-            this.source_briefComboBox.Location = new System.Drawing.Point(230, 79);
-            this.source_briefComboBox.Margin = new System.Windows.Forms.Padding(4);
-            this.source_briefComboBox.Name = "source_briefComboBox";
-            this.source_briefComboBox.Size = new System.Drawing.Size(212, 24);
-            this.source_briefComboBox.TabIndex = 5;
-            // 
-            // custommaterialNoTextBox
-            // 
-            this.custommaterialNoTextBox.BackColor = System.Drawing.Color.Lime;
-            this.custommaterialNoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.custommaterialNoTextBox.Location = new System.Drawing.Point(230, 43);
-            this.custommaterialNoTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.custommaterialNoTextBox.Name = "custommaterialNoTextBox";
-            this.custommaterialNoTextBox.Size = new System.Drawing.Size(212, 26);
-            this.custommaterialNoTextBox.TabIndex = 0;
-            this.custommaterialNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custommaterialNoTextBox_KeyPress);
+            this.gurantee_noteTextBox.Location = new System.Drawing.Point(676, 262);
+            this.gurantee_noteTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.gurantee_noteTextBox.Name = "gurantee_noteTextBox";
+            this.gurantee_noteTextBox.Size = new System.Drawing.Size(212, 26);
+            this.gurantee_noteTextBox.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
@@ -945,7 +618,7 @@
             this.dataGridViewWaitToReturn.TabIndex = 1;
             this.dataGridViewWaitToReturn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWaitToReturn_CellClick);
             // 
-            // DeliveredTableForm
+            // FruDeliveredTableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -953,9 +626,9 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Font = new System.Drawing.Font("SimSun", 12F);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "DeliveredTableForm";
+            this.Name = "FruDeliveredTableForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "收货界面";
+            this.Text = "Fru收货界面";
             this.Load += new System.EventHandler(this.DeliveredTableForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -980,63 +653,39 @@
         private System.Windows.Forms.TextBox vendorTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox productTextBox;
-        private System.Windows.Forms.TextBox storehouseTextBox;
-        private System.Windows.Forms.TextBox order_out_dateTextBox;
-        private System.Windows.Forms.TextBox order_receive_dateTextBox;
-        private System.Windows.Forms.TextBox custom_machine_typeTextBox;
-        private System.Windows.Forms.TextBox mb_briefTextBox;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox machine_typeTextBox;
+        private System.Windows.Forms.TextBox receive_dateTextBox;
+        private System.Windows.Forms.TextBox customermaterialdesTextBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TextBox custommaterialNoTextBox;
-        private System.Windows.Forms.TextBox dpk_statusTextBox;
-        private System.Windows.Forms.TextBox track_serial_noTextBox;
-        private System.Windows.Forms.TextBox custom_serial_noTextBox;
-        private System.Windows.Forms.TextBox vendor_serail_noTextBox;
-        private System.Windows.Forms.TextBox uuidTextBox;
-        private System.Windows.Forms.TextBox macTextBox;
-        private System.Windows.Forms.TextBox mpnTextBox;
-        private System.Windows.Forms.TextBox mb_describeTextBox;
-        private System.Windows.Forms.TextBox mb_make_dateTextBox;
-        private System.Windows.Forms.TextBox warranty_periodTextBox;
-        private System.Windows.Forms.TextBox lenovo_custom_service_noTextBox;
-        private System.Windows.Forms.TextBox lenovo_maintenance_noTextBox;
-        private System.Windows.Forms.TextBox lenovo_repair_noTextBox;
-        private System.Windows.Forms.TextBox whole_machine_noTextBox;
+        private System.Windows.Forms.TextBox customermaterialnoTextBox;
+        private System.Windows.Forms.TextBox peijian_noTextBox;
+        private System.Windows.Forms.TextBox customer_serial_noTextBox;
+        private System.Windows.Forms.TextBox custom_faultTextBox;
+        private System.Windows.Forms.TextBox gurantee_noteTextBox;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.TextBox vendor_material_noTextBox;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox numTextBox;
-        private System.Windows.Forms.ComboBox source_briefComboBox;
-        private System.Windows.Forms.ComboBox custom_faultComboBox;
+        private System.Windows.Forms.TextBox mpn1TextBox;
         private System.Windows.Forms.ComboBox guaranteeComboBox;
-        private System.Windows.Forms.ComboBox customResponsibilityComboBox;
-        private System.Windows.Forms.ComboBox custom_orderComboBox;
+        private System.Windows.Forms.ComboBox ordernoComboBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox inputUserTextBox;
+        private System.Windows.Forms.TextBox receiverTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.DataGridView dataGridViewWaitToReturn;
+        private System.Windows.Forms.DateTimePicker make_datedateTimePicker;
     }
 }

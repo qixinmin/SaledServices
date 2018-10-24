@@ -41,6 +41,8 @@ namespace SaledServices
         public static string table_MBMaterialCompare = "MB物料对照表";
         public static string table_name_MBMaterialCompare = "MBMaterialCompare";
 
+        public static string table_name_frubomtable = "frubomtable";
+
         public static string table_receiveOrder = "RMA";//sheet 名字
         public static string table_name_ReceiveOrder = "ReceiveOrder";
 

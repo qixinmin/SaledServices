@@ -203,7 +203,6 @@ namespace SaledServices
                 return;
             }
 
-
             app = new Microsoft.Office.Interop.Excel.Application();
             app.DisplayAlerts = false;
             wbs = app.Workbooks;
@@ -232,7 +231,7 @@ namespace SaledServices
                 int columnLength = ws.UsedRange.Columns.Count;
                 importMaterialCompare(ws, rowLength, columnLength, tableName);
             }
-            else if (this.receiveOrder.Checked || this.frureceiveOrder.Checked)//表格类似
+            else if (this.receiveOrder.Checked)//表格类似
             {
                 Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
                 int rowLength = ws.UsedRange.Rows.Count;
@@ -363,6 +362,171 @@ namespace SaledServices
                             querySdr.Close();
                              
                             insertCmd.CommandText = "INSERT INTO receiveOrder VALUES('" +
+                                vendor + "','" +
+                                product + "','" +
+                                order + "','" +
+                                customMaterialNo + "','" +
+                                customMaterialDescribe + "','" +
+                                orderNum + "','" +
+                                mb_brief + "','" +
+                                vendor_materialNo + "','" +
+                                LoginForm.currentUser + "','" +                                
+                                 DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo)+ "','" +
+                                "0" + "','" +
+                                DateTime.Now.ToString("1900/01/01") + "','" +
+                                "open" + "','" +
+                                storeHouse + "','0','0')";
+
+                            insertCmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    queryConn.Close();
+                    MessageBox.Show("导入完毕");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    closeAndKillApp();
+                }
+            }
+            else if (this.frureceiveOrder.Checked)//表格类似
+            {
+                Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
+                int rowLength = ws.UsedRange.Rows.Count;
+                int columnLength = ws.UsedRange.Columns.Count;
+
+                if (checkIsNullCell(ws, rowLength, columnLength))
+                {
+                    MessageBox.Show("RMA中有空值，请确认后在上传");
+                    closeAndKillApp();
+                    this.importButton.Enabled = true;
+                    return;
+                }
+
+                try
+                {
+                    //订单号
+                    string order = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[2, 2]).Value2.ToString();
+
+                    SqlConnection queryConn = new SqlConnection(Constlist.ConStr);
+                    queryConn.Open();
+
+                    SqlCommand queryCmd = new SqlCommand();
+                    queryCmd.Connection = queryConn;
+                    queryCmd.CommandType = CommandType.Text;
+
+                    SqlCommand insertCmd = new SqlCommand();
+                    insertCmd.Connection = queryConn;
+                    insertCmd.CommandType = CommandType.Text;
+
+                    if (queryConn.State == ConnectionState.Open)
+                    {
+                        bool customMaterialNoExist = true;
+                        try
+                        {
+                            for (int i = 2; i <= rowLength; i++)
+                            {
+                                //逻辑1 判断客户料号是否在物料对照对照表中
+                                //客户料号
+                                string customMaterialNo = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 3]).Value2.ToString();
+
+                               // customMaterialNo = appendString(customMaterialNo);
+                                string querysql = "select vendor,product,custommaterialdescribe,machine_type,mpn1 from " + Constlist.table_name_frubomtable +
+                                    " where custom_material_no ='" + customMaterialNo + "'";
+
+                                queryCmd.CommandText = querysql;
+                                SqlDataReader querySdr = queryCmd.ExecuteReader();
+                                string vendor = "";
+                                if (querySdr.HasRows)
+                                {
+                                    querySdr.Read();
+                                     vendor = querySdr[0].ToString();
+                                }
+                                querySdr.Close();
+                                if (vendor == "")
+                                {
+                                    MessageBox.Show(customMaterialNo + "在物料对照表不存在，请添加！");
+                                    customMaterialNoExist = false;
+                                    break;
+                                }
+
+                                //逻辑2 判断此excel表格是否已经导入过数据库中
+                                querysql = "select vendor from frureceiveOrder where custom_materialNo ='" + customMaterialNo + "' and orderno='" + order + "'";
+
+                                queryCmd.CommandText = querysql;
+                                querySdr = queryCmd.ExecuteReader();
+                                vendor = "";
+                                if (querySdr.HasRows)
+                                {
+                                    querySdr.Read();
+                                    vendor = querySdr[0].ToString();
+                                }
+                                querySdr.Close();
+                                if (vendor != "")
+                                {
+                                    MessageBox.Show(filePath.Text + "已经导入过了，请检查！");
+                                    customMaterialNoExist = false;
+                                    break;
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                        }
+                        finally
+                        {
+                            if (!customMaterialNoExist)
+                            {
+                                queryConn.Close();
+                            }
+                        }
+
+                        if (!customMaterialNoExist)
+                        {
+                            queryConn.Close();
+                            closeAndKillApp();
+                            this.importButton.Enabled = true;
+                            return;
+                        }
+
+                        for (int i = 2; i <= rowLength; i++)
+                        {
+                            string storeHouse = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 1]).Value2.ToString();
+                            //客户料号
+                            string customMaterialNo = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 3]).Value2.ToString();
+
+                            //订单数量
+                            string orderNum = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 4]).Value2.ToString();
+
+                            customMaterialNo = appendString(customMaterialNo);
+                            string querysql = "select vendor,product,machine_type,mpn1,custommaterialdescribe from " + Constlist.table_name_frubomtable +
+                                " where custom_material_no ='" + customMaterialNo + "'";
+
+                            queryCmd.CommandText = querysql;
+                            SqlDataReader querySdr = queryCmd.ExecuteReader();
+                            string vendor = "";
+                            string product = "";
+                            string mb_brief = "";
+                            string vendor_materialNo = "";
+                            string customMaterialDescribe = "";
+                            if (querySdr.HasRows)
+                            {
+                                querySdr.Read();
+                                vendor = querySdr[0].ToString();
+                                product = querySdr[1].ToString();
+                                mb_brief = querySdr[2].ToString();
+                                vendor_materialNo = querySdr[3].ToString();
+                                customMaterialDescribe = querySdr[4].ToString();
+                            }
+
+                            querySdr.Close();
+                             
+                            insertCmd.CommandText = "INSERT INTO frureceiveOrder VALUES('" +
                                 vendor + "','" +
                                 product + "','" +
                                 order + "','" +

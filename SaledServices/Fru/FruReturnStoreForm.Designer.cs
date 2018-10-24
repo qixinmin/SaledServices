@@ -838,7 +838,7 @@
             this.print.UseVisualStyleBackColor = true;
             this.print.Click += new System.EventHandler(this.print_Click);
             // 
-            // ReturnStoreForm
+            // FruReturnStoreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -847,9 +847,9 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("SimSun", 12F);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "ReturnStoreForm";
+            this.Name = "FruReturnStoreForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "还货界面";
+            this.Text = "Fru还货界面";
             this.Load += new System.EventHandler(this.ReturnStoreForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToReturn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReturnedDetail)).EndInit();
