@@ -44,6 +44,9 @@ namespace SaledServices
         public static string table_receiveOrder = "RMA";//sheet 名字
         public static string table_name_ReceiveOrder = "ReceiveOrder";
 
+        public static string table_frureceiveOrder = "FRU收货单";//sheet 名字
+        public static string table_name_fruReceiveOrder = "frureceiveOrder";
+
         public static string table_LCFC_MBBOM = "LCFC_MBBOM";
         public static string table_name_LCFC_MBBOM = "LCFC_MBBOM_table";
 

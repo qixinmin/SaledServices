@@ -120,7 +120,16 @@ namespace SaledServices
                     
                     mConn.Close();
 
-                    if (status == "" || status != "BGA不良")
+                    if (status == "")
+                    {
+                        this.track_serial_noTextBox.Focus();
+                        this.track_serial_noTextBox.SelectAll();
+                        MessageBox.Show("追踪条码的内容不在待维修记录表中或待维修记录的状态不是BGA不良，请检查！");
+                        this.add.Enabled = false;
+                        return;
+                    }
+
+                    if (status != "BGA不良" && status != "BGA更换不良")
                     {
                         this.track_serial_noTextBox.Focus();
                         this.track_serial_noTextBox.SelectAll();

@@ -33,6 +33,7 @@
             this.filePath = new System.Windows.Forms.TextBox();
             this.findFile = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.FruBom = new System.Windows.Forms.RadioButton();
             this.guranteCheckRadioButton = new System.Windows.Forms.RadioButton();
             this.userInputRadioButton = new System.Windows.Forms.RadioButton();
             this.ngstoreInfoImport = new System.Windows.Forms.RadioButton();
@@ -45,7 +46,7 @@
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
             this.updateDBRadio = new System.Windows.Forms.RadioButton();
-            this.FruBom = new System.Windows.Forms.RadioButton();
+            this.frureceiveOrder = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,6 +93,7 @@
             this.panel1.Controls.Add(this.DPKradioButton);
             this.panel1.Controls.Add(this.LCFC71BOMRadioButton);
             this.panel1.Controls.Add(this.LCFC_MBBOMradioButton);
+            this.panel1.Controls.Add(this.frureceiveOrder);
             this.panel1.Controls.Add(this.receiveOrder);
             this.panel1.Controls.Add(this.mbmaterial);
             this.panel1.Location = new System.Drawing.Point(20, 149);
@@ -100,6 +102,16 @@
             this.panel1.Size = new System.Drawing.Size(575, 512);
             this.panel1.TabIndex = 4;
             // 
+            // FruBom
+            // 
+            this.FruBom.AutoSize = true;
+            this.FruBom.Location = new System.Drawing.Point(22, 173);
+            this.FruBom.Name = "FruBom";
+            this.FruBom.Size = new System.Drawing.Size(87, 24);
+            this.FruBom.TabIndex = 6;
+            this.FruBom.Text = "FruBOM";
+            this.FruBom.UseVisualStyleBackColor = true;
+            // 
             // guranteCheckRadioButton
             // 
             this.guranteCheckRadioButton.AutoSize = true;
@@ -107,7 +119,6 @@
             this.guranteCheckRadioButton.Name = "guranteCheckRadioButton";
             this.guranteCheckRadioButton.Size = new System.Drawing.Size(147, 24);
             this.guranteCheckRadioButton.TabIndex = 5;
-            this.guranteCheckRadioButton.TabStop = true;
             this.guranteCheckRadioButton.Text = "保修日期检查";
             this.guranteCheckRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -118,7 +129,6 @@
             this.userInputRadioButton.Name = "userInputRadioButton";
             this.userInputRadioButton.Size = new System.Drawing.Size(147, 24);
             this.userInputRadioButton.TabIndex = 4;
-            this.userInputRadioButton.TabStop = true;
             this.userInputRadioButton.Text = "用户资料导入";
             this.userInputRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -129,7 +139,6 @@
             this.ngstoreInfoImport.Name = "ngstoreInfoImport";
             this.ngstoreInfoImport.Size = new System.Drawing.Size(207, 24);
             this.ngstoreInfoImport.TabIndex = 4;
-            this.ngstoreInfoImport.TabStop = true;
             this.ngstoreInfoImport.Text = "不良品库房储位导入";
             this.ngstoreInfoImport.UseVisualStyleBackColor = true;
             // 
@@ -140,7 +149,6 @@
             this.storeInfoImportradioButton.Name = "storeInfoImportradioButton";
             this.storeInfoImportradioButton.Size = new System.Drawing.Size(187, 24);
             this.storeInfoImportradioButton.TabIndex = 4;
-            this.storeInfoImportradioButton.TabStop = true;
             this.storeInfoImportradioButton.Text = "良品库房储位导入";
             this.storeInfoImportradioButton.UseVisualStyleBackColor = true;
             // 
@@ -151,7 +159,6 @@
             this.stock_in_sheetradioButton.Name = "stock_in_sheetradioButton";
             this.stock_in_sheetradioButton.Size = new System.Drawing.Size(127, 24);
             this.stock_in_sheetradioButton.TabIndex = 4;
-            this.stock_in_sheetradioButton.TabStop = true;
             this.stock_in_sheetradioButton.Text = "材料入库单";
             this.stock_in_sheetradioButton.UseVisualStyleBackColor = true;
             // 
@@ -162,7 +169,6 @@
             this.faultTableRadioButton.Name = "faultTableRadioButton";
             this.faultTableRadioButton.Size = new System.Drawing.Size(127, 24);
             this.faultTableRadioButton.TabIndex = 4;
-            this.faultTableRadioButton.TabStop = true;
             this.faultTableRadioButton.Text = "故障代码表";
             this.faultTableRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -173,7 +179,6 @@
             this.DPKradioButton.Name = "DPKradioButton";
             this.DPKradioButton.Size = new System.Drawing.Size(57, 24);
             this.DPKradioButton.TabIndex = 4;
-            this.DPKradioButton.TabStop = true;
             this.DPKradioButton.Text = "DPK";
             this.DPKradioButton.UseVisualStyleBackColor = true;
             // 
@@ -184,7 +189,6 @@
             this.LCFC71BOMRadioButton.Name = "LCFC71BOMRadioButton";
             this.LCFC71BOMRadioButton.Size = new System.Drawing.Size(117, 24);
             this.LCFC71BOMRadioButton.TabIndex = 4;
-            this.LCFC71BOMRadioButton.TabStop = true;
             this.LCFC71BOMRadioButton.Text = "LCFC71BOM";
             this.LCFC71BOMRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -195,7 +199,6 @@
             this.LCFC_MBBOMradioButton.Name = "LCFC_MBBOMradioButton";
             this.LCFC_MBBOMradioButton.Size = new System.Drawing.Size(257, 24);
             this.LCFC_MBBOMradioButton.TabIndex = 2;
-            this.LCFC_MBBOMradioButton.TabStop = true;
             this.LCFC_MBBOMradioButton.Text = "LCFC_MBBOM&&COMPAL_MBBOM";
             this.LCFC_MBBOMradioButton.UseVisualStyleBackColor = true;
             // 
@@ -208,7 +211,6 @@
             this.receiveOrder.Name = "receiveOrder";
             this.receiveOrder.Size = new System.Drawing.Size(87, 24);
             this.receiveOrder.TabIndex = 1;
-            this.receiveOrder.TabStop = true;
             this.receiveOrder.Text = "收货单";
             this.receiveOrder.UseVisualStyleBackColor = true;
             // 
@@ -234,16 +236,16 @@
             this.updateDBRadio.Text = "更新库存";
             this.updateDBRadio.UseVisualStyleBackColor = true;
             // 
-            // FruBom
+            // frureceiveOrder
             // 
-            this.FruBom.AutoSize = true;
-            this.FruBom.Location = new System.Drawing.Point(22, 173);
-            this.FruBom.Name = "FruBom";
-            this.FruBom.Size = new System.Drawing.Size(87, 24);
-            this.FruBom.TabIndex = 6;
-            this.FruBom.TabStop = true;
-            this.FruBom.Text = "FruBOM";
-            this.FruBom.UseVisualStyleBackColor = true;
+            this.frureceiveOrder.AutoSize = true;
+            this.frureceiveOrder.Location = new System.Drawing.Point(162, 173);
+            this.frureceiveOrder.Margin = new System.Windows.Forms.Padding(5);
+            this.frureceiveOrder.Name = "frureceiveOrder";
+            this.frureceiveOrder.Size = new System.Drawing.Size(117, 24);
+            this.frureceiveOrder.TabIndex = 1;
+            this.frureceiveOrder.Text = "Fru收货单";
+            this.frureceiveOrder.UseVisualStyleBackColor = true;
             // 
             // ExcelImportForm
             // 
@@ -287,5 +289,6 @@
         private System.Windows.Forms.RadioButton updateDBRadio;
         private System.Windows.Forms.RadioButton guranteCheckRadioButton;
         private System.Windows.Forms.RadioButton FruBom;
+        private System.Windows.Forms.RadioButton frureceiveOrder;
     }
 }

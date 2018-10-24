@@ -1303,5 +1303,52 @@ namespace SaledServices
 
             allForm.Add(checkInfoForm);
         }
+
+        private FruReceiveOrderForm fruroForm = null;
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            if (fruroForm == null || fruroForm.IsDisposed)
+            {
+                fruroForm = new FruReceiveOrderForm();
+                fruroForm.MdiParent = this;
+            }
+
+            fruroForm.WindowState = FormWindowState.Maximized;
+            fruroForm.BringToFront();
+            fruroForm.Show();
+
+            allForm.Add(fruroForm);
+        }
+
+        private FruDeliveredTableForm frudtform;
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            if (frudtform == null || frudtform.IsDisposed)
+            {
+                frudtform = new FruDeliveredTableForm();
+                frudtform.MdiParent = this;
+            }
+            frudtform.WindowState = FormWindowState.Maximized;
+            frudtform.BringToFront();
+            frudtform.Show();
+
+            allForm.Add(frudtform);
+        }
+
+        private FruReturnStoreForm frursForm;        
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            if (frursForm == null || frursForm.IsDisposed)
+            {
+                frursForm = new FruReturnStoreForm();
+                frursForm.MdiParent = this;
+            }
+
+            frursForm.WindowState = FormWindowState.Maximized;
+            frursForm.BringToFront();
+            frursForm.Show();
+
+            allForm.Add(frursForm);
+        }
     }
 }

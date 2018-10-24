@@ -779,6 +779,27 @@ returnNum NVARCHAR(128), /*还货数量*/
 cid_number NVARCHAR(128), /*废弃数量*/
 )
 
+/*fru收货单*/
+CREATE TABLE frureceiveOrder(
+Id INT PRIMARY KEY IDENTITY,
+vendor NVARCHAR(128) NOT NULL, /*厂商*/
+product NVARCHAR(128) NOT NULL, /*客户别*/
+orderno NVARCHAR(128) NOT NULL,/*订单编号*/
+custom_materialNo NVARCHAR(128) NOT NULL,/*客户料号*/
+custom_material_describe NVARCHAR(128) NOT NULL,/*客户物料描述*/
+ordernum NVARCHAR(128) NOT NULL,/*订单数量*/
+mb_brief NVARCHAR(128) NOT NULL,/*MB简称*/
+vendor_materialNo NVARCHAR(128) NOT NULL,/*厂商料号*/
+username NVARCHAR(128) NOT NULL,/*制单人*/
+ordertime date,/*制单时间*/
+receivedNum NVARCHAR(128),/*收货数量*/
+receivedate date,/*收货日期*/
+_status NVARCHAR(128) NOT NULL,/*订单状态*/
+storehouse NVARCHAR(128) NOT NULL,/*库别*/
+returnNum NVARCHAR(128), /*还货数量*/
+
+cid_number NVARCHAR(128), /*废弃数量*/
+)
 
 /*站别记录信息*/
 CREATE TABLE stationInformation(

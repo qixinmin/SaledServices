@@ -105,6 +105,11 @@ namespace SaledServices
                 sheetName = Constlist.table_receiveOrder;
                 tableName = Constlist.table_name_ReceiveOrder;
             }
+            else if(this.frureceiveOrder.Checked)
+            {
+                sheetName = Constlist.table_frureceiveOrder;
+                tableName = Constlist.table_name_fruReceiveOrder;
+            }
             else if (this.LCFC_MBBOMradioButton.Checked)
             {
                 sheetName = Constlist.table_LCFC_MBBOM;
@@ -227,7 +232,7 @@ namespace SaledServices
                 int columnLength = ws.UsedRange.Columns.Count;
                 importMaterialCompare(ws, rowLength, columnLength, tableName);
             }
-            else if (this.receiveOrder.Checked)
+            else if (this.receiveOrder.Checked || this.frureceiveOrder.Checked)//表格类似
             {
                 Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
                 int rowLength = ws.UsedRange.Rows.Count;

@@ -261,6 +261,12 @@
     <Compile Include="additionForm\RepairFaultTypeForm.Designer.cs">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fru\FruReceiveOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fru\FruReceiveOrderForm.Designer.cs">
+      <DependentUpon>FruReceiveOrderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Export\BgaOutExport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -338,6 +344,18 @@
     </Compile>
     <Compile Include="Export\ReceiveOrderExport.designer.cs">
       <DependentUpon>ReceiveOrderExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fru\FruDeliveredTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fru\FruDeliveredTableForm.Designer.cs">
+      <DependentUpon>FruDeliveredTableForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fru\FruReturnStoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fru\FruReturnStoreForm.Designer.cs">
+      <DependentUpon>FruReturnStoreForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Repair\FaultMBConfirmForm.cs">
       <SubType>Form</SubType>
@@ -701,6 +719,9 @@
     <EmbeddedResource Include="additionForm\RepairFaultTypeForm.resx">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Fru\FruReceiveOrderForm.resx">
+      <DependentUpon>FruReceiveOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Export\BgaOutExport.resx">
       <DependentUpon>BgaOutExport.cs</DependentUpon>
     </EmbeddedResource>
@@ -739,6 +760,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\ReceiveOrderExport.resx">
       <DependentUpon>ReceiveOrderExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fru\FruDeliveredTableForm.resx">
+      <DependentUpon>FruDeliveredTableForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fru\FruReturnStoreForm.resx">
+      <DependentUpon>FruReturnStoreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Repair\FaultMBConfirmForm.resx">
