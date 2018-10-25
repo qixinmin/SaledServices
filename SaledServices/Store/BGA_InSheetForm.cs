@@ -132,6 +132,8 @@ namespace SaledServices
                         {
                             conn.Close();
                             MessageBox.Show("此BGA SN号码已经存在数据库中了，请检查是否重复！");
+                            this.bgaSnTextBox.SelectAll();
+                            this.bgaSnTextBox.Focus();
                             return;
                         }
                         querySdr.Close();
@@ -164,7 +166,7 @@ namespace SaledServices
                         break;
                     }
                     querySdr.Close();
-
+                   
                     //更新采购表里面的数量与状态
                     cmd.CommandText = "update stock_in_sheet set _status = '" + status + "',stock_in_num = '" + (in_number_int + this_enter_number) + "' where mpn='" + this.mpnTextBox.Text.Trim() + "' and buy_order_serial_no='" + this.buy_order_serial_noComboBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
@@ -199,10 +201,9 @@ namespace SaledServices
                     }
 
                     querySdr.Close();
-                    if (chooseStock.number == "")
+                    if (chooseStock.number == null || chooseStock.number == "")
                     {
                         chooseStock.number = "0";
-                        MessageBox.Show("number 变成了0，检测正常吗？");
                     }
 
                     string stockNumber = "";
@@ -247,6 +248,9 @@ namespace SaledServices
 
                 doQueryAfterSelection();
                 clearInputText();
+                simulateMpnEnter();
+                bgaSnTextBox.Focus();
+
             }
             catch (Exception ex)
             {

@@ -1350,5 +1350,21 @@ namespace SaledServices
 
             allForm.Add(frursForm);
         }
+
+        private RenBaoExportExcel renBaoExportExcel;      
+        private void 仁宝大数据ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (renBaoExportExcel == null || renBaoExportExcel.IsDisposed)
+            {
+                renBaoExportExcel = new RenBaoExportExcel();
+                renBaoExportExcel.MdiParent = this;
+            }
+
+            renBaoExportExcel.WindowState = FormWindowState.Maximized;
+            renBaoExportExcel.BringToFront();
+            renBaoExportExcel.Show();
+
+            allForm.Add(renBaoExportExcel);
+        }
     }
 }

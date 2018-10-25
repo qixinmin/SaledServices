@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.add = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
@@ -85,8 +85,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(489, 4);
@@ -347,7 +347,7 @@
             this.peijian_noTextBox.Name = "peijian_noTextBox";
             this.peijian_noTextBox.Size = new System.Drawing.Size(212, 26);
             this.peijian_noTextBox.TabIndex = 0;
-            this.peijian_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.track_serial_noTextBox_KeyPress);
+            this.peijian_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.peijian_noTextBox_KeyPress);
             // 
             // label13
             // 
@@ -367,7 +367,7 @@
             this.customer_serial_noTextBox.Name = "customer_serial_noTextBox";
             this.customer_serial_noTextBox.Size = new System.Drawing.Size(212, 26);
             this.customer_serial_noTextBox.TabIndex = 0;
-            this.customer_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custom_serial_noTextBox_KeyPress);
+            this.customer_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.customer_serial_noTextBox_KeyPress);
             // 
             // label21
             // 
@@ -604,8 +604,8 @@
             // dataGridViewWaitToReturn
             // 
             this.dataGridViewWaitToReturn.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewWaitToReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewWaitToReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewWaitToReturn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewWaitToReturn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWaitToReturn.Dock = System.Windows.Forms.DockStyle.Fill;

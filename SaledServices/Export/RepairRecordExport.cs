@@ -14,7 +14,7 @@ namespace SaledServices.Export
     {
         public RepairRecordExport()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void exportxmlbutton_Click(object sender, EventArgs e)
@@ -26,7 +26,7 @@ namespace SaledServices.Export
             {
                 MessageBox.Show("开始日期大于结束");
                 return;
-            }
+            }          
 
             string startTime = this.dateTimePickerstart.Value.ToString("yyyy/MM/dd");
             string endTime = this.dateTimePickerend.Value.ToString("yyyy/MM/dd");

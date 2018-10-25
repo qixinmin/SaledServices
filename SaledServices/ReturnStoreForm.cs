@@ -238,6 +238,7 @@ namespace SaledServices
                     while (querySdr.Read())
                     {
                         this.storehouseTextBox.Text = querySdr[0].ToString();
+                        break;
                     }
                     querySdr.Close();
 

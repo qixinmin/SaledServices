@@ -261,6 +261,12 @@
     <Compile Include="additionForm\RepairFaultTypeForm.Designer.cs">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\RenBaoExportExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\RenBaoExportExcel.Designer.cs">
+      <DependentUpon>RenBaoExportExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fru\FruReceiveOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -718,6 +724,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\RepairFaultTypeForm.resx">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\RenBaoExportExcel.resx">
+      <DependentUpon>RenBaoExportExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fru\FruReceiveOrderForm.resx">
       <DependentUpon>FruReceiveOrderForm.cs</DependentUpon>

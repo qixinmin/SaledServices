@@ -339,6 +339,8 @@ namespace SaledServices
 
                 clearInput();
                 query_Click(null, null);
+
+                this.track_serial_noTextBox.Focus();
             }
         }
 
@@ -425,6 +427,8 @@ namespace SaledServices
                 if (this.bgaRepair_resultcomboBox.Text == "BGA待换")
                 {
                     this.oldSntextBox.ReadOnly = false;
+                    this.oldSntextBox.SelectAll();
+                    this.oldSntextBox.Focus();
                     this.newSntextBox.Clear();
                     this.newSntextBox.ReadOnly = true;
                 }
@@ -433,6 +437,8 @@ namespace SaledServices
                     this.oldSntextBox.Clear();
                     this.oldSntextBox.ReadOnly = true;
                     this.newSntextBox.ReadOnly = false;
+                    this.newSntextBox.SelectAll();
+                    this.newSntextBox.Focus();
                 }
             }
             else

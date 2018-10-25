@@ -294,177 +294,7 @@ namespace SaledServices
 
         private void custom_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == System.Convert.ToChar(13))
-            {
-                if (!Utils.IsNumAndEnCh(this.customer_serial_noTextBox.Text.Trim()))
-                {
-                    MessageBox.Show("包含非字符与数字的字符，请检查！");
-                    return;
-                }
-                string customSerialNo = this.customer_serial_noTextBox.Text.Trim();
-                customSerialNo = Regex.Replace(customSerialNo, "[^a-zA-Z0-9]", "");
-                this.customer_serial_noTextBox.Text = customSerialNo;
-                if (customSerialNo.StartsWith("8S"))
-                {
-                    if (customSerialNo.Length != 23)
-                    {
-                        this.customer_serial_noTextBox.Focus();
-                        this.customer_serial_noTextBox.SelectAll();
-                        MessageBox.Show("客户序号的长度不是23位，请检查！");
-                        return;
-                    }
-                }
-                else if (customSerialNo.StartsWith("11S"))
-                {
-                    if (customSerialNo.Length != 22)
-                    {
-                        this.customer_serial_noTextBox.Focus();
-                        this.customer_serial_noTextBox.SelectAll();
-                        MessageBox.Show("客户序号的长度不是22位，请检查！");
-                        return;
-                    }
-                }
-                
-                if (this.productTextBox.Text != "TBG" && this.productTextBox.Text !="DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
-                {
-                    //需要去掉前面的非0字段
-                    string customSerial = this.customermaterialnoTextBox.Text.TrimStart('0');
 
-                    if (this.customer_serial_noTextBox.Text.Trim().ToLower().Contains(customSerial.ToLower()) == false)
-                    {
-                        MessageBox.Show("在" + this.productTextBox.Text + "下客户序号没有包含客户料号");
-                        this.customer_serial_noTextBox.Focus();
-                        this.customer_serial_noTextBox.SelectAll();
-                        return;
-                    }
-                }
-               
-                string subData = "";
-                if (customSerialNo.StartsWith("8S"))
-                {
-                    subData = customSerialNo.Substring(customSerialNo.Length - 7, 3);
-                }
-                else if (customSerialNo.StartsWith("11S"))
-                {
-                    subData = customSerialNo.Substring(customSerialNo.Length - 6, 3);
-                }
-                else
-                {
-                    MessageBox.Show("客户序号没有包含,没有做计算时间处理");
-                    this.customer_serial_noTextBox.Focus();
-                    this.customer_serial_noTextBox.SelectAll();
-                    return;
-                }
-
-                //检查客户序号或厂商序号是否已经存在本订单编号里面了，收货表中
-                string vendor = "";
-                try
-                {
-                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
-                    mConn.Open();
-
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = mConn;
-                    cmd.CommandType = CommandType.Text;
-
-                    cmd.CommandText = "select vendor from " + this.tableName + " where custom_serial_no = '" + this.customer_serial_noTextBox.Text.Trim()
-                        + "' and custom_order = '" + this.ordernoComboBox.Text + "'"; 
-
-                    SqlDataReader querySdr = cmd.ExecuteReader();
-
-                    while (querySdr.Read())
-                    {
-                        vendor = querySdr[0].ToString();
-                    }
-                    querySdr.Close();
-
-                    if (vendor != "")
-                    {
-                        MessageBox.Show("客户序号：" + this.customer_serial_noTextBox.Text + " 已经被使用过，请检测是否有错误!");
-                        this.customer_serial_noTextBox.Focus();
-                        this.customer_serial_noTextBox.SelectAll();
-                        return;
-                    }
-
-                    mConn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-
-                string year, mouth, day;
-                vendor = this.vendorTextBox.Text.Trim();
-                if (vendor == "COMPAL")
-                {
-                    year = Utils.getTimeByCharCompal(true, Convert.ToChar(subData.Substring(0, 1)));
-                    mouth = Utils.getTimeByCharCompal(false, Convert.ToChar(subData.Substring(1, 1)));
-                    day = Utils.getTimeByCharCompal(false, Convert.ToChar(subData.Substring(2, 1)));
-
-                    if(day == "31")
-                    {
-                         switch (mouth)
-                        {
-                             //case "2":
-                             case "4":
-                             case "6":
-                             case "9":
-                             case "11":
-                                 day = "30";
-                                 break;
-                        }
-                    }                   
-                }
-                else
-                {
-                    year = Utils.getTimeByChar(true, Convert.ToChar(subData.Substring(0, 1)));
-                    mouth = Utils.getTimeByChar(false, Convert.ToChar(subData.Substring(1, 1)));
-                    day = Utils.getTimeByChar(false, Convert.ToChar(subData.Substring(2, 1)));
-                }
-
-              
-                //this.mb_make_dateTextBox.Text = year + "/" + mouth + "/" + day;
-
-                //try
-                //{
-                //    DateTime dt1 = Convert.ToDateTime(this.mb_make_dateTextBox.Text);
-                //    DateTime dt2 = Convert.ToDateTime(this.receive_dateTextBox.Text);
-
-                //    string period = this.vendor_material_noTextBox.Text;
-                //    if (period != "")
-                //    {
-                //        int warranty = Int32.Parse(period.Substring(0, period.Length - 1));
-
-                //        dt1 = dt1.AddMonths(warranty);//生产日期加上保修期
-                //        TimeSpan ts = dt2.Subtract(dt1);
-
-                //        int overdays = ts.Days;
-
-                //        if (overdays >= 0)
-                //        {
-                //            this.guaranteeComboBox.Text = "保外";
-                //            this.guaranteeComboBox.Enabled = false;
-                //            this.customResponsibilityComboBox.Text = "过保";
-                //            this.customResponsibilityComboBox.Enabled = false;
-                //            MessageBox.Show((overdays) + " 天超过， 已经过保!");
-                //        }
-                //        else
-                //        {
-                //            this.guaranteeComboBox.Text = "";
-                //            this.guaranteeComboBox.Enabled = true;
-                //            this.customResponsibilityComboBox.Text = "";
-                //            //this.customResponsibilityComboBox.Enabled = true;
-                //        }
-                //    }
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show("客户料号里面的日期规则不对!");
-                //}
-
-                this.custom_faultTextBox.Focus();
-                this.custom_faultTextBox.SelectAll();
-            }
         }
        
         private void add_Click(object sender, EventArgs e)
@@ -830,69 +660,6 @@ namespace SaledServices
             //this.receiverTextBox.Text = dataGridView1.SelectedCells[28].Value.ToString(); 
         }
         
-        private void track_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == System.Convert.ToChar(13))
-            {
-                if (this.peijian_noTextBox.Text.Trim().Length != 16)
-                {
-                    MessageBox.Show("跟踪条码的长度不是16位!");
-                    return;
-                }
-
-                if (!Utils.IsNumAndEnCh(this.peijian_noTextBox.Text))
-                {
-                    MessageBox.Show("包含非字符与数字的字符，请检查！");
-                    return;
-                }
-
-                //检查跟踪条码是否在系统中存在过，否则报错
-                string vendor = "";
-                try
-                {
-                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
-                    mConn.Open();
-
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = mConn;
-                    cmd.CommandType = CommandType.Text;
-
-                    cmd.CommandText = "select vendor from " + this.tableName + " where track_serial_no = '" + this.peijian_noTextBox.Text + "'";
-
-                    SqlDataReader querySdr = cmd.ExecuteReader();
-
-                    while (querySdr.Read())
-                    {
-                        vendor = querySdr[0].ToString();
-                    }
-                    querySdr.Close();
-                    mConn.Close();
-
-                    if (vendor != "")
-                    {
-                        this.peijian_noTextBox.Focus();
-                        this.peijian_noTextBox.SelectAll();
-                        MessageBox.Show("跟踪条码：" + this.peijian_noTextBox.Text + " 已经被使用过，请检测是否有错误!");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-
-                if (vendor == "")
-                {
-                    this.customer_serial_noTextBox.Focus();
-                    this.customer_serial_noTextBox.SelectAll();
-                }
-                else 
-                {
-                    this.peijian_noTextBox.Focus();
-                    this.peijian_noTextBox.SelectAll();
-                }
-            }
-        }
-
         private void vendor_serail_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
@@ -983,6 +750,24 @@ namespace SaledServices
             }
             currentMaterialNo = this.customermaterialnoTextBox.Text = dataGridViewWaitToReturn.SelectedCells[1].Value.ToString();
             simulateEnter(this.customermaterialnoTextBox.Text.Trim());
+        }
+
+        private void peijian_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                this.customer_serial_noTextBox.SelectAll();
+                this.customer_serial_noTextBox.Focus();
+            }
+        }
+
+        private void customer_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                this.custom_faultTextBox.SelectAll();
+                this.custom_faultTextBox.Focus();
+            }
         }       
     }
 }

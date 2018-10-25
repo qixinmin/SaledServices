@@ -98,3 +98,4 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.exe.ma
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.application
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.exe
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.RenBaoExportExcel.resources

@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Net;
 using NPOI.HSSF;
 using NPOI.HSSF.UserModel;
+using System.Globalization;
 
 namespace SaledServices
 {
@@ -35,7 +36,7 @@ namespace SaledServices
 
     public class Constlist
     {
-        //public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
+       // public static string ConStr = "server=.;database=SaledService;uid=admin;pwd=admin";
         public static string ConStr = "server=192.168.5.222;database=SaledService;uid=admin;pwd=admin";
 
         public static string table_MBMaterialCompare = "MB物料对照表";
@@ -138,6 +139,13 @@ namespace SaledServices
 
     public class Utils
     {
+        public static int GetWeekOfYear(DateTime dt)
+        {
+            GregorianCalendar gc = new GregorianCalendar();
+            int weekOfYear = gc.GetWeekOfYear(dt, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
+            return weekOfYear;
+        }
+
         public static string GetAddressIP()
         {
             ///获取本地的IP地址

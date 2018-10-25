@@ -37,6 +37,7 @@
             this.FunctionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExcelImportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mBMaterialCompareMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.收货单ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.lCFCMBBOM查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lCFC71BOM表查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +50,8 @@
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.维修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -111,9 +114,7 @@
             this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.仁宝大数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -211,6 +212,13 @@
             this.mBMaterialCompareMenuItem.Text = "MB物料对照表查看";
             this.mBMaterialCompareMenuItem.Click += new System.EventHandler(this.mBMaterialCompareMenuItem_Click);
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(264, 32);
+            this.toolStripMenuItem3.Text = "Fru收货单查看";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
             // 收货单ToolStripMenuItem1
             // 
             this.收货单ToolStripMenuItem1.Name = "收货单ToolStripMenuItem1";
@@ -301,6 +309,20 @@
             this.returnStoreMenuItem.Size = new System.Drawing.Size(198, 32);
             this.returnStoreMenuItem.Text = "还货上海";
             this.returnStoreMenuItem.Click += new System.EventHandler(this.returnStoreMenuItem_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(198, 32);
+            this.toolStripMenuItem4.Text = "Fru收货上海";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(198, 32);
+            this.toolStripMenuItem5.Text = "Fru还货上海";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -676,7 +698,8 @@
             this.库房平衡表信息导出ToolStripMenuItem,
             this.dPK报表导出ToolStripMenuItem,
             this.cID报表导出ToolStripMenuItem,
-            this.维修报表导出ToolStripMenuItem});
+            this.维修报表导出ToolStripMenuItem,
+            this.仁宝大数据ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -798,26 +821,12 @@
             this.信息查询ToolStripMenuItem.Text = "信息查询";
             this.信息查询ToolStripMenuItem.Click += new System.EventHandler(this.信息查询ToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem3
+            // 仁宝大数据ToolStripMenuItem
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(264, 32);
-            this.toolStripMenuItem3.Text = "Fru收货单查看";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(198, 32);
-            this.toolStripMenuItem4.Text = "Fru收货上海";
-            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(198, 32);
-            this.toolStripMenuItem5.Text = "Fru还货上海";
-            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
+            this.仁宝大数据ToolStripMenuItem.Name = "仁宝大数据ToolStripMenuItem";
+            this.仁宝大数据ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.仁宝大数据ToolStripMenuItem.Text = "仁宝大数据";
+            this.仁宝大数据ToolStripMenuItem.Click += new System.EventHandler(this.仁宝大数据ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -831,7 +840,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统1024-";
+            this.Text = "上海进销存系统1025-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -929,6 +938,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem 仁宝大数据ToolStripMenuItem;
     }
 }
 
