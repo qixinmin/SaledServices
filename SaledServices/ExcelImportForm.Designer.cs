@@ -43,10 +43,11 @@
             this.DPKradioButton = new System.Windows.Forms.RadioButton();
             this.LCFC71BOMRadioButton = new System.Windows.Forms.RadioButton();
             this.LCFC_MBBOMradioButton = new System.Windows.Forms.RadioButton();
+            this.frureceiveOrder = new System.Windows.Forms.RadioButton();
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
             this.updateDBRadio = new System.Windows.Forms.RadioButton();
-            this.frureceiveOrder = new System.Windows.Forms.RadioButton();
+            this.ymrenbaocodecompare = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +90,7 @@
             this.panel1.Controls.Add(this.ngstoreInfoImport);
             this.panel1.Controls.Add(this.storeInfoImportradioButton);
             this.panel1.Controls.Add(this.stock_in_sheetradioButton);
+            this.panel1.Controls.Add(this.ymrenbaocodecompare);
             this.panel1.Controls.Add(this.faultTableRadioButton);
             this.panel1.Controls.Add(this.DPKradioButton);
             this.panel1.Controls.Add(this.LCFC71BOMRadioButton);
@@ -202,6 +204,17 @@
             this.LCFC_MBBOMradioButton.Text = "LCFC_MBBOM&&COMPAL_MBBOM";
             this.LCFC_MBBOMradioButton.UseVisualStyleBackColor = true;
             // 
+            // frureceiveOrder
+            // 
+            this.frureceiveOrder.AutoSize = true;
+            this.frureceiveOrder.Location = new System.Drawing.Point(162, 173);
+            this.frureceiveOrder.Margin = new System.Windows.Forms.Padding(5);
+            this.frureceiveOrder.Name = "frureceiveOrder";
+            this.frureceiveOrder.Size = new System.Drawing.Size(117, 24);
+            this.frureceiveOrder.TabIndex = 1;
+            this.frureceiveOrder.Text = "Fru收货单";
+            this.frureceiveOrder.UseVisualStyleBackColor = true;
+            // 
             // receiveOrder
             // 
             this.receiveOrder.AutoSize = true;
@@ -211,6 +224,7 @@
             this.receiveOrder.Name = "receiveOrder";
             this.receiveOrder.Size = new System.Drawing.Size(87, 24);
             this.receiveOrder.TabIndex = 1;
+            this.receiveOrder.TabStop = true;
             this.receiveOrder.Text = "收货单";
             this.receiveOrder.UseVisualStyleBackColor = true;
             // 
@@ -236,16 +250,15 @@
             this.updateDBRadio.Text = "更新库存";
             this.updateDBRadio.UseVisualStyleBackColor = true;
             // 
-            // frureceiveOrder
+            // ymrenbaocodecompare
             // 
-            this.frureceiveOrder.AutoSize = true;
-            this.frureceiveOrder.Location = new System.Drawing.Point(162, 173);
-            this.frureceiveOrder.Margin = new System.Windows.Forms.Padding(5);
-            this.frureceiveOrder.Name = "frureceiveOrder";
-            this.frureceiveOrder.Size = new System.Drawing.Size(117, 24);
-            this.frureceiveOrder.TabIndex = 1;
-            this.frureceiveOrder.Text = "Fru收货单";
-            this.frureceiveOrder.UseVisualStyleBackColor = true;
+            this.ymrenbaocodecompare.AutoSize = true;
+            this.ymrenbaocodecompare.Location = new System.Drawing.Point(240, 243);
+            this.ymrenbaocodecompare.Name = "ymrenbaocodecompare";
+            this.ymrenbaocodecompare.Size = new System.Drawing.Size(247, 24);
+            this.ymrenbaocodecompare.TabIndex = 4;
+            this.ymrenbaocodecompare.Text = "一麦仁宝故障代码对照表";
+            this.ymrenbaocodecompare.UseVisualStyleBackColor = true;
             // 
             // ExcelImportForm
             // 
@@ -290,5 +303,6 @@
         private System.Windows.Forms.RadioButton guranteCheckRadioButton;
         private System.Windows.Forms.RadioButton FruBom;
         private System.Windows.Forms.RadioButton frureceiveOrder;
+        private System.Windows.Forms.RadioButton ymrenbaocodecompare;
     }
 }

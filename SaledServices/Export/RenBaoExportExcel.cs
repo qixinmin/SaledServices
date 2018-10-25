@@ -13,6 +13,7 @@ namespace SaledServices
 {
     public partial class RenBaoExportExcel : Form
     {
+        List<badcodescompare> badcodeslist = new List<badcodescompare>();//odescompare
         public RenBaoExportExcel()
         {
             InitializeComponent();
@@ -53,6 +54,20 @@ namespace SaledServices
                     {
                         this.productComboBox.Items.Add(temp);
                     }
+                }
+                querySdr.Close();
+
+                cmd.CommandText = "select yimaicode,yimaides,renbaocode,renbaodes from badcodes";
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    badcodescompare temp = new badcodescompare();
+
+                    temp.yimaicode = querySdr[0].ToString();
+                    temp.yimaides = querySdr[1].ToString();
+                    temp.renbaocode = querySdr[2].ToString();
+                    temp.renbaodes = querySdr[3].ToString();
+                    badcodeslist.Add(temp);
                 }
                 querySdr.Close();
 
@@ -253,15 +268,25 @@ namespace SaledServices
                         ct1.Add(receiveDate.AddDays(1).ToString("yyyy-MM-dd"));
 
                         ct1.Add("QC1");
-
-                        ct1.Add("todo code");
-                        ct1.Add("todo des");
+                        //stockcheck.customer_fault
+                        string renbaocode="",renbaodes="";//aocodeaoDataStruct
+                        foreach (badcodescompare temp in badcodeslist)
+                        {
+                            if (temp.yimaides.Trim() == stockcheck.customer_fault.Trim())
+                            {
+                                renbaocode = temp.renbaocode;
+                                renbaodes = temp.renbaodes;
+                                break;
+                            }
+                        }
+                        ct1.Add(renbaocode);
+                        ct1.Add(renbaodes);
                         ct1.Add(locations[i]);//multi
                         ct1.Add("");
                         ct1.Add("");
                         ct1.Add("");
                         ct1.Add("");
-                        ct1.Add("todo des");
+                        ct1.Add(renbaodes);
 
                         ctest1.contentArray = ct1;
                         contentList.Add(ctest1);
@@ -366,6 +391,14 @@ namespace SaledServices
 
             Utils.createExcel("D:\\仁宝大数据1-" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
+    }
+
+    public class badcodescompare
+    {
+        public string yimaicode;    //Repair Site(F)
+        public string yimaides;    //CUSTOMER_NO(F)
+        public string renbaocode;//RECEVING DATE
+        public string renbaodes;//REGION(F)
     }
 
     public class RenBaoDataStruct

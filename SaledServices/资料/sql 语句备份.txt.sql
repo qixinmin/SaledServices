@@ -1,4 +1,12 @@
 
+/*不良品SMT/BGA入库记录*/
+CREATE TABLE badcodes(
+Id INT PRIMARY KEY IDENTITY, 
+yimaicode NVARCHAR(128),/*料号*/
+yimaides NVARCHAR(128), /*入库数量*/
+renbaocode NVARCHAR(128),/*料号*/
+renbaodes NVARCHAR(128), /*入库数量*/
+)
 
 
 CREATE TABLE frubomtable(

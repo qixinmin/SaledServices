@@ -82,6 +82,9 @@ namespace SaledServices
 
         public static string table_frubom = "FRUBOM对照表";
         public static string table_name_frubom_sheet = "frubomtable";
+
+        public static string table_badcodes = "不良代码对照表";
+        public static string table_name_badcodes = "badcodes";
     }
 
     public class PrintUtils
@@ -139,11 +142,17 @@ namespace SaledServices
 
     public class Utils
     {
-        public static int GetWeekOfYear(DateTime dt)
+        public static string GetWeekOfYear(DateTime dt)
         {
             GregorianCalendar gc = new GregorianCalendar();
             int weekOfYear = gc.GetWeekOfYear(dt, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
-            return weekOfYear;
+            string retWeek = "";
+            if (weekOfYear < 10)
+            {
+                retWeek = "0" + weekOfYear;
+            }
+            retWeek = "" + weekOfYear;
+            return retWeek;
         }
 
         public static string GetAddressIP()

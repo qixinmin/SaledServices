@@ -165,6 +165,11 @@ namespace SaledServices
                 sheetName = Constlist.table_frubom;
                 tableName = Constlist.table_name_frubom_sheet;
             }
+            else if (this.ymrenbaocodecompare.Checked)
+            {
+                sheetName = Constlist.table_badcodes;
+                tableName = Constlist.table_name_badcodes;
+            }
 
             if (this.LCFC_MBBOMradioButton.Checked)
             {
@@ -199,6 +204,12 @@ namespace SaledServices
             else if (this.FruBom.Checked)
             {
                 importFrubomCheck(sheetName, tableName);
+                this.importButton.Enabled = true;
+                return;
+            }
+            else if (this.ymrenbaocodecompare.Checked)
+            {
+                importbadcodesCheck(sheetName, tableName);
                 this.importButton.Enabled = true;
                 return;
             }
@@ -953,6 +964,47 @@ namespace SaledServices
                     bcp.ColumnMappings.Add("保修期", "gurantee");
                     bcp.ColumnMappings.Add("EOL", "eol");
                     bcp.ColumnMappings.Add("添加日期", "input_date");
+
+                    bcp.WriteToServer(ds.Tables[0]);
+                    bcp.Close();
+
+                    conn.Close();
+                    MessageBox.Show("导入完成");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+        
+        public void importbadcodesCheck(string sheetName, string tableName)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                //获取全部数据
+                string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath.Text + ";Extended Properties=Excel 12.0;";
+                OleDbConnection conn = new OleDbConnection(strConn);
+                conn.Open();
+                string strExcel = "";
+                OleDbDataAdapter myCommand = null;
+                strExcel = string.Format("select * from [{0}$]", sheetName);
+                myCommand = new OleDbDataAdapter(strExcel, strConn);
+                myCommand.Fill(ds, sheetName);
+
+                //用bcp导入数据
+                using (System.Data.SqlClient.SqlBulkCopy bcp = new System.Data.SqlClient.SqlBulkCopy(Constlist.ConStr))
+                {
+                    // bcp.SqlRowsCopied += new System.Data.SqlClient.SqlRowsCopiedEventHandler(bcp_SqlRowsCopied);
+                    bcp.BatchSize = 1000;//每次传输的行数
+                    bcp.NotifyAfter = 1000;//进度提示的行数
+                    bcp.DestinationTableName = tableName;//目标表                    			
+
+                    bcp.ColumnMappings.Add("一麦代码", "yimaicode");
+                    bcp.ColumnMappings.Add("一麦描述", "yimaides");
+                    bcp.ColumnMappings.Add("仁宝代码", "renbaocode");
+                    bcp.ColumnMappings.Add("仁宝描述", "renbaodes");
 
                     bcp.WriteToServer(ds.Tables[0]);
                     bcp.Close();
