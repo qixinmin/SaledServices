@@ -201,12 +201,12 @@ namespace SaledServices
                 this.importButton.Enabled = true;
                 return;
             }
-            else if (this.FruBom.Checked)
-            {
-                importFrubomCheck(sheetName, tableName);
-                this.importButton.Enabled = true;
-                return;
-            }
+            //else if (this.FruBom.Checked)
+            //{
+            //    importFrubomCheck(sheetName, tableName);
+            //    this.importButton.Enabled = true;
+            //    return;
+            //}
             else if (this.ymrenbaocodecompare.Checked)
             {
                 importbadcodesCheck(sheetName, tableName);
@@ -241,6 +241,13 @@ namespace SaledServices
                 int rowLength = ws.UsedRange.Rows.Count;
                 int columnLength = ws.UsedRange.Columns.Count;
                 importMaterialCompare(ws, rowLength, columnLength, tableName);
+            }
+            else if (this.FruBom.Checked)
+            {
+                Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
+                int rowLength = ws.UsedRange.Rows.Count;
+                int columnLength = ws.UsedRange.Columns.Count;
+                importFrubomCheck(ws, rowLength, columnLength, tableName);
             }
             else if (this.receiveOrder.Checked)//表格类似
             {
@@ -514,7 +521,7 @@ namespace SaledServices
                             //订单数量
                             string orderNum = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 4]).Value2.ToString();
 
-                            customMaterialNo = appendString(customMaterialNo);
+                           // customMaterialNo = appendString(customMaterialNo);
                             string querysql = "select vendor,product,machine_type,mpn1,custommaterialdescribe from " + Constlist.table_name_frubomtable +
                                 " where custom_material_no ='" + customMaterialNo + "'";
 
@@ -921,61 +928,124 @@ namespace SaledServices
             }
         }
 
-        public void importFrubomCheck(string sheetName, string tableName)
+        public void importFrubomCheck(Worksheet ws, int rowLength, int columnLength, string tableName)
         {
-            DataSet ds = new DataSet();
+
             try
             {
-                //获取全部数据
-                string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath.Text + ";Extended Properties=Excel 12.0;";
-                OleDbConnection conn = new OleDbConnection(strConn);
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
                 conn.Open();
-                string strExcel = "";
-                OleDbDataAdapter myCommand = null;
-                strExcel = string.Format("select * from [{0}$]", sheetName);
-                myCommand = new OleDbDataAdapter(strExcel, strConn);
-                myCommand.Fill(ds, sheetName);
 
-                //用bcp导入数据
-                using (System.Data.SqlClient.SqlBulkCopy bcp = new System.Data.SqlClient.SqlBulkCopy(Constlist.ConStr))
+                if (conn.State == ConnectionState.Open)
                 {
-                    // bcp.SqlRowsCopied += new System.Data.SqlClient.SqlRowsCopiedEventHandler(bcp_SqlRowsCopied);
-                    bcp.BatchSize = 1000;//每次传输的行数
-                    bcp.NotifyAfter = 1000;//进度提示的行数
-                    bcp.DestinationTableName = tableName;//目标表
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
 
-                    bcp.ColumnMappings.Add("厂商", "vendor");
-                    bcp.ColumnMappings.Add("客户别", "product");
-                    bcp.ColumnMappings.Add("客户料号", "custom_material_no");
-                    bcp.ColumnMappings.Add("可替代料号", "replace_material");
-                    bcp.ColumnMappings.Add("机型", "machine_type");
-                    bcp.ColumnMappings.Add("名称", "name");
-                    bcp.ColumnMappings.Add("客户物料描述", "custommaterialdescribe");
-                    bcp.ColumnMappings.Add("厂商料号", "vendor_material_no");
-                    bcp.ColumnMappings.Add("MPN1", "mpn1");
-                    bcp.ColumnMappings.Add("MPN1描述", "mpn1_des");
-                    bcp.ColumnMappings.Add("MPN2", "mpn2");
-                    bcp.ColumnMappings.Add("MPN2描述", "mpn2_des");
-                    bcp.ColumnMappings.Add("MPN3", "mpn3");
-                    bcp.ColumnMappings.Add("MPN3描述", "mpn3_des");
-                    bcp.ColumnMappings.Add("MPN4", "mpn4");
-                    bcp.ColumnMappings.Add("MPN4描述", "mpn4_des");
+                    for (int i = 2; i <= rowLength; i++)
+                    {
+                        string s = "INSERT INTO " + tableName + " VALUES('";
+                        for (int j = 1; j <= columnLength; j++)
+                        {
+                            try
+                            {
+                                //有可能有空值
+                                string temp = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, j]).Value2.ToString();                              
+                                s += temp;
+                            }
+                            catch (Exception ex)
+                            {
+                                s += " ";
+                            }
 
-                    bcp.ColumnMappings.Add("保修期", "gurantee");
-                    bcp.ColumnMappings.Add("EOL", "eol");
-                    bcp.ColumnMappings.Add("添加日期", "input_date");
+                            if (j != columnLength)
+                            {
+                                s += "','";
+                            }
+                            else
+                            {
+                                s += "')";
+                            }
 
-                    bcp.WriteToServer(ds.Tables[0]);
-                    bcp.Close();
-
-                    conn.Close();
-                    MessageBox.Show("导入完成");
+                            // Console.WriteLine(s);
+                        }
+                        cmd.CommandText = s;
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+
+                MessageBox.Show("导入" + tableName + "完成！");
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.ToString());
             }
+            finally
+            {
+                wbs.Close();
+            }
+
+            //TODO 下面的程序有问题，但是不知道什么原因，漏一部分数据
+
+            //DataSet ds = new DataSet();
+            //try
+            //{
+            //    //获取全部数据
+            //    string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath.Text + ";Extended Properties=Excel 12.0;";
+            //    OleDbConnection conn = new OleDbConnection(strConn);
+            //    conn.Open();
+            //    string strExcel = "";
+            //    OleDbDataAdapter myCommand = null;
+            //    strExcel = string.Format("select * from [{0}$]", sheetName);
+            //    myCommand = new OleDbDataAdapter(strExcel, strConn);
+            //    myCommand.Fill(ds, sheetName);
+
+            //    //用bcp导入数据
+            //    using (System.Data.SqlClient.SqlBulkCopy bcp = new System.Data.SqlClient.SqlBulkCopy(Constlist.ConStr))
+            //    {
+            //        // bcp.SqlRowsCopied += new System.Data.SqlClient.SqlRowsCopiedEventHandler(bcp_SqlRowsCopied);
+            //        bcp.BatchSize = 100;//每次传输的行数
+            //        bcp.NotifyAfter = 100;//进度提示的行数
+            //        bcp.DestinationTableName = tableName;//目标表
+
+            //        bcp.ColumnMappings.Add("厂商", "vendor");
+            //        bcp.ColumnMappings.Add("客户别", "product");
+            //        bcp.ColumnMappings.Add("客户料号", "custom_material_no");
+            //        bcp.ColumnMappings.Add("可替代料号", "replace_material");
+            //        bcp.ColumnMappings.Add("机型", "machine_type");
+            //        bcp.ColumnMappings.Add("名称", "name");
+            //        bcp.ColumnMappings.Add("客户物料描述", "custommaterialdescribe");
+            //        bcp.ColumnMappings.Add("厂商料号", "vendor_material_no");
+            //        bcp.ColumnMappings.Add("MPN1", "mpn1");
+            //        bcp.ColumnMappings.Add("MPN1描述", "mpn1_des");
+            //        bcp.ColumnMappings.Add("MPN2", "mpn2");
+            //        bcp.ColumnMappings.Add("MPN2描述", "mpn2_des");
+            //        bcp.ColumnMappings.Add("MPN3", "mpn3");
+            //        bcp.ColumnMappings.Add("MPN3描述", "mpn3_des");
+            //        bcp.ColumnMappings.Add("MPN4", "mpn4");
+            //        bcp.ColumnMappings.Add("MPN4描述", "mpn4_des");
+
+            //        bcp.ColumnMappings.Add("保修期", "gurantee");
+            //        bcp.ColumnMappings.Add("EOL", "eol");
+            //        bcp.ColumnMappings.Add("添加日期", "input_date");
+
+            //        bcp.WriteToServer(ds.Tables[0]);
+            //        bcp.Close();
+
+            //        conn.Close();
+            //        MessageBox.Show("导入完成");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    System.Windows.Forms.MessageBox.Show(ex.Message);
+            //}
         }
         
         public void importbadcodesCheck(string sheetName, string tableName)

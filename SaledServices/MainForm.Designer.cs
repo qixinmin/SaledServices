@@ -110,11 +110,11 @@
             this.dPK报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cID报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.维修报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.仁宝大数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.仁宝大数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -789,6 +789,13 @@
             this.维修报表导出ToolStripMenuItem.Text = "维修报表导出";
             this.维修报表导出ToolStripMenuItem.Click += new System.EventHandler(this.维修报表导出ToolStripMenuItem_Click);
             // 
+            // 仁宝大数据ToolStripMenuItem
+            // 
+            this.仁宝大数据ToolStripMenuItem.Name = "仁宝大数据ToolStripMenuItem";
+            this.仁宝大数据ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.仁宝大数据ToolStripMenuItem.Text = "仁宝大数据";
+            this.仁宝大数据ToolStripMenuItem.Click += new System.EventHandler(this.仁宝大数据ToolStripMenuItem_Click);
+            // 
             // 查询ToolStripMenuItem
             // 
             this.查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -821,13 +828,6 @@
             this.信息查询ToolStripMenuItem.Text = "信息查询";
             this.信息查询ToolStripMenuItem.Click += new System.EventHandler(this.信息查询ToolStripMenuItem_Click);
             // 
-            // 仁宝大数据ToolStripMenuItem
-            // 
-            this.仁宝大数据ToolStripMenuItem.Name = "仁宝大数据ToolStripMenuItem";
-            this.仁宝大数据ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.仁宝大数据ToolStripMenuItem.Text = "仁宝大数据";
-            this.仁宝大数据ToolStripMenuItem.Click += new System.EventHandler(this.仁宝大数据ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -840,7 +840,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统1025-";
+            this.Text = "上海进销存系统1026-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);

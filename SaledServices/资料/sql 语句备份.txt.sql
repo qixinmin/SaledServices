@@ -13,7 +13,7 @@ CREATE TABLE frubomtable(
 Id INT PRIMARY KEY IDENTITY, 
 vendor NVARCHAR(128),/*厂商*/
 product NVARCHAR(128),/*客户别*/
-custom_material_no NVARCHAR(128),/*客户料号*/
+custom_material_no NVARCHAR(128) NOT NULL,/*客户料号*/
 replace_material NVARCHAR(128),/*可替代料号*/
 machine_type NVARCHAR(128),/*机型*/
 name NVARCHAR(128),/*名称*/

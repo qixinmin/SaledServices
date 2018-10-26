@@ -52,7 +52,7 @@ namespace SaledServices
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
-                   
+
                     cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     if (querySdr.HasRows)
@@ -115,27 +115,26 @@ namespace SaledServices
                         return;
                     }
 
+                    //cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    //querySdr = cmd.ExecuteReader();
+                    //string stationInfo = "";
+                    //while (querySdr.Read())
+                    //{
+                    //    stationInfo = querySdr[0].ToString();
+                    //}
+                    //querySdr.Close();
 
-                    cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
-                    querySdr = cmd.ExecuteReader();
-                    string stationInfo = "";
-                    while (querySdr.Read())
-                    {
-                        stationInfo = querySdr[0].ToString();
-                    }
-                    querySdr.Close();
-
-                    if (stationInfo == "维修" || stationInfo == "收货")
-                    {
-                        this.add.Enabled = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("此序列号的站别已经在:" + stationInfo + "，不能走下面的流程！");
-                        mConn.Close();
-                        this.add.Enabled = false;
-                        return;
-                    }
+                    //if (stationInfo == "维修" || stationInfo == "收货")
+                    //{
+                    //    this.add.Enabled = true;
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("此序列号的站别已经在:" + stationInfo + "，不能走下面的流程！");
+                    //    mConn.Close();
+                    //    this.add.Enabled = false;
+                    //    return;
+                    //}
 
                     mConn.Close();
 
