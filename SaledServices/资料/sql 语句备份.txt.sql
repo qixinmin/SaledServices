@@ -159,6 +159,8 @@ fault_reason NVARCHAR(128), /*报废原因*/
 
 confirmer NVARCHAR(128) NOT NULL, /*判定人*/
 confirm_date date, /*判定日期*/
+pcbzhouqi NVARCHAR(128), /*pcb周期*/
+pcbtype NVARCHAR(128), /*pcb型号*/
 )
 
 

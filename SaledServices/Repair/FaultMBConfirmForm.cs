@@ -262,7 +262,9 @@ namespace SaledServices
                        this.faultReasonRichTextBox.Text.Trim() + "','" +
 
                        this.confirmertextBox.Text.Trim() + "','" +
-                       this.confrim_datetextBox.Text.Trim() + "')";
+                       this.confrim_datetextBox.Text.Trim() + "','" +
+                       this.pcbzhouqitextBox.Text.Trim() + "','" +
+                       this.pcbtypetextBox.Text.Trim() + "')";
 
                     cmd.ExecuteNonQuery();
 

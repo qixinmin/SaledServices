@@ -61,6 +61,10 @@
             this.delete = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pcbzhouqitextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pcbtypetextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -96,6 +100,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.30599F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.24282F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.40771F));
+            this.tableLayoutPanel2.Controls.Add(this.pcbtypetextBox, 0, 6);
+            this.tableLayoutPanel2.Controls.Add(this.label5, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.track_serial_noTextBox, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label28, 0, 1);
@@ -120,6 +126,8 @@
             this.tableLayoutPanel2.Controls.Add(this.confirmertextBox, 3, 5);
             this.tableLayoutPanel2.Controls.Add(this.label30, 2, 6);
             this.tableLayoutPanel2.Controls.Add(this.confrim_datetextBox, 3, 6);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.pcbzhouqitextBox, 1, 5);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(7, 7);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
@@ -161,9 +169,9 @@
             this.label28.Location = new System.Drawing.Point(6, 54);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(56, 16);
+            this.label28.Size = new System.Drawing.Size(64, 16);
             this.label28.TabIndex = 38;
-            this.label28.Text = "厂商SN";
+            this.label28.Text = "PCB厂商";
             // 
             // label2
             // 
@@ -461,6 +469,44 @@
             this.dataGridView1.Size = new System.Drawing.Size(1223, 274);
             this.dataGridView1.TabIndex = 4;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 250);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 16);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "PCB周期";
+            // 
+            // pcbzhouqitextBox
+            // 
+            this.pcbzhouqitextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pcbzhouqitextBox.Location = new System.Drawing.Point(158, 254);
+            this.pcbzhouqitextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.pcbzhouqitextBox.Name = "pcbzhouqitextBox";
+            this.pcbzhouqitextBox.Size = new System.Drawing.Size(398, 26);
+            this.pcbzhouqitextBox.TabIndex = 46;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 299);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 16);
+            this.label5.TabIndex = 47;
+            this.label5.Text = "PCB型号";
+            // 
+            // pcbtypetextBox
+            // 
+            this.pcbtypetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pcbtypetextBox.Location = new System.Drawing.Point(158, 303);
+            this.pcbtypetextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.pcbtypetextBox.Name = "pcbtypetextBox";
+            this.pcbtypetextBox.Size = new System.Drawing.Size(398, 26);
+            this.pcbtypetextBox.TabIndex = 48;
+            // 
             // FaultMBConfirmForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -516,5 +562,9 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox vendorSnTextBox;
         private System.Windows.Forms.TextBox faultPlaceTextBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox pcbzhouqitextBox;
+        private System.Windows.Forms.TextBox pcbtypetextBox;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -125,7 +125,7 @@ namespace SaledServices
                         this.nameTextBox.Text = querySdr[3].ToString();
                         this.customermaterialdesTextBox.Text = querySdr[4].ToString();
                         this.vendor_material_noTextBox.Text = querySdr[5].ToString();
-                        this.mpn1TextBox.Text = querySdr[5].ToString();
+                        this.mpn1TextBox.Text = querySdr[6].ToString();
                     }
                     querySdr.Close();
                 }
