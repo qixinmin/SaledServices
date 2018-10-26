@@ -727,6 +727,8 @@ namespace SaledServices
             finally
             {
                 wbs.Close();
+               
+                closeAndKillApp();                
             }
         }
 
@@ -989,6 +991,7 @@ namespace SaledServices
             finally
             {
                 wbs.Close();
+                closeAndKillApp();
             }
 
             //TODO 下面的程序有问题，但是不知道什么原因，漏一部分数据
@@ -1199,6 +1202,7 @@ namespace SaledServices
             finally
             {
                 wbs.Close();
+                closeAndKillApp();
             }
         }
 
