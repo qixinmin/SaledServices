@@ -115,6 +115,7 @@
             this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.合肥报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -699,7 +700,8 @@
             this.dPK报表导出ToolStripMenuItem,
             this.cID报表导出ToolStripMenuItem,
             this.维修报表导出ToolStripMenuItem,
-            this.仁宝大数据ToolStripMenuItem});
+            this.仁宝大数据ToolStripMenuItem,
+            this.合肥报表ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -828,6 +830,13 @@
             this.信息查询ToolStripMenuItem.Text = "信息查询";
             this.信息查询ToolStripMenuItem.Click += new System.EventHandler(this.信息查询ToolStripMenuItem_Click);
             // 
+            // 合肥报表ToolStripMenuItem
+            // 
+            this.合肥报表ToolStripMenuItem.Name = "合肥报表ToolStripMenuItem";
+            this.合肥报表ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.合肥报表ToolStripMenuItem.Text = "合肥报表";
+            this.合肥报表ToolStripMenuItem.Click += new System.EventHandler(this.合肥报表ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -939,6 +948,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem 仁宝大数据ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 合肥报表ToolStripMenuItem;
     }
 }
 

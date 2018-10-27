@@ -261,6 +261,12 @@
     <Compile Include="additionForm\RepairFaultTypeForm.Designer.cs">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\HefeiExportExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\HefeiExportExcel.Designer.cs">
+      <DependentUpon>HefeiExportExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Export\RenBaoExportExcel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -724,6 +730,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\RepairFaultTypeForm.resx">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\HefeiExportExcel.resx">
+      <DependentUpon>HefeiExportExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\RenBaoExportExcel.resx">
       <DependentUpon>RenBaoExportExcel.cs</DependentUpon>

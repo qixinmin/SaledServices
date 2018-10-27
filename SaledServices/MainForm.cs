@@ -1366,5 +1366,10 @@ namespace SaledServices
 
             allForm.Add(renBaoExportExcel);
         }
+
+        private void 合肥报表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
