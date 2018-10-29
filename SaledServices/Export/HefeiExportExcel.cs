@@ -183,6 +183,7 @@ namespace SaledServices
         {
             List<string> titleList = new List<string>();
             List<Object> contentList = new List<object>();
+            titleList.Add("跟踪条码");
             titleList.Add("REPAIR_CENTER");
             titleList.Add("RMA_NO");
             titleList.Add("PRODUCT");
@@ -311,6 +312,7 @@ namespace SaledServices
 
     public class HefeiDataStruct
     {
+        public string tracker_no;
         public string REPAIR_CENTER;    //固定字段  "HWB"
         public string RMA_NO;    //订单编号
         public string PRODUCT;//固定字段 "MB"

@@ -542,13 +542,13 @@ namespace SaledServices
                     }
                     else //previousStatus其他三种情况（BGA更换不良、BGA更换OK待测、BGA更换报废)，查询BGA的维修记录
                     {
-                        if (this.statusComboBox.Text != "BGA不良")
-                        {
-                            error = true;
-                            MessageBox.Show("状态输入框错误，之前是:" + previousStatus);
-                            conn.Close();
-                            return;
-                        }                       
+                        //if (this.statusComboBox.Text != "BGA不良")
+                        //{
+                        //    error = true;
+                        //    MessageBox.Show("状态输入框错误，之前是:" + previousStatus);
+                        //    conn.Close();
+                        //    return;
+                        //}                       
                     }
 
                     if (error == false)

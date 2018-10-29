@@ -72,12 +72,23 @@ namespace SaledServices.Test_Outlook
 
                     if (station != "维修" && station != "BGA")
                     {
-                        MessageBox.Show("板子已经经过站别" + station);
-                        mConn.Close();
-                        this.tracker_bar_textBox.Focus();
-                        this.tracker_bar_textBox.SelectAll();
-                        this.bomdownload.Enabled = false;
-                        return;
+                        cmd.CommandText = "select track_serial_no,product from mb_out_stock where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows)
+                        {
+                            //buffer板不检查站别
+                            querySdr.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("板子已经经过站别" + station);
+                            querySdr.Close();
+                            mConn.Close();
+                            this.tracker_bar_textBox.Focus();
+                            this.tracker_bar_textBox.SelectAll();
+                            this.bomdownload.Enabled = false;
+                            return;
+                        }
                     }
 
                     this.bomdownload.Enabled = true;
