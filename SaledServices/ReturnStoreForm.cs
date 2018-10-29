@@ -396,30 +396,6 @@ namespace SaledServices
                         }
                     }
 
-                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +                        
-                        this.vendorComboBox.Text.Trim() + "','" +
-                        this.productComboBox.Text.Trim() + "','" +
-                        this.return_file_noTextBox.Text.Trim() + "','" +
-                        this.storehouseTextBox.Text.Trim() + "','" +
-                        this.return_dateTextBox.Text.Trim() + "','" +
-                        this.ordernoTextBox.Text.Trim() + "','" +
-                        this.custommaterialNoTextBox.Text.Trim() + "','" +
-                        this.dpkpnTextBox.Text.Trim() + "','" +
-                        this.track_serial_noTextBox.Text.Trim() + "','" +
-                        this.custom_serial_noTextBox.Text.Trim() + "','" +
-                        this.vendor_serail_noTextBox.Text.Trim() + "','" +
-                        this.bommpnTextBox.Text.Trim() + "','" +
-                        this.statusComboBox.Text.Trim() + "','" +
-                        this.custom_res_typeComboBox.Text.Trim() + "','" +
-                        this.response_describeComboBox.Text.Trim() + "','"+
-                        this.tatTextBox.Text.Trim() + "','" +
-                        this.inputUserTextBox.Text.Trim() + "','" +
-                        this.lenovo_maintenance_noTextBox.Text.Trim() + "','" +
-                        this.lenovo_repair_noTextBox.Text.Trim() + 
-                        "')";
-                    
-                    cmd.ExecuteNonQuery();
-
                     //在更新收货表的同时，需要同时更新导入的表格收货数量，不然数据会乱掉
                     cmd.CommandText = "select _status, ordernum, receivedNum, returnNum,cid_number from receiveOrder where orderno = '" + this.ordernoTextBox.Text
                            + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
@@ -460,6 +436,31 @@ namespace SaledServices
                                     + "where orderno = '" + this.ordernoTextBox.Text
                                     + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
 
+                        cmd.ExecuteNonQuery();
+
+                        string returnOrderIndex = this.ordernoTextBox.Text.Trim() + this.custommaterialNoTextBox.Text.Trim() + ((returnNum + 1));
+                        cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
+                        this.vendorComboBox.Text.Trim() + "','" +
+                        this.productComboBox.Text.Trim() + "','" +
+                        this.return_file_noTextBox.Text.Trim() + "','" +
+                        this.storehouseTextBox.Text.Trim() + "','" +
+                        this.return_dateTextBox.Text.Trim() + "','" +
+                        this.ordernoTextBox.Text.Trim() + "','" +
+                        this.custommaterialNoTextBox.Text.Trim() + "','" +
+                        this.dpkpnTextBox.Text.Trim() + "','" +
+                        this.track_serial_noTextBox.Text.Trim() + "','" +
+                        this.custom_serial_noTextBox.Text.Trim() + "','" +
+                        this.vendor_serail_noTextBox.Text.Trim() + "','" +
+                        this.bommpnTextBox.Text.Trim() + "','" +
+                        this.statusComboBox.Text.Trim() + "','" +
+                        this.custom_res_typeComboBox.Text.Trim() + "','" +
+                        this.response_describeComboBox.Text.Trim() + "','" +
+                        this.tatTextBox.Text.Trim() + "','" +
+                        this.inputUserTextBox.Text.Trim() + "','" +
+                        this.lenovo_maintenance_noTextBox.Text.Trim() + "','" +
+                        this.lenovo_repair_noTextBox.Text.Trim() + "','" +
+                        returnOrderIndex +
+                        "')";
                         cmd.ExecuteNonQuery();
                         
                         //dataGridViewToReturn里面的数据要更新
@@ -570,11 +571,15 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 if (latest)
                 {
-                    cmd.CommandText = "select top 3 * from " + tableName + " order by id desc";
+                    cmd.CommandText = "select top 3 Id,vendor,product,return_file_no,storehouse,return_date,orderno,custommaterialNo,dpkpn,"+
+                        "track_serial_no,custom_serial_no,vendor_serail_no,vendormaterialNo,_status,custom_res_type,response_describe,tat,"+
+                        "inputuser,lenovo_maintenance_no,lenovo_repair_no from " + tableName + " order by id desc";
                 }
                 else
                 {
-                    cmd.CommandText = "select top 3 * from  " + tableName;
+                    cmd.CommandText = "select top 20 Id,vendor,product,return_file_no,storehouse,return_date,orderno,custommaterialNo,dpkpn," +
+                       "track_serial_no,custom_serial_no,vendor_serail_no,vendormaterialNo,_status,custom_res_type,response_describe,tat," +
+                       "inputuser,lenovo_maintenance_no,lenovo_repair_no from " + tableName + " order by id desc";
                 }
                 cmd.CommandType = CommandType.Text;
 

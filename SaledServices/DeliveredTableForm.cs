@@ -585,39 +585,7 @@ namespace SaledServices
                     }
 
                     this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);//设置为当前日期
-
-                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + 
-                        this.vendorTextBox.Text.Trim() + "','" +
-                        this.productTextBox.Text.Trim() + "','" +
-                        this.source_briefComboBox.Text.Trim() + "','" +
-                        this.storehouseTextBox.Text.Trim() + "','" +
-                        this.custom_orderComboBox.Text.Trim() + "','" +
-                        this.order_out_dateTextBox.Text.Trim() + "','" +
-                        this.order_receive_dateTextBox.Text.Trim() + "','" +
-                        this.custom_machine_typeTextBox.Text.Trim() + "','" +
-                        this.mb_briefTextBox.Text.Trim() + "','" +
-                        this.custommaterialNoTextBox.Text.Trim() + "','" +
-                        this.dpk_statusTextBox.Text.Trim() + "','" +
-                        this.track_serial_noTextBox.Text.Trim() + "','" +
-                        this.custom_serial_noTextBox.Text.Trim() + "','" +
-                        this.vendor_serail_noTextBox.Text.Trim() + "','" +
-                        this.uuidTextBox.Text.Trim() + "','" +
-                        this.macTextBox.Text.Trim() + "','" +
-                        this.mpnTextBox.Text.Trim() + "','" +
-                        this.mb_describeTextBox.Text.Trim() + "','" +
-                        this.mb_make_dateTextBox.Text.Trim() + "','" +
-                        this.warranty_periodTextBox.Text.Trim() + "','" +
-                        this.custom_faultComboBox.Text.Trim().Replace('\'', '_') + "','" +
-                        this.guaranteeComboBox.Text.Trim() + "','" +
-                        this.customResponsibilityComboBox.Text.Trim() + "','" +
-                        this.lenovo_custom_service_noTextBox.Text.Trim() + "','" +
-                        this.lenovo_maintenance_noTextBox.Text.Trim() + "','" +
-                        this.lenovo_repair_noTextBox.Text.Trim() + "','" +
-                        this.whole_machine_noTextBox.Text.Trim() + "','" +
-                        this.inputUserTextBox.Text.Trim()+
-                        "')";
-                   
-                    cmd.ExecuteNonQuery();
+                                       
 
                     //除正常插入数据外，还需要把收还货表格的数量修改 TODO...
                     //1. 修改收还货表格的收货数量， 判断，小于 等于，大于的情况
@@ -655,6 +623,39 @@ namespace SaledServices
                                 + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
 
+                    string receiveOrderindex = this.custom_orderComboBox.Text.Trim() + this.custommaterialNoTextBox.Text.Trim() + (receivedNum + 1);
+                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
+                        this.vendorTextBox.Text.Trim() + "','" +
+                        this.productTextBox.Text.Trim() + "','" +
+                        this.source_briefComboBox.Text.Trim() + "','" +
+                        this.storehouseTextBox.Text.Trim() + "','" +
+                        this.custom_orderComboBox.Text.Trim() + "','" +
+                        this.order_out_dateTextBox.Text.Trim() + "','" +
+                        this.order_receive_dateTextBox.Text.Trim() + "','" +
+                        this.custom_machine_typeTextBox.Text.Trim() + "','" +
+                        this.mb_briefTextBox.Text.Trim() + "','" +
+                        this.custommaterialNoTextBox.Text.Trim() + "','" +
+                        this.dpk_statusTextBox.Text.Trim() + "','" +
+                        this.track_serial_noTextBox.Text.Trim() + "','" +
+                        this.custom_serial_noTextBox.Text.Trim() + "','" +
+                        this.vendor_serail_noTextBox.Text.Trim() + "','" +
+                        this.uuidTextBox.Text.Trim() + "','" +
+                        this.macTextBox.Text.Trim() + "','" +
+                        this.mpnTextBox.Text.Trim() + "','" +
+                        this.mb_describeTextBox.Text.Trim() + "','" +
+                        this.mb_make_dateTextBox.Text.Trim() + "','" +
+                        this.warranty_periodTextBox.Text.Trim() + "','" +
+                        this.custom_faultComboBox.Text.Trim().Replace('\'', '_') + "','" +
+                        this.guaranteeComboBox.Text.Trim() + "','" +
+                        this.customResponsibilityComboBox.Text.Trim() + "','" +
+                        this.lenovo_custom_service_noTextBox.Text.Trim() + "','" +
+                        this.lenovo_maintenance_noTextBox.Text.Trim() + "','" +
+                        this.lenovo_repair_noTextBox.Text.Trim() + "','" +
+                        this.whole_machine_noTextBox.Text.Trim() + "','" +
+                        this.inputUserTextBox.Text.Trim() + "','" +
+                        receiveOrderindex+
+                        "')";
+                    cmd.ExecuteNonQuery();
 
                     //记录站别信息
                     cmd.CommandText = "INSERT INTO stationInformation VALUES('"
@@ -782,11 +783,17 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 if (latest)
                 {
-                    cmd.CommandText = "select top 3 * from " + tableName + " order by id desc"; 
+                    cmd.CommandText = "select top 3 Id,vendor,product,source_brief,storehouse,custom_order,order_out_date,order_receive_date,"+
+                        "custom_machine_type,mb_brief,custommaterialNo,dpk_status,track_serial_no,custom_serial_no,vendor_serail_no,uuid,mac,mpn,"+
+                        "mb_describe,mb_make_date,warranty_period,custom_fault,guarantee,customResponsibility,lenovo_custom_service_no,"+
+                        "lenovo_maintenance_no,lenovo_repair_no,whole_machine_no,inputuser from " + tableName + " order by id desc"; 
                 }
                 else
                 {
-                    cmd.CommandText = "select * from  " + tableName;
+                    cmd.CommandText = "select top 20 Id,vendor,product,source_brief,storehouse,custom_order,order_out_date,order_receive_date," +
+                       "custom_machine_type,mb_brief,custommaterialNo,dpk_status,track_serial_no,custom_serial_no,vendor_serail_no,uuid,mac,mpn," +
+                       "mb_describe,mb_make_date,warranty_period,custom_fault,guarantee,customResponsibility,lenovo_custom_service_no," +
+                       "lenovo_maintenance_no,lenovo_repair_no,whole_machine_no,inputuser from " + tableName + " order by id desc"; 
                 }
                 cmd.CommandType = CommandType.Text;
 
