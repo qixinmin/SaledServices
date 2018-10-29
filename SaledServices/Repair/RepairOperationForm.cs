@@ -710,7 +710,7 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    if (actioncomboBox.Text.Trim() == "更换")
+                    if (actioncomboBox.Text.Trim() == "更换")//非更换的情况下可以允许数量为空，但是位置与料号必须要有
                     {
                         try
                         {
@@ -786,9 +786,19 @@ namespace SaledServices
                         }
                     }
 
-                    if (not_good_placetextBox1.Text.Trim() != "" && material_mpnComboBox1.Text.Trim() != "" && useNum1.Text.Trim() != "")
+                    if (this.actioncomboBox.Text.Trim() != "BGA")
                     {
-                        if (caijian1.Checked == false)//是从库房拿到的材料
+                        if (not_good_placetextBox1.Text.Trim() == "" || material_mpnComboBox1.Text.Trim() == "")
+                        {
+                            MessageBox.Show("在动作为非BGA情况下，位置与料号必须存在");
+                            conn.Close();
+                            return;
+                        }
+                    }
+
+                    if (not_good_placetextBox1.Text.Trim() != "" && material_mpnComboBox1.Text.Trim() != "")
+                    {
+                        if (caijian1.Checked == false && actioncomboBox.Text.Trim() == "更换")//是从库房拿到的材料
                         {
                             if (material_mpnComboBox1.Text.Trim().Contains("无库存"))
                             {
@@ -799,9 +809,9 @@ namespace SaledServices
                         }
                     }
 
-                    if (not_good_placetextBox2.Text.Trim() != "" && material_mpnComboBox2.Text.Trim() != "" && useNum2.Text.Trim() != "")
+                    if (not_good_placetextBox2.Text.Trim() != "" && material_mpnComboBox2.Text.Trim() != "")
                     {
-                        if (caijian2.Checked == false)//是从库房拿到的材料
+                        if (caijian2.Checked == false && actioncomboBox.Text.Trim() == "更换")//是从库房拿到的材料
                         {
                             if (material_mpnComboBox2.Text.Trim().Contains("无库存"))
                             {
@@ -812,9 +822,9 @@ namespace SaledServices
                         }
                     }
 
-                    if (not_good_placetextBox3.Text.Trim() != "" && material_mpnComboBox3.Text.Trim() != "" && useNum3.Text.Trim() != "")
+                    if (not_good_placetextBox3.Text.Trim() != "" && material_mpnComboBox3.Text.Trim() != "")
                     {
-                        if (caijian3.Checked == false)//是从库房拿到的材料
+                        if (caijian3.Checked == false && actioncomboBox.Text.Trim() == "更换")//是从库房拿到的材料
                         {
                             if (material_mpnComboBox3.Text.Trim().Contains("无库存"))
                             {
@@ -825,9 +835,9 @@ namespace SaledServices
                         }
                     }
 
-                    if (not_good_placetextBox4.Text.Trim() != "" && material_mpnComboBox4.Text.Trim() != "" && useNum4.Text.Trim() != "")
+                    if (not_good_placetextBox4.Text.Trim() != "" && material_mpnComboBox4.Text.Trim() != "" )
                     {
-                        if (caijian4.Checked == false)//是从库房拿到的材料
+                        if (caijian4.Checked == false && actioncomboBox.Text.Trim() == "更换")//是从库房拿到的材料
                         {
                             if (material_mpnComboBox4.Text.Trim().Contains("无库存"))
                             {
@@ -838,9 +848,9 @@ namespace SaledServices
                         }
                     }
 
-                    if (not_good_placetextBox5.Text.Trim() != "" && material_mpnComboBox5.Text.Trim() != "" && useNum5.Text.Trim() != "")
+                    if (not_good_placetextBox5.Text.Trim() != "" && material_mpnComboBox5.Text.Trim() != "")
                     {
-                        if (caijian5.Checked == false)//是从库房拿到的材料
+                        if (caijian5.Checked == false && actioncomboBox.Text.Trim() == "更换")//是从库房拿到的材料
                         {
                             if (material_mpnComboBox5.Text.Trim().Contains("无库存"))
                             {
@@ -851,9 +861,9 @@ namespace SaledServices
                         }
                     }
 
-                    if (not_good_placetextBox1.Text.Trim() != "" && material_mpnComboBox1.Text.Trim() != "" && useNum1.Text.Trim() != "")
+                    if (not_good_placetextBox1.Text.Trim() != "" && material_mpnComboBox1.Text.Trim() != "")
                     {
-                        if (caijian1.Checked == false)//是从库房拿到的材料
+                        if (caijian1.Checked == false && actioncomboBox.Text.Trim() == "更换")//是从库房拿到的材料
                         {
                             //首先判断材料是不是库房存在的材料，如果不是则需要报错
                            //  querySdr = cmd.ExecuteReader();
@@ -883,6 +893,11 @@ namespace SaledServices
                             cmd.ExecuteNonQuery();
                         }
 
+                        if (actioncomboBox.Text.Trim() != "更换")
+                        {
+                            useNum1.Text = "";
+                        }
+
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
                            + repairer_txt + "','"
@@ -890,13 +905,16 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + material_mpnComboBox1.Text.Trim().Split(',')[0] + "','"
                            + useNum1.Text.Trim() + "','"
-                           + not_good_placetextBox1.Text.Trim() + "','" + (caijian1.Checked ? "Y" : "N") + "')";
+                           + not_good_placetextBox1.Text.Trim() + "','"
+                           + (caijian1.Checked ? "Y" : "N") + "','"
+                           + this.actioncomboBox.Text.Trim() 
+                           + "')";
                         cmd.ExecuteNonQuery();                       
                     }
 
-                    if (not_good_placetextBox2.Text.Trim() != "" && material_mpnComboBox2.Text.Trim() != "" && useNum2.Text.Trim() != "")
+                    if (not_good_placetextBox2.Text.Trim() != "" && material_mpnComboBox2.Text.Trim() != "")
                     {
-                        if (caijian2.Checked == false)//是从库房拿到的材料
+                        if (caijian2.Checked == false && actioncomboBox.Text.Trim() == "更换")//是从库房拿到的材料
                         {
                             //首先判断材料是不是库房存在的材料，如果不是则需要报错                        
                             // querySdr = cmd.ExecuteReader();
@@ -925,6 +943,10 @@ namespace SaledServices
                             cmd.ExecuteNonQuery();
                         }
 
+                        if (actioncomboBox.Text.Trim() != "更换")
+                        {
+                            useNum2.Text = "";
+                        }
 
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
@@ -933,14 +955,17 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + material_mpnComboBox2.Text.Trim().Split(',')[0] + "','"
                            + useNum2.Text.Trim() + "','"
-                           + not_good_placetextBox2.Text.Trim() + "','" + (caijian2.Checked ? "Y" : "N") + "')";
+                           + not_good_placetextBox2.Text.Trim() + "','"
+                           + (caijian2.Checked ? "Y" : "N") + "','"
+                           + this.actioncomboBox.Text.Trim() 
+                           + "')";
                         cmd.ExecuteNonQuery();
                     }
 
-                    if (not_good_placetextBox3.Text.Trim() != "" && material_mpnComboBox3.Text.Trim() != "" && useNum3.Text.Trim() != "")
+                    if (not_good_placetextBox3.Text.Trim() != "" && material_mpnComboBox3.Text.Trim() != "")
                     {
 
-                        if (caijian3.Checked == false)//是从库房拿到的材料
+                        if (caijian3.Checked == false && actioncomboBox.Text.Trim() == "更换")//是从库房拿到的材料
                         {
                             //首先判断材料是不是库房存在的材料，如果不是则需要报错                        
                              //querySdr = cmd.ExecuteReader();
@@ -969,6 +994,11 @@ namespace SaledServices
                             cmd.ExecuteNonQuery();
                         }
 
+                        if (actioncomboBox.Text.Trim() != "更换")
+                        {
+                            useNum3.Text = "";
+                        }
+
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
                            + repairer_txt + "','"
@@ -976,13 +1006,16 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + material_mpnComboBox3.Text.Trim().Split(',')[0] + "','"
                            + useNum3.Text.Trim() + "','"
-                           + not_good_placetextBox3.Text.Trim() + "','" + (caijian3.Checked ? "Y" : "N") + "')";
+                           + not_good_placetextBox3.Text.Trim() + "','" 
+                           + (caijian3.Checked ? "Y" : "N")  + "','"
+                           + this.actioncomboBox.Text.Trim() 
+                           + "')";
                         cmd.ExecuteNonQuery();
                     }
 
-                    if (not_good_placetextBox4.Text.Trim() != "" && material_mpnComboBox4.Text.Trim() != "" && useNum4.Text.Trim() != "")
+                    if (not_good_placetextBox4.Text.Trim() != "" && material_mpnComboBox4.Text.Trim() != "")
                     {
-                        if (caijian4.Checked == false)//是从库房拿到的材料
+                        if (caijian4.Checked == false && actioncomboBox.Text.Trim() == "更换")//是从库房拿到的材料
                         {
                             //首先判断材料是不是库房存在的材料，如果不是则需要报错                        
                             // querySdr = cmd.ExecuteReader();
@@ -1011,6 +1044,11 @@ namespace SaledServices
                             cmd.ExecuteNonQuery();
                         }
 
+                        if (actioncomboBox.Text.Trim() != "更换")
+                        {
+                            useNum4.Text = "";
+                        }
+
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
                            + repairer_txt + "','"
@@ -1018,13 +1056,16 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + material_mpnComboBox4.Text.Trim().Split(',')[0] + "','"
                            + useNum4.Text.Trim() + "','"
-                           + not_good_placetextBox4.Text.Trim() + "','" + (caijian4.Checked ? "Y" : "N") + "')";
+                           + not_good_placetextBox4.Text.Trim() + "','"
+                           + (caijian4.Checked ? "Y" : "N") + "','"
+                           + this.actioncomboBox.Text.Trim() 
+                           + "')";
                         cmd.ExecuteNonQuery();
                     }
 
-                    if (not_good_placetextBox5.Text.Trim() != "" && material_mpnComboBox5.Text.Trim() != "" && useNum5.Text.Trim() != "")
+                    if (not_good_placetextBox5.Text.Trim() != "" && material_mpnComboBox5.Text.Trim() != "")
                     {
-                        if (caijian5.Checked == false)//是从库房拿到的材料
+                        if (caijian5.Checked == false && actioncomboBox.Text.Trim() == "更换")//是从库房拿到的材料
                         {
                             //首先判断材料是不是库房存在的材料，如果不是则需要报错                        
                             // querySdr = cmd.ExecuteReader();
@@ -1053,6 +1094,11 @@ namespace SaledServices
                             cmd.ExecuteNonQuery();
                         }
 
+                        if (actioncomboBox.Text.Trim() != "更换")
+                        {
+                            useNum5.Text = "";
+                        }
+
                         //根据预先领料，然后生成frm/smt消耗记录，在新表fru_smt_used_record中
                         cmd.CommandText = "INSERT INTO fru_smt_used_record VALUES('"
                            + repairer_txt + "','"
@@ -1060,7 +1106,10 @@ namespace SaledServices
                            + track_serial_no_txt + "','"
                            + material_mpnComboBox5.Text.Trim().Split(',')[0] + "','"
                            + useNum5.Text.Trim() + "','"
-                           + not_good_placetextBox5.Text.Trim() + "','" + (caijian5.Checked ? "Y" : "N") + "')";
+                           + not_good_placetextBox5.Text.Trim() + "','"
+                           + (caijian5.Checked ? "Y" : "N") + "','" 
+                           + this.actioncomboBox.Text.Trim() 
+                           + "')";
                         cmd.ExecuteNonQuery();
                     } 
 

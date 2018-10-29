@@ -222,16 +222,16 @@ namespace SaledServices
                     }
                     querySdr.Close();
                     
-                    //if (this.stock_placetextBox.Enabled == false)
+                    if (this.stock_placetextBox.Enabled == false)
                     {
                         //加上历史数据
                         int total = Int32.Parse(chooseStock.number) + Int32.Parse(stock_in_numTextBox.Text.Trim());
                         stockNumber = total + "";
                     }
-                    //else
-                    //{
-                    //    stockNumber = this.stock_in_numTextBox.Text;
-                    //}
+                    else
+                    {
+                        stockNumber = this.stock_in_numTextBox.Text;
+                    }
                     cmd.CommandText = "update store_house set mpn = '" + this.mpnTextBox.Text.Trim() + "',number = '" + stockNumber + "' where house='"+chooseStock.house+"' and place='"+chooseStock.place+"'";
                     cmd.ExecuteNonQuery();
 
@@ -263,6 +263,7 @@ namespace SaledServices
 
                 doQueryAfterSelection();
                 clearInputText();
+                simulateMpnEnter();
                 MessageBox.Show("收货成功！");
             }
             catch (Exception ex)

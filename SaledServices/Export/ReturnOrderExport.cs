@@ -78,6 +78,18 @@ namespace SaledServices.Export
                 }
                 querySdr.Close();
 
+                foreach (ReturnOrderStruct temp in receiveOrderList)
+                {
+                    cmd.CommandText = "select order_receive_date from DeliveredTable where track_serial_no='" + temp.track_serial_no + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        temp.receive_date = querySdr[0].ToString();
+                        break;
+                    }
+                    querySdr.Close();
+                }
+
                 if (this.goodsum.Checked)
                 {
                     foreach (ReturnOrderStruct temp in receiveOrderList)
@@ -203,6 +215,7 @@ namespace SaledServices.Export
             titleList.Add("客户别");
             titleList.Add("还货文件编号");
             titleList.Add("客户库别");
+            titleList.Add("收货时间");
             titleList.Add("还货时间");
             titleList.Add("订单编号");
             titleList.Add("客户料号");
@@ -224,10 +237,11 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.vendor);                
                 ct1.Add(stockcheck.product);
                 ct1.Add(stockcheck.return_file_no);
-                ct1.Add(stockcheck.storehouse);                
+                ct1.Add(stockcheck.storehouse);
+                ct1.Add(stockcheck.receive_date);
                 ct1.Add(stockcheck.return_date);                
                 ct1.Add(stockcheck.orderno);
-                 ct1.Add(stockcheck.custommaterialNo);                
+                ct1.Add(stockcheck.custommaterialNo);                
                 ct1.Add(stockcheck.dpkpn);
                 ct1.Add(stockcheck.track_serial_no);
                 ct1.Add(stockcheck.custom_serial_no);                
@@ -254,7 +268,7 @@ namespace SaledServices.Export
             List<Object> contentList = new List<object>();
 
             titleList.Add("还货时间");
-             titleList.Add("还货文件编号");
+            titleList.Add("还货文件编号");
             titleList.Add("订单编号");
             titleList.Add("客户料号");
 
@@ -360,6 +374,7 @@ namespace SaledServices.Export
         public string product;
         public string return_file_no;
         public string storehouse;
+        public string receive_date;
         public string return_date;
         public string orderno;
         public string custommaterialNo;
@@ -379,3 +394,4 @@ namespace SaledServices.Export
         public string lenovo_repair_no;
     }
 }
+

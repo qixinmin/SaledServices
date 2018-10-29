@@ -200,6 +200,7 @@ material_mpn NVARCHAR(128), /*材料mpn*/
 thisNumber NVARCHAR(128), /*此次使用的数量*/
 stock_place NVARCHAR(128),/*库位*/
 isUsed NVARCHAR(128),/*是否是拆件*/
+_action NVARCHAR(128),/*对应动作*/
 )
 
 CREATE TABLE request_fru_smt_to_store_table(
@@ -607,6 +608,7 @@ tat NVARCHAR(128),/*--TAT*/
 inputuser NVARCHAR(128),/*还货人*/
 lenovo_maintenance_no NVARCHAR(128),/*联想维修站编号*/
 lenovo_repair_no NVARCHAR(128),/*联想维修单编号*/
+returnOrderIndex NVARCHAR(128)/*还货序列号，订单号+料号+顺序*/
 )
 
 
@@ -640,7 +642,8 @@ lenovo_custom_service_no NVARCHAR(128),/*联想客服序号*/
 lenovo_maintenance_no NVARCHAR(128),/*联想维修站编号*/
 lenovo_repair_no NVARCHAR(128),/*联想维修单编号*/
 whole_machine_no NVARCHAR(128),/*整机序号*/
-inputuser NVARCHAR(128)/*收货人*/
+inputuser NVARCHAR(128),/*收货人*/
+receiveOrderIndex NVARCHAR(128)/*收货序列号，订单号+料号+顺序*/
 )
 
 CREATE TABLE fruDeliveredTable(

@@ -106,13 +106,46 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select return_date,orderno,track_serial_no,custommaterialNo,vendormaterialNo,custom_serial_no,_status,vendor_serail_no,custom_res_type from returnStore where return_date between '" 
-                    + startTime + "' and '" + endTime + "' and vendor ='"+this.vendorComboBox.Text.Trim()+"' and product='"+this.productComboBox.Text.Trim()+"'";
+                cmd.CommandText = "select A.track_serial_no,A.custom_order,A.custom_serial_no,B.custom_serial_no,A.mpn,A.dpk_status, "+//6列
+                    " A.custommaterialNo,A.custom_machine_type,A.vendor,A.mb_brief,A.mb_make_date,A.order_receive_date," +//6列
+                    "A.guarantee, B._status,B.return_date,A.custom_fault,B.track_serial_no, A.warranty_period" +//5
+                    " from DeliveredTable as A, returnStore as B where A.receiveOrderIndex = B.returnOrderIndex and B.return_date between '" 
+                    + startTime + "' and '" + endTime + "' and B.vendor ='"+this.vendorComboBox.Text.Trim()+"' and B.product='"+this.productComboBox.Text.Trim()+"'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
                     HefeiDataStruct temp = new HefeiDataStruct();
-                  
+                    temp.tracker_no_receive = querySdr[0].ToString();
+                    temp.REPAIR_CENTER = "HWB";
+                    temp.RMA_NO = querySdr[1].ToString();
+                    temp.PRODUCT = "MB";
+                    temp.PRODUCT_SN = querySdr[2].ToString();
+                    temp.SHIPPING_SN = querySdr[3].ToString();
+                    temp.LCFC_PN = querySdr[4].ToString();
+                    temp.OS_VERSION = querySdr[5].ToString();
+                    temp.LNV_FRU_PN = querySdr[6].ToString();
+                    temp.LNV_MODEL_NAME = querySdr[7].ToString();
+                    temp.LNV_SERIES = "";
+                    temp.PRODUCT = querySdr[8].ToString();
+                    temp.LCFC_MODEL_NAME = querySdr[9].ToString();
+                    temp.PRODUCT_DAY_CODE = querySdr[10].ToString();
+                    temp.RETURN_AREA = "CHINA";
+                    temp.SERVICE_REQUESTER = "LENOVO";
+                    temp.SHIP_BACK_DATE = querySdr[11].ToString();//收货日期
+                    temp.SVC_RECEIVE_DATE = querySdr[11].ToString();//同一天
+                    temp.SERVICE_TYPE = (querySdr[12].ToString() == "保内" ? "IW" : "OOW");
+                    temp.INCOMING_INSPECTION = (querySdr[13].ToString() == "良品"? "IW":"CID");
+                    temp.LINE_INPUT_DATE = querySdr[11].ToString();
+                    temp.REPAIR_START_DATE = querySdr[11].ToString();
+                    temp.PACKING_DATE = querySdr[14].ToString();//还货日期
+                    temp.DELIVERY_DATE = querySdr[14].ToString();
+                    temp.CLOSE_DATE = querySdr[14].ToString();
+                    temp.NORMAL_SYMPTOM = querySdr[15].ToString();
+                    temp.tracker_no_return = querySdr[16].ToString();
+                    temp.Q_A_Result = "";
+                    temp.DELIVERY = "Y";
+                    temp.TAT_TARGET = "7";
+                    temp.warranty_period = querySdr[17].ToString();
 
                     receiveOrderList.Add(temp);
                 }
@@ -120,54 +153,130 @@ namespace SaledServices
 
                 foreach (HefeiDataStruct temp in receiveOrderList)
                 {
-                   // cmd.CommandText = "select order_receive_date,mb_brief,guarantee,custom_machine_type,mb_make_date,custom_fault from DeliveredTable where track_serial_no='" + temp.wip_sn + "'";
+                    DateTime mb_makedate = Convert.ToDateTime(temp.PRODUCT_DAY_CODE);
+                    DateTime waranty_date = mb_makedate.AddMonths(Int16.Parse(temp.PRODUCT_DAY_CODE.Replace('M',' ').Trim()));
+                    DateTime subOneDay = mb_makedate.AddDays(-1);
+                    temp.WARRANTY_PERIOD = waranty_date.ToString("yyyy-MM-dd");
+                    temp.REQUEST_DATE = subOneDay.ToString("yyyy-MM-dd");
+                    temp.APPROVAL_DATE = subOneDay.ToString("yyyy-MM-dd");
+
+                    DateTime dt1 = Convert.ToDateTime(temp.SHIP_BACK_DATE);
+                    DateTime dt2 = Convert.ToDateTime(temp.PACKING_DATE);
+                    TimeSpan ts = dt2.Subtract(dt1);
+                    int overdays = ts.Days;
+                    if(overdays>7)
+                    {
+                        temp.TAT_HIT="N";
+                    }
+                    else
+                    {
+                        temp.TAT_HIT = "Y";
+                    }
+                    temp.TAT = overdays+"";
+
+                    cmd.CommandText = "select top 1 test_date from test1table where track_serial_no='" + temp.tracker_no_return + "' order by Id desc";
                     querySdr = cmd.ExecuteReader();
+                    temp.FINAL_TEST_DATE ="";
                     while (querySdr.Read())
                     {
-                        //temp.receive_date = querySdr[0].ToString();
-                        //temp.model_name = querySdr[1].ToString();
-                        //temp.compal_warranty = querySdr[2].ToString() == "保内" ? "IW" : "OOW";
-                        //temp.dell_market_model = querySdr[3].ToString();
-                        //temp.mb_make_date = querySdr[4].ToString();
-                        //temp.customer_fault = querySdr[5].ToString();
-                        //break;
+                        temp.FINAL_TEST_DATE = querySdr[0].ToString();
+                        temp.WH_TAKEIN_DATE = querySdr[0].ToString();
                     }
                     querySdr.Close();
 
-                   // cmd.CommandText = "select vendormaterialNo from MBMaterialCompare where custommaterialNo='" + temp.cust_pn + "'";
+                    if(temp.FINAL_TEST_DATE == "")
+                    {
+                        cmd.CommandText = "select top 1 test_date from testalltable where track_serial_no='" + temp.tracker_no_return + "' order by Id desc";
+                        querySdr = cmd.ExecuteReader();
+                        temp.FINAL_TEST_DATE ="";
+                        while (querySdr.Read())
+                        {
+                             temp.FINAL_TEST_DATE = querySdr[0].ToString();
+                             temp.WH_TAKEIN_DATE = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                    }
+
+                    //维修记录，首先查询BGA然后查询小材料       
+                    temp.repairDetailList = new List<repairDetail>();
+                    cmd.CommandText = "select BGA_place, bgatype,BGAPN from bga_repair_record_table where track_serial_no ='" + temp.tracker_no_return + "' and newSn !='' order by Id desc";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
-                        //temp.sap_compal_pn = querySdr[0].ToString();
-                        //break;
+                        repairDetail repair = new repairDetail();
+                        repair.REPAIR1_LOCATION = querySdr[0].ToString();
+                        repair.REPAIR1_ACTION = "CHANGE";
+                        repair.REPAIR1_PARTS= querySdr[1].ToString();
+                        repair.REPAIR1_USED_MATERIAL_CODE = querySdr[2].ToString();
+                        repair.REPAIR1_USED_MATERIAL_QTY = "1";
+                        repair.REPAIR1_RESULT ="REPAIR GOOD";
+                        repair.REPAIR1_RESPONSIBILITY ="NORMAL";
+
+                        temp.repairDetailList.Add(repair);
                     }
                     querySdr.Close();
 
-                  //  cmd.CommandText = "select BGA_place from bga_repair_record_table where track_serial_no ='" + temp.wip_sn + "' and newSn !=''";
+                    cmd.CommandText = "select stock_place,material_mpn,_actionthisNumberfrom fru_smt_used_record where track_serial_no ='" + temp.tracker_no_return + "'";
                     querySdr = cmd.ExecuteReader();
-                    //temp.repair_recodes = "";
                     while (querySdr.Read())
                     {
-                        //temp.repair_recodes += querySdr[0].ToString();
-                        //temp.repair_recodes += ":";
-                    }
-                    querySdr.Close();
+                        repairDetail repair = new repairDetail();
+                        repair.REPAIR1_LOCATION = querySdr[0].ToString();
+                        repair.REPAIR1_USED_MATERIAL_CODE = querySdr[1].ToString();
+                        if (querySdr[2].ToString().Trim() != "")
+                        {
+                            repair.REPAIR1_PARTS = "";
+                            repair.REPAIR1_USED_MATERIAL_QTY = "";
+                            repair.REPAIR1_RESULT = "";
+                            repair.REPAIR1_RESPONSIBILITY = "";
+                        }
+                        string action = querySdr[3].ToString().Trim();
+                        if (action.Contains("清洁") || action.Contains("加焊"))
+                        {
+                            repair.REPAIR1_ACTION = "MAINTAIN";
+                        }
+                        else if (action.Contains("BIOS") || action.Contains("软体"))
+                        {
+                            repair.REPAIR1_ACTION = "UPDATE";
+                        }
+                        else if (action.Contains("更换"))
+                        {
+                            repair.REPAIR1_ACTION = "CHANGE";
+                        }
 
-                   // cmd.CommandText = "select stock_place from fru_smt_used_record where track_serial_no ='" + temp.wip_sn + "'";
-                    querySdr = cmd.ExecuteReader();
-                   
-                    while (querySdr.Read())
-                    {
-                        //temp.repair_recodes += querySdr[0].ToString();
-                        //temp.repair_recodes += ":";
+                        temp.repairDetailList.Add(repair);
                     }
-                    querySdr.Close();
+
+                    if (temp.INCOMING_INSPECTION == "CID")
+                    {
+                        temp.REPAIR_RESULT = "NO REPAIR";
+                        temp.REPAIR_RESPONSIBILITY = "CUSTOMER";
+                        temp.RMA_STATUS = "COMPLETE";
+                    }
+                    else if (temp.repairDetailList.Count == 0)
+                    {
+                        temp.REPAIR_RESULT = "NDF";
+                        temp.REPAIR_RESPONSIBILITY = "";
+                        temp.RMA_STATUS = "CLOSE";
+                    }
+                    else
+                    {
+                        temp.REPAIR_RESULT = "REPAIR GOOD";
+                        temp.REPAIR_RESPONSIBILITY = "NORMAL";
+                        temp.RMA_STATUS = "COMPLETE";
+                    }
+
+                    //如果不够5个数据，则补齐
+                    while (temp.repairDetailList.Count < 5)
+                    {
+                        repairDetail repair = new repairDetail();
+                        temp.repairDetailList.Add(repair);
+                    }
+
+                    //差一个RRR_90
                 }
 
-                foreach (HefeiDataStruct temp in receiveOrderList)
-                {
-                   
-                }
+              
 
                 mConn.Close();
             }
@@ -183,7 +292,7 @@ namespace SaledServices
         {
             List<string> titleList = new List<string>();
             List<Object> contentList = new List<object>();
-            titleList.Add("跟踪条码");
+            titleList.Add("还货跟踪条码");
             titleList.Add("REPAIR_CENTER");
             titleList.Add("RMA_NO");
             titleList.Add("PRODUCT");
@@ -240,62 +349,65 @@ namespace SaledServices
             {
                 ExportExcelContent ctest1 = new ExportExcelContent();
                 List<string> ct1 = new List<string>();
-                //ct1.Add(stockcheck.repair_site);
-                //ct1.Add(stockcheck.customer_no);
-                //if (stockcheck.receive_date != null)
-                //{
-                //    ct1.Add(stockcheck.receive_date.Replace("0:00:00", "").Trim());
-                //}
-                //else
-                //{
-                //    ct1.Add(stockcheck.receive_date);
-                //}
 
-                //ct1.Add(stockcheck.region);
-                //ct1.Add(stockcheck.rma_no);
-                //ct1.Add(stockcheck.wip_sn);
-                //ct1.Add(stockcheck.model_name);
-                //ct1.Add(stockcheck.ssn);
-                //ct1.Add(stockcheck.sap_compal_pn);
-                //ct1.Add(stockcheck.return_times);
-                //ct1.Add(stockcheck.kp_no);
-                //ct1.Add(stockcheck.material_group);
-                //ct1.Add(stockcheck.dps_tag_ron_no);
-                //ct1.Add(stockcheck.cust_pn);
+                ct1.Add(stockcheck.tracker_no_return);
+                ct1.Add(stockcheck.REPAIR_CENTER);
+                ct1.Add(stockcheck.RMA_NO);
+                ct1.Add(stockcheck.PRODUCT);
+                ct1.Add(stockcheck.PRODUCT_SN);
+                ct1.Add(stockcheck.SHIPPING_SN);
+                ct1.Add(stockcheck.LCFC_PN);
+                ct1.Add(stockcheck.OS_VERSION);
+                ct1.Add(stockcheck.LNV_FRU_PN);
+                ct1.Add(stockcheck.LNV_MODEL_NAME);
+                ct1.Add(stockcheck.LNV_SERIES);
+                ct1.Add(stockcheck.PRODUCT_GROUP);
+                ct1.Add(stockcheck.LCFC_MODEL_NAME);
+                ct1.Add(stockcheck.PRODUCT_DAY_CODE);
+                ct1.Add(stockcheck.RETURN_AREA);
+                ct1.Add(stockcheck.SERVICE_REQUESTER);
+                ct1.Add(stockcheck.WARRANTY_PERIOD);
+                ct1.Add(stockcheck.REQUEST_DATE);
+                ct1.Add(stockcheck.APPROVAL_DATE);
+                ct1.Add(stockcheck.SHIP_BACK_DATE);
+                ct1.Add(stockcheck.SVC_RECEIVE_DATE);
+                ct1.Add(stockcheck.SERVICE_TYPE);
+                ct1.Add(stockcheck.INCOMING_INSPECTION);
+                ct1.Add(stockcheck.LINE_INPUT_DATE);
+                ct1.Add(stockcheck.REPAIR_START_DATE);
+                ct1.Add(stockcheck.FINAL_TEST_DATE);
+                ct1.Add(stockcheck.WH_TAKEIN_DATE);
+                ct1.Add(stockcheck.PACKING_DATE);
+                ct1.Add(stockcheck.DELIVERY_DATE);
+                ct1.Add(stockcheck.CLOSE_DATE);
+                ct1.Add(stockcheck.NORMAL_SYMPTOM);
 
-                //if (stockcheck.shipping_date != null)
-                //{
-                //    ct1.Add(stockcheck.shipping_date.Replace("0:00:00", "").Trim());
-                //}
-                //else
-                //{
-                //    ct1.Add(stockcheck.shipping_date);
-                //}
-
-                //ct1.Add(stockcheck.compal_warranty);
-                //ct1.Add(stockcheck.final_status);
-                //ct1.Add(stockcheck.disposition);
-                //ct1.Add(stockcheck.duty);
-                //ct1.Add(stockcheck.ccd_decision);
-                //ct1.Add(stockcheck.dell_market_model);
-                //ct1.Add(stockcheck.customer_fault);
-                //if (stockcheck.mb_make_date != null)
-                //{
-                //    ct1.Add(stockcheck.mb_make_date.Replace("0:00:00", "").Trim());
-                //}
-                //else
-                //{
-                //    ct1.Add(stockcheck.mb_make_date);
-                //}
-                //ct1.Add(stockcheck.return_reason);
-
-                //ct1.Add(stockcheck.repair_recodes);
+                for (int i = 0; i < 5; i++)//至少包括5个数据，前面已经补齐
+                {
+                    ct1.Add(stockcheck.repairDetailList[i].REPAIR1_LOCATION);
+                    ct1.Add(stockcheck.repairDetailList[i].REPAIR1_ACTION);
+                    ct1.Add(stockcheck.repairDetailList[i].REPAIR1_PARTS);
+                    ct1.Add(stockcheck.repairDetailList[i].REPAIR1_USED_MATERIAL_CODE);
+                    ct1.Add(stockcheck.repairDetailList[i].REPAIR1_USED_MATERIAL_QTY);
+                    ct1.Add(stockcheck.repairDetailList[i].REPAIR1_RESULT);
+                    ct1.Add(stockcheck.repairDetailList[i].REPAIR1_RESPONSIBILITY);
+                }
+       
+                ct1.Add(stockcheck.REPAIR_RESULT);
+                ct1.Add(stockcheck.REPAIR_RESPONSIBILITY);
+                ct1.Add(stockcheck.Q_A_Result);
+                ct1.Add(stockcheck.DELIVERY);
+                ct1.Add(stockcheck.RMA_STATUS);
+                ct1.Add(stockcheck.TAT);
+                ct1.Add(stockcheck.TAT_TARGET);    
+                ct1.Add(stockcheck.TAT_HIT);
+                ct1.Add(stockcheck.RRR_90);
 
                 ctest1.contentArray = ct1;
                 contentList.Add(ctest1);
             }
 
-            Utils.createExcel("D:\\仁宝大数据1-" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            Utils.createExcel("D:\\合肥报表-" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
     }   
 
@@ -312,7 +424,8 @@ namespace SaledServices
 
     public class HefeiDataStruct
     {
-        public string tracker_no;
+        public string tracker_no_receive;
+        public string tracker_no_return;
         public string REPAIR_CENTER;    //固定字段  "HWB"
         public string RMA_NO;    //订单编号
         public string PRODUCT;//固定字段 "MB"
@@ -329,6 +442,7 @@ namespace SaledServices
         public string RETURN_AREA;//固定字段"CHINA"
         public string SERVICE_REQUESTER;//固定字段"LENOVO"
         public string WARRANTY_PERIOD;//生产日期算出的保修期
+        public string warranty_period;//保修，单位：月
         public string REQUEST_DATE;//收货日期减去1天
         public string APPROVAL_DATE;//收货日期减去1天
         public string SHIP_BACK_DATE;//收货日期
@@ -343,7 +457,7 @@ namespace SaledServices
         public string DELIVERY_DATE;//还货日期
         public string CLOSE_DATE;//还货日期
         public string NORMAL_SYMPTOM;//收货数据中客户故障
-        List<repairDetail> repairDetailList;//5个,? 问题是如何弄出5个字段出来，注意title的变化，从1到5
+        public List<repairDetail> repairDetailList;//5个,? 问题是如何弄出5个字段出来，注意title的变化，从1到5
        
         public string REPAIR_RESULT;//固定字段   AF列有换件的 此处都填写：REPAIR GOOD      NTF的填写NDF
         public string REPAIR_RESPONSIBILITY;//固定字段   AF列有换件的 此处都填写：NORMAL       NTF的为空

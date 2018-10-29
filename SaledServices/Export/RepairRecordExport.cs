@@ -14,7 +14,53 @@ namespace SaledServices.Export
     {
         public RepairRecordExport()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            loadToReturnInformation();
+        }
+
+        public void loadToReturnInformation()
+        {
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandText = "select distinct vendor from receiveOrder";
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader querySdr = cmd.ExecuteReader();
+
+                while (querySdr.Read())
+                {
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.vendorComboBox.Items.Add(temp);
+                    }
+                }
+                querySdr.Close();
+
+                cmd.CommandText = "select distinct product from receiveOrder";
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.productComboBox.Items.Add(temp);
+                    }
+                }
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void exportxmlbutton_Click(object sender, EventArgs e)
@@ -101,7 +147,7 @@ namespace SaledServices.Export
                     {
                         repairRecord.shortcut = querySdr[1].ToString();
 
-                       // repairRecord.fault_type = querySdr[2].ToString();
+                        // repairRecord.fault_type = querySdr[2].ToString();
                         repairRecord.repairer = querySdr[3].ToString();
                         repairRecord.repair_date = querySdr[4].ToString();
                         repairRecord.repair_result = querySdr[5].ToString();
@@ -136,7 +182,7 @@ namespace SaledServices.Export
                             repairRecord.fault_describeList.Add(querySdr[1].ToString());
                             repairRecord.mbfaList.Add(querySdr[2].ToString());
                             repairRecord.fault_type = querySdr[3].ToString();
-                        }                       
+                        }
                     }
                     querySdr.Close();
 
@@ -150,14 +196,17 @@ namespace SaledServices.Export
                             case "CPU":
                                 repairRecord.cpu = querySdr[1].ToString();
                                 repairRecord.cpu_place = querySdr[2].ToString();
+                                repairRecord.fault_type = "功能不良";//针对只换BGA的，但是小材料信息没有的情况
                                 break;
                             case "PCH":
                                 repairRecord.pch = querySdr[1].ToString();
                                 repairRecord.pch_place = querySdr[2].ToString();
+                                repairRecord.fault_type = "功能不良";//针对只换BGA的，但是小材料信息没有的情况
                                 break;
                             case "VGA":
                                 repairRecord.vga = querySdr[1].ToString();
                                 repairRecord.vga_place = querySdr[2].ToString();
+                                repairRecord.fault_type = "功能不良";//针对只换BGA的，但是小材料信息没有的情况
                                 break;
                         }
                     }
@@ -184,6 +233,19 @@ namespace SaledServices.Export
                         repairRecord.tester = querySdr[0].ToString();
                     }
                     querySdr.Close();
+
+                    //修改最终结果repairRecord.repair_result
+                    if (repairRecord.pch == "" && repairRecord.pch_place == ""
+                        && repairRecord.vga == "" && repairRecord.vga_place == ""
+                        && repairRecord.cpu == "" && repairRecord.cpu_place == ""
+                        && repairRecord.smtRecords.Count == 0)
+                    {
+                        repairRecord.repair_result = "NTF测试OK";
+                    }
+                    else
+                    {
+                        repairRecord.repair_result = "修复良品";
+                    }
                 }
             }
             catch (Exception ex)
@@ -252,7 +314,6 @@ namespace SaledServices.Export
             {
                 ExportExcelContent ctest1 = new ExportExcelContent();
                 List<string> ct1 = new List<string>();
-
 
                 ct1.Add(repaircheck.track_serial_no);
                 ct1.Add(repaircheck.vendor);
