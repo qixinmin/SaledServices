@@ -39,6 +39,8 @@ namespace SaledServices.Export
 
             List<allSumStruct> allSumStructList = new List<allSumStruct>();
 
+            List<fruListSheet4> fruList = new List<fruListSheet4>();
+
             try
             {
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -141,6 +143,28 @@ namespace SaledServices.Export
                         querySdr.Close();
                     }
                 }
+
+                //查询fru的记录
+                cmd.CommandText = "SELECT receive_date,orderno,customermaterialno,machine_type,name,peijian_no,make_date,gurantee,vendor_material_no,mpn1,custom_fault from fruDeliveredTable where repair_date between '" + startTime + "' and '" + endTime + "'";
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+
+                    fruListSheet4 temp = new fruListSheet4();
+                    temp.receive_date = querySdr[0].ToString();
+                    temp.orderno = querySdr[1].ToString();
+                    temp.customermaterialno = querySdr[2].ToString();
+                    temp.machine_type = querySdr[3].ToString();
+                    temp.name = querySdr[4].ToString();
+                    temp.peijian_no = querySdr[5].ToString();
+                    temp.make_date = querySdr[6].ToString();
+                    temp.gurantee = querySdr[7].ToString();
+                    temp.vendor_material_no = querySdr[8].ToString();
+                    temp.mpn1 = querySdr[9].ToString();
+                    temp.custom_fault = querySdr[10].ToString();
+                    fruList.Add(temp);
+                }
+                querySdr.Close();
 
                 ///维修记录
                 cmd.CommandText = "SELECT track_serial_no,COUNT(*)  from repair_record_table where repair_date between '" + startTime + "' and '" + endTime + "'  group by track_serial_no";
