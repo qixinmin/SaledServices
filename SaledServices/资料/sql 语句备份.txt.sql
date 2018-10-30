@@ -687,6 +687,7 @@ mpn1 NVARCHAR(128) NOT NULL,/*MPN1*/
 receiver NVARCHAR(128) NOT NULL,/*还货人*/
 receive_date date,/*还货日期*/
 tat NVARCHAR(128) NOT NULL,/*时间差*/
+_status NVARCHAR(128) NOT NULL,/*状态，良品不良品*/
 )
 
 

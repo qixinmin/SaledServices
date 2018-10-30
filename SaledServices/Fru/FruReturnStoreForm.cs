@@ -263,7 +263,8 @@ namespace SaledServices
                        this.mpn1TextBox.Text.Trim() + "','" +
                        this.receiverTextBox.Text.Trim() + "','" +
                        this.receive_dateTextBox.Text.Trim() + "','" +
-                        this.tattextBox.Text.Trim() +
+                        this.tattextBox.Text.Trim() + "','" +
+                        this.statusComboBox.Text.Trim() +
                        "')";
 
                     cmd.ExecuteNonQuery();
@@ -354,6 +355,10 @@ namespace SaledServices
 
         private bool checkIsNull()
         {
+            if (this.statusComboBox.Text.Trim() == "")
+            {
+                return true;
+            }
                
             return false;           
         }

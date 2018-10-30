@@ -25,7 +25,11 @@ namespace SaledServices
             if (User.UserSelfForm.isSuperManager() == false)
             {
                 this.modify.Visible = false;
-                this.delete.Visible = false;
+                this.delete.Visible = false;                
+            }
+            else
+            {
+                this.numbertextBox.ReadOnly = false;
             }
         }
 

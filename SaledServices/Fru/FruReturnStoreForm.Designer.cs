@@ -44,9 +44,8 @@
             this.delete = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.customermaterialnoTextBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.peijian_noTextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -75,10 +74,13 @@
             this.makedatetextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tattextBox = new System.Windows.Forms.TextBox();
+            this.guaranteeTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.customermaterialnoTextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.guaranteeTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToReturn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReturnedDetail)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -254,13 +256,12 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.13019F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.17054F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.43411F));
+            this.tableLayoutPanel3.Controls.Add(this.statusComboBox, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.vendorComboBox, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.productComboBox, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.label5, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label10, 0, 3);
-            this.tableLayoutPanel3.Controls.Add(this.customermaterialnoTextBox, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.label12, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.peijian_noTextBox, 1, 4);
             this.tableLayoutPanel3.Controls.Add(this.label13, 0, 5);
@@ -290,6 +291,9 @@
             this.tableLayoutPanel3.Controls.Add(this.label6, 2, 8);
             this.tableLayoutPanel3.Controls.Add(this.tattextBox, 3, 8);
             this.tableLayoutPanel3.Controls.Add(this.guaranteeTextBox, 1, 7);
+            this.tableLayoutPanel3.Controls.Add(this.label10, 0, 9);
+            this.tableLayoutPanel3.Controls.Add(this.customermaterialnoTextBox, 1, 9);
+            this.tableLayoutPanel3.Controls.Add(this.label8, 0, 3);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -308,6 +312,20 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(648, 427);
             this.tableLayoutPanel3.TabIndex = 19;
             // 
+            // statusComboBox
+            // 
+            this.statusComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.statusComboBox.FormattingEnabled = true;
+            this.statusComboBox.Items.AddRange(new object[] {
+            "良品",
+            "不良品"});
+            this.statusComboBox.Location = new System.Drawing.Point(125, 133);
+            this.statusComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.statusComboBox.Name = "statusComboBox";
+            this.statusComboBox.Size = new System.Drawing.Size(138, 24);
+            this.statusComboBox.TabIndex = 38;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -318,27 +336,6 @@
             this.label5.Size = new System.Drawing.Size(89, 20);
             this.label5.TabIndex = 4;
             this.label5.Text = "订单编号";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(7, 129);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 20);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "客户料号";
-            // 
-            // customermaterialnoTextBox
-            // 
-            this.customermaterialnoTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.customermaterialnoTextBox.Location = new System.Drawing.Point(125, 133);
-            this.customermaterialnoTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.customermaterialnoTextBox.Name = "customermaterialnoTextBox";
-            this.customermaterialnoTextBox.ReadOnly = true;
-            this.customermaterialnoTextBox.Size = new System.Drawing.Size(138, 26);
-            this.customermaterialnoTextBox.TabIndex = 9;
             // 
             // label12
             // 
@@ -583,7 +580,6 @@
             // 
             // ordernotextBox
             // 
-            this.ordernotextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ordernotextBox.Location = new System.Drawing.Point(124, 90);
             this.ordernotextBox.Name = "ordernotextBox";
             this.ordernotextBox.ReadOnly = true;
@@ -616,6 +612,46 @@
             this.tattextBox.ReadOnly = true;
             this.tattextBox.Size = new System.Drawing.Size(219, 26);
             this.tattextBox.TabIndex = 35;
+            // 
+            // guaranteeTextBox
+            // 
+            this.guaranteeTextBox.Location = new System.Drawing.Point(124, 300);
+            this.guaranteeTextBox.Name = "guaranteeTextBox";
+            this.guaranteeTextBox.ReadOnly = true;
+            this.guaranteeTextBox.Size = new System.Drawing.Size(139, 26);
+            this.guaranteeTextBox.TabIndex = 37;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label10.Location = new System.Drawing.Point(7, 381);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(89, 20);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "客户料号";
+            // 
+            // customermaterialnoTextBox
+            // 
+            this.customermaterialnoTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.customermaterialnoTextBox.Location = new System.Drawing.Point(125, 385);
+            this.customermaterialnoTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.customermaterialnoTextBox.Name = "customermaterialnoTextBox";
+            this.customermaterialnoTextBox.ReadOnly = true;
+            this.customermaterialnoTextBox.Size = new System.Drawing.Size(138, 26);
+            this.customermaterialnoTextBox.TabIndex = 9;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label8.Location = new System.Drawing.Point(7, 129);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 20);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "状态";
             // 
             // tableLayoutPanel2
             // 
@@ -651,14 +687,6 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(650, 48);
             this.tableLayoutPanel4.TabIndex = 20;
-            // 
-            // guaranteeTextBox
-            // 
-            this.guaranteeTextBox.Location = new System.Drawing.Point(124, 300);
-            this.guaranteeTextBox.Name = "guaranteeTextBox";
-            this.guaranteeTextBox.ReadOnly = true;
-            this.guaranteeTextBox.Size = new System.Drawing.Size(139, 26);
-            this.guaranteeTextBox.TabIndex = 37;
             // 
             // FruReturnStoreForm
             // 
@@ -734,5 +762,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tattextBox;
         private System.Windows.Forms.TextBox guaranteeTextBox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox statusComboBox;
     }
 }

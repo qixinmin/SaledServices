@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.add = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
@@ -74,6 +74,9 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewWaitToReturn = new System.Windows.Forms.DataGridView();
+            this.timechecktextBox = new System.Windows.Forms.TextBox();
+            this.timecheckresult = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -85,8 +88,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(489, 4);
@@ -157,6 +160,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.label20, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.vendor_material_noTextBox, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 0);
@@ -191,6 +195,8 @@
             this.tableLayoutPanel1.Controls.Add(this.customermaterialdesTextBox, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.label16, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.gurantee_noteTextBox, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.timecheckresult, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.timechecktextBox, 1, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -604,8 +610,8 @@
             // dataGridViewWaitToReturn
             // 
             this.dataGridViewWaitToReturn.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewWaitToReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewWaitToReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewWaitToReturn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewWaitToReturn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWaitToReturn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -617,6 +623,37 @@
             this.dataGridViewWaitToReturn.Size = new System.Drawing.Size(479, 298);
             this.dataGridViewWaitToReturn.TabIndex = 1;
             this.dataGridViewWaitToReturn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWaitToReturn_CellClick);
+            // 
+            // timechecktextBox
+            // 
+            this.timechecktextBox.Location = new System.Drawing.Point(230, 313);
+            this.timechecktextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.timechecktextBox.Name = "timechecktextBox";
+            this.timechecktextBox.Size = new System.Drawing.Size(212, 26);
+            this.timechecktextBox.TabIndex = 9;
+            this.timechecktextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.timechecktextBox_KeyPress);
+            // 
+            // timecheckresult
+            // 
+            this.timecheckresult.AutoSize = true;
+            this.timecheckresult.Font = new System.Drawing.Font("SimSun", 15F);
+            this.timecheckresult.Location = new System.Drawing.Point(453, 309);
+            this.timecheckresult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.timecheckresult.Name = "timecheckresult";
+            this.timecheckresult.Size = new System.Drawing.Size(49, 20);
+            this.timecheckresult.TabIndex = 10;
+            this.timecheckresult.Text = "结果";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label6.Location = new System.Drawing.Point(7, 309);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 20);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "结果";
             // 
             // FruDeliveredTableForm
             // 
@@ -687,5 +724,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.DataGridView dataGridViewWaitToReturn;
         private System.Windows.Forms.DateTimePicker make_datedateTimePicker;
+        private System.Windows.Forms.Label timecheckresult;
+        private System.Windows.Forms.TextBox timechecktextBox;
+        private System.Windows.Forms.Label label6;
     }
 }

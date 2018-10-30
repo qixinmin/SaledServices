@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,7 +62,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.sourcetextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.fault_describetextBox = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.actioncomboBox = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -78,6 +77,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.mpntextBox = new System.Windows.Forms.TextBox();
+            this.fault_describecomboBox = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.add = new System.Windows.Forms.Button();
@@ -225,7 +225,6 @@
             this.tableLayoutPanel2.Controls.Add(this.label4, 4, 2);
             this.tableLayoutPanel2.Controls.Add(this.sourcetextBox, 5, 2);
             this.tableLayoutPanel2.Controls.Add(this.label14, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.fault_describetextBox, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.label23, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.actioncomboBox, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.label22, 0, 5);
@@ -241,6 +240,7 @@
             this.tableLayoutPanel2.Controls.Add(this.label6, 2, 4);
             this.tableLayoutPanel2.Controls.Add(this.label11, 2, 2);
             this.tableLayoutPanel2.Controls.Add(this.mpntextBox, 3, 2);
+            this.tableLayoutPanel2.Controls.Add(this.fault_describecomboBox, 1, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(7, 7);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
@@ -566,16 +566,6 @@
             this.label14.TabIndex = 14;
             this.label14.Text = "故障原因";
             // 
-            // fault_describetextBox
-            // 
-            this.fault_describetextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.fault_describetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fault_describetextBox.Location = new System.Drawing.Point(198, 104);
-            this.fault_describetextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.fault_describetextBox.Name = "fault_describetextBox";
-            this.fault_describetextBox.Size = new System.Drawing.Size(203, 26);
-            this.fault_describetextBox.TabIndex = 43;
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -738,11 +728,43 @@
             this.mpntextBox.Size = new System.Drawing.Size(193, 26);
             this.mpntextBox.TabIndex = 43;
             // 
+            // fault_describecomboBox
+            // 
+            this.fault_describecomboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.fault_describecomboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fault_describecomboBox.FormattingEnabled = true;
+            this.fault_describecomboBox.Items.AddRange(new object[] {
+            "不加电AC",
+            "不加电DC",
+            "不充电",
+            "开机无显",
+            "外切无显",
+            "键盘不良",
+            "USB不良",
+            "摄像头不良",
+            "喇叭无声",
+            "耳机无声",
+            "不抓声卡",
+            "不联网",
+            "不抓网卡",
+            "不抓无线网卡",
+            "触控板不良",
+            "不抓硬盘",
+            "不抓独显",
+            "显卡黄叹号",
+            "显卡停止响应",
+            "开机灰屏"});
+            this.fault_describecomboBox.Location = new System.Drawing.Point(197, 103);
+            this.fault_describecomboBox.Name = "fault_describecomboBox";
+            this.fault_describecomboBox.Size = new System.Drawing.Size(205, 24);
+            this.fault_describecomboBox.TabIndex = 45;
+            this.fault_describecomboBox.Text = "不加电AC";
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1681,7 +1703,6 @@
         private System.Windows.Forms.TextBox mpntextBox;
         private System.Windows.Forms.TextBox repair_datetextBox;
         private System.Windows.Forms.TextBox repairertextBox;
-        private System.Windows.Forms.TextBox fault_describetextBox;
         private System.Windows.Forms.TextBox customFaulttextBox;
         private System.Windows.Forms.TextBox mb_make_dateTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -1760,5 +1781,6 @@
         private System.Windows.Forms.CheckBox caijian4;
         private System.Windows.Forms.CheckBox caijian5;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ComboBox fault_describecomboBox;
     }
 }

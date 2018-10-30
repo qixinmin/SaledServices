@@ -10,57 +10,11 @@ using System.Data.SqlClient;
 
 namespace SaledServices.Export
 {
-    public partial class RepairRecordExport : Form
+    public partial class AllBossExport : Form
     {
-        public RepairRecordExport()
+        public AllBossExport()
         {
             InitializeComponent();
-            loadToReturnInformation();
-        }
-
-        public void loadToReturnInformation()
-        {
-            try
-            {
-                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
-
-                mConn.Open();
-
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = mConn;
-                cmd.CommandText = "select distinct vendor from receiveOrder";
-                cmd.CommandType = CommandType.Text;
-
-                SqlDataReader querySdr = cmd.ExecuteReader();
-
-                while (querySdr.Read())
-                {
-                    string temp = querySdr[0].ToString();
-                    if (temp != "")
-                    {
-                        this.vendorComboBox.Items.Add(temp);
-                    }
-                }
-                querySdr.Close();
-
-                cmd.CommandText = "select distinct product from receiveOrder";
-                querySdr = cmd.ExecuteReader();
-                while (querySdr.Read())
-                {
-                    string temp = querySdr[0].ToString();
-                    if (temp != "")
-                    {
-                        this.productComboBox.Items.Add(temp);
-                    }
-                }
-                querySdr.Close();
-
-                mConn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
         }
 
         private void exportxmlbutton_Click(object sender, EventArgs e)
@@ -72,14 +26,18 @@ namespace SaledServices.Export
             {
                 MessageBox.Show("开始日期大于结束");
                 return;
-            }          
+            }
 
             string startTime = this.dateTimePickerstart.Value.ToString("yyyy/MM/dd");
             string endTime = this.dateTimePickerend.Value.ToString("yyyy/MM/dd");
 
-            List<RepairRecordStruct> receiveOrderList = new List<RepairRecordStruct>();
+            List<nb_aio_mblistSheet5_6> receiveOrderList = new List<nb_aio_mblistSheet5_6>();
 
-            List<RepairRecordStruct> receiveOrderListtarget = new List<RepairRecordStruct>();
+            List<nb_aio_mblistSheet5_6> receiveOrderListtarget = new List<nb_aio_mblistSheet5_6>();
+
+            List<allReturnOrderStruct> allReturnOrderOrderList = new List<allReturnOrderStruct>();
+
+            List<allSumStruct> allSumStructList = new List<allSumStruct>();
 
             try
             {
@@ -90,11 +48,106 @@ namespace SaledServices.Export
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "SELECT track_serial_no,COUNT(*)  from repair_record_table where repair_date between '" + startTime + "' and '" + endTime + "'  group by track_serial_no";
+                //统计信息
+                cmd.CommandText = "select Id,vendor,product,return_file_no,storehouse,return_date,orderno,custommaterialNo," +
+                    "dpkpn,track_serial_no,custom_serial_no,vendor_serail_no,vendormaterialNo,_status,custom_res_type," +
+                    "response_describe,tat,inputuser,lenovo_maintenance_no,lenovo_repair_no from returnStore where return_date between '" + startTime + "' and '" + endTime + "'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
-                    RepairRecordStruct temp = new RepairRecordStruct();
+                    allReturnOrderStruct temp = new allReturnOrderStruct();
+                    temp.Id = querySdr[0].ToString();
+                    temp.vendor = querySdr[1].ToString();
+                    temp.product = querySdr[2].ToString();
+                    temp.return_file_no = querySdr[3].ToString();
+                    temp.storehouse = querySdr[4].ToString();
+                    temp.return_date = querySdr[5].ToString();
+                    temp.orderno = querySdr[6].ToString();
+                    temp.custommaterialNo = querySdr[7].ToString();
+                    temp.dpkpn = querySdr[8].ToString();
+                    temp.track_serial_no = querySdr[9].ToString();
+                    temp.custom_serial_no = querySdr[10].ToString();
+                    temp.vendor_serail_no = querySdr[11].ToString();
+                    temp.vendormaterialNo = querySdr[12].ToString();
+                    temp._status = querySdr[13].ToString();
+                    temp.custom_res_type = querySdr[14].ToString();
+                    temp.response_describe = querySdr[15].ToString();
+                    temp.tat = querySdr[16].ToString();
+                    temp.inputuser = querySdr[17].ToString();
+                    temp.lenovo_maintenance_no = querySdr[18].ToString();
+                    temp.lenovo_repair_no = querySdr[19].ToString();
+
+                    allReturnOrderOrderList.Add(temp);
+                }
+                querySdr.Close();
+
+                foreach (allReturnOrderStruct temp in allReturnOrderOrderList)
+                {
+                    cmd.CommandText = "select order_receive_date from DeliveredTable where track_serial_no='" + temp.track_serial_no + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        temp.receive_date = querySdr[0].ToString();
+                        break;
+                    }
+                    querySdr.Close();
+
+
+                    DateTime dt1 = Convert.ToDateTime(temp.receive_date);
+                    DateTime dt2 = Convert.ToDateTime(temp.return_date);
+                    TimeSpan ts = dt2.Subtract(dt1);
+                    int overdays = ts.Days;
+                    temp.tat = overdays + "";
+                }
+               
+                foreach (allReturnOrderStruct temp in allReturnOrderOrderList)
+                {
+                    allSumStruct temp1 = new allSumStruct();
+                    temp1.ramno = temp.orderno;
+                    temp1.returndate = temp.return_date;
+                    temp1.returnfileNo = temp.return_file_no;
+                    temp1.custommaterialNo = temp.custommaterialNo;
+                    if (allSumStructList.Count == 0)
+                    {
+                        allSumStructList.Add(temp1);
+                    }
+                    else
+                    {
+                        bool exist = false;
+                        foreach (allSumStruct oldrecord in allSumStructList)
+                        {
+                            if (oldrecord.equals(temp1))
+                            {
+                                oldrecord.incrementNum();
+                                exist = true;
+                                break;
+                            }
+                        }
+                        if (exist == false)
+                        {
+                            allSumStructList.Add(temp1);
+                        }
+                    }
+
+                    foreach (allSumStruct oldrecord in allSumStructList)
+                    {
+                        cmd.CommandText = "select mb_brief from MBMaterialCompare where custommaterialNo='" + oldrecord.custommaterialNo + "'";
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            oldrecord.mb_brief = querySdr[0].ToString();
+                            break;
+                        }
+                        querySdr.Close();
+                    }
+                }
+
+                ///维修记录
+                cmd.CommandText = "SELECT track_serial_no,COUNT(*)  from repair_record_table where repair_date between '" + startTime + "' and '" + endTime + "'  group by track_serial_no";
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    nb_aio_mblistSheet5_6 temp = new nb_aio_mblistSheet5_6();
                     temp.track_serial_no = querySdr[0].ToString();
                     temp.repair_Num = querySdr[1].ToString();
 
@@ -103,18 +156,18 @@ namespace SaledServices.Export
                 querySdr.Close();
 
                 //过滤到test2的信息
-                foreach (RepairRecordStruct repairRecord in receiveOrderList)
+                foreach (nb_aio_mblistSheet5_6 repairRecord in receiveOrderList)
                 {
                     cmd.CommandText = "select Id from test2table where track_serial_no ='" + repairRecord.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     if (querySdr.HasRows)
-                    {                       
+                    {
                         receiveOrderListtarget.Add(repairRecord);
                     }
                     querySdr.Close();
                 }
 
-                foreach (RepairRecordStruct repairRecord in receiveOrderList)
+                foreach (nb_aio_mblistSheet5_6 repairRecord in receiveOrderList)
                 {
                     cmd.CommandText = "select Id from testalltable where track_serial_no ='" + repairRecord.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
@@ -125,7 +178,9 @@ namespace SaledServices.Export
                     querySdr.Close();
                 }
 
-                foreach (RepairRecordStruct repairRecord in receiveOrderListtarget)
+
+
+                foreach (nb_aio_mblistSheet5_6 repairRecord in receiveOrderListtarget)
                 {
                     cmd.CommandText = "select vendor,product,source_brief,custom_order,order_receive_date,custommaterialNo," +
                         "custom_serial_no,mb_describe,mb_brief,vendor_serail_no,mpn,mb_make_date,custom_fault,lenovo_maintenance_no from DeliveredTable where track_serial_no ='" + repairRecord.track_serial_no + "'";
@@ -225,10 +280,10 @@ namespace SaledServices.Export
 
                     cmd.CommandText = "select material_mpn,stock_place from fru_smt_used_record where track_serial_no ='" + repairRecord.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
-                    repairRecord.smtRecords = new List<SmtRecort>();
+                    repairRecord.smtRecords = new List<allSmtRecort>();
                     while (querySdr.Read())
                     {
-                        SmtRecort sub = new SmtRecort();
+                        allSmtRecort sub = new allSmtRecort();
 
                         sub.smtMpn = querySdr[0].ToString();
                         sub.smtplace = querySdr[1].ToString();
@@ -267,7 +322,7 @@ namespace SaledServices.Export
             generateExcelToCheck(receiveOrderListtarget, startTime, endTime);
         }
 
-        public void generateExcelToCheck(List<RepairRecordStruct> repairRecordList, string startTime, string endTime)
+        public void generateExcelToCheck(List<nb_aio_mblistSheet5_6> repairRecordList, string startTime, string endTime)
         {
             List<string> titleList = new List<string>();
             List<Object> contentList = new List<object>();
@@ -321,7 +376,7 @@ namespace SaledServices.Export
             titleList.Add("修复结果");
             titleList.Add("联想维修站编号");
 
-            foreach (RepairRecordStruct repaircheck in repairRecordList)
+            foreach (nb_aio_mblistSheet5_6 repaircheck in repairRecordList)
             {
                 ExportExcelContent ctest1 = new ExportExcelContent();
                 List<string> ct1 = new List<string>();
@@ -347,11 +402,11 @@ namespace SaledServices.Export
                 {
                     if (i < repaircheck.fault_describeList.Count)
                     {
-                        ct1.Add(repaircheck.fault_describeList[i]);                      
+                        ct1.Add(repaircheck.fault_describeList[i]);
                     }
                     else
                     {
-                        ct1.Add("");                       
+                        ct1.Add("");
                     }
                 }
 
@@ -405,59 +460,147 @@ namespace SaledServices.Export
         }
     }
 
-    /**
-     * SELECT track_serial_no,COUNT(*) as 次数
-     
-  FROM [SaledService].[dbo].[repair_record_table] group by track_serial_no
-     * */
-    public class RepairRecordStruct
+    public class allReturnOrderStruct
     {
-        public string track_serial_no;//跟踪条码
-        public string vendor;//厂商
-        public string product;//客户别
-        public string source;//来源
-        public string order_no;//订单编号
+        public string Id;
+        public string vendor;
+        public string product;
+        public string return_file_no;
+        public string storehouse;
+        public string receive_date;
+        public string return_date;
+        public string orderno;
+        public string custommaterialNo;
 
-        public string receivedate;//收货日期
-        public string custommaterialNo;//客户料号
-        public string custom_serial_no;//客户序号
+        public string dpkpn;
+        public string track_serial_no;
+        public string custom_serial_no;
+        public string vendor_serail_no;
+        public string vendormaterialNo;
+        public string _status;
+        public string custom_res_type;
+        public string response_describe;
 
-        public string mb_describe;//mb描述
-        public string mb_brief;//mb简称
-
-        public string vendor_serail_no;//厂商序号
-        public string mpn;//mpn
-        public string mb_make_date;//mb生产日期
-        public string custom_fault;//客户故障
-
-        public List<string> fault_describeList;//最多三条
-        public List<string> mbfaList;//最多三条
-
-        public string shortcut;//短路电压
-
-        public string pch;//南北桥料号
-        public string pch_place;//南北桥位置
-        public string vga;//vga芯片料号
-        public string vga_place;//vga芯片位置
-        public string cpu;//CPU料号
-        public string cpu_place;//cpu芯片位置
-
-        public List<SmtRecort> smtRecords;//最多三条
-        public string fault_type;//故障类别
-        public string repairer;
-        public string tester;//测试1站别的测试人
-        public string repair_date;//修复日期 
-        public string repair_result;//修复结果
-        public string lenovo_maintenance_no;//联想维修站编号
-
-        public string software_update;//软体更新
-
-        public string repair_Num;//维修次数
+        public string tat;
+        public string inputuser;
+        public string lenovo_maintenance_no;
+        public string lenovo_repair_no;
     }
 
-    public class SmtRecort
+
+    public class allSumStruct
     {
-        public string smtMpn;//位置
-        public string smtplace;//料号
+        public string returndate;
+        public string returnfileNo;
+        public string ramno;
+        public string custommaterialNo;
+        public string mb_brief;
+        public int returnNum = 1;
+
+        public bool equals(allSumStruct temp)
+        {
+            return (this.returndate == temp.returndate
+                && this.returnfileNo == temp.returnfileNo
+                && this.custommaterialNo == temp.custommaterialNo
+                && this.ramno == temp.ramno);
+        }
+
+        public void incrementNum()
+        {
+            this.returnNum++;
+        }
+
     }
+    public class AIO_NB_StructSheet1_Sheet2//AIO产品别AIO,NB产品别为LBG
+    {
+        public string model;
+        public string number;
+    }
+
+   //public class NBStructSheet2//产品别为LBG
+   //{
+   //    public string model;
+   //    public string number;
+   //}
+
+   public class debitnotsSheet3
+   {
+
+    }
+
+   public class fruListSheet4
+   {
+       //收料日期	rma号码	联想料号	机型	名称	配件序号	周期	保内外	料号71	原材料号1	客户故障	charge
+       public string receive_date;//收料日期
+       public string orderno;//rma号码
+       public string customermaterialno;//联想料号
+       public string machine_type;//机型
+       public string name ;//名称
+       public string peijian_no;//配件序号
+       public string make_date;//周期
+       public string gurantee;//保内外
+       public string vendor_material_no;//料号71
+       public string mpn1;//	原材料号1
+       public string custom_fault;//客户故障
+       public string charge;//charge       
+    }
+
+   //public class nbmblistSheet5//产品别为LBG
+   //{
+   //    //rma号码	MB来源	跟踪条码	收货日期	Model	MB全称	mb料号	mb序号	周期	客户故障现象	现象1	现象2	现象3	mbfa1	短路电压	北桥	南北桥	南桥	VGA芯片	显存	本体CPU	CPU底座	其它1	其它2	其它3	断线氧化内短位置	维修人	测试人	修复日期	工程变更	charge
+   // }
+
+   public class nb_aio_mblistSheet5_6//sheet5与6的信息在一起做
+   {
+       public string track_serial_no;//跟踪条码
+       public string vendor;//厂商
+       public string product;//客户别
+       public string source;//来源
+       public string order_no;//订单编号
+
+       public string receivedate;//收货日期
+       public string custommaterialNo;//客户料号
+       public string custom_serial_no;//客户序号
+
+       public string mb_describe;//mb描述
+       public string mb_brief;//mb简称
+
+       public string vendor_serail_no;//厂商序号
+       public string mpn;//mpn
+       public string mb_make_date;//mb生产日期
+       public string custom_fault;//客户故障
+
+       public List<string> fault_describeList;//最多三条
+       public List<string> mbfaList;//最多三条
+
+       public string shortcut;//短路电压
+
+       public string pch;//南北桥料号
+       public string pch_place;//南北桥位置
+       public string vga;//vga芯片料号
+       public string vga_place;//vga芯片位置
+       public string cpu;//CPU料号
+       public string cpu_place;//cpu芯片位置
+
+       public List<allSmtRecort> smtRecords;//最多三条
+       public string fault_type;//故障类别
+       public string repairer;
+       public string tester;//测试1站别的测试人
+       public string repair_date;//修复日期 
+       public string repair_result;//修复结果
+       public string lenovo_maintenance_no;//联想维修站编号
+
+       public string software_update;//软体更新
+
+       public string repair_Num;//维修次数
+
+       public string charge;
+   }
+
+   public class allSmtRecort
+   {
+       public string smtMpn;//位置
+       public string smtplace;//料号
+   }
+
 }

@@ -456,6 +456,8 @@ namespace SaledServices
             this.custom_faultTextBox.Text = "";
           
             this.gurantee_noteTextBox.Text = "";
+            this.timechecktextBox.Text = "";
+            this.timecheckresult.Text = "";
         }
 
         private bool checkInputIsNull()
@@ -767,6 +769,26 @@ namespace SaledServices
             {
                 this.custom_faultTextBox.SelectAll();
                 this.custom_faultTextBox.Focus();
+            }
+        }
+
+        private void timechecktextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                DateTime mb_makedate = Convert.ToDateTime(this.timechecktextBox.Text.Trim());
+                DateTime now = DateTime.Now;
+                DateTime checkDate = mb_makedate.AddMonths(15);
+                if (checkDate > now)
+                {
+                    this.timecheckresult.Text =  checkDate.ToString("yyyy-MM-dd")+"保内";
+                    this.guaranteeComboBox.Text = "保内";
+                }
+                else
+                {
+                    this.timecheckresult.Text = checkDate.ToString("yyyy-MM-dd") + "保外";
+                    this.guaranteeComboBox.Text = "保外";
+                }
             }
         }       
     }

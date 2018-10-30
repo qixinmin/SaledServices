@@ -781,19 +781,22 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                if (latest)
-                {
-                    cmd.CommandText = "select top 3 Id,vendor,product,source_brief,storehouse,custom_order,order_out_date,order_receive_date,"+
+
+                string sqlstr = "select top 3 Id,vendor,product,source_brief,storehouse,custom_order,order_out_date,order_receive_date,"+
                         "custom_machine_type,mb_brief,custommaterialNo,dpk_status,track_serial_no,custom_serial_no,vendor_serail_no,uuid,mac,mpn,"+
                         "mb_describe,mb_make_date,warranty_period,custom_fault,guarantee,customResponsibility,lenovo_custom_service_no,"+
-                        "lenovo_maintenance_no,lenovo_repair_no,whole_machine_no,inputuser from " + tableName + " order by id desc"; 
+                        "lenovo_maintenance_no,lenovo_repair_no,whole_machine_no,inputuser from " + tableName;
+                if(track_serial_noTextBox.Text.Trim()!="")
+                {
+                    sqlstr +=" where track_serial_no like '%"+this.track_serial_noTextBox.Text.Trim()+"%' ";
+                }
+                if (latest)
+                {
+                    cmd.CommandText =  sqlstr + " order by id desc"; 
                 }
                 else
                 {
-                    cmd.CommandText = "select top 20 Id,vendor,product,source_brief,storehouse,custom_order,order_out_date,order_receive_date," +
-                       "custom_machine_type,mb_brief,custommaterialNo,dpk_status,track_serial_no,custom_serial_no,vendor_serail_no,uuid,mac,mpn," +
-                       "mb_describe,mb_make_date,warranty_period,custom_fault,guarantee,customResponsibility,lenovo_custom_service_no," +
-                       "lenovo_maintenance_no,lenovo_repair_no,whole_machine_no,inputuser from " + tableName + " order by id desc"; 
+                    cmd.CommandText = sqlstr +  " order by id desc"; 
                 }
                 cmd.CommandType = CommandType.Text;
 

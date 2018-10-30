@@ -108,7 +108,6 @@ namespace SaledServices.Export
                     {
                         receiveOrderList.Add(temp);        
                     }
-                            
                 }
                 querySdr.Close();
 

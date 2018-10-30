@@ -1381,5 +1381,21 @@ namespace SaledServices
 
             allForm.Add(hefeiExportExcel);
         }
+
+        private AllBossExport allBossExport; 
+        private void 总报表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (allBossExport == null || allBossExport.IsDisposed)
+            {
+                allBossExport = new AllBossExport();
+                allBossExport.MdiParent = this;
+            }
+
+            allBossExport.WindowState = FormWindowState.Maximized;
+            allBossExport.BringToFront();
+            allBossExport.Show();
+
+            allForm.Add(allBossExport);
+        }
     }
 }

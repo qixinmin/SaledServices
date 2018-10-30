@@ -67,46 +67,7 @@ namespace SaledServices.Test_Outlook
                         return;
                     }
                     this.confirmbutton.Enabled = true;
-                    this.button1.Enabled = true;
-                    //cmd.CommandText = "select track_serial_no from test1table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-
-                    //SqlDataReader querySdr = cmd.ExecuteReader();
-                    //string track_serial_no = "";
-                    //while (querySdr.Read())
-                    //{
-                    //    track_serial_no = querySdr[0].ToString();
-                    //}
-                    //querySdr.Close();
-
-                    //if (track_serial_no != "")
-                    //{
-                    //    cmd.CommandText = "select custommaterialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-
-                    //    querySdr = cmd.ExecuteReader();
-                    //    string customMaterialNo = "";
-
-                    //    while (querySdr.Read())
-                    //    {
-                    //        customMaterialNo = querySdr[0].ToString();
-                    //    }
-                    //    querySdr.Close();
-
-                    //    if (customMaterialNo != "")
-                    //    {
-                    //        this.testerTextBox.Text = LoginForm.currentUser;
-                    //        this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
-                    //    }
-                    //    else
-                    //    {
-                    //        this.tracker_bar_textBox.Focus();
-                    //        this.tracker_bar_textBox.SelectAll();
-                    //        MessageBox.Show("追踪条码的内容不在收货表中，请检查！");
-                    //    }
-                    //}
-                    //else 
-                    //{
-                    //    MessageBox.Show("此追踪条码没有Test1的记录！");
-                    //}
+                    this.button1.Enabled = true;                   
 
                     this.testerTextBox.Text = LoginForm.currentUser;
                     this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);

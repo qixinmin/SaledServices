@@ -652,7 +652,7 @@ namespace SaledServices
             string mpn_txt = this.mpntextBox.Text.Trim();
             string mb_make_date_txt = this.mb_make_dateTextBox.Text.Trim();
             string customFault_txt = this.customFaulttextBox.Text.Trim();
-            string fault_describe_txt = this.fault_describetextBox.Text.Trim();
+            string fault_describe_txt = this.fault_describecomboBox.Text.Trim();
             string mbfa1rich_txt = this.mbfa1richTextBox.Text.Trim();
             string short_cut_txt = getShortCutText();
             string software_update_txt = this.software_updatecomboBox.Text.Trim();
@@ -686,11 +686,13 @@ namespace SaledServices
                 fault_type_txt = "NTF";
                 this.fault_typecomboBox.Text = fault_type_txt;
                 action_txt = "NTF";
+                actioncomboBox.Text = "NTF";
+              
             }
             else //非NTF状态
             {
                 isNTF = false;
-                if (fault_describetextBox.Text.Trim() == ""
+                if (fault_describecomboBox.Text.Trim() == ""
                     || fault_typecomboBox.Text.Trim() == ""
                     || actioncomboBox.Text.Trim() == "")
                 {
@@ -786,15 +788,18 @@ namespace SaledServices
                         }
                     }
 
-                    if (this.actioncomboBox.Text.Trim() != "BGA")
+                    if (this.actioncomboBox.Text.Trim() != "NTF")
                     {
-                        if (not_good_placetextBox1.Text.Trim() == "" || material_mpnComboBox1.Text.Trim() == "")
+                        if (this.actioncomboBox.Text.Trim() != "BGA")
                         {
-                            MessageBox.Show("在动作为非BGA情况下，位置与料号必须存在");
-                            conn.Close();
-                            return;
+                            if (not_good_placetextBox1.Text.Trim() == "" || material_mpnComboBox1.Text.Trim() == "")
+                            {
+                                MessageBox.Show("在动作为非BGA情况下，位置与料号必须存在");
+                                conn.Close();
+                                return;
+                            }
                         }
-                    }
+                    }                    
 
                     if (not_good_placetextBox1.Text.Trim() != "" && material_mpnComboBox1.Text.Trim() != "")
                     {
@@ -1182,7 +1187,7 @@ namespace SaledServices
                 this.mpntextBox.Text = "";
                 this.mb_make_dateTextBox.Text = "";
                 this.customFaulttextBox.Text = "";
-                this.fault_describetextBox.Text = "";
+                this.fault_describecomboBox.Text = "";
                 this.mbfa1richTextBox.Text = "";
                 uncheckShortCut();
                 this.software_updatecomboBox.Text = "";
@@ -1239,7 +1244,7 @@ namespace SaledServices
                     this.fault_typecomboBox.Enabled = true;
                     this.actioncomboBox.Enabled = true;
                     this.mbfa1richTextBox.Enabled = true;
-                    this.fault_describetextBox.Enabled = true;
+                    this.fault_describecomboBox.Enabled = true;
 
                     this.checkBox1.Enabled = true;
                     this.checkBox2.Enabled = true;
@@ -1329,7 +1334,7 @@ namespace SaledServices
                 this.fault_typecomboBox.Enabled = false;
                 this.actioncomboBox.Enabled = false;
                 this.mbfa1richTextBox.Enabled = false;
-                this.fault_describetextBox.Enabled = false;             
+                this.fault_describecomboBox.Enabled = false;             
 
                 this.checkBox1.Enabled = false;
                 this.checkBox2.Enabled = false;
@@ -1361,7 +1366,7 @@ namespace SaledServices
                 this.fault_typecomboBox.Enabled = true;
                 this.actioncomboBox.Enabled = true;
                 this.mbfa1richTextBox.Enabled = true;
-                this.fault_describetextBox.Enabled = true;              
+                this.fault_describecomboBox.Enabled = true;              
 
                 this.checkBox1.Enabled = true;
                 this.checkBox2.Enabled = true;
