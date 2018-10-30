@@ -108,6 +108,17 @@ namespace SaledServices.Export
                     cmd.CommandText = "select Id from test2table where track_serial_no ='" + repairRecord.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     if (querySdr.HasRows)
+                    {                       
+                        receiveOrderListtarget.Add(repairRecord);
+                    }
+                    querySdr.Close();
+                }
+
+                foreach (RepairRecordStruct repairRecord in receiveOrderList)
+                {
+                    cmd.CommandText = "select Id from testalltable where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
                     {
                         receiveOrderListtarget.Add(repairRecord);
                     }

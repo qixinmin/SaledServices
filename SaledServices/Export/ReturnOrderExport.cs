@@ -88,6 +88,13 @@ namespace SaledServices.Export
                         break;
                     }
                     querySdr.Close();
+
+
+                    DateTime dt1 = Convert.ToDateTime(temp.receive_date);
+                    DateTime dt2 = Convert.ToDateTime(temp.return_date);
+                    TimeSpan ts = dt2.Subtract(dt1);
+                    int overdays = ts.Days;                   
+                    temp.tat = overdays + "";
                 }
 
                 if (this.goodsum.Checked)
@@ -227,6 +234,7 @@ namespace SaledServices.Export
             titleList.Add("状态");
             titleList.Add("联想维修站编号");
             titleList.Add("联想维修单编号");
+            titleList.Add("TAT");
 
             foreach (ReturnOrderStruct stockcheck in StockCheckList)
             {
@@ -248,13 +256,13 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.vendor_serail_no);                
                 ct1.Add(stockcheck.vendormaterialNo);           
                 ct1.Add(stockcheck._status);           
-                ct1.Add(stockcheck.custom_res_type);           
-                ct1.Add(stockcheck.response_describe);           
-                ct1.Add(stockcheck.tat);           
-                ct1.Add(stockcheck.inputuser);           
-                ct1.Add(stockcheck.lenovo_maintenance_no);                   
+                //ct1.Add(stockcheck.custom_res_type);           
+                //ct1.Add(stockcheck.response_describe);   
+                ct1.Add(stockcheck.lenovo_maintenance_no);
                 ct1.Add(stockcheck.lenovo_repair_no);
-
+                ct1.Add(stockcheck.tat);           
+                //ct1.Add(stockcheck.inputuser);           
+               
                 ctest1.contentArray = ct1;
                 contentList.Add(ctest1);
             }

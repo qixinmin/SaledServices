@@ -147,14 +147,17 @@ namespace SaledServices
                     temp.TAT_TARGET = "7";
                     temp.warranty_period = querySdr[17].ToString();
 
+                    temp.repairDetailList = new List<repairDetail>();
+
                     receiveOrderList.Add(temp);
+
                 }
                 querySdr.Close();
 
                 foreach (HefeiDataStruct temp in receiveOrderList)
                 {
                     DateTime mb_makedate = Convert.ToDateTime(temp.PRODUCT_DAY_CODE);
-                    DateTime waranty_date = mb_makedate.AddMonths(Int16.Parse(temp.PRODUCT_DAY_CODE.Replace('M',' ').Trim()));
+                    DateTime waranty_date = mb_makedate.AddMonths(Int16.Parse(temp.warranty_period.Replace('M', ' ').Trim()));
                     DateTime subOneDay = mb_makedate.AddDays(-1);
                     temp.WARRANTY_PERIOD = waranty_date.ToString("yyyy-MM-dd");
                     temp.REQUEST_DATE = subOneDay.ToString("yyyy-MM-dd");
@@ -198,7 +201,7 @@ namespace SaledServices
                     }
 
                     //维修记录，首先查询BGA然后查询小材料       
-                    temp.repairDetailList = new List<repairDetail>();
+                  
                     cmd.CommandText = "select BGA_place, bgatype,BGAPN from bga_repair_record_table where track_serial_no ='" + temp.tracker_no_return + "' and newSn !='' order by Id desc";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
@@ -216,7 +219,7 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select stock_place,material_mpn,_actionthisNumberfrom fru_smt_used_record where track_serial_no ='" + temp.tracker_no_return + "'";
+                    cmd.CommandText = "select stock_place,material_mpn,_action,thisNumber from fru_smt_used_record where track_serial_no ='" + temp.tracker_no_return + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
@@ -273,10 +276,8 @@ namespace SaledServices
                         temp.repairDetailList.Add(repair);
                     }
 
-                    //差一个RRR_90
+                    //差一个RRR_90 TODO
                 }
-
-              
 
                 mConn.Close();
             }

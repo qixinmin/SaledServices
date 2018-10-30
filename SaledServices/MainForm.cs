@@ -1366,10 +1366,20 @@ namespace SaledServices
 
             allForm.Add(renBaoExportExcel);
         }
-
+        private HefeiExportExcel hefeiExportExcel;      
         private void 合肥报表ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (hefeiExportExcel == null || hefeiExportExcel.IsDisposed)
+            {
+                hefeiExportExcel = new HefeiExportExcel();
+                hefeiExportExcel.MdiParent = this;
+            }
 
+            hefeiExportExcel.WindowState = FormWindowState.Maximized;
+            hefeiExportExcel.BringToFront();
+            hefeiExportExcel.Show();
+
+            allForm.Add(hefeiExportExcel);
         }
     }
 }
