@@ -13,6 +13,9 @@ using System.Net;
 using NPOI.HSSF;
 using NPOI.HSSF.UserModel;
 using System.Globalization;
+using SaledServices.Export;
+using NPOI.SS.UserModel;
+using NPOI.HSSF.Util;
 
 namespace SaledServices
 {
@@ -233,54 +236,224 @@ namespace SaledServices
         }
 
         //title list的长度要保证与内容contentArray的长度一致, 一个文件包含多个sheet的尝试
-        public static void createExcelList(List<string> titleList, List<Object> contentList)
+        public static void createExcelListUsingNPOI(string filepathname, debitnotsSheet3 debitnots, List<allContent> allcontentList)
         {
             HSSFWorkbook hssfworkbook =new HSSFWorkbook();
-
-            HSSFSheet sheet = (HSSFSheet)hssfworkbook.CreateSheet("newsheet");
-            int row = contentList.Count +1;
-            int column = ((ExportExcelContent)(contentList[0])).contentArray.Count;
-         //   int contentListNum = contentList.Count;
-
-            for (int ri = 0; ri < row; ri++)
+            
+            //首页sheet
+            HSSFSheet firstsheet = (HSSFSheet)hssfworkbook.CreateSheet("Debit NOTS");
+            for (int i = 0; i <= 30; i++)
             {
-                sheet.CreateRow(ri);
+                firstsheet.CreateRow(i);
             }
-            for (int ri = 0; ri < row; ri++)
+
+            firstsheet.GetRow(0).CreateCell(2).SetCellValue(debitnots.titleC1);
+
+            HSSFCellStyle cellStyletitle = (HSSFCellStyle)hssfworkbook.CreateCellStyle();
+            IFont titlefont = hssfworkbook.CreateFont();
+            titlefont.FontHeightInPoints = 20;
+            titlefont.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.Bold;
+            titlefont.FontName = "宋体";
+            cellStyletitle.SetFont(titlefont);   
+            firstsheet.GetRow(0).GetCell(2).CellStyle = cellStyletitle;
+
+            firstsheet.GetRow(1).CreateCell(0).SetCellValue(debitnots.addressA2);
+            firstsheet.GetRow(2).CreateCell(0).SetCellValue(debitnots.telA3);
+            firstsheet.GetRow(4).CreateCell(0).SetCellValue(debitnots.billto1A5);
+            firstsheet.GetRow(5).CreateCell(0).SetCellValue(debitnots.billto2A6);
+            firstsheet.GetRow(6).CreateCell(0).SetCellValue(debitnots.billto3A7);
+            firstsheet.GetRow(7).CreateCell(0).SetCellValue(debitnots.billto4A8);
+
+            firstsheet.GetRow(8).CreateCell(0).SetCellValue(debitnots.telA9);
+            firstsheet.GetRow(9).CreateCell(0).SetCellValue(debitnots.faxA10);
+
+            firstsheet.GetRow(4).CreateCell(5).SetCellValue(debitnots.dateF5);
+            firstsheet.GetRow(4).CreateCell(6).SetCellValue(debitnots.dateG5);
+            firstsheet.GetRow(5).CreateCell(5).SetCellValue(debitnots.invF6);
+            HSSFCellStyle cellStylesub = (HSSFCellStyle)hssfworkbook.CreateCellStyle();
+            IFont subfont = hssfworkbook.CreateFont();
+            subfont.FontHeightInPoints = 9;
+            subfont.FontName = "宋体";
+            cellStylesub.SetFont(subfont);          
+            firstsheet.GetRow(1).GetCell(0).CellStyle = cellStylesub;
+            firstsheet.GetRow(2).GetCell(0).CellStyle = cellStylesub;
+            firstsheet.GetRow(4).GetCell(0).CellStyle = cellStylesub;
+            firstsheet.GetRow(5).GetCell(0).CellStyle = cellStylesub;
+            firstsheet.GetRow(6).GetCell(0).CellStyle = cellStylesub;
+            firstsheet.GetRow(7).GetCell(0).CellStyle = cellStylesub;
+            firstsheet.GetRow(8).GetCell(0).CellStyle = cellStylesub;
+            firstsheet.GetRow(9).GetCell(0).CellStyle = cellStylesub;
+            firstsheet.GetRow(4).GetCell(5).CellStyle = cellStylesub;
+            firstsheet.GetRow(4).GetCell(6).CellStyle = cellStylesub;
+            firstsheet.GetRow(5).GetCell(5).CellStyle = cellStylesub;
+
+
+            HSSFCellStyle cellStyleline = (HSSFCellStyle)hssfworkbook.CreateCellStyle();
+            cellStyleline.BorderBottom = NPOI.SS.UserModel.BorderStyle.Thick;//A11-G11,A26-G26
+            firstsheet.GetRow(10).CreateCell(0);
+            firstsheet.GetRow(10).CreateCell(1);
+            firstsheet.GetRow(10).CreateCell(2);
+            firstsheet.GetRow(10).CreateCell(3);
+            firstsheet.GetRow(10).CreateCell(4);
+            firstsheet.GetRow(10).CreateCell(5);
+            firstsheet.GetRow(10).CreateCell(6);
+
+            firstsheet.GetRow(10).GetCell(0).CellStyle = cellStyleline;
+            firstsheet.GetRow(10).GetCell(1).CellStyle = cellStyleline;
+            firstsheet.GetRow(10).GetCell(2).CellStyle = cellStyleline;
+            firstsheet.GetRow(10).GetCell(3).CellStyle = cellStyleline;
+            firstsheet.GetRow(10).GetCell(4).CellStyle = cellStyleline;
+            firstsheet.GetRow(10).GetCell(5).CellStyle = cellStyleline;
+            firstsheet.GetRow(10).GetCell(6).CellStyle = cellStyleline;
+
+            firstsheet.GetRow(25).CreateCell(0);
+            firstsheet.GetRow(25).CreateCell(1);
+            firstsheet.GetRow(25).CreateCell(2);
+            firstsheet.GetRow(25).CreateCell(3);
+            firstsheet.GetRow(25).CreateCell(4);
+            firstsheet.GetRow(25).CreateCell(5);
+            firstsheet.GetRow(25).CreateCell(6);
+
+            firstsheet.GetRow(25).GetCell(0).CellStyle = cellStyleline;
+            firstsheet.GetRow(25).GetCell(1).CellStyle = cellStyleline;
+            firstsheet.GetRow(25).GetCell(2).CellStyle = cellStyleline;
+            firstsheet.GetRow(25).GetCell(3).CellStyle = cellStyleline;
+            firstsheet.GetRow(25).GetCell(4).CellStyle = cellStyleline;
+            firstsheet.GetRow(25).GetCell(5).CellStyle = cellStyleline;
+            firstsheet.GetRow(25).GetCell(6).CellStyle = cellStyleline;
+
+            firstsheet.GetRow(13).CreateCell(0).SetCellValue(debitnots.contentA14);
+            firstsheet.GetRow(14).CreateCell(2).SetCellValue(debitnots.contentC14);
+            firstsheet.GetRow(13).CreateCell(3).SetCellValue(debitnots.contentD14);
+            firstsheet.GetRow(13).CreateCell(4).SetCellValue(debitnots.contentE14);
+            firstsheet.GetRow(14).CreateCell(3).SetCellValue(debitnots.contentD15);
+            firstsheet.GetRow(14).CreateCell(4).SetCellValue(debitnots.contentE15);
+
+            firstsheet.GetRow(15).CreateCell(1).SetCellValue(debitnots.contentB16);
+            firstsheet.GetRow(15).CreateCell(3).SetCellValue(debitnots.contentD16);
+            firstsheet.GetRow(15).CreateCell(4).SetCellValue(debitnots.contentE16);
+            firstsheet.GetRow(15).CreateCell(5).SetCellValue(debitnots.contentF16);
+
+            firstsheet.GetRow(16).CreateCell(1).SetCellValue(debitnots.contentB17);
+            firstsheet.GetRow(16).CreateCell(3).SetCellValue(debitnots.contentD17);
+            firstsheet.GetRow(16).CreateCell(4).SetCellValue(debitnots.contentE17);
+            firstsheet.GetRow(16).CreateCell(5).SetCellValue(debitnots.contentF17);
+
+            firstsheet.GetRow(19).CreateCell(1).SetCellValue(debitnots.contentB20);
+            firstsheet.GetRow(19).CreateCell(3).SetCellValue(debitnots.contentD20);
+            firstsheet.GetRow(19).CreateCell(3).SetCellValue(debitnots.contentE20);
+            firstsheet.GetRow(19).CreateCell(5).SetCellValue(debitnots.contentF20);
+
+            firstsheet.GetRow(21).CreateCell(4).SetCellValue(debitnots.contentE22);
+            firstsheet.GetRow(21).CreateCell(5).SetCellValue(debitnots.contentF22);
+
+            firstsheet.GetRow(23).CreateCell(1).SetCellValue(debitnots.contentB24);
+            firstsheet.GetRow(23).CreateCell(4).SetCellValue(debitnots.contentE24);
+            firstsheet.GetRow(23).CreateCell(5).SetCellValue(debitnots.contentF24);
+
+            firstsheet.GetRow(24).CreateCell(1).SetCellValue(debitnots.contentB25);
+            firstsheet.GetRow(24).CreateCell(4).SetCellValue(debitnots.contentE25);
+            firstsheet.GetRow(24).CreateCell(5).SetCellValue(debitnots.contentF25);
+
+            firstsheet.GetRow(26).CreateCell(4).SetCellValue(debitnots.contentE27);
+            firstsheet.GetRow(26).CreateCell(5).SetCellValue(debitnots.contentF27);
+
+            firstsheet.GetRow(29).CreateCell(4).SetCellValue(debitnots.contentE30);
+            firstsheet.GetRow(30).CreateCell(4).SetCellValue(debitnots.contentE31);
+
+            HSSFCellStyle cellStylecontent = (HSSFCellStyle)hssfworkbook.CreateCellStyle();
+            IFont contentfont = hssfworkbook.CreateFont();
+            contentfont.FontHeightInPoints = 12;
+            contentfont.FontName = "宋体";
+            cellStylecontent.SetFont(contentfont);
+            
+            firstsheet.GetRow(13).GetCell(0).CellStyle = cellStylecontent;
+            firstsheet.GetRow(14).GetCell(2).CellStyle = cellStylecontent;
+            firstsheet.GetRow(13).GetCell(3).CellStyle = cellStylecontent;
+            firstsheet.GetRow(13).GetCell(4).CellStyle = cellStylecontent;
+            firstsheet.GetRow(14).GetCell(3).CellStyle = cellStylecontent;
+            firstsheet.GetRow(14).GetCell(4).CellStyle = cellStylecontent;
+
+            firstsheet.GetRow(15).GetCell(1).CellStyle = cellStylecontent;
+            firstsheet.GetRow(15).GetCell(3).CellStyle = cellStylecontent;
+            firstsheet.GetRow(15).GetCell(4).CellStyle = cellStylecontent;
+            firstsheet.GetRow(15).GetCell(5).CellStyle = cellStylecontent;
+
+            firstsheet.GetRow(16).GetCell(1).CellStyle = cellStylecontent;
+            firstsheet.GetRow(16).GetCell(3).CellStyle = cellStylecontent;
+            firstsheet.GetRow(16).GetCell(4).CellStyle = cellStylecontent;
+            firstsheet.GetRow(16).GetCell(5).CellStyle = cellStylecontent;
+
+            firstsheet.GetRow(19).GetCell(1).CellStyle = cellStylecontent;
+            firstsheet.GetRow(19).GetCell(3).CellStyle = cellStylecontent;
+            firstsheet.GetRow(19).GetCell(3).CellStyle = cellStylecontent;
+            firstsheet.GetRow(19).GetCell(5).CellStyle = cellStylecontent;
+
+            firstsheet.GetRow(21).GetCell(4).CellStyle = cellStylecontent;
+            firstsheet.GetRow(21).GetCell(5).CellStyle = cellStylecontent;
+
+            firstsheet.GetRow(23).GetCell(1).CellStyle = cellStylecontent;
+            firstsheet.GetRow(23).GetCell(4).CellStyle = cellStylecontent;
+            firstsheet.GetRow(23).GetCell(5).CellStyle = cellStylecontent;
+
+            firstsheet.GetRow(24).GetCell(1).CellStyle = cellStylecontent;
+            firstsheet.GetRow(24).GetCell(4).CellStyle = cellStylecontent;
+            firstsheet.GetRow(24).GetCell(5).CellStyle = cellStylecontent;
+
+            //firstsheet.GetRow(26).GetCell(4).CellStyle = cellStylecontent;
+            //firstsheet.GetRow(26).GetCell(5).CellStyle = cellStylecontent;
+
+            firstsheet.GetRow(29).GetCell(4).CellStyle = cellStylecontent;
+            firstsheet.GetRow(30).GetCell(4).CellStyle = cellStylecontent;
+
+            //HSSFCellStyle cellStyleback = (HSSFCellStyle)hssfworkbook.CreateCellStyle();
+            //cellStyleback.FillBackgroundColor = HSSFColor.Yellow.Index;
+            //cellStyleback.FillForegroundColor = HSSFColor.Yellow.Index;
+            //cellStyleback.SetFont(contentfont);
+            //firstsheet.GetRow(26).GetCell(5).CellStyle = cellStyleback;
+            //firstsheet.GetRow(26).GetCell(4).CellStyle = cellStyleback;
+
+            //其他内容表格
+            foreach (allContent temp in allcontentList)
             {
-                for (int ci = 0; ci < column; ci++)
+                HSSFSheet sheet = (HSSFSheet)hssfworkbook.CreateSheet(temp.sheetName);
+                int row = temp.contentList.Count + 1;
+                int column = ((ExportExcelContent)(temp.contentList[0])).contentArray.Count;
+
+                for (int ri = 0; ri < row; ri++)
                 {
-                    if (ri == 0)
+                    sheet.CreateRow(ri);
+                }
+                for (int ri = 0; ri < row; ri++)
+                {
+                    for (int ci = 0; ci < column; ci++)
                     {
-                        
-                        sheet.GetRow(ri).CreateCell(ci).SetCellValue(titleList[ci]);
-                    }
-                    else
-                    {
-                        string content =((ExportExcelContent)(contentList[ri-1])).contentArray[ci];
-                        sheet.GetRow(ri).CreateCell(ci).SetCellValue(content);
+                        if (ri == 0)
+                        {
+                            sheet.GetRow(ri).CreateCell(ci).SetCellValue(temp.titleList[ci]);
+                        }
+                        else
+                        {
+                            string content = ((ExportExcelContent)(temp.contentList[ri - 1])).contentArray[ci];
+                            sheet.GetRow(ri).CreateCell(ci).SetCellValue(content);
+                        }
                     }
                 }
+                for (int ci = 0; ci < column; ci++)
+                {
+                    sheet.AutoSizeColumn(ci);
+                }
             }
-             for (int ci = 0; ci < column; ci++)
-             {
-                 sheet.AutoSizeColumn(ci);
-             }
             
-            hssfworkbook.CreateSheet("Sheet1");
+            //hssfworkbook.CreateSheet("Sheet1");
             //sheet.CreateRow(0).CreateCell(0).SetCellValue("This is a Sample");//npoi 的下标从0开始的，原始的从1开始
-
             //HSSFCell cell = (HSSFCell)sheet.CreateRow(0).CreateCell(0);
             //cell.SetCellValue(new DateTime(2008, 5, 5));
 
             //set dateformat
-
             //HSSFCellStyle cellStyle = (HSSFCellStyle)hssfworkbook.CreateCellStyle();
-
             //HSSFDataFormat format = (HSSFDataFormat)hssfworkbook.CreateDataFormat();
-
             //cellStyle.DataFormat = format.GetFormat("yyyy年m月d日");
-
             //cell.CellStyle = cellStyle;
 
             // Create arow and put some cells in it. Rows are 0 based.
@@ -289,46 +462,15 @@ namespace SaledServices
             //cell = (HSSFCell)row.CreateCell(1);
             //// Style thecell with borders all around.
             //HSSFCellStyle style = (HSSFCellStyle)hssfworkbook.CreateCellStyle();
-
-           
-
-          //  cell.CellStyle = style;
-
-            HSSFSheet sheet2 = (HSSFSheet)hssfworkbook.CreateSheet("Sheet2");
-
-            for (int ri = 0; ri < row; ri++)
-            {
-                sheet2.CreateRow(ri);
-            }
-            for (int ri = 0; ri < row; ri++)
-            {
-                for (int ci = 0; ci < column; ci++)
-                {
-                    if (ri == 0)
-                    {
-
-                        sheet2.GetRow(ri).CreateCell(ci).SetCellValue(titleList[ci]);
-                    }
-                    else
-                    {
-                        string content = ((ExportExcelContent)(contentList[ri - 1])).contentArray[ci];
-                        sheet2.GetRow(ri).CreateCell(ci).SetCellValue(content);
-                    }
-                }
-            }
-            for (int ci = 0; ci < column; ci++)
-            {
-                sheet2.AutoSizeColumn(ci);
-            }
             
-           // sheet2.CreateRow(0).CreateCell(0).SetCellValue("This2 is a Sample");//npoi 的下标从0开始的，原始的从1开始
-            HSSFSheet sheet3 = (HSSFSheet)hssfworkbook.CreateSheet("Sheet3");
-            sheet3.CreateRow(0).CreateCell(0).SetCellValue("This3 is a Sample");//npoi 的下标从0开始的，原始的从1开始
-            FileStream file = new FileStream(@"D:\test.xls", FileMode.Create);
+            //sheet2.CreateRow(0).CreateCell(0).SetCellValue("This2 is a Sample");//npoi 的下标从0开始的，原始的从1开始
+            //HSSFSheet sheet3 = (HSSFSheet)hssfworkbook.CreateSheet("Sheet3");
+            //sheet3.CreateRow(0).CreateCell(0).SetCellValue("This3 is a Sample");//npoi 的下标从0开始的，原始的从1开始
+            FileStream file = new FileStream(filepathname, FileMode.Create);
 
             hssfworkbook.Write(file);
-
             file.Close();
+            MessageBox.Show(filepathname+"导出成功");
         }
 
         //title list的长度要保证与内容contentArray的长度一致

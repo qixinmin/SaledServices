@@ -40,7 +40,7 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select distinct storehouse_describe from storehouse";
+                cmd.CommandText = "select  distinct storehouse from receiveOrder";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataReader querySdr = cmd.ExecuteReader();

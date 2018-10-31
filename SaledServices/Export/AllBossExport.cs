@@ -19,6 +19,8 @@ namespace SaledServices.Export
 
         private void exportxmlbutton_Click(object sender, EventArgs e)
         {
+            exportxmlbutton.Enabled = false;
+
             DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy/MM/dd"));
             DateTime time2 = Convert.ToDateTime(this.dateTimePickerend.Value.Date.ToString("yyyy/MM/dd"));
 
@@ -31,15 +33,16 @@ namespace SaledServices.Export
             string startTime = this.dateTimePickerstart.Value.ToString("yyyy/MM/dd");
             string endTime = this.dateTimePickerend.Value.ToString("yyyy/MM/dd");
 
-            List<nb_aio_mblistSheet5_6> receiveOrderList = new List<nb_aio_mblistSheet5_6>();
-
-            List<nb_aio_mblistSheet5_6> receiveOrderListtarget = new List<nb_aio_mblistSheet5_6>();
-
-            List<allReturnOrderStruct> allReturnOrderOrderList = new List<allReturnOrderStruct>();
-
-            List<allSumStruct> allSumStructList = new List<allSumStruct>();
-
+            List<nb_aio_mblistSheet5_6> repairList = new List<nb_aio_mblistSheet5_6>();
+            List<nb_aio_mblistSheet5_6> repairListtarget = new List<nb_aio_mblistSheet5_6>();
+            List<nb_aio_mblistSheet5_6> repairListtargetAIO = new List<nb_aio_mblistSheet5_6>();
+            List<nb_aio_mblistSheet5_6> repairListtargetNB = new List<nb_aio_mblistSheet5_6>();
+            List<allReturnOrderStruct> allReturnOrderList = new List<allReturnOrderStruct>();
+            List<allSumStruct> allSumStructListAIO = new List<allSumStruct>();
+            List<allSumStruct> allSumStructListNB = new List<allSumStruct>();
             List<fruListSheet4> fruList = new List<fruListSheet4>();
+
+            debitnotsSheet3 debitnots = new debitnotsSheet3();
 
             try
             {
@@ -79,69 +82,91 @@ namespace SaledServices.Export
                     temp.lenovo_maintenance_no = querySdr[18].ToString();
                     temp.lenovo_repair_no = querySdr[19].ToString();
 
-                    allReturnOrderOrderList.Add(temp);
+                    allReturnOrderList.Add(temp);
                 }
                 querySdr.Close();
 
-                foreach (allReturnOrderStruct temp in allReturnOrderOrderList)
+                foreach (allReturnOrderStruct temp in allReturnOrderList)
                 {
-                    cmd.CommandText = "select order_receive_date from DeliveredTable where track_serial_no='" + temp.track_serial_no + "'";
+                    cmd.CommandText = "select order_receive_date,mb_brief from DeliveredTable where track_serial_no='" + temp.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
                         temp.receive_date = querySdr[0].ToString();
+                        temp.mb_brief = querySdr[1].ToString();
                         break;
                     }
                     querySdr.Close();
-
 
                     DateTime dt1 = Convert.ToDateTime(temp.receive_date);
                     DateTime dt2 = Convert.ToDateTime(temp.return_date);
                     TimeSpan ts = dt2.Subtract(dt1);
                     int overdays = ts.Days;
                     temp.tat = overdays + "";
-                }
-               
-                foreach (allReturnOrderStruct temp in allReturnOrderOrderList)
-                {
+
+                    //统计信息
                     allSumStruct temp1 = new allSumStruct();
-                    temp1.ramno = temp.orderno;
-                    temp1.returndate = temp.return_date;
-                    temp1.returnfileNo = temp.return_file_no;
-                    temp1.custommaterialNo = temp.custommaterialNo;
-                    if (allSumStructList.Count == 0)
+                    temp1.mb_brief = temp.mb_brief;
+                    if (temp.product == "AIO")
                     {
-                        allSumStructList.Add(temp1);
-                    }
-                    else
-                    {
-                        bool exist = false;
-                        foreach (allSumStruct oldrecord in allSumStructList)
+                        if (allSumStructListAIO.Count == 0)
                         {
-                            if (oldrecord.equals(temp1))
+                            if (temp1.mb_brief != null && temp1.mb_brief.Trim() != "")
                             {
-                                oldrecord.incrementNum();
-                                exist = true;
-                                break;
+                                allSumStructListAIO.Add(temp1);
                             }
                         }
-                        if (exist == false)
+                        else
                         {
-                            allSumStructList.Add(temp1);
+                            bool exist = false;
+                            foreach (allSumStruct oldrecord in allSumStructListAIO)
+                            {
+                                if (oldrecord.equals(temp1))
+                                {
+                                    oldrecord.incrementNum();
+                                    exist = true;
+                                    break;
+                                }
+                            }
+                            if (exist == false)
+                            {
+                                if (temp1.mb_brief != null && temp1.mb_brief.Trim() != "")
+                                {
+                                    allSumStructListAIO.Add(temp1);
+                                }
+                            }
                         }
                     }
-
-                    foreach (allSumStruct oldrecord in allSumStructList)
+                    else if (temp.product == "LBG")
                     {
-                        cmd.CommandText = "select mb_brief from MBMaterialCompare where custommaterialNo='" + oldrecord.custommaterialNo + "'";
-                        querySdr = cmd.ExecuteReader();
-                        while (querySdr.Read())
+                        if (allSumStructListNB.Count == 0)
                         {
-                            oldrecord.mb_brief = querySdr[0].ToString();
-                            break;
+                            if (temp1.mb_brief != null && temp1.mb_brief.Trim() != "")
+                            {
+                                allSumStructListNB.Add(temp1);
+                            }
                         }
-                        querySdr.Close();
-                    }
+                        else
+                        {
+                            bool exist = false;
+                            foreach (allSumStruct oldrecord in allSumStructListNB)
+                            {
+                                if (oldrecord.equals(temp1))
+                                {
+                                    oldrecord.incrementNum();
+                                    exist = true;
+                                    break;
+                                }
+                            }
+                            if (exist == false)
+                            {
+                                if (temp1.mb_brief!=null && temp1.mb_brief.Trim() != "")
+                                {
+                                    allSumStructListNB.Add(temp1);
+                                }
+                            }
+                        }
+                    }                   
                 }
 
                 //查询fru的记录
@@ -149,7 +174,6 @@ namespace SaledServices.Export
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
-
                     fruListSheet4 temp = new fruListSheet4();
                     temp.receive_date = querySdr[0].ToString();
                     temp.orderno = querySdr[1].ToString();
@@ -175,36 +199,34 @@ namespace SaledServices.Export
                     temp.track_serial_no = querySdr[0].ToString();
                     temp.repair_Num = querySdr[1].ToString();
 
-                    receiveOrderList.Add(temp);
+                    repairList.Add(temp);
                 }
                 querySdr.Close();
 
                 //过滤到test2的信息
-                foreach (nb_aio_mblistSheet5_6 repairRecord in receiveOrderList)
+                foreach (nb_aio_mblistSheet5_6 repairRecord in repairList)
                 {
                     cmd.CommandText = "select Id from test2table where track_serial_no ='" + repairRecord.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     if (querySdr.HasRows)
                     {
-                        receiveOrderListtarget.Add(repairRecord);
+                        repairListtarget.Add(repairRecord);
                     }
                     querySdr.Close();
                 }
 
-                foreach (nb_aio_mblistSheet5_6 repairRecord in receiveOrderList)
+                foreach (nb_aio_mblistSheet5_6 repairRecord in repairList)
                 {
                     cmd.CommandText = "select Id from testalltable where track_serial_no ='" + repairRecord.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     if (querySdr.HasRows)
                     {
-                        receiveOrderListtarget.Add(repairRecord);
+                        repairListtarget.Add(repairRecord);
                     }
                     querySdr.Close();
                 }
 
-
-
-                foreach (nb_aio_mblistSheet5_6 repairRecord in receiveOrderListtarget)
+                foreach (nb_aio_mblistSheet5_6 repairRecord in repairListtarget)
                 {
                     cmd.CommandText = "select vendor,product,source_brief,custom_order,order_receive_date,custommaterialNo," +
                         "custom_serial_no,mb_describe,mb_brief,vendor_serail_no,mpn,mb_make_date,custom_fault,lenovo_maintenance_no from DeliveredTable where track_serial_no ='" + repairRecord.track_serial_no + "'";
@@ -236,7 +258,6 @@ namespace SaledServices.Export
                     while (querySdr.Read())
                     {
                         repairRecord.shortcut = querySdr[1].ToString();
-
                         // repairRecord.fault_type = querySdr[2].ToString();
                         repairRecord.repairer = querySdr[3].ToString();
                         repairRecord.repair_date = querySdr[4].ToString();
@@ -244,7 +265,6 @@ namespace SaledServices.Export
                         repairRecord.software_update = querySdr[6].ToString();
                     }
                     querySdr.Close();
-
 
                     cmd.CommandText = "select top 3 repair_result, fault_describe,mbfa1,fault_type from repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' order by id desc";
                     querySdr = cmd.ExecuteReader();
@@ -337,151 +357,561 @@ namespace SaledServices.Export
                         repairRecord.repair_result = "修复良品";
                     }
                 }
+
+                foreach (nb_aio_mblistSheet5_6 repairRecord in repairListtarget)
+                {
+                    if (repairRecord.product == "AIO")
+                    {
+                        repairListtargetAIO.Add(repairRecord);
+                     }
+                    else if (repairRecord.product == "LBG")
+                    {
+                        repairListtargetNB.Add(repairRecord);
+                    }
+                 }
+
+                //修改debitnots中部分数据，todo
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
 
-            generateExcelToCheck(receiveOrderListtarget, startTime, endTime);
+            generateExcelToCheck(debitnots, allSumStructListAIO, allSumStructListNB, fruList, repairListtargetAIO, repairListtargetNB, startTime, endTime);
         }
 
-        public void generateExcelToCheck(List<nb_aio_mblistSheet5_6> repairRecordList, string startTime, string endTime)
+        public void generateExcelToCheck(
+            debitnotsSheet3 debitnots,
+            List<allSumStruct> allSumStructListAIO,
+            List<allSumStruct> allSumStructListNB,
+            List<fruListSheet4> fruList,
+            List<nb_aio_mblistSheet5_6> repairRecordListAIO,
+            List<nb_aio_mblistSheet5_6> repairRecordListNB,
+            string startTime, string endTime)
         {
-            List<string> titleList = new List<string>();
-            List<Object> contentList = new List<object>();
+            List<allContent> allcontentList = new List<allContent>();
 
-            titleList.Add("跟踪条码");
-            titleList.Add("厂商");
-            titleList.Add("客户别");
-            titleList.Add("来源");
-            titleList.Add("订单编号");
-            titleList.Add("收货日期");
-            titleList.Add("客户料号");
-            titleList.Add("客户序号");
-            titleList.Add("MB描述");
-            titleList.Add("MB简称");
-            titleList.Add("厂商序号");
-            titleList.Add("MPN");
+            //汇总AIO
+            allContent sumContentAio = new allContent();
+            sumContentAio.sheetName = "汇总AIO";
+            sumContentAio.titleList = new List<string>();
+            sumContentAio.contentList = new List<object>();
+            sumContentAio.titleList.Add("Model");
+            sumContentAio.titleList.Add("数量");
+            if (allSumStructListAIO.Count == 0)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+                ctest1.contentArray = ct1;
+                ct1.Add("");
+                ct1.Add("");
+                sumContentAio.contentList.Add(ctest1);
+            }
+            else
+            {
+                foreach (allSumStruct temp in allSumStructListAIO)
+                {
+                    ExportExcelContent ctest1 = new ExportExcelContent();
+                    List<string> ct1 = new List<string>();
+                    ctest1.contentArray = ct1;
+                    ct1.Add(temp.mb_brief);
+                    ct1.Add(temp.returnNum + "");
+                    sumContentAio.contentList.Add(ctest1);
+                }
+            }
+            
+            allcontentList.Add(sumContentAio);
 
-            titleList.Add("MB生产日期");
-            titleList.Add("客户故障");
-            titleList.Add("软体更新");
+            //汇总NB
+            allContent sumContentNB = new allContent();
+            sumContentNB.sheetName = "汇总NB";
+            sumContentNB.titleList = new List<string>();
+            sumContentNB.contentList = new List<object>();
+            sumContentNB.titleList.Add("Model");
+            sumContentNB.titleList.Add("数量");
+            if (allSumStructListNB.Count == 0)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+                ctest1.contentArray = ct1;
+                ct1.Add("");
+                ct1.Add("");
+                sumContentNB.contentList.Add(ctest1);
+            }
+            else
+            {
+                foreach (allSumStruct temp in allSumStructListNB)
+                {
+                    ExportExcelContent ctest1 = new ExportExcelContent();
+                    List<string> ct1 = new List<string>();
+                    ctest1.contentArray = ct1;
+                    ct1.Add(temp.mb_brief);
+                    ct1.Add(temp.returnNum + "");
+                    sumContentNB.contentList.Add(ctest1);
+                }
+            }
 
+            allcontentList.Add(sumContentNB);
+
+            //FRU记录
+            allContent fruContent = new allContent();
+            fruContent.sheetName = "FRU记录";
+            fruContent.titleList = new List<string>();
+            fruContent.contentList = new List<object>();
+            fruContent.titleList.Add("收料日期");
+            fruContent.titleList.Add("rma号码");
+            fruContent.titleList.Add("联想料号");
+            fruContent.titleList.Add("机型");
+            fruContent.titleList.Add("名称");
+            fruContent.titleList.Add("配件序号");
+            fruContent.titleList.Add("周期");
+            fruContent.titleList.Add("保内外");
+            fruContent.titleList.Add("料号71");
+            fruContent.titleList.Add("原材料号");
+            fruContent.titleList.Add("客户故障");
+            fruContent.titleList.Add("charge ");
+            if (fruList.Count == 0)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+                ctest1.contentArray = ct1;
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                fruContent.contentList.Add(ctest1);
+            }
+            else
+            {
+                foreach (fruListSheet4 temp in fruList)
+                {
+                    ExportExcelContent ctest1 = new ExportExcelContent();
+                    List<string> ct1 = new List<string>();
+                    ctest1.contentArray = ct1;
+
+                    ct1.Add(temp.receive_date);
+                    ct1.Add(temp.orderno);
+
+                    ct1.Add(temp.customermaterialno);
+                    ct1.Add(temp.machine_type);
+                    ct1.Add(temp.name);
+                    ct1.Add(temp.peijian_no);
+                    ct1.Add(temp.make_date);
+                    ct1.Add(temp.gurantee);
+                    ct1.Add(temp.vendor_material_no);
+                    ct1.Add(temp.mpn1);
+                    ct1.Add(temp.custom_fault);
+                    ct1.Add(temp.charge);
+
+                    fruContent.contentList.Add(ctest1);
+                }
+            }
+           
+            allcontentList.Add(fruContent);
+
+            //维修记录AIO
+            allContent repairRecordContentAIO = new allContent();
+            repairRecordContentAIO.sheetName = "维修记录AIO";
+            repairRecordContentAIO.titleList = new List<string>();
+            repairRecordContentAIO.contentList = new List<object>();
+
+            repairRecordContentAIO.titleList.Add("跟踪条码");
+            repairRecordContentAIO.titleList.Add("厂商");
+            repairRecordContentAIO.titleList.Add("客户别");
+            repairRecordContentAIO.titleList.Add("来源");
+            repairRecordContentAIO.titleList.Add("订单编号");
+            repairRecordContentAIO.titleList.Add("收货日期");
+            repairRecordContentAIO.titleList.Add("客户料号");
+            repairRecordContentAIO.titleList.Add("客户序号");
+            repairRecordContentAIO.titleList.Add("MB描述");
+            repairRecordContentAIO.titleList.Add("MB简称");
+            repairRecordContentAIO.titleList.Add("厂商序号");
+            repairRecordContentAIO.titleList.Add("MPN");
+            repairRecordContentAIO.titleList.Add("MB生产日期");
+            repairRecordContentAIO.titleList.Add("客户故障");
+            repairRecordContentAIO.titleList.Add("软体更新");
 
             for (int i = 1; i <= 3; i++)
             {
-                titleList.Add("现象" + i);
+                repairRecordContentAIO.titleList.Add("现象" + i);
             }
+            for (int i = 1; i <= 3; i++)
+            {
+                repairRecordContentAIO.titleList.Add("mbfa" + i);
+            }
+
+            repairRecordContentAIO.titleList.Add("短路电压");
+            repairRecordContentAIO.titleList.Add("南北桥料号");
+            repairRecordContentAIO.titleList.Add("南北桥位置");
+            repairRecordContentAIO.titleList.Add("vga芯片料号");
+            repairRecordContentAIO.titleList.Add("vga芯片位置");
+            repairRecordContentAIO.titleList.Add("CPU料号");
+            repairRecordContentAIO.titleList.Add("CPU芯片位置");
 
             for (int i = 1; i <= 3; i++)
             {
-                titleList.Add("mbfa" + i);
+                repairRecordContentAIO.titleList.Add("其他" + i + "位置");
+                repairRecordContentAIO.titleList.Add("其他" + i + "位置料号");
             }
 
-            titleList.Add("短路电压");
-            titleList.Add("南北桥料号");
-            titleList.Add("南北桥位置");
-            titleList.Add("vga芯片料号");
-            titleList.Add("vga芯片位置");
-            titleList.Add("CPU料号");
-            titleList.Add("CPU芯片位置");
+            repairRecordContentAIO.titleList.Add("故障类别");
+            repairRecordContentAIO.titleList.Add("维修人");
+            repairRecordContentAIO.titleList.Add("测试人");
+            repairRecordContentAIO.titleList.Add("修复日期 ");
+            repairRecordContentAIO.titleList.Add("修复结果");
+            repairRecordContentAIO.titleList.Add("联想维修站编号");
 
-            for (int i = 1; i <= 3; i++)
-            {
-                titleList.Add("其他" + i + "位置");
-                titleList.Add("其他" + i + "位置料号");
-            }
-
-            titleList.Add("故障类别");
-            titleList.Add("维修人");
-            titleList.Add("测试人");
-            titleList.Add("修复日期 ");
-            titleList.Add("修复结果");
-            titleList.Add("联想维修站编号");
-
-            foreach (nb_aio_mblistSheet5_6 repaircheck in repairRecordList)
+            if (repairRecordListAIO.Count == 0)
             {
                 ExportExcelContent ctest1 = new ExportExcelContent();
                 List<string> ct1 = new List<string>();
 
-                ct1.Add(repaircheck.track_serial_no);
-                ct1.Add(repaircheck.vendor);
-                ct1.Add(repaircheck.product);
-                ct1.Add(repaircheck.source);
-                ct1.Add(repaircheck.order_no);
-                ct1.Add(repaircheck.receivedate.Replace("0:00:00", "").Trim());
-                ct1.Add(repaircheck.custommaterialNo);
-                ct1.Add(repaircheck.custom_serial_no);
-                ct1.Add(repaircheck.mb_describe);
-                ct1.Add(repaircheck.mb_brief);
-                ct1.Add(repaircheck.vendor_serail_no);
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
 
-                ct1.Add(repaircheck.mpn);
-                ct1.Add(repaircheck.mb_make_date.Replace("0:00:00", "").Trim());
-                ct1.Add(repaircheck.custom_fault);
-                ct1.Add(repaircheck.software_update);
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
 
                 for (int i = 0; i < 3; i++)
                 {
-                    if (i < repaircheck.fault_describeList.Count)
-                    {
-                        ct1.Add(repaircheck.fault_describeList[i]);
-                    }
-                    else
-                    {
-                        ct1.Add("");
-                    }
+                    ct1.Add("");
                 }
 
                 for (int i = 0; i < 3; i++)
                 {
-                    if (i < repaircheck.mbfaList.Count)
-                    {
-                        ct1.Add(repaircheck.mbfaList[i]);
-                    }
-                    else
-                    {
-                        ct1.Add("");
-                    }
+                    ct1.Add("");
                 }
 
-                ct1.Add(repaircheck.shortcut);
-
-                ct1.Add(repaircheck.pch);
-                ct1.Add(repaircheck.pch_place);
-                ct1.Add(repaircheck.vga);
-                ct1.Add(repaircheck.vga_place);
-                ct1.Add(repaircheck.cpu);
-                ct1.Add(repaircheck.cpu_place);
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
 
                 for (int i = 0; i < 3; i++)
                 {
-                    if (i < repaircheck.smtRecords.Count)
-                    {
-                        ct1.Add(repaircheck.smtRecords[i].smtplace);
-                        ct1.Add(repaircheck.smtRecords[i].smtMpn);
-                    }
-                    else
-                    {
-                        ct1.Add("");
-                        ct1.Add("");
-                    }
+                    ct1.Add("");
+                    ct1.Add("");
                 }
 
-                ct1.Add(repaircheck.fault_type);
-                ct1.Add(repaircheck.repairer);
-                ct1.Add(repaircheck.tester);
-                ct1.Add(repaircheck.repair_date.Replace("0:00:00", "").Trim());
-                ct1.Add(repaircheck.repair_result);
-                ct1.Add(repaircheck.lenovo_maintenance_no);
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
 
                 ctest1.contentArray = ct1;
-                contentList.Add(ctest1);
+                repairRecordContentAIO.contentList.Add(ctest1);
+            }
+            else
+            {
+                foreach (nb_aio_mblistSheet5_6 repaircheck in repairRecordListAIO)
+                {
+                    ExportExcelContent ctest1 = new ExportExcelContent();
+                    List<string> ct1 = new List<string>();
+
+                    ct1.Add(repaircheck.track_serial_no);
+                    ct1.Add(repaircheck.vendor);
+                    ct1.Add(repaircheck.product);
+                    ct1.Add(repaircheck.source);
+                    ct1.Add(repaircheck.order_no);
+                    ct1.Add(repaircheck.receivedate.Replace("0:00:00", "").Trim());
+                    ct1.Add(repaircheck.custommaterialNo);
+                    ct1.Add(repaircheck.custom_serial_no);
+                    ct1.Add(repaircheck.mb_describe);
+                    ct1.Add(repaircheck.mb_brief);
+                    ct1.Add(repaircheck.vendor_serail_no);
+
+                    ct1.Add(repaircheck.mpn);
+                    ct1.Add(repaircheck.mb_make_date.Replace("0:00:00", "").Trim());
+                    ct1.Add(repaircheck.custom_fault);
+                    ct1.Add(repaircheck.software_update);
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (i < repaircheck.fault_describeList.Count)
+                        {
+                            ct1.Add(repaircheck.fault_describeList[i]);
+                        }
+                        else
+                        {
+                            ct1.Add("");
+                        }
+                    }
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (i < repaircheck.mbfaList.Count)
+                        {
+                            ct1.Add(repaircheck.mbfaList[i]);
+                        }
+                        else
+                        {
+                            ct1.Add("");
+                        }
+                    }
+
+                    ct1.Add(repaircheck.shortcut);
+                    ct1.Add(repaircheck.pch);
+                    ct1.Add(repaircheck.pch_place);
+                    ct1.Add(repaircheck.vga);
+                    ct1.Add(repaircheck.vga_place);
+                    ct1.Add(repaircheck.cpu);
+                    ct1.Add(repaircheck.cpu_place);
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (i < repaircheck.smtRecords.Count)
+                        {
+                            ct1.Add(repaircheck.smtRecords[i].smtplace);
+                            ct1.Add(repaircheck.smtRecords[i].smtMpn);
+                        }
+                        else
+                        {
+                            ct1.Add("");
+                            ct1.Add("");
+                        }
+                    }
+
+                    ct1.Add(repaircheck.fault_type);
+                    ct1.Add(repaircheck.repairer);
+                    ct1.Add(repaircheck.tester);
+                    ct1.Add(repaircheck.repair_date.Replace("0:00:00", "").Trim());
+                    ct1.Add(repaircheck.repair_result);
+                    ct1.Add(repaircheck.lenovo_maintenance_no);
+
+                    ctest1.contentArray = ct1;
+                    repairRecordContentAIO.contentList.Add(ctest1);
+                }
+            }           
+            
+            allcontentList.Add(repairRecordContentAIO);
+
+
+            //维修记录NB
+            allContent repairRecordContentNB = new allContent();
+            repairRecordContentNB.sheetName = "维修记录NB";
+            repairRecordContentNB.titleList = new List<string>();
+            repairRecordContentNB.contentList = new List<object>();
+
+            repairRecordContentNB.titleList.Add("跟踪条码");
+            repairRecordContentNB.titleList.Add("厂商");
+            repairRecordContentNB.titleList.Add("客户别");
+            repairRecordContentNB.titleList.Add("来源");
+            repairRecordContentNB.titleList.Add("订单编号");
+            repairRecordContentNB.titleList.Add("收货日期");
+            repairRecordContentNB.titleList.Add("客户料号");
+            repairRecordContentNB.titleList.Add("客户序号");
+            repairRecordContentNB.titleList.Add("MB描述");
+            repairRecordContentNB.titleList.Add("MB简称");
+            repairRecordContentNB.titleList.Add("厂商序号");
+            repairRecordContentNB.titleList.Add("MPN");
+            repairRecordContentNB.titleList.Add("MB生产日期");
+            repairRecordContentNB.titleList.Add("客户故障");
+            repairRecordContentNB.titleList.Add("软体更新");
+
+            for (int i = 1; i <= 3; i++)
+            {
+                repairRecordContentNB.titleList.Add("现象" + i);
+            }
+            for (int i = 1; i <= 3; i++)
+            {
+                repairRecordContentNB.titleList.Add("mbfa" + i);
             }
 
-            Utils.createExcel("D:\\多表记录" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            repairRecordContentNB.titleList.Add("短路电压");
+            repairRecordContentNB.titleList.Add("南北桥料号");
+            repairRecordContentNB.titleList.Add("南北桥位置");
+            repairRecordContentNB.titleList.Add("vga芯片料号");
+            repairRecordContentNB.titleList.Add("vga芯片位置");
+            repairRecordContentNB.titleList.Add("CPU料号");
+            repairRecordContentNB.titleList.Add("CPU芯片位置");
+
+            for (int i = 1; i <= 3; i++)
+            {
+                repairRecordContentNB.titleList.Add("其他" + i + "位置");
+                repairRecordContentNB.titleList.Add("其他" + i + "位置料号");
+            }
+
+            repairRecordContentNB.titleList.Add("故障类别");
+            repairRecordContentNB.titleList.Add("维修人");
+            repairRecordContentNB.titleList.Add("测试人");
+            repairRecordContentNB.titleList.Add("修复日期 ");
+            repairRecordContentNB.titleList.Add("修复结果");
+            repairRecordContentNB.titleList.Add("联想维修站编号");
+
+            if (repairRecordListNB.Count == 0)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+
+                for (int i = 0; i < 3; i++)
+                {
+                    ct1.Add("");
+                }
+
+                for (int i = 0; i < 3; i++)
+                {
+                    ct1.Add("");
+                }
+
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+
+                for (int i = 0; i < 3; i++)
+                {
+                    ct1.Add("");
+                    ct1.Add("");
+                }
+
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+                ct1.Add("");
+
+                ctest1.contentArray = ct1;
+                repairRecordContentNB.contentList.Add(ctest1);
+            }
+            else
+            {
+                foreach (nb_aio_mblistSheet5_6 repaircheck in repairRecordListNB)
+                {
+                    ExportExcelContent ctest1 = new ExportExcelContent();
+                    List<string> ct1 = new List<string>();
+
+                    ct1.Add(repaircheck.track_serial_no);
+                    ct1.Add(repaircheck.vendor);
+                    ct1.Add(repaircheck.product);
+                    ct1.Add(repaircheck.source);
+                    ct1.Add(repaircheck.order_no);
+                    ct1.Add(repaircheck.receivedate.Replace("0:00:00", "").Trim());
+                    ct1.Add(repaircheck.custommaterialNo);
+                    ct1.Add(repaircheck.custom_serial_no);
+                    ct1.Add(repaircheck.mb_describe);
+                    ct1.Add(repaircheck.mb_brief);
+                    ct1.Add(repaircheck.vendor_serail_no);
+
+                    ct1.Add(repaircheck.mpn);
+                    ct1.Add(repaircheck.mb_make_date.Replace("0:00:00", "").Trim());
+                    ct1.Add(repaircheck.custom_fault);
+                    ct1.Add(repaircheck.software_update);
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (i < repaircheck.fault_describeList.Count)
+                        {
+                            ct1.Add(repaircheck.fault_describeList[i]);
+                        }
+                        else
+                        {
+                            ct1.Add("");
+                        }
+                    }
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (i < repaircheck.mbfaList.Count)
+                        {
+                            ct1.Add(repaircheck.mbfaList[i]);
+                        }
+                        else
+                        {
+                            ct1.Add("");
+                        }
+                    }
+
+                    ct1.Add(repaircheck.shortcut);
+                    ct1.Add(repaircheck.pch);
+                    ct1.Add(repaircheck.pch_place);
+                    ct1.Add(repaircheck.vga);
+                    ct1.Add(repaircheck.vga_place);
+                    ct1.Add(repaircheck.cpu);
+                    ct1.Add(repaircheck.cpu_place);
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (i < repaircheck.smtRecords.Count)
+                        {
+                            ct1.Add(repaircheck.smtRecords[i].smtplace);
+                            ct1.Add(repaircheck.smtRecords[i].smtMpn);
+                        }
+                        else
+                        {
+                            ct1.Add("");
+                            ct1.Add("");
+                        }
+                    }
+
+                    ct1.Add(repaircheck.fault_type);
+                    ct1.Add(repaircheck.repairer);
+                    ct1.Add(repaircheck.tester);
+                    ct1.Add(repaircheck.repair_date.Replace("0:00:00", "").Trim());
+                    ct1.Add(repaircheck.repair_result);
+                    ct1.Add(repaircheck.lenovo_maintenance_no);
+
+                    ctest1.contentArray = ct1;
+                    repairRecordContentNB.contentList.Add(ctest1);
+                }
+            }
+
+            allcontentList.Add(repairRecordContentNB);
+
+            exportxmlbutton.Enabled = true;
+            Utils.createExcelListUsingNPOI("D:\\" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + "新维修数据.xls",debitnots,allcontentList);
         }
+    }
+
+    public class allContent
+    {
+        public string sheetName;
+        public List<string> titleList ;//= new List<string>();
+        public List<Object> contentList;// = new List<object>();
     }
 
     public class allReturnOrderStruct
@@ -509,31 +939,24 @@ namespace SaledServices.Export
         public string inputuser;
         public string lenovo_maintenance_no;
         public string lenovo_repair_no;
-    }
 
+        public string mb_brief;
+    }
 
     public class allSumStruct
     {
-        public string returndate;
-        public string returnfileNo;
-        public string ramno;
-        public string custommaterialNo;
         public string mb_brief;
         public int returnNum = 1;
 
         public bool equals(allSumStruct temp)
         {
-            return (this.returndate == temp.returndate
-                && this.returnfileNo == temp.returnfileNo
-                && this.custommaterialNo == temp.custommaterialNo
-                && this.ramno == temp.ramno);
+            return (this.mb_brief == temp.mb_brief);
         }
 
         public void incrementNum()
         {
             this.returnNum++;
         }
-
     }
     public class AIO_NB_StructSheet1_Sheet2//AIO产品别AIO,NB产品别为LBG
     {
@@ -541,15 +964,58 @@ namespace SaledServices.Export
         public string number;
     }
 
-   //public class NBStructSheet2//产品别为LBG
-   //{
-   //    public string model;
-   //    public string number;
-   //}
-
    public class debitnotsSheet3
    {
+       public string titleC1 = "HONG WEI BAO CO., LTD.";
+       public string addressA2 = "ADDRESSlNO.550,Jinhai Road,Pudong New District Shanghai,China";
+       public string telA3 = "TEL:021-61624611";
+       public string billto1A5 = "Bill to:";
+       public string billto2A6 = "Compal Electronics, Inc.";
+       public string billto3A7 = "581, Juikuang Rd., Neihu, Taipei, (114)";
+       public string billto4A8 = "Taiwan, R.O.C.";
+       public string telA9 = "Tel 886-2-8797-8588";
+       public string faxA10 = "Fax 886-2-2658-4298";
+       public string dateF5 = "Date:";
+       public string dateG5 = "2018-10-22";
+       public string invF6 = "Inv#HWB2018-10-22";
+       public string contentA14 = "RMA相关费用明细";
+       public string contentC14 = "时间段";
+       public string contentD14 = "2018-10-1";
+       public string contentE14 = "2018-10-22";
+       public string contentD15 = "数量";
+       public string contentE15 = "单价";
 
+       public string contentB16 = "联想NBMB维修";
+       public string contentD16 = "1769";
+       public string contentE16 = "$17.6";
+       public string contentF16 = "$31,134.4";
+
+       public string contentB17 = "AIO MB维修";
+       public string contentD17 = "787";
+       public string contentE17 = "$17.6";
+       public string contentF17 = "$13,851.2";
+
+       public string contentB20 = "联想NB FRU";
+       public string contentD20 = "370";
+       public string contentE20 = "$2.0";
+       public string contentF20 = "$740.0";
+
+       public string contentE22 = "费用合计";
+       public string contentF22 = "$45,725.6=SUM(F16:F20)";
+
+       public string contentB24 = "AIO 运费";
+       public string contentE24 = "$6.5";
+       public string contentF24 = "$0.0";
+
+       public string contentB25 = "PAD 运费";
+       public string contentE25 = "$6.5";
+       public string contentF25 = "$0.0";
+
+       public string contentE27 = "合计";
+       public string contentF27 = "$91,451.2";
+
+       public string contentE30 = "HONG WEI BAO CO., LTD";
+       public string contentE31 = "韩宝军2018-10-22";
     }
 
    public class fruListSheet4
@@ -569,11 +1035,6 @@ namespace SaledServices.Export
        public string charge;//charge       
     }
 
-   //public class nbmblistSheet5//产品别为LBG
-   //{
-   //    //rma号码	MB来源	跟踪条码	收货日期	Model	MB全称	mb料号	mb序号	周期	客户故障现象	现象1	现象2	现象3	mbfa1	短路电压	北桥	南北桥	南桥	VGA芯片	显存	本体CPU	CPU底座	其它1	其它2	其它3	断线氧化内短位置	维修人	测试人	修复日期	工程变更	charge
-   // }
-
    public class nb_aio_mblistSheet5_6//sheet5与6的信息在一起做
    {
        public string track_serial_no;//跟踪条码
@@ -585,27 +1046,21 @@ namespace SaledServices.Export
        public string receivedate;//收货日期
        public string custommaterialNo;//客户料号
        public string custom_serial_no;//客户序号
-
        public string mb_describe;//mb描述
        public string mb_brief;//mb简称
-
        public string vendor_serail_no;//厂商序号
        public string mpn;//mpn
        public string mb_make_date;//mb生产日期
        public string custom_fault;//客户故障
-
        public List<string> fault_describeList;//最多三条
        public List<string> mbfaList;//最多三条
-
        public string shortcut;//短路电压
-
        public string pch;//南北桥料号
        public string pch_place;//南北桥位置
        public string vga;//vga芯片料号
        public string vga_place;//vga芯片位置
        public string cpu;//CPU料号
        public string cpu_place;//cpu芯片位置
-
        public List<allSmtRecort> smtRecords;//最多三条
        public string fault_type;//故障类别
        public string repairer;
@@ -613,11 +1068,8 @@ namespace SaledServices.Export
        public string repair_date;//修复日期 
        public string repair_result;//修复结果
        public string lenovo_maintenance_no;//联想维修站编号
-
        public string software_update;//软体更新
-
        public string repair_Num;//维修次数
-
        public string charge;
    }
 
@@ -626,5 +1078,4 @@ namespace SaledServices.Export
        public string smtMpn;//位置
        public string smtplace;//料号
    }
-
 }

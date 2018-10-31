@@ -249,6 +249,7 @@ namespace SaledServices
 
                         temp.repairDetailList.Add(repair);
                     }
+                    querySdr.Close();
 
                     if (temp.INCOMING_INSPECTION == "CID")
                     {
@@ -364,23 +365,23 @@ namespace SaledServices
                 ct1.Add(stockcheck.LNV_SERIES);
                 ct1.Add(stockcheck.PRODUCT_GROUP);
                 ct1.Add(stockcheck.LCFC_MODEL_NAME);
-                ct1.Add(stockcheck.PRODUCT_DAY_CODE);
+                ct1.Add(stockcheck.PRODUCT_DAY_CODE!=null ? stockcheck.PRODUCT_DAY_CODE.Replace("0:00:00", "").Trim():"");
                 ct1.Add(stockcheck.RETURN_AREA);
                 ct1.Add(stockcheck.SERVICE_REQUESTER);
                 ct1.Add(stockcheck.WARRANTY_PERIOD);
                 ct1.Add(stockcheck.REQUEST_DATE);
                 ct1.Add(stockcheck.APPROVAL_DATE);
-                ct1.Add(stockcheck.SHIP_BACK_DATE);
-                ct1.Add(stockcheck.SVC_RECEIVE_DATE);
+                ct1.Add(stockcheck.SHIP_BACK_DATE != null ? stockcheck.SHIP_BACK_DATE.Replace("0:00:00", "").Trim():"");
+                ct1.Add(stockcheck.SVC_RECEIVE_DATE != null ? stockcheck.SVC_RECEIVE_DATE.Replace("0:00:00", "").Trim():"");
                 ct1.Add(stockcheck.SERVICE_TYPE);
                 ct1.Add(stockcheck.INCOMING_INSPECTION);
-                ct1.Add(stockcheck.LINE_INPUT_DATE);
-                ct1.Add(stockcheck.REPAIR_START_DATE);
-                ct1.Add(stockcheck.FINAL_TEST_DATE);
-                ct1.Add(stockcheck.WH_TAKEIN_DATE);
-                ct1.Add(stockcheck.PACKING_DATE);
-                ct1.Add(stockcheck.DELIVERY_DATE);
-                ct1.Add(stockcheck.CLOSE_DATE);
+                ct1.Add(stockcheck.LINE_INPUT_DATE!=null ? stockcheck.LINE_INPUT_DATE.Replace("0:00:00", "").Trim():"");
+                ct1.Add(stockcheck.REPAIR_START_DATE!=null ? stockcheck.REPAIR_START_DATE.Replace("0:00:00", "").Trim():"");
+                ct1.Add(stockcheck.FINAL_TEST_DATE!=null ? stockcheck.FINAL_TEST_DATE.Replace("0:00:00", "").Trim():"");
+                ct1.Add(stockcheck.WH_TAKEIN_DATE!=null ? stockcheck.WH_TAKEIN_DATE.Replace("0:00:00", "").Trim():"");
+                ct1.Add(stockcheck.PACKING_DATE!=null ? stockcheck.PACKING_DATE.Replace("0:00:00", "").Trim():"");
+                ct1.Add(stockcheck.DELIVERY_DATE!=null ? stockcheck.DELIVERY_DATE.Replace("0:00:00", "").Trim():"");
+                ct1.Add(stockcheck.CLOSE_DATE!=null ? stockcheck.CLOSE_DATE.Replace("0:00:00", "").Trim():"");
                 ct1.Add(stockcheck.NORMAL_SYMPTOM);
 
                 for (int i = 0; i < 5; i++)//至少包括5个数据，前面已经补齐

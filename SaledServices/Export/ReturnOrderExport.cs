@@ -232,8 +232,11 @@ namespace SaledServices.Export
             titleList.Add("厂商序号");
             titleList.Add("厂商料号");
             titleList.Add("状态");
-            titleList.Add("联想维修站编号");
+            titleList.Add("客责类别");
+            titleList.Add("客责描述");
+            titleList.Add("联想维修站编号");    
             titleList.Add("联想维修单编号");
+        
             titleList.Add("TAT");
 
             foreach (ReturnOrderStruct stockcheck in StockCheckList)
@@ -256,8 +259,8 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.vendor_serail_no);                
                 ct1.Add(stockcheck.vendormaterialNo);           
                 ct1.Add(stockcheck._status);           
-                //ct1.Add(stockcheck.custom_res_type);           
-                //ct1.Add(stockcheck.response_describe);   
+                ct1.Add(stockcheck.custom_res_type);           
+                ct1.Add(stockcheck.response_describe);   
                 ct1.Add(stockcheck.lenovo_maintenance_no);
                 ct1.Add(stockcheck.lenovo_repair_no);
                 ct1.Add(stockcheck.tat);           

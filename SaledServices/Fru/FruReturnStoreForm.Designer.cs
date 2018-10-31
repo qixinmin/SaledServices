@@ -274,12 +274,8 @@
             this.tableLayoutPanel3.Controls.Add(this.machine_typeTextBox, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.label18, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.nameTextBox, 3, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label16, 2, 2);
-            this.tableLayoutPanel3.Controls.Add(this.gurantee_noteTextBox, 3, 2);
             this.tableLayoutPanel3.Controls.Add(this.label9, 2, 3);
             this.tableLayoutPanel3.Controls.Add(this.customermaterialdesTextBox, 3, 3);
-            this.tableLayoutPanel3.Controls.Add(this.label20, 2, 4);
-            this.tableLayoutPanel3.Controls.Add(this.vendor_material_noTextBox, 3, 4);
             this.tableLayoutPanel3.Controls.Add(this.label28, 2, 5);
             this.tableLayoutPanel3.Controls.Add(this.mpn1TextBox, 3, 5);
             this.tableLayoutPanel3.Controls.Add(this.label7, 2, 6);
@@ -294,6 +290,10 @@
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 9);
             this.tableLayoutPanel3.Controls.Add(this.customermaterialnoTextBox, 1, 9);
             this.tableLayoutPanel3.Controls.Add(this.label8, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label20, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label16, 2, 4);
+            this.tableLayoutPanel3.Controls.Add(this.vendor_material_noTextBox, 3, 2);
+            this.tableLayoutPanel3.Controls.Add(this.gurantee_noteTextBox, 3, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -463,7 +463,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label16.Location = new System.Drawing.Point(274, 87);
+            this.label16.Location = new System.Drawing.Point(274, 171);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(49, 20);
@@ -472,10 +472,9 @@
             // 
             // gurantee_noteTextBox
             // 
-            this.gurantee_noteTextBox.Location = new System.Drawing.Point(417, 91);
+            this.gurantee_noteTextBox.Location = new System.Drawing.Point(417, 175);
             this.gurantee_noteTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.gurantee_noteTextBox.Name = "gurantee_noteTextBox";
-            this.gurantee_noteTextBox.ReadOnly = true;
             this.gurantee_noteTextBox.Size = new System.Drawing.Size(212, 26);
             this.gurantee_noteTextBox.TabIndex = 24;
             // 
@@ -503,7 +502,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label20.Location = new System.Drawing.Point(274, 171);
+            this.label20.Location = new System.Drawing.Point(274, 87);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(89, 20);
@@ -512,7 +511,7 @@
             // 
             // vendor_material_noTextBox
             // 
-            this.vendor_material_noTextBox.Location = new System.Drawing.Point(417, 175);
+            this.vendor_material_noTextBox.Location = new System.Drawing.Point(417, 91);
             this.vendor_material_noTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.vendor_material_noTextBox.Name = "vendor_material_noTextBox";
             this.vendor_material_noTextBox.ReadOnly = true;

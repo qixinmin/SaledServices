@@ -83,11 +83,11 @@
             this.exportxmlbutton.Name = "exportxmlbutton";
             this.exportxmlbutton.Size = new System.Drawing.Size(133, 25);
             this.exportxmlbutton.TabIndex = 15;
-            this.exportxmlbutton.Text = "导出Bga收货信息Excel";
+            this.exportxmlbutton.Text = "总表信息Excel";
             this.exportxmlbutton.UseVisualStyleBackColor = true;
             this.exportxmlbutton.Click += new System.EventHandler(this.exportxmlbutton_Click);
             // 
-            // BgaInExport
+            // AllBossExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -98,9 +98,9 @@
             this.Controls.Add(this.dateTimePickerend);
             this.Controls.Add(this.dateTimePickerstart);
             this.Controls.Add(this.exportxmlbutton);
-            this.Name = "BgaInExport";
+            this.Name = "AllBossExport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BGA入库导出";
+            this.Text = "总表数据导出";
             this.ResumeLayout(false);
             this.PerformLayout();
 
