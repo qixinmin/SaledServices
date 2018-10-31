@@ -45,6 +45,8 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
+                this.source_briefComboBox.Items.Clear();
+
                 //1 来源 2.客户故障	3.保内/保外	4 .客责描述
                 cmd.CommandText = "select distinct source from sourceTable";
                 SqlDataReader querySdr = cmd.ExecuteReader();
@@ -58,6 +60,7 @@ namespace SaledServices
                 }
                 querySdr.Close();
 
+                this.custom_faultComboBox.Items.Clear();
                 cmd.CommandText = "select fault_index, fault_describe from customFault";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
@@ -67,11 +70,15 @@ namespace SaledServices
                     if (temp != "")
                     {
                         this.custom_faultComboBox.Items.Add(temp);
-                        myDictionary.Add(index, temp);
+                        if (myDictionary.Keys.Contains(index) == false)
+                        {
+                            myDictionary.Add(index, temp);
+                        }
                     }
                 }
                 querySdr.Close();
 
+                this.guaranteeComboBox.Items.Clear();
                 cmd.CommandText = "select distinct guarantee_describe from guarantee";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
@@ -85,6 +92,7 @@ namespace SaledServices
                 querySdr.Close();
                 guaranteeComboBox.SelectedIndex = 0;
 
+                this.customResponsibilityComboBox.Items.Clear();
                 cmd.CommandText = "select distinct responsibility_describe from customResponsibility";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
@@ -98,6 +106,7 @@ namespace SaledServices
                 querySdr.Close();
 
                 //加载没有收完货的订单
+                this.custom_orderComboBox.Items.Clear();
                 cmd.CommandText = "select distinct orderno from receiveOrder where _status = 'open'";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
@@ -865,6 +874,41 @@ namespace SaledServices
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
+
+          
+            //清除所有内容
+            this.vendorTextBox.Text = "";
+            this.productTextBox.Text = "";
+            this.source_briefComboBox.Text = "";
+            this.storehouseTextBox.Text = "";
+            this.custom_orderComboBox.Text = "";
+            this.order_out_dateTextBox.Text = "";
+            this.order_receive_dateTextBox.Text = "";
+            this.custom_machine_typeTextBox.Text = "";
+            this.mb_briefTextBox.Text = "";
+            this.custommaterialNoTextBox.Text = "";
+            this.dpk_statusTextBox.Text = "";
+            this.track_serial_noTextBox.Text = "";
+            this.custom_serial_noTextBox.Text = "";
+            this.vendor_serail_noTextBox.Text = "";
+            this.uuidTextBox.Text = "";
+            this.macTextBox.Text = "";
+            this.mpnTextBox.Text = "";
+            this.mb_describeTextBox.Text = "";
+            this.mb_make_dateTextBox.Text = "";
+            this.warranty_periodTextBox.Text = "";
+            this.custom_faultComboBox.Text = "";
+            this.guaranteeComboBox.Text = "";
+            this.customResponsibilityComboBox.Text = "";
+            this.lenovo_custom_service_noTextBox.Text = "";
+            this.lenovo_maintenance_noTextBox.Text = "";
+            this.lenovo_repair_noTextBox.Text = "";
+            this.whole_machine_noTextBox.Text = "";
+            this.inputUserTextBox.Text = "";
+            this.numTextBox.Text = "";
+
+            loadAdditionInfomation();
+            MessageBox.Show("修改完成！");
         }
 
         private void delete_Click(object sender, EventArgs e)
@@ -942,7 +986,11 @@ namespace SaledServices
             this.productTextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
             this.source_briefComboBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
             this.storehouseTextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
-            this.custom_orderComboBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
+
+            this.custom_orderComboBox.Items.Clear();
+            this.custom_orderComboBox.Items.Add(dataGridView1.SelectedCells[5].Value.ToString());
+            this.custom_orderComboBox.SelectedIndex = 0;//选中第一个
+
             this.order_out_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[6].Value.ToString()).ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             this.order_receive_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[7].Value.ToString()).ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             this.custom_machine_typeTextBox.Text = dataGridView1.SelectedCells[8].Value.ToString();

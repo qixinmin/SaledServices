@@ -112,11 +112,11 @@
             this.维修报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.仁宝大数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.合肥报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.总报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.总报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -807,6 +807,13 @@
             this.合肥报表ToolStripMenuItem.Text = "合肥报表";
             this.合肥报表ToolStripMenuItem.Click += new System.EventHandler(this.合肥报表ToolStripMenuItem_Click);
             // 
+            // 总报表ToolStripMenuItem
+            // 
+            this.总报表ToolStripMenuItem.Name = "总报表ToolStripMenuItem";
+            this.总报表ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.总报表ToolStripMenuItem.Text = "总报表(专用)";
+            this.总报表ToolStripMenuItem.Click += new System.EventHandler(this.总报表ToolStripMenuItem_Click);
+            // 
             // 查询ToolStripMenuItem
             // 
             this.查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -839,13 +846,6 @@
             this.信息查询ToolStripMenuItem.Text = "信息查询";
             this.信息查询ToolStripMenuItem.Click += new System.EventHandler(this.信息查询ToolStripMenuItem_Click);
             // 
-            // 总报表ToolStripMenuItem
-            // 
-            this.总报表ToolStripMenuItem.Name = "总报表ToolStripMenuItem";
-            this.总报表ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.总报表ToolStripMenuItem.Text = "总报表(专用)";
-            this.总报表ToolStripMenuItem.Click += new System.EventHandler(this.总报表ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -858,7 +858,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统1030-";
+            this.Text = "上海进销存系统1031-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);

@@ -145,7 +145,7 @@ namespace SaledServices.Export
                 }
 
                 //查询fru的记录
-                cmd.CommandText = "SELECT receive_date,orderno,customermaterialno,machine_type,name,peijian_no,make_date,gurantee,vendor_material_no,mpn1,custom_fault from fruDeliveredTable where repair_date between '" + startTime + "' and '" + endTime + "'";
+                cmd.CommandText = "SELECT receive_date,orderno,customermaterialno,machine_type,name,peijian_no,make_date,gurantee,vendor_material_no,mpn1,custom_fault from fruDeliveredTable where receive_date between '" + startTime + "' and '" + endTime + "'";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -480,7 +480,7 @@ namespace SaledServices.Export
                 contentList.Add(ctest1);
             }
 
-            Utils.createExcel("D:\\维修记录" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            Utils.createExcel("D:\\多表记录" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
     }
 
