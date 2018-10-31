@@ -637,7 +637,7 @@ namespace SaledServices.Export
                     ct1.Add(repaircheck.product);
                     ct1.Add(repaircheck.source);
                     ct1.Add(repaircheck.order_no);
-                    ct1.Add(repaircheck.receivedate.Replace("0:00:00", "").Trim());
+                    ct1.Add(repaircheck.receivedate!=null?repaircheck.receivedate.Replace("0:00:00", "").Trim():"");
                     ct1.Add(repaircheck.custommaterialNo);
                     ct1.Add(repaircheck.custom_serial_no);
                     ct1.Add(repaircheck.mb_describe);
@@ -645,7 +645,7 @@ namespace SaledServices.Export
                     ct1.Add(repaircheck.vendor_serail_no);
 
                     ct1.Add(repaircheck.mpn);
-                    ct1.Add(repaircheck.mb_make_date.Replace("0:00:00", "").Trim());
+                    ct1.Add(repaircheck.mb_make_date!=null ? repaircheck.mb_make_date.Replace("0:00:00", "").Trim():"");
                     ct1.Add(repaircheck.custom_fault);
                     ct1.Add(repaircheck.software_update);
 
@@ -698,7 +698,7 @@ namespace SaledServices.Export
                     ct1.Add(repaircheck.fault_type);
                     ct1.Add(repaircheck.repairer);
                     ct1.Add(repaircheck.tester);
-                    ct1.Add(repaircheck.repair_date.Replace("0:00:00", "").Trim());
+                    ct1.Add(repaircheck.repair_date!=null ? repaircheck.repair_date.Replace("0:00:00", "").Trim():"");
                     ct1.Add(repaircheck.repair_result);
                     ct1.Add(repaircheck.lenovo_maintenance_no);
 
@@ -830,7 +830,7 @@ namespace SaledServices.Export
                     ct1.Add(repaircheck.product);
                     ct1.Add(repaircheck.source);
                     ct1.Add(repaircheck.order_no);
-                    ct1.Add(repaircheck.receivedate.Replace("0:00:00", "").Trim());
+                    ct1.Add(repaircheck.receivedate!=null ? repaircheck.receivedate.Replace("0:00:00", "").Trim():"");
                     ct1.Add(repaircheck.custommaterialNo);
                     ct1.Add(repaircheck.custom_serial_no);
                     ct1.Add(repaircheck.mb_describe);
@@ -838,7 +838,7 @@ namespace SaledServices.Export
                     ct1.Add(repaircheck.vendor_serail_no);
 
                     ct1.Add(repaircheck.mpn);
-                    ct1.Add(repaircheck.mb_make_date.Replace("0:00:00", "").Trim());
+                    ct1.Add(repaircheck.mb_make_date!=null ? repaircheck.mb_make_date.Replace("0:00:00", "").Trim():"");
                     ct1.Add(repaircheck.custom_fault);
                     ct1.Add(repaircheck.software_update);
 
@@ -891,7 +891,7 @@ namespace SaledServices.Export
                     ct1.Add(repaircheck.fault_type);
                     ct1.Add(repaircheck.repairer);
                     ct1.Add(repaircheck.tester);
-                    ct1.Add(repaircheck.repair_date.Replace("0:00:00", "").Trim());
+                    ct1.Add(repaircheck.repair_date!=null ? repaircheck.repair_date.Replace("0:00:00", "").Trim():"");
                     ct1.Add(repaircheck.repair_result);
                     ct1.Add(repaircheck.lenovo_maintenance_no);
 

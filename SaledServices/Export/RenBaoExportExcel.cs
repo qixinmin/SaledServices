@@ -336,14 +336,8 @@ namespace SaledServices
                 List<string> ct1 = new List<string>();
                 ct1.Add(stockcheck.repair_site);
                 ct1.Add(stockcheck.customer_no);
-                if (stockcheck.receive_date != null)
-                {
-                    ct1.Add(stockcheck.receive_date.Replace("0:00:00", "").Trim());
-                }
-                else
-                {
-                    ct1.Add(stockcheck.receive_date);
-                }
+               
+                ct1.Add(stockcheck.receive_date !=null ? stockcheck.receive_date.Replace("0:00:00", "").Trim():"");               
 
                 ct1.Add(stockcheck.region);
                 ct1.Add(stockcheck.rma_no);
@@ -356,15 +350,8 @@ namespace SaledServices
                 ct1.Add(stockcheck.material_group);
                 ct1.Add(stockcheck.dps_tag_ron_no);
                 ct1.Add(stockcheck.cust_pn);
-
-                if (stockcheck.shipping_date != null)
-                {
-                    ct1.Add(stockcheck.shipping_date.Replace("0:00:00", "").Trim());
-                }
-                else
-                {
-                    ct1.Add(stockcheck.shipping_date);
-                }
+               
+                ct1.Add(stockcheck.shipping_date!=null ? stockcheck.shipping_date.Replace("0:00:00", "").Trim():"");               
 
                 ct1.Add(stockcheck.compal_warranty);
                 ct1.Add(stockcheck.final_status);
@@ -373,14 +360,9 @@ namespace SaledServices
                 ct1.Add(stockcheck.ccd_decision);
                 ct1.Add(stockcheck.dell_market_model);
                 ct1.Add(stockcheck.customer_fault);
-                if (stockcheck.mb_make_date != null)
-                {
-                    ct1.Add(stockcheck.mb_make_date.Replace("0:00:00", "").Trim());
-                }
-                else
-                {
-                    ct1.Add(stockcheck.mb_make_date);
-                }
+                
+                ct1.Add(stockcheck.mb_make_date!=null ? stockcheck.mb_make_date.Replace("0:00:00", "").Trim():"");
+                
                 ct1.Add(stockcheck.return_reason);
 
                 ct1.Add(stockcheck.repair_recodes);
