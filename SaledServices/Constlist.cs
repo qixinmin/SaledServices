@@ -341,7 +341,7 @@ namespace SaledServices
 
             firstsheet.GetRow(19).CreateCell(1).SetCellValue(debitnots.contentB20);
             firstsheet.GetRow(19).CreateCell(3).SetCellValue(debitnots.contentD20);
-            firstsheet.GetRow(19).CreateCell(3).SetCellValue(debitnots.contentE20);
+            firstsheet.GetRow(19).CreateCell(4).SetCellValue(debitnots.contentE20);
             firstsheet.GetRow(19).CreateCell(5).SetCellValue(debitnots.contentF20);
 
             firstsheet.GetRow(21).CreateCell(4).SetCellValue(debitnots.contentE22);

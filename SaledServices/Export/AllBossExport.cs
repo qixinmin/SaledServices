@@ -371,6 +371,30 @@ namespace SaledServices.Export
                  }
 
                 //修改debitnots中部分数据，todo
+
+                debitnots.dateG5 = endTime;
+                debitnots.invF6 = "Inv#HWB" + endTime;
+
+                debitnots.contentD14 = startTime;
+                debitnots.contentE14 = endTime;
+                debitnots.contentD16 = repairListtargetAIO.Count + "";
+                debitnots.contentD17 = repairListtargetNB.Count + "";
+                debitnots.contentD20 = fruList.Count+"";
+
+                debitnots.contentF16 = "$"+(Int16.Parse(debitnots.contentD16) * Double.Parse(debitnots.contentE16.Replace("$", "").Trim()));
+                debitnots.contentF17 = "$"+(Int16.Parse(debitnots.contentD17) * Double.Parse(debitnots.contentE17.Replace("$", "").Trim()));
+                debitnots.contentF20 = "$"+(Int16.Parse(debitnots.contentD20) * Double.Parse(debitnots.contentE20.Replace("$", "").Trim())) ;
+
+                debitnots.contentF22 = "$" + (Double.Parse(debitnots.contentF16.Replace("$", "").Trim()) +
+                    Double.Parse(debitnots.contentF17.Replace("$", "").Trim()) +
+                    Double.Parse(debitnots.contentF20.Replace("$", "").Trim()));
+
+                //debitnots.contentF24?如何计算
+                //debitnots.contentF25?如何计算
+                debitnots.contentF27 = "$" + (Double.Parse(debitnots.contentF22.Replace("$", "").Trim()) +
+                    Double.Parse(debitnots.contentF24.Replace("$", "").Trim()) +
+                    Double.Parse(debitnots.contentF25.Replace("$", "").Trim()));//结果计算如何 ？
+                debitnots.contentE31 = "韩宝军"+endTime;
             }
             catch (Exception ex)
             {
@@ -393,7 +417,7 @@ namespace SaledServices.Export
 
             //汇总AIO
             allContent sumContentAio = new allContent();
-            sumContentAio.sheetName = "汇总AIO";
+            sumContentAio.sheetName = startTime+"到"+endTime+"汇总AIO";
             sumContentAio.titleList = new List<string>();
             sumContentAio.contentList = new List<object>();
             sumContentAio.titleList.Add("Model");
@@ -424,7 +448,7 @@ namespace SaledServices.Export
 
             //汇总NB
             allContent sumContentNB = new allContent();
-            sumContentNB.sheetName = "汇总NB";
+            sumContentNB.sheetName = startTime+"到"+endTime+"汇总NB";
             sumContentNB.titleList = new List<string>();
             sumContentNB.contentList = new List<object>();
             sumContentNB.titleList.Add("Model");
@@ -455,7 +479,7 @@ namespace SaledServices.Export
 
             //FRU记录
             allContent fruContent = new allContent();
-            fruContent.sheetName = "FRU记录";
+            fruContent.sheetName = startTime+"到"+endTime+"FRU记录";
             fruContent.titleList = new List<string>();
             fruContent.contentList = new List<object>();
             fruContent.titleList.Add("收料日期");
@@ -519,7 +543,7 @@ namespace SaledServices.Export
 
             //维修记录AIO
             allContent repairRecordContentAIO = new allContent();
-            repairRecordContentAIO.sheetName = "维修记录AIO";
+            repairRecordContentAIO.sheetName = startTime+"到"+endTime+"维修记录AIO";
             repairRecordContentAIO.titleList = new List<string>();
             repairRecordContentAIO.contentList = new List<object>();
 
@@ -712,7 +736,7 @@ namespace SaledServices.Export
 
             //维修记录NB
             allContent repairRecordContentNB = new allContent();
-            repairRecordContentNB.sheetName = "维修记录NB";
+            repairRecordContentNB.sheetName = startTime+"到"+endTime+"维修记录NB";
             repairRecordContentNB.titleList = new List<string>();
             repairRecordContentNB.contentList = new List<object>();
 
@@ -986,19 +1010,19 @@ namespace SaledServices.Export
        public string contentE15 = "单价";
 
        public string contentB16 = "联想NBMB维修";
-       public string contentD16 = "1769";
+       public string contentD16 = "0";
        public string contentE16 = "$17.6";
-       public string contentF16 = "$31,134.4";
+       public string contentF16 = "$0.0";
 
        public string contentB17 = "AIO MB维修";
-       public string contentD17 = "787";
+       public string contentD17 = "0";
        public string contentE17 = "$17.6";
-       public string contentF17 = "$13,851.2";
+       public string contentF17 = "$0.0";
 
        public string contentB20 = "联想NB FRU";
-       public string contentD20 = "370";
+       public string contentD20 = "0";
        public string contentE20 = "$2.0";
-       public string contentF20 = "$740.0";
+       public string contentF20 = "$0.0";
 
        public string contentE22 = "费用合计";
        public string contentF22 = "$45,725.6=SUM(F16:F20)";
@@ -1012,7 +1036,7 @@ namespace SaledServices.Export
        public string contentF25 = "$0.0";
 
        public string contentE27 = "合计";
-       public string contentF27 = "$91,451.2";
+       public string contentF27 = "$0";
 
        public string contentE30 = "HONG WEI BAO CO., LTD";
        public string contentE31 = "韩宝军2018-10-22";
@@ -1032,7 +1056,7 @@ namespace SaledServices.Export
        public string vendor_material_no;//料号71
        public string mpn1;//	原材料号1
        public string custom_fault;//客户故障
-       public string charge;//charge       
+       public string charge="$2.0";//charge       
     }
 
    public class nb_aio_mblistSheet5_6//sheet5与6的信息在一起做
