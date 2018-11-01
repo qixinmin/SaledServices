@@ -379,8 +379,7 @@ namespace SaledServices
             this.gurantee_noteTextBox.Text = "";
             this.vendor_material_noTextBox.Text = "";
             this.mpn1TextBox.Text = "";
-            this.receiverTextBox.Text = "";
-            this.receive_dateTextBox.Text = "";
+      
             this.tattextBox.Text = "";
         }
 

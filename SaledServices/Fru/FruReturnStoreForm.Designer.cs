@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewToReturn = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,12 +58,8 @@
             this.machine_typeTextBox = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.gurantee_noteTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.customermaterialdesTextBox = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.vendor_material_noTextBox = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.mpn1TextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -78,6 +74,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.customermaterialnoTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.vendor_material_noTextBox = new System.Windows.Forms.TextBox();
+            this.gurantee_noteTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -91,8 +91,8 @@
             // dataGridViewToReturn
             // 
             this.dataGridViewToReturn.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewToReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewToReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewToReturn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewToReturn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewToReturn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -165,8 +165,8 @@
             // dataGridViewReturnedDetail
             // 
             this.dataGridViewReturnedDetail.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewReturnedDetail.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewReturnedDetail.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewReturnedDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewReturnedDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewReturnedDetail.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -459,25 +459,6 @@
             this.nameTextBox.Size = new System.Drawing.Size(212, 26);
             this.nameTextBox.TabIndex = 22;
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label16.Location = new System.Drawing.Point(274, 171);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(49, 20);
-            this.label16.TabIndex = 25;
-            this.label16.Text = "备注";
-            // 
-            // gurantee_noteTextBox
-            // 
-            this.gurantee_noteTextBox.Location = new System.Drawing.Point(417, 175);
-            this.gurantee_noteTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.gurantee_noteTextBox.Name = "gurantee_noteTextBox";
-            this.gurantee_noteTextBox.Size = new System.Drawing.Size(212, 26);
-            this.gurantee_noteTextBox.TabIndex = 24;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -497,26 +478,6 @@
             this.customermaterialdesTextBox.ReadOnly = true;
             this.customermaterialdesTextBox.Size = new System.Drawing.Size(212, 26);
             this.customermaterialdesTextBox.TabIndex = 26;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label20.Location = new System.Drawing.Point(274, 87);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(89, 20);
-            this.label20.TabIndex = 29;
-            this.label20.Text = "厂商料号";
-            // 
-            // vendor_material_noTextBox
-            // 
-            this.vendor_material_noTextBox.Location = new System.Drawing.Point(417, 91);
-            this.vendor_material_noTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.vendor_material_noTextBox.Name = "vendor_material_noTextBox";
-            this.vendor_material_noTextBox.ReadOnly = true;
-            this.vendor_material_noTextBox.Size = new System.Drawing.Size(217, 26);
-            this.vendor_material_noTextBox.TabIndex = 28;
             // 
             // label28
             // 
@@ -547,7 +508,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 20);
             this.label7.TabIndex = 33;
-            this.label7.Text = "收货日期";
+            this.label7.Text = "还货日期";
             // 
             // receive_dateTextBox
             // 
@@ -567,7 +528,7 @@
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(69, 20);
             this.label29.TabIndex = 34;
-            this.label29.Text = "收货人";
+            this.label29.Text = "还货人";
             // 
             // receiverTextBox
             // 
@@ -651,6 +612,45 @@
             this.label8.Size = new System.Drawing.Size(49, 20);
             this.label8.TabIndex = 4;
             this.label8.Text = "状态";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label20.Location = new System.Drawing.Point(274, 87);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(89, 20);
+            this.label20.TabIndex = 29;
+            this.label20.Text = "厂商料号";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label16.Location = new System.Drawing.Point(274, 171);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(49, 20);
+            this.label16.TabIndex = 25;
+            this.label16.Text = "备注";
+            // 
+            // vendor_material_noTextBox
+            // 
+            this.vendor_material_noTextBox.Location = new System.Drawing.Point(417, 91);
+            this.vendor_material_noTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.vendor_material_noTextBox.Name = "vendor_material_noTextBox";
+            this.vendor_material_noTextBox.ReadOnly = true;
+            this.vendor_material_noTextBox.Size = new System.Drawing.Size(217, 26);
+            this.vendor_material_noTextBox.TabIndex = 28;
+            // 
+            // gurantee_noteTextBox
+            // 
+            this.gurantee_noteTextBox.Location = new System.Drawing.Point(417, 175);
+            this.gurantee_noteTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.gurantee_noteTextBox.Name = "gurantee_noteTextBox";
+            this.gurantee_noteTextBox.Size = new System.Drawing.Size(212, 26);
+            this.gurantee_noteTextBox.TabIndex = 24;
             // 
             // tableLayoutPanel2
             // 
