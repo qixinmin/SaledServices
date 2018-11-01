@@ -401,9 +401,31 @@ namespace SaledServices.Test_Outlook
 
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "update stationInformation set station = 'Test1', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
+                    cmd.CommandText = "select Id from stationInformation where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        querySdr.Close();
+                        cmd.CommandText = "update stationInformation set station = 'Test1', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        querySdr.Close();
+                        cmd.CommandText = "select track_serial_no,product from mb_out_stock where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows)//从buffer发出来的板子
+                        {
+                            //记录站别信息
+                            querySdr.Close();
+                            cmd.CommandText = "INSERT INTO stationInformation VALUES('"
+                                + this.tracker_bar_textBox.Text.Trim() + "','Test1','"
+                                + DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                            cmd.ExecuteNonQuery();
+                        }
+                        querySdr.Close();
+                    }
                 }
                 else
                 {
