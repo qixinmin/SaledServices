@@ -588,7 +588,8 @@
             "BGA",
             "加焊",
             "清洁",
-            "软体更新"});
+            "软体更新",
+            "NTF"});
             this.actioncomboBox.Location = new System.Drawing.Point(198, 136);
             this.actioncomboBox.Margin = new System.Windows.Forms.Padding(4);
             this.actioncomboBox.Name = "actioncomboBox";
@@ -737,6 +738,7 @@
             "不加电AC",
             "不加电DC",
             "不充电",
+            "外观不良",
             "开机无显",
             "外切无显",
             "键盘不良",
@@ -753,7 +755,8 @@
             "不抓独显",
             "显卡黄叹号",
             "显卡停止响应",
-            "开机灰屏"});
+            "开机灰屏",
+            "BIOS加密"});
             this.fault_describecomboBox.Location = new System.Drawing.Point(197, 103);
             this.fault_describecomboBox.Name = "fault_describecomboBox";
             this.fault_describecomboBox.Size = new System.Drawing.Size(205, 24);

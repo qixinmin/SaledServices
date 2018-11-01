@@ -1253,11 +1253,15 @@ namespace SaledServices
                 string mactext = this.macTextBox.Text.Trim();
                 mactext = Regex.Replace(mactext, "[^a-zA-Z0-9]", "");
                 this.macTextBox.Text = mactext;
-
-                if (this.macTextBox.Text.Length != 12)
+                int length = 12;
+                if (this.productTextBox.Text.Trim() == "TBG")
+                {
+                    length = 15;
+                }
+                if (this.macTextBox.Text.Length != length)
                 {
                     this.macTextBox.SelectAll();
-                    MessageBox.Show("MAC的长度不是12位，请检查！");
+                    MessageBox.Show("MAC的长度不是" + length + "位，请检查！");
                     return;
                 }
 

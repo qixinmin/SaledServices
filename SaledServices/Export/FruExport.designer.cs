@@ -1,6 +1,6 @@
 ﻿namespace SaledServices.Export
 {
-    partial class CIDExport
+    partial class FruExport
     {
         /// <summary>
         /// Required designer variable.
@@ -34,6 +34,10 @@
             this.dateTimePickerend = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerstart = new System.Windows.Forms.DateTimePicker();
             this.exportxmlbutton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.receiveradioButton = new System.Windows.Forms.RadioButton();
+            this.returnradioButton = new System.Windows.Forms.RadioButton();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -83,24 +87,58 @@
             this.exportxmlbutton.Name = "exportxmlbutton";
             this.exportxmlbutton.Size = new System.Drawing.Size(133, 25);
             this.exportxmlbutton.TabIndex = 15;
-            this.exportxmlbutton.Text = "导出CID信息Excel";
+            this.exportxmlbutton.Text = "导出Fru信息Excel";
             this.exportxmlbutton.UseVisualStyleBackColor = true;
             this.exportxmlbutton.Click += new System.EventHandler(this.exportxmlbutton_Click);
             // 
-            // CIDExport
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.returnradioButton);
+            this.panel1.Controls.Add(this.receiveradioButton);
+            this.panel1.Location = new System.Drawing.Point(28, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(188, 42);
+            this.panel1.TabIndex = 21;
+            // 
+            // receiveradioButton
+            // 
+            this.receiveradioButton.AutoSize = true;
+            this.receiveradioButton.Checked = true;
+            this.receiveradioButton.Location = new System.Drawing.Point(15, 14);
+            this.receiveradioButton.Name = "receiveradioButton";
+            this.receiveradioButton.Size = new System.Drawing.Size(65, 16);
+            this.receiveradioButton.TabIndex = 0;
+            this.receiveradioButton.TabStop = true;
+            this.receiveradioButton.Text = "Fru收货";
+            this.receiveradioButton.UseVisualStyleBackColor = true;
+            // 
+            // returnradioButton
+            // 
+            this.returnradioButton.AutoSize = true;
+            this.returnradioButton.Location = new System.Drawing.Point(99, 14);
+            this.returnradioButton.Name = "returnradioButton";
+            this.returnradioButton.Size = new System.Drawing.Size(65, 16);
+            this.returnradioButton.TabIndex = 1;
+            this.returnradioButton.Text = "Fru还货";
+            this.returnradioButton.UseVisualStyleBackColor = true;
+            // 
+            // FruExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 365);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePickerend);
             this.Controls.Add(this.dateTimePickerstart);
             this.Controls.Add(this.exportxmlbutton);
-            this.Name = "CIDExport";
+            this.Name = "FruExport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CID信息导出";
+            this.Text = "Fru信息导出";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,5 +152,8 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerend;
         private System.Windows.Forms.DateTimePicker dateTimePickerstart;
         private System.Windows.Forms.Button exportxmlbutton;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton returnradioButton;
+        private System.Windows.Forms.RadioButton receiveradioButton;
     }
 }

@@ -1,6 +1,8 @@
+D:\维修系统\SaledServices\SaledServices\bin\Release\SaledServices.exe.config
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\Interop.Office.dll
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.csproj.ResolveComReference.cache
 D:\维修系统\SaledServices\SaledServices\bin\Release\Files\FileInput.xml
 D:\维修系统\SaledServices\SaledServices\bin\Release\Files\syncTime.bat
-D:\维修系统\SaledServices\SaledServices\bin\Release\SaledServices.exe.config
 D:\维修系统\SaledServices\SaledServices\bin\Release\SaledServices.exe.manifest
 D:\维修系统\SaledServices\SaledServices\bin\Release\SaledServices.application
 D:\维修系统\SaledServices\SaledServices\bin\Release\SaledServices.exe
@@ -10,13 +12,14 @@ D:\维修系统\SaledServices\SaledServices\bin\Release\NPOI.dll
 D:\维修系统\SaledServices\SaledServices\bin\Release\NPOI.OOXML.dll
 D:\维修系统\SaledServices\SaledServices\bin\Release\NPOI.OpenXml4Net.dll
 D:\维修系统\SaledServices\SaledServices\bin\Release\NPOI.OpenXmlFormats.dll
-D:\维修系统\SaledServices\SaledServices\obj\x86\Release\Interop.Office.dll
-D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.csproj.ResolveComReference.cache
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.MultiReturnQueryForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.DatabaseForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FilesUpdateForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.MaterialNameForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.additionForm.RepairFaultTypeForm.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.AllBossExport.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.HefeiExportExcel.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.RenBaoExportExcel.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FruReceiveOrderForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.BgaOutExport.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.BgaInExport.resources
@@ -98,6 +101,4 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.exe.ma
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.application
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.exe
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.pdb
-D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.RenBaoExportExcel.resources
-D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.HefeiExportExcel.resources
-D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.AllBossExport.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.FruExport.resources

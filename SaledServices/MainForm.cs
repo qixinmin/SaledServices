@@ -1397,5 +1397,20 @@ namespace SaledServices
 
             allForm.Add(allBossExport);
         }
+        private FruExport fruExport; 
+        private void fRU收还货信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (fruExport == null || fruExport.IsDisposed)
+            {
+                fruExport = new FruExport();
+                fruExport.MdiParent = this;
+            }
+
+            fruExport.WindowState = FormWindowState.Maximized;
+            fruExport.BringToFront();
+            fruExport.Show();
+
+            allForm.Add(fruExport);
+        }
     }
 }

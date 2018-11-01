@@ -267,6 +267,12 @@
     <Compile Include="Export\AllBossExport.designer.cs">
       <DependentUpon>AllBossExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\FruExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\FruExport.designer.cs">
+      <DependentUpon>FruExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Export\HefeiExportExcel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -739,6 +745,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\AllBossExport.resx">
       <DependentUpon>AllBossExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\FruExport.resx">
+      <DependentUpon>FruExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\HefeiExportExcel.resx">
       <DependentUpon>HefeiExportExcel.cs</DependentUpon>
