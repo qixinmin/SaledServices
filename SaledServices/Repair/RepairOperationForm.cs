@@ -32,6 +32,8 @@ namespace SaledServices
                 this.delete.Visible = false;
             }
             track_serial_noTextBox.Focus();
+
+            this.actioncomboBox.SelectedIndex = 0;//默认选择-》更换
         }
 
         private void loadAdditionInfomation()

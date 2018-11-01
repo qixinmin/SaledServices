@@ -580,6 +580,7 @@
             // 
             this.actioncomboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.actioncomboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.actioncomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.actioncomboBox.FormattingEnabled = true;
             this.actioncomboBox.Items.AddRange(new object[] {
             "更换",
@@ -593,7 +594,6 @@
             this.actioncomboBox.Name = "actioncomboBox";
             this.actioncomboBox.Size = new System.Drawing.Size(203, 24);
             this.actioncomboBox.TabIndex = 32;
-            this.actioncomboBox.Text = "更换";
             this.actioncomboBox.SelectedIndexChanged += new System.EventHandler(this.actioncomboBox_SelectedIndexChanged);
             // 
             // label22

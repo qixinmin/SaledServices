@@ -278,6 +278,21 @@ namespace SaledServices
                     }
 
                     //差一个RRR_90 TODO
+                    //规则：根据收货序号，查询其收货日期，然后查这个收货日期之前的还货记录，查最近的一次还货记录，如果在90天内则为1，否则为0
+                    string receiveDateEnd = temp.LINE_INPUT_DATE;
+                    string lastReturnDateStart = Convert.ToDateTime(receiveDateEnd).AddDays(-90).ToString("yyyy-MM-dd");
+                    cmd.CommandText = "select top 1 return_date from returnStore where return_date between '"
+                    + lastReturnDateStart + "' and '" + receiveDateEnd + "' and custom_serial_no='" + temp.PRODUCT_SN + "'";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        temp.RRR_90 = "1";
+                    }
+                    else
+                    {
+                        temp.RRR_90 = "0";
+                    }
+                    querySdr.Close();
                 }
 
                 mConn.Close();

@@ -1054,7 +1054,7 @@ namespace SaledServices.Export
        public string make_date;//周期
        public string gurantee;//保内外
        public string vendor_material_no;//料号71
-       public string mpn1;//	原材料号1
+       public string mpn1;//	原材料号1n
        public string custom_fault;//客户故障
        public string charge="$2.0";//charge       
     }
