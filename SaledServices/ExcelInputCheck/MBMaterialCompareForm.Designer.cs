@@ -99,13 +99,15 @@
             this.label31 = new System.Windows.Forms.Label();
             this.ecoTextBox = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.query = new System.Windows.Forms.Button();
             this.add = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label35 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -766,6 +768,8 @@
             this.tableLayoutPanel1.Controls.Add(this.ecoTextBox, 7, 0);
             this.tableLayoutPanel1.Controls.Add(this.label33, 6, 3);
             this.tableLayoutPanel1.Controls.Add(this.button1, 6, 6);
+            this.tableLayoutPanel1.Controls.Add(this.button2, 7, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label35, 7, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -876,6 +880,18 @@
             this.label33.TabIndex = 62;
             this.label33.Text = "添加人";
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Location = new System.Drawing.Point(1015, 191);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(167, 23);
+            this.button1.TabIndex = 67;
+            this.button1.Text = "根据MPN修改状态字段";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
@@ -962,17 +978,27 @@
             this.modify.UseVisualStyleBackColor = true;
             this.modify.Click += new System.EventHandler(this.modify_Click);
             // 
-            // button1
+            // button2
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(1015, 191);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(167, 23);
-            this.button1.TabIndex = 67;
-            this.button1.Text = "根据MPN修改状态字段";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.Location = new System.Drawing.Point(1190, 222);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(167, 23);
+            this.button2.TabIndex = 68;
+            this.button2.Text = "信息导出";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label35.Font = new System.Drawing.Font("SimSun", 10F);
+            this.label35.Location = new System.Drawing.Point(1190, 188);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(167, 29);
+            this.label35.TabIndex = 69;
+            this.label35.Text = "根据机型和日期导出Excel";
             // 
             // MBMaterialCompareForm
             // 
@@ -1077,6 +1103,8 @@
         private System.Windows.Forms.TextBox ecoTextBox;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label35;
         
         
     }
