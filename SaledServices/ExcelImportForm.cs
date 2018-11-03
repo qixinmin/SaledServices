@@ -932,7 +932,6 @@ namespace SaledServices
 
         public void importFrubomCheck(Worksheet ws, int rowLength, int columnLength, string tableName)
         {
-
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -952,7 +951,7 @@ namespace SaledServices
                             try
                             {
                                 //有可能有空值
-                                string temp = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, j]).Value2.ToString();                              
+                                string temp = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, j]).Value2.ToString();
                                 s += temp;
                             }
                             catch (Exception ex)
@@ -1005,9 +1004,9 @@ namespace SaledServices
             //    conn.Open();
             //    string strExcel = "";
             //    OleDbDataAdapter myCommand = null;
-            //    strExcel = string.Format("select * from [{0}$]", sheetName);
+            //    strExcel = string.Format("select * from [{0}$]", "FRUBOM对照表");
             //    myCommand = new OleDbDataAdapter(strExcel, strConn);
-            //    myCommand.Fill(ds, sheetName);
+            //    myCommand.Fill(ds,"FRUBOM对照表");
 
             //    //用bcp导入数据
             //    using (System.Data.SqlClient.SqlBulkCopy bcp = new System.Data.SqlClient.SqlBulkCopy(Constlist.ConStr))

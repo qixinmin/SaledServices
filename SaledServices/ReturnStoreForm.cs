@@ -744,15 +744,18 @@ namespace SaledServices
                         }
                         //先查询原来的料号的内容，根据客户料号查询一些列mpn
                         List<string> mpnList = new List<string>();
-                        cmd.CommandText = "select mpn from MBMaterialCompare where custommaterialNo like '%" + custommaterialNoTextBox.Text.Trim() +"'";
-                        querySdr = cmd.ExecuteReader();                       
+                        cmd.CommandText = "select mpn,replace_mpn,replace_custom_materialNo  from MBMaterialCompare where custommaterialNo like '%" + custommaterialNoTextBox.Text.Trim() + "%'";
+                        querySdr = cmd.ExecuteReader();
+                        string replace_mpn = "", replace_custom_materialNo = "";
                         while (querySdr.Read())
                         {
                             mpnList.Add(querySdr[0].ToString());
+                            replace_mpn = querySdr[1].ToString().Trim();
+                            replace_custom_materialNo = querySdr[2].ToString().Trim() ;
                         }
                         querySdr.Close();
 
-                        if (mpnList.Contains(renbaoliaohao) == false)
+                        if (mpnList.Contains(renbaoliaohao) == false && replace_mpn!=renbaoliaohao && replace_custom_materialNo != renbaoliaohao)
                         {
                             MessageBox.Show("归还的板子与选择的料号不符合");
                             this.returnStore.Enabled = false;
@@ -841,8 +844,6 @@ namespace SaledServices
                         mConn.Close();
 
                         //从历史数据查询是否匹配
-
-
                         if (this.custom_serial_noTextBox.Text == "")
                         {
                             MessageBox.Show("客户序号不能为空，严重，检查！");
