@@ -385,6 +385,7 @@ namespace SaledServices
                 if (!Utils.IsNumAndEnCh(this.custom_serial_noTextBox.Text.Trim()))
                 {
                     MessageBox.Show("包含非字符与数字的字符，请检查！");
+                    this.add.Enabled = false;
                     return;
                 }
                 string customSerialNo = this.custom_serial_noTextBox.Text.Trim();
@@ -397,6 +398,7 @@ namespace SaledServices
                         this.custom_serial_noTextBox.Focus();
                         this.custom_serial_noTextBox.SelectAll();
                         MessageBox.Show("客户序号的长度不是23位，请检查！");
+                        this.add.Enabled = false;
                         return;
                     }
                 }
@@ -407,6 +409,7 @@ namespace SaledServices
                         this.custom_serial_noTextBox.Focus();
                         this.custom_serial_noTextBox.SelectAll();
                         MessageBox.Show("客户序号的长度不是22位，请检查！");
+                        this.add.Enabled = false;
                         return;
                     }
                 }
@@ -421,6 +424,7 @@ namespace SaledServices
                         MessageBox.Show("在" + this.productTextBox.Text + "下客户序号没有包含客户料号");
                         this.custom_serial_noTextBox.Focus();
                         this.custom_serial_noTextBox.SelectAll();
+                        this.add.Enabled = false;
                         return;
                     }
                 }
@@ -439,6 +443,7 @@ namespace SaledServices
                     MessageBox.Show("客户序号没有包含,没有做计算时间处理");
                     this.custom_serial_noTextBox.Focus();
                     this.custom_serial_noTextBox.SelectAll();
+                    this.add.Enabled = false;
                     return;
                 }
 
@@ -469,6 +474,7 @@ namespace SaledServices
                         MessageBox.Show("客户序号：" + this.custom_serial_noTextBox.Text + " 已经被使用过，请检测是否有错误!");
                         this.custom_serial_noTextBox.Focus();
                         this.custom_serial_noTextBox.SelectAll();
+                        this.add.Enabled = false;
                         return;
                     }
 
@@ -507,7 +513,6 @@ namespace SaledServices
                     mouth = Utils.getTimeByChar(false, Convert.ToChar(subData.Substring(1, 1)));
                     day = Utils.getTimeByChar(false, Convert.ToChar(subData.Substring(2, 1)));
                 }
-
               
                 this.mb_make_dateTextBox.Text = year + "/" + mouth + "/" + day;
 
@@ -546,10 +551,13 @@ namespace SaledServices
                 catch (Exception ex)
                 {
                     MessageBox.Show("客户料号里面的日期规则不对!");
+                    this.add.Enabled = false;
+                    return;
                 }
 
                 this.vendor_serail_noTextBox.Focus();
                 this.vendor_serail_noTextBox.SelectAll();
+                this.add.Enabled = true;
             }
         }
        

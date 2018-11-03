@@ -60,7 +60,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.5F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(465, 90);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(465, 91);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -83,7 +83,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 34);
+            this.label2.Location = new System.Drawing.Point(4, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 0;
@@ -92,14 +92,14 @@
             // mbBrieftextBox
             // 
             this.mbBrieftextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mbBrieftextBox.Location = new System.Drawing.Point(103, 37);
+            this.mbBrieftextBox.Location = new System.Drawing.Point(103, 38);
             this.mbBrieftextBox.Name = "mbBrieftextBox";
             this.mbBrieftextBox.Size = new System.Drawing.Size(202, 21);
             this.mbBrieftextBox.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(312, 37);
+            this.button1.Location = new System.Drawing.Point(312, 38);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -130,12 +130,12 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 99);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 100);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(465, 234);
+            this.dataGridView1.Size = new System.Drawing.Size(465, 233);
             this.dataGridView1.TabIndex = 2;
             // 
             // ReturnQueryByInfo

@@ -30,6 +30,7 @@ namespace SaledServices.Test_Outlook
         string KEYID = "", KEYSERIAL = "";
         string cpu_type = "", cpu_freq = "", dpk_type = "", dpkpn = "", mpn = "";
         bool existBuffer = false, existRepair = false;
+        string currentStoreHouse = "";
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
@@ -91,6 +92,15 @@ namespace SaledServices.Test_Outlook
                         }
                     }
                     this.bomdownload.Enabled = true;
+
+                    cmd.CommandText = "select storehouse from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        currentStoreHouse = querySdr[0].ToString().Trim(); ;
+                    }
+                    querySdr.Close();
 
                     cmd.CommandText = "select track_serial_no,product from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
@@ -261,9 +271,12 @@ namespace SaledServices.Test_Outlook
                                         }
                                         else
                                         {
-                                            //更新烧录日期与custom_serial_no,与使用状态
-                                            cmd.CommandText = "update DPK_table set _status = '已使用', burn_date = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "',custom_serial_no = '" + custom_serial_no + "' where Id = '" + id + "'";
-                                            cmd.ExecuteNonQuery();
+                                            if (currentStoreHouse != "DOA_整机" && currentStoreHouse != "惠州库" && currentStoreHouse != "成都库")
+                                            {
+                                                //更新烧录日期与custom_serial_no,与使用状态
+                                                cmd.CommandText = "update DPK_table set _status = '已使用', burn_date = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "',custom_serial_no = '" + custom_serial_no + "' where Id = '" + id + "'";
+                                                cmd.ExecuteNonQuery();
+                                            }
                                         }
                                     }
                                 }
@@ -487,6 +500,7 @@ namespace SaledServices.Test_Outlook
                             + "SET -v DPKID " + KEYID + "\r\n"
                             + "SET -v FRUPN " + tempCustomMaterialNo + "\r\n"
                             + "SET -v MODELID " + mb_brief + "\r\n"
+                            + "SET -v storehouse " + currentStoreHouse + "\r\n"
                             + "SET -v DPK " + dpk_type;
             Utils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
 
@@ -502,6 +516,7 @@ namespace SaledServices.Test_Outlook
                            + "SET DPKID=" + KEYID + "\r\n"
                            + "SET FRUPN=" + tempCustomMaterialNo + "\r\n"
                            + "SET MODELID=" + mb_brief + "\r\n"
+                            + "SET storehouse=" + currentStoreHouse + "\r\n"
                            + "SET DPK=" + dpk_type;
             Utils.createFile("D:\\fru\\", "BOM.bat", totalStr);
 
@@ -550,22 +565,129 @@ namespace SaledServices.Test_Outlook
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (KEYID == "" || KEYSERIAL == "")
+            if (currentStoreHouse != "DOA_整机" && currentStoreHouse != "惠州库" && currentStoreHouse != "成都库")//三个库别外的东西，成都库，惠阳库，DMA整机
             {
-                MessageBox.Show("序列号还没有下载，请检查操作！");
-                return;
+                if (KEYID == "" || KEYSERIAL == "")
+                {
+                    MessageBox.Show("序列号还没有下载，请检查操作！");
+                    return;
+                }
+
+                button2_Click(null, null);//fru
+
+                downloadFiles(@"C:\CHKCPU\CPUPN.txt", @"C:\CHKCPU\CHKCPU.BAT");
+
+                runBatFile(@"C:\CHKCPU\", "CHKCPU.BAT");
+
+                if (this.dpk_type == "NOK")//否则需要点击 DPK烧录检查 按钮
+                {
+                    confirmbutton_Click(null, null);
+                    this.Close();
+                }
             }
-
-            button2_Click(null, null);//fru
-
-            downloadFiles(@"C:\CHKCPU\CPUPN.txt", @"C:\CHKCPU\CHKCPU.BAT");
-
-            runBatFile(@"C:\CHKCPU\", "CHKCPU.BAT");
-
-            if (this.dpk_type == "NOK")//否则需要点击 DPK烧录检查 按钮
+            else
             {
-                confirmbutton_Click(null, null);
-                this.Close();
+                KEYID = "";
+                KEYSERIAL = "";
+                string newMac = Regex.Replace(mac, "([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})", "$1-$2-$3-$4-$5-$6");
+
+                string tempCustomMaterialNo = "";
+                string totalStr = "SET -v MBID " + track_serial_no + "\r\n"
+                                + "SET -v SN " + vendor_serail_no + "\r\n"
+                                + "SET -v SKU " + mpn + "\r\n"
+                                + "SET -v MAC " + newMac + "\r\n"
+                                + "SET -v UUID " + uuid + "\r\n"
+                                + "SET -v MB11S " + custom_serial_no + "\r\n"
+                                + "SET -v OA3KEY " + KEYSERIAL + "\r\n"
+                                + "SET -v OA3PID " + KEYID + "\r\n"
+                                + "SET -v DPKNO " + KEYSERIAL + "\r\n"
+                                + "SET -v DPKID " + KEYID + "\r\n"
+                                + "SET -v FRUPN " + tempCustomMaterialNo + "\r\n"
+                                + "SET -v MODELID " + mb_brief + "\r\n"
+                                + "SET -v storehouse " + currentStoreHouse + "\r\n"
+                                + "SET -v DPK " + dpk_type;
+                Utils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
+
+                totalStr = "SET MBID=" + track_serial_no + "\r\n"
+                               + "SET SN=" + vendor_serail_no + "\r\n"
+                               + "SET SKU=" + mpn + "\r\n"
+                               + "SET MAC=" + newMac + "\r\n"
+                               + "SET UUID=" + uuid + "\r\n"
+                               + "SET MB11S=" + custom_serial_no + "\r\n"
+                               + "SET OA3KEY=" + KEYSERIAL + "\r\n"
+                               + "SET OA3PID=" + KEYID + "\r\n"
+                               + "SET DPKNO=" + KEYSERIAL + "\r\n"
+                               + "SET DPKID=" + KEYID + "\r\n"
+                               + "SET FRUPN=" + tempCustomMaterialNo + "\r\n"
+                               + "SET MODELID=" + mb_brief + "\r\n"
+                                + "SET storehouse=" + currentStoreHouse + "\r\n"
+                               + "SET DPK=" + dpk_type;
+                Utils.createFile("D:\\fru\\", "BOM.bat", totalStr);
+
+                Utils.createFile("C:\\CHKCPU\\", "BOM.bat", totalStr);
+
+                //清空变量
+                KEYID = ""; this.keyidtextBox.Text = "";
+                KEYSERIAL = ""; this.KEYSERIALtextBox.Text = "";
+
+                downloadFiles(@"C:\CHKCPU\CPUPNNB.txt", @"C:\CHKCPU\CHKCPUNB.BAT");
+                runBatFile(@"C:\CHKCPU\", "CHKCPUNB.BAT");
+
+                try
+                {
+                    SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                    conn.Open();
+
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.Connection = conn;
+                        cmd.CommandType = CommandType.Text;
+
+                        cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        SqlDataReader querySdr = cmd.ExecuteReader();
+                        string Id = "";
+                        while (querySdr.Read())
+                        {
+                            Id = querySdr[0].ToString();
+                            break;
+                        }
+                        querySdr.Close();
+                        if (Id != "")
+                        {
+                            cmd.CommandText = "update " + tableName + " set test_date = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
+                                 + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                            cmd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
+                                + this.tracker_bar_textBox.Text.Trim() + "','"
+                                + this.testerTextBox.Text.Trim() + "','"
+                                + this.testdatetextBox.Text.Trim()
+                                + "')";
+
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        cmd.CommandText = "update stationInformation set station = 'Test1', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
+                                + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        MessageBox.Show("SaledService is not opened");
+                    }
+
+                    conn.Close();
+                    MessageBox.Show("插入测试1数据OK");
+                    currentStoreHouse = "";
+                    this.tracker_bar_textBox.Text = "";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
         }
 

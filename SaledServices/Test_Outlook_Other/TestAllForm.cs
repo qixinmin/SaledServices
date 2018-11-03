@@ -31,6 +31,8 @@ namespace SaledServices.Test_Outlook
 
         bool existBuffer = false, existRepair = false;
 
+        string currentStoreHouse = "";
+
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
@@ -69,6 +71,17 @@ namespace SaledServices.Test_Outlook
                         station = querySdr[0].ToString();
                     }
                     querySdr.Close();
+
+
+                    cmd.CommandText = "select storehouse from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                    querySdr = cmd.ExecuteReader();                   
+                    while (querySdr.Read())
+                    {
+                        currentStoreHouse = querySdr[0].ToString().Trim(); ;
+                    }
+                    querySdr.Close();
+
 
                     if (station != "维修" && station != "BGA")
                     {
@@ -264,9 +277,13 @@ namespace SaledServices.Test_Outlook
                                         }
                                         else
                                         {
-                                            //更新烧录日期与custom_serial_no与使用状态
-                                            cmd.CommandText = "update DPK_table set _status = '已使用', burn_date = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "',custom_serial_no = '" + custom_serial_no + "' where Id = '" + id + "'";
-                                            cmd.ExecuteNonQuery();
+                                            if (currentStoreHouse != "DOA_整机" && currentStoreHouse != "惠州库" && currentStoreHouse != "成都库")
+                                            {
+                                                //更新烧录日期与custom_serial_no与使用状态
+                                                cmd.CommandText = "update DPK_table set _status = '已使用', burn_date = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "',custom_serial_no = '" + custom_serial_no + "' where Id = '" + id + "'";
+                                                cmd.ExecuteNonQuery();
+                                            }
+                                          
                                         }
                                     }
                                 }
@@ -404,26 +421,6 @@ namespace SaledServices.Test_Outlook
                             return;
                         }
                     }
-
-                    //cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-                    //querySdr = cmd.ExecuteReader();
-                    //string Id = "";
-                    //while (querySdr.Read())
-                    //{
-                    //    Id = querySdr[0].ToString();
-                    //}
-                    //querySdr.Close();
-                    //if (Id != "")
-                    //{
-                    //    MessageBox.Show("此序列号已经存在！");
-                    //    this.tracker_bar_textBox.Text = "";
-                    //    this.cpuFreqtextBox.Text = "";
-                    //    this.cpuTypetextBox.Text = "";
-                    //    this.keyidtextBox.Text = "";
-                    //    this.KEYSERIALtextBox.Text = "";
-                    //    conn.Close();
-                    //    return;
-                    //}
                     
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
@@ -550,6 +547,7 @@ namespace SaledServices.Test_Outlook
                             + "SET -v DPKID " + KEYID + "\r\n"
                             + "SET -v FRUPN " + tempCustomMaterialNo + "\r\n"
                             + "SET -v MODELID " + mb_brief + "\r\n"
+                            + "SET -v storehouse " + currentStoreHouse + "\r\n"
                             + "SET -v DPK " + dpk_type;
             Utils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
 
@@ -565,6 +563,7 @@ namespace SaledServices.Test_Outlook
                            + "SET DPKID=" + KEYID + "\r\n"
                            + "SET FRUPN=" + tempCustomMaterialNo + "\r\n"
                            + "SET MODELID=" + mb_brief + "\r\n"
+                            + "SET storehouse=" + currentStoreHouse + "\r\n"
                            + "SET DPK=" + dpk_type;
             Utils.createFile("D:\\fru\\", "BOM.bat", totalStr);
 
@@ -599,11 +598,107 @@ namespace SaledServices.Test_Outlook
 
         private void button4_Click(object sender, EventArgs e)
         {
-            button2_Click(null, null);//fru
+            if (currentStoreHouse != "DOA_整机" && currentStoreHouse != "惠州库" && currentStoreHouse != "成都库")//三个库别外的东西，成都库，惠阳库，DMA整机
+            {
+                button2_Click(null, null);//fru
 
-            downloadFiles(@"C:\CHKCPU\CPUPN.txt", @"C:\CHKCPU\CHKCPU.BAT");
+                downloadFiles(@"C:\CHKCPU\CPUPN.txt", @"C:\CHKCPU\CHKCPU.BAT");
 
-            runBatFile(@"C:\CHKCPU\", "CHKCPU.BAT");
+                runBatFile(@"C:\CHKCPU\", "CHKCPU.BAT");
+            }
+            else
+            {
+                KEYID = "";
+                KEYSERIAL = "";
+                string newMac = Regex.Replace(mac, "([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})", "$1-$2-$3-$4-$5-$6");
+
+                string tempCustomMaterialNo = customMaterialNo;
+                if (customMaterialNo.Length == 10 && customMaterialNo.StartsWith("000"))
+                {
+                    if (product == "TBG")
+                    {
+                        tempCustomMaterialNo = customMaterialNo.Substring(3);
+                    }
+                }
+
+                string totalStr = "SET -v MBID " + track_serial_no + "\r\n"
+                                + "SET -v SN " + vendor_serail_no + "\r\n"
+                                + "SET -v SKU " + mpn + "\r\n"
+                                + "SET -v MAC " + newMac + "\r\n"
+                                + "SET -v UUID " + uuid + "\r\n"
+                                + "SET -v MB11S " + custom_serial_no + "\r\n"
+                                + "SET -v OA3KEY " + KEYSERIAL + "\r\n"
+                                + "SET -v OA3PID " + KEYID + "\r\n"
+                                + "SET -v DPKNO " + KEYSERIAL + "\r\n"
+                                + "SET -v DPKID " + KEYID + "\r\n"
+                                + "SET -v FRUPN " + tempCustomMaterialNo + "\r\n"
+                                + "SET -v MODELID " + mb_brief + "\r\n"
+                                + "SET -v storehouse " + currentStoreHouse + "\r\n"
+                                + "SET -v DPK " + dpk_type;
+                Utils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
+
+                totalStr = "SET MBID=" + track_serial_no + "\r\n"
+                               + "SET SN=" + vendor_serail_no + "\r\n"
+                               + "SET SKU=" + mpn + "\r\n"
+                               + "SET MAC=" + newMac + "\r\n"
+                               + "SET UUID=" + uuid + "\r\n"
+                               + "SET MB11S=" + custom_serial_no + "\r\n"
+                               + "SET OA3KEY=" + KEYSERIAL + "\r\n"
+                               + "SET OA3PID=" + KEYID + "\r\n"
+                               + "SET DPKNO=" + KEYSERIAL + "\r\n"
+                               + "SET DPKID=" + KEYID + "\r\n"
+                               + "SET FRUPN=" + tempCustomMaterialNo + "\r\n"
+                               + "SET MODELID=" + mb_brief + "\r\n"
+                               + "SET storehouse=" + currentStoreHouse + "\r\n"
+                               + "SET DPK=" + dpk_type;
+                Utils.createFile("D:\\fru\\", "BOM.bat", totalStr);
+                Utils.createFile("C:\\CHKCPU\\", "BOM.bat", totalStr);
+
+                //清空变量
+                //KEYID = ""; 
+                this.keyidtextBox.Text = "";
+                this.KEYSERIALtextBox.Text = "";
+
+                downloadFiles(@"C:\CHKCPU\CPUPNNB.txt", @"C:\CHKCPU\CHKCPUNB.BAT");
+                runBatFile(@"C:\CHKCPU\", "CHKCPUNB.BAT");
+
+                //写数据库内容
+                try
+                {
+                    SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                    conn.Open();
+
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.Connection = conn;
+                        cmd.CommandType = CommandType.Text;
+
+                        cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
+                            + this.tracker_bar_textBox.Text.Trim() + "','"
+                            + this.testerTextBox.Text.Trim() + "','"
+                            + this.testdatetextBox.Text.Trim()
+                            + "')";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
+                                + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        MessageBox.Show("SaledService is not opened");
+                    }
+                    conn.Close();
+                    MessageBox.Show("插入测试All数据OK");
+                    currentStoreHouse = "";
+                    this.tracker_bar_textBox.Text = "";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
