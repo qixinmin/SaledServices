@@ -16,6 +16,7 @@ namespace SaledServices
 
         private string vendorStr = "";
         private string productStr = "";
+        private string storehousestr = "";
 
         //Dictionary<string, string> myDictionary = new Dictionary<string, string>();
 
@@ -44,7 +45,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandText = "select distinct vendor from receiveOrder";
                 cmd.CommandType = CommandType.Text;
-
+                this.vendorComboBox.Items.Clear();
                 SqlDataReader querySdr = cmd.ExecuteReader();
 
                 while (querySdr.Read())
@@ -58,6 +59,7 @@ namespace SaledServices
                 querySdr.Close();
 
                 cmd.CommandText = "select distinct product from receiveOrder";
+                this.productComboBox.Items.Clear();
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -69,8 +71,22 @@ namespace SaledServices
                 }
                 querySdr.Close();
 
+                cmd.CommandText = "select distinct storehouse from receiveOrder";
+                querySdr = cmd.ExecuteReader();
+                this.storehouseTextBox.Items.Clear();
+                while (querySdr.Read())
+                {
+                    string temp = querySdr[0].ToString();
+                    if (temp != "")
+                    {
+                        this.storehouseTextBox.Items.Add(temp);
+                    }
+                }
+                querySdr.Close();
+
                 cmd.CommandText = "select distinct _type from customResponsibilityType";
                 querySdr = cmd.ExecuteReader();
+                this.custom_res_typeComboBox.Items.Clear();
                 while (querySdr.Read())
                 {
                     string temp = querySdr[0].ToString();
@@ -84,6 +100,7 @@ namespace SaledServices
 
                 cmd.CommandText = "select distinct _status from returnStoreStatus";
                 querySdr = cmd.ExecuteReader();
+                this.statusComboBox.Items.Clear();
                 while (querySdr.Read())
                 {
                     string temp = querySdr[0].ToString();
@@ -96,6 +113,7 @@ namespace SaledServices
 
                 cmd.CommandText = "select distinct responsibility_describe from customResponsibility";
                 querySdr = cmd.ExecuteReader();
+                this.response_describeComboBox.Items.Clear();
                 while (querySdr.Read())
                 {
                     string temp = querySdr[0].ToString();
@@ -126,9 +144,15 @@ namespace SaledServices
             doQueryAfterSelection();
         }
 
+         private void storehouseTextBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.storehousestr = this.storehouseTextBox.Text;
+            doQueryAfterSelection();
+        }
+
         private void doQueryAfterSelection()
         {
-            if (this.vendorStr == "" || this.productStr == "")
+            if (this.vendorStr == "" || this.productStr == "" )
             {
                 return;
             }
@@ -144,8 +168,8 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select orderno, custom_materialNo,mb_brief,receivedNum,returnNum,ordertime from receiveOrder where vendor='" + vendorStr 
-                    + "' and product ='" + productStr + "' and _status = 'close'";                
+                cmd.CommandText = "select orderno, custom_materialNo,mb_brief,receivedNum,returnNum,ordertime from receiveOrder where vendor='" + vendorStr
+                + "' and product ='" + productStr + "' and _status = 'close' and storehouse like '" + this.storehousestr + "'"; 
 
                 SqlDataAdapter sda = new SqlDataAdapter();
                 sda.SelectCommand = cmd;
@@ -153,7 +177,6 @@ namespace SaledServices
                 sda.Fill(ds, "receiveOrder");
                 dataGridViewToReturn.DataSource = ds.Tables[0];
                 dataGridViewToReturn.RowHeadersVisible = false;
-
 
                 string[] hTxt = { "订单编号", "客户料号", "MB简称", "收货数量", "还货数量", "制单时间" };
                 for (int i = 0; i < hTxt.Length; i++)
@@ -203,6 +226,8 @@ namespace SaledServices
             }
         }
 
+        List<string> replaceablempn = new List<string>();
+
         private void simulateEnter(string custommaterialNo,string orderNo, string tat)
         {
             try
@@ -231,26 +256,37 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select storehouse from receiveOrder where vendor='" + vendorStr
-                    + "' and product ='" + productStr + "' and _status = 'close'";
+                    //cmd.CommandText = "select storehouse from receiveOrder where vendor='" + vendorStr
+                    //+ "' and product ='" + productStr + "' and _status = 'close'";
 
-                    SqlDataReader querySdr = cmd.ExecuteReader();
-                    while (querySdr.Read())
-                    {
-                        this.storehouseTextBox.Text = querySdr[0].ToString();
-                        break;
-                    }
-                    querySdr.Close();
+                    //SqlDataReader querySdr = cmd.ExecuteReader();
+                    //while (querySdr.Read())
+                    //{
+                    //    this.storehouseTextBox.Text = querySdr[0].ToString();
+                    //    break;
+                    //}
+                    //querySdr.Close();
 
-                    cmd.CommandText = "select dpk_type, mpn, replace_custom_materialNo from MBMaterialCompare where custommaterialNo = '"
+                    cmd.CommandText = "select dpk_type, mpn, replace_custom_materialNo,replace_mpn from MBMaterialCompare where custommaterialNo = '"
                         + this.custommaterialNoTextBox.Text.Trim() + "'";
 
-                    querySdr = cmd.ExecuteReader();
+                    replaceablempn.Clear();
+                    SqlDataReader querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
                         this.dpkpnTextBox.Text = querySdr[0].ToString();
                         this.bommpnTextBox.Text = querySdr[1].ToString();
                         this.replace_custom_materialNotextBox.Text = querySdr[2].ToString();
+
+                        if (querySdr[2].ToString().Trim() != "")
+                        {
+                            replaceablempn.Add(querySdr[2].ToString());
+                        }
+
+                        if (querySdr[3].ToString().Trim() != "")
+                        {
+                            replaceablempn.Add(querySdr[3].ToString());
+                        }
                     }
                     querySdr.Close();
 
@@ -271,6 +307,9 @@ namespace SaledServices
             {
                 return;
             }
+            this.matertiallibMpnTextBox.Text = "";
+            this.track_serial_noTextBox.Text = "";
+            this.custom_serial_noTextBox.Text = "";
 
             currentMaterialNo = this.custommaterialNoTextBox.Text = dataGridViewToReturn.SelectedCells[1].Value.ToString();
             orderNo = this.ordernoTextBox.Text = dataGridViewToReturn.SelectedCells[0].Value.ToString();
@@ -349,11 +388,14 @@ namespace SaledServices
 
             if (this.matertiallibMpnTextBox.Text.Trim() != this.bommpnTextBox.Text.Trim())
             {
-                MessageBox.Show("收获表中的mpn与物料对照表的mpn不一致，请检查！");
-                this.track_serial_noTextBox.Text = "";
-                this.track_serial_noTextBox.Focus();
-                this.custom_serial_noTextBox.Text = "";
-                return;
+                if (replaceablempn.Contains(this.matertiallibMpnTextBox.Text.Trim()) == false)
+                {
+                    MessageBox.Show("收获表中的mpn与物料对照表的所有mpn不一致，请检查！");
+                    this.track_serial_noTextBox.Text = "";
+                    this.track_serial_noTextBox.Focus();
+                    this.custom_serial_noTextBox.Text = "";
+                    return;
+                }               
             }
 
             if (statusComboBox.Text.Trim() == "不良品")
@@ -461,6 +503,10 @@ namespace SaledServices
                         this.lenovo_repair_noTextBox.Text.Trim() + "','" +
                         returnOrderIndex +
                         "')";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "update stationInformation set station = 'return', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
+                             + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                         cmd.ExecuteNonQuery();
                         
                         //dataGridViewToReturn里面的数据要更新
@@ -731,8 +777,7 @@ namespace SaledServices
                             cidExist = querySdr[0].ToString();
                         }
                         querySdr.Close();
-
-                        string track_serial_no = "";
+                      
                         if (cidExist == "")
                         {
                             //增加站别检查，如果没有经过最后一站，则认为此板子有问题，不能归还 
@@ -743,14 +788,15 @@ namespace SaledServices
                             {
                                 currentUsedTable = "testalltable";
                             }
-                            cmd.CommandText = "select track_serial_no from " + currentUsedTable + " where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                            cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
                             querySdr = cmd.ExecuteReader();
+                            string station = "";
                             while (querySdr.Read())
                             {
-                                track_serial_no = querySdr[0].ToString();
+                                station = querySdr[0].ToString();
                             }
                             querySdr.Close();
-                            if (track_serial_no == "")
+                            if (station != "Test2" && station != "Test1&2")
                             {
                                 MessageBox.Show("此单没有经过Test2检查站别！");
                                 mConn.Close();
@@ -967,5 +1013,7 @@ namespace SaledServices
             }
             PrintUtils.printCustomMaterialNo(this.custommaterialNoTextBox.Text);
         }
+
+       
     }
 }

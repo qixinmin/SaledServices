@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.IO;
 using SaledServices.Export;
 using SaledServices.Test_Outlook;
+using SaledServices.queryform;
 
 namespace SaledServices
 {
@@ -1411,6 +1412,21 @@ namespace SaledServices
             fruExport.Show();
 
             allForm.Add(fruExport);
+        }
+        private ReturnQueryByInfo returnQueryByInfo; 
+        private void 查询板子站别ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (returnQueryByInfo == null || returnQueryByInfo.IsDisposed)
+            {
+                returnQueryByInfo = new ReturnQueryByInfo();
+                returnQueryByInfo.MdiParent = this;
+            }
+
+            returnQueryByInfo.WindowState = FormWindowState.Maximized;
+            returnQueryByInfo.BringToFront();
+            returnQueryByInfo.Show();
+
+            allForm.Add(returnQueryByInfo);
         }
     }
 }

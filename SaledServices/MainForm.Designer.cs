@@ -113,11 +113,12 @@
             this.仁宝大数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.合肥报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.总报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fRU收还货信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fRU收还货信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -816,12 +817,20 @@
             this.总报表ToolStripMenuItem.Text = "总报表(专用)";
             this.总报表ToolStripMenuItem.Click += new System.EventHandler(this.总报表ToolStripMenuItem_Click);
             // 
+            // fRU收还货信息导出ToolStripMenuItem
+            // 
+            this.fRU收还货信息导出ToolStripMenuItem.Name = "fRU收还货信息导出ToolStripMenuItem";
+            this.fRU收还货信息导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.fRU收还货信息导出ToolStripMenuItem.Text = "FRU收还货信息导出";
+            this.fRU收还货信息导出ToolStripMenuItem.Click += new System.EventHandler(this.fRU收还货信息导出ToolStripMenuItem_Click);
+            // 
             // 查询ToolStripMenuItem
             // 
             this.查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.站别查询ToolStripMenuItem,
             this.dOA查询ToolStripMenuItem,
-            this.信息查询ToolStripMenuItem});
+            this.信息查询ToolStripMenuItem,
+            this.查询板子站别ToolStripMenuItem});
             this.查询ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.查询ToolStripMenuItem.Name = "查询ToolStripMenuItem";
             this.查询ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -830,30 +839,30 @@
             // 站别查询ToolStripMenuItem
             // 
             this.站别查询ToolStripMenuItem.Name = "站别查询ToolStripMenuItem";
-            this.站别查询ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.站别查询ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
             this.站别查询ToolStripMenuItem.Text = "站别查询";
             this.站别查询ToolStripMenuItem.Click += new System.EventHandler(this.站别查询ToolStripMenuItem_Click);
             // 
             // dOA查询ToolStripMenuItem
             // 
             this.dOA查询ToolStripMenuItem.Name = "dOA查询ToolStripMenuItem";
-            this.dOA查询ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.dOA查询ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
             this.dOA查询ToolStripMenuItem.Text = "多返查询";
             this.dOA查询ToolStripMenuItem.Click += new System.EventHandler(this.dOA查询ToolStripMenuItem_Click);
             // 
             // 信息查询ToolStripMenuItem
             // 
             this.信息查询ToolStripMenuItem.Name = "信息查询ToolStripMenuItem";
-            this.信息查询ToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
+            this.信息查询ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
             this.信息查询ToolStripMenuItem.Text = "信息查询";
             this.信息查询ToolStripMenuItem.Click += new System.EventHandler(this.信息查询ToolStripMenuItem_Click);
             // 
-            // fRU收还货信息导出ToolStripMenuItem
+            // 查询板子站别ToolStripMenuItem
             // 
-            this.fRU收还货信息导出ToolStripMenuItem.Name = "fRU收还货信息导出ToolStripMenuItem";
-            this.fRU收还货信息导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.fRU收还货信息导出ToolStripMenuItem.Text = "FRU收还货信息导出";
-            this.fRU收还货信息导出ToolStripMenuItem.Click += new System.EventHandler(this.fRU收还货信息导出ToolStripMenuItem_Click);
+            this.查询板子站别ToolStripMenuItem.Name = "查询板子站别ToolStripMenuItem";
+            this.查询板子站别ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.查询板子站别ToolStripMenuItem.Text = "查询板子站别";
+            this.查询板子站别ToolStripMenuItem.Click += new System.EventHandler(this.查询板子站别ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -867,7 +876,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统1101-";
+            this.Text = "上海进销存系统1103-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -969,6 +978,7 @@
         private System.Windows.Forms.ToolStripMenuItem 合肥报表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 总报表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fRU收还货信息导出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 查询板子站别ToolStripMenuItem;
     }
 }
 

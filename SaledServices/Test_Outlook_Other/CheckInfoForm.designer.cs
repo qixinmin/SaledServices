@@ -34,6 +34,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.stationlabel = new System.Windows.Forms.Label();
             this.textBox8s = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dpkstatus = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,14 +48,17 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tracker_bar_textBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.stationlabel, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBox8s, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.stationlabel, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.dpkstatus, 1, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(62, 31);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 51F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(470, 182);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -80,7 +85,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("SimSun", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(3, 55);
+            this.label2.Location = new System.Drawing.Point(3, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 21);
             this.label2.TabIndex = 2;
@@ -90,7 +95,7 @@
             // 
             this.stationlabel.AutoSize = true;
             this.stationlabel.Font = new System.Drawing.Font("SimSun", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.stationlabel.Location = new System.Drawing.Point(3, 110);
+            this.stationlabel.Location = new System.Drawing.Point(144, 131);
             this.stationlabel.Name = "stationlabel";
             this.stationlabel.Size = new System.Drawing.Size(0, 21);
             this.stationlabel.TabIndex = 3;
@@ -98,11 +103,28 @@
             // textBox8s
             // 
             this.textBox8s.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox8s.Location = new System.Drawing.Point(144, 58);
+            this.textBox8s.Location = new System.Drawing.Point(144, 48);
             this.textBox8s.Name = "textBox8s";
             this.textBox8s.Size = new System.Drawing.Size(323, 21);
             this.textBox8s.TabIndex = 4;
             this.textBox8s.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox8s_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 90);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 12);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "DPK状态";
+            // 
+            // dpkstatus
+            // 
+            this.dpkstatus.AutoSize = true;
+            this.dpkstatus.Location = new System.Drawing.Point(144, 90);
+            this.dpkstatus.Name = "dpkstatus";
+            this.dpkstatus.Size = new System.Drawing.Size(0, 12);
+            this.dpkstatus.TabIndex = 6;
             // 
             // CheckInfoForm
             // 
@@ -127,5 +149,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label stationlabel;
         private System.Windows.Forms.TextBox textBox8s;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label dpkstatus;
     }
 }

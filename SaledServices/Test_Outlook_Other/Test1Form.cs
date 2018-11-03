@@ -379,27 +379,35 @@ namespace SaledServices.Test_Outlook
                     while (querySdr.Read())
                     {
                         Id = querySdr[0].ToString();
+                        break;
                     }
                     querySdr.Close();
-                    //if (Id != "") 
-                    //{
-                    //    MessageBox.Show("此序列号已经存在！");
-                    //    this.tracker_bar_textBox.Text = "";
-                    //    this.cpuFreqtextBox.Text = "";
-                    //    this.cpuTypetextBox.Text = "";
-                    //    this.keyidtextBox.Text = "";
-                    //    this.KEYSERIALtextBox.Text = "";
-                    //    conn.Close();
-                    //    return;
-                    //}
-                    
-                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
-                        + this.tracker_bar_textBox.Text.Trim() + "','"
-                        + this.testerTextBox.Text.Trim() + "','"
-                        + this.testdatetextBox.Text.Trim()
-                        + "')";
+                    if (Id != "")
+                    {
+                        //MessageBox.Show("此序列号已经存在！");
+                        //this.tracker_bar_textBox.Text = "";
+                        //this.cpuFreqtextBox.Text = "";
+                        //this.cpuTypetextBox.Text = "";
+                        //this.keyidtextBox.Text = "";
+                        //this.KEYSERIALtextBox.Text = "";
+                        //conn.Close();
+                        //return;
 
-                    cmd.ExecuteNonQuery();
+                        cmd.CommandText = "update " + tableName + " set test_date = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
+                             + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+
+                        cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
+                            + this.tracker_bar_textBox.Text.Trim() + "','"
+                            + this.testerTextBox.Text.Trim() + "','"
+                            + this.testdatetextBox.Text.Trim()
+                            + "')";
+
+                        cmd.ExecuteNonQuery();
+                    }
 
                     cmd.CommandText = "select Id from stationInformation where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     querySdr = cmd.ExecuteReader();

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewToReturn = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,7 +41,6 @@
             this.checkBoxMakeNew = new System.Windows.Forms.CheckBox();
             this.return_file_noTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.storehouseTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.return_dateTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -82,6 +81,7 @@
             this.replace_custom_materialNotextBox = new System.Windows.Forms.TextBox();
             this.matertiallibMpnTextBox = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
+            this.storehouseTextBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label22 = new System.Windows.Forms.Label();
@@ -104,8 +104,8 @@
             // dataGridViewToReturn
             // 
             this.dataGridViewToReturn.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewToReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewToReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewToReturn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewToReturn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewToReturn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -219,16 +219,6 @@
             this.label5.Size = new System.Drawing.Size(89, 20);
             this.label5.TabIndex = 9;
             this.label5.Text = "客户库别";
-            // 
-            // storehouseTextBox
-            // 
-            this.storehouseTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.storehouseTextBox.Location = new System.Drawing.Point(380, 133);
-            this.storehouseTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.storehouseTextBox.Name = "storehouseTextBox";
-            this.storehouseTextBox.ReadOnly = true;
-            this.storehouseTextBox.Size = new System.Drawing.Size(261, 26);
-            this.storehouseTextBox.TabIndex = 16;
             // 
             // label6
             // 
@@ -435,8 +425,8 @@
             // dataGridViewReturnedDetail
             // 
             this.dataGridViewReturnedDetail.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewReturnedDetail.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewReturnedDetail.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewReturnedDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewReturnedDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewReturnedDetail.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -590,7 +580,6 @@
             this.tableLayoutPanel3.Controls.Add(this.label6, 2, 4);
             this.tableLayoutPanel3.Controls.Add(this.return_dateTextBox, 3, 4);
             this.tableLayoutPanel3.Controls.Add(this.label5, 2, 3);
-            this.tableLayoutPanel3.Controls.Add(this.storehouseTextBox, 3, 3);
             this.tableLayoutPanel3.Controls.Add(this.label12, 2, 2);
             this.tableLayoutPanel3.Controls.Add(this.bommpnTextBox, 3, 2);
             this.tableLayoutPanel3.Controls.Add(this.label17, 2, 1);
@@ -610,6 +599,7 @@
             this.tableLayoutPanel3.Controls.Add(this.matertiallibMpnTextBox, 1, 7);
             this.tableLayoutPanel3.Controls.Add(this.label4, 2, 9);
             this.tableLayoutPanel3.Controls.Add(this.label21, 0, 7);
+            this.tableLayoutPanel3.Controls.Add(this.storehouseTextBox, 3, 3);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -735,6 +725,17 @@
             this.label21.Size = new System.Drawing.Size(99, 20);
             this.label21.TabIndex = 13;
             this.label21.Text = "资料库MPN";
+            // 
+            // storehouseTextBox
+            // 
+            this.storehouseTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.storehouseTextBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.storehouseTextBox.FormattingEnabled = true;
+            this.storehouseTextBox.Location = new System.Drawing.Point(379, 132);
+            this.storehouseTextBox.Name = "storehouseTextBox";
+            this.storehouseTextBox.Size = new System.Drawing.Size(263, 24);
+            this.storehouseTextBox.TabIndex = 22;
+            this.storehouseTextBox.SelectedValueChanged += new System.EventHandler(this.storehouseTextBox_SelectedIndexChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -879,7 +880,6 @@
         private System.Windows.Forms.CheckBox checkBoxMakeNew;
         private System.Windows.Forms.TextBox return_file_noTextBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox storehouseTextBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox return_dateTextBox;
         private System.Windows.Forms.Label label7;
@@ -929,5 +929,6 @@
         private System.Windows.Forms.TextBox lenovo_repair_noTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Button print;
+        private System.Windows.Forms.ComboBox storehouseTextBox;
     }
 }

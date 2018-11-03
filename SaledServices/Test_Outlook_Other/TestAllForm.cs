@@ -81,7 +81,7 @@ namespace SaledServices.Test_Outlook
                         }
                         else
                         {
-                            MessageBox.Show("板子已经经过站别" + station);
+                            MessageBox.Show("板子已经经过站别[" + station+"]");
                             querySdr.Close();
                             mConn.Close();
                             this.tracker_bar_textBox.Focus();
@@ -432,9 +432,31 @@ namespace SaledServices.Test_Outlook
                         + "')";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
+                    cmd.CommandText = "select Id from stationInformation where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        querySdr.Close();
+                        cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        querySdr.Close();
+                        cmd.CommandText = "select track_serial_no,product from mb_out_stock where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows)//从buffer发出来的板子
+                        {
+                            //记录站别信息
+                            querySdr.Close();
+                            cmd.CommandText = "INSERT INTO stationInformation VALUES('"
+                                + this.tracker_bar_textBox.Text.Trim() + "','Test1&2','"
+                                + DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                            cmd.ExecuteNonQuery();
+                        }
+                        querySdr.Close();
+                    }
                 }
                 else
                 {
@@ -712,31 +734,60 @@ namespace SaledServices.Test_Outlook
                     while (querySdr.Read())
                     {
                         Id = querySdr[0].ToString();
+                        break;
                     }
                     querySdr.Close();
 
                     if (Id != "")
                     {
-                        MessageBox.Show("此序列号已经存在！");
-                        this.tracker_bar_textBox.Text = "";
-                        this.cpuFreqtextBox.Text = "";
-                        this.cpuTypetextBox.Text = "";
-                        this.keyidtextBox.Text = "";
-                        this.KEYSERIALtextBox.Text = "";
-                        conn.Close();
-                        return;
+                        //MessageBox.Show("此序列号已经存在！");
+                        //this.tracker_bar_textBox.Text = "";
+                        //this.cpuFreqtextBox.Text = "";
+                        //this.cpuTypetextBox.Text = "";
+                        //this.keyidtextBox.Text = "";
+                        //this.KEYSERIALtextBox.Text = "";
+                        //conn.Close();
+                        //return;
+
+                        cmd.CommandText = "update " + tableName + " set test_date = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
+                           + this.tracker_bar_textBox.Text.Trim() + "','"
+                           + this.testerTextBox.Text.Trim() + "','"
+                           + this.testdatetextBox.Text.Trim()
+                           + "')";
+                        cmd.ExecuteNonQuery();
                     }
 
-                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
-                        + this.tracker_bar_textBox.Text.Trim() + "','"
-                        + this.testerTextBox.Text.Trim() + "','"
-                        + this.testdatetextBox.Text.Trim()
-                        + "')";
-                    cmd.ExecuteNonQuery();
-
-                    cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
+                    cmd.CommandText = "select Id from stationInformation where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        querySdr.Close();
+                        cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        querySdr.Close();
+                        cmd.CommandText = "select track_serial_no,product from mb_out_stock where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows)//从buffer发出来的板子
+                        {
+                            //记录站别信息
+                            querySdr.Close();
+                            cmd.CommandText = "INSERT INTO stationInformation VALUES('"
+                                + this.tracker_bar_textBox.Text.Trim() + "','Test1&2','"
+                                + DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                            cmd.ExecuteNonQuery();
+                        }
+                        querySdr.Close();
+                    }
                 }
                 else
                 {

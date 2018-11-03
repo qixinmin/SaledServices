@@ -42,18 +42,20 @@ namespace SaledServices.Test_Outlook
 
                     if (this.tracker_bar_textBox.Text.Trim() != "")
                     {
-                        cmd.CommandText = "select custom_serial_no from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        cmd.CommandText = "select custom_serial_no,dpk_status from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
                         SqlDataReader querySdr = cmd.ExecuteReader();
-                        string textBox8s = "";
+                        string textBox8s = "", dpk_status="";
                         while (querySdr.Read())
                         {
                             textBox8s = querySdr[0].ToString();
+                            dpk_status = querySdr[1].ToString();
                         }
                         querySdr.Close();
 
                         if (textBox8s != "")
                         {
                             this.textBox8s.Text = textBox8s;
+                            this.dpkstatus.Text = dpk_status;
                         }
                         else
                         {
@@ -70,18 +72,20 @@ namespace SaledServices.Test_Outlook
                     }
                     else if(this.textBox8s.Text.Trim() != "")
                     {
-                        cmd.CommandText = "select track_serial_no from DeliveredTable where custom_serial_no='" + this.textBox8s.Text.Trim() + "'";
+                        cmd.CommandText = "select track_serial_no,dpk_status from DeliveredTable where custom_serial_no='" + this.textBox8s.Text.Trim() + "'";
                         SqlDataReader querySdr = cmd.ExecuteReader();
-                        string track_serial_no = "";
+                        string track_serial_no = "",dpkstatus="";
                         while (querySdr.Read())
                         {
                             track_serial_no = querySdr[0].ToString();
+                            dpkstatus = querySdr[1].ToString();
                         }
                         querySdr.Close();
 
                         if (track_serial_no != "")
                         {
                             this.tracker_bar_textBox.Text = track_serial_no;
+                            this.dpkstatus.Text = dpkstatus;
                         }
                         else
                         {

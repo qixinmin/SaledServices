@@ -381,6 +381,12 @@
     <Compile Include="Fru\FruReturnStoreForm.Designer.cs">
       <DependentUpon>FruReturnStoreForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="queryform\ReturnQueryByInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="queryform\ReturnQueryByInfo.Designer.cs">
+      <DependentUpon>ReturnQueryByInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repair\FaultMBConfirmForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -804,6 +810,9 @@
       <DependentUpon>FruReturnStoreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="queryform\ReturnQueryByInfo.resx">
+      <DependentUpon>ReturnQueryByInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Repair\FaultMBConfirmForm.resx">
       <DependentUpon>FaultMBConfirmForm.cs</DependentUpon>
     </EmbeddedResource>
