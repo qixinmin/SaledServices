@@ -46,10 +46,6 @@ namespace SaledServices.Test_Outlook
 
                 try
                 {
-                    if (Utils.isTimeError(testdatetextBox.Text.Trim()))
-                    {
-                        this.bomdownload.Enabled = false;
-                    }
 
                     Utils.deleteFile("D:\\fru\\", "BOM.bat");
                     Utils.deleteFile("D:\\fru\\", "BOM.NSH");
@@ -280,7 +276,7 @@ namespace SaledServices.Test_Outlook
                                             if (currentStoreHouse != "DOA_整机" && currentStoreHouse != "惠州库" && currentStoreHouse != "成都库")
                                             {
                                                 //更新烧录日期与custom_serial_no与使用状态
-                                                cmd.CommandText = "update DPK_table set _status = '已使用', burn_date = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "',custom_serial_no = '" + custom_serial_no + "' where Id = '" + id + "'";
+                                                cmd.CommandText = "update DPK_table set _status = '已使用', burn_date =GETDATE(),custom_serial_no = '" + custom_serial_no + "' where Id = '" + id + "'";
                                                 cmd.ExecuteNonQuery();
                                             }
                                           
@@ -424,9 +420,7 @@ namespace SaledServices.Test_Outlook
                     
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
-                        + this.testerTextBox.Text.Trim() + "','"
-                        + this.testdatetextBox.Text.Trim()
-                        + "')";
+                        + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "select Id from stationInformation where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
@@ -434,7 +428,7 @@ namespace SaledServices.Test_Outlook
                     if (querySdr.HasRows)
                     {
                         querySdr.Close();
-                        cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
+                        cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = GETDATE() "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                         cmd.ExecuteNonQuery();
                     }
@@ -448,8 +442,7 @@ namespace SaledServices.Test_Outlook
                             //记录站别信息
                             querySdr.Close();
                             cmd.CommandText = "INSERT INTO stationInformation VALUES('"
-                                + this.tracker_bar_textBox.Text.Trim() + "','Test1&2','"
-                                + DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                                + this.tracker_bar_textBox.Text.Trim() + "','Test1&2',GETDATE())";
                             cmd.ExecuteNonQuery();
                         }
                         querySdr.Close();
@@ -488,7 +481,7 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
+                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = GETDATE() "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
                 }
@@ -676,12 +669,10 @@ namespace SaledServices.Test_Outlook
 
                         cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                             + this.tracker_bar_textBox.Text.Trim() + "','"
-                            + this.testerTextBox.Text.Trim() + "','"
-                            + this.testdatetextBox.Text.Trim()
-                            + "')";
+                            + this.testerTextBox.Text.Trim() + "',GETDATE())";
                         cmd.ExecuteNonQuery();
 
-                        cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
+                        cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate =GETDATE()  "
                                 + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                         cmd.ExecuteNonQuery();
                     }
@@ -844,7 +835,7 @@ namespace SaledServices.Test_Outlook
                         //conn.Close();
                         //return;
 
-                        cmd.CommandText = "update " + tableName + " set test_date = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
+                        cmd.CommandText = "update " + tableName + " set test_date = GETDATE() "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                         cmd.ExecuteNonQuery();
                     }
@@ -852,9 +843,7 @@ namespace SaledServices.Test_Outlook
                     {
                         cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                            + this.tracker_bar_textBox.Text.Trim() + "','"
-                           + this.testerTextBox.Text.Trim() + "','"
-                           + this.testdatetextBox.Text.Trim()
-                           + "')";
+                           + this.testerTextBox.Text.Trim() + "',GETDATE())";
                         cmd.ExecuteNonQuery();
                     }
 
@@ -863,7 +852,7 @@ namespace SaledServices.Test_Outlook
                     if (querySdr.HasRows)
                     {
                         querySdr.Close();
-                        cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
+                        cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = GETDATE() "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                         cmd.ExecuteNonQuery();
                     }
@@ -877,8 +866,7 @@ namespace SaledServices.Test_Outlook
                             //记录站别信息
                             querySdr.Close();
                             cmd.CommandText = "INSERT INTO stationInformation VALUES('"
-                                + this.tracker_bar_textBox.Text.Trim() + "','Test1&2','"
-                                + DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                                + this.tracker_bar_textBox.Text.Trim() + "','Test1&2',GETDATE())";
                             cmd.ExecuteNonQuery();
                         }
                         querySdr.Close();

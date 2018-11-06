@@ -94,21 +94,13 @@ namespace SaledServices
     {
         static LabelManager2.Application labApp = null;
         static LabelManager2.Document doc = null;
-        public static void InitCodesoftForReturn()
+
+        public static void initCodeSoft()
         {
             try
             {
                 labApp = new LabelManager2.Application();
-                doc = labApp.ActiveDocument;
-                string labFileName = @"D:\printLab\BAR11.Lab";
-                if (!File.Exists(labFileName))
-                {
-                    MessageBox.Show("沒有找到標簽模板文件：" + labFileName + ",請聯系系統管理員", "溫馨提示");
-                    return;
-                }             
-                labApp.Documents.Open(labFileName, false);// 调用设计好的label文件
                 
-                doc.Printer.SwitchTo("codesoft");//打印机名字，自定义，可以修改               
             }
             catch (Exception ex)
             {
@@ -116,24 +108,120 @@ namespace SaledServices
             }
         }
 
-        public static void printCustomMaterialNo(string customMaterial)
+        public static void print8sCode(string _8sCode)
         {
             if (labApp == null)
             {
-                InitCodesoftForReturn();
+                initCodeSoft();
             }
 
-            doc.Variables.FormVariables.Item("BAR").Value = customMaterial;
-            doc.PrintDocument(); //打印一次
-            doc.FormFeed(); //结束打印
+            try
+            {
+                string labFileName = @"D:\printLab\BAR11.Lab";
+                if (!File.Exists(labFileName))
+                {
+                    MessageBox.Show("沒有找到標簽模板文件：" + labFileName + ",請聯系系統管理員", "溫馨提示");
+                    return;
+                }
+                labApp.Documents.Open(labFileName, false);// 调用设计好的label文件
+                if (doc != null)
+                {
+                    doc.Close();
+                    doc = null;
+                }
+                doc = labApp.ActiveDocument;
+                doc.Printer.SwitchTo("codesoft");//打印机名字，自定义，可以修改
+
+                doc.Variables.FormVariables.Item("BAR").Value = _8sCode;
+                doc.PrintDocument(); //打印一次
+                doc.FormFeed(); //结束打印
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
+        public static void printMac(string mac)
+        {
+            if (labApp == null)
+            {
+                initCodeSoft();
+            }
+
+             try
+            {
+                string labFileName = @"D:\printLab\IBM_MAC.lab";
+                if (!File.Exists(labFileName))
+                {
+                    MessageBox.Show("沒有找到標簽模板文件：" + labFileName + ",請聯系系統管理員", "溫馨提示");
+                    return;
+                }
+                labApp.Documents.Open(labFileName, false);// 调用设计好的label文件
+                if (doc != null)
+                {
+                    doc.Close();
+                    doc = null;
+                }
+                doc = labApp.ActiveDocument;
+                doc.Printer.SwitchTo("codesoft");//打印机名字，自定义，可以修改
+
+                doc.Variables.FormVariables.Item("MAC").Value = mac;
+                doc.PrintDocument(); //打印一次
+                doc.FormFeed(); //结束打印
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public static void printCustomMaterial(string filename, string customMaterial)
+        {
+            if (labApp == null)
+            {
+                initCodeSoft();
+            }
+
+            try
+            {
+                string labFileName = @"D:\printLab\"+filename;
+                if (!File.Exists(labFileName))
+                {
+                    MessageBox.Show("沒有找到標簽模板文件：" + labFileName + ",請聯系系統管理員", "溫馨提示");
+                    return;
+                }
+                labApp.Documents.Open(labFileName, false);// 调用设计好的label文件
+                if (doc != null)
+                {
+                    doc.Close();
+                    doc = null;
+                }
+                doc = labApp.ActiveDocument;
+                doc.Printer.SwitchTo("codesoft");//打印机名字，自定义，可以修改
+
+                doc.Variables.FormVariables.Item("BAR").Value = customMaterial;
+                doc.PrintDocument(); //打印一次
+                doc.FormFeed(); //结束打印
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        
         public static void disposePrinter()
         {
             if (doc != null)
             {
                 doc.Close();
+                doc = null;
+               // labApp.Quit();
+            }
+            if (labApp != null)
+            {
                 labApp.Quit();
+                labApp = null;
             }
         }
     }

@@ -280,10 +280,10 @@ namespace SaledServices
             //}
             this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
-            if (Utils.isTimeError(this.order_out_dateTextBox.Text.Trim()))
-            {
-                this.add.Enabled = false;
-            }
+            //if (Utils.isTimeError(this.order_out_dateTextBox.Text.Trim()))
+            //{
+            //    this.add.Enabled = false;
+            //}
 
             try
             {

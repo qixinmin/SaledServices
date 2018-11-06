@@ -21,7 +21,7 @@ namespace SaledServices.Test_Outlook
             this.tracker_bar_textBox.Focus();
         }
 
-        string _8sCodes = "";
+        string _8sCodes = "",mac="", dpk_status="",custommaterialno="";
 
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -43,7 +43,7 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select product,custom_serial_no from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.CommandText = "select product,custom_serial_no,mac,custommaterialNo,dpk_status from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string product = "";
@@ -52,6 +52,10 @@ namespace SaledServices.Test_Outlook
                         product = querySdr[0].ToString();
 
                         _8sCodes = querySdr[1].ToString();
+
+                        mac = querySdr[2].ToString();
+                        custommaterialno = querySdr[3].ToString();
+                        dpk_status = querySdr[4].ToString();
                     }
                     querySdr.Close();
 
@@ -81,6 +85,8 @@ namespace SaledServices.Test_Outlook
                             this.confirmbutton.Enabled = true;
                             this.button1.Enabled = true;
                             this.print.Enabled = true;
+                            this.button2.Enabled = true;
+                            this.button3.Enabled = true;
                         }
                         else
                         {
@@ -90,6 +96,8 @@ namespace SaledServices.Test_Outlook
                             this.confirmbutton.Enabled = false;
                             this.button1.Enabled = false;
                             this.print.Enabled = false;
+                            this.button2.Enabled = false;
+                            this.button3.Enabled = false;
                         }
                     }
                     else 
@@ -98,6 +106,8 @@ namespace SaledServices.Test_Outlook
                         this.confirmbutton.Enabled = false;
                         this.button1.Enabled = false;
                         this.print.Enabled = false;
+                        this.button2.Enabled = false;
+                        this.button3.Enabled = false;
                     }
                     mConn.Close();
                 }
@@ -215,8 +225,37 @@ namespace SaledServices.Test_Outlook
                 MessageBox.Show("客户料号为空!");
                 return;
             }
-            PrintUtils.printCustomMaterialNo(_8sCodes);
+            PrintUtils.print8sCode(_8sCodes);
             _8sCodes = ""; 
+            this.print.Enabled = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (mac == "")
+            {
+                MessageBox.Show("MAC为空!");
+                return;
+            }
+            PrintUtils.printMac(mac);
+            mac = "";
+            this.print.Enabled = false;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (custommaterialno == "")
+            {
+                MessageBox.Show("联系料号为空!");
+                return;
+            }
+            string filename = "LCFC-FRU_PN-00HM331-WIN.lab";
+            if (dpk_status == "NOK")
+            {
+                filename = "LCFC-FRU_PN-00HM339-NOK.lab";
+            }
+            PrintUtils.printCustomMaterial(filename, custommaterialno);
+            custommaterialno = "";
             this.print.Enabled = false;
         }
     }

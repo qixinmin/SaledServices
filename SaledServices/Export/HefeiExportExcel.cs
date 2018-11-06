@@ -109,7 +109,7 @@ namespace SaledServices
                 cmd.CommandText = "select A.track_serial_no,A.custom_order,A.custom_serial_no,B.custom_serial_no,A.mpn,A.dpk_status, "+//6列
                     " A.custommaterialNo,A.custom_machine_type,A.vendor,A.mb_brief,A.mb_make_date,A.order_receive_date," +//6列
                     "A.guarantee, B._status,B.return_date,A.custom_fault,B.track_serial_no, A.warranty_period" +//5
-                    " from DeliveredTable as A, returnStore as B where A.receiveOrderIndex = B.returnOrderIndex and B.return_date between '" 
+                    " from DeliveredTable as A, returnStore as B where A.receiveOrderIndex = B.returnOrderIndex and B.order_receive_date between '" 
                     + startTime + "' and '" + endTime + "' and B.vendor ='"+this.vendorComboBox.Text.Trim()+"' and B.product='"+this.productComboBox.Text.Trim()+"'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())

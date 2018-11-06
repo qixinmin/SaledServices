@@ -127,14 +127,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SaledServices.exe" size="1009664">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SaledServices.exe" size="1011200">
       <assemblyIdentity name="SaledServices" version="1.0.0.1" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>EDiMF8u3iseK/xnJUNu6VFDZFt4=</dsig:DigestValue>
+        <dsig:DigestValue>1J2gHUJO+7COke4hkT8cNkvTBp4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -1012,7 +1012,7 @@ namespace SaledServices
                 MessageBox.Show("客户料号为空!");
                 return;
             }
-            PrintUtils.printCustomMaterialNo(this.custommaterialNoTextBox.Text);
+           // PrintUtils.printCustomMaterialNo(this.custommaterialNoTextBox.Text);
         }
 
        

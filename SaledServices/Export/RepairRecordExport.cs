@@ -245,6 +245,14 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
+                    cmd.CommandText = "select top 1 tester from testalltable where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        repairRecord.tester = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
                     //修改最终结果repairRecord.repair_result
                     if (repairRecord.pch == "" && repairRecord.pch_place == ""
                         && repairRecord.vga == "" && repairRecord.vga_place == ""
