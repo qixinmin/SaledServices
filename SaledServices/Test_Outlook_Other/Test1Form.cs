@@ -416,7 +416,7 @@ namespace SaledServices.Test_Outlook
                         cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                             + this.tracker_bar_textBox.Text.Trim() + "','"
                             + this.testerTextBox.Text.Trim() + "','"
-                            + this.testdatetextBox.Text.Trim()
+                            + "GETDATE()"
                             + "')";
 
                         cmd.ExecuteNonQuery();
@@ -442,7 +442,7 @@ namespace SaledServices.Test_Outlook
                             querySdr.Close();
                             cmd.CommandText = "INSERT INTO stationInformation VALUES('"
                                 + this.tracker_bar_textBox.Text.Trim() + "','Test1','"
-                                + DateTime.Now.ToString("yyyy/MM/dd") + "')";
+                                + "GETDATE()" + "')";
                             cmd.ExecuteNonQuery();
                         }
                         querySdr.Close();
@@ -664,7 +664,7 @@ namespace SaledServices.Test_Outlook
                             cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                                 + this.tracker_bar_textBox.Text.Trim() + "','"
                                 + this.testerTextBox.Text.Trim() + "','"
-                                + this.testdatetextBox.Text.Trim()
+                                + "GETDATE()"
                                 + "')";
 
                             cmd.ExecuteNonQuery();
@@ -845,7 +845,7 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
                         + this.testerTextBox.Text.Trim() + "','"
-                        + this.testdatetextBox.Text.Trim()
+                        + "GETDATE()"
                         + "')";
                     cmd.ExecuteNonQuery();
 

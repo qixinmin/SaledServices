@@ -161,23 +161,23 @@ namespace SaledServices
             }
 
 
-            if (User.UserSelfForm.isInTest())
-            {
-                try
-                {
-                    string dir = Directory.GetCurrentDirectory() + "\\Files\\";
-                    string targetDir = string.Format(dir);//this is where testChange.bat lies
-                    Process proc = new Process();
-                    proc.StartInfo.WorkingDirectory = targetDir;
-                    proc.StartInfo.FileName = "syncTime.bat";
-                    proc.Start();
-                    proc.WaitForExit();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
-                }
-            }
+            //if (User.UserSelfForm.isInTest())
+            //{
+            //    try
+            //    {
+            //        string dir = Directory.GetCurrentDirectory() + "\\Files\\";
+            //        string targetDir = string.Format(dir);//this is where testChange.bat lies
+            //        Process proc = new Process();
+            //        proc.StartInfo.WorkingDirectory = targetDir;
+            //        proc.StartInfo.FileName = "syncTime.bat";
+            //        proc.Start();
+            //        proc.WaitForExit();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
+            //    }
+            //}
 
             //调用打印机初始化工作
             //Thread mythread = new Thread(printerInit);
