@@ -97,6 +97,8 @@ namespace SaledServices
 
             List<HefeiDataStruct> receiveOrderList = new List<HefeiDataStruct>();
 
+            List<HefeiDataStruct> receiveOrdersource = new List<HefeiDataStruct>();//只记录没要还货记录的数据
+
             try
             {
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -106,8 +108,56 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                //记录没要还货的记录
+                //记录收货但是没有还货的记录               
+                cmd.CommandText = "select A.track_serial_no,A.custom_order,A.custom_serial_no,A.mpn,A.dpk_status, " +//5列
+                    " A.custommaterialNo,A.custom_machine_type,A.vendor,A.mb_brief,A.mb_make_date,A.order_receive_date," +//6列
+                    "A.guarantee, A.custom_fault, A.warranty_period" +//3
+                    " from DeliveredTable as A where  A.order_receive_date between '"
+                    + startTime + "' and '" + endTime + "' and A.vendor ='" + this.vendorComboBox.Text.Trim() + "' and A.product='" + this.productComboBox.Text.Trim() + "'";
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    HefeiDataStruct temp = new HefeiDataStruct();
+                    temp.tracker_no_receive = querySdr[0].ToString();
+                    temp.REPAIR_CENTER = "HWB";
+                    temp.RMA_NO = querySdr[1].ToString();
+                    temp.PRODUCT = "MB";
+                    temp.PRODUCT_SN = querySdr[2].ToString();
+                    temp.SHIPPING_SN = "";
+                    temp.LCFC_PN = querySdr[3].ToString();
+                    temp.OS_VERSION = querySdr[4].ToString();
+                    temp.LNV_FRU_PN = querySdr[5].ToString();
+                    temp.LNV_MODEL_NAME = querySdr[6].ToString();
+                    temp.LNV_SERIES = "";
+                    temp.PRODUCT = querySdr[7].ToString();
+                    temp.LCFC_MODEL_NAME = querySdr[8].ToString();
+                    temp.PRODUCT_DAY_CODE = querySdr[9].ToString();
+                    temp.RETURN_AREA = "CHINA";
+                    temp.SERVICE_REQUESTER = "LENOVO";
+                    temp.SHIP_BACK_DATE = querySdr[10].ToString();//收货日期
+                    temp.SVC_RECEIVE_DATE = querySdr[10].ToString();//同一天
+                    temp.SERVICE_TYPE = (querySdr[11].ToString() == "保内" ? "IW" : "OOW");
+                    temp.INCOMING_INSPECTION = "";
+                    temp.LINE_INPUT_DATE = querySdr[10].ToString();
+                    temp.REPAIR_START_DATE = querySdr[10].ToString();
+                    temp.PACKING_DATE = "";//还货日期
+                    temp.DELIVERY_DATE = "";
+                    temp.CLOSE_DATE = "";
+                    temp.NORMAL_SYMPTOM = querySdr[12].ToString();
+                    temp.tracker_no_return = querySdr[0].ToString();//还没有还货的使用收货跟踪条码替代
+                    temp.Q_A_Result = "";
+                    temp.DELIVERY = "Y";
+                    temp.TAT_TARGET = "7";
+                    temp.warranty_period = querySdr[13].ToString();
 
+                    temp.repairDetailList = new List<repairDetail>();
+
+
+
+                    receiveOrdersource.Add(temp);
+
+                }
+                querySdr.Close();
 
                 //记录还货的记录
                 cmd.CommandText = "select A.track_serial_no,A.custom_order,A.custom_serial_no,B.custom_serial_no,A.mpn,A.dpk_status, "+//6列
@@ -115,7 +165,7 @@ namespace SaledServices
                     "A.guarantee, B._status,B.return_date,A.custom_fault,B.track_serial_no, A.warranty_period" +//5
                     " from DeliveredTable as A, returnStore as B where A.receiveOrderIndex = B.returnOrderIndex and B.return_date between '" 
                     + startTime + "' and '" + endTime + "' and B.vendor ='"+this.vendorComboBox.Text.Trim()+"' and B.product='"+this.productComboBox.Text.Trim()+"'";
-                SqlDataReader querySdr = cmd.ExecuteReader();
+                querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
                     HefeiDataStruct temp = new HefeiDataStruct();
@@ -153,10 +203,24 @@ namespace SaledServices
 
                     temp.repairDetailList = new List<repairDetail>();
 
-                    receiveOrderList.Add(temp);
+                    foreach (HefeiDataStruct temp1 in receiveOrdersource)
+                    {
+                        if (temp1.tracker_no_receive.Trim() == temp.tracker_no_return.Trim()
+                            || temp1.tracker_no_receive.Trim() == temp.tracker_no_receive.Trim())
+                        {
+                            receiveOrdersource.Remove(temp1);
+                            break;
+                        }
+                    }
 
+                    receiveOrderList.Add(temp);
                 }
                 querySdr.Close();
+
+                foreach (HefeiDataStruct temp in receiveOrdersource)
+                {
+                    receiveOrderList.Add(temp);
+                }
 
                 foreach (HefeiDataStruct temp in receiveOrderList)
                 {
@@ -167,19 +231,22 @@ namespace SaledServices
                     temp.REQUEST_DATE = subOneDay.ToString("yyyy-MM-dd");
                     temp.APPROVAL_DATE = subOneDay.ToString("yyyy-MM-dd");
 
-                    DateTime dt1 = Convert.ToDateTime(temp.SHIP_BACK_DATE);
-                    DateTime dt2 = Convert.ToDateTime(temp.PACKING_DATE);
-                    TimeSpan ts = dt2.Subtract(dt1);
-                    int overdays = ts.Days;
-                    if(overdays>7)
+                    if (temp.SHIP_BACK_DATE != "" && temp.PACKING_DATE != "")
                     {
-                        temp.TAT_HIT="N";
+                        DateTime dt1 = Convert.ToDateTime(temp.SHIP_BACK_DATE);
+                        DateTime dt2 = Convert.ToDateTime(temp.PACKING_DATE);
+                        TimeSpan ts = dt2.Subtract(dt1);
+                        int overdays = ts.Days;
+                        if (overdays > 7)
+                        {
+                            temp.TAT_HIT = "N";
+                        }
+                        else
+                        {
+                            temp.TAT_HIT = "Y";
+                        }
+                        temp.TAT = overdays + "";
                     }
-                    else
-                    {
-                        temp.TAT_HIT = "Y";
-                    }
-                    temp.TAT = overdays+"";
 
                     cmd.CommandText = "select top 1 test_date from test1table where track_serial_no='" + temp.tracker_no_return + "' order by Id desc";
                     querySdr = cmd.ExecuteReader();
@@ -283,20 +350,23 @@ namespace SaledServices
 
                     //差一个RRR_90 TODO
                     //规则：根据收货序号，查询其收货日期，然后查这个收货日期之前的还货记录，查最近的一次还货记录，如果在90天内则为1，否则为0
-                    string receiveDateEnd = temp.LINE_INPUT_DATE;
-                    string lastReturnDateStart = Convert.ToDateTime(receiveDateEnd).AddDays(-90).ToString("yyyy-MM-dd");
-                    cmd.CommandText = "select top 1 return_date from returnStore where return_date between '"
-                    + lastReturnDateStart + "' and '" + receiveDateEnd + "' and custom_serial_no='" + temp.PRODUCT_SN + "'";
-                    querySdr = cmd.ExecuteReader();
-                    if (querySdr.HasRows)
+                    if (temp.LINE_INPUT_DATE != "")
                     {
-                        temp.RRR_90 = "1";
-                    }
-                    else
-                    {
-                        temp.RRR_90 = "0";
-                    }
-                    querySdr.Close();
+                        string receiveDateEnd = temp.LINE_INPUT_DATE;
+                        string lastReturnDateStart = Convert.ToDateTime(receiveDateEnd).AddDays(-90).ToString("yyyy-MM-dd");
+                        cmd.CommandText = "select top 1 return_date from returnStore where return_date between '"
+                        + lastReturnDateStart + "' and '" + receiveDateEnd + "' and custom_serial_no='" + temp.PRODUCT_SN + "'";
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows)
+                        {
+                            temp.RRR_90 = "1";
+                        }
+                        else
+                        {
+                            temp.RRR_90 = "0";
+                        }
+                        querySdr.Close();
+                    }                   
                 }
 
                 mConn.Close();
