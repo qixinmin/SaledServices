@@ -685,7 +685,7 @@ namespace SaledServices
             try
             {
                 FileStream fs1 = new FileStream(path+filename, FileMode.Create, FileAccess.Write);//创建写入文件 
-                StreamWriter sw = new StreamWriter(fs1);
+                StreamWriter sw = new StreamWriter(fs1,Encoding.Default);
                 sw.WriteLine(content);
                 sw.Close();
                 fs1.Close();

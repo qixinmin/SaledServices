@@ -518,6 +518,11 @@ namespace SaledServices.Test_Outlook
             //SET FRUPN=04X5152  客户料号
             //SET MODELID=VIUX2  MB简称
 
+            if (mac.StartsWith("23S"))
+            {
+                mac = mac.Substring(3);
+            }
+
             string newMac = Regex.Replace(mac, "([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})", "$1-$2-$3-$4-$5-$6");
 
             string tempCustomMaterialNo = customMaterialNo;
@@ -603,7 +608,15 @@ namespace SaledServices.Test_Outlook
             {
                 KEYID = "";
                 KEYSERIAL = "";
+
+                if (mac.StartsWith("23S"))
+                {
+                    mac = mac.Substring(3);
+                }
+
                 string newMac = Regex.Replace(mac, "([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})", "$1-$2-$3-$4-$5-$6");
+
+              
 
                 string tempCustomMaterialNo = customMaterialNo;
                 if (customMaterialNo.Length == 10 && customMaterialNo.StartsWith("000"))
@@ -757,7 +770,7 @@ namespace SaledServices.Test_Outlook
                         saveFileName = chkcpufile;
                         arraysize = chkcpu.GetUpperBound(0);
                         fs = new FileStream(saveFileName, FileMode.OpenOrCreate, FileAccess.Write);
-                        fs.Write(chkcpu, 0, arraysize);
+                        fs.Write(chkcpu, 0, arraysize+1);
                         fs.Close();
                     }
                 }

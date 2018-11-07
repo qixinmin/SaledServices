@@ -150,7 +150,7 @@ namespace SaledServices
                         saveFileName = @"D:\CHKCPU.BAT";
                         arraysize = chkcpu.GetUpperBound(0);
                         fs = new FileStream(saveFileName, FileMode.OpenOrCreate, FileAccess.Write);
-                        fs.Write(chkcpu, 0, arraysize);
+                        fs.Write(chkcpu, 0, arraysize+1);
                         fs.Close();
                     }
                 }
