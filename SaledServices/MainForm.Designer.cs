@@ -119,6 +119,7 @@
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mB报废判定ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -481,7 +482,8 @@
             this.mB不良品入库ToolStripMenuItem,
             this.mB不良品批量入库ToolStripMenuItem,
             this.mB不良品批量出库ToolStripMenuItem,
-            this.mB良品批量转不良品库ToolStripMenuItem});
+            this.mB良品批量转不良品库ToolStripMenuItem,
+            this.mB报废判定ToolStripMenuItem1});
             this.库存管理ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.库存管理ToolStripMenuItem.Name = "库存管理ToolStripMenuItem";
             this.库存管理ToolStripMenuItem.Size = new System.Drawing.Size(104, 31);
@@ -864,6 +866,13 @@
             this.查询板子站别ToolStripMenuItem.Text = "查询板子站别";
             this.查询板子站别ToolStripMenuItem.Click += new System.EventHandler(this.查询板子站别ToolStripMenuItem_Click);
             // 
+            // mB报废判定ToolStripMenuItem1
+            // 
+            this.mB报废判定ToolStripMenuItem1.Name = "mB报废判定ToolStripMenuItem1";
+            this.mB报废判定ToolStripMenuItem1.Size = new System.Drawing.Size(297, 32);
+            this.mB报废判定ToolStripMenuItem1.Text = "MB报废判定";
+            this.mB报废判定ToolStripMenuItem1.Click += new System.EventHandler(this.mB报废判定ToolStripMenuItem1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -979,6 +988,7 @@
         private System.Windows.Forms.ToolStripMenuItem 总报表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fRU收还货信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 查询板子站别ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mB报废判定ToolStripMenuItem1;
     }
 }
 

@@ -1428,5 +1428,10 @@ namespace SaledServices
 
             allForm.Add(returnQueryByInfo);
         }
+
+        private void mB报废判定ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            mB报废判定ToolStripMenuItem_Click(null, null);
+        }
     }
 }
