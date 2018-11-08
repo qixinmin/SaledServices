@@ -651,7 +651,7 @@ namespace SaledServices
                         "lenovo_maintenance_no,lenovo_repair_no,whole_machine_no,inputuser from " + tableName;
                 if(track_serial_noTextBox.Text.Trim()!="")
                 {
-                    sqlstr +=" where track_serial_no like '%"+this.track_serial_noTextBox.Text.Trim()+"%' ";
+                    sqlstr += " where track_serial_no_transfer like '%" + this.track_serial_no_tansfer_TextBox.Text.Trim() + "%' ";
                 }
                 if (latest)
                 {

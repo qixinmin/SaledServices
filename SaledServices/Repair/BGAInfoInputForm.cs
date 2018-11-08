@@ -299,6 +299,10 @@ namespace SaledServices
                 }
                 querySdr.Close();
 
+
+                this.BGAPNtextBox.Text = bga_mpn_txt;
+                this.bga_brieftextBox.Text = bga_brief_txt;
+
                 //根据bgapn与mb_brief 结合查询L1的位置
                 cmd.CommandText = "select L1 from " + tableName + " where material_mpn ='" + this.BGAPNtextBox.Text.Trim() + "' and mb_brief ='" + this.mb_brieftextBox.Text.Trim()+"'";
                 querySdr = cmd.ExecuteReader();
@@ -674,6 +678,8 @@ namespace SaledServices
 
                 query_Click(null, null);
             }
+
+            this.track_serial_noTextBox.Focus();
         }
 
         private void query_Click(object sender, EventArgs e)
@@ -685,7 +691,7 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;              
 
-                string sqlStr = "select * from bga_wait_record_table";
+                string sqlStr = "select top 3 * from bga_wait_record_table";
 
                 if (this.track_serial_noTextBox.Text.Trim() != "")
                 {
