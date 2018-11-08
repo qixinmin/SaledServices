@@ -149,6 +149,26 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
+                    if (customMaterialNo == "")
+                    {
+                        cmd.CommandText = "select custommaterialNo, source_brief,custom_order,order_receive_date,custom_serial_no,vendor_serail_no, mb_make_date,custom_fault from DeliveredTableTransfer where track_serial_no_transfer='" + this.track_serial_noTextBox.Text.Trim() + "'";
+
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            customMaterialNo = querySdr[0].ToString();
+                            sourceBrief = querySdr[1].ToString();
+                            customOrder = querySdr[2].ToString();
+                            order_receive_date = DateTime.Parse(querySdr[3].ToString()).ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
+                            custom_serial_no = querySdr[4].ToString();
+                            vendor_serial_no = querySdr[5].ToString();
+                            mb_make_date = DateTime.Parse(querySdr[6].ToString()).ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
+                            custom_fault = querySdr[7].ToString();
+
+                        }
+                        querySdr.Close();
+                    }
+
                     if (customMaterialNo != "")
                     {
                         string vendor = "", product = "", mb_describe = "", mb_brief = "", mpn = "", eco = "";

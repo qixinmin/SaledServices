@@ -1433,5 +1433,21 @@ namespace SaledServices
         {
             mB报废判定ToolStripMenuItem_Click(null, null);
         }
+
+        private DeliveredTableTransferForm deliveredTableTransferForm; 
+        private void mB转换ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (deliveredTableTransferForm == null || deliveredTableTransferForm.IsDisposed)
+            {
+                deliveredTableTransferForm = new DeliveredTableTransferForm();
+                deliveredTableTransferForm.MdiParent = this;
+            }
+
+            deliveredTableTransferForm.WindowState = FormWindowState.Maximized;
+            deliveredTableTransferForm.BringToFront();
+            deliveredTableTransferForm.Show();
+
+            allForm.Add(deliveredTableTransferForm);
+        }
     }
 }

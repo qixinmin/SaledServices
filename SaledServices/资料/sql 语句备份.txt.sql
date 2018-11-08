@@ -646,6 +646,43 @@ inputuser NVARCHAR(128),/*收货人*/
 receiveOrderIndex NVARCHAR(128)/*收货序列号，订单号+料号+顺序*/
 )
 
+/*MB状态转换表*/
+CREATE TABLE DeliveredTableTransfer(
+Id INT PRIMARY KEY IDENTITY, 
+vendor NVARCHAR(128) NOT NULL, /*厂商*/
+product NVARCHAR(128) NOT NULL, /*客户别*/
+source_brief NVARCHAR(128) NOT NULL,/*来源*/
+storehouse NVARCHAR(128) NOT NULL,/*库别*/
+custom_order NVARCHAR(128) NOT NULL,/*订单编号*/
+order_out_date date,/*客户出库日期*/
+order_receive_date date,/*收货日期*/
+custom_machine_type NVARCHAR(128),/*客户机型*/
+mb_brief NVARCHAR(128) NOT NULL,/*mb简称*/
+custommaterialNo NVARCHAR(128) NOT NULL,/*客户料号*/
+dpk_status NVARCHAR(128) NOT NULL,/*DPK状态*/
+track_serial_no NVARCHAR(128) NOT NULL,/*跟踪条码*/
+custom_serial_no NVARCHAR(128) NOT NULL,/*客户序号*/
+vendor_serail_no NVARCHAR(128) NOT NULL,/*厂商序号*/
+uuid NVARCHAR(128) NOT NULL,/*UUID*/
+mac NVARCHAR(128) NOT NULL,/*MAC*/
+mpn NVARCHAR(128) NOT NULL,/*厂商料号*/
+mb_describe NVARCHAR(128) NOT NULL,/*mb描述*/
+mb_make_date date,/*MB生产日期*/
+warranty_period NVARCHAR(128) NOT NULL,/*保修期*/
+custom_fault NVARCHAR(128) NOT NULL,/*客户故障*/
+guarantee NVARCHAR(128) NOT NULL,/*保内/保外*/
+customResponsibility NVARCHAR(128) NOT NULL,/*客责描述*/
+lenovo_custom_service_no NVARCHAR(128),/*联想客服序号*/
+lenovo_maintenance_no NVARCHAR(128),/*联想维修站编号*/
+lenovo_repair_no NVARCHAR(128),/*联想维修单编号*/
+whole_machine_no NVARCHAR(128),/*整机序号*/
+inputuser NVARCHAR(128),/*收货人*/
+receiveOrderIndex NVARCHAR(128),/*收货序列号，订单号+料号+顺序*/
+track_serial_no_transfer NVARCHAR(128) NOT NULL,/*新的跟踪条码*/
+modifier NVARCHAR(128),/*修改人*/
+modify_date date,/*MB修改日期*/
+)
+
 CREATE TABLE fruDeliveredTable(
 Id INT PRIMARY KEY IDENTITY, 
 orderno NVARCHAR(128) NOT NULL,/*订单编号*/

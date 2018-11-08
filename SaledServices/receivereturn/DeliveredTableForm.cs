@@ -413,21 +413,24 @@ namespace SaledServices
                         return;
                     }
                 }
-                
-                if (this.productTextBox.Text != "TBG" && this.productTextBox.Text !="DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
+                if (this.vendorTextBox.Text != "宝龙达")
                 {
-                    //需要去掉前面的非0字段
-                    string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
-
-                    if (this.custom_serial_noTextBox.Text.Trim().ToLower().Contains(customSerial.ToLower()) == false)
+                    if (this.productTextBox.Text != "TBG" && this.productTextBox.Text != "DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
                     {
-                        MessageBox.Show("在" + this.productTextBox.Text + "下客户序号没有包含客户料号");
-                        this.custom_serial_noTextBox.Focus();
-                        this.custom_serial_noTextBox.SelectAll();
-                        this.add.Enabled = false;
-                        return;
+                        //需要去掉前面的非0字段
+                        string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
+
+                        if (this.custom_serial_noTextBox.Text.Trim().ToLower().Contains(customSerial.ToLower()) == false)
+                        {
+                            MessageBox.Show("在" + this.productTextBox.Text + "下客户序号没有包含客户料号");
+                            this.custom_serial_noTextBox.Focus();
+                            this.custom_serial_noTextBox.SelectAll();
+                            this.add.Enabled = false;
+                            return;
+                        }
                     }
                 }
+                
                
                 string subData = "";
                 if (customSerialNo.StartsWith("8S"))
@@ -1093,18 +1096,25 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
+                if (this.vendorTextBox.Text.Trim() == "宝龙达")//当前vendor的内容可以为空
+                {
+                    this.uuidTextBox.Focus();
+                    this.uuidTextBox.SelectAll();
+                    return;
+                }
+
                 if (this.vendor_serail_noTextBox.Text.Length != 13)
                 {
                     this.vendor_serail_noTextBox.SelectAll();
                     MessageBox.Show("厂商序号的内容长度不是13位，请检查！");
-                    return; 
+                    return;
                 }
 
                 if (!Utils.IsNumAndEnCh(this.vendor_serail_noTextBox.Text))
                 {
                     MessageBox.Show("包含非字符与数字的字符，请检查！");
                     return;
-                }
+                }                
 
 
                 //检查客户序号或厂商序号是否已经存在本订单编号里面了，收货表中

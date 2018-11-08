@@ -27,7 +27,7 @@ namespace SaledServices.Test_Outlook
         string track_serial_no = "", product = "";
         string customMaterialNo = "", vendor_serail_no = "", mac = "", uuid = "", custom_serial_no = "", mb_brief = "";
         string KEYID = "", KEYSERIAL = "";
-        string cpu_type = "", cpu_freq = "", dpk_type = "", dpkpn = "", mpn = "";
+        string cpu_type = "", cpu_freq = "", dpk_type = "", dpkpn = "", mpn = "", eco="";
 
         bool existBuffer = false, existRepair = false;
 
@@ -78,6 +78,16 @@ namespace SaledServices.Test_Outlook
                     }
                     querySdr.Close();
 
+                    if (currentStoreHouse == "")//从替换表里查询
+                    {
+                        cmd.CommandText = "select storehouse from DeliveredTableTransfer where track_serial_no_transfer='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            currentStoreHouse = querySdr[0].ToString().Trim(); ;
+                        }
+                        querySdr.Close();
+                    }
 
                     if (station != "维修" && station != "BGA")
                     {
@@ -187,6 +197,23 @@ namespace SaledServices.Test_Outlook
                                     mb_brief = querySdr[5].ToString();
                                 }
                                 querySdr.Close();
+
+                                if (customMaterialNo == "")//从替代表里查询
+                                {
+                                    cmd.CommandText = "select custommaterialNo, vendor_serail_no,mac,uuid,custom_serial_no,mb_brief  from DeliveredTableTransfer where track_serial_no_transfer='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                                    querySdr = cmd.ExecuteReader();
+                                    while (querySdr.Read())
+                                    {
+                                        customMaterialNo = querySdr[0].ToString();
+                                        vendor_serail_no = querySdr[1].ToString();
+
+                                        mac = querySdr[2].ToString();
+                                        uuid = querySdr[3].ToString();
+                                        custom_serial_no = querySdr[4].ToString();
+                                        mb_brief = querySdr[5].ToString();
+                                    }
+                                    querySdr.Close();
+                                }
                             }
                             else if (existBuffer)
                             {
@@ -205,8 +232,8 @@ namespace SaledServices.Test_Outlook
 
                             if (customMaterialNo != "")
                             {
-                                cpu_type = ""; cpu_freq = ""; dpk_type = ""; dpkpn = ""; mpn = "";
-                                cmd.CommandText = "select cpu_type,cpu_freq,dpk_type,dpkpn, mpn from MBMaterialCompare where custommaterialNo='" + customMaterialNo + "'";
+                                cpu_type = ""; cpu_freq = ""; dpk_type = ""; dpkpn = ""; mpn = ""; eco = "";
+                                cmd.CommandText = "select cpu_type,cpu_freq,dpk_type,dpkpn, mpn,eco from MBMaterialCompare where custommaterialNo='" + customMaterialNo + "'";
 
                                 querySdr = cmd.ExecuteReader();
 
@@ -217,6 +244,7 @@ namespace SaledServices.Test_Outlook
                                     dpk_type = querySdr[2].ToString();
                                     dpkpn = querySdr[3].ToString();
                                     mpn = querySdr[4].ToString();
+                                    eco = querySdr[5].ToString();
                                 }
                                 querySdr.Close();
 
@@ -368,6 +396,17 @@ namespace SaledServices.Test_Outlook
                         productCheck = querySdr[0].ToString();
                     }
                     querySdr.Close();
+
+                    if (productCheck == "")//从替换表里面查询
+                    {
+                        cmd.CommandText = "select product from DeliveredTableTransfer where track_serial_no_transfer='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            productCheck = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                    }
 
                     bool docheckExist = false;
                     if (productCheck == "TBG")
@@ -546,6 +585,7 @@ namespace SaledServices.Test_Outlook
                             + "SET -v FRUPN " + tempCustomMaterialNo + "\r\n"
                             + "SET -v MODELID " + mb_brief + "\r\n"
                             + "SET -v storehouse " + currentStoreHouse + "\r\n"
+                            + "SET -v eco " + eco + "\r\n"
                             + "SET -v DPK " + dpk_type;
             Utils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
 
@@ -561,7 +601,8 @@ namespace SaledServices.Test_Outlook
                            + "SET DPKID=" + KEYID + "\r\n"
                            + "SET FRUPN=" + tempCustomMaterialNo + "\r\n"
                            + "SET MODELID=" + mb_brief + "\r\n"
-                            + "SET storehouse=" + currentStoreHouse + "\r\n"
+                           + "SET storehouse=" + currentStoreHouse + "\r\n"
+                           + "SET eco=" + eco + "\r\n"
                            + "SET DPK=" + dpk_type;
             Utils.createFile("D:\\fru\\", "BOM.bat", totalStr);
 
@@ -616,8 +657,6 @@ namespace SaledServices.Test_Outlook
 
                 string newMac = Regex.Replace(mac, "([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})([A-Za-z0-9]{2})", "$1-$2-$3-$4-$5-$6");
 
-              
-
                 string tempCustomMaterialNo = customMaterialNo;
                 if (customMaterialNo.Length == 10 && customMaterialNo.StartsWith("000"))
                 {
@@ -640,6 +679,7 @@ namespace SaledServices.Test_Outlook
                                 + "SET -v FRUPN " + tempCustomMaterialNo + "\r\n"
                                 + "SET -v MODELID " + mb_brief + "\r\n"
                                 + "SET -v storehouse " + currentStoreHouse + "\r\n"
+                                + "SET -v eco " + eco + "\r\n"
                                 + "SET -v DPK " + dpk_type;
                 Utils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
 
@@ -656,6 +696,7 @@ namespace SaledServices.Test_Outlook
                                + "SET FRUPN=" + tempCustomMaterialNo + "\r\n"
                                + "SET MODELID=" + mb_brief + "\r\n"
                                + "SET storehouse=" + currentStoreHouse + "\r\n"
+                               + "SET eco=" + eco + "\r\n"
                                + "SET DPK=" + dpk_type;
                 Utils.createFile("D:\\fru\\", "BOM.bat", totalStr);
                 Utils.createFile("C:\\CHKCPU\\", "BOM.bat", totalStr);

@@ -813,10 +813,11 @@ namespace SaledServices
 
                         cmd.CommandText = "select custom_serial_no, vendor_serail_no,mpn ,lenovo_maintenance_no,lenovo_repair_no from DeliveredTable where track_serial_no = '"
                             + this.track_serial_noTextBox.Text + "'";
-
+                        bool exist = false;
                         querySdr = cmd.ExecuteReader();
                         while (querySdr.Read())
                         {
+                            exist = true;
                             this.custom_serial_noTextBox.Text = querySdr[0].ToString();
                             this.vendor_serail_noTextBox.Text = querySdr[1].ToString();
                             this.matertiallibMpnTextBox.Text = querySdr[2].ToString();
@@ -824,6 +825,23 @@ namespace SaledServices
                             this.lenovo_repair_noTextBox.Text = querySdr[4].ToString();
                         }
                         querySdr.Close();
+
+                        if (exist == false)//从替换表里查询
+                        {
+                            cmd.CommandText = "select custom_serial_no, vendor_serail_no,mpn ,lenovo_maintenance_no,lenovo_repair_no from DeliveredTableTransfer where track_serial_no_transfer = '"
+                            + this.track_serial_noTextBox.Text + "'";                          
+                            querySdr = cmd.ExecuteReader();
+                            while (querySdr.Read())
+                            {
+                                exist = true;
+                                this.custom_serial_noTextBox.Text = querySdr[0].ToString();
+                                this.vendor_serail_noTextBox.Text = querySdr[1].ToString();
+                                this.matertiallibMpnTextBox.Text = querySdr[2].ToString();
+                                this.lenovo_maintenance_noTextBox.Text = querySdr[3].ToString();
+                                this.lenovo_repair_noTextBox.Text = querySdr[4].ToString();
+                            }
+                            querySdr.Close();
+                        }
 
                         if (this.custom_serial_noTextBox.Text == "")//说明板子从buffer库出来的
                         {

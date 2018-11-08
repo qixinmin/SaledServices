@@ -120,6 +120,7 @@
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mB报废判定ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mB转换ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -197,7 +198,8 @@
             this.定时任务ToolStripMenuItem,
             this.文件数据库操作ToolStripMenuItem,
             this.cID操作ToolStripMenuItem,
-            this.数据库备份ToolStripMenuItem});
+            this.数据库备份ToolStripMenuItem,
+            this.mB转换ToolStripMenuItem});
             this.FunctionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -873,6 +875,13 @@
             this.mB报废判定ToolStripMenuItem1.Text = "MB报废判定";
             this.mB报废判定ToolStripMenuItem1.Click += new System.EventHandler(this.mB报废判定ToolStripMenuItem1_Click);
             // 
+            // mB转换ToolStripMenuItem
+            // 
+            this.mB转换ToolStripMenuItem.Name = "mB转换ToolStripMenuItem";
+            this.mB转换ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.mB转换ToolStripMenuItem.Text = "MB转换";
+            this.mB转换ToolStripMenuItem.Click += new System.EventHandler(this.mB转换ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -885,7 +894,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统1107-";
+            this.Text = "上海进销存系统1108-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -989,6 +998,7 @@
         private System.Windows.Forms.ToolStripMenuItem fRU收还货信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 查询板子站别ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mB报废判定ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mB转换ToolStripMenuItem;
     }
 }
 
