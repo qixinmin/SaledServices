@@ -47,6 +47,7 @@
             this.文件数据库操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cID操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mB转换ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,6 +86,7 @@
             this.mB不良品批量入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mB不良品批量出库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mB良品批量转不良品库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mB报废判定ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.additionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customFaultMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,8 +121,6 @@
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mB报废判定ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mB转换ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -288,6 +288,13 @@
             this.数据库备份ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.数据库备份ToolStripMenuItem.Text = "数据库备份";
             this.数据库备份ToolStripMenuItem.Click += new System.EventHandler(this.数据库备份ToolStripMenuItem_Click);
+            // 
+            // mB转换ToolStripMenuItem
+            // 
+            this.mB转换ToolStripMenuItem.Name = "mB转换ToolStripMenuItem";
+            this.mB转换ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.mB转换ToolStripMenuItem.Text = "MB转换";
+            this.mB转换ToolStripMenuItem.Click += new System.EventHandler(this.mB转换ToolStripMenuItem_Click);
             // 
             // receiveReturnStoreMenuItem
             // 
@@ -596,6 +603,13 @@
             this.mB良品批量转不良品库ToolStripMenuItem.Text = "MB良品批量转不良品库";
             this.mB良品批量转不良品库ToolStripMenuItem.Click += new System.EventHandler(this.mB良品批量转不良品库ToolStripMenuItem_Click);
             // 
+            // mB报废判定ToolStripMenuItem1
+            // 
+            this.mB报废判定ToolStripMenuItem1.Name = "mB报废判定ToolStripMenuItem1";
+            this.mB报废判定ToolStripMenuItem1.Size = new System.Drawing.Size(297, 32);
+            this.mB报废判定ToolStripMenuItem1.Text = "MB报废判定";
+            this.mB报废判定ToolStripMenuItem1.Click += new System.EventHandler(this.mB报废判定ToolStripMenuItem1_Click);
+            // 
             // additionMenuItem
             // 
             this.additionMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -868,20 +882,6 @@
             this.查询板子站别ToolStripMenuItem.Text = "查询板子站别";
             this.查询板子站别ToolStripMenuItem.Click += new System.EventHandler(this.查询板子站别ToolStripMenuItem_Click);
             // 
-            // mB报废判定ToolStripMenuItem1
-            // 
-            this.mB报废判定ToolStripMenuItem1.Name = "mB报废判定ToolStripMenuItem1";
-            this.mB报废判定ToolStripMenuItem1.Size = new System.Drawing.Size(297, 32);
-            this.mB报废判定ToolStripMenuItem1.Text = "MB报废判定";
-            this.mB报废判定ToolStripMenuItem1.Click += new System.EventHandler(this.mB报废判定ToolStripMenuItem1_Click);
-            // 
-            // mB转换ToolStripMenuItem
-            // 
-            this.mB转换ToolStripMenuItem.Name = "mB转换ToolStripMenuItem";
-            this.mB转换ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.mB转换ToolStripMenuItem.Text = "MB转换";
-            this.mB转换ToolStripMenuItem.Click += new System.EventHandler(this.mB转换ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -894,7 +894,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统1108-";
+            this.Text = "上海进销存系统1109-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);

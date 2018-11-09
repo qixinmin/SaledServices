@@ -388,14 +388,17 @@ namespace SaledServices
 
             if (this.matertiallibMpnTextBox.Text.Trim() != this.bommpnTextBox.Text.Trim())
             {
-                if (replaceablempn.Contains(this.matertiallibMpnTextBox.Text.Trim()) == false)
+                if (this.track_serial_noTextBox.Text.Trim().StartsWith("RMUP") == false)//RMUP的板子不检查mpn
                 {
-                    MessageBox.Show("收获表中的mpn与物料对照表的所有mpn不一致，请检查！");
-                    this.track_serial_noTextBox.Text = "";
-                    this.track_serial_noTextBox.Focus();
-                    this.custom_serial_noTextBox.Text = "";
-                    return;
-                }               
+                    if (replaceablempn.Contains(this.matertiallibMpnTextBox.Text.Trim()) == false)
+                    {
+                        MessageBox.Show("收获表中的mpn与物料对照表的所有mpn不一致，请检查！");
+                        this.track_serial_noTextBox.Text = "";
+                        this.track_serial_noTextBox.Focus();
+                        this.custom_serial_noTextBox.Text = "";
+                        return;
+                    }
+                }
             }
 
             if (statusComboBox.Text.Trim() == "不良品")

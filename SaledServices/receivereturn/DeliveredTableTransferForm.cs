@@ -876,9 +876,9 @@ namespace SaledServices
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
-                if (this.track_serial_noTextBox.Text.Trim().Length != 18)
+                if (this.track_serial_noTextBox.Text.Trim().Length != 16)
                 {
-                    MessageBox.Show("跟踪条码的长度不是18位!");
+                    MessageBox.Show("跟踪条码的长度不是16或18位!");
                     return;
                 }
 
@@ -897,26 +897,7 @@ namespace SaledServices
 
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = mConn;
-                    cmd.CommandType = CommandType.Text;
-
-                    cmd.CommandText = "select vendor from " + this.tableName + " where track_serial_no_transfer = '" + this.track_serial_noTextBox.Text + "'";
-
-                    SqlDataReader querySdr = cmd.ExecuteReader();
-                    while (querySdr.Read())
-                    {
-                        vendor = querySdr[0].ToString();
-                    }
-                    querySdr.Close();
-
-                    if (vendor != "")
-                    {
-                        this.track_serial_noTextBox.Focus();
-                        this.track_serial_noTextBox.SelectAll();
-                        MessageBox.Show("跟踪条码：" + this.track_serial_noTextBox.Text + " 已经被使用过，请检测是否有错误!");
-                        this.add.Enabled = false;
-                        mConn.Close();
-                        return;
-                    }
+                    cmd.CommandType = CommandType.Text;                    
 
                     string sqlstr = "select top 3 Id,vendor,product,source_brief,storehouse,custom_order,order_out_date,order_receive_date," +
                    "custom_machine_type,mb_brief,custommaterialNo,dpk_status,track_serial_no,custom_serial_no,vendor_serail_no,uuid,mac,mpn," +
@@ -929,7 +910,7 @@ namespace SaledServices
 
                     cmd.CommandText = sqlstr + " order by id desc";
                     cmd.CommandType = CommandType.Text;
-                    querySdr = cmd.ExecuteReader();
+                    SqlDataReader querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
                         this.numTextBox.Text = querySdr[0].ToString();
@@ -1259,6 +1240,58 @@ namespace SaledServices
 
         }
 
-       
+        private void track_serial_no_tansfer_TextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                if (this.track_serial_no_tansfer_TextBox.Text.Trim().Length != 18 && this.track_serial_no_tansfer_TextBox.Text.Trim().Length != 16)
+                {
+                    MessageBox.Show("跟踪条码的长度不是16或18位!");
+                    return;
+                }
+
+                if (!Utils.IsNumAndEnCh(this.track_serial_no_tansfer_TextBox.Text))
+                {
+                    MessageBox.Show("包含非字符与数字的字符，请检查！");
+                    return;
+                }
+
+                //检查跟踪条码是否在系统中存在过，否则报错
+                string vendor = "";
+                try
+                {
+                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                    mConn.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = mConn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "select vendor from " + this.tableName + " where track_serial_no_transfer = '" + this.track_serial_noTextBox.Text + "'";
+
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        vendor = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (vendor != "")
+                    {
+                        this.track_serial_noTextBox.Focus();
+                        this.track_serial_noTextBox.SelectAll();
+                        MessageBox.Show("跟踪条码：" + this.track_serial_noTextBox.Text + " 已经被使用过，请检测是否有错误!");
+                        this.add.Enabled = false;
+                        mConn.Close();
+                        return;
+                    }
+                    mConn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }       
     }
 }
