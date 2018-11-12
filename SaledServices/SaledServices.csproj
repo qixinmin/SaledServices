@@ -393,6 +393,12 @@
     <Compile Include="receivereturn\DeliveredTableTransferForm.Designer.cs">
       <DependentUpon>DeliveredTableTransferForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Repair\AdjustStoreHouseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Repair\AdjustStoreHouseForm.Designer.cs">
+      <DependentUpon>AdjustStoreHouseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repair\FaultMBConfirmForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -821,6 +827,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="receivereturn\DeliveredTableTransferForm.resx">
       <DependentUpon>DeliveredTableTransferForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Repair\AdjustStoreHouseForm.resx">
+      <DependentUpon>AdjustStoreHouseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\FaultMBConfirmForm.resx">
       <DependentUpon>FaultMBConfirmForm.cs</DependentUpon>

@@ -13,6 +13,7 @@ using System.IO;
 using SaledServices.Export;
 using SaledServices.Test_Outlook;
 using SaledServices.queryform;
+using SaledServices.Store;
 
 namespace SaledServices
 {
@@ -1448,6 +1449,22 @@ namespace SaledServices
             deliveredTableTransferForm.Show();
 
             allForm.Add(deliveredTableTransferForm);
+        }
+
+        private AdjustStoreHouseForm adjustStoreHouseForm; 
+        private void 库房料转移ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (adjustStoreHouseForm == null || adjustStoreHouseForm.IsDisposed)
+            {
+                adjustStoreHouseForm = new AdjustStoreHouseForm();
+                adjustStoreHouseForm.MdiParent = this;
+            }
+
+            adjustStoreHouseForm.WindowState = FormWindowState.Maximized;
+            adjustStoreHouseForm.BringToFront();
+            adjustStoreHouseForm.Show();
+
+            allForm.Add(adjustStoreHouseForm);
         }
     }
 }

@@ -265,6 +265,13 @@ namespace SaledServices
             return AddressIP;
         }
 
+        public static bool IsNum(string input)
+        {
+            string pattern = @"^[0-9]+$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(input);
+        } 
+
         public static bool IsNumAndEnCh(string input)
         {
             string pattern = @"^[A-Za-z0-9]+$";

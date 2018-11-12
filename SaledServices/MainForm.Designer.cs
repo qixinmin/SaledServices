@@ -121,6 +121,7 @@
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.库房料转移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -199,7 +200,8 @@
             this.文件数据库操作ToolStripMenuItem,
             this.cID操作ToolStripMenuItem,
             this.数据库备份ToolStripMenuItem,
-            this.mB转换ToolStripMenuItem});
+            this.mB转换ToolStripMenuItem,
+            this.库房料转移ToolStripMenuItem});
             this.FunctionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -882,6 +884,13 @@
             this.查询板子站别ToolStripMenuItem.Text = "查询板子站别";
             this.查询板子站别ToolStripMenuItem.Click += new System.EventHandler(this.查询板子站别ToolStripMenuItem_Click);
             // 
+            // 库房料转移ToolStripMenuItem
+            // 
+            this.库房料转移ToolStripMenuItem.Name = "库房料转移ToolStripMenuItem";
+            this.库房料转移ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.库房料转移ToolStripMenuItem.Text = "库房料转移";
+            this.库房料转移ToolStripMenuItem.Click += new System.EventHandler(this.库房料转移ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -999,6 +1008,7 @@
         private System.Windows.Forms.ToolStripMenuItem 查询板子站别ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mB报废判定ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mB转换ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 库房料转移ToolStripMenuItem;
     }
 }
 
