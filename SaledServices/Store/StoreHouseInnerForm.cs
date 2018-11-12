@@ -96,7 +96,7 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + this.houseComboBox.Text.Trim() + "','" + this.placeTextBox.Text.Trim() + "','','')";                    
+                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" + this.houseComboBox.Text.Trim() + "','" + this.placeTextBox.Text.Trim() + "','"+this.mpntextBox.Text.Trim()+"','')";                    
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -186,6 +186,12 @@ namespace SaledServices
 
         private void modify_Click(object sender, EventArgs e)
         {
+
+            if (this.idTextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("ID为空，请选择一行");
+                return;
+            }
             DataTable dt = ds.Tables[tableName];
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.idTextBox.Text.Trim());

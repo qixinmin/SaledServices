@@ -1192,17 +1192,6 @@ namespace SaledServices
             }
         }
 
-        //string currentMaterialNo = "";
-        //private void dataGridViewWaitToReturn_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (this.dataGridViewWaitToReturn.CurrentRow == null)
-        //    {
-        //        return;
-        //    }
-        //    currentMaterialNo = this.custommaterialNoTextBox.Text = dataGridViewWaitToReturn.SelectedCells[1].Value.ToString();
-        //    simulateEnter(this.custommaterialNoTextBox.Text.Trim());
-        //}
-
         private void custom_faultComboBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))

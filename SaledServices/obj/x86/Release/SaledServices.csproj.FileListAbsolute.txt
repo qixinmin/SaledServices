@@ -73,7 +73,6 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FaultB
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FRU_OutSheetForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.MB_InSheetForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.MB_OutSheetForm.resources
-D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.FaultMBStoreForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.StoreHouseInnerForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Store.ProcessReturnStoreForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.StockInSheetForm.resources
@@ -105,4 +104,5 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.queryform.ReturnQueryByInfo.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.DeliveredTableTransferForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Store.AdjustStoreHouseForm.resources
-D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.csprojResolveAssemblyReference.cache
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.FaultMBRecordExport.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.BGAWaitMaterialForm.resources

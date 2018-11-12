@@ -183,12 +183,12 @@ namespace SaledServices.Store
             }
 
             //先判断数量，如果数量不对，则不能选择
-            chooseTotalNum =Int32.Parse(dataGridView.SelectedCells[2].Value.ToString());
-            if (chooseTotalNum <= 0)
-            {
-                MessageBox.Show("库存不足，不能选择！");
-                return;
-            }
+            //chooseTotalNum =Int32.Parse(dataGridView.SelectedCells[2].Value.ToString());
+            //if (chooseTotalNum <= 0)
+            //{
+            //    MessageBox.Show("库存不足，不能选择！");
+            //    return;
+            //}
 
             this.materialMpnTextBox.Text = dataGridView.SelectedCells[0].Value.ToString();
             this.materialDescribetextBox.Text = dataGridView.SelectedCells[1].Value.ToString();       
@@ -459,7 +459,7 @@ namespace SaledServices.Store
                     string numberright = dataGridViewright.SelectedCells[4].Value.ToString();
 
                     int leftTotalNumber = Int16.Parse(numberleft) - Int16.Parse(this.transferNumtextBox.Text.Trim());
-                    int rightTotalNumber = Int16.Parse(this.transferNumtextBox.Text.Trim()) + numberright == "" ? 0 : Int16.Parse(numberright);
+                    int rightTotalNumber = Int16.Parse(this.transferNumtextBox.Text.Trim()) + (numberright == "" ? 0 : Int16.Parse(numberright));
 
                     cmd.CommandText = "update store_house set number = '" + leftTotalNumber + "' where house='"+houseleft+"' and place ='"+placeleft+"'";
                     cmd.ExecuteNonQuery();

@@ -860,21 +860,7 @@ namespace SaledServices
             allForm.Add(obeform);
         }
 
-        private FaultMBStoreForm faultMbStoreForm;
-        private void 不良品出入库管理ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (faultMbStoreForm == null || faultMbStoreForm.IsDisposed)
-            {
-                faultMbStoreForm = new FaultMBStoreForm();
-                faultMbStoreForm.MdiParent = this;
-            }
-
-            faultMbStoreForm.WindowState = FormWindowState.Maximized;
-            faultMbStoreForm.BringToFront();
-            faultMbStoreForm.Show();
-
-            allForm.Add(faultMbStoreForm);
-        }
+      
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -1465,6 +1451,38 @@ namespace SaledServices
             adjustStoreHouseForm.Show();
 
             allForm.Add(adjustStoreHouseForm);
+        }
+
+        private FaultMBRecordExport faultMBRecordExport; 
+        private void mB报废信息导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (faultMBRecordExport == null || faultMBRecordExport.IsDisposed)
+            {
+                faultMBRecordExport = new FaultMBRecordExport();
+                faultMBRecordExport.MdiParent = this;
+            }
+
+            // faultMBRecordExport.WindowState = FormWindowState.Maximized;
+            faultMBRecordExport.BringToFront();
+            faultMBRecordExport.Show();
+
+            allForm.Add(faultMBRecordExport);
+        }
+
+        private BGAWaitMaterialForm bgaWaitMaterialForm; 
+        private void bGA待料输入ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bgaWaitMaterialForm == null || bgaWaitMaterialForm.IsDisposed)
+            {
+                bgaWaitMaterialForm = new BGAWaitMaterialForm();
+                bgaWaitMaterialForm.MdiParent = this;
+            }
+
+            bgaWaitMaterialForm.WindowState = FormWindowState.Maximized;
+            bgaWaitMaterialForm.BringToFront();
+            bgaWaitMaterialForm.Show();
+
+            allForm.Add(bgaWaitMaterialForm);
         }
     }
 }

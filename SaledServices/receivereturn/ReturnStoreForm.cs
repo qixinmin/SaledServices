@@ -881,17 +881,20 @@ namespace SaledServices
                             }
                             else
                             {
-                                if (this.custom_serial_noTextBox.Text.ToLower().Contains(replacedCustomSerial.ToLower()))
+                                if (this.track_serial_noTextBox.Text.Trim().StartsWith("RMUP") == false)//RMUP的板子不检查mpn
                                 {
-                                }
-                                else
-                                {
-                                    MessageBox.Show("在" + this.productComboBox.Text + "下客户序号没有包含客户料号, 请检查追踪条码是否正确");
-                                    this.track_serial_noTextBox.Focus();
-                                    this.track_serial_noTextBox.SelectAll();
+                                    if (this.custom_serial_noTextBox.Text.ToLower().Contains(replacedCustomSerial.ToLower()))
+                                    {
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("在" + this.productComboBox.Text + "下客户序号没有包含客户料号, 请检查追踪条码是否正确");
+                                        this.track_serial_noTextBox.Focus();
+                                        this.track_serial_noTextBox.SelectAll();
 
-                                    this.custom_serial_noTextBox.Text = "";
-                                    return;
+                                        this.custom_serial_noTextBox.Text = "";
+                                        return;
+                                    }
                                 }
                             }
                         }

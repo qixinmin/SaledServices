@@ -32,9 +32,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tracker_bar_textBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.stationlabel = new System.Windows.Forms.Label();
             this.textBox8s = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.stationlabel = new System.Windows.Forms.Label();
             this.dpkstatus = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -91,15 +91,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "8S码";
             // 
-            // stationlabel
-            // 
-            this.stationlabel.AutoSize = true;
-            this.stationlabel.Font = new System.Drawing.Font("SimSun", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.stationlabel.Location = new System.Drawing.Point(144, 131);
-            this.stationlabel.Name = "stationlabel";
-            this.stationlabel.Size = new System.Drawing.Size(0, 21);
-            this.stationlabel.TabIndex = 3;
-            // 
             // textBox8s
             // 
             this.textBox8s.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -117,6 +108,15 @@
             this.label3.Size = new System.Drawing.Size(47, 12);
             this.label3.TabIndex = 5;
             this.label3.Text = "DPK状态";
+            // 
+            // stationlabel
+            // 
+            this.stationlabel.AutoSize = true;
+            this.stationlabel.Font = new System.Drawing.Font("SimSun", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.stationlabel.Location = new System.Drawing.Point(144, 131);
+            this.stationlabel.Name = "stationlabel";
+            this.stationlabel.Size = new System.Drawing.Size(0, 21);
+            this.stationlabel.TabIndex = 3;
             // 
             // dpkstatus
             // 

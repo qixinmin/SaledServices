@@ -48,6 +48,7 @@
             this.cID操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据库备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mB转换ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.库房料转移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,7 +87,6 @@
             this.mB不良品批量入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mB不良品批量出库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mB良品批量转不良品库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mB报废判定ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.additionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customFaultMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,7 +121,8 @@
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.库房料转移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mB报废信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bGA待料输入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -298,6 +299,13 @@
             this.mB转换ToolStripMenuItem.Text = "MB转换";
             this.mB转换ToolStripMenuItem.Click += new System.EventHandler(this.mB转换ToolStripMenuItem_Click);
             // 
+            // 库房料转移ToolStripMenuItem
+            // 
+            this.库房料转移ToolStripMenuItem.Name = "库房料转移ToolStripMenuItem";
+            this.库房料转移ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.库房料转移ToolStripMenuItem.Text = "库房料转移";
+            this.库房料转移ToolStripMenuItem.Click += new System.EventHandler(this.库房料转移ToolStripMenuItem_Click);
+            // 
             // receiveReturnStoreMenuItem
             // 
             this.receiveReturnStoreMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -354,7 +362,8 @@
             this.bGAToolStripMenuItem,
             this.库房领料申请ToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.mB报废判定ToolStripMenuItem});
+            this.mB报废判定ToolStripMenuItem,
+            this.bGA待料输入ToolStripMenuItem});
             this.维修ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.维修ToolStripMenuItem.Name = "维修ToolStripMenuItem";
             this.维修ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -378,7 +387,7 @@
             // 
             this.库房领料申请ToolStripMenuItem.Name = "库房领料申请ToolStripMenuItem";
             this.库房领料申请ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
-            this.库房领料申请ToolStripMenuItem.Text = "SMT领料申请";
+            this.库房领料申请ToolStripMenuItem.Text = "SMT买料申请";
             this.库房领料申请ToolStripMenuItem.Click += new System.EventHandler(this.库房领料申请ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
@@ -493,8 +502,7 @@
             this.mB不良品入库ToolStripMenuItem,
             this.mB不良品批量入库ToolStripMenuItem,
             this.mB不良品批量出库ToolStripMenuItem,
-            this.mB良品批量转不良品库ToolStripMenuItem,
-            this.mB报废判定ToolStripMenuItem1});
+            this.mB良品批量转不良品库ToolStripMenuItem});
             this.库存管理ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.库存管理ToolStripMenuItem.Name = "库存管理ToolStripMenuItem";
             this.库存管理ToolStripMenuItem.Size = new System.Drawing.Size(104, 31);
@@ -604,13 +612,6 @@
             this.mB良品批量转不良品库ToolStripMenuItem.Size = new System.Drawing.Size(297, 32);
             this.mB良品批量转不良品库ToolStripMenuItem.Text = "MB良品批量转不良品库";
             this.mB良品批量转不良品库ToolStripMenuItem.Click += new System.EventHandler(this.mB良品批量转不良品库ToolStripMenuItem_Click);
-            // 
-            // mB报废判定ToolStripMenuItem1
-            // 
-            this.mB报废判定ToolStripMenuItem1.Name = "mB报废判定ToolStripMenuItem1";
-            this.mB报废判定ToolStripMenuItem1.Size = new System.Drawing.Size(297, 32);
-            this.mB报废判定ToolStripMenuItem1.Text = "MB报废判定";
-            this.mB报废判定ToolStripMenuItem1.Click += new System.EventHandler(this.mB报废判定ToolStripMenuItem1_Click);
             // 
             // additionMenuItem
             // 
@@ -726,7 +727,8 @@
             this.仁宝大数据ToolStripMenuItem,
             this.合肥报表ToolStripMenuItem,
             this.总报表ToolStripMenuItem,
-            this.fRU收还货信息导出ToolStripMenuItem});
+            this.fRU收还货信息导出ToolStripMenuItem,
+            this.mB报废信息导出ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -884,12 +886,19 @@
             this.查询板子站别ToolStripMenuItem.Text = "查询板子站别";
             this.查询板子站别ToolStripMenuItem.Click += new System.EventHandler(this.查询板子站别ToolStripMenuItem_Click);
             // 
-            // 库房料转移ToolStripMenuItem
+            // mB报废信息导出ToolStripMenuItem
             // 
-            this.库房料转移ToolStripMenuItem.Name = "库房料转移ToolStripMenuItem";
-            this.库房料转移ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.库房料转移ToolStripMenuItem.Text = "库房料转移";
-            this.库房料转移ToolStripMenuItem.Click += new System.EventHandler(this.库房料转移ToolStripMenuItem_Click);
+            this.mB报废信息导出ToolStripMenuItem.Name = "mB报废信息导出ToolStripMenuItem";
+            this.mB报废信息导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.mB报废信息导出ToolStripMenuItem.Text = "MB报废信息导出";
+            this.mB报废信息导出ToolStripMenuItem.Click += new System.EventHandler(this.mB报废信息导出ToolStripMenuItem_Click);
+            // 
+            // bGA待料输入ToolStripMenuItem
+            // 
+            this.bGA待料输入ToolStripMenuItem.Name = "bGA待料输入ToolStripMenuItem";
+            this.bGA待料输入ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.bGA待料输入ToolStripMenuItem.Text = "BGA待料输入";
+            this.bGA待料输入ToolStripMenuItem.Click += new System.EventHandler(this.bGA待料输入ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -903,7 +912,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统1109-";
+            this.Text = "上海进销存系统1112-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1006,9 +1015,10 @@
         private System.Windows.Forms.ToolStripMenuItem 总报表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fRU收还货信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 查询板子站别ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mB报废判定ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mB转换ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 库房料转移ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mB报废信息导出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bGA待料输入ToolStripMenuItem;
     }
 }
 

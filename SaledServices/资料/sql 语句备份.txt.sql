@@ -375,6 +375,32 @@ inputer  NVARCHAR(128),/*输入人*/
 input_date  date,/*日期*/
 )
 
+/*bga待料记录*/
+CREATE TABLE bga_wait_material_record_table(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+customMaterialNo NVARCHAR(128) NOT NULL, /*客户料号*/
+vendor NVARCHAR(128) NOT NULL, /*厂商*/
+product NVARCHAR(128) NOT NULL, /*客户别*/
+source NVARCHAR(128) NOT NULL, /*来源*/
+orderno NVARCHAR(128) NOT NULL, /*订单编号*/
+receivedate date, /*收货日期*/
+mb_describe NVARCHAR(128), /*MB描述*/
+mb_brief NVARCHAR(128), /*MB简称*/
+custom_serial_no NVARCHAR(128) NOT NULL, /*客户序号*/
+vendor_serail_no NVARCHAR(128) NOT NULL, /*厂商序号*/
+mpn NVARCHAR(128) NOT NULL, /*MPN*/
+mb_make_date date, /*MB生产日期*/
+customFault NVARCHAR(128) NOT NULL, /*客户故障*/
+ECO NVARCHAR(128), /*ECO*/
+bgatype NVARCHAR(128), /*bga类型*/
+BGAPN NVARCHAR(128), /*BGAPN*/
+BGA_describe NVARCHAR(128), /*BGA描述*/
+bga_brief NVARCHAR(128) , /*BGA简述*/
+inputer NVARCHAR(128) NOT NULL, /*bga维修人*/
+input_date date, /*bga维修日期*/
+)
+
 /*bga待维修记录*/
 CREATE TABLE bga_wait_record_table(
 Id INT PRIMARY KEY IDENTITY, 

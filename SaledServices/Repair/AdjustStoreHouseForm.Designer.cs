@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.mb_brieftextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,7 +63,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 74);
+            this.label1.Location = new System.Drawing.Point(16, 66);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 12);
             this.label1.TabIndex = 0;
@@ -71,7 +71,7 @@
             // 
             // mb_brieftextBox
             // 
-            this.mb_brieftextBox.Location = new System.Drawing.Point(102, 71);
+            this.mb_brieftextBox.Location = new System.Drawing.Point(102, 63);
             this.mb_brieftextBox.Name = "mb_brieftextBox";
             this.mb_brieftextBox.Size = new System.Drawing.Size(100, 21);
             this.mb_brieftextBox.TabIndex = 6;
@@ -97,7 +97,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(229, 20);
+            this.label6.Location = new System.Drawing.Point(217, 26);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 12);
             this.label6.TabIndex = 15;
@@ -106,8 +106,8 @@
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(219, 47);
@@ -116,14 +116,14 @@
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowTemplate.Height = 23;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(630, 78);
+            this.dataGridView.Size = new System.Drawing.Size(604, 218);
             this.dataGridView.TabIndex = 20;
             this.dataGridView.VirtualMode = true;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
             // materialMpnTextBox
             // 
-            this.materialMpnTextBox.Location = new System.Drawing.Point(282, 17);
+            this.materialMpnTextBox.Location = new System.Drawing.Point(272, 20);
             this.materialMpnTextBox.Name = "materialMpnTextBox";
             this.materialMpnTextBox.ReadOnly = true;
             this.materialMpnTextBox.Size = new System.Drawing.Size(116, 21);
@@ -131,7 +131,7 @@
             // 
             // materialDescribetextBox
             // 
-            this.materialDescribetextBox.Location = new System.Drawing.Point(463, 17);
+            this.materialDescribetextBox.Location = new System.Drawing.Point(453, 20);
             this.materialDescribetextBox.Name = "materialDescribetextBox";
             this.materialDescribetextBox.ReadOnly = true;
             this.materialDescribetextBox.Size = new System.Drawing.Size(208, 21);
@@ -140,7 +140,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(404, 23);
+            this.label7.Location = new System.Drawing.Point(394, 26);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 12);
             this.label7.TabIndex = 15;
@@ -166,10 +166,10 @@
             // releasePlacebutton
             // 
             this.releasePlacebutton.Font = new System.Drawing.Font("SimSun", 15F);
-            this.releasePlacebutton.Location = new System.Drawing.Point(428, 314);
+            this.releasePlacebutton.Location = new System.Drawing.Point(423, 391);
             this.releasePlacebutton.Margin = new System.Windows.Forms.Padding(5);
             this.releasePlacebutton.Name = "releasePlacebutton";
-            this.releasePlacebutton.Size = new System.Drawing.Size(125, 55);
+            this.releasePlacebutton.Size = new System.Drawing.Size(114, 55);
             this.releasePlacebutton.TabIndex = 33;
             this.releasePlacebutton.Text = "转移=>";
             this.releasePlacebutton.UseVisualStyleBackColor = true;
@@ -178,7 +178,7 @@
             // query
             // 
             this.query.Font = new System.Drawing.Font("SimSun", 15F);
-            this.query.Location = new System.Drawing.Point(199, 193);
+            this.query.Location = new System.Drawing.Point(197, 304);
             this.query.Margin = new System.Windows.Forms.Padding(5);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(132, 33);
@@ -189,7 +189,7 @@
             // 
             // mpnlefttextBox
             // 
-            this.mpnlefttextBox.Location = new System.Drawing.Point(14, 198);
+            this.mpnlefttextBox.Location = new System.Drawing.Point(14, 314);
             this.mpnlefttextBox.Margin = new System.Windows.Forms.Padding(5);
             this.mpnlefttextBox.Name = "mpnlefttextBox";
             this.mpnlefttextBox.Size = new System.Drawing.Size(175, 21);
@@ -199,7 +199,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label11.Location = new System.Drawing.Point(10, 173);
+            this.label11.Location = new System.Drawing.Point(12, 289);
             this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(89, 20);
@@ -209,24 +209,24 @@
             // dataGridViewleft
             // 
             this.dataGridViewleft.AllowUserToAddRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewleft.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewleft.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewleft.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewleft.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewleft.Location = new System.Drawing.Point(14, 231);
+            this.dataGridViewleft.Location = new System.Drawing.Point(14, 347);
             this.dataGridViewleft.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridViewleft.Name = "dataGridViewleft";
             this.dataGridViewleft.ReadOnly = true;
             this.dataGridViewleft.RowTemplate.Height = 23;
             this.dataGridViewleft.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewleft.Size = new System.Drawing.Size(391, 215);
+            this.dataGridViewleft.Size = new System.Drawing.Size(399, 99);
             this.dataGridViewleft.TabIndex = 27;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label2.Location = new System.Drawing.Point(440, 258);
+            this.label2.Location = new System.Drawing.Point(433, 335);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 20);
@@ -235,7 +235,7 @@
             // 
             // transferNumtextBox
             // 
-            this.transferNumtextBox.Location = new System.Drawing.Point(444, 283);
+            this.transferNumtextBox.Location = new System.Drawing.Point(437, 360);
             this.transferNumtextBox.Margin = new System.Windows.Forms.Padding(5);
             this.transferNumtextBox.Name = "transferNumtextBox";
             this.transferNumtextBox.Size = new System.Drawing.Size(85, 21);
@@ -244,24 +244,24 @@
             // dataGridViewright
             // 
             this.dataGridViewright.AllowUserToAddRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewright.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewright.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewright.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewright.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewright.Location = new System.Drawing.Point(585, 226);
+            this.dataGridViewright.Location = new System.Drawing.Point(547, 335);
             this.dataGridViewright.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridViewright.Name = "dataGridViewright";
             this.dataGridViewright.ReadOnly = true;
             this.dataGridViewright.RowTemplate.Height = 23;
             this.dataGridViewright.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewright.Size = new System.Drawing.Size(343, 220);
+            this.dataGridViewright.Size = new System.Drawing.Size(393, 114);
             this.dataGridViewright.TabIndex = 27;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label4.Location = new System.Drawing.Point(581, 168);
+            this.label4.Location = new System.Drawing.Point(543, 279);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 20);
@@ -270,7 +270,7 @@
             // 
             // mpnrighttextBox
             // 
-            this.mpnrighttextBox.Location = new System.Drawing.Point(585, 193);
+            this.mpnrighttextBox.Location = new System.Drawing.Point(544, 304);
             this.mpnrighttextBox.Margin = new System.Windows.Forms.Padding(5);
             this.mpnrighttextBox.Name = "mpnrighttextBox";
             this.mpnrighttextBox.Size = new System.Drawing.Size(130, 21);
@@ -279,7 +279,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("SimSun", 15F);
-            this.button1.Location = new System.Drawing.Point(861, 183);
+            this.button1.Location = new System.Drawing.Point(820, 294);
             this.button1.Margin = new System.Windows.Forms.Padding(5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 33);
@@ -292,7 +292,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label5.Location = new System.Drawing.Point(717, 168);
+            this.label5.Location = new System.Drawing.Point(676, 279);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 20);
@@ -301,7 +301,7 @@
             // 
             // storeTargetTextBox
             // 
-            this.storeTargetTextBox.Location = new System.Drawing.Point(721, 193);
+            this.storeTargetTextBox.Location = new System.Drawing.Point(680, 304);
             this.storeTargetTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.storeTargetTextBox.Name = "storeTargetTextBox";
             this.storeTargetTextBox.Size = new System.Drawing.Size(130, 21);
@@ -311,7 +311,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 474);
+            this.ClientSize = new System.Drawing.Size(951, 474);
             this.Controls.Add(this.releasePlacebutton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.storeTargetTextBox);

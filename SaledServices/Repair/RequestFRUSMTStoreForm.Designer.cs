@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.mb_brieftextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,6 +49,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.materialDestextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dateTimePickerend = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerstart = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,7 +97,7 @@
             this.requestbutton.Name = "requestbutton";
             this.requestbutton.Size = new System.Drawing.Size(76, 23);
             this.requestbutton.TabIndex = 8;
-            this.requestbutton.Text = "领取材料";
+            this.requestbutton.Text = "申请材料";
             this.requestbutton.UseVisualStyleBackColor = true;
             this.requestbutton.Click += new System.EventHandler(this.requestbutton_Click);
             // 
@@ -166,19 +171,20 @@
             // 
             // checkRequestListbutton
             // 
-            this.checkRequestListbutton.Location = new System.Drawing.Point(463, 314);
+            this.checkRequestListbutton.Location = new System.Drawing.Point(654, 314);
             this.checkRequestListbutton.Name = "checkRequestListbutton";
             this.checkRequestListbutton.Size = new System.Drawing.Size(118, 23);
             this.checkRequestListbutton.TabIndex = 8;
             this.checkRequestListbutton.Text = "查看申请列表";
             this.checkRequestListbutton.UseVisualStyleBackColor = true;
+            this.checkRequestListbutton.Visible = false;
             this.checkRequestListbutton.Click += new System.EventHandler(this.checkRequestListbutton_Click);
             // 
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(299, 67);
@@ -234,11 +240,57 @@
             this.label8.TabIndex = 21;
             this.label8.Text = "材料描述(模糊)";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(362, 413);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "导出申请列表";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(85, 421);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 12);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "结束日期";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(85, 373);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 12);
+            this.label10.TabIndex = 26;
+            this.label10.Text = "开始日期";
+            // 
+            // dateTimePickerend
+            // 
+            this.dateTimePickerend.Location = new System.Drawing.Point(156, 415);
+            this.dateTimePickerend.Name = "dateTimePickerend";
+            this.dateTimePickerend.Size = new System.Drawing.Size(187, 21);
+            this.dateTimePickerend.TabIndex = 24;
+            // 
+            // dateTimePickerstart
+            // 
+            this.dateTimePickerstart.Location = new System.Drawing.Point(156, 367);
+            this.dateTimePickerstart.Name = "dateTimePickerstart";
+            this.dateTimePickerstart.Size = new System.Drawing.Size(187, 21);
+            this.dateTimePickerstart.TabIndex = 23;
+            // 
             // RequestFRUSMTStoreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 554);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.dateTimePickerend);
+            this.Controls.Add(this.dateTimePickerstart);
             this.Controls.Add(this.materialDestextBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dataGridView);
@@ -248,6 +300,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.checkRequestListbutton);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.requestbutton);
@@ -261,7 +314,7 @@
             this.Controls.Add(this.label1);
             this.Name = "RequestFRUSMTStoreForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "发送请求SMT";
+            this.Text = "发送购买请求SMT";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -290,5 +343,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox materialDestextBox;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DateTimePicker dateTimePickerend;
+        private System.Windows.Forms.DateTimePicker dateTimePickerstart;
     }
 }

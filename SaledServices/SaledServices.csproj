@@ -267,6 +267,12 @@
     <Compile Include="Export\AllBossExport.designer.cs">
       <DependentUpon>AllBossExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\FaultMBRecordExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\FaultMBRecordExport.designer.cs">
+      <DependentUpon>FaultMBRecordExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Export\FruExport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -398,6 +404,12 @@
     </Compile>
     <Compile Include="Repair\AdjustStoreHouseForm.Designer.cs">
       <DependentUpon>AdjustStoreHouseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repair\BGAWaitMaterialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Repair\BGAWaitMaterialForm.Designer.cs">
+      <DependentUpon>BGAWaitMaterialForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Repair\FaultMBConfirmForm.cs">
       <SubType>Form</SubType>
@@ -623,12 +635,6 @@
     <Compile Include="Store\MB_OutSheetForm.Designer.cs">
       <DependentUpon>MB_OutSheetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Store\FaultMBStoreForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Store\FaultMBStoreForm.Designer.cs">
-      <DependentUpon>FaultMBStoreForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Store\StoreHouseInnerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -764,6 +770,9 @@
     <EmbeddedResource Include="Export\AllBossExport.resx">
       <DependentUpon>AllBossExport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Export\FaultMBRecordExport.resx">
+      <DependentUpon>FaultMBRecordExport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Export\FruExport.resx">
       <DependentUpon>FruExport.cs</DependentUpon>
     </EmbeddedResource>
@@ -830,6 +839,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\AdjustStoreHouseForm.resx">
       <DependentUpon>AdjustStoreHouseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Repair\BGAWaitMaterialForm.resx">
+      <DependentUpon>BGAWaitMaterialForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Repair\FaultMBConfirmForm.resx">
       <DependentUpon>FaultMBConfirmForm.cs</DependentUpon>
@@ -941,9 +953,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Store\MB_OutSheetForm.resx">
       <DependentUpon>MB_OutSheetForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Store\FaultMBStoreForm.resx">
-      <DependentUpon>FaultMBStoreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\StoreHouseInnerForm.resx">
       <DependentUpon>StoreHouseInnerForm.cs</DependentUpon>

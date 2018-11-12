@@ -255,12 +255,12 @@ namespace SaledServices.Store
             }
 
             //先判断数量，如果数量不对，则不能选择
-            chooseTotalNum =Int32.Parse(dataGridView.SelectedCells[2].Value.ToString());
-            if (chooseTotalNum <= 0)
-            {
-                MessageBox.Show("库存不足，不能选择！");
-                return;
-            }
+            //chooseTotalNum =Int32.Parse(dataGridView.SelectedCells[2].Value.ToString());
+            //if (chooseTotalNum <= 0)
+            //{
+            //    MessageBox.Show("库存不足，不能选择！");
+            //    return;
+            //}
 
             this.materialMpnTextBox.Text = dataGridView.SelectedCells[0].Value.ToString();
             this.materialDescribetextBox.Text = dataGridView.SelectedCells[1].Value.ToString();
@@ -350,6 +350,101 @@ namespace SaledServices.Store
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo));
+            DateTime time2 = Convert.ToDateTime(this.dateTimePickerend.Value.Date.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo));
+
+            if (DateTime.Compare(time1, time2) > 0) //判断日期大小
+            {
+                MessageBox.Show("开始日期大于结束");
+                return;
+            }
+
+            string startTime = this.dateTimePickerstart.Value.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
+            string endTime = this.dateTimePickerend.Value.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
+
+            List<RequireMaterialStruct> receiveOrderList = new List<RequireMaterialStruct>();
+
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select mb_brief,not_good_place,material_mpn,material_describe,number,requester,_date from request_fru_smt_to_store_table where _date between '" + startTime + "' and '" + endTime + "'";
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    RequireMaterialStruct temp = new RequireMaterialStruct();
+                    temp.material_type = querySdr[0].ToString();
+                    temp.place = querySdr[1].ToString();
+                    temp.materialNo = querySdr[2].ToString();
+                    temp.materialdescribe = querySdr[3].ToString();
+                    temp.input_number = querySdr[4].ToString();
+                    temp.inputer = querySdr[5].ToString();
+                    temp.input_date = querySdr[6].ToString();
+
+                    receiveOrderList.Add(temp);
+                }
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            List<string> titleList = new List<string>();
+            List<Object> contentList = new List<object>();
+
+            titleList.Add("机型");
+            titleList.Add("位置");
+            titleList.Add("料号");
+            titleList.Add("描述");
+            titleList.Add("输入数量");
+            titleList.Add("輸入人");
+            titleList.Add("时间");
+
+            foreach (RequireMaterialStruct stockcheck in receiveOrderList)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+                ct1.Add(stockcheck.material_type);
+                ct1.Add(stockcheck.place);
+                string materialNo = stockcheck.materialNo;
+                if (materialNo.Contains("_"))
+                {
+                    materialNo = materialNo.Split('_')[0];
+                }
+                ct1.Add(materialNo);
+                ct1.Add(stockcheck.materialdescribe);
+                ct1.Add(stockcheck.input_number);
+                ct1.Add(stockcheck.inputer);
+                ct1.Add(stockcheck.input_date.Replace("0:00:00",""));
+
+                ctest1.contentArray = ct1;
+                contentList.Add(ctest1);
+            }
+
+            Utils.createExcel("D:\\SMT小材料申请购买信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+        }
+    }
+
+    public class RequireMaterialStruct
+    {
+        public string material_type;
+        public string place;
+        public string materialNo;
+        public string materialdescribe;
+        public string input_number;
+        public string inputer;
+        public string input_date;
     }
 }
 

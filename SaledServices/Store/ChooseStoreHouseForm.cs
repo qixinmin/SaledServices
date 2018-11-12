@@ -238,11 +238,7 @@ namespace SaledServices
             else if (mFromFrom is MB_InSheetForm)
             {
                 ((MB_InSheetForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseComboBox.Text.Trim(), this.placeTextBox.Text.Trim());
-            }
-            else if (mFromFrom is FaultMBStoreForm)
-            {
-                ((FaultMBStoreForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseComboBox.Text.Trim(), this.placeTextBox.Text.Trim());
-            }
+            }           
             else if (mFromFrom is FaultBatchMBInStoreForm)
             {
                 ((FaultBatchMBInStoreForm)mFromFrom).setChooseStock(this.numTextBox.Text.Trim(), this.houseComboBox.Text.Trim(), this.placeTextBox.Text.Trim());

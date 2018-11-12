@@ -224,9 +224,9 @@ namespace SaledServices
 
         private void add_Click(object sender, EventArgs e)
         {
-            if (this.track_serial_noTextBox.Text.Trim() == "" || this.vendorTextBox.Text.Trim() == "")
+            if (this.track_serial_noTextBox.Text.Trim() == "" || this.vendorSnTextBox.Text.Trim() == "")
             {
-                MessageBox.Show("跟踪条码与厂商不能为空！");
+                MessageBox.Show("跟踪条码与厂商序号不能为空！");
                 return;
             }
 
