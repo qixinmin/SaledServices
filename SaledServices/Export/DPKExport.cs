@@ -15,6 +15,15 @@ namespace SaledServices.Export
         public DPKExport()
         {
             InitializeComponent();
+
+            if (User.UserSelfForm.isSuperManager())
+            {
+                this.exportxmlbutton.Enabled = true;
+           }
+            else
+            {
+                this.exportxmlbutton.Enabled = false;
+            }
         }
 
         private void exportxmlbutton_Click(object sender, EventArgs e)

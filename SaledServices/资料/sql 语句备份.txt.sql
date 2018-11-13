@@ -1,4 +1,23 @@
 
+/*整机出货量*/
+CREATE TABLE whole_import_sheet(
+Id INT PRIMARY KEY IDENTITY, 
+vendor NVARCHAR(128) NOT NULL, /*厂商*/
+product NVARCHAR(128) NOT NULL, /*客户别*/
+mb_brief NVARCHAR(128) NOT NULL, /*MB简称*/
+custom_machine_type NVARCHAR(128) NOT NULL, /*客户机型*/
+machine_pn NVARCHAR(128) NOT NULL, /*整机PN*/
+machine_describe NVARCHAR(128) NOT NULL, /*整机描述*/
+mpn NVARCHAR(128) NOT NULL, /*MPN*/
+mb_describe NVARCHAR(128) NOT NULL,/*MB描述*/
+out_number NVARCHAR(128) NOT NULL,/*出货量*/
+out_date  date,/*出货日期*/
+gurrante_period  NVARCHAR(128) NOT NULL,/*保修期*/
+upload_ddate  date,/*上传日期*/
+buy_type  NVARCHAR(128) NOT NULL,/*材料采购类别*/
+note  NVARCHAR(128),/*备注*/
+)
+
 /*不良品SMT/BGA入库记录*/
 CREATE TABLE badcodes(
 Id INT PRIMARY KEY IDENTITY, 

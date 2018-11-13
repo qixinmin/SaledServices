@@ -706,8 +706,8 @@ namespace SaledServices.Test_Outlook
                 this.keyidtextBox.Text = "";
                 this.KEYSERIALtextBox.Text = "";
 
-                downloadFiles(@"C:\CHKCPU\CPUPNNB.txt", @"C:\CHKCPU\CHKCPUNB.BAT");
-                runBatFile(@"C:\CHKCPU\", "CHKCPUNB.BAT");
+                downloadFiles(@"C:\CHKCPU\CPUPN.txt", @"C:\CHKCPU\CHKCPU.BAT");
+                runBatFile(@"C:\CHKCPU\", "CHKCPU.BAT");
 
                 //写数据库内容
                 try

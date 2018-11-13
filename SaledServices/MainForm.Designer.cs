@@ -61,6 +61,7 @@
             this.库房领料申请ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.mB报废判定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bGA待料输入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA维修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测试ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,13 +117,13 @@
             this.合肥报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.总报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fRU收还货信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mB报废信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mB报废信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bGA待料输入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bGA待料报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -403,6 +404,13 @@
             this.mB报废判定ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
             this.mB报废判定ToolStripMenuItem.Text = "MB报废判定";
             this.mB报废判定ToolStripMenuItem.Click += new System.EventHandler(this.mB报废判定ToolStripMenuItem_Click);
+            // 
+            // bGA待料输入ToolStripMenuItem
+            // 
+            this.bGA待料输入ToolStripMenuItem.Name = "bGA待料输入ToolStripMenuItem";
+            this.bGA待料输入ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.bGA待料输入ToolStripMenuItem.Text = "BGA待料输入";
+            this.bGA待料输入ToolStripMenuItem.Click += new System.EventHandler(this.bGA待料输入ToolStripMenuItem_Click);
             // 
             // bGA维修ToolStripMenuItem
             // 
@@ -728,7 +736,8 @@
             this.合肥报表ToolStripMenuItem,
             this.总报表ToolStripMenuItem,
             this.fRU收还货信息导出ToolStripMenuItem,
-            this.mB报废信息导出ToolStripMenuItem});
+            this.mB报废信息导出ToolStripMenuItem,
+            this.bGA待料报表导出ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -846,6 +855,13 @@
             this.fRU收还货信息导出ToolStripMenuItem.Text = "FRU收还货信息导出";
             this.fRU收还货信息导出ToolStripMenuItem.Click += new System.EventHandler(this.fRU收还货信息导出ToolStripMenuItem_Click);
             // 
+            // mB报废信息导出ToolStripMenuItem
+            // 
+            this.mB报废信息导出ToolStripMenuItem.Name = "mB报废信息导出ToolStripMenuItem";
+            this.mB报废信息导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.mB报废信息导出ToolStripMenuItem.Text = "MB报废信息导出";
+            this.mB报废信息导出ToolStripMenuItem.Click += new System.EventHandler(this.mB报废信息导出ToolStripMenuItem_Click);
+            // 
             // 查询ToolStripMenuItem
             // 
             this.查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -886,19 +902,12 @@
             this.查询板子站别ToolStripMenuItem.Text = "查询板子站别";
             this.查询板子站别ToolStripMenuItem.Click += new System.EventHandler(this.查询板子站别ToolStripMenuItem_Click);
             // 
-            // mB报废信息导出ToolStripMenuItem
+            // bGA待料报表导出ToolStripMenuItem
             // 
-            this.mB报废信息导出ToolStripMenuItem.Name = "mB报废信息导出ToolStripMenuItem";
-            this.mB报废信息导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.mB报废信息导出ToolStripMenuItem.Text = "MB报废信息导出";
-            this.mB报废信息导出ToolStripMenuItem.Click += new System.EventHandler(this.mB报废信息导出ToolStripMenuItem_Click);
-            // 
-            // bGA待料输入ToolStripMenuItem
-            // 
-            this.bGA待料输入ToolStripMenuItem.Name = "bGA待料输入ToolStripMenuItem";
-            this.bGA待料输入ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
-            this.bGA待料输入ToolStripMenuItem.Text = "BGA待料输入";
-            this.bGA待料输入ToolStripMenuItem.Click += new System.EventHandler(this.bGA待料输入ToolStripMenuItem_Click);
+            this.bGA待料报表导出ToolStripMenuItem.Name = "bGA待料报表导出ToolStripMenuItem";
+            this.bGA待料报表导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.bGA待料报表导出ToolStripMenuItem.Text = "BGA待料报表导出";
+            this.bGA待料报表导出ToolStripMenuItem.Click += new System.EventHandler(this.bGA待料报表导出ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -1019,6 +1028,7 @@
         private System.Windows.Forms.ToolStripMenuItem 库房料转移ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mB报废信息导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bGA待料输入ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bGA待料报表导出ToolStripMenuItem;
     }
 }
 

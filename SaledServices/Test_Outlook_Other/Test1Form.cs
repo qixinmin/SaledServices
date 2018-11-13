@@ -646,8 +646,8 @@ namespace SaledServices.Test_Outlook
                                + "SET DPKID=" + KEYID + "\r\n"
                                + "SET FRUPN=" + tempCustomMaterialNo + "\r\n"
                                + "SET MODELID=" + mb_brief + "\r\n"
-                                + "SET storehouse=" + currentStoreHouse + "\r\n"
-                                 + "SET eco=" + eco + "\r\n"
+                               + "SET storehouse=" + currentStoreHouse + "\r\n"
+                               + "SET eco=" + eco + "\r\n"
                                + "SET DPK=" + dpk_type;
                 Utils.createFile("D:\\fru\\", "BOM.bat", totalStr);
 
@@ -657,8 +657,8 @@ namespace SaledServices.Test_Outlook
                 KEYID = ""; this.keyidtextBox.Text = "";
                 KEYSERIAL = ""; this.KEYSERIALtextBox.Text = "";
 
-                downloadFiles(@"C:\CHKCPU\CPUPNNB.txt", @"C:\CHKCPU\CHKCPUNB.BAT");
-                runBatFile(@"C:\CHKCPU\", "CHKCPUNB.BAT");
+                downloadFiles(@"C:\CHKCPU\CPUPN.txt", @"C:\CHKCPU\CHKCPU.BAT");
+                runBatFile(@"C:\CHKCPU\", "CHKCPU.BAT");
 
                 try
                 {

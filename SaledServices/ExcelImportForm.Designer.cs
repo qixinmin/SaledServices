@@ -39,6 +39,7 @@
             this.ngstoreInfoImport = new System.Windows.Forms.RadioButton();
             this.storeInfoImportradioButton = new System.Windows.Forms.RadioButton();
             this.stock_in_sheetradioButton = new System.Windows.Forms.RadioButton();
+            this.ymrenbaocodecompare = new System.Windows.Forms.RadioButton();
             this.faultTableRadioButton = new System.Windows.Forms.RadioButton();
             this.DPKradioButton = new System.Windows.Forms.RadioButton();
             this.LCFC71BOMRadioButton = new System.Windows.Forms.RadioButton();
@@ -47,7 +48,7 @@
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
             this.updateDBRadio = new System.Windows.Forms.RadioButton();
-            this.ymrenbaocodecompare = new System.Windows.Forms.RadioButton();
+            this.machineImportRadioButton = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,6 +85,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.machineImportRadioButton);
             this.panel1.Controls.Add(this.FruBom);
             this.panel1.Controls.Add(this.guranteCheckRadioButton);
             this.panel1.Controls.Add(this.userInputRadioButton);
@@ -163,6 +165,16 @@
             this.stock_in_sheetradioButton.TabIndex = 4;
             this.stock_in_sheetradioButton.Text = "材料入库单";
             this.stock_in_sheetradioButton.UseVisualStyleBackColor = true;
+            // 
+            // ymrenbaocodecompare
+            // 
+            this.ymrenbaocodecompare.AutoSize = true;
+            this.ymrenbaocodecompare.Location = new System.Drawing.Point(240, 243);
+            this.ymrenbaocodecompare.Name = "ymrenbaocodecompare";
+            this.ymrenbaocodecompare.Size = new System.Drawing.Size(247, 24);
+            this.ymrenbaocodecompare.TabIndex = 4;
+            this.ymrenbaocodecompare.Text = "一麦仁宝故障代码对照表";
+            this.ymrenbaocodecompare.UseVisualStyleBackColor = true;
             // 
             // faultTableRadioButton
             // 
@@ -250,15 +262,15 @@
             this.updateDBRadio.Text = "更新库存";
             this.updateDBRadio.UseVisualStyleBackColor = true;
             // 
-            // ymrenbaocodecompare
+            // machineImportRadioButton
             // 
-            this.ymrenbaocodecompare.AutoSize = true;
-            this.ymrenbaocodecompare.Location = new System.Drawing.Point(240, 243);
-            this.ymrenbaocodecompare.Name = "ymrenbaocodecompare";
-            this.ymrenbaocodecompare.Size = new System.Drawing.Size(247, 24);
-            this.ymrenbaocodecompare.TabIndex = 4;
-            this.ymrenbaocodecompare.Text = "一麦仁宝故障代码对照表";
-            this.ymrenbaocodecompare.UseVisualStyleBackColor = true;
+            this.machineImportRadioButton.AutoSize = true;
+            this.machineImportRadioButton.Location = new System.Drawing.Point(240, 297);
+            this.machineImportRadioButton.Name = "machineImportRadioButton";
+            this.machineImportRadioButton.Size = new System.Drawing.Size(167, 24);
+            this.machineImportRadioButton.TabIndex = 7;
+            this.machineImportRadioButton.Text = "整机出货量导入";
+            this.machineImportRadioButton.UseVisualStyleBackColor = true;
             // 
             // ExcelImportForm
             // 
@@ -304,5 +316,6 @@
         private System.Windows.Forms.RadioButton FruBom;
         private System.Windows.Forms.RadioButton frureceiveOrder;
         private System.Windows.Forms.RadioButton ymrenbaocodecompare;
+        private System.Windows.Forms.RadioButton machineImportRadioButton;
     }
 }

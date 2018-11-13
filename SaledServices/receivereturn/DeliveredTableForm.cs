@@ -429,6 +429,21 @@ namespace SaledServices
                             return;
                         }
                     }
+
+                    if (this.storehouseTextBox.Text == "成都库" || this.storehouseTextBox.Text == "惠阳库")//成都库惠阳库单独检测
+                    {
+                        //需要去掉前面的非0字段
+                        string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
+
+                        if (this.custom_serial_noTextBox.Text.Trim().ToLower().Contains(customSerial.ToLower()) == false)
+                        {
+                            MessageBox.Show("在" + this.productTextBox.Text + "下客户序号没有包含客户料号");
+                            this.custom_serial_noTextBox.Focus();
+                            this.custom_serial_noTextBox.SelectAll();
+                            this.add.Enabled = false;
+                            return;
+                        }
+                    }
                 }
                 
                

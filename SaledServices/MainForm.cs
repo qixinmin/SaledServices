@@ -1484,5 +1484,21 @@ namespace SaledServices
 
             allForm.Add(bgaWaitMaterialForm);
         }
+
+        private BgaWaitMaterialExport bgaWaitMaterialExport; 
+        private void bGA待料报表导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (bgaWaitMaterialExport == null || bgaWaitMaterialExport.IsDisposed)
+            {
+                bgaWaitMaterialExport = new BgaWaitMaterialExport();
+                bgaWaitMaterialExport.MdiParent = this;
+            }
+
+            bgaWaitMaterialExport.WindowState = FormWindowState.Maximized;
+            bgaWaitMaterialExport.BringToFront();
+            bgaWaitMaterialExport.Show();
+
+            allForm.Add(bgaWaitMaterialExport);
+        }
     }
 }

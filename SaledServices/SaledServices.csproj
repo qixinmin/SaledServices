@@ -267,6 +267,12 @@
     <Compile Include="Export\AllBossExport.designer.cs">
       <DependentUpon>AllBossExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\BgaWaitMaterialExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\BgaWaitMaterialExport.designer.cs">
+      <DependentUpon>BgaWaitMaterialExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Export\FaultMBRecordExport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -769,6 +775,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\AllBossExport.resx">
       <DependentUpon>AllBossExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\BgaWaitMaterialExport.resx">
+      <DependentUpon>BgaWaitMaterialExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\FaultMBRecordExport.resx">
       <DependentUpon>FaultMBRecordExport.cs</DependentUpon>

@@ -170,6 +170,11 @@ namespace SaledServices
                 sheetName = Constlist.table_badcodes;
                 tableName = Constlist.table_name_badcodes;
             }
+            else if (this.machineImportRadioButton.Checked)
+            {
+                sheetName = "整机出货量";
+                tableName = "whole_import_sheet";
+            }
 
             if (this.LCFC_MBBOMradioButton.Checked)
             {
@@ -213,6 +218,7 @@ namespace SaledServices
                 this.importButton.Enabled = true;
                 return;
             }
+            
 
             app = new Microsoft.Office.Interop.Excel.Application();
             app.DisplayAlerts = false;
@@ -248,6 +254,13 @@ namespace SaledServices
                 int rowLength = ws.UsedRange.Rows.Count;
                 int columnLength = ws.UsedRange.Columns.Count;
                 importFrubomCheck(ws, rowLength, columnLength, tableName);
+            }
+            else if (this.machineImportRadioButton.Checked)
+            {
+                Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
+                int rowLength = ws.UsedRange.Rows.Count;
+                int columnLength = ws.UsedRange.Columns.Count;
+                importMachineImportCheck(ws, rowLength, columnLength, tableName);                
             }
             else if (this.receiveOrder.Checked)//表格类似
             {
@@ -927,6 +940,77 @@ namespace SaledServices
             catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void importMachineImportCheck(Worksheet ws, int rowLength, int columnLength, string tableName)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    for (int i = 2; i <= rowLength; i++)
+                    {
+                        string s = "INSERT INTO " + tableName + " VALUES('";
+                        for (int j = 1; j <= columnLength; j++)
+                        {
+                            try
+                            {
+                                //有可能有空值
+                                string temp = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, j]).Value2.ToString();
+
+                                if (j == 10 || j == 12)//把对应的列转换为时间格式
+                                {
+                                    temp= DateTime.FromOADate(Convert.ToInt32(temp)).ToString("d");
+                                    temp = DateTime.Parse(temp).ToString("yyyy-MM-dd");
+                                }                                
+
+                                s += temp;
+                            }
+                            catch (Exception ex)
+                            {
+                                s += " ";
+                            }
+
+                            if (j != columnLength)
+                            {
+                                s += "','";
+                            }
+                            else
+                            {
+                                s += "')";
+                            }
+
+                            // Console.WriteLine(s);
+                        }
+                        cmd.CommandText = s;
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+
+                MessageBox.Show("导入" + tableName + "完成！");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                wbs.Close();
+                closeAndKillApp();
             }
         }
 
