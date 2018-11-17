@@ -448,7 +448,8 @@
             "NTF待测",
             "修复OK待测",
             "BGA更换OK待测",
-            "报废"});
+            "报废",
+            "CID退货"});
             this.repair_resultcomboBox.Location = new System.Drawing.Point(198, 40);
             this.repair_resultcomboBox.Margin = new System.Windows.Forms.Padding(4);
             this.repair_resultcomboBox.Name = "repair_resultcomboBox";

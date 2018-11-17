@@ -118,12 +118,12 @@
             this.总报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fRU收还货信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mB报废信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bGA待料报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bGA待料报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -862,6 +862,13 @@
             this.mB报废信息导出ToolStripMenuItem.Text = "MB报废信息导出";
             this.mB报废信息导出ToolStripMenuItem.Click += new System.EventHandler(this.mB报废信息导出ToolStripMenuItem_Click);
             // 
+            // bGA待料报表导出ToolStripMenuItem
+            // 
+            this.bGA待料报表导出ToolStripMenuItem.Name = "bGA待料报表导出ToolStripMenuItem";
+            this.bGA待料报表导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.bGA待料报表导出ToolStripMenuItem.Text = "BGA待料报表导出";
+            this.bGA待料报表导出ToolStripMenuItem.Click += new System.EventHandler(this.bGA待料报表导出ToolStripMenuItem_Click);
+            // 
             // 查询ToolStripMenuItem
             // 
             this.查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -902,13 +909,6 @@
             this.查询板子站别ToolStripMenuItem.Text = "查询板子站别";
             this.查询板子站别ToolStripMenuItem.Click += new System.EventHandler(this.查询板子站别ToolStripMenuItem_Click);
             // 
-            // bGA待料报表导出ToolStripMenuItem
-            // 
-            this.bGA待料报表导出ToolStripMenuItem.Name = "bGA待料报表导出ToolStripMenuItem";
-            this.bGA待料报表导出ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.bGA待料报表导出ToolStripMenuItem.Text = "BGA待料报表导出";
-            this.bGA待料报表导出ToolStripMenuItem.Click += new System.EventHandler(this.bGA待料报表导出ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -921,7 +921,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统1112-";
+            this.Text = "上海进销存系统1116-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);

@@ -297,7 +297,7 @@ namespace SaledServices.Test_Outlook
                                         }
                                         else
                                         {
-                                            if (currentStoreHouse != "DOA_整机" && currentStoreHouse != "惠州库" && currentStoreHouse != "成都库")
+                                            if (currentStoreHouse != "DOA_整机" && currentStoreHouse != "惠阳库" && currentStoreHouse != "成都库")
                                             {
                                                 //更新烧录日期与custom_serial_no,与使用状态
                                                 cmd.CommandText = "update DPK_table set _status = '已使用', burn_date = GETDATE(),custom_serial_no = '" + custom_serial_no + "' where Id = '" + id + "'";
@@ -590,7 +590,7 @@ namespace SaledServices.Test_Outlook
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (currentStoreHouse != "DOA_整机" && currentStoreHouse != "惠州库" && currentStoreHouse != "成都库")//三个库别外的东西，成都库，惠阳库，DMA整机
+            if (currentStoreHouse != "DOA_整机" && currentStoreHouse != "惠阳库" && currentStoreHouse != "成都库")//三个库别外的东西，成都库，惠阳库，DMA整机
             {
                 if (KEYID == "" || KEYSERIAL == "")
                 {

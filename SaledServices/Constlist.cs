@@ -233,6 +233,10 @@ namespace SaledServices
 
     public class Utils
     {
+        public static string modifyDataFormat(string date)
+        {
+            return (date != null && date != "") ? date.Substring(0, date.IndexOf(" ")).Trim() : "";
+        }
         public static string GetWeekOfYear(DateTime dt)
         {
             GregorianCalendar gc = new GregorianCalendar();
@@ -329,6 +333,49 @@ namespace SaledServices
                 xSheet.Cells[column][row] = temp.contentArray[column - 1];
             }
         }
+
+        public static void createMulitSheetsUsingNPOI(string filepathname, List<allContent> allcontentList)
+        {
+            HSSFWorkbook hssfworkbook = new HSSFWorkbook();
+            //内容表格
+            foreach (allContent temp in allcontentList)
+            {
+                HSSFSheet sheet = (HSSFSheet)hssfworkbook.CreateSheet(temp.sheetName);
+                int row = temp.contentList.Count + 1;
+                int column = ((ExportExcelContent)(temp.contentList[0])).contentArray.Count;
+
+                for (int ri = 0; ri < row; ri++)
+                {
+                    sheet.CreateRow(ri);
+                }
+                for (int ri = 0; ri < row; ri++)
+                {
+                    for (int ci = 0; ci < column; ci++)
+                    {
+                        if (ri == 0)
+                        {
+                            sheet.GetRow(ri).CreateCell(ci).SetCellValue(temp.titleList[ci]);
+                        }
+                        else
+                        {
+                            string content = ((ExportExcelContent)(temp.contentList[ri - 1])).contentArray[ci];
+                            sheet.GetRow(ri).CreateCell(ci).SetCellValue(content);
+                        }
+                    }
+                }
+                for (int ci = 0; ci < column; ci++)
+                {
+                    sheet.AutoSizeColumn(ci);
+                }
+            }
+          
+            FileStream file = new FileStream(filepathname, FileMode.Create);
+
+            hssfworkbook.Write(file);
+            file.Close();
+            MessageBox.Show(filepathname + "导出成功");
+        }
+
 
         //title list的长度要保证与内容contentArray的长度一致, 一个文件包含多个sheet的尝试
         public static void createExcelListUsingNPOI(string filepathname, debitnotsSheet3 debitnots, List<allContent> allcontentList)

@@ -445,6 +445,13 @@ namespace SaledServices
                 MessageBox.Show("输入的内容有空，请检查！");
                 return;
             }
+
+            if (this.mbfa1richTextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("FA分析的内容有空，请检查！");
+                return;
+            }
+
             if (this.VGA.Checked == false && this.CPU.Checked == false && this.PCH.Checked == false)
             {
                 MessageBox.Show("VGA,CPU, PCH 必须选择一个！");

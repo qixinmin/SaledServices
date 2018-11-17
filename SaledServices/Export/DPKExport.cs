@@ -61,7 +61,7 @@ namespace SaledServices.Export
                     queryColumn = "burn_date";
                 }
 
-                cmd.CommandText = "select dpk_type,KEYPN,KEYID,KEYSERIAL,_status,burn_date,custom_serial_no from DPK_table where " + queryColumn + " between '" + startTime + "' and '" + endTime + "'";
+                cmd.CommandText = "select dpk_type,KEYPN,KEYID,KEYSERIAL,_status,burn_date,custom_serial_no,Id,dpk_order_no,upload_date from DPK_table where " + queryColumn + " between '" + startTime + "' and '" + endTime + "'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -73,6 +73,10 @@ namespace SaledServices.Export
                     temp._status = querySdr[4].ToString();
                     temp.burn_date = querySdr[5].ToString();
                     temp.custom_serial_no = querySdr[6].ToString();
+
+                    temp.id = querySdr[7].ToString();
+                    temp.dpk_order_no = querySdr[8].ToString();
+                    temp.upload_date = querySdr[9].ToString();
 
                     receiveOrderList.Add(temp);                  
                 }
@@ -93,10 +97,14 @@ namespace SaledServices.Export
             List<string> titleList = new List<string>();
             List<Object> contentList = new List<object>();
 
+            titleList.Add("Id");
+            titleList.Add("订单号");
+
             titleList.Add("DPK类别");
             titleList.Add("KEYPN");
             titleList.Add("KEYID");
             titleList.Add("KEYSERIAL");
+            titleList.Add("上传日期");
             titleList.Add("状态");
             titleList.Add("烧录日期");
             titleList.Add("客户序号");
@@ -113,31 +121,48 @@ namespace SaledServices.Export
             {
                 ExportExcelContent ctest1 = new ExportExcelContent();
                 List<string> ct1 = new List<string>();
+                ct1.Add(stockcheck.id);
+                ct1.Add(stockcheck.dpk_order_no);
                 ct1.Add(stockcheck.dpk_type);
                 ct1.Add(stockcheck.KEYPN);
                 ct1.Add(stockcheck.KEYID);
                 ct1.Add(stockcheck.KEYSERIAL);
+                ct1.Add((stockcheck.upload_date!=null && stockcheck.upload_date!="" )? stockcheck.upload_date.Substring(0, stockcheck.upload_date.IndexOf(" ")).Trim() : "");
                 ct1.Add(stockcheck._status);
-                ct1.Add(stockcheck.burn_date);
+                ct1.Add((stockcheck.burn_date != null && stockcheck.burn_date != "") ? stockcheck.burn_date.Substring(0, stockcheck.burn_date.IndexOf(" ")).Trim() : "");
                 ct1.Add(stockcheck.custom_serial_no);
 
                 ctest1.contentArray = ct1;
                 contentList.Add(ctest1);
             }
 
-            Utils.createExcel("D:\\DPK信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            string addtion = "使用日期";
+            if (this.inputdateradioButton.Checked)
+            {
+                addtion = "导入日期";
+            }
+
+            Utils.createExcel("D:\\DPK信息" + addtion + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
     }
 
    public class DpkStruct
     {
-       public string dpk_type;
-       public string KEYPN;
-       public string KEYID;
-       public string KEYSERIAL;
-       public string _status;
-       public string burn_date;
+       public string id;
+          public string dpk_order_no;
+
+        public string dpk_type;
+        public string KEYPN;
+        public string KEYID;
+        public string KEYSERIAL;
+          
+          public string upload_date;
+
+        public string _status;
+        public string burn_date;
         public string taker;
         public string custom_serial_no;
+
+
     }
 }

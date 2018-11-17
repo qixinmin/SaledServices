@@ -112,22 +112,22 @@ namespace SaledServices
                     }
                     
 
-                    cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
-                    querySdr = cmd.ExecuteReader();
-                    string cidExist = "";
-                    while (querySdr.Read())
-                    {
-                        cidExist = querySdr[0].ToString();
-                    }
-                    querySdr.Close();
+                    //cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    //querySdr = cmd.ExecuteReader();
+                    //string cidExist = "";
+                    //while (querySdr.Read())
+                    //{
+                    //    cidExist = querySdr[0].ToString();
+                    //}
+                    //querySdr.Close();
 
-                    if (cidExist != "")
-                    {
-                        MessageBox.Show("此序列号已经在CID中，不能走下面的流程！");
-                        this.add.Enabled = false;
-                        mConn.Close();
-                        return;
-                    }
+                    //if (cidExist != "")
+                    //{
+                    //    MessageBox.Show("此序列号已经在CID中，不能走下面的流程！");
+                    //    this.add.Enabled = false;
+                    //    mConn.Close();
+                    //    return;
+                    //}
                     
 
                     cmd.CommandText = "select custommaterialNo, source_brief,custom_order,order_receive_date,custom_serial_no,vendor_serail_no, mb_make_date,custom_fault from DeliveredTable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
@@ -702,9 +702,9 @@ namespace SaledServices
             {
                 isNTF = true;
 
-                mbfa1rich_txt = "NTF";
+                mbfa1rich_txt = "";
                 software_update_txt = "";//为空
-                material_type_txt = "NTF";
+                material_type_txt = "";
                 fault_type_txt = "NTF";
                 this.fault_typecomboBox.Text = fault_type_txt;
                 action_txt = "NTF";
@@ -1321,7 +1321,7 @@ namespace SaledServices
                         sqlStr += " and track_serial_no like '%" + track_serial_noTextBox.Text.Trim() + "%'";
                     }
                 }
-
+                sqlStr += " order by Id desc";
                 cmd.CommandText = sqlStr;
 
                 SqlDataAdapter sda = new SqlDataAdapter();

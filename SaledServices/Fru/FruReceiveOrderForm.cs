@@ -111,7 +111,7 @@ namespace SaledServices
         {
             try
             {
-                string sqlStr = "select 1000 * from " + tableName;
+                string sqlStr = "select top 1000 * from " + tableName;
                 if (vendorTextBox.Text.Trim() != "")
                 {
                     if (!sqlStr.Contains("where"))

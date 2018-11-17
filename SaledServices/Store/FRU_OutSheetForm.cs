@@ -444,7 +444,7 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 
                 List<useClass> list = new List<useClass>();
-                string sql = "select top 100 mpn,stock_place,stock_in_num,vendor,describe from fru_smt_in_stock where vendor='" + this.vendorcomboBox.Text + "' and material_type='FRU'";
+                string sql = "select mpn,stock_place,stock_in_num,vendor,describe from fru_smt_in_stock where vendor='" + this.vendorcomboBox.Text + "' and material_type='FRU'";
 
                 if (this.productcomboBox.Text != "")
                 {

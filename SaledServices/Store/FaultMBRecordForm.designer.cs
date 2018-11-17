@@ -41,8 +41,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.PCHbrieftextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.vendorSnTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.stockplacetextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -186,8 +184,6 @@
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label10, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.PCHbrieftextBox, 5, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.vendorSnTextBox, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label14, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.stockplacetextBox, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.label9, 0, 2);
@@ -262,26 +258,6 @@
             this.PCHbrieftextBox.ReadOnly = true;
             this.PCHbrieftextBox.Size = new System.Drawing.Size(197, 26);
             this.PCHbrieftextBox.TabIndex = 43;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 85);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 16);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "厂商SN";
-            // 
-            // vendorSnTextBox
-            // 
-            this.vendorSnTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vendorSnTextBox.Location = new System.Drawing.Point(197, 89);
-            this.vendorSnTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.vendorSnTextBox.Name = "vendorSnTextBox";
-            this.vendorSnTextBox.Size = new System.Drawing.Size(202, 26);
-            this.vendorSnTextBox.TabIndex = 43;
-            this.vendorSnTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vendorSnTextBox_KeyPress);
             // 
             // label14
             // 
@@ -554,8 +530,6 @@
         private System.Windows.Forms.TextBox stockplacetextBox;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox mbdescribeTextBox;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox vendorSnTextBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

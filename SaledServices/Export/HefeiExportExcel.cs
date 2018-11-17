@@ -129,7 +129,7 @@ namespace SaledServices
                     temp.LNV_FRU_PN = querySdr[5].ToString();
                     temp.LNV_MODEL_NAME = querySdr[6].ToString();
                     temp.LNV_SERIES = "";
-                    temp.PRODUCT = querySdr[7].ToString();
+                    //temp.PRODUCT = querySdr[7].ToString();
                     temp.LCFC_MODEL_NAME = querySdr[8].ToString();
                     temp.PRODUCT_DAY_CODE = querySdr[9].ToString();
                     temp.RETURN_AREA = "CHINA";
@@ -180,7 +180,7 @@ namespace SaledServices
                     temp.LNV_FRU_PN = querySdr[6].ToString();
                     temp.LNV_MODEL_NAME = querySdr[7].ToString();
                     temp.LNV_SERIES = "";
-                    temp.PRODUCT = querySdr[8].ToString();
+                    //temp.PRODUCT = querySdr[8].ToString();
                     temp.LCFC_MODEL_NAME = querySdr[9].ToString();
                     temp.PRODUCT_DAY_CODE = querySdr[10].ToString();
                     temp.RETURN_AREA = "CHINA";
@@ -225,8 +225,9 @@ namespace SaledServices
                 foreach (HefeiDataStruct temp in receiveOrderList)
                 {
                     DateTime mb_makedate = Convert.ToDateTime(temp.PRODUCT_DAY_CODE);
+                    DateTime mb_reciveDate = Convert.ToDateTime(temp.SVC_RECEIVE_DATE);
                     DateTime waranty_date = mb_makedate.AddMonths(Int16.Parse(temp.warranty_period.Replace('M', ' ').Trim()));
-                    DateTime subOneDay = mb_makedate.AddDays(-1);
+                    DateTime subOneDay = mb_reciveDate.AddDays(-1);
                     temp.WARRANTY_PERIOD = waranty_date.ToString("yyyy-MM-dd");
                     temp.REQUEST_DATE = subOneDay.ToString("yyyy-MM-dd");
                     temp.APPROVAL_DATE = subOneDay.ToString("yyyy-MM-dd");
@@ -250,7 +251,7 @@ namespace SaledServices
 
                     cmd.CommandText = "select top 1 test_date from test1table where track_serial_no='" + temp.tracker_no_return + "' order by Id desc";
                     querySdr = cmd.ExecuteReader();
-                    temp.FINAL_TEST_DATE ="";
+                    temp.FINAL_TEST_DATE =null;
                     while (querySdr.Read())
                     {
                         temp.FINAL_TEST_DATE = querySdr[0].ToString();
@@ -258,11 +259,11 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    if(temp.FINAL_TEST_DATE == "")
+                    if(temp.FINAL_TEST_DATE == null)
                     {
                         cmd.CommandText = "select top 1 test_date from testalltable where track_serial_no='" + temp.tracker_no_return + "' order by Id desc";
                         querySdr = cmd.ExecuteReader();
-                        temp.FINAL_TEST_DATE ="";
+                        temp.FINAL_TEST_DATE =null;
                         while (querySdr.Read())
                         {
                              temp.FINAL_TEST_DATE = querySdr[0].ToString();
@@ -441,7 +442,7 @@ namespace SaledServices
                 ExportExcelContent ctest1 = new ExportExcelContent();
                 List<string> ct1 = new List<string>();
 
-                ct1.Add(stockcheck.tracker_no_return);
+                ct1.Add(stockcheck.tracker_no_receive);
                 ct1.Add(stockcheck.REPAIR_CENTER);
                 ct1.Add(stockcheck.RMA_NO);
                 ct1.Add(stockcheck.PRODUCT);
@@ -454,23 +455,23 @@ namespace SaledServices
                 ct1.Add(stockcheck.LNV_SERIES);
                 ct1.Add(stockcheck.PRODUCT_GROUP);
                 ct1.Add(stockcheck.LCFC_MODEL_NAME);
-                ct1.Add(stockcheck.PRODUCT_DAY_CODE!=null ? stockcheck.PRODUCT_DAY_CODE.Replace("0:00:00", "").Trim():"");
+                ct1.Add(stockcheck.PRODUCT_DAY_CODE!=null ? stockcheck.PRODUCT_DAY_CODE.Substring(0,stockcheck.PRODUCT_DAY_CODE.IndexOf(" ")).Trim():"");
                 ct1.Add(stockcheck.RETURN_AREA);
                 ct1.Add(stockcheck.SERVICE_REQUESTER);
                 ct1.Add(stockcheck.WARRANTY_PERIOD);
                 ct1.Add(stockcheck.REQUEST_DATE);
                 ct1.Add(stockcheck.APPROVAL_DATE);
-                ct1.Add(stockcheck.SHIP_BACK_DATE != null ? stockcheck.SHIP_BACK_DATE.Replace("0:00:00", "").Trim():"");
-                ct1.Add(stockcheck.SVC_RECEIVE_DATE != null ? stockcheck.SVC_RECEIVE_DATE.Replace("0:00:00", "").Trim():"");
+                ct1.Add(stockcheck.SHIP_BACK_DATE != null ? stockcheck.SHIP_BACK_DATE.Substring(0, stockcheck.SHIP_BACK_DATE.IndexOf(" ")).Trim() : "");
+                ct1.Add(stockcheck.SVC_RECEIVE_DATE != null ? stockcheck.SVC_RECEIVE_DATE.Substring(0, stockcheck.SVC_RECEIVE_DATE.IndexOf(" ")).Trim() : "");
                 ct1.Add(stockcheck.SERVICE_TYPE);
                 ct1.Add(stockcheck.INCOMING_INSPECTION);
-                ct1.Add(stockcheck.LINE_INPUT_DATE!=null ? stockcheck.LINE_INPUT_DATE.Replace("0:00:00", "").Trim():"");
-                ct1.Add(stockcheck.REPAIR_START_DATE!=null ? stockcheck.REPAIR_START_DATE.Replace("0:00:00", "").Trim():"");
-                ct1.Add(stockcheck.FINAL_TEST_DATE!=null ? stockcheck.FINAL_TEST_DATE.Replace("0:00:00", "").Trim():"");
-                ct1.Add(stockcheck.WH_TAKEIN_DATE!=null ? stockcheck.WH_TAKEIN_DATE.Replace("0:00:00", "").Trim():"");
-                ct1.Add(stockcheck.PACKING_DATE!=null ? stockcheck.PACKING_DATE.Replace("0:00:00", "").Trim():"");
-                ct1.Add(stockcheck.DELIVERY_DATE!=null ? stockcheck.DELIVERY_DATE.Replace("0:00:00", "").Trim():"");
-                ct1.Add(stockcheck.CLOSE_DATE!=null ? stockcheck.CLOSE_DATE.Replace("0:00:00", "").Trim():"");
+                ct1.Add(stockcheck.LINE_INPUT_DATE != null ? stockcheck.LINE_INPUT_DATE.Substring(0, stockcheck.LINE_INPUT_DATE.IndexOf(" ")).Trim() : "");
+                ct1.Add(stockcheck.REPAIR_START_DATE != null ? stockcheck.REPAIR_START_DATE.Substring(0, stockcheck.REPAIR_START_DATE.IndexOf(" ")).Trim() : "");
+                ct1.Add((stockcheck.FINAL_TEST_DATE != null &&stockcheck.FINAL_TEST_DATE !="") ? stockcheck.FINAL_TEST_DATE.Substring(0, stockcheck.FINAL_TEST_DATE.IndexOf(" ")).Trim() : "");
+                ct1.Add((stockcheck.WH_TAKEIN_DATE != null && stockcheck.WH_TAKEIN_DATE !="") ? stockcheck.WH_TAKEIN_DATE.Substring(0, stockcheck.WH_TAKEIN_DATE.IndexOf(" ")).Trim() : "");
+                ct1.Add((stockcheck.PACKING_DATE != null && stockcheck.PACKING_DATE != "") ? stockcheck.PACKING_DATE.Substring(0, stockcheck.PACKING_DATE.IndexOf(" ")).Trim() : "");
+                ct1.Add((stockcheck.DELIVERY_DATE != null && stockcheck.DELIVERY_DATE != "") ? stockcheck.DELIVERY_DATE.Substring(0, stockcheck.DELIVERY_DATE.IndexOf(" ")).Trim() : "");
+                ct1.Add((stockcheck.CLOSE_DATE != null && stockcheck.CLOSE_DATE != "") ? stockcheck.CLOSE_DATE.Substring(0, stockcheck.CLOSE_DATE.IndexOf(" ")).Trim() : "");
                 ct1.Add(stockcheck.NORMAL_SYMPTOM);
 
                 for (int i = 0; i < 5; i++)//至少包括5个数据，前面已经补齐

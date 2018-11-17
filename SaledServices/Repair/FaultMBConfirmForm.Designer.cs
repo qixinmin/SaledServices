@@ -35,14 +35,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.track_serial_noTextBox = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.vendorTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.producttextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.mpntextBox = new System.Windows.Forms.TextBox();
-            this.vendorSnTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.fault_describetextBox = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -104,14 +102,12 @@
             this.tableLayoutPanel2.Controls.Add(this.label5, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.track_serial_noTextBox, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label28, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label2, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.vendorTextBox, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.label3, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.producttextBox, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.label11, 2, 2);
             this.tableLayoutPanel2.Controls.Add(this.mpntextBox, 3, 2);
-            this.tableLayoutPanel2.Controls.Add(this.vendorSnTextBox, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label14, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.fault_describetextBox, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.label23, 0, 3);
@@ -182,16 +178,6 @@
             this.track_serial_noTextBox.TabIndex = 1;
             this.track_serial_noTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.track_serial_noTextBox_KeyPress);
             // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(6, 54);
-            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(64, 16);
-            this.label28.TabIndex = 38;
-            this.label28.Text = "PCB厂商";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -251,16 +237,6 @@
             this.mpntextBox.ReadOnly = true;
             this.mpntextBox.Size = new System.Drawing.Size(450, 26);
             this.mpntextBox.TabIndex = 43;
-            // 
-            // vendorSnTextBox
-            // 
-            this.vendorSnTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vendorSnTextBox.Location = new System.Drawing.Point(158, 58);
-            this.vendorSnTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.vendorSnTextBox.Name = "vendorSnTextBox";
-            this.vendorSnTextBox.Size = new System.Drawing.Size(398, 26);
-            this.vendorSnTextBox.TabIndex = 1;
-            this.vendorSnTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vendorSnTextBox_KeyPress);
             // 
             // label14
             // 
@@ -542,7 +518,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox vendorTextBox;
@@ -560,7 +535,6 @@
         private System.Windows.Forms.Button query;
         private System.Windows.Forms.RichTextBox faultReasonRichTextBox;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox vendorSnTextBox;
         private System.Windows.Forms.TextBox faultPlaceTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox pcbzhouqitextBox;

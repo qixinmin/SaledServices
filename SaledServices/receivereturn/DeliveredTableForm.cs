@@ -752,6 +752,7 @@ namespace SaledServices
             this.numTextBox.Text = "";
             this.mb_make_dateTextBox.Text = "";
             //this.order_out_dateTextBox.Text = "";
+            guaranteeComboBox.SelectedIndex = 0;
         }
 
         private void clearInputContent()
@@ -776,6 +777,7 @@ namespace SaledServices
             this.lenovo_maintenance_noTextBox.Text = "";
             this.lenovo_repair_noTextBox.Text = "";
             this.whole_machine_noTextBox.Text = "";
+            guaranteeComboBox.SelectedIndex = 0;
         }
 
         private bool checkInputIsNull()

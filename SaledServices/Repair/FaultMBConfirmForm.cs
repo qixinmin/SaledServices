@@ -148,8 +148,8 @@ namespace SaledServices
                 this.confrim_datetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
                 if (!error)
                 {
-                    this.vendorSnTextBox.Focus();
-                    this.vendorSnTextBox.SelectAll();
+                    this.fault_describetextBox.Focus();
+                    this.fault_describetextBox.SelectAll();
                 }
             }
         }
@@ -172,42 +172,6 @@ namespace SaledServices
             }
         }
 
-        private void vendorSnTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == System.Convert.ToChar(13))
-            {
-                try
-                {
-                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
-                    mConn.Open();
-
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = mConn;
-                    cmd.CommandType = CommandType.Text;                  
-
-                    cmd.CommandText = "select Id from " + tableName + " where vendor_sn='" + this.vendorSnTextBox.Text.Trim() + "'";
-                    SqlDataReader querySdr = cmd.ExecuteReader();
-                    if (querySdr.HasRows)
-                    {
-                        querySdr.Close();
-                        mConn.Close();
-                        this.add.Enabled = false;
-                        MessageBox.Show("此厂商SN已经记录过了，不能走下面的流程！");
-                        return;
-                    }
-                    this.add.Enabled = true;
-
-                    mConn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-
-                this.fault_describetextBox.SelectAll();
-                this.fault_describetextBox.Focus();
-            }
-        }
 
         private void RepairOperationForm_Load(object sender, EventArgs e)
         {            
@@ -224,9 +188,9 @@ namespace SaledServices
 
         private void add_Click(object sender, EventArgs e)
         {
-            if (this.track_serial_noTextBox.Text.Trim() == "" || this.vendorSnTextBox.Text.Trim() == "")
+            if (this.track_serial_noTextBox.Text.Trim() == "")
             {
-                MessageBox.Show("跟踪条码与厂商序号不能为空！");
+                MessageBox.Show("跟踪条码不能为空！");
                 return;
             }
 
@@ -251,7 +215,7 @@ namespace SaledServices
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
                        this.track_serial_noTextBox.Text.Trim() + "','" +
-                       this.vendorSnTextBox.Text.Trim() + "','" +
+                       "" + "','" +
                        this.vendorTextBox.Text.Trim() + "','" +
                        this.producttextBox.Text.Trim() + "','" +
                        this.mb_brieftextBox.Text.Trim() + "','" +
@@ -292,7 +256,6 @@ namespace SaledServices
                 MessageBox.Show("添加报废判定成功");
 
                 this.track_serial_noTextBox.Text = "";
-                this.vendorSnTextBox.Text = "";
                 this.vendorTextBox.Text = "";
                 this.producttextBox.Text = "";
                 

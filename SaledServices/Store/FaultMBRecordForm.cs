@@ -124,8 +124,8 @@ namespace SaledServices
                     MessageBox.Show(ex.ToString());
                 }
 
-                this.vendorSnTextBox.SelectAll();
-                this.vendorSnTextBox.Focus();                
+                this.statustextBox.SelectAll();
+                this.statustextBox.Focus();                
             }
         }
 
@@ -149,25 +149,8 @@ namespace SaledServices
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select Id from " + tableName + " where vendor_sn='" + this.vendorSnTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select Id from fault_mb_confirm_table where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
-
-                    if (querySdr.HasRows)
-                    {
-                        querySdr.Close();
-                        MessageBox.Show("此序列号的板子已经登记过了！");
-                        this.add.Enabled = false;
-                        mConn.Close();
-                        return;
-                    }
-                    else
-                    {
-                        querySdr.Close();
-                        this.add.Enabled = true;
-                    }
-
-                    cmd.CommandText = "select Id from fault_mb_confirm_table where vendor_sn='" + this.vendorSnTextBox.Text.Trim() + "'";
-                    querySdr = cmd.ExecuteReader();
                     if (querySdr.HasRows == false)
                     {
                         MessageBox.Show("此序列号的板子不在主板报废判定表中！");
@@ -205,9 +188,9 @@ namespace SaledServices
         private void add_Click(object sender, EventArgs e)
         {
             bool error = false;
-            if (this.track_serial_noTextBox.Text.Trim() == "" || this.vendorSnTextBox.Text.Trim()=="")
+            if (this.track_serial_noTextBox.Text.Trim() == "")
             {
-                MessageBox.Show("跟踪条码或厂商SN为空！");
+                MessageBox.Show("跟踪条码为空！");
                 return;
             }
 
@@ -245,7 +228,7 @@ namespace SaledServices
                    
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.track_serial_noTextBox.Text.Trim() + "','"
-                        + this.vendorSnTextBox.Text.Trim() + "','"
+                        + "" + "','"
                         + this.vendorTextBox.Text.Trim() + "','"                      
                         + this.producttextBox.Text.Trim() + "','"
                         + this.mb_brieftextBox.Text.Trim() + "','"
@@ -310,7 +293,7 @@ namespace SaledServices
                 MessageBox.Show("添不良品库数据成功");
 
                 this.track_serial_noTextBox.Text = "";
-                this.vendorSnTextBox.Text = "";
+               
                 this.vendorTextBox.Text = "";
                 this.producttextBox.Text = "";
               

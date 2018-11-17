@@ -37,11 +37,11 @@ namespace SaledServices.Store
                 return;
             }
 
-            if (Int32.Parse(this.numberTextBox.Text.Trim()) > chooseTotalNum)
-            {
-                MessageBox.Show("输入的数量大于库存数量！");
-                return;
-            }
+            //if (Int32.Parse(this.numberTextBox.Text.Trim()) > chooseTotalNum)
+            //{
+            //    MessageBox.Show("输入的数量大于库存数量！");
+            //    return;
+            //}
 
             try
             {
@@ -69,22 +69,22 @@ namespace SaledServices.Store
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
 
-                    //需要更新库房对应储位的数量 减去 本次出库的数量
-                    //根据mpn查对应的查询
-                    cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.materialMpnTextBox.Text.Trim() + "'";
-                    SqlDataReader querySdr = cmd.ExecuteReader();
-                    string house = "", place = "", Id = "", number = "";
-                    while (querySdr.Read())
-                    {
-                        house = querySdr[0].ToString();
-                        place = querySdr[1].ToString();
-                        Id = querySdr[2].ToString();
-                        number = querySdr[3].ToString();
-                    }
-                    querySdr.Close();
+                    ////需要更新库房对应储位的数量 减去 本次出库的数量
+                    ////根据mpn查对应的查询
+                    //cmd.CommandText = "select house,place,Id,number from store_house where mpn='" + this.materialMpnTextBox.Text.Trim() + "'";
+                    //SqlDataReader querySdr = cmd.ExecuteReader();
+                    //string house = "", place = "", Id = "", number = "";
+                    //while (querySdr.Read())
+                    //{
+                    //    house = querySdr[0].ToString();
+                    //    place = querySdr[1].ToString();
+                    //    Id = querySdr[2].ToString();
+                    //    number = querySdr[3].ToString();
+                    //}
+                    //querySdr.Close();
 
-                    cmd.CommandText = "update store_house set number = '" + (Int32.Parse(number) - Int32.Parse(this.numberTextBox.Text)) + "'  where house='" + house + "' and place='" + place + "'";
-                    cmd.ExecuteNonQuery();
+                    //cmd.CommandText = "update store_house set number = '" + (Int32.Parse(number) - Int32.Parse(this.numberTextBox.Text)) + "'  where house='" + house + "' and place='" + place + "'";
+                    //cmd.ExecuteNonQuery();
                 }
                 else
                 {
@@ -92,7 +92,7 @@ namespace SaledServices.Store
                 }
 
                 conn.Close();
-                MessageBox.Show("发送请求成功，请到库房领料！");
+                MessageBox.Show("发送购买请求成功！");
             }
             catch (Exception ex)
             {
@@ -106,6 +106,8 @@ namespace SaledServices.Store
             public string storeNum { get; set; }
 
             public string stockplace { get; set; }
+            public string mb_brief { get; set; }
+            public string L1 { get; set; }
         }
 
         private void not_good_placeTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -133,7 +135,7 @@ namespace SaledServices.Store
                     List<useClass> list = new List<useClass>();
                     if (this.mb_brieftextBox.Text != "")
                     {
-                        cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8,material_describe,vendor from " + Constlist.table_name_LCFC_MBBOM + " where mb_brief ='" + this.mb_brieftextBox.Text.Trim() + "'";
+                        cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8,material_describe,vendor,mb_brief from " + Constlist.table_name_LCFC_MBBOM + " where mb_brief ='" + this.mb_brieftextBox.Text.Trim() + "'";
                         SqlDataReader querySdr = cmd.ExecuteReader();
                         
                         while (querySdr.Read())
@@ -147,6 +149,9 @@ namespace SaledServices.Store
                             {
                                 useclass.materialName = material_mpn;
                                 useclass.materialDescribe = matertialDes;
+                                useclass.mb_brief = querySdr[11].ToString();
+                                useclass.L1 = querySdr[1].ToString();
+                              
                                 list.Add(useclass);
                                 continue;
                             } temp = querySdr[2].ToString().Trim();
@@ -154,6 +159,8 @@ namespace SaledServices.Store
                             {
                                 useclass.materialName = material_mpn;
                                 useclass.materialDescribe = matertialDes;
+                                useclass.mb_brief = querySdr[11].ToString();
+                                useclass.L1 = querySdr[1].ToString();
                                 list.Add(useclass);
                                 continue;
                             } temp = querySdr[3].ToString().Trim();
@@ -161,6 +168,8 @@ namespace SaledServices.Store
                             {
                                 useclass.materialName = material_mpn;
                                 useclass.materialDescribe = matertialDes;
+                                useclass.mb_brief = querySdr[11].ToString();
+                                useclass.L1 = querySdr[1].ToString();
                                 list.Add(useclass);
                                 continue;
                             } temp = querySdr[4].ToString().Trim();
@@ -168,6 +177,8 @@ namespace SaledServices.Store
                             {
                                 useclass.materialName = material_mpn;
                                 useclass.materialDescribe = matertialDes;
+                                useclass.mb_brief = querySdr[11].ToString();
+                                useclass.L1 = querySdr[1].ToString();
                                 list.Add(useclass);
                                 continue;
                             } temp = querySdr[5].ToString().Trim();
@@ -175,6 +186,8 @@ namespace SaledServices.Store
                             {
                                 useclass.materialName = material_mpn;
                                 useclass.materialDescribe = matertialDes;
+                                useclass.mb_brief = querySdr[11].ToString();
+                                useclass.L1 = querySdr[1].ToString();
                                 list.Add(useclass);
                                 continue;
                             } temp = querySdr[6].ToString().Trim();
@@ -182,6 +195,8 @@ namespace SaledServices.Store
                             {
                                 useclass.materialName = material_mpn;
                                 useclass.materialDescribe = matertialDes;
+                                useclass.mb_brief = querySdr[11].ToString();
+                                useclass.L1 = querySdr[1].ToString();
                                 list.Add(useclass);
                                 continue;
                             } temp = querySdr[7].ToString().Trim();
@@ -189,6 +204,8 @@ namespace SaledServices.Store
                             {
                                 useclass.materialName = material_mpn;
                                 useclass.materialDescribe = matertialDes;
+                                useclass.mb_brief = querySdr[11].ToString();
+                                useclass.L1 = querySdr[1].ToString();
                                 list.Add(useclass);
                                 continue;
                             } temp = querySdr[8].ToString().Trim();
@@ -196,6 +213,8 @@ namespace SaledServices.Store
                             {
                                 useclass.materialName = material_mpn;
                                 useclass.materialDescribe = matertialDes;
+                                useclass.mb_brief = querySdr[11].ToString();
+                                useclass.L1 = querySdr[1].ToString();
                                 list.Add(useclass);
                                 continue;
                             }
@@ -300,7 +319,7 @@ namespace SaledServices.Store
                     List<useClass> list = new List<useClass>();
                     if (this.materialDestextBox.Text != "")
                     {
-                        cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8,material_describe,vendor from " + Constlist.table_name_LCFC_MBBOM + " where material_describe like '%" + this.materialDestextBox.Text.Trim() + "%'";
+                        cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8,material_describe,vendor,mb_brief from " + Constlist.table_name_LCFC_MBBOM + " where material_describe like '%" + this.materialDestextBox.Text.Trim() + "%'";
                         SqlDataReader querySdr = cmd.ExecuteReader();
 
                         while (querySdr.Read())
@@ -312,6 +331,8 @@ namespace SaledServices.Store
 
                             useclass.materialName = material_mpn;
                             useclass.materialDescribe = matertialDes;
+                            useclass.mb_brief = querySdr[11].ToString();
+                            useclass.L1 = querySdr[1].ToString();
                             list.Add(useclass);
                         }
                         querySdr.Close();
