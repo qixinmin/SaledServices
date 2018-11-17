@@ -99,7 +99,7 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    if (stationInfo == "维修" || stationInfo == "收货" || stationInfo == "Test1")                   
+                    if (stationInfo == "维修" || stationInfo == "收货" || stationInfo == "Test1" || stationInfo == "CID")                   
                     {
                         this.add.Enabled = true;                       
                     }

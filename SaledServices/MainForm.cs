@@ -1500,5 +1500,10 @@ namespace SaledServices
 
             allForm.Add(bgaWaitMaterialExport);
         }
+
+        private void bGA更换机滤ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

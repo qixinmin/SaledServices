@@ -107,3 +107,4 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Store.
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.FaultMBRecordExport.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.BGAWaitMaterialForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.BgaWaitMaterialExport.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.BgaUsedExport.resources
