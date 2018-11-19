@@ -1500,10 +1500,20 @@ namespace SaledServices
 
             allForm.Add(bgaWaitMaterialExport);
         }
-
+        private BgaUsedExport bgaUsedExport; 
         private void bGA更换机滤ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (bgaUsedExport == null || bgaUsedExport.IsDisposed)
+            {
+                bgaUsedExport = new BgaUsedExport();
+                bgaUsedExport.MdiParent = this;
+            }
 
+            bgaUsedExport.WindowState = FormWindowState.Maximized;
+            bgaUsedExport.BringToFront();
+            bgaUsedExport.Show();
+
+            allForm.Add(bgaUsedExport);
         }
     }
 }

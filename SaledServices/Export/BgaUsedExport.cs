@@ -71,7 +71,59 @@ namespace SaledServices.Export
                     temp.shortcut = querySdr[18].ToString();
                     temp.change_date = querySdr[19].ToString();
 
-                    receiveOrderList.Add(temp);
+                    receiveOrderList.Add(temp);                    
+                }
+                querySdr.Close();
+                //public string customMaterialNo;客户料号
+                //public string mb_describe;物料对照表
+                //public string ECO;物料对照表
+                //public string BGA_describe;、、bom表
+
+                foreach (BgaUsedStruct temp in receiveOrderList)
+                {
+                    cmd.CommandText = "select custommaterialNo,mb_describe from DeliveredTable where track_serial_no='" + temp.track_serial_no + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        temp.customMaterialNo = querySdr[0].ToString();
+                        temp.mb_describe = querySdr[1].ToString();
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = "select eol from MBMaterialCompare where custommaterialNo='" + temp.customMaterialNo + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        temp.ECO = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+
+                    string queryData = "", condition = "";
+                    if (temp.bgatype == "CPU")
+                    {
+                        queryData = "cpu_describe";
+                        condition = "cpu_brief";
+                    }
+                    else if (temp.bgatype == "PCH")
+                    {
+                        queryData = "pcb_describe";
+                        condition = "pcb_brief_describe";
+                    }
+                    else if (temp.bgatype == "VGA")
+                    {
+                        queryData = "vga_describe";
+                        condition = "vga_brief_describe";
+                    }
+
+                    cmd.CommandText = "select "+queryData+" from MBMaterialCompare where "+condition+"='" + temp.bga_brief + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        temp.BGA_describe = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
 
                     //下面是统计信息
                     if (bagWaitSumList.Count == 0)
@@ -111,11 +163,6 @@ namespace SaledServices.Export
                         }
                     }
                 }
-                querySdr.Close();
-
-                //public string mb_describe;物料对照表
-                //public string ECO;物料对照表
-                //public string BGA_describe;、、bom表
 
                 mConn.Close();
             }
