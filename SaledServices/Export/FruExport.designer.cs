@@ -35,8 +35,9 @@
             this.dateTimePickerstart = new System.Windows.Forms.DateTimePicker();
             this.exportxmlbutton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.receiveradioButton = new System.Windows.Forms.RadioButton();
             this.returnradioButton = new System.Windows.Forms.RadioButton();
+            this.receiveradioButton = new System.Windows.Forms.RadioButton();
+            this.fruqianhuoradioButton = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,12 +94,23 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.fruqianhuoradioButton);
             this.panel1.Controls.Add(this.returnradioButton);
             this.panel1.Controls.Add(this.receiveradioButton);
             this.panel1.Location = new System.Drawing.Point(28, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(188, 42);
+            this.panel1.Size = new System.Drawing.Size(287, 44);
             this.panel1.TabIndex = 21;
+            // 
+            // returnradioButton
+            // 
+            this.returnradioButton.AutoSize = true;
+            this.returnradioButton.Location = new System.Drawing.Point(99, 14);
+            this.returnradioButton.Name = "returnradioButton";
+            this.returnradioButton.Size = new System.Drawing.Size(65, 16);
+            this.returnradioButton.TabIndex = 1;
+            this.returnradioButton.Text = "Fru还货";
+            this.returnradioButton.UseVisualStyleBackColor = true;
             // 
             // receiveradioButton
             // 
@@ -112,15 +124,15 @@
             this.receiveradioButton.Text = "Fru收货";
             this.receiveradioButton.UseVisualStyleBackColor = true;
             // 
-            // returnradioButton
+            // fruqianhuoradioButton
             // 
-            this.returnradioButton.AutoSize = true;
-            this.returnradioButton.Location = new System.Drawing.Point(99, 14);
-            this.returnradioButton.Name = "returnradioButton";
-            this.returnradioButton.Size = new System.Drawing.Size(65, 16);
-            this.returnradioButton.TabIndex = 1;
-            this.returnradioButton.Text = "Fru还货";
-            this.returnradioButton.UseVisualStyleBackColor = true;
+            this.fruqianhuoradioButton.AutoSize = true;
+            this.fruqianhuoradioButton.Location = new System.Drawing.Point(191, 14);
+            this.fruqianhuoradioButton.Name = "fruqianhuoradioButton";
+            this.fruqianhuoradioButton.Size = new System.Drawing.Size(65, 16);
+            this.fruqianhuoradioButton.TabIndex = 1;
+            this.fruqianhuoradioButton.Text = "Fru欠货";
+            this.fruqianhuoradioButton.UseVisualStyleBackColor = true;
             // 
             // FruExport
             // 
@@ -155,5 +167,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton returnradioButton;
         private System.Windows.Forms.RadioButton receiveradioButton;
+        private System.Windows.Forms.RadioButton fruqianhuoradioButton;
     }
 }

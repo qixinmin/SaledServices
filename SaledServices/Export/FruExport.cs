@@ -34,6 +34,7 @@ namespace SaledServices.Export
             List<FruReceiveStruct> frureceiveOrderList = new List<FruReceiveStruct>();
             List<FruReturnStruct> frureturnOrderList = new List<FruReturnStruct>();
 
+            List<FruQianHuoStruct> fruQianhuoList = new List<FruQianHuoStruct>();
             try
             {
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -110,6 +111,41 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
                 }
+                else if (this.fruqianhuoradioButton.Checked)
+                {
+                    cmd.CommandText = "select receiveOrder.vendor,receiveOrder.product,receiveOrder.storehouse,receiveOrder.orderno,receiveOrder.custom_materialNo,receiveOrder.mb_brief,mpn1, receiveOrder.receivedNum,receiveOrder.returnNum,receiveOrder.receivedate from frureceiveOrder as receiveOrder" +
+                  " inner join frubomtable on custom_materialNo = frubomtable.custom_material_no where receiveOrder.receivedate >='" + startTime + "' and receiveOrder.receivedate <='" + endTime + "' ";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        FruQianHuoStruct temp = new FruQianHuoStruct();
+                        temp.vendor = querySdr[0].ToString();
+                        temp.product = querySdr[1].ToString();
+                        temp.storehouse = querySdr[2].ToString();
+                        temp.orderno = querySdr[3].ToString();
+                        temp.custom_material_no = querySdr[4].ToString();
+                        temp.mb_brief = querySdr[5].ToString();
+                        temp.mpn = querySdr[6].ToString();                       
+
+                        temp.receiveNum = querySdr[7].ToString();
+                        temp.returnNum = querySdr[8].ToString();
+                        temp.recievedate = querySdr[9].ToString();
+
+                        fruQianhuoList.Add(temp);
+                    }
+                    querySdr.Close();
+
+                    foreach (FruQianHuoStruct temp in fruQianhuoList)
+                    {
+                        temp.diffNum = (Int16.Parse(temp.receiveNum) - Int16.Parse(temp.returnNum)).ToString();
+
+                        DateTime dt1 = Convert.ToDateTime(temp.recievedate);
+                        DateTime dt2 = DateTime.Now;
+
+                        TimeSpan ts = dt2.Subtract(dt1);
+                        temp.tat = ts.Days.ToString();
+                    }
+                }
 
                 mConn.Close();
             }
@@ -126,6 +162,51 @@ namespace SaledServices.Export
             {
                 generateExcelToCheck2(frureturnOrderList, startTime, endTime);
             }
+            else if (this.fruqianhuoradioButton.Checked)
+            {
+                generateExcelToCheck3(fruQianhuoList, startTime, endTime);
+            }
+        }
+
+        public void generateExcelToCheck3(List<FruQianHuoStruct> StockCheckList, string startTime, string endTime)
+        {
+            List<string> titleList = new List<string>();
+            List<Object> contentList = new List<object>();
+            //厂商	客户别	仓库别	订单编号	客户料号	MB简称	MPN	DPK类型	收货数量	还货数量	欠货数量
+            titleList.Add("厂商");
+            titleList.Add("客户别");
+            titleList.Add("仓库别");
+            titleList.Add("订单编号");
+            titleList.Add("客户料号");
+            titleList.Add("MB简称");
+            titleList.Add("MPN1");
+
+            titleList.Add("收货数量");
+            titleList.Add("还货数量");
+            titleList.Add("欠货数量");
+            titleList.Add("在途天数");
+
+            foreach (FruQianHuoStruct stockcheck in StockCheckList)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+                ct1.Add(stockcheck.vendor);
+                ct1.Add(stockcheck.product);
+                ct1.Add(stockcheck.storehouse);
+                ct1.Add(stockcheck.orderno);
+                ct1.Add(stockcheck.custom_material_no);
+                ct1.Add(stockcheck.mb_brief);
+                ct1.Add(stockcheck.mpn);
+                ct1.Add(stockcheck.receiveNum);
+                ct1.Add(stockcheck.returnNum);
+                ct1.Add(stockcheck.diffNum);
+                ct1.Add(stockcheck.tat);
+
+                ctest1.contentArray = ct1;
+                contentList.Add(ctest1);
+            }
+
+            Utils.createExcel("D:\\Fru欠货信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
 
         public void generateExcelToCheck2(List<FruReturnStruct> StockCheckList, string startTime, string endTime)
@@ -283,5 +364,24 @@ namespace SaledServices.Export
        public string receive_date;/*还货日期*/
        public string tat;/*时间差*/
        public string _status;/*状态，良品不良品*/
+   }
+
+   public class FruQianHuoStruct
+   {
+       //厂商	客户别	仓库别	订单编号	客户料号	MB简称	MPN		收货数量	还货数量	欠货数量
+       public string vendor;
+       public string product;
+       public string storehouse;
+       public string orderno;
+       public string custom_material_no;
+       public string mb_brief;
+       public string mpn;
+     //  public string dpktype;
+       public string receiveNum;
+       public string returnNum;
+       public string diffNum;
+
+       public string recievedate;
+       public string tat;
    }
 }
