@@ -43,7 +43,7 @@ namespace SaledServices.Export
                 cmd.CommandType = CommandType.Text;
 
                 cmd.CommandText = "select track_serial_no,customMaterialNo,vendor,product,source,orderno,receivedate,mb_describe,mb_brief,custom_serial_no,"+
-                "vendor_serail_no,mpn,mb_make_date,customFault,ECO,bgatype,BGAPN,BGA_describe,bga_brief,inputer,input_date from bga_wait_material_record_table where input_date between '" + startTime + "' and '" + endTime + "'";
+                "vendor_serail_no,mpn,mb_make_date,customFault,ECO,bgatype,BGAPN,BGA_describe,bga_brief,inputer,input_date from bga_wait_material_record_table where status!='' input_date between '" + startTime + "' and '" + endTime + "'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {

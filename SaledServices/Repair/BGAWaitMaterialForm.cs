@@ -339,7 +339,8 @@ namespace SaledServices
                         + BGA_describe_txt + "','"
                         + bga_brief_txt + "','"
                         + repairer_txt + "','"
-                        + repair_date_txt 
+                        + repair_date_txt + "','"
+                        +""//新家状态字段
                         + "')";
 
                     cmd.ExecuteNonQuery();                    
@@ -441,7 +442,7 @@ namespace SaledServices
 
             string[] hTxt = {"ID", "跟踪条码", "客户料号","厂商","客户别","来源","订单编号",
                              "收货日期","MB描述","MB简称","客户序号","厂商序号","MPN",
-                             "MB生产日期","客户故障","EOL", "BGA类型", "BGAPN","BGA描述","BGA简述","录入人", "录入日期"};
+                             "MB生产日期","客户故障","EOL", "BGA类型", "BGAPN","BGA描述","BGA简述","录入人", "录入日期","状态"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];

@@ -455,6 +455,83 @@ namespace SaledServices.Store
 
             Utils.createExcel("D:\\SMT小材料申请购买信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                if (this.textBox1.Text.Trim() == "")
+                {
+                    MessageBox.Show("请先输入料号的内容");
+                    this.textBox1.Focus();
+                    return;
+                }
+
+                // string not_good_place = this.not_good_placeTextBox.Text.Trim();
+                try
+                {
+                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                    mConn.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = mConn;
+                    cmd.CommandType = CommandType.Text;
+
+                    List<useClass> list = new List<useClass>();
+                  //  if (this.materialDestextBox.Text != "")
+                    {
+                        cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8,material_describe,vendor,mb_brief from " + Constlist.table_name_LCFC_MBBOM + " where material_mpn like '%" + this.textBox1.Text.Trim() + "%'";
+                        SqlDataReader querySdr = cmd.ExecuteReader();
+
+                        while (querySdr.Read())
+                        {
+                            useClass useclass = new useClass();
+                            string material_mpn = querySdr[0].ToString() + "_" + querySdr[10].ToString();
+                            string temp = querySdr[1].ToString().Trim();
+                            string matertialDes = querySdr[9].ToString();
+
+                            useclass.materialName = material_mpn;
+                            useclass.materialDescribe = matertialDes;
+                            useclass.mb_brief = querySdr[11].ToString();
+                            useclass.L1 = querySdr[1].ToString();
+                            list.Add(useclass);
+                        }
+                        querySdr.Close();
+                    }
+
+                    if (list.Count == 0)
+                    {
+                        MessageBox.Show("是否输入错误的位置信息，或者bom表信息不全！");
+                        mConn.Close();
+                        return;
+                    }
+                    else
+                    {
+                        foreach (useClass temp in list)
+                        {
+                            cmd.CommandText = "select number,house,place from store_house where mpn ='" + temp.materialName + "'";
+                            SqlDataReader querySdr = cmd.ExecuteReader();
+                            string storeNum = "0";
+                            while (querySdr.Read())
+                            {
+                                storeNum = querySdr[0].ToString();
+                                temp.stockplace = querySdr[1].ToString() + "," + querySdr[2].ToString();
+                            }
+                            temp.storeNum = storeNum;
+                            querySdr.Close();
+                        }
+
+                        dataGridView.DataSource = list;
+                    }
+
+                    mConn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
     }
 
     public class RequireMaterialStruct

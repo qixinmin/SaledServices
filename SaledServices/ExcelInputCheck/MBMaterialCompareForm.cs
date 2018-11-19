@@ -490,6 +490,75 @@ namespace SaledServices
 
             Utils.createExcel("D:\\MB物料对照表" +   machineType + ".xlsx", titleList, contentList);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            List<MBMaterialStruct> receiveOrderList = new List<MBMaterialStruct>();
+
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select vendor,product,mb_brief,vendormaterialNo,mpn,replace_mpn,custommaterialNo,replace_custom_materialNo,fruNo,replace_fruNo," +
+                    "mb_descripe,vendor_pch_mpn,pcb_brief_describe,pcb_describe,vendor_vga_mpn,vga_brief_describe,vga_describe,vendor_cpu_mpn,cpu_brief," +
+                    "cpu_describe,dpk_type,dpkpn,warranty_period,custom_machine_type,whole_machine_num,area,_status,cpu_type,cpu_freq,eco,eol,adddate,inputuser" +
+                    " from MBMaterialCompare";
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    MBMaterialStruct temp = new MBMaterialStruct();
+                    temp.vendor = querySdr[0].ToString();
+                    temp.product = querySdr[1].ToString();
+
+                    temp.mb_brief = querySdr[2].ToString();
+                    temp.vendormaterialNo = querySdr[3].ToString();
+                    temp.mpn = querySdr[4].ToString();
+                    temp.replace_mpn = querySdr[5].ToString();
+                    temp.custommaterialNo = querySdr[6].ToString();
+                    temp.replace_custom_materialNo = querySdr[7].ToString();
+                    temp.fruNo = querySdr[8].ToString();
+                    temp.replace_fruNo = querySdr[9].ToString();
+                    temp.mb_descripe = querySdr[10].ToString();
+                    temp.vendor_pch_mpn = querySdr[11].ToString();
+                    temp.pcb_brief_describe = querySdr[12].ToString();
+                    temp.pcb_describe = querySdr[13].ToString();
+                    temp.vendor_vga_mpn = querySdr[14].ToString();
+                    temp.vga_brief_describe = querySdr[15].ToString();
+                    temp.vga_describe = querySdr[16].ToString();
+                    temp.vendor_cpu_mpn = querySdr[17].ToString();
+                    temp.cpu_brief = querySdr[18].ToString();
+                    temp.cpu_describe = querySdr[19].ToString();
+                    temp.dpk_type = querySdr[20].ToString();
+                    temp.dpkpn = querySdr[21].ToString();
+                    temp.warranty_period = querySdr[22].ToString();
+                    temp.custom_machine_type = querySdr[23].ToString();
+                    temp.whole_machine_num = querySdr[24].ToString();
+                    temp.area = querySdr[25].ToString();
+                    temp._status = querySdr[26].ToString();
+                    temp.cpu_type = querySdr[27].ToString();
+                    temp.cpu_freq = querySdr[28].ToString();
+                    temp.eco = querySdr[29].ToString();
+                    temp.eol = querySdr[30].ToString();
+                    temp.adddate = querySdr[31].ToString();
+                    temp.inputuser = querySdr[32].ToString();
+                    receiveOrderList.Add(temp);
+                }
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            generateExcelToCheck(receiveOrderList, this.addDateTextBox.Text.Trim(), this.custom_machine_typeTextBox.Text.Trim());
+        }
     }
 
     public class MBMaterialStruct

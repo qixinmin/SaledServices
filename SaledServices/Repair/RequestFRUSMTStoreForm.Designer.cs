@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.mb_brieftextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,13 +54,15 @@
             this.label10 = new System.Windows.Forms.Label();
             this.dateTimePickerend = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerstart = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(96, 94);
+            this.label1.Location = new System.Drawing.Point(106, 134);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 12);
             this.label1.TabIndex = 0;
@@ -68,7 +70,7 @@
             // 
             // mb_brieftextBox
             // 
-            this.mb_brieftextBox.Location = new System.Drawing.Point(182, 91);
+            this.mb_brieftextBox.Location = new System.Drawing.Point(192, 131);
             this.mb_brieftextBox.Name = "mb_brieftextBox";
             this.mb_brieftextBox.Size = new System.Drawing.Size(100, 21);
             this.mb_brieftextBox.TabIndex = 6;
@@ -77,7 +79,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(96, 127);
+            this.label3.Location = new System.Drawing.Point(106, 167);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 12);
             this.label3.TabIndex = 0;
@@ -85,7 +87,7 @@
             // 
             // not_good_placeTextBox
             // 
-            this.not_good_placeTextBox.Location = new System.Drawing.Point(182, 124);
+            this.not_good_placeTextBox.Location = new System.Drawing.Point(192, 164);
             this.not_good_placeTextBox.Name = "not_good_placeTextBox";
             this.not_good_placeTextBox.Size = new System.Drawing.Size(100, 21);
             this.not_good_placeTextBox.TabIndex = 6;
@@ -93,7 +95,7 @@
             // 
             // requestbutton
             // 
-            this.requestbutton.Location = new System.Drawing.Point(206, 314);
+            this.requestbutton.Location = new System.Drawing.Point(206, 324);
             this.requestbutton.Name = "requestbutton";
             this.requestbutton.Size = new System.Drawing.Size(76, 23);
             this.requestbutton.TabIndex = 8;
@@ -103,7 +105,7 @@
             // 
             // cancel
             // 
-            this.cancel.Location = new System.Drawing.Point(334, 314);
+            this.cancel.Location = new System.Drawing.Point(334, 324);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(76, 23);
             this.cancel.TabIndex = 8;
@@ -113,7 +115,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(96, 166);
+            this.label4.Location = new System.Drawing.Point(106, 206);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 0;
@@ -121,14 +123,14 @@
             // 
             // numberTextBox
             // 
-            this.numberTextBox.Location = new System.Drawing.Point(182, 163);
+            this.numberTextBox.Location = new System.Drawing.Point(192, 203);
             this.numberTextBox.Name = "numberTextBox";
             this.numberTextBox.Size = new System.Drawing.Size(100, 21);
             this.numberTextBox.TabIndex = 6;
             // 
             // dateTextBox
             // 
-            this.dateTextBox.Location = new System.Drawing.Point(182, 240);
+            this.dateTextBox.Location = new System.Drawing.Point(192, 280);
             this.dateTextBox.Name = "dateTextBox";
             this.dateTextBox.ReadOnly = true;
             this.dateTextBox.Size = new System.Drawing.Size(100, 21);
@@ -136,7 +138,7 @@
             // 
             // requesterTextBox
             // 
-            this.requesterTextBox.Location = new System.Drawing.Point(182, 204);
+            this.requesterTextBox.Location = new System.Drawing.Point(192, 244);
             this.requesterTextBox.Name = "requesterTextBox";
             this.requesterTextBox.ReadOnly = true;
             this.requesterTextBox.Size = new System.Drawing.Size(100, 21);
@@ -145,7 +147,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(96, 243);
+            this.label5.Location = new System.Drawing.Point(106, 283);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 15;
@@ -154,7 +156,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(96, 207);
+            this.label2.Location = new System.Drawing.Point(106, 247);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 16;
@@ -171,7 +173,7 @@
             // 
             // checkRequestListbutton
             // 
-            this.checkRequestListbutton.Location = new System.Drawing.Point(654, 314);
+            this.checkRequestListbutton.Location = new System.Drawing.Point(659, 324);
             this.checkRequestListbutton.Name = "checkRequestListbutton";
             this.checkRequestListbutton.Size = new System.Drawing.Size(118, 23);
             this.checkRequestListbutton.TabIndex = 8;
@@ -183,11 +185,11 @@
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(299, 67);
+            this.dataGridView.Location = new System.Drawing.Point(299, 77);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
@@ -225,7 +227,7 @@
             // 
             // materialDestextBox
             // 
-            this.materialDestextBox.Location = new System.Drawing.Point(182, 46);
+            this.materialDestextBox.Location = new System.Drawing.Point(192, 77);
             this.materialDestextBox.Name = "materialDestextBox";
             this.materialDestextBox.Size = new System.Drawing.Size(100, 21);
             this.materialDestextBox.TabIndex = 22;
@@ -234,7 +236,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(96, 49);
+            this.label8.Location = new System.Drawing.Point(106, 80);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 12);
             this.label8.TabIndex = 21;
@@ -282,6 +284,23 @@
             this.dateTimePickerstart.Size = new System.Drawing.Size(187, 21);
             this.dateTimePickerstart.TabIndex = 23;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(106, 46);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(89, 12);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "材料料号(模糊)";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(192, 43);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.TabIndex = 22;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
             // RequestFRUSMTStoreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -291,6 +310,8 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.dateTimePickerend);
             this.Controls.Add(this.dateTimePickerstart);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.materialDestextBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dataGridView);
@@ -348,5 +369,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dateTimePickerend;
         private System.Windows.Forms.DateTimePicker dateTimePickerstart;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

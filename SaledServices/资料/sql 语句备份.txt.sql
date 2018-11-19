@@ -418,6 +418,7 @@ BGA_describe NVARCHAR(128), /*BGA描述*/
 bga_brief NVARCHAR(128) , /*BGA简述*/
 inputer NVARCHAR(128) NOT NULL, /*bga维修人*/
 input_date date, /*bga维修日期*/
+status NVARCHAR(128) , /*板子是否还待料，如果待料则为空，否无设置为1*/
 )
 
 /*bga待维修记录*/
