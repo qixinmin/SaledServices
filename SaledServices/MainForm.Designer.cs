@@ -125,6 +125,7 @@
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mBBga材料一览表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -739,7 +740,8 @@
             this.fRU收还货信息导出ToolStripMenuItem,
             this.mB报废信息导出ToolStripMenuItem,
             this.bGA待料报表导出ToolStripMenuItem,
-            this.bGA更换机滤ToolStripMenuItem});
+            this.bGA更换机滤ToolStripMenuItem,
+            this.mBBga材料一览表ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -918,6 +920,13 @@
             this.查询板子站别ToolStripMenuItem.Text = "查询板子站别";
             this.查询板子站别ToolStripMenuItem.Click += new System.EventHandler(this.查询板子站别ToolStripMenuItem_Click);
             // 
+            // mBBga材料一览表ToolStripMenuItem
+            // 
+            this.mBBga材料一览表ToolStripMenuItem.Name = "mBBga材料一览表ToolStripMenuItem";
+            this.mBBga材料一览表ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.mBBga材料一览表ToolStripMenuItem.Text = "MBBga材料一览表";
+            this.mBBga材料一览表ToolStripMenuItem.Click += new System.EventHandler(this.mBBga材料一览表ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1039,6 +1048,7 @@
         private System.Windows.Forms.ToolStripMenuItem bGA待料输入ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bGA待料报表导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bGA更换机滤ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mBBga材料一览表ToolStripMenuItem;
     }
 }
 

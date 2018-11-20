@@ -21,8 +21,8 @@ namespace SaledServices.Export
         {
             exportxmlbutton.Enabled = false;
 
-            DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy/MM/dd"));
-            DateTime time2 = Convert.ToDateTime(this.dateTimePickerend.Value.Date.ToString("yyyy/MM/dd"));
+            DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy-MM-dd"));
+            DateTime time2 = Convert.ToDateTime(this.dateTimePickerend.Value.Date.ToString("yyyy-MM-dd"));
 
             if (DateTime.Compare(time1, time2) > 0) //判断日期大小
             {
@@ -30,8 +30,8 @@ namespace SaledServices.Export
                 return;
             }
 
-            string startTime = this.dateTimePickerstart.Value.ToString("yyyy/MM/dd");
-            string endTime = this.dateTimePickerend.Value.ToString("yyyy/MM/dd");
+            string startTime = this.dateTimePickerstart.Value.ToString("yyyy-MM-dd");
+            string endTime = this.dateTimePickerend.Value.ToString("yyyy-MM-dd");
 
             //List<nb_aio_mblistSheet5_6> repairList = new List<nb_aio_mblistSheet5_6>();
             List<nb_aio_mblistSheet5_6> repairListtarget = new List<nb_aio_mblistSheet5_6>();
@@ -47,11 +47,13 @@ namespace SaledServices.Export
             try
             {
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                
                 mConn.Open();
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
+                
             
                 //查询fru的记录
                 cmd.CommandText = "SELECT receive_date,orderno,customermaterialno,machine_type,name,peijian_no,make_date,gurantee,vendor_material_no,mpn1,custom_fault from fruDeliveredTable where receive_date between '" + startTime + "' and '" + endTime + "'";
@@ -220,6 +222,14 @@ namespace SaledServices.Export
                     querySdr.Close();
 
                     cmd.CommandText = "select top 1 tester from test1table where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        repairRecord.tester = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = "select top 1 tester from testalltable where track_serial_no ='" + repairRecord.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {

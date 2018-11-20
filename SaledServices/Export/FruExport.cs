@@ -19,8 +19,8 @@ namespace SaledServices.Export
 
         private void exportxmlbutton_Click(object sender, EventArgs e)
         {
-            DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo));
-            DateTime time2 = Convert.ToDateTime(this.dateTimePickerend.Value.Date.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo));
+            DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy-MM-dd", System.Globalization.DateTimeFormatInfo.InvariantInfo));
+            DateTime time2 = Convert.ToDateTime(this.dateTimePickerend.Value.Date.ToString("yyyy-MM-dd", System.Globalization.DateTimeFormatInfo.InvariantInfo));
 
             if (DateTime.Compare(time1, time2) > 0) //判断日期大小
             {
@@ -28,8 +28,8 @@ namespace SaledServices.Export
                 return;
             }
 
-            string startTime = this.dateTimePickerstart.Value.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
-            string endTime = this.dateTimePickerend.Value.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
+            string startTime = this.dateTimePickerstart.Value.ToString("yyyy-MM-dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
+            string endTime = this.dateTimePickerend.Value.ToString("yyyy-MM-dd", System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
             List<FruReceiveStruct> frureceiveOrderList = new List<FruReceiveStruct>();
             List<FruReturnStruct> frureturnOrderList = new List<FruReturnStruct>();
@@ -229,8 +229,8 @@ namespace SaledServices.Export
             titleList.Add("保外备注");
             titleList.Add("厂商料号");
             titleList.Add("MPN1");
-            titleList.Add("收件人");
-            titleList.Add("收货日期");
+            titleList.Add("还货人");
+            titleList.Add("还货日期");
             titleList.Add("TAT");
             titleList.Add("状态");
 
@@ -256,7 +256,7 @@ namespace SaledServices.Export
 
                 ct1.Add(stockcheck.mpn1);
                 ct1.Add(stockcheck.receiver);
-                ct1.Add(stockcheck.receive_date);
+                ct1.Add(Utils.modifyDataFormat(stockcheck.receive_date));
                 ct1.Add(stockcheck.tat);
                 ct1.Add(stockcheck._status);
 

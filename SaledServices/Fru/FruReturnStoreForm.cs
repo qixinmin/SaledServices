@@ -220,7 +220,7 @@ namespace SaledServices
 
             currentMaterialNo = this.customermaterialnoTextBox.Text = dataGridViewToReturn.SelectedCells[1].Value.ToString();
             orderNo = this.ordernotextBox.Text = dataGridViewToReturn.SelectedCells[0].Value.ToString();
-            tat = this.tattextBox.Text = dataGridViewToReturn.SelectedCells[5].Value.ToString();
+            tat = this.tattextBox.Text = dataGridViewToReturn.SelectedCells[6].Value.ToString();
             simulateEnter(this.customermaterialnoTextBox.Text.Trim(), orderNo, tat);
         }
 

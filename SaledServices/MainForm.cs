@@ -1500,6 +1500,7 @@ namespace SaledServices
 
             allForm.Add(bgaWaitMaterialExport);
         }
+
         private BgaUsedExport bgaUsedExport; 
         private void bGA更换机滤ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1514,6 +1515,22 @@ namespace SaledServices
             bgaUsedExport.Show();
 
             allForm.Add(bgaUsedExport);
+        }
+
+        private MBBgaMaterialAllExport mbBgaMaterialAllExport; 
+        private void mBBga材料一览表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (mbBgaMaterialAllExport == null || mbBgaMaterialAllExport.IsDisposed)
+            {
+                mbBgaMaterialAllExport = new MBBgaMaterialAllExport();
+                mbBgaMaterialAllExport.MdiParent = this;
+            }
+
+            mbBgaMaterialAllExport.WindowState = FormWindowState.Maximized;
+            mbBgaMaterialAllExport.BringToFront();
+            mbBgaMaterialAllExport.Show();
+
+            allForm.Add(mbBgaMaterialAllExport);
         }
     }
 }
