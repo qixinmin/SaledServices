@@ -69,7 +69,34 @@ namespace SaledServices.Export
                     receiveOrderList.Add(temp);
                 }
                 querySdr.Close();
+                
+                foreach (MBBgaMaterialStruct temp in receiveOrderList)
+                {
+                    //计算整机出货量
+                    cmd.CommandText = "select * from (" +
+                        "select  mpn, sum(cast(out_number as float)) as out_number from whole_import_sheet group by mpn" +
+                        ") as A where mpn='" + temp.mpn + "'";
 
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        temp.whole_out_num = querySdr[1].ToString();
+                    }
+                    querySdr.Close();
+              
+                    //查询历史维修量
+                    cmd.CommandText = "select * from (" +
+                        "select  mpn, sum(cast(sum_year as float)) as out_number from repaire_history_data_sheet group by mpn" +
+                        ") as A where mpn='" + temp.mpn + "'";
+
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        temp.repaire_num = querySdr[1].ToString();
+                    }
+                    querySdr.Close();
+
+                }
                 mConn.Close();
             }
             catch (Exception ex)

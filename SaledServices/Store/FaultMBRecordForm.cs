@@ -366,5 +366,15 @@ namespace SaledServices
                 csform.Show();
             }
         }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void modify_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

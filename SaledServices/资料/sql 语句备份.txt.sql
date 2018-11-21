@@ -1,5 +1,30 @@
 
-/*整机出货量*/
+/*年份	厂商	客户库别	客户别	客户料号	MPN	MB简称	汇总数量	月1	月2	月3	月4	月5	月6	月7	月8	月9	月10	月11	月12*/
+CREATE TABLE repaire_history_data_sheet(
+Id INT PRIMARY KEY IDENTITY, 
+year_ NVARCHAR(128), /*年份*/
+vendor NVARCHAR(128) NOT NULL, /*厂商*/
+house NVARCHAR(128) NOT NULL, /*库别*/
+product NVARCHAR(128) NOT NULL, /*客户别*/
+custom_material_no NVARCHAR(128),/*客户料号*/
+mpn NVARCHAR(128) NOT NULL, /*MPN*/
+mb_brief NVARCHAR(128) NOT NULL, /*MB简称*/
+sum_year NVARCHAR(128),/*年汇总*/
+sum_1 NVARCHAR(128),/*1月汇总*/
+sum_2 NVARCHAR(128),/*2月汇总*/
+sum_3 NVARCHAR(128),/*3月汇总*/
+sum_4 NVARCHAR(128),/*4月汇总*/
+sum_5 NVARCHAR(128),/*5月汇总*/
+sum_6 NVARCHAR(128),/*6月汇总*/
+sum_7 NVARCHAR(128),/*7月汇总*/
+sum_8 NVARCHAR(128),/*8月汇总*/
+sum_9 NVARCHAR(128),/*9月汇总*/
+sum_10 NVARCHAR(128),/*10月汇总*/
+sum_11 NVARCHAR(128),/*11月汇总*/
+sum_12 NVARCHAR(128),/*12月汇总*/
+)
+
+/*整机出货量，从联想拿到的数据，用来计算维修比例的基数*/
 CREATE TABLE whole_import_sheet(
 Id INT PRIMARY KEY IDENTITY, 
 vendor NVARCHAR(128) NOT NULL, /*厂商*/
