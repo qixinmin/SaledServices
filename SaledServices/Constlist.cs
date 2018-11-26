@@ -233,6 +233,30 @@ namespace SaledServices
 
     public class Utils
     {
+
+        public static string getFirstDayOfMonth(DateTime current)
+        {
+            DateTime dt_First = current.AddDays(1 - (current.Day));
+
+            return dt_First.ToString("yyyy-MM-dd");
+        }
+
+        public static string getEndDayOfMonth(DateTime current)
+        {
+            DateTime dt_First = current.AddDays(1 - (current.Day));
+            int year = current.Date.Year;
+            int month = current.Date.Month;
+            int dayCount = DateTime.DaysInMonth(year, month);
+            DateTime dt_Last = dt_First.AddDays(dayCount - 1);
+            return dt_Last.ToString("yyyy-MM-dd");
+        }
+
+        public static string getColumnName(int month)
+        {
+            return "sum_" + month;
+        }
+
+
         public static string modifyDataFormat(string date)
         {
             return (date != null && date != "") ? date.Substring(0, date.IndexOf(" ")).Trim() : "";
@@ -340,6 +364,10 @@ namespace SaledServices
             //内容表格
             foreach (allContent temp in allcontentList)
             {
+                if (temp.contentList.Count <= 0)
+                {
+                    continue;
+                }
                 HSSFSheet sheet = (HSSFSheet)hssfworkbook.CreateSheet(temp.sheetName);
                 int row = temp.contentList.Count + 1;
                 int column = ((ExportExcelContent)(temp.contentList[0])).contentArray.Count;

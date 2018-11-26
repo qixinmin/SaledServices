@@ -120,12 +120,12 @@
             this.mB报废信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA待料报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA更换机滤ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mBBga材料一览表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mBBga材料一览表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -880,6 +880,13 @@
             this.bGA更换机滤ToolStripMenuItem.Text = "BGA更换记录";
             this.bGA更换机滤ToolStripMenuItem.Click += new System.EventHandler(this.bGA更换机滤ToolStripMenuItem_Click);
             // 
+            // mBBga材料一览表ToolStripMenuItem
+            // 
+            this.mBBga材料一览表ToolStripMenuItem.Name = "mBBga材料一览表ToolStripMenuItem";
+            this.mBBga材料一览表ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.mBBga材料一览表ToolStripMenuItem.Text = "MBBga材料一览表";
+            this.mBBga材料一览表ToolStripMenuItem.Click += new System.EventHandler(this.mBBga材料一览表ToolStripMenuItem_Click);
+            // 
             // 查询ToolStripMenuItem
             // 
             this.查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -920,13 +927,6 @@
             this.查询板子站别ToolStripMenuItem.Text = "查询板子站别";
             this.查询板子站别ToolStripMenuItem.Click += new System.EventHandler(this.查询板子站别ToolStripMenuItem_Click);
             // 
-            // mBBga材料一览表ToolStripMenuItem
-            // 
-            this.mBBga材料一览表ToolStripMenuItem.Name = "mBBga材料一览表ToolStripMenuItem";
-            this.mBBga材料一览表ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.mBBga材料一览表ToolStripMenuItem.Text = "MBBga材料一览表";
-            this.mBBga材料一览表ToolStripMenuItem.Click += new System.EventHandler(this.mBBga材料一览表ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -939,7 +939,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统1119-";
+            this.Text = "上海进销存系统1123-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);

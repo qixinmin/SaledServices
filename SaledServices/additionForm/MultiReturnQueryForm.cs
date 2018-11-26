@@ -83,8 +83,11 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select D.track_serial_no, D.vendor_serail_no,D.custom_serial_no,D.mb_brief, D.custom_fault,R.fault_describe,F.stock_place,D.order_receive_date,S.return_date,R.repairer from DeliveredTable as D, repair_record_table as R,returnStore as S,fru_smt_used_record as F where D.track_serial_no = R.track_serial_no"
-                                        +" and R.track_serial_no = S.track_serial_no and S.track_serial_no = F.track_serial_no";
+                cmd.CommandText = "select * from ("+
+                    "select D.track_serial_no, D.vendor_serail_no,D.custom_serial_no," +
+                    "D.mb_brief, D.custom_fault,D.order_receive_date," +
+                    "S.return_date from DeliveredTable as D, returnStore as S  where D.track_serial_no  = S.track_serial_no" +
+                    ") as A where  vendor_serail_no='" + this.faultIndexTextBox.Text.Trim() + "'";
                 cmd.CommandType = CommandType.Text;
 
                 sda = new SqlDataAdapter();
@@ -99,7 +102,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "跟踪条码","厂商序号","客户序号","MB简称","客户故障","故障原因","不良位置","收货日期","还货日期","维修人" };
+            string[] hTxt = { "跟踪条码","厂商序号","客户序号","MB简称","客户故障","收货日期","还货日期"};
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];

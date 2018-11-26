@@ -181,7 +181,7 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select bgatype,BGAPN,BGA_place from bga_repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' and newSn !=''";
+                    cmd.CommandText = "select bgatype,BGAPN,BGA_place from bga_repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' and  bga_repair_result='更换OK待测量' ";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {

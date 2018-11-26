@@ -315,7 +315,7 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select vendor from " + this.tableName + " where peijian_no = '" + this.peijian_noTextBox.Text + "'";
+                    cmd.CommandText = "select vendor from " + this.tableName + " where peijian_no = '" + this.peijian_noTextBox.Text + "' and orderno='" + this.ordernoComboBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string existTrack = "";
                     while (querySdr.Read())

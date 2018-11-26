@@ -303,7 +303,7 @@ namespace SaledServices
                 this.mpntextBox.Text = "";               
              
                 //this.repairertextBox.Text = "";
-                this.input_datetextBox.Text = "";
+                //this.input_datetextBox.Text = "";
                 this.mbdescribeTextBox.Text = "";
 
                 this.track_serial_noTextBox.Focus();
