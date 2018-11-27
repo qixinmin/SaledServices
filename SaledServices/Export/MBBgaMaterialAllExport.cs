@@ -166,7 +166,7 @@ namespace SaledServices.Export
 
                             //把汇总的数据更新一遍
                             cmd.CommandText = "update repaire_history_data_sheet set sum_year=" + sumall + " where year_ ='"
-                                + querystemp.year + "' and custom_material_no='" + querystemp.materialno + "'";
+                                + querystemp.year + "' and custom_material_no='" + materialNo_numtemp.materialNo + "'";
                             cmd.ExecuteNonQuery();
                         }
                         else
@@ -177,7 +177,20 @@ namespace SaledServices.Export
                             int sumall = materialNo_numtemp.num;
                             //还要确定当前是几月份，位置不同 12个sql语句？？
 
-                            string currentsqlpre = "insert into repaire_history_data_sheet values('" + querystemp.year + "','','','','" + materialNo_numtemp.materialNo + "','','','" + sumall + "',";
+                            cmd.CommandText = "SELECT vendor,product,storehouse,mpn,mb_brief from DeliveredTable where custommaterialNo='" + materialNo_numtemp.materialNo + "'";
+                            querySdr = cmd.ExecuteReader();
+                            if (querySdr.Read())
+                            {
+                                materialNo_numtemp.vendor = querySdr[0].ToString();
+                                materialNo_numtemp.product = querySdr[1].ToString();
+                                materialNo_numtemp.house = querySdr[2].ToString();
+                                materialNo_numtemp.mpn = querySdr[3].ToString();
+                                materialNo_numtemp.mb_brief = querySdr[4].ToString();
+                            }
+                            querySdr.Close();
+
+                            string currentsqlpre = "insert into repaire_history_data_sheet values('" + querystemp.year + "','"+materialNo_numtemp.vendor+"','"+materialNo_numtemp.house+"','"+materialNo_numtemp.product+"','" 
+                                + materialNo_numtemp.materialNo + "','"+materialNo_numtemp.mpn+"','"+materialNo_numtemp.mb_brief+"','" + sumall + "',";
                             //下面根据月份组装
                             switch (querystemp.dbcolumn)
                             {
@@ -250,7 +263,43 @@ namespace SaledServices.Export
                         temp.repaire_num = querySdr[1].ToString();
                     }
                     querySdr.Close();
+
+                    //查询购买数量
+                    cmd.CommandText = "select * from (" +
+                        "select  mpn, sum(cast(input_number as float)) as out_number from mb_in_stock group by mpn" +
+                        ") as A where mpn='" + temp.mpn + "'";
+
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.Read())
+                    {
+                        temp.mb_buy_in_num = querySdr[1].ToString();
+                    }
+                    querySdr.Close();
+
+                    //查询报废数量
+                    cmd.CommandText = "select * from (" +
+                        "select  mpn, count(*) as out_number from fault_mb_enter_record_table group by mpn" +
+                        ") as A where mpn='" + temp.mpn + "'";
+
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.Read())
+                    {
+                        temp.mb_fault_num = querySdr[1].ToString();
+                    }
+                    querySdr.Close();
                 }
+
+                //计算MB报废率，报废/退修量
+                foreach (MBBgaMaterialStruct temp in receiveOrderList)
+                {
+                    int mb_fault_num = (temp.mb_fault_num == "" || temp.mb_fault_num == null) ? 0 : Int16.Parse(temp.mb_fault_num);
+                    float repaire_num = (temp.repaire_num == "" || temp.repaire_num == null) ? 0 : float.Parse(temp.repaire_num);
+                    if (repaire_num != 0)
+                    {
+                        temp.mb_fault_rate = mb_fault_num / repaire_num +"";
+                    }                    
+                }
+
                 mConn.Close();
             }
             catch (Exception ex)
@@ -342,6 +391,12 @@ namespace SaledServices.Export
     {
         public string materialNo;
         public int num;
+
+        public string vendor;
+        public string house;
+        public string product;
+        public string mpn;
+        public string mb_brief;
     }
 
     public class queryCondition
