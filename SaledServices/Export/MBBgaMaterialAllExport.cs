@@ -28,8 +28,8 @@ namespace SaledServices.Export
             string startTime = this.dateTimePickerstart.Value.ToString("yyyy-MM-dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             string endTime = this.dateTimePickerend.Value.ToString("yyyy-MM-dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
-            List<MBBgaMaterialStruct> receiveOrderList = new List<MBBgaMaterialStruct>();           
-
+            List<MBBgaMaterialStruct> receiveOrderList = new List<MBBgaMaterialStruct>();
+            List<bgaReport> bgas = new List<bgaReport>();
             try
             {
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -46,32 +46,32 @@ namespace SaledServices.Export
 
                 //本月
                 queryCondition conditions = new queryCondition();
-                DateTime current = DateTime.Now;
-                conditions.year = current.Year + "年";
-                conditions.currentMonth = current.Month + "";
-                conditions.monthstart = Utils.getFirstDayOfMonth(current);
-                conditions.monthend = Utils.getEndDayOfMonth(current);
-                conditions.dbcolumn = Utils.getColumnName(current.Month);
+                DateTime currentMonth = DateTime.Now;
+                conditions.year = currentMonth.Year + "年";
+                conditions.currentMonth = currentMonth.Month + "";
+                conditions.monthstart = Utils.getFirstDayOfMonth(currentMonth);
+                conditions.monthend = Utils.getEndDayOfMonth(currentMonth);
+                conditions.dbcolumn = Utils.getColumnName(currentMonth.Month);
                 querys.Add(conditions);
 
                 //上个月
                 conditions = new queryCondition();
-                current = DateTime.Now.AddMonths(-1);
-                conditions.year = current.Year + "年";
-                conditions.currentMonth = current.Month + "";
-                conditions.monthstart = Utils.getFirstDayOfMonth(current);
-                conditions.monthend = Utils.getEndDayOfMonth(current);
-                conditions.dbcolumn = Utils.getColumnName(current.Month);
+                DateTime lastMonth = DateTime.Now.AddMonths(-1);
+                conditions.year = lastMonth.Year + "年";
+                conditions.currentMonth = lastMonth.Month + "";
+                conditions.monthstart = Utils.getFirstDayOfMonth(lastMonth);
+                conditions.monthend = Utils.getEndDayOfMonth(lastMonth);
+                conditions.dbcolumn = Utils.getColumnName(lastMonth.Month);
                 querys.Add(conditions);
 
                 //上上月
                 conditions = new queryCondition();
-                current = DateTime.Now.AddMonths(-2);
-                conditions.year = current.Year + "年";
-                conditions.currentMonth = current.Month + "";
-                conditions.monthstart = Utils.getFirstDayOfMonth(current);
-                conditions.monthend = Utils.getEndDayOfMonth(current);
-                conditions.dbcolumn = Utils.getColumnName(current.Month);
+                DateTime lastLastmonth = DateTime.Now.AddMonths(-2);
+                conditions.year = lastLastmonth.Year + "年";
+                conditions.currentMonth = lastLastmonth.Month + "";
+                conditions.monthstart = Utils.getFirstDayOfMonth(lastLastmonth);
+                conditions.monthend = Utils.getEndDayOfMonth(lastLastmonth);
+                conditions.dbcolumn = Utils.getColumnName(lastLastmonth.Month);
                 querys.Add(conditions);
                 SqlDataReader querySdr = null;
 
@@ -289,6 +289,7 @@ namespace SaledServices.Export
                     querySdr.Close();
                 }
 
+                Dictionary<string, MBBgaMaterialStruct> mpn_all = new Dictionary<string, MBBgaMaterialStruct>();//用来第二张表查询信息
                 //计算MB报废率，报废/退修量
                 foreach (MBBgaMaterialStruct temp in receiveOrderList)
                 {
@@ -297,7 +298,68 @@ namespace SaledServices.Export
                     if (repaire_num != 0)
                     {
                         temp.mb_fault_rate = mb_fault_num / repaire_num +"";
-                    }                    
+                    }
+
+                    if (mpn_all.ContainsKey(temp.mpn) == false)
+                    {
+                        mpn_all.Add(temp.mpn, temp);
+                    }
+                }
+
+                //下面是第二张表的内容
+                cmd.CommandText = "select  mpn, bga_brief , count(*) as out_number from bga_repair_record_table where bga_repair_result= '更换OK待测量' group by mpn, bga_brief";
+
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    bgaReport temp = new bgaReport();
+                    temp.mpn  = querySdr[0].ToString();
+                    temp.bga_brief  = querySdr[1].ToString();
+                    temp.bga_change_number = querySdr[2].ToString();
+
+                    if (mpn_all.ContainsKey(temp.mpn))
+                    {
+                        MBBgaMaterialStruct temp2 = mpn_all[temp.mpn];
+                        temp.vendor = temp2.vendor;
+                        temp.product = temp2.product;
+                        temp.mb_brief = temp2.mb_brief;
+                        temp.whole_out_num = temp2.whole_out_num;
+                        temp.repaire_num = temp2.repaire_num;
+                        temp.material_type = temp2.eol;
+                    }
+
+                    int bga_change_number = (temp.bga_change_number == "" || temp.bga_change_number == null) ? 0 : Int16.Parse(temp.bga_change_number);
+                    float whole_out_num = (temp.whole_out_num == "" || temp.whole_out_num == null) ? 0 : float.Parse(temp.whole_out_num);
+                    if (whole_out_num != 0)
+                    {
+                        temp.bga_rate = bga_change_number / whole_out_num + "";
+                    }
+                  
+                    bgas.Add(temp);
+                }
+                querySdr.Close();
+                
+                foreach (bgaReport temp in bgas)
+                {
+                    //查询历史维修量
+                    cmd.CommandText = "select bgapn,bgatype from bga_repair_record_table where mpn='"+temp.mpn+"' and bga_brief='"+temp.bga_brief+"'";
+
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.Read())
+                    {
+                        temp.bgapn = querySdr[0].ToString();
+                        temp.bga_type = querySdr[1].ToString();
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = "select " + Utils.getColumnName(lastMonth.Month) + "," + Utils.getColumnName(lastLastmonth.Month) + " from repaire_history_data_sheet where mpn='"+temp.mpn+"'";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.Read())
+                    {
+                        temp.repair_num_1_month = querySdr[0].ToString();
+                        temp.repair_num_2_month = Int16.Parse(querySdr[0].ToString()) + Int16.Parse(querySdr[0].ToString()) +"";
+                    }
+                    querySdr.Close();
                 }
 
                 mConn.Close();
@@ -307,10 +369,10 @@ namespace SaledServices.Export
                 MessageBox.Show(ex.ToString());
             }
 
-            generateExcelToCheck(receiveOrderList, startTime, endTime);
+            generateExcelToCheck(receiveOrderList, bgas, startTime, endTime);
         }
 
-        public void generateExcelToCheck(List<MBBgaMaterialStruct> StockCheckList, string startTime, string endTime)
+        public void generateExcelToCheck(List<MBBgaMaterialStruct> StockCheckList, List<bgaReport> bgas,string startTime, string endTime)
         {
             List<allContent> allcontentList = new List<allContent>();
 
@@ -340,10 +402,9 @@ namespace SaledServices.Export
             firstsheet.titleList.Add("整机出货量");
             firstsheet.titleList.Add("客户退修量");
 
-             firstsheet.titleList.Add("MB购买数量");
-             firstsheet.titleList.Add("MB报废数量");
-             firstsheet.titleList.Add("MB报废率");
-
+            firstsheet.titleList.Add("MB购买数量");
+            firstsheet.titleList.Add("MB报废数量");
+            firstsheet.titleList.Add("MB报废率");
 
             firstsheet.titleList.Add("材料类别");
 
@@ -383,8 +444,77 @@ namespace SaledServices.Export
             }
             allcontentList.Add(firstsheet);
 
+            allContent secondsheet = new allContent();
+            secondsheet.sheetName = "BGAMB一览表";
+            secondsheet.titleList = new List<string>();
+            secondsheet.contentList = new List<object>();
+
+            secondsheet.titleList.Add("BGA_厂商MPN");
+            secondsheet.titleList.Add("BGA简述");
+            secondsheet.titleList.Add("BGA描述");
+            secondsheet.titleList.Add("BGA类别");
+
+            secondsheet.titleList.Add("厂商");
+            secondsheet.titleList.Add("客户别");
+            secondsheet.titleList.Add("MB简称");
+            secondsheet.titleList.Add("mpn");
+            secondsheet.titleList.Add("对应整机出货量");
+            secondsheet.titleList.Add("客户退修量");
+            secondsheet.titleList.Add("近1个月MB退修量");
+            secondsheet.titleList.Add("近2个月MB退修量");
+            secondsheet.titleList.Add("BGA更换数量");
+            secondsheet.titleList.Add("BGA不良率");
+            secondsheet.titleList.Add("材料类别");
+
+
+            foreach (bgaReport stockcheck in bgas)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+                ct1.Add(stockcheck.bgapn);
+                ct1.Add(stockcheck.bga_brief);
+                ct1.Add(stockcheck.bga_desc);
+                ct1.Add(stockcheck.bga_type);
+                ct1.Add(stockcheck.vendor);
+                ct1.Add(stockcheck.product);
+                ct1.Add(stockcheck.mb_brief);
+                ct1.Add(stockcheck.mpn);
+                ct1.Add(stockcheck.whole_out_num);
+                ct1.Add(stockcheck.repaire_num);
+                ct1.Add(stockcheck.repair_num_1_month);
+                ct1.Add(stockcheck.repair_num_2_month);
+                ct1.Add(stockcheck.bga_change_number);
+                ct1.Add(stockcheck.bga_rate);
+                ct1.Add(stockcheck.material_type);
+
+                ctest1.contentArray = ct1;
+                secondsheet.contentList.Add(ctest1);
+            }
+
+            allcontentList.Add(secondsheet);
+
             Utils.createMulitSheetsUsingNPOI("D:\\MBBga材料一览表" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xls", allcontentList);            
         }
+    }
+
+    public class bgaReport
+    {
+        //BGA_厂商MPN	BGA简述	BGA描述	BGA类别	厂商	客户别	MB简称	mpn	对应整机出货量	客户退修量	近1个月MB退修量	近2个月MB退修量	BGA更换数量	BGA不良率	材料类别
+        public string bgapn;
+        public string bga_brief;
+        public string bga_desc;
+        public string bga_type;
+        public string vendor;
+        public string product;
+        public string mb_brief;
+        public string mpn;
+        public string whole_out_num;//整机出货量
+        public string repaire_num;//退修数量
+        public string repair_num_1_month;
+        public string repair_num_2_month;
+        public string bga_change_number;
+        public string bga_rate;
+        public string material_type;
     }
 
     public class materialNo_num
