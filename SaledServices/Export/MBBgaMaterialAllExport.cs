@@ -332,7 +332,7 @@ namespace SaledServices.Export
                     float whole_out_num = (temp.whole_out_num == "" || temp.whole_out_num == null) ? 0 : float.Parse(temp.whole_out_num);
                     if (whole_out_num != 0)
                     {
-                        temp.bga_rate = bga_change_number / whole_out_num + "";
+                        temp.bga_rate = (bga_change_number / whole_out_num) + "";
                     }
                   
                     bgas.Add(temp);
@@ -342,7 +342,7 @@ namespace SaledServices.Export
                 foreach (bgaReport temp in bgas)
                 {
                     //查询历史维修量
-                    cmd.CommandText = "select bgapn,bgatype from bga_repair_record_table where mpn='"+temp.mpn+"' and bga_brief='"+temp.bga_brief+"'";
+                    cmd.CommandText = "select top 1 bgapn,bgatype from bga_repair_record_table where mpn='"+temp.mpn+"' and bga_brief='"+temp.bga_brief+"'";
 
                     querySdr = cmd.ExecuteReader();
                     if (querySdr.Read())
@@ -352,12 +352,21 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
+                    cmd.CommandText = "select top 1 describe from bga_in_stock where bga_describe='" + temp.bga_brief + "'";
+
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.Read())
+                    {
+                        temp.bga_desc = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
                     cmd.CommandText = "select " + Utils.getColumnName(lastMonth.Month) + "," + Utils.getColumnName(lastLastmonth.Month) + " from repaire_history_data_sheet where mpn='"+temp.mpn+"'";
                     querySdr = cmd.ExecuteReader();
                     if (querySdr.Read())
                     {
                         temp.repair_num_1_month = querySdr[0].ToString();
-                        temp.repair_num_2_month = Int16.Parse(querySdr[0].ToString()) + Int16.Parse(querySdr[0].ToString()) +"";
+                        temp.repair_num_2_month = Int16.Parse(querySdr[0].ToString()) + Int16.Parse(querySdr[1].ToString()) +"";
                     }
                     querySdr.Close();
                 }
