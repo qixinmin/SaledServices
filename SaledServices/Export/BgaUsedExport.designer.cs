@@ -34,6 +34,8 @@
             this.dateTimePickerend = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerstart = new System.Windows.Forms.DateTimePicker();
             this.exportxmlbutton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.bgaRepair_resultcomboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label4
@@ -87,18 +89,43 @@
             this.exportxmlbutton.UseVisualStyleBackColor = true;
             this.exportxmlbutton.Click += new System.EventHandler(this.exportxmlbutton_Click);
             // 
-            // BgaWaitMaterialExport
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(26, 34);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 12);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "BGA状态";
+            // 
+            // bgaRepair_resultcomboBox
+            // 
+            this.bgaRepair_resultcomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bgaRepair_resultcomboBox.FormattingEnabled = true;
+            this.bgaRepair_resultcomboBox.Items.AddRange(new object[] {
+            "BGA待换",
+            "更换OK待测量",
+            "更换NG"});
+            this.bgaRepair_resultcomboBox.Location = new System.Drawing.Point(97, 26);
+            this.bgaRepair_resultcomboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.bgaRepair_resultcomboBox.Name = "bgaRepair_resultcomboBox";
+            this.bgaRepair_resultcomboBox.Size = new System.Drawing.Size(202, 20);
+            this.bgaRepair_resultcomboBox.TabIndex = 40;
+            // 
+            // BgaUsedExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 365);
+            this.Controls.Add(this.bgaRepair_resultcomboBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePickerend);
             this.Controls.Add(this.dateTimePickerstart);
             this.Controls.Add(this.exportxmlbutton);
-            this.Name = "BgaWaitMaterialExport";
+            this.Name = "BgaUsedExport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BGA更换信息导出";
             this.ResumeLayout(false);
@@ -114,5 +141,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerend;
         private System.Windows.Forms.DateTimePicker dateTimePickerstart;
         private System.Windows.Forms.Button exportxmlbutton;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox bgaRepair_resultcomboBox;
     }
 }

@@ -15,6 +15,8 @@ namespace SaledServices.Export
         public BgaUsedExport()
         {
             InitializeComponent();
+
+            bgaRepair_resultcomboBox.SelectedIndex = 0;
         }
 
         private void exportxmlbutton_Click(object sender, EventArgs e)
@@ -44,7 +46,7 @@ namespace SaledServices.Export
 
                 cmd.CommandText = "select track_serial_no,repairer,vendor,product,source,orderno,receivedate,bga_repairer,mb_brief,custom_serial_no," +
                 "vendor_serail_no,mpn,mb_make_date,customFault,bgatype,BGAPN,bga_brief,mbfa1, short_cut,bga_repair_date from bga_repair_record_table where bga_repair_date between '"
-                    + startTime + "' and '" + endTime + "' and bga_repair_result='更换OK待测量'";
+                    + startTime + "' and '" + endTime + "' and bga_repair_result='" + this.bgaRepair_resultcomboBox.Text.Trim() + "'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {

@@ -401,11 +401,13 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                string sql = "select * from bga_repair_record_table";
+                string sql = "select top 2 * from bga_repair_record_table";
                 if (this.track_serial_noTextBox.Text.Trim() != "")
                 {
                     sql += " where track_serial_no like '%" + this.track_serial_noTextBox.Text.Trim() + "%'";
                 }
+
+                sql += " order by Id desc";
                 cmd.CommandText = sql;
                 cmd.CommandType = CommandType.Text;
 

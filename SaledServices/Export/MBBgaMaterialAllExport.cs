@@ -352,7 +352,24 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select top 1 describe from bga_in_stock where bga_describe='" + temp.bga_brief + "'";
+                    string queryCol = "",queryCol2="";
+                    switch (temp.bga_type)
+                    {
+                        case "PCH":
+                            queryCol = "pcb_describe";
+                            queryCol2 = "pcb_brief_describe";
+                            break;
+                        case "CPU":
+                            queryCol = "cpu_describe";
+                            queryCol2 = "cpu_brief";
+                            break;
+                        case "VGA":
+                            queryCol = "vga_describe";
+                            queryCol2 = "vga_brief_describe";
+                            break;
+                    }
+
+                    cmd.CommandText = "select top 1 "+queryCol +" from MBMaterialCompare where "+queryCol2+"='" + temp.bga_brief + "'";
 
                     querySdr = cmd.ExecuteReader();
                     if (querySdr.Read())

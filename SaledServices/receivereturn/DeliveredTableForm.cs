@@ -797,7 +797,13 @@ namespace SaledServices
                 || this.lenovo_custom_service_noTextBox.Text == ""
                 || this.lenovo_maintenance_noTextBox.Text == ""
                 || this.lenovo_repair_noTextBox.Text == ""
-                || this.whole_machine_noTextBox.Text == "")
+                || this.whole_machine_noTextBox.Text == ""
+
+                || this.vendorTextBox.Text == ""
+                || this.productTextBox.Text == ""
+                || this.mb_describeTextBox.Text == ""
+                || this.mpnTextBox.Text == ""
+                )
             {
                 return true;
             }
