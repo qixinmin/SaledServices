@@ -484,20 +484,21 @@ namespace SaledServices
                     {
                         existTrack = querySdr[0].ToString();
                     }
-                    if (existTrack != "")
-                    {
-                        this.track_serial_noTextBox.Focus();
-                        this.track_serial_noTextBox.SelectAll();
-                        querySdr.Close();
-                        conn.Close();
-                        clearInputContent();
-                        MessageBox.Show("跟踪条码：" + this.track_serial_noTextBox.Text + " 已经被使用过，请检测是否有错误!");
-                        return;
-                    }
-                    else
-                    {
-                        querySdr.Close();
-                    }
+                    querySdr.Close();
+                    //if (existTrack != "")
+                    //{
+                    //    this.track_serial_noTextBox.Focus();
+                    //    this.track_serial_noTextBox.SelectAll();
+                    //    querySdr.Close();
+                    //    conn.Close();
+                    //    clearInputContent();
+                    //    MessageBox.Show("跟踪条码：" + this.track_serial_noTextBox.Text + " 已经被使用过，请检测是否有错误!");
+                    //    return;
+                    //}
+                    //else
+                    //{
+                    //    querySdr.Close();
+                    //}
 
                     this.order_out_dateTextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);//设置为当前日期
 
