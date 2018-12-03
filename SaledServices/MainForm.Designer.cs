@@ -126,6 +126,7 @@
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.板子所有记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -893,7 +894,8 @@
             this.站别查询ToolStripMenuItem,
             this.dOA查询ToolStripMenuItem,
             this.信息查询ToolStripMenuItem,
-            this.查询板子站别ToolStripMenuItem});
+            this.查询板子站别ToolStripMenuItem,
+            this.板子所有记录查询ToolStripMenuItem});
             this.查询ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.查询ToolStripMenuItem.Name = "查询ToolStripMenuItem";
             this.查询ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -902,30 +904,37 @@
             // 站别查询ToolStripMenuItem
             // 
             this.站别查询ToolStripMenuItem.Name = "站别查询ToolStripMenuItem";
-            this.站别查询ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.站别查询ToolStripMenuItem.Size = new System.Drawing.Size(244, 32);
             this.站别查询ToolStripMenuItem.Text = "站别查询";
             this.站别查询ToolStripMenuItem.Click += new System.EventHandler(this.站别查询ToolStripMenuItem_Click);
             // 
             // dOA查询ToolStripMenuItem
             // 
             this.dOA查询ToolStripMenuItem.Name = "dOA查询ToolStripMenuItem";
-            this.dOA查询ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.dOA查询ToolStripMenuItem.Size = new System.Drawing.Size(244, 32);
             this.dOA查询ToolStripMenuItem.Text = "多返查询";
             this.dOA查询ToolStripMenuItem.Click += new System.EventHandler(this.dOA查询ToolStripMenuItem_Click);
             // 
             // 信息查询ToolStripMenuItem
             // 
             this.信息查询ToolStripMenuItem.Name = "信息查询ToolStripMenuItem";
-            this.信息查询ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.信息查询ToolStripMenuItem.Size = new System.Drawing.Size(244, 32);
             this.信息查询ToolStripMenuItem.Text = "信息查询";
             this.信息查询ToolStripMenuItem.Click += new System.EventHandler(this.信息查询ToolStripMenuItem_Click);
             // 
             // 查询板子站别ToolStripMenuItem
             // 
             this.查询板子站别ToolStripMenuItem.Name = "查询板子站别ToolStripMenuItem";
-            this.查询板子站别ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.查询板子站别ToolStripMenuItem.Size = new System.Drawing.Size(244, 32);
             this.查询板子站别ToolStripMenuItem.Text = "查询板子站别";
             this.查询板子站别ToolStripMenuItem.Click += new System.EventHandler(this.查询板子站别ToolStripMenuItem_Click);
+            // 
+            // 板子所有记录查询ToolStripMenuItem
+            // 
+            this.板子所有记录查询ToolStripMenuItem.Name = "板子所有记录查询ToolStripMenuItem";
+            this.板子所有记录查询ToolStripMenuItem.Size = new System.Drawing.Size(244, 32);
+            this.板子所有记录查询ToolStripMenuItem.Text = "板子所有记录查询";
+            this.板子所有记录查询ToolStripMenuItem.Click += new System.EventHandler(this.板子所有记录查询ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -939,7 +948,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统1130-";
+            this.Text = "上海进销存系统1203-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1049,6 +1058,7 @@
         private System.Windows.Forms.ToolStripMenuItem bGA待料报表导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bGA更换机滤ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mBBga材料一览表ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 板子所有记录查询ToolStripMenuItem;
     }
 }
 

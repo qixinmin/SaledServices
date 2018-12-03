@@ -232,6 +232,12 @@ namespace SaledServices
                 return;                
             }
 
+            if (this.gurantee_noteTextBox.Text.Trim() != "" && statusComboBox.Text.Trim() == "良品")
+            {
+                MessageBox.Show("输入的内容有误，良品与不良品是否选择正确, 请检查！");
+                return;      
+            }
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);

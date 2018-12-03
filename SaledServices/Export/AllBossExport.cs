@@ -56,7 +56,7 @@ namespace SaledServices.Export
                 
             
                 //查询fru的记录
-                cmd.CommandText = "SELECT receive_date,orderno,customermaterialno,machine_type,name,peijian_no,make_date,gurantee,vendor_material_no,mpn1,custom_fault from fruDeliveredTable where receive_date between '" + startTime + "' and '" + endTime + "'";
+                cmd.CommandText = "SELECT receive_date,orderno,customermaterialno,machine_type,name,peijian_no,make_date,gurantee,vendor_material_no,mpn1,custom_fault from fruDeliveredTable where receive_date between '" + startTime + "' and '" + endTime + "'  and vendor='COMPAL'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {

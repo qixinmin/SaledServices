@@ -1532,5 +1532,21 @@ namespace SaledServices
 
             allForm.Add(mbBgaMaterialAllExport);
         }
+
+        private QueryAllInfoForm queryAllInfoForm; 
+        private void 板子所有记录查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (queryAllInfoForm == null || queryAllInfoForm.IsDisposed)
+            {
+                queryAllInfoForm = new QueryAllInfoForm();
+                queryAllInfoForm.MdiParent = this;
+            }
+
+            queryAllInfoForm.WindowState = FormWindowState.Maximized;
+            queryAllInfoForm.BringToFront();
+            queryAllInfoForm.Show();
+
+            allForm.Add(queryAllInfoForm);
+        }
     }
 }

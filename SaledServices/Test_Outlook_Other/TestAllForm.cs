@@ -112,7 +112,7 @@ namespace SaledServices.Test_Outlook
 
                     this.bomdownload.Enabled = true;
 
-                    cmd.CommandText = "select track_serial_no,product from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.CommandText = "select top 1 track_serial_no,product from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'  order by Id desc";
 
                     querySdr = cmd.ExecuteReader();
                     track_serial_no = ""; product = "";
