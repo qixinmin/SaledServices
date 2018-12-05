@@ -29,7 +29,7 @@ namespace SaledServices
         }
 
         private void add_Click(object sender, EventArgs e)
-        {            
+        {
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -246,6 +246,148 @@ namespace SaledServices
             if (e.KeyChar == System.Convert.ToChar(13))
             {
                 query_Click(null, null);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<string> titleList = new List<string>();
+            List<Object> contentList = new List<object>();
+
+            string querycolumnmb_brief = "", quereyContentmb_brief = "";
+
+            if (this.mb_briefTextBox.Text.Trim() != "")
+            {
+                querycolumnmb_brief = "mb_brief";
+                quereyContentmb_brief = this.mb_briefTextBox.Text.Trim();
+            }
+
+            string querycolumnmaterial_mpn = "", quereyContentmaterial_mpn = "";
+
+            if (this.material_mpnTextBox.Text.Trim() != "")
+            {
+                querycolumnmaterial_mpn = "material_mpn";
+                quereyContentmaterial_mpn = this.material_mpnTextBox.Text.Trim();
+            }
+
+            string querycolumnmaterial_describe = "", quereyContentmaterial_describe = "";
+
+            if (this.material_describeTextBox.Text.Trim() != "")
+            {
+                querycolumnmaterial_describe = "material_describe";
+                quereyContentmaterial_describe = this.material_describeTextBox.Text.Trim();
+            }
+
+            string sqlCmd = "select * from LCFC_MBBOM_table ";
+
+            if (querycolumnmb_brief != "" )
+            {
+                if (sqlCmd.Contains("where"))
+                {
+                    sqlCmd += " and " + querycolumnmb_brief + " like '%" + quereyContentmb_brief + "%'";
+                }
+                else
+                {
+                    sqlCmd += " where " + querycolumnmb_brief + " like '%" + quereyContentmb_brief + "%'";
+                }
+            }
+
+            if (querycolumnmaterial_mpn != "")
+            {
+                if (sqlCmd.Contains("where"))
+                {
+                    sqlCmd += " and " + querycolumnmaterial_mpn + " like '%" + quereyContentmaterial_mpn + "%'";
+                }
+                else
+                {
+                    sqlCmd += " where " + querycolumnmaterial_mpn + " like '%" + quereyContentmaterial_mpn + "%'";
+                }
+            }
+
+            if (querycolumnmaterial_describe != "")
+            {
+                if (sqlCmd.Contains("where"))
+                {
+                    sqlCmd += " and " + querycolumnmaterial_describe + " like '%" + quereyContentmaterial_describe + "%'";
+                }
+                else
+                {
+                    sqlCmd += " where " + querycolumnmaterial_describe + " like '%" + quereyContentmaterial_describe + "%'";
+                }
+            }
+
+            titleList.Add("ID");
+            titleList.Add("日期");
+            titleList.Add("厂商");
+            titleList.Add("客户别");
+            titleList.Add("MB简称");
+            titleList.Add("MPN");
+            titleList.Add("材料MPN");
+            titleList.Add("料盒位置");
+            titleList.Add("物料描述");
+            titleList.Add("用料数量");
+            titleList.Add("L1");
+            titleList.Add("L2");
+            titleList.Add("L3");
+            titleList.Add("L4");
+            titleList.Add("L5");
+            titleList.Add("L6");
+            titleList.Add("L7");
+            titleList.Add("L8");
+
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = sqlCmd;
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        ExportExcelContent ctest1 = new ExportExcelContent();
+                        List<string> ct1 = new List<string>();
+                        ct1.Add(querySdr[0].ToString());
+                        ct1.Add(querySdr[1].ToString());
+                        ct1.Add(querySdr[2].ToString());
+                        ct1.Add(querySdr[3].ToString());
+                        ct1.Add(querySdr[4].ToString());
+                        ct1.Add(querySdr[5].ToString());
+                        ct1.Add(querySdr[6].ToString());
+                        ct1.Add(querySdr[7].ToString());
+                        ct1.Add(querySdr[8].ToString());
+                        ct1.Add(querySdr[9].ToString());
+                        ct1.Add(querySdr[10].ToString());
+                        ct1.Add(querySdr[11].ToString());
+                        ct1.Add(querySdr[12].ToString());
+                        ct1.Add(querySdr[13].ToString());
+                        ct1.Add(querySdr[14].ToString());
+                        ct1.Add(querySdr[15].ToString());
+                        ct1.Add(querySdr[16].ToString());
+                        ct1.Add(querySdr[17].ToString());                        
+
+                        ctest1.contentArray = ct1;
+                        contentList.Add(ctest1);
+                    }
+                    querySdr.Close();
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+                Utils.createExcel("D:\\LCFC_MBBOM" + DateTime.Now.ToString("yyyy-MM-dd").Replace('/', '-') + ".xlsx", titleList, contentList);
+                this.Cursor = Cursors.Default;
+            }
+            catch (Exception ex)
+            {
+                this.Cursor = Cursors.Default;
+                MessageBox.Show(ex.ToString());
             }
         }
     }

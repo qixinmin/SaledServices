@@ -32,14 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.tracker_bar_textBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -48,8 +46,10 @@
             this.dataGridView_test1 = new System.Windows.Forms.DataGridView();
             this.dataGridView_test2 = new System.Windows.Forms.DataGridView();
             this.dataGridView_return = new System.Windows.Forms.DataGridView();
-            this.dataGridView_repair = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
             this.dataGridView_receiveOrder = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dataGridView_repair = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.dataGridView_bga = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
@@ -57,8 +57,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_test1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_test2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_return)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_repair)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_receiveOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_repair)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_bga)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,24 +116,6 @@
             this.tracker_bar_textBox.Size = new System.Drawing.Size(832, 21);
             this.tracker_bar_textBox.TabIndex = 0;
             this.tracker_bar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tracker_bar_textBox_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 39);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 12);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "收货表";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 110);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 12);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "维修表";
             // 
             // label5
             // 
@@ -231,20 +213,14 @@
             this.dataGridView_return.Size = new System.Drawing.Size(832, 59);
             this.dataGridView_return.TabIndex = 7;
             // 
-            // dataGridView_repair
+            // label3
             // 
-            this.dataGridView_repair.AllowUserToAddRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridView_repair.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView_repair.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView_repair.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_repair.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView_repair.Location = new System.Drawing.Point(117, 113);
-            this.dataGridView_repair.Name = "dataGridView_repair";
-            this.dataGridView_repair.RowTemplate.Height = 23;
-            this.dataGridView_repair.Size = new System.Drawing.Size(832, 63);
-            this.dataGridView_repair.TabIndex = 7;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "收货表";
             // 
             // dataGridView_receiveOrder
             // 
@@ -260,6 +236,30 @@
             this.dataGridView_receiveOrder.RowTemplate.Height = 23;
             this.dataGridView_receiveOrder.Size = new System.Drawing.Size(832, 65);
             this.dataGridView_receiveOrder.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 110);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "维修表";
+            // 
+            // dataGridView_repair
+            // 
+            this.dataGridView_repair.AllowUserToAddRows = false;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridView_repair.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridView_repair.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView_repair.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_repair.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_repair.Location = new System.Drawing.Point(117, 113);
+            this.dataGridView_repair.Name = "dataGridView_repair";
+            this.dataGridView_repair.RowTemplate.Height = 23;
+            this.dataGridView_repair.Size = new System.Drawing.Size(832, 63);
+            this.dataGridView_repair.TabIndex = 7;
             // 
             // label9
             // 
@@ -300,8 +300,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_test1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_test2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_return)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_repair)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_receiveOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_repair)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_bga)).EndInit();
             this.ResumeLayout(false);
 

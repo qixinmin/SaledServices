@@ -489,14 +489,14 @@ namespace SaledServices.Export
                     List<string> ct1 = new List<string>();
                     ctest1.contentArray = ct1;
 
-                    ct1.Add(temp.receive_date);
+                    ct1.Add(Utils.modifyDataFormat(temp.receive_date));
                     ct1.Add(temp.orderno);
 
                     ct1.Add(temp.customermaterialno);
                     ct1.Add(temp.machine_type);
                     ct1.Add(temp.name);
                     ct1.Add(temp.peijian_no);
-                    ct1.Add(temp.make_date);
+                    ct1.Add(Utils.modifyDataFormat(temp.make_date));
                     ct1.Add(temp.gurantee);
                     ct1.Add(temp.vendor_material_no);
                     ct1.Add(temp.mpn1);
@@ -615,13 +615,13 @@ namespace SaledServices.Export
                     ct1.Add(repaircheck.order_no);
                     ct1.Add(repaircheck.source);
                     ct1.Add(repaircheck.track_serial_no);
-                    ct1.Add(repaircheck.receivedate != null ? repaircheck.receivedate.Replace("0:00:00", "").Trim() : "");
+                    ct1.Add(Utils.modifyDataFormat(repaircheck.receivedate));
                     ct1.Add(repaircheck.mb_brief);
 
                     ct1.Add(repaircheck.mb_describe);
                     ct1.Add(repaircheck.mpn);
                     ct1.Add(repaircheck.vendor_serail_no);
-                    ct1.Add(repaircheck.mb_make_date != null ? repaircheck.mb_make_date.Replace("0:00:00", "").Trim() : "");
+                    ct1.Add(Utils.modifyDataFormat(repaircheck.mb_make_date));
                     ct1.Add(repaircheck.custom_fault);
 
                     for (int i = 0; i < 3; i++)
@@ -671,7 +671,7 @@ namespace SaledServices.Export
 
                     ct1.Add(repaircheck.repairer);
                     ct1.Add(repaircheck.tester);
-                    ct1.Add(repaircheck.repair_date != null ? repaircheck.repair_date.Replace("0:00:00", "").Trim() : "");
+                    ct1.Add(Utils.modifyDataFormat(repaircheck.repair_date));
                     ct1.Add("");
                     ct1.Add(repaircheck.charge);
 
@@ -789,13 +789,13 @@ namespace SaledServices.Export
                     ct1.Add(repaircheck.order_no);
                     ct1.Add(repaircheck.source);
                     ct1.Add(repaircheck.track_serial_no);
-                    ct1.Add(repaircheck.receivedate != null ? repaircheck.receivedate.Replace("0:00:00", "").Trim() : "");  
+                    ct1.Add(Utils.modifyDataFormat(repaircheck.receivedate));  
                     ct1.Add(repaircheck.mb_brief);
 
                     ct1.Add(repaircheck.mb_describe);
                     ct1.Add(repaircheck.mpn);
                     ct1.Add(repaircheck.vendor_serail_no);
-                    ct1.Add(repaircheck.mb_make_date != null ? repaircheck.mb_make_date.Replace("0:00:00", "").Trim() : "");
+                    ct1.Add(Utils.modifyDataFormat(repaircheck.mb_make_date));
                     ct1.Add(repaircheck.custom_fault);
 
                     for (int i = 0; i < 3; i++)
@@ -845,7 +845,7 @@ namespace SaledServices.Export
 
                     ct1.Add(repaircheck.repairer);
                     ct1.Add(repaircheck.tester);
-                    ct1.Add(repaircheck.repair_date != null ? repaircheck.repair_date.Replace("0:00:00", "").Trim() : "");
+                    ct1.Add(Utils.modifyDataFormat(repaircheck.repair_date));
                     ct1.Add("");
                     ct1.Add(repaircheck.charge);
 
