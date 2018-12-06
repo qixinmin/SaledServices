@@ -646,6 +646,11 @@ namespace SaledServices
         //title list的长度要保证与内容contentArray的长度一致
         public static void createExcel(string filepathname, List<string> titleList, List<Object> contentList)
         {
+            if (contentList.Count == 0)
+            {
+                MessageBox.Show("查询到的内容为空，请检查！");
+                return;
+            }
             //1.创建Applicaton对象
             Microsoft.Office.Interop.Excel.Application xApp = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel.Workbook workBook;

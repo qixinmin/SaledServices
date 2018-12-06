@@ -127,6 +127,7 @@
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.板子所有记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.整机出货量的报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -742,7 +743,8 @@
             this.mB报废信息导出ToolStripMenuItem,
             this.bGA待料报表导出ToolStripMenuItem,
             this.bGA更换机滤ToolStripMenuItem,
-            this.mBBga材料一览表ToolStripMenuItem});
+            this.mBBga材料一览表ToolStripMenuItem,
+            this.整机出货量的报表ToolStripMenuItem});
             this.报表ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
             this.报表ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -936,6 +938,13 @@
             this.板子所有记录查询ToolStripMenuItem.Text = "板子所有记录查询";
             this.板子所有记录查询ToolStripMenuItem.Click += new System.EventHandler(this.板子所有记录查询ToolStripMenuItem_Click);
             // 
+            // 整机出货量的报表ToolStripMenuItem
+            // 
+            this.整机出货量的报表ToolStripMenuItem.Name = "整机出货量的报表ToolStripMenuItem";
+            this.整机出货量的报表ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.整机出货量的报表ToolStripMenuItem.Text = "整机出货量的报表";
+            this.整机出货量的报表ToolStripMenuItem.Click += new System.EventHandler(this.整机出货量的报表ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1059,6 +1068,7 @@
         private System.Windows.Forms.ToolStripMenuItem bGA更换机滤ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mBBga材料一览表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 板子所有记录查询ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 整机出货量的报表ToolStripMenuItem;
     }
 }
 

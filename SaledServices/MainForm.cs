@@ -1548,5 +1548,21 @@ namespace SaledServices
 
             allForm.Add(queryAllInfoForm);
         }
+
+        private WholeMachineExport wholeMachineExport; 
+        private void 整机出货量的报表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (wholeMachineExport == null || wholeMachineExport.IsDisposed)
+            {
+                wholeMachineExport = new WholeMachineExport();
+                wholeMachineExport.MdiParent = this;
+            }
+
+            wholeMachineExport.WindowState = FormWindowState.Maximized;
+            wholeMachineExport.BringToFront();
+            wholeMachineExport.Show();
+
+            allForm.Add(wholeMachineExport);
+        }
     }
 }

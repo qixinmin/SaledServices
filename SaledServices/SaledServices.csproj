@@ -285,6 +285,12 @@
     <Compile Include="Export\BgaUsedExport.designer.cs">
       <DependentUpon>BgaUsedExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\WholeMachineExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\WholeMachineExport.designer.cs">
+      <DependentUpon>WholeMachineExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Export\MBBgaMaterialAllExport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -802,6 +808,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\BgaUsedExport.resx">
       <DependentUpon>BgaUsedExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\WholeMachineExport.resx">
+      <DependentUpon>WholeMachineExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\MBBgaMaterialAllExport.resx">
       <DependentUpon>MBBgaMaterialAllExport.cs</DependentUpon>
