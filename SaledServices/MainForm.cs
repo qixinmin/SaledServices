@@ -1564,5 +1564,21 @@ namespace SaledServices
 
             allForm.Add(wholeMachineExport);
         }
+
+        private TransferOrSoldForm transferOrSoldForm; 
+        private void 报废转卖ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (transferOrSoldForm == null || transferOrSoldForm.IsDisposed)
+            {
+                transferOrSoldForm = new TransferOrSoldForm();
+                transferOrSoldForm.MdiParent = this;
+            }
+
+            transferOrSoldForm.WindowState = FormWindowState.Maximized;
+            transferOrSoldForm.BringToFront();
+            transferOrSoldForm.Show();
+
+            allForm.Add(transferOrSoldForm);
+        }
     }
 }

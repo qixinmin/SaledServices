@@ -1,4 +1,23 @@
 
+/*日期	厂商	材料类别	MPN	MB简称	简述	描述	状态	数量	出库原因	收货商名称	备注*/
+CREATE TABLE TransferOrSold_sheet(
+Id INT PRIMARY KEY IDENTITY, 
+vendor NVARCHAR(128), /*厂商*/
+material_type NVARCHAR(128), /*材料类别MB/BGA/FRU/SMT*/
+bga_type NVARCHAR(128), /*bga与null*/
+mpn NVARCHAR(128), /*MPN*/
+mb_brief NVARCHAR(128), /*MB简称*/
+other_brief NVARCHAR(128), /*简述-除mb外的简称,mb的话为空*/
+describe NVARCHAR(128), /*描述*/
+_state NVARCHAR(128), /*状态,良品不良品*/
+number NVARCHAR(128), /*数量*/
+out_reason NVARCHAR(128), /*出库原因*/
+receiver NVARCHAR(128), /*收货商名称*/
+note NVARCHAR(128), /*备注*/
+inputer NVARCHAR(128) NOT NULL, /*操作人*/
+input_date NVARCHAR(128), /*日期*/
+)
+
 /*年份	厂商	客户库别	客户别	客户料号	MPN	MB简称	汇总数量	月1	月2	月3	月4	月5	月6	月7	月8	月9	月10	月11	月12*/
 CREATE TABLE repaire_history_data_sheet(
 Id INT PRIMARY KEY IDENTITY, 

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
@@ -93,7 +90,7 @@ namespace SaledServices.Export
                     temp.house = querySdr[1].ToString();
                     temp.place = querySdr[2].ToString();                   
                     temp.leftnumber = querySdr[4].ToString();
-
+                    temp.othernumber = "0";//初始值
                     string[] mpn_vendor = querySdr[3].ToString().Split('_');
                     if (mpn_vendor.Length > 1)
                     {
@@ -224,25 +221,38 @@ namespace SaledServices.Export
                     }
                 }
 
+                //考虑加入报废转卖信息
+                foreach (StoreHouseStatisticsStruct stockcheck in receiveOrderList)
+                {
+                    cmd.CommandText = " select * from (select  mpn, sum(cast(number as float)) as out_number from TransferOrSold_sheet group by mpn  ) as A where mpn='" + stockcheck.mpn.Split('_')[0] + "'";// and input_date between '" + startTime + "' and '" + endTime + "'";
+                    int sumnumber = 0;
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        sumnumber += Int32.Parse(querySdr[1].ToString());
+                        //break;
+                    }
+                    querySdr.Close();
+
+                    stockcheck.othernumber = sumnumber + "";
+                }
+
                 //按bga简称来统计信息
-              
-                
                 foreach (StoreHouseStatisticsStruct stockcheck in receiveOrderList)
                 {
                     if (stockcheck.bga_brief != null)
                     {
                         if (bgabriefdict.Keys == null || bgabriefdict.Keys.Contains(stockcheck.bga_brief) == false)
                         {
-                            // List<bgaTypeStatistics> bgabrieflist = new List<bgaTypeStatistics>();
                             bgaTypeStatistics temp = new bgaTypeStatistics();
                             temp.bga_brief = stockcheck.bga_brief;
                             temp.buynumber = stockcheck.buynumber;
                             temp.leftnumber = stockcheck.leftnumber;
                             temp.outnumber = stockcheck.outnumber;
+                            temp.othernumber = stockcheck.othernumber;
                             temp.describe = stockcheck.describe;
 
                             temp.releatedMpn = stockcheck.mpn;
-                            //bgabrieflist.Add(temp);
                             bgabriefdict.Add(temp.bga_brief, temp);
                         }
                         else
@@ -254,6 +264,8 @@ namespace SaledServices.Export
                                 temp.buynumber = Int16.Parse(temp.buynumber) + Int16.Parse(stockcheck.buynumber) + "";
                                 temp.leftnumber = Int16.Parse(temp.leftnumber) + Int16.Parse(stockcheck.leftnumber) + "";
                                 temp.outnumber = Int16.Parse(temp.outnumber) + Int16.Parse(stockcheck.outnumber) + "";
+
+                                temp.othernumber = Int16.Parse(temp.othernumber) + Int16.Parse(stockcheck.othernumber) + "";
                             }
                             catch (Exception ex)
                             {
@@ -292,6 +304,7 @@ namespace SaledServices.Export
             firstsheet.titleList.Add("剩余数量");
             firstsheet.titleList.Add("购买数量");
             firstsheet.titleList.Add("出库数量");
+            firstsheet.titleList.Add("报废转卖");
             firstsheet.titleList.Add("描述");
             firstsheet.titleList.Add("BGA简称");
 
@@ -308,6 +321,7 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.leftnumber);
                 ct1.Add(stockcheck.buynumber);
                 ct1.Add(stockcheck.outnumber);
+                ct1.Add(stockcheck.othernumber);
                 ct1.Add(stockcheck.describe);
                 ct1.Add(stockcheck.bga_brief);
 
@@ -325,6 +339,7 @@ namespace SaledServices.Export
             secondsheet.titleList.Add("剩余数量");
             secondsheet.titleList.Add("购买数量");
             secondsheet.titleList.Add("出货数量");
+            secondsheet.titleList.Add("报废转卖");
             secondsheet.titleList.Add("描述");
             secondsheet.titleList.Add("相关mpn");
 
@@ -338,6 +353,7 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.leftnumber);
                 ct1.Add(stockcheck.buynumber);
                 ct1.Add(stockcheck.outnumber);
+                ct1.Add(stockcheck.othernumber);
                 ct1.Add(stockcheck.describe);
                 ct1.Add(stockcheck.releatedMpn);
 
@@ -362,6 +378,8 @@ namespace SaledServices.Export
         public string buynumber;
         public string outnumber;
 
+        public string othernumber;//报废转卖
+
         public string vendor;
         public string describe;
 
@@ -375,6 +393,9 @@ namespace SaledServices.Export
 
        public string buynumber;
        public string outnumber;
+
+       public string othernumber;//报废转卖
+
        public string describe;
 
        public string releatedMpn;//所有类型的汇总

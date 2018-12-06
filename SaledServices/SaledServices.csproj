@@ -593,6 +593,12 @@
     <Compile Include="receivereturn\ReturnStoreForm.Designer.cs">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\TransferOrSoldForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\TransferOrSoldForm.Designer.cs">
+      <DependentUpon>TransferOrSoldForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Store\MBTransferToFaultForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -962,6 +968,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="receivereturn\ReturnStoreForm.resx">
       <DependentUpon>ReturnStoreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\TransferOrSoldForm.resx">
+      <DependentUpon>TransferOrSoldForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\MBTransferToFaultForm.resx">
       <DependentUpon>MBTransferToFaultForm.cs</DependentUpon>

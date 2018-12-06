@@ -121,13 +121,14 @@
             this.bGA待料报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA更换机滤ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mBBga材料一览表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.整机出货量的报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.站别查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dOA查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.板子所有记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.整机出货量的报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.报废转卖ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -514,7 +515,8 @@
             this.mB不良品入库ToolStripMenuItem,
             this.mB不良品批量入库ToolStripMenuItem,
             this.mB不良品批量出库ToolStripMenuItem,
-            this.mB良品批量转不良品库ToolStripMenuItem});
+            this.mB良品批量转不良品库ToolStripMenuItem,
+            this.报废转卖ToolStripMenuItem});
             this.库存管理ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.库存管理ToolStripMenuItem.Name = "库存管理ToolStripMenuItem";
             this.库存管理ToolStripMenuItem.Size = new System.Drawing.Size(104, 31);
@@ -890,6 +892,13 @@
             this.mBBga材料一览表ToolStripMenuItem.Text = "MBBga材料一览表";
             this.mBBga材料一览表ToolStripMenuItem.Click += new System.EventHandler(this.mBBga材料一览表ToolStripMenuItem_Click);
             // 
+            // 整机出货量的报表ToolStripMenuItem
+            // 
+            this.整机出货量的报表ToolStripMenuItem.Name = "整机出货量的报表ToolStripMenuItem";
+            this.整机出货量的报表ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.整机出货量的报表ToolStripMenuItem.Text = "整机出货量的报表";
+            this.整机出货量的报表ToolStripMenuItem.Click += new System.EventHandler(this.整机出货量的报表ToolStripMenuItem_Click);
+            // 
             // 查询ToolStripMenuItem
             // 
             this.查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -938,12 +947,12 @@
             this.板子所有记录查询ToolStripMenuItem.Text = "板子所有记录查询";
             this.板子所有记录查询ToolStripMenuItem.Click += new System.EventHandler(this.板子所有记录查询ToolStripMenuItem_Click);
             // 
-            // 整机出货量的报表ToolStripMenuItem
+            // 报废转卖ToolStripMenuItem
             // 
-            this.整机出货量的报表ToolStripMenuItem.Name = "整机出货量的报表ToolStripMenuItem";
-            this.整机出货量的报表ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.整机出货量的报表ToolStripMenuItem.Text = "整机出货量的报表";
-            this.整机出货量的报表ToolStripMenuItem.Click += new System.EventHandler(this.整机出货量的报表ToolStripMenuItem_Click);
+            this.报废转卖ToolStripMenuItem.Name = "报废转卖ToolStripMenuItem";
+            this.报废转卖ToolStripMenuItem.Size = new System.Drawing.Size(297, 32);
+            this.报废转卖ToolStripMenuItem.Text = "报废转卖";
+            this.报废转卖ToolStripMenuItem.Click += new System.EventHandler(this.报废转卖ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -957,7 +966,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统1203-";
+            this.Text = "上海进销存系统1206-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1069,6 +1078,7 @@
         private System.Windows.Forms.ToolStripMenuItem mBBga材料一览表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 板子所有记录查询ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 整机出货量的报表ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 报废转卖ToolStripMenuItem;
     }
 }
 
