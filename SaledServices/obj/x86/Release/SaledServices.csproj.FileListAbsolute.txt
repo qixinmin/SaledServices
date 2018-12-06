@@ -110,5 +110,4 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.BgaUsedExport.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.MBBgaMaterialAllExport.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.QueryAllInfoForm.resources
-D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.csprojResolveAssemblyReference.cache
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.WholeMachineExport.resources

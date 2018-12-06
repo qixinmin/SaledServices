@@ -267,12 +267,7 @@ namespace SaledServices
                 return;
             }
 
-            bool error = false;
-            //1.包含NTF的逻辑， 所有输入的有效信息均为NTF， 2. 若第一次输入信息没有输入完毕，需提醒并把某些字段清空即可
-            string track_serial_no_txt = this.track_serial_noTextBox.Text.Trim();
-            string customMaterialNo = this.customMaterialNoTextBox.Text.Trim();
-
-            string bgaType = "";
+              string bgaType = "";
             if (this.CPU.Checked)
             {
                 bgaType = "CPU";
@@ -285,6 +280,47 @@ namespace SaledServices
             {
                 bgaType = "PCH";
             }
+
+            //检测板子的同类型是否已经在数据库中了
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select Id from bga_wait_material_record_table where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "' and bgatype='" + bgaType + "'";
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                string exist = "";
+                while (querySdr.Read())
+                {
+                    exist = querySdr[0].ToString();
+                }
+                querySdr.Close();
+
+                if (exist != "")
+                {
+                    MessageBox.Show("此序列号和类型已经在记录中了，重复录入，不能走下面的流程！");
+                    mConn.Close();
+                    return;
+                }
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return;
+            }
+
+            bool error = false;
+            //1.包含NTF的逻辑， 所有输入的有效信息均为NTF， 2. 若第一次输入信息没有输入完毕，需提醒并把某些字段清空即可
+            string track_serial_no_txt = this.track_serial_noTextBox.Text.Trim();
+            string customMaterialNo = this.customMaterialNoTextBox.Text.Trim();
+
+          
 
             string vendor_txt = this.vendorTextBox.Text.Trim();
             string product_txt = this.producttextBox.Text.Trim();

@@ -322,7 +322,7 @@ namespace SaledServices
                     if (this.bgaRepair_resultcomboBox.Text.Trim() == "更换OK待测量")
                     {
                         cmd.CommandText = "update bga_wait_material_record_table set status = '1'"
-                             + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                             + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "' and bgatype='" + bgatype_txt + "'";
                         cmd.ExecuteNonQuery();
                     }
                 }
