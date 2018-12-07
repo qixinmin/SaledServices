@@ -439,10 +439,14 @@ namespace SaledServices
             if (this.material_typecomboBox.Text == "BGA")
             {
                 panel1.Enabled = true;
+                this.otherbriefTextBox.ReadOnly = false;
+                this.describeTextBox.ReadOnly = false;
             }
             else
             {
                 panel1.Enabled = false;
+                this.otherbriefTextBox.ReadOnly = true;
+                this.describeTextBox.ReadOnly = true;
             }
         }
 
@@ -484,5 +488,120 @@ namespace SaledServices
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<TansferSoldStruct> receiveOrderList = new List<TansferSoldStruct>();
+
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select * from TransferOrSold_sheet";
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    TansferSoldStruct temp = new TansferSoldStruct();
+                    temp.Id = querySdr[0].ToString();
+                    temp.vendor = querySdr[1].ToString();
+                    temp.material_type = querySdr[2].ToString();
+                    temp.bga_type = querySdr[3].ToString();
+                    temp.mpn = querySdr[4].ToString();
+                    temp.mb_brief = querySdr[5].ToString();
+                    temp.other_brief = querySdr[6].ToString();
+                    temp.describe = querySdr[7].ToString();
+                    temp._state = querySdr[8].ToString();
+                    temp.number = querySdr[9].ToString();
+                    temp.out_reason = querySdr[10].ToString();
+                    temp.receiver = querySdr[11].ToString();
+                    temp.note = querySdr[12].ToString();
+                    temp.inputer = querySdr[13].ToString();
+                    temp.input_date = querySdr[14].ToString();
+
+                    receiveOrderList.Add(temp);
+                }
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            generateExcelToCheck(receiveOrderList);        
+        }
+
+        public void generateExcelToCheck(List<TansferSoldStruct> StockCheckList)
+        {
+            List<string> titleList = new List<string>();
+            List<Object> contentList = new List<object>();
+
+            titleList.Add("ID"); 
+            titleList.Add("厂商");
+            titleList.Add("材料类别MB/BGA/FRU/SMT");
+            titleList.Add("bga类型");
+            titleList.Add("MPN");
+            titleList.Add("MB简称");
+            titleList.Add("简述");
+            titleList.Add("描述");
+            titleList.Add("状态");
+            titleList.Add("数量");
+            titleList.Add("出库原因");
+            titleList.Add("收货商名称");
+            titleList.Add("备注");
+            titleList.Add("操作人");
+            titleList.Add("日期");
+
+            foreach (TansferSoldStruct stockcheck in StockCheckList)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+                ct1.Add(stockcheck.Id);
+                ct1.Add(stockcheck.vendor);
+                ct1.Add(stockcheck.material_type);
+                ct1.Add(stockcheck.bga_type);
+                ct1.Add(stockcheck.mpn);
+                ct1.Add(stockcheck.mb_brief);
+                ct1.Add(stockcheck.other_brief);
+                ct1.Add(stockcheck.describe);
+                ct1.Add(stockcheck._state);
+                ct1.Add(stockcheck.number);
+                ct1.Add(stockcheck.out_reason);
+                ct1.Add(stockcheck.vendor);
+                ct1.Add(stockcheck.note);
+                ct1.Add(stockcheck.inputer);
+                ct1.Add(stockcheck.input_date);
+
+                ctest1.contentArray = ct1;
+                contentList.Add(ctest1);
+            }
+
+            Utils.createExcel("D:\\报废转卖详细" + DateTime.Now.ToString("yyyy-MM-dd") + ".xlsx", titleList, contentList);
+        }
+    }
+
+    public class TansferSoldStruct
+    {
+        public string Id;
+        public string vendor;
+
+        public string material_type;
+        public string bga_type;
+        public string mpn;
+        public string mb_brief;
+        public string other_brief;
+        public string describe;
+        public string _state;
+        public string number;
+        public string out_reason;
+        public string receiver;
+        public string note;
+        public string inputer;
+        public string input_date;
     }
 }

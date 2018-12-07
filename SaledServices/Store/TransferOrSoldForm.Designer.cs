@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.add = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
@@ -38,6 +38,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.vendorComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.mb_briefTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.material_typecomboBox = new System.Windows.Forms.ComboBox();
@@ -68,6 +69,8 @@
             this.PCH = new System.Windows.Forms.RadioButton();
             this.CPU = new System.Windows.Forms.RadioButton();
             this.mpnTextBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -159,6 +162,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.vendorComboBox, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 4);
+            this.tableLayoutPanel3.Controls.Add(this.button1, 2, 5);
             this.tableLayoutPanel3.Controls.Add(this.mb_briefTextBox, 1, 4);
             this.tableLayoutPanel3.Controls.Add(this.label6, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.material_typecomboBox, 1, 1);
@@ -186,16 +190,19 @@
             this.tableLayoutPanel3.Controls.Add(this.label12, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.panel1, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.mpnTextBox, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label7, 0, 5);
+            this.tableLayoutPanel3.Controls.Add(this.label8, 1, 5);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 5;
+            this.tableLayoutPanel3.RowCount = 6;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1362, 259);
             this.tableLayoutPanel3.TabIndex = 9;
             // 
@@ -221,17 +228,29 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 207);
+            this.label2.Location = new System.Drawing.Point(7, 167);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "MB简称";
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(459, 212);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(215, 40);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "导出内容到Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // mb_briefTextBox
             // 
             this.mb_briefTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mb_briefTextBox.Location = new System.Drawing.Point(233, 211);
+            this.mb_briefTextBox.Location = new System.Drawing.Point(233, 171);
             this.mb_briefTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mb_briefTextBox.Name = "mb_briefTextBox";
             this.mb_briefTextBox.ReadOnly = true;
@@ -241,7 +260,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 54);
+            this.label6.Location = new System.Drawing.Point(7, 44);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 16);
@@ -263,7 +282,7 @@
             "BGA",
             "FRU",
             "SMT"});
-            this.material_typecomboBox.Location = new System.Drawing.Point(232, 57);
+            this.material_typecomboBox.Location = new System.Drawing.Point(232, 47);
             this.material_typecomboBox.Name = "material_typecomboBox";
             this.material_typecomboBox.Size = new System.Drawing.Size(217, 24);
             this.material_typecomboBox.TabIndex = 6;
@@ -291,7 +310,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(927, 54);
+            this.label20.Location = new System.Drawing.Point(927, 44);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(40, 16);
@@ -301,7 +320,7 @@
             // notetextBox
             // 
             this.notetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.notetextBox.Location = new System.Drawing.Point(1135, 58);
+            this.notetextBox.Location = new System.Drawing.Point(1135, 48);
             this.notetextBox.Margin = new System.Windows.Forms.Padding(4);
             this.notetextBox.Name = "notetextBox";
             this.notetextBox.Size = new System.Drawing.Size(220, 26);
@@ -310,7 +329,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(927, 105);
+            this.label14.Location = new System.Drawing.Point(927, 85);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(24, 16);
@@ -321,7 +340,7 @@
             // 
             this.idTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.idTextBox.Enabled = false;
-            this.idTextBox.Location = new System.Drawing.Point(1135, 109);
+            this.idTextBox.Location = new System.Drawing.Point(1135, 89);
             this.idTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.ReadOnly = true;
@@ -331,7 +350,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(927, 156);
+            this.label15.Location = new System.Drawing.Point(927, 126);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(56, 16);
@@ -341,7 +360,7 @@
             // inputerTextBox
             // 
             this.inputerTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputerTextBox.Location = new System.Drawing.Point(1135, 160);
+            this.inputerTextBox.Location = new System.Drawing.Point(1135, 130);
             this.inputerTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.inputerTextBox.Name = "inputerTextBox";
             this.inputerTextBox.ReadOnly = true;
@@ -351,7 +370,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(927, 207);
+            this.label16.Location = new System.Drawing.Point(927, 167);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(40, 16);
@@ -362,7 +381,7 @@
             // 
             this.input_dateTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.input_dateTextBox.Enabled = false;
-            this.input_dateTextBox.Location = new System.Drawing.Point(1135, 211);
+            this.input_dateTextBox.Location = new System.Drawing.Point(1135, 171);
             this.input_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.input_dateTextBox.Name = "input_dateTextBox";
             this.input_dateTextBox.ReadOnly = true;
@@ -372,7 +391,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(459, 207);
+            this.label19.Location = new System.Drawing.Point(459, 167);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(72, 16);
@@ -382,7 +401,7 @@
             // outreasontextBox
             // 
             this.outreasontextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.outreasontextBox.Location = new System.Drawing.Point(685, 211);
+            this.outreasontextBox.Location = new System.Drawing.Point(685, 171);
             this.outreasontextBox.Margin = new System.Windows.Forms.Padding(4);
             this.outreasontextBox.Name = "outreasontextBox";
             this.outreasontextBox.Size = new System.Drawing.Size(231, 26);
@@ -391,7 +410,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(459, 156);
+            this.label5.Location = new System.Drawing.Point(459, 126);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 16);
@@ -401,7 +420,7 @@
             // numberTextBox
             // 
             this.numberTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numberTextBox.Location = new System.Drawing.Point(685, 160);
+            this.numberTextBox.Location = new System.Drawing.Point(685, 130);
             this.numberTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.numberTextBox.Name = "numberTextBox";
             this.numberTextBox.Size = new System.Drawing.Size(231, 26);
@@ -410,7 +429,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(459, 105);
+            this.label3.Location = new System.Drawing.Point(459, 85);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 16);
@@ -430,7 +449,7 @@
             this.statuscomboBox.Items.AddRange(new object[] {
             "良品",
             "不良品"});
-            this.statuscomboBox.Location = new System.Drawing.Point(684, 108);
+            this.statuscomboBox.Location = new System.Drawing.Point(684, 88);
             this.statuscomboBox.Name = "statuscomboBox";
             this.statuscomboBox.Size = new System.Drawing.Size(233, 24);
             this.statuscomboBox.TabIndex = 6;
@@ -438,7 +457,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(459, 54);
+            this.label9.Location = new System.Drawing.Point(459, 44);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 16);
@@ -448,12 +467,12 @@
             // describeTextBox
             // 
             this.describeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.describeTextBox.Location = new System.Drawing.Point(685, 58);
+            this.describeTextBox.Location = new System.Drawing.Point(685, 48);
             this.describeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.describeTextBox.Multiline = true;
             this.describeTextBox.Name = "describeTextBox";
             this.describeTextBox.ReadOnly = true;
-            this.describeTextBox.Size = new System.Drawing.Size(231, 40);
+            this.describeTextBox.Size = new System.Drawing.Size(231, 30);
             this.describeTextBox.TabIndex = 5;
             // 
             // label1
@@ -479,7 +498,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(7, 156);
+            this.label21.Location = new System.Drawing.Point(7, 126);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(64, 16);
@@ -489,7 +508,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(7, 105);
+            this.label12.Location = new System.Drawing.Point(7, 85);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(32, 16);
@@ -503,9 +522,9 @@
             this.panel1.Controls.Add(this.PCH);
             this.panel1.Controls.Add(this.CPU);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(232, 159);
+            this.panel1.Location = new System.Drawing.Point(232, 129);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(217, 42);
+            this.panel1.Size = new System.Drawing.Size(217, 32);
             this.panel1.TabIndex = 27;
             // 
             // VGA
@@ -547,12 +566,34 @@
             // mpnTextBox
             // 
             this.mpnTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mpnTextBox.Location = new System.Drawing.Point(233, 109);
+            this.mpnTextBox.Location = new System.Drawing.Point(233, 89);
             this.mpnTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mpnTextBox.Name = "mpnTextBox";
             this.mpnTextBox.Size = new System.Drawing.Size(215, 26);
             this.mpnTextBox.TabIndex = 5;
             this.mpnTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mpnTextBox_KeyPress);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(7, 208);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(208, 32);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "出库原因为RTV的备注栏需填写RMA号";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(233, 208);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(184, 16);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "报废转卖的需填写核示号";
             // 
             // tableLayoutPanel2
             // 
@@ -590,8 +631,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -674,5 +715,8 @@
         private System.Windows.Forms.TextBox describeTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox otherbriefTextBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button1;
     }
 }
