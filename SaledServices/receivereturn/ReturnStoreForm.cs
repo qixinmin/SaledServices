@@ -478,8 +478,8 @@ namespace SaledServices
                     if (isDone == false)
                     {
                         cmd.CommandText = "update receiveOrder set _status = '" + status + "',returnNum = '" + (returnNum + 1) +"' "
-                                    + "where orderno = '" + this.ordernoTextBox.Text
-                                    + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
+                                    + "where orderno = '" + this.ordernoTextBox.Text.Trim()
+                                    + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text.Trim() + "'";
 
                         cmd.ExecuteNonQuery();
 
@@ -509,7 +509,7 @@ namespace SaledServices
                         cmd.ExecuteNonQuery();
 
                         cmd.CommandText = "update stationInformation set station = 'return', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
-                             + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                             + "where track_serial_no = '" + this.track_serial_noTextBox.Text.Trim() + "'";
                         cmd.ExecuteNonQuery();
                         
                         //dataGridViewToReturn里面的数据要更新

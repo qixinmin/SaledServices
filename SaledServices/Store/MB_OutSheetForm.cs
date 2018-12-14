@@ -177,6 +177,13 @@ namespace SaledServices
                 return;
             }
 
+
+            if (this.custommaterialNoTextBox.Text != "" && this.custommaterialNoTextBox.Text.Length != 10)
+            {
+                MessageBox.Show("客户料号内容为空或不够10位，请补齐！");
+                return;
+            }
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -269,19 +276,21 @@ namespace SaledServices
                 dataGridView1.DataSource = null;
                 dataGridView1.Columns.Clear();
 
-                string sqlStr =  "select top 100 * from " + tableName +" order by Id desc";
+                string sqlStr =  "select top 100 * from " + tableName ;
 
-                //if (this.vendorcomboBox.Text.Trim() != "")
-                //{
-                //    if (!sqlStr.Contains("where"))
-                //    {
-                //        sqlStr += " where vendor= '" + vendorcomboBox.Text.Trim() + "' ";
-                //    }
-                //    else
-                //    {
-                //        sqlStr += " and vendor= '" + vendorcomboBox.Text.Trim() + "' ";
-                //    }
-                //}
+                if (this.track_serial_noTextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where track_serial_no= '" + track_serial_noTextBox.Text.Trim() + "' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and track_serial_no= '" + track_serial_noTextBox.Text.Trim() + "' ";
+                    }
+                }
+
+                sqlStr +=  " order by Id desc";
 
                 //if (this.productcomboBox.Text.Trim() != "")
                 //{

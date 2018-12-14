@@ -18,6 +18,17 @@ namespace SaledServices.Test_Outlook
             InitializeComponent();
 
             this.tracker_bar_textBox.Focus();
+
+            if (User.UserSelfForm.isSuperManager() == false)
+            {
+                this.stationComboBox.Visible = false;
+                this.modify.Visible = false;
+            }
+            else
+            {
+                this.stationComboBox.Visible = true;
+                this.modify.Visible = true;
+            }
         }
 
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -64,6 +75,47 @@ namespace SaledServices.Test_Outlook
                 {
                     MessageBox.Show(ex.ToString());
                 }
+            }
+        }
+
+        private void modify_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "SELECT station FROM stationInformation where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows == false)
+                    {
+                        MessageBox.Show("没有相关站别信息，请检查序列号是否正确");
+                        querySdr.Close();
+                        conn.Close();
+                        return;
+                    }
+                    querySdr.Close();
+                    cmd.CommandText = "update stationInformation set station = '"+this.stationComboBox.Text.Trim()+"', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+                MessageBox.Show("修改站别数据OK");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
     }

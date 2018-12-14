@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.add = new System.Windows.Forms.Button();
             this.query = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.vendor_material_noTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -70,13 +71,13 @@
             this.customermaterialdesTextBox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.gurantee_noteTextBox = new System.Windows.Forms.TextBox();
+            this.timecheckresult = new System.Windows.Forms.Label();
+            this.timechecktextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewWaitToReturn = new System.Windows.Forms.DataGridView();
-            this.timechecktextBox = new System.Windows.Forms.TextBox();
-            this.timecheckresult = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -88,8 +89,9 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(489, 4);
@@ -197,6 +199,7 @@
             this.tableLayoutPanel1.Controls.Add(this.gurantee_noteTextBox, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.timecheckresult, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.timechecktextBox, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 3, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -211,6 +214,17 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1346, 363);
             this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label6.Location = new System.Drawing.Point(7, 309);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 20);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "结果";
             // 
             // label20
             // 
@@ -554,6 +568,26 @@
             this.gurantee_noteTextBox.Size = new System.Drawing.Size(212, 26);
             this.gurantee_noteTextBox.TabIndex = 0;
             // 
+            // timecheckresult
+            // 
+            this.timecheckresult.AutoSize = true;
+            this.timecheckresult.Font = new System.Drawing.Font("SimSun", 15F);
+            this.timecheckresult.Location = new System.Drawing.Point(453, 309);
+            this.timecheckresult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.timecheckresult.Name = "timecheckresult";
+            this.timecheckresult.Size = new System.Drawing.Size(49, 20);
+            this.timecheckresult.TabIndex = 10;
+            this.timecheckresult.Text = "结果";
+            // 
+            // timechecktextBox
+            // 
+            this.timechecktextBox.Location = new System.Drawing.Point(230, 313);
+            this.timechecktextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.timechecktextBox.Name = "timechecktextBox";
+            this.timechecktextBox.Size = new System.Drawing.Size(212, 26);
+            this.timechecktextBox.TabIndex = 9;
+            this.timechecktextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.timechecktextBox_KeyPress);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
@@ -610,8 +644,8 @@
             // dataGridViewWaitToReturn
             // 
             this.dataGridViewWaitToReturn.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewWaitToReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewWaitToReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewWaitToReturn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewWaitToReturn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWaitToReturn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -624,36 +658,16 @@
             this.dataGridViewWaitToReturn.TabIndex = 1;
             this.dataGridViewWaitToReturn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWaitToReturn_CellClick);
             // 
-            // timechecktextBox
+            // label3
             // 
-            this.timechecktextBox.Location = new System.Drawing.Point(230, 313);
-            this.timechecktextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.timechecktextBox.Name = "timechecktextBox";
-            this.timechecktextBox.Size = new System.Drawing.Size(212, 26);
-            this.timechecktextBox.TabIndex = 9;
-            this.timechecktextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.timechecktextBox_KeyPress);
-            // 
-            // timecheckresult
-            // 
-            this.timecheckresult.AutoSize = true;
-            this.timecheckresult.Font = new System.Drawing.Font("SimSun", 15F);
-            this.timecheckresult.Location = new System.Drawing.Point(453, 309);
-            this.timecheckresult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.timecheckresult.Name = "timecheckresult";
-            this.timecheckresult.Size = new System.Drawing.Size(49, 20);
-            this.timecheckresult.TabIndex = 10;
-            this.timecheckresult.Text = "结果";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label6.Location = new System.Drawing.Point(7, 309);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 20);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "结果";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label3.Location = new System.Drawing.Point(676, 309);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(209, 40);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "可以根据配件序号进行精确查询";
             // 
             // FruDeliveredTableForm
             // 
@@ -727,5 +741,6 @@
         private System.Windows.Forms.Label timecheckresult;
         private System.Windows.Forms.TextBox timechecktextBox;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label3;
     }
 }

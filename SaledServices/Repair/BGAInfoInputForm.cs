@@ -51,7 +51,7 @@ namespace SaledServices
                     cmd.CommandType = CommandType.Text;
 
 
-                    cmd.CommandText = "select Id from cidRecord where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string cidExist = "";
                     while (querySdr.Read())
@@ -60,7 +60,7 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    if (cidExist != "")
+                    if (cidExist == "CID")
                     {
                         MessageBox.Show("此序列号已经在CID中，不能走下面的流程！");
                         this.add.Enabled = false;
@@ -832,6 +832,45 @@ namespace SaledServices
         private void BGA_placetextBox_Leave(object sender, EventArgs e)
         {
             checkPlace();
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridView1.SelectedCells[0].Value.ToString() == "")
+                {
+                    return;
+                }
+
+                if (MessageBox.Show("确定要删除记录" + dataGridView1.SelectedCells[0].Value.ToString() + "吗?", "确认", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+
+                    SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                    conn.Open();
+
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.Connection = conn;
+                        cmd.CommandText = "Delete from bga_wait_record_table where id = " + dataGridView1.SelectedCells[0].Value.ToString();
+                        cmd.CommandType = CommandType.Text;
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        MessageBox.Show("SaledService is not opened");
+                    }
+
+                    conn.Close();
+                    MessageBox.Show("删除完毕!");
+                    query_Click(null, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

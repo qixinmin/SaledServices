@@ -33,25 +33,31 @@
             this.tracker_bar_textBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.stationlabel = new System.Windows.Forms.Label();
+            this.modify = new System.Windows.Forms.Button();
+            this.stationComboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.stationComboBox, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tracker_bar_textBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.stationlabel, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.modify, 2, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(62, 31);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(470, 182);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(551, 182);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label1
@@ -67,9 +73,9 @@
             // tracker_bar_textBox
             // 
             this.tracker_bar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tracker_bar_textBox.Location = new System.Drawing.Point(144, 3);
+            this.tracker_bar_textBox.Location = new System.Drawing.Point(127, 3);
             this.tracker_bar_textBox.Name = "tracker_bar_textBox";
-            this.tracker_bar_textBox.Size = new System.Drawing.Size(323, 21);
+            this.tracker_bar_textBox.Size = new System.Drawing.Size(283, 21);
             this.tracker_bar_textBox.TabIndex = 0;
             this.tracker_bar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tracker_bar_textBox_KeyPress);
             // 
@@ -87,16 +93,46 @@
             // 
             this.stationlabel.AutoSize = true;
             this.stationlabel.Font = new System.Drawing.Font("SimSun", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.stationlabel.Location = new System.Drawing.Point(144, 91);
+            this.stationlabel.Location = new System.Drawing.Point(127, 91);
             this.stationlabel.Name = "stationlabel";
             this.stationlabel.Size = new System.Drawing.Size(0, 21);
             this.stationlabel.TabIndex = 3;
+            // 
+            // modify
+            // 
+            this.modify.Font = new System.Drawing.Font("SimSun", 15F);
+            this.modify.Location = new System.Drawing.Point(418, 96);
+            this.modify.Margin = new System.Windows.Forms.Padding(5);
+            this.modify.Name = "modify";
+            this.modify.Size = new System.Drawing.Size(128, 55);
+            this.modify.TabIndex = 10;
+            this.modify.Text = "修改";
+            this.modify.UseVisualStyleBackColor = true;
+            this.modify.Click += new System.EventHandler(this.modify_Click);
+            // 
+            // stationComboBox
+            // 
+            this.stationComboBox.FormattingEnabled = true;
+            this.stationComboBox.Items.AddRange(new object[] {
+            "BGA",
+            "CID",
+            "Test1",
+            "Test1&2",
+            "Test2",
+            "报废",
+            "维修"});
+            this.stationComboBox.Location = new System.Drawing.Point(416, 3);
+            this.stationComboBox.Name = "stationComboBox";
+            this.stationComboBox.Size = new System.Drawing.Size(132, 20);
+            this.stationComboBox.Sorted = true;
+            this.stationComboBox.TabIndex = 12;
+            this.stationComboBox.Text = "维修";
             // 
             // StationCheckForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 315);
+            this.ClientSize = new System.Drawing.Size(711, 315);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "StationCheckForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -114,5 +150,7 @@
         private System.Windows.Forms.TextBox tracker_bar_textBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label stationlabel;
+        private System.Windows.Forms.ComboBox stationComboBox;
+        private System.Windows.Forms.Button modify;
     }
 }

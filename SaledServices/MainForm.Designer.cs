@@ -88,6 +88,7 @@
             this.mB不良品批量入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mB不良品批量出库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mB良品批量转不良品库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.报废转卖ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.additionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customFaultMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -128,7 +129,6 @@
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.板子所有记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.报废转卖ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -627,6 +627,13 @@
             this.mB良品批量转不良品库ToolStripMenuItem.Text = "MB良品批量转不良品库";
             this.mB良品批量转不良品库ToolStripMenuItem.Click += new System.EventHandler(this.mB良品批量转不良品库ToolStripMenuItem_Click);
             // 
+            // 报废转卖ToolStripMenuItem
+            // 
+            this.报废转卖ToolStripMenuItem.Name = "报废转卖ToolStripMenuItem";
+            this.报废转卖ToolStripMenuItem.Size = new System.Drawing.Size(297, 32);
+            this.报废转卖ToolStripMenuItem.Text = "报废转卖";
+            this.报废转卖ToolStripMenuItem.Click += new System.EventHandler(this.报废转卖ToolStripMenuItem_Click);
+            // 
             // additionMenuItem
             // 
             this.additionMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -947,13 +954,6 @@
             this.板子所有记录查询ToolStripMenuItem.Text = "板子所有记录查询";
             this.板子所有记录查询ToolStripMenuItem.Click += new System.EventHandler(this.板子所有记录查询ToolStripMenuItem_Click);
             // 
-            // 报废转卖ToolStripMenuItem
-            // 
-            this.报废转卖ToolStripMenuItem.Name = "报废转卖ToolStripMenuItem";
-            this.报废转卖ToolStripMenuItem.Size = new System.Drawing.Size(297, 32);
-            this.报废转卖ToolStripMenuItem.Text = "报废转卖";
-            this.报废转卖ToolStripMenuItem.Click += new System.EventHandler(this.报废转卖ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -966,7 +966,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统1206-";
+            this.Text = "上海进销存系统1210-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);

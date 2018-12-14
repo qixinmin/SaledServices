@@ -215,7 +215,7 @@ namespace SaledServices
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
                        this.track_serial_noTextBox.Text.Trim() + "','" +
-                       "" + "','" +
+                       this.pcbVendortextBox.Text.Trim() + "','" +
                        this.vendorTextBox.Text.Trim() + "','" +
                        this.producttextBox.Text.Trim() + "','" +
                        this.mb_brieftextBox.Text.Trim() + "','" +
@@ -266,7 +266,7 @@ namespace SaledServices
                 this.faultPlaceTextBox.Text = "";
                 this.faultReasonRichTextBox.Text = "";
                
-                this.confrim_datetextBox.Text = "";
+              //  this.confrim_datetextBox.Text = "";
 
                 this.track_serial_noTextBox.Focus();
                 query_Click(null, null);

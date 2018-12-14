@@ -77,6 +77,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.queryStock = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -259,6 +260,7 @@
             this.tableLayoutPanel3.Controls.Add(this.stock_placetextBox, 5, 2);
             this.tableLayoutPanel3.Controls.Add(this.label4, 4, 3);
             this.tableLayoutPanel3.Controls.Add(this.vendormaterialNotextBox, 5, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label13, 6, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -644,6 +646,16 @@
             this.queryStock.UseVisualStyleBackColor = true;
             this.queryStock.Click += new System.EventHandler(this.queryStock_Click);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(1021, 191);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(152, 32);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "可以根据跟踪条码进行查询";
+            // 
             // MB_OutSheetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -716,5 +728,6 @@
         private System.Windows.Forms.TextBox productTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox vendormaterialNotextBox;
+        private System.Windows.Forms.Label label13;
     }
 }

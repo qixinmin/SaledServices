@@ -484,15 +484,18 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                if (latest)
-                {
-                    cmd.CommandText = "select top 3 * from " + tableName + " order by id desc"; 
-                }
-                else
-                {
-                    cmd.CommandText = "select * from  " + tableName;
-                }
                 cmd.CommandType = CommandType.Text;
+
+                string sql = "select top 10 * from " + tableName;
+
+                if (this.peijian_noTextBox.Text.Trim() != "")
+                {
+                    sql += " where peijian_no like '%"+this.peijian_noTextBox.Text.Trim()+"%'";
+                }
+
+                sql += " order by id desc";
+
+                cmd.CommandText = sql;
 
                 sda = new SqlDataAdapter();
                 sda.SelectCommand = cmd;
@@ -522,10 +525,42 @@ namespace SaledServices
 
         private void modify_Click(object sender, EventArgs e)
         {
-            //DataTable dt = ds.Tables[tableName];
-            //sda.FillSchema(dt, SchemaType.Mapped);
-            //DataRow dr = dt.Rows.Find(this.mpn1TextBox.Text.Trim());
+            if (dataGridView1.CurrentRow == null)
+            {
+                return;
+            }
 
+            if (dataGridView1.SelectedCells[0].Value.ToString() == "")
+            {
+                return;
+            }
+
+            //cmd.CommandText = "INSERT INTO " + tableName + " VALUES('" +
+            //          this.ordernoComboBox.Text.Trim() + "','" +
+            //          this.vendorTextBox.Text.Trim() + "','" +
+            //          this.productTextBox.Text.Trim() + "','" +
+            //          this.customermaterialnoTextBox.Text.Trim() + "','" +
+            //          this.machine_typeTextBox.Text.Trim() + "','" +
+            //          this.nameTextBox.Text.Trim() + "','" +
+            //          this.customermaterialdesTextBox.Text.Trim() + "','" +
+            //          this.peijian_noTextBox.Text.Trim() + "','" +
+            //          this.customer_serial_noTextBox.Text.Trim() + "','" +
+            //          this.custom_faultTextBox.Text.Trim() + "','" +
+            //          this.make_datedateTimePicker.Text.Trim() + "','" +
+            //          this.guaranteeComboBox.Text.Trim() + "','" +
+            //          this.gurantee_noteTextBox.Text.Trim() + "','" +
+            //          this.vendor_material_noTextBox.Text.Trim() + "','" +
+            //          this.mpn1TextBox.Text.Trim() + "','" +
+            //          this.receiverTextBox.Text.Trim() + "','" +
+            //          this.receive_dateTextBox.Text.Trim() +
+            //          "')";
+
+
+            DataTable dt = ds.Tables[tableName];
+            sda.FillSchema(dt, SchemaType.Mapped);
+            DataRow dr = dt.Rows.Find(dataGridView1.SelectedCells[0].Value.ToString());
+
+            dr["gurantee"] = this.guaranteeComboBox.Text.Trim();
             //dr["vendor"] = this.vendorTextBox.Text.Trim();
             //dr["product"] = this.productTextBox.Text.Trim();
             //dr["source_brief"] = this.source_briefComboBox.Text.Trim();
@@ -555,8 +590,10 @@ namespace SaledServices
             //dr["whole_machine_no"] = this.whole_machine_noTextBox.Text.Trim();
             //dr["inputuser"] = this.receiverTextBox.Text.Trim();
 
-            //SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
-            //sda.Update(dt);
+            SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
+            sda.Update(dt);
+
+            MessageBox.Show("修改成功，可以重新查询并确认修改成功");
         }
 
         private void delete_Click(object sender, EventArgs e)
@@ -628,38 +665,28 @@ namespace SaledServices
             {
                 return;
             }
+            //string[] hTxt = { "ID","订单编号", "厂商", "客户别","客户料号"
+            //,"机型","名称","客户物料描述","配件序号","客户序号","客户故障","生产日期","保内/保外","保外备注",
+            //"厂商料号","MPN1","收件人","收货日期"};
 
-            //this.mpn1TextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
-            //this.vendorTextBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
-            //this.productTextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
-            //this.source_briefComboBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
-            //this.machine_typeTextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
-            //this.ordernoComboBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
-            //this.order_out_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[6].Value.ToString()).ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
-            //this.receive_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[7].Value.ToString()).ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
-            //this.custom_machine_typeTextBox.Text = dataGridView1.SelectedCells[8].Value.ToString();
-            //this.customermaterialdesTextBox.Text = dataGridView1.SelectedCells[9].Value.ToString();
-            //this.customermaterialnoTextBox.Text = dataGridView1.SelectedCells[10].Value.ToString();
-            //this.dpk_statusTextBox.Text = dataGridView1.SelectedCells[11].Value.ToString();
-            //this.peijian_noTextBox.Text = dataGridView1.SelectedCells[12].Value.ToString();
-            //this.customer_serial_noTextBox.Text = dataGridView1.SelectedCells[13].Value.ToString();
-            //this.custom_faultTextBox.Text = dataGridView1.SelectedCells[14].Value.ToString();
-            //this.uuidTextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
-            //this.gurantee_noteTextBox.Text = dataGridView1.SelectedCells[16].Value.ToString();
-            //this.mpnTextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
-
-            //this.nameTextBox.Text = dataGridView1.SelectedCells[18].Value.ToString();
-            //this.mb_make_dateTextBox.Text = DateTime.Parse(dataGridView1.SelectedCells[19].Value.ToString()).ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
-            //this.vendor_material_noTextBox.Text = dataGridView1.SelectedCells[20].Value.ToString();
-            //this.custom_faultComboBox.Text = dataGridView1.SelectedCells[21].Value.ToString();
-            //this.guaranteeComboBox.Text = dataGridView1.SelectedCells[22].Value.ToString();
-            //this.customResponsibilityComboBox.Text = dataGridView1.SelectedCells[23].Value.ToString();
-            //this.lenovo_custom_service_noTextBox.Text = dataGridView1.SelectedCells[24].Value.ToString();
-            //this.lenovo_maintenance_noTextBox.Text = dataGridView1.SelectedCells[25].Value.ToString();
-            //this.lenovo_repair_noTextBox.Text = dataGridView1.SelectedCells[26].Value.ToString();
-            //this.whole_machine_noTextBox.Text = dataGridView1.SelectedCells[27].Value.ToString();
-
-            //this.receiverTextBox.Text = dataGridView1.SelectedCells[28].Value.ToString(); 
+          //  this.mpn1TextBox.Text = dataGridView1.SelectedCells[0].Value.ToString();
+            this.ordernoComboBox.Text = dataGridView1.SelectedCells[1].Value.ToString();
+            this.vendorTextBox.Text = dataGridView1.SelectedCells[2].Value.ToString();
+            this.productTextBox.Text = dataGridView1.SelectedCells[3].Value.ToString();
+            this.customermaterialnoTextBox.Text = dataGridView1.SelectedCells[4].Value.ToString();
+            this.machine_typeTextBox.Text = dataGridView1.SelectedCells[5].Value.ToString();
+            this.nameTextBox.Text = dataGridView1.SelectedCells[6].Value.ToString();
+            this.customermaterialdesTextBox.Text = dataGridView1.SelectedCells[7].Value.ToString();           
+            this.peijian_noTextBox.Text = dataGridView1.SelectedCells[8].Value.ToString();
+            this.customer_serial_noTextBox.Text = dataGridView1.SelectedCells[9].Value.ToString();
+            this.custom_faultTextBox.Text = dataGridView1.SelectedCells[10].Value.ToString();
+           // this.make_datedateTimePicker.Text = dataGridView1.SelectedCells[11].Value.ToString();
+            this.guaranteeComboBox.Text = dataGridView1.SelectedCells[12].Value.ToString();
+            this.gurantee_noteTextBox.Text = dataGridView1.SelectedCells[13].Value.ToString();
+            this.vendor_material_noTextBox.Text = dataGridView1.SelectedCells[14].Value.ToString();
+            this.mpn1TextBox.Text = dataGridView1.SelectedCells[15].Value.ToString();
+            this.receiverTextBox.Text = dataGridView1.SelectedCells[16].Value.ToString();
+            //this.receive_dateTextBox.Text = dataGridView1.SelectedCells[17].Value.ToString();
         }
         
         private void vendor_serail_noTextBox_KeyPress(object sender, KeyPressEventArgs e)

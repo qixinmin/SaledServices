@@ -41,12 +41,6 @@
             this.producttextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.mpntextBox = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.fault_describetextBox = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.faultReasonRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.faultPlaceTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.mb_describetextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -55,8 +49,16 @@
             this.confirmertextBox = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.confrim_datetextBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.fault_describetextBox = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.faultPlaceTextBox = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.faultReasonRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pcbzhouqitextBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pcbVendortextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.add = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
@@ -108,12 +110,6 @@
             this.tableLayoutPanel2.Controls.Add(this.producttextBox, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.label11, 2, 2);
             this.tableLayoutPanel2.Controls.Add(this.mpntextBox, 3, 2);
-            this.tableLayoutPanel2.Controls.Add(this.label14, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.fault_describetextBox, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.label23, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.label15, 0, 4);
-            this.tableLayoutPanel2.Controls.Add(this.faultReasonRichTextBox, 1, 4);
-            this.tableLayoutPanel2.Controls.Add(this.faultPlaceTextBox, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.label7, 2, 3);
             this.tableLayoutPanel2.Controls.Add(this.mb_describetextBox, 3, 3);
             this.tableLayoutPanel2.Controls.Add(this.label8, 2, 4);
@@ -122,8 +118,16 @@
             this.tableLayoutPanel2.Controls.Add(this.confirmertextBox, 3, 5);
             this.tableLayoutPanel2.Controls.Add(this.label30, 2, 6);
             this.tableLayoutPanel2.Controls.Add(this.confrim_datetextBox, 3, 6);
+            this.tableLayoutPanel2.Controls.Add(this.label14, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.fault_describetextBox, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label23, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.faultPlaceTextBox, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label15, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.faultReasonRichTextBox, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.label4, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.pcbzhouqitextBox, 1, 5);
+            this.tableLayoutPanel2.Controls.Add(this.label6, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.pcbVendortextBox, 1, 4);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(7, 7);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
@@ -238,68 +242,6 @@
             this.mpntextBox.Size = new System.Drawing.Size(450, 26);
             this.mpntextBox.TabIndex = 43;
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 103);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(72, 16);
-            this.label14.TabIndex = 14;
-            this.label14.Text = "不良现象";
-            // 
-            // fault_describetextBox
-            // 
-            this.fault_describetextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.fault_describetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fault_describetextBox.Location = new System.Drawing.Point(158, 107);
-            this.fault_describetextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.fault_describetextBox.Name = "fault_describetextBox";
-            this.fault_describetextBox.Size = new System.Drawing.Size(398, 26);
-            this.fault_describetextBox.TabIndex = 43;
-            this.fault_describetextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fault_describetextBox_KeyPress);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 152);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(72, 16);
-            this.label23.TabIndex = 31;
-            this.label23.Text = "不良位置";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 201);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(72, 16);
-            this.label15.TabIndex = 15;
-            this.label15.Text = "报废原因";
-            // 
-            // faultReasonRichTextBox
-            // 
-            this.faultReasonRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.faultReasonRichTextBox.Location = new System.Drawing.Point(158, 205);
-            this.faultReasonRichTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.faultReasonRichTextBox.Name = "faultReasonRichTextBox";
-            this.faultReasonRichTextBox.Size = new System.Drawing.Size(398, 39);
-            this.faultReasonRichTextBox.TabIndex = 44;
-            this.faultReasonRichTextBox.Text = "";
-            // 
-            // faultPlaceTextBox
-            // 
-            this.faultPlaceTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.faultPlaceTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.faultPlaceTextBox.Location = new System.Drawing.Point(158, 156);
-            this.faultPlaceTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.faultPlaceTextBox.Name = "faultPlaceTextBox";
-            this.faultPlaceTextBox.Size = new System.Drawing.Size(398, 26);
-            this.faultPlaceTextBox.TabIndex = 45;
-            this.faultPlaceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.faultPlaceTextBox_KeyPress);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -380,6 +322,68 @@
             this.confrim_datetextBox.Size = new System.Drawing.Size(450, 26);
             this.confrim_datetextBox.TabIndex = 43;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 54);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(72, 16);
+            this.label14.TabIndex = 14;
+            this.label14.Text = "不良现象";
+            // 
+            // fault_describetextBox
+            // 
+            this.fault_describetextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.fault_describetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fault_describetextBox.Location = new System.Drawing.Point(158, 58);
+            this.fault_describetextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.fault_describetextBox.Name = "fault_describetextBox";
+            this.fault_describetextBox.Size = new System.Drawing.Size(398, 26);
+            this.fault_describetextBox.TabIndex = 43;
+            this.fault_describetextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fault_describetextBox_KeyPress);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 103);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(72, 16);
+            this.label23.TabIndex = 31;
+            this.label23.Text = "不良位置";
+            // 
+            // faultPlaceTextBox
+            // 
+            this.faultPlaceTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.faultPlaceTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.faultPlaceTextBox.Location = new System.Drawing.Point(158, 107);
+            this.faultPlaceTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.faultPlaceTextBox.Name = "faultPlaceTextBox";
+            this.faultPlaceTextBox.Size = new System.Drawing.Size(398, 26);
+            this.faultPlaceTextBox.TabIndex = 45;
+            this.faultPlaceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.faultPlaceTextBox_KeyPress);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 152);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(72, 16);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "报废原因";
+            // 
+            // faultReasonRichTextBox
+            // 
+            this.faultReasonRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.faultReasonRichTextBox.Location = new System.Drawing.Point(158, 156);
+            this.faultReasonRichTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.faultReasonRichTextBox.Name = "faultReasonRichTextBox";
+            this.faultReasonRichTextBox.Size = new System.Drawing.Size(398, 39);
+            this.faultReasonRichTextBox.TabIndex = 44;
+            this.faultReasonRichTextBox.Text = "";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -398,6 +402,25 @@
             this.pcbzhouqitextBox.Name = "pcbzhouqitextBox";
             this.pcbzhouqitextBox.Size = new System.Drawing.Size(398, 26);
             this.pcbzhouqitextBox.TabIndex = 46;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 201);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 16);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "PCB厂商";
+            // 
+            // pcbVendortextBox
+            // 
+            this.pcbVendortextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pcbVendortextBox.Location = new System.Drawing.Point(158, 205);
+            this.pcbVendortextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.pcbVendortextBox.Name = "pcbVendortextBox";
+            this.pcbVendortextBox.Size = new System.Drawing.Size(398, 26);
+            this.pcbVendortextBox.TabIndex = 46;
             // 
             // tableLayoutPanel3
             // 
@@ -540,5 +563,7 @@
         private System.Windows.Forms.TextBox pcbzhouqitextBox;
         private System.Windows.Forms.TextBox pcbtypetextBox;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox pcbVendortextBox;
     }
 }

@@ -256,7 +256,6 @@ namespace SaledServices
             return "sum_" + month;
         }
 
-
         public static string modifyDataFormat(string date)
         {
             return (date != null && date != "") ? date.Substring(0, date.IndexOf(" ")).Trim() : "";
