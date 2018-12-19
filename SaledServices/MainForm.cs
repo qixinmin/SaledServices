@@ -1580,5 +1580,21 @@ namespace SaledServices
 
             allForm.Add(transferOrSoldForm);
         }
+
+        private ReturnGT2RepairRecordExport returnGT2RepairRecordExport; 
+        private void 二返报表格式ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (returnGT2RepairRecordExport == null || returnGT2RepairRecordExport.IsDisposed)
+            {
+                returnGT2RepairRecordExport = new ReturnGT2RepairRecordExport();
+                returnGT2RepairRecordExport.MdiParent = this;
+            }
+
+            returnGT2RepairRecordExport.WindowState = FormWindowState.Maximized;
+            returnGT2RepairRecordExport.BringToFront();
+            returnGT2RepairRecordExport.Show();
+
+            allForm.Add(returnGT2RepairRecordExport);
+        }
     }
 }

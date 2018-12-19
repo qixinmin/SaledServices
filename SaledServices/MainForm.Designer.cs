@@ -62,6 +62,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.mB报废判定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA待料输入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.二返报表格式ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA维修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测试ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -369,7 +370,8 @@
             this.库房领料申请ToolStripMenuItem,
             this.toolStripMenuItem2,
             this.mB报废判定ToolStripMenuItem,
-            this.bGA待料输入ToolStripMenuItem});
+            this.bGA待料输入ToolStripMenuItem,
+            this.二返报表格式ToolStripMenuItem});
             this.维修ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.维修ToolStripMenuItem.Name = "维修ToolStripMenuItem";
             this.维修ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -416,6 +418,13 @@
             this.bGA待料输入ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
             this.bGA待料输入ToolStripMenuItem.Text = "BGA待料输入";
             this.bGA待料输入ToolStripMenuItem.Click += new System.EventHandler(this.bGA待料输入ToolStripMenuItem_Click);
+            // 
+            // 二返报表格式ToolStripMenuItem
+            // 
+            this.二返报表格式ToolStripMenuItem.Name = "二返报表格式ToolStripMenuItem";
+            this.二返报表格式ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.二返报表格式ToolStripMenuItem.Text = "二返报表导出";
+            this.二返报表格式ToolStripMenuItem.Click += new System.EventHandler(this.二返报表格式ToolStripMenuItem_Click);
             // 
             // bGA维修ToolStripMenuItem
             // 
@@ -966,7 +975,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统1210-";
+            this.Text = "上海进销存系统1217-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1079,6 +1088,7 @@
         private System.Windows.Forms.ToolStripMenuItem 板子所有记录查询ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 整机出货量的报表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 报废转卖ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 二返报表格式ToolStripMenuItem;
     }
 }
 

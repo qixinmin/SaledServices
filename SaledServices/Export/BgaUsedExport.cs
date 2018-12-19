@@ -273,7 +273,7 @@ namespace SaledServices.Export
 
             allcontentList.Add(secondsheet);
 
-            Utils.createMulitSheetsUsingNPOI("D:\\BGA维修信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xls", allcontentList);
+            Utils.createMulitSheetsUsingNPOI("D:\\BGA维修信息" + bgaRepair_resultcomboBox .Text.Trim()+"-"+ startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xls", allcontentList);
         }
     }
 

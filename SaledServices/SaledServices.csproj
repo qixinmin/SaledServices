@@ -285,6 +285,12 @@
     <Compile Include="Export\BgaUsedExport.designer.cs">
       <DependentUpon>BgaUsedExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\ReturnGT2RepairRecordExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\ReturnGT2RepairRecordExport.designer.cs">
+      <DependentUpon>ReturnGT2RepairRecordExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Export\WholeMachineExport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -814,6 +820,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\BgaUsedExport.resx">
       <DependentUpon>BgaUsedExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\ReturnGT2RepairRecordExport.resx">
+      <DependentUpon>ReturnGT2RepairRecordExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\WholeMachineExport.resx">
       <DependentUpon>WholeMachineExport.cs</DependentUpon>

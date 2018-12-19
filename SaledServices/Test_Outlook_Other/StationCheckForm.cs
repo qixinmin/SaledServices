@@ -118,5 +118,50 @@ namespace SaledServices.Test_Outlook
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void add_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "SELECT station FROM stationInformation where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows == false)
+                    {
+                        querySdr.Close();
+                        cmd.CommandText = "INSERT INTO stationInformation VALUES('"
+                       + this.tracker_bar_textBox.Text.ToUpper().Trim() + "','收货','"
+                       + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "')";
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        MessageBox.Show("序列号已经存在，不能用新增功能");                      
+                        querySdr.Close();
+                        conn.Close();
+                        return;
+                    }                    
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+                MessageBox.Show("新增站别数据OK");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

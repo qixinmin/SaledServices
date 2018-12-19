@@ -13,6 +13,7 @@ namespace SaledServices.Export
         {
             InitializeComponent();
         }
+        string startTime, endTime;
 
         private void exportxmlbutton_Click(object sender, EventArgs e)
         {
@@ -25,8 +26,8 @@ namespace SaledServices.Export
                 return;
             }
 
-            string startTime = this.dateTimePickerstart.Value.ToString("yyyy-MM-dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
-            string endTime = this.dateTimePickerend.Value.ToString("yyyy-MM-dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
+            startTime = this.dateTimePickerstart.Value.ToString("yyyy-MM-dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
+            endTime = this.dateTimePickerend.Value.ToString("yyyy-MM-dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
             List<MBBgaMaterialStruct> receiveOrderList = new List<MBBgaMaterialStruct>();
             List<bgaReport> bgas = new List<bgaReport>();
@@ -307,7 +308,7 @@ namespace SaledServices.Export
                 }
 
                 //下面是第二张表的内容
-                cmd.CommandText = "select  mpn, bga_brief , count(*) as out_number from bga_repair_record_table where bga_repair_result= '更换OK待测量' group by mpn, bga_brief";
+                cmd.CommandText = "select  mpn, bga_brief , count(*) as out_number from bga_repair_record_table where bga_repair_result= 'BGA待换' group by mpn, bga_brief";
 
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
@@ -521,6 +522,142 @@ namespace SaledServices.Export
 
             Utils.createMulitSheetsUsingNPOI("D:\\MBBga材料一览表" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xls", allcontentList);            
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<repaire_history_data> receiveOrderList = new List<repaire_history_data>();
+
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "SELECT year_,vendor,house,product,custom_material_no,mpn,mb_brief,sum_year, sum_1 ,sum_2,sum_3,sum_4,sum_5,sum_6,sum_7,sum_8,sum_9,sum_10,sum_11,sum_12  FROM repaire_history_data_sheet order by Id desc";
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    repaire_history_data temp = new repaire_history_data();
+                    temp.year_ = querySdr[0].ToString();
+                    temp.vendor = querySdr[1].ToString();
+
+                    temp.house = querySdr[2].ToString();
+                    temp.product = querySdr[3].ToString();
+                    temp.custom_material_no = querySdr[4].ToString();
+                    temp.mpn = querySdr[5].ToString();
+                    temp.mb_brief = querySdr[6].ToString();
+                    temp.sum_year = querySdr[7].ToString();
+                    temp.sum_1 = querySdr[8].ToString();
+                    temp.sum_2 = querySdr[9].ToString();
+                    temp.sum_3 = querySdr[10].ToString();
+                    temp.sum_4 = querySdr[11].ToString();
+                    temp.sum_5 = querySdr[12].ToString();
+                    temp.sum_6 = querySdr[13].ToString();
+                    temp.sum_7 = querySdr[14].ToString();
+                    temp.sum_8 = querySdr[15].ToString();
+                    temp.sum_9 = querySdr[16].ToString();
+                    temp.sum_10 = querySdr[17].ToString();
+                    temp.sum_11= querySdr[18].ToString();
+                    temp.sum_12 = querySdr[19].ToString();
+                    receiveOrderList.Add(temp);
+                }
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            generateExcelToCheck2(receiveOrderList,startTime, endTime);
+        }
+
+        public void generateExcelToCheck2(List<repaire_history_data> StockCheckList, string startTime, string endTime)
+        {
+            List<string> titleList = new List<string>();
+            List<Object> contentList = new List<object>();
+           
+            titleList.Add("年");
+            titleList.Add("厂商");
+            titleList.Add("house");
+            titleList.Add("product");
+            titleList.Add("custom_material_no");
+            titleList.Add("MPN");
+            titleList.Add("mb_brief");
+            titleList.Add("sum_year");
+            titleList.Add("sum_1");
+            titleList.Add("sum_2");
+            titleList.Add("sum_3");
+            titleList.Add("sum_4");
+            titleList.Add("sum_5");
+            titleList.Add("sum_6");
+            titleList.Add("sum_7");
+            titleList.Add("sum_8");
+            titleList.Add("sum_9");
+            titleList.Add("sum_10");
+            titleList.Add("sum_11");
+            titleList.Add("sum_12");
+
+            foreach (repaire_history_data stockcheck in StockCheckList)
+            { //year_,vendor,house,product,custom_material_no,mpn,mb_brief,sum_year, sum_1 ,sum_2,sum_3,sum_4,sum_5,sum_6,sum_7,sum_8,sum_9,sum_10,sum_11,sum_12
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+                ct1.Add(stockcheck.year_);
+                ct1.Add(stockcheck.vendor);
+                ct1.Add(stockcheck.house);
+                ct1.Add(stockcheck.product);
+                ct1.Add(stockcheck.custom_material_no);
+                ct1.Add(stockcheck.mpn);
+                ct1.Add(stockcheck.mb_brief);
+                ct1.Add(stockcheck.sum_year);
+                ct1.Add(stockcheck.sum_1);
+                ct1.Add(stockcheck.sum_2);
+                ct1.Add(stockcheck.sum_3);
+                ct1.Add(stockcheck.sum_4);
+                ct1.Add(stockcheck.sum_5);
+                ct1.Add(stockcheck.sum_6);
+                ct1.Add(stockcheck.sum_7);
+                ct1.Add(stockcheck.sum_8);
+                ct1.Add(stockcheck.sum_9);
+                ct1.Add(stockcheck.sum_10);
+                ct1.Add(stockcheck.sum_11);
+                ct1.Add(stockcheck.sum_12);
+
+                ctest1.contentArray = ct1;
+                contentList.Add(ctest1);
+            }
+
+            Utils.createExcel("D:\\维修历史数据" + DateTime.Now.ToString
+                ("yyyy-MM-dd").Replace('/', '-') + ".xlsx", titleList, contentList);
+        }
+    }
+
+    public class repaire_history_data
+    {
+        public string  year_;
+        public string vendor;
+        public string house;
+        public string product;
+        public string custom_material_no;
+        public string mpn;
+        public string mb_brief;
+        public string sum_year;
+        public string  sum_1;
+        public string sum_2;
+        public string sum_3;
+        public string sum_4;
+        public string sum_5;
+        public string sum_6;
+        public string sum_7;
+        public string sum_8;
+        public string sum_9;
+        public string sum_10;
+        public string sum_11;
+        public string sum_12; 
     }
 
     public class bgaReport
