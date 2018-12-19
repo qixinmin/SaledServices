@@ -1623,5 +1623,22 @@ namespace SaledServices
 
             allForm.Add(aIO_RMAExportExcel);
         }
+
+        private LBG_RMAExportExcel lBG_RMAExportExcel; 
+        private void rMALBG导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lBG_RMAExportExcel == null || lBG_RMAExportExcel.IsDisposed)
+            {
+                lBG_RMAExportExcel = new LBG_RMAExportExcel();
+                lBG_RMAExportExcel.MdiParent = this;
+            }
+
+            lBG_RMAExportExcel.WindowState = FormWindowState.Maximized;
+            lBG_RMAExportExcel.BringToFront();
+            lBG_RMAExportExcel.Show();
+
+            allForm.Add(lBG_RMAExportExcel);
+
+        }
     }
 }

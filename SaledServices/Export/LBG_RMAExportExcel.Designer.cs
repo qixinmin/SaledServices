@@ -1,6 +1,6 @@
 ﻿namespace SaledServices
 {
-    partial class AIO_RMAExportExcel
+    partial class LBG_RMAExportExcel
     {
         /// <summary>
         /// Required designer variable.
@@ -124,7 +124,7 @@
             this.productComboBox.Size = new System.Drawing.Size(138, 24);
             this.productComboBox.TabIndex = 30;
             // 
-            // AIO_RMAExportExcel
+            // LBG_RMAExportExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -140,9 +140,9 @@
             this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("SimSun", 12F);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "AIO_RMAExportExcel";
+            this.Name = "LBG_RMAExportExcel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RMA AIO表";
+            this.Text = "RMA LBG表";
             this.ResumeLayout(false);
             this.PerformLayout();
 

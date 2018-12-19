@@ -41,9 +41,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(244, 243);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 12);
+            this.label4.Size = new System.Drawing.Size(167, 12);
             this.label4.TabIndex = 20;
-            this.label4.Text = "默认输出路径D:\\";
+            this.label4.Text = "默认输出路径D:\\导出文件汇总\\";
             // 
             // label2
             // 

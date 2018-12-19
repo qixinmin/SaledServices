@@ -313,8 +313,8 @@ namespace SaledServices
                 ct1.Add(stockcheck.return_file_no);
                 ct1.Add(stockcheck.storehouse);
                 ct1.Add(stockcheck.order_make_date);
-                ct1.Add(stockcheck.receive_date);
-                ct1.Add(stockcheck.return_date);
+                ct1.Add(Utils.modifyDataFormat(stockcheck.receive_date));
+                ct1.Add(Utils.modifyDataFormat(stockcheck.return_date));
                 ct1.Add(stockcheck.orderno);
                 ct1.Add(stockcheck.custommaterialNo);
                 ct1.Add(stockcheck.mb_brief);
