@@ -266,7 +266,7 @@ namespace SaledServices
                         int totalLeft = Int32.Parse(left_number);
                         int thistotal = totalLeft +1;
 
-                        cmd.CommandText = "update store_house_ng set number = '" + thistotal + "', mpn='" + this.mbdescribeTextBox.Text.Trim() + "'"
+                        cmd.CommandText = "update store_house_ng set number = '" + thistotal + "', mpn='" + this.mpntextBox.Text.Trim() + "'"
                                 + " where house='" + chooseStock.house + "' and place='" + chooseStock.place + "'";
                         cmd.ExecuteNonQuery();
                     }
