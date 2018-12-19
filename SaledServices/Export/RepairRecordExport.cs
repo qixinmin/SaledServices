@@ -409,7 +409,7 @@ namespace SaledServices.Export
                 contentList.Add(ctest1);
             }
 
-            Utils.createExcel("D:\\维修记录" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            Utils.createExcel("维修记录" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
     }
 

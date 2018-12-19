@@ -359,6 +359,13 @@ namespace SaledServices
 
         public static void createMulitSheetsUsingNPOI(string filepathname, List<allContent> allcontentList)
         {
+            string path = "D:\\导出文件汇总\\";
+            if (Directory.Exists(path) == false)
+            {
+                Directory.CreateDirectory(path);
+            }
+            filepathname = path + filepathname;
+
             HSSFWorkbook hssfworkbook = new HSSFWorkbook();
             //内容表格
             foreach (allContent temp in allcontentList)
@@ -645,6 +652,14 @@ namespace SaledServices
         //title list的长度要保证与内容contentArray的长度一致
         public static void createExcel(string filepathname, List<string> titleList, List<Object> contentList)
         {
+            string path = "D:\\导出文件汇总\\";
+            if (Directory.Exists(path) == false)
+            {
+                Directory.CreateDirectory(path);
+            }
+            filepathname = path + filepathname;
+
+
             if (contentList.Count == 0)
             {
                 MessageBox.Show("查询到的内容为空，请检查！");

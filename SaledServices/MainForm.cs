@@ -107,6 +107,7 @@ namespace SaledServices
                 case MenuType.Recieve_Return:
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.receiveReturnStoreMenuItem,
+                    this.报表ToolStripMenuItem,    
                    });
                     break;
                 case MenuType.TestALL:
@@ -143,6 +144,8 @@ namespace SaledServices
                     this.AllMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {                   
                     this.库存管理ToolStripMenuItem,
                      this.报表ToolStripMenuItem,       
+                     this.FunctionMenuItem,           
+                    this.additionMenuItem,
                    });
                     break;
                 case MenuType.Self:
@@ -169,6 +172,14 @@ namespace SaledServices
                     });
 
             this.LogoutMenuItem.Enabled = true;
+
+            if (User.UserSelfForm.isSuperManager() == false)
+            {
+                this.员工管理ToolStripMenuItem.Enabled = false;
+                this.dPK报表导出ToolStripMenuItem.Enabled = false;
+                this.dPKToolStripMenuItem.Enabled = false;
+            }
+           
         }
        
         private void LoginMenuItem_Click(object sender, EventArgs e)

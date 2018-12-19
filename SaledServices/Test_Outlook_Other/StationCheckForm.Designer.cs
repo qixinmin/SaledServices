@@ -32,10 +32,10 @@
             this.stationComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tracker_bar_textBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.stationlabel = new System.Windows.Forms.Label();
             this.modify = new System.Windows.Forms.Button();
             this.add = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +45,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.stationComboBox, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
@@ -75,7 +75,7 @@
             "报废",
             "收货",
             "维修"});
-            this.stationComboBox.Location = new System.Drawing.Point(414, 3);
+            this.stationComboBox.Location = new System.Drawing.Point(413, 3);
             this.stationComboBox.Name = "stationComboBox";
             this.stationComboBox.Size = new System.Drawing.Size(132, 20);
             this.stationComboBox.Sorted = true;
@@ -97,20 +97,9 @@
             this.tracker_bar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tracker_bar_textBox.Location = new System.Drawing.Point(126, 3);
             this.tracker_bar_textBox.Name = "tracker_bar_textBox";
-            this.tracker_bar_textBox.Size = new System.Drawing.Size(282, 21);
+            this.tracker_bar_textBox.Size = new System.Drawing.Size(281, 21);
             this.tracker_bar_textBox.TabIndex = 0;
             this.tracker_bar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tracker_bar_textBox_KeyPress);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("SimSun", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(559, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 102);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "新增功能只有在不存在站别的时候使用，慎重使用";
             // 
             // stationlabel
             // 
@@ -124,7 +113,7 @@
             // modify
             // 
             this.modify.Font = new System.Drawing.Font("SimSun", 15F);
-            this.modify.Location = new System.Drawing.Point(416, 107);
+            this.modify.Location = new System.Drawing.Point(415, 107);
             this.modify.Margin = new System.Windows.Forms.Padding(5);
             this.modify.Name = "modify";
             this.modify.Size = new System.Drawing.Size(128, 55);
@@ -136,7 +125,7 @@
             // add
             // 
             this.add.Font = new System.Drawing.Font("SimSun", 15F);
-            this.add.Location = new System.Drawing.Point(561, 107);
+            this.add.Location = new System.Drawing.Point(560, 107);
             this.add.Margin = new System.Windows.Forms.Padding(5);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(116, 55);
@@ -144,6 +133,17 @@
             this.add.Text = "新增站别";
             this.add.UseVisualStyleBackColor = true;
             this.add.Click += new System.EventHandler(this.add_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("SimSun", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(558, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(115, 102);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "新增功能只有在不存在站别的时候使用，慎重使用";
             // 
             // StationCheckForm
             // 

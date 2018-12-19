@@ -381,7 +381,7 @@ namespace SaledServices
                 }
 
                 conn.Close();
-                Utils.createExcel("D:\\LCFC_MBBOM" + DateTime.Now.ToString("yyyy-MM-dd").Replace('/', '-') + ".xlsx", titleList, contentList);
+                Utils.createExcel("LCFC_MBBOM" + DateTime.Now.ToString("yyyy-MM-dd").Replace('/', '-') + ".xlsx", titleList, contentList);
                 this.Cursor = Cursors.Default;
             }
             catch (Exception ex)

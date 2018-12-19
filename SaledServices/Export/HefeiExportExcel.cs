@@ -499,7 +499,7 @@ namespace SaledServices
                 contentList.Add(ctest1);
             }
 
-            Utils.createExcel("D:\\合肥报表-" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            Utils.createExcel("合肥报表-" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
     }   
 

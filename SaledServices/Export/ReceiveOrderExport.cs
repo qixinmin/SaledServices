@@ -169,7 +169,7 @@ namespace SaledServices.Export
                 contentList.Add(ctest1);
             }
 
-            Utils.createExcel("D:\\收货信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            Utils.createExcel("收货信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
     }
 

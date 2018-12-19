@@ -581,7 +581,7 @@ namespace SaledServices
                 contentList.Add(ctest1);
             }
 
-            Utils.createExcel("D:\\报废转卖详细" + DateTime.Now.ToString("yyyy-MM-dd") + ".xlsx", titleList, contentList);
+            Utils.createExcel("报废转卖详细" + DateTime.Now.ToString("yyyy-MM-dd") + ".xlsx", titleList, contentList);
         }
     }
 

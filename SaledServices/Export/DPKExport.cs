@@ -142,7 +142,7 @@ namespace SaledServices.Export
                 addtion = "导入日期";
             }
 
-            Utils.createExcel("D:\\DPK信息" + addtion + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            Utils.createExcel("DPK信息" + addtion + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
     }
 

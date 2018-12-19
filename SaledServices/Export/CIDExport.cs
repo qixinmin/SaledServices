@@ -141,7 +141,7 @@ namespace SaledServices.Export
                 contentList.Add(ctest1);
             }
 
-            Utils.createExcel("D:\\Cid信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            Utils.createExcel("Cid信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
             //Utils.createExcelList(titleList, contentList);
         }
     }

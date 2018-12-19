@@ -295,7 +295,7 @@ namespace SaledServices
                
             }
 
-            Utils.createExcel("D:\\仁宝大数据2-" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            Utils.createExcel("仁宝大数据2-" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
 
         public void generateExcelToCheck(List<RenBaoDataStruct> StockCheckList, string startTime, string endTime)
@@ -371,7 +371,7 @@ namespace SaledServices
                 contentList.Add(ctest1);
             }
 
-            Utils.createExcel("D:\\仁宝大数据1-" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            Utils.createExcel("仁宝大数据1-" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
     }
 

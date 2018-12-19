@@ -270,7 +270,7 @@ namespace SaledServices.Export
                 contentList.Add(ctest1);
             }
 
-            Utils.createExcel("D:\\还货信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            Utils.createExcel("还货信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
 
         public void generategoodExcelToCheck(List<goodSumStruct> StockCheckList, string startTime, string endTime)
@@ -301,7 +301,7 @@ namespace SaledServices.Export
                 contentList.Add(ctest1);
             }
 
-            Utils.createExcel("D:\\良品还货清单" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            Utils.createExcel("良品还货清单" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
 
         public void generatecidExcelToCheck(List<cidSumStruct> StockCheckList, string startTime, string endTime)
@@ -329,7 +329,7 @@ namespace SaledServices.Export
                 ctest1.contentArray = ct1;
                 contentList.Add(ctest1);
             }
-            Utils.createExcel("D:\\CID还货清单" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            Utils.createExcel("CID还货清单" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
     }
 

@@ -520,7 +520,7 @@ namespace SaledServices.Export
 
             allcontentList.Add(secondsheet);
 
-            Utils.createMulitSheetsUsingNPOI("D:\\MBBga材料一览表" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xls", allcontentList);            
+            Utils.createMulitSheetsUsingNPOI("MBBga材料一览表" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xls", allcontentList);            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -631,7 +631,7 @@ namespace SaledServices.Export
                 contentList.Add(ctest1);
             }
 
-            Utils.createExcel("D:\\维修历史数据" + DateTime.Now.ToString
+            Utils.createExcel("维修历史数据" + DateTime.Now.ToString
                 ("yyyy-MM-dd").Replace('/', '-') + ".xlsx", titleList, contentList);
         }
     }

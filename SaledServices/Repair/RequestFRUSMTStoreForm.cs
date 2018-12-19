@@ -453,7 +453,7 @@ namespace SaledServices.Store
                 contentList.Add(ctest1);
             }
 
-            Utils.createExcel("D:\\SMT小材料申请购买信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            Utils.createExcel("SMT小材料申请购买信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)

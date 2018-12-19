@@ -488,7 +488,7 @@ namespace SaledServices
                 contentList.Add(ctest1);
             }
 
-            Utils.createExcel("D:\\MB物料对照表" +   machineType + ".xlsx", titleList, contentList);
+            Utils.createExcel("MB物料对照表" +   machineType + ".xlsx", titleList, contentList);
         }
 
         private void button3_Click(object sender, EventArgs e)

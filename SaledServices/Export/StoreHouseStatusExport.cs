@@ -150,7 +150,7 @@ namespace SaledServices.Export
                 contentList.Add(ctest1);
             }
 
-            Utils.createExcel("D:\\"+this.houseComboBox.Text+"信息导出"+DateTime.Now.ToString("yyyy-MM-dd") + ".xlsx", titleList, contentList);
+            Utils.createExcel(""+this.houseComboBox.Text+"信息导出"+DateTime.Now.ToString("yyyy-MM-dd") + ".xlsx", titleList, contentList);
         }
     }
 
