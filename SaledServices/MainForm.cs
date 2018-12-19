@@ -1607,5 +1607,21 @@ namespace SaledServices
 
             allForm.Add(returnGT2RepairRecordExport);
         }
+
+        private AIO_RMAExportExcel aIO_RMAExportExcel; 
+        private void rMAAIO导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (aIO_RMAExportExcel == null || aIO_RMAExportExcel.IsDisposed)
+            {
+                aIO_RMAExportExcel = new AIO_RMAExportExcel();
+                aIO_RMAExportExcel.MdiParent = this;
+            }
+
+            aIO_RMAExportExcel.WindowState = FormWindowState.Maximized;
+            aIO_RMAExportExcel.BringToFront();
+            aIO_RMAExportExcel.Show();
+
+            allForm.Add(aIO_RMAExportExcel);
+        }
     }
 }

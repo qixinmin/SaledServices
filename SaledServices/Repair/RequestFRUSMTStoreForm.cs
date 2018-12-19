@@ -101,12 +101,14 @@ namespace SaledServices.Store
         }
         class useClass
         {
-           public string materialName{get;set;}
+            public string mb_brief { get; set; }
+            public string mpn { get; set; }
+            public string materialName{get;set;}
             public string materialDescribe{get;set;}
             public string storeNum { get; set; }
 
             public string stockplace { get; set; }
-            public string mb_brief { get; set; }
+            public string use_number { get; set; }
             public string L1 { get; set; }
         }
 
@@ -135,7 +137,7 @@ namespace SaledServices.Store
                     List<useClass> list = new List<useClass>();
                     if (this.mb_brieftextBox.Text != "")
                     {
-                        cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8,material_describe,vendor,mb_brief from " + Constlist.table_name_LCFC_MBBOM + " where mb_brief ='" + this.mb_brieftextBox.Text.Trim() + "'";
+                        cmd.CommandText = "select material_mpn,L1, L2, L3, L4, L5, L6, L7, L8,material_describe,vendor,mb_brief,MPN,material_num from " + Constlist.table_name_LCFC_MBBOM + " where mb_brief ='" + this.mb_brieftextBox.Text.Trim() + "'";
                         SqlDataReader querySdr = cmd.ExecuteReader();
                         
                         while (querySdr.Read())
@@ -144,6 +146,8 @@ namespace SaledServices.Store
                             string material_mpn = querySdr[0].ToString() + "_" + querySdr[10].ToString();
                             string temp = querySdr[1].ToString().Trim();
                             string matertialDes = querySdr[9].ToString();
+                            useclass.mpn = querySdr[12].ToString();
+                            useclass.use_number = querySdr[13].ToString();
                            
                             if (temp != "" && temp.ToLower() == not_good_place.ToLower())
                             {
@@ -281,8 +285,8 @@ namespace SaledServices.Store
             //    return;
             //}
 
-            this.materialMpnTextBox.Text = dataGridView.SelectedCells[0].Value.ToString();
-            this.materialDescribetextBox.Text = dataGridView.SelectedCells[1].Value.ToString();
+            this.materialMpnTextBox.Text = dataGridView.SelectedCells[2].Value.ToString();
+            this.materialDescribetextBox.Text = dataGridView.SelectedCells[3].Value.ToString();
        
         }
 

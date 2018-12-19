@@ -113,3 +113,4 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_O
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.WholeMachineExport.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.TransferOrSoldForm.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.ReturnGT2RepairRecordExport.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.AIO_RMAExportExcel.resources

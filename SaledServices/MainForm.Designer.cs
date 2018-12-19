@@ -130,6 +130,8 @@
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.板子所有记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.其他报表ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.rMAAIO导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -656,7 +658,8 @@
             this.维修故障类别ToolStripMenuItem,
             this.厂商信息ToolStripMenuItem,
             this.员工管理ToolStripMenuItem,
-            this.材料名称ToolStripMenuItem});
+            this.材料名称ToolStripMenuItem,
+            this.其他报表ToolStripMenuItem1});
             this.additionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.additionMenuItem.Name = "additionMenuItem";
             this.additionMenuItem.Size = new System.Drawing.Size(104, 31);
@@ -963,6 +966,21 @@
             this.板子所有记录查询ToolStripMenuItem.Text = "板子所有记录查询";
             this.板子所有记录查询ToolStripMenuItem.Click += new System.EventHandler(this.板子所有记录查询ToolStripMenuItem_Click);
             // 
+            // 其他报表ToolStripMenuItem1
+            // 
+            this.其他报表ToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rMAAIO导出ToolStripMenuItem});
+            this.其他报表ToolStripMenuItem1.Name = "其他报表ToolStripMenuItem1";
+            this.其他报表ToolStripMenuItem1.Size = new System.Drawing.Size(204, 32);
+            this.其他报表ToolStripMenuItem1.Text = "其他报表";
+            // 
+            // rMAAIO导出ToolStripMenuItem
+            // 
+            this.rMAAIO导出ToolStripMenuItem.Name = "rMAAIO导出ToolStripMenuItem";
+            this.rMAAIO导出ToolStripMenuItem.Size = new System.Drawing.Size(216, 32);
+            this.rMAAIO导出ToolStripMenuItem.Text = "RMA_AIO导出";
+            this.rMAAIO导出ToolStripMenuItem.Click += new System.EventHandler(this.rMAAIO导出ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1089,6 +1107,8 @@
         private System.Windows.Forms.ToolStripMenuItem 整机出货量的报表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 报废转卖ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 二返报表格式ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 其他报表ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem rMAAIO导出ToolStripMenuItem;
     }
 }
 

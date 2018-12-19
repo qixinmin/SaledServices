@@ -285,6 +285,12 @@
     <Compile Include="Export\BgaUsedExport.designer.cs">
       <DependentUpon>BgaUsedExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\AIO_RMAExportExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\AIO_RMAExportExcel.Designer.cs">
+      <DependentUpon>AIO_RMAExportExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Export\ReturnGT2RepairRecordExport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -821,6 +827,9 @@
     <EmbeddedResource Include="Export\BgaUsedExport.resx">
       <DependentUpon>BgaUsedExport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Export\AIO_RMAExportExcel.resx">
+      <DependentUpon>AIO_RMAExportExcel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Export\ReturnGT2RepairRecordExport.resx">
       <DependentUpon>ReturnGT2RepairRecordExport.cs</DependentUpon>
     </EmbeddedResource>
@@ -1085,6 +1094,7 @@
       <DependentUpon>VendorForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Files\syncTime.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

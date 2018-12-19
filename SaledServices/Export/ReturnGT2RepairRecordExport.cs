@@ -156,7 +156,8 @@ namespace SaledServices.Export
 
                 //根据之前的维修列表开始查询2返信息
                 List<string> filter8s = new List<string>();
-                cmd.CommandText = "select custom_serial_no from DeliveredTable where order_receive_date between '" + startTime + "' and '" + endTime + "' group by custom_serial_no having count(*) > 1";
+                string lastReturnDateStart = Convert.ToDateTime(endTime).AddDays(-90).ToString("yyyy-MM-dd");
+                cmd.CommandText = "select custom_serial_no from DeliveredTable where order_receive_date between '" + lastReturnDateStart + "' and '" + endTime + "' group by custom_serial_no having count(*) > 1";
                 querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
