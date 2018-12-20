@@ -1638,7 +1638,22 @@ namespace SaledServices
             lBG_RMAExportExcel.Show();
 
             allForm.Add(lBG_RMAExportExcel);
+        }
 
+        private CompalMonthlyExportExcel compalMonthlyExportExcel; 
+        private void compal月报ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (compalMonthlyExportExcel == null || compalMonthlyExportExcel.IsDisposed)
+            {
+                compalMonthlyExportExcel = new CompalMonthlyExportExcel();
+                compalMonthlyExportExcel.MdiParent = this;
+            }
+
+            compalMonthlyExportExcel.WindowState = FormWindowState.Maximized;
+            compalMonthlyExportExcel.BringToFront();
+            compalMonthlyExportExcel.Show();
+
+            allForm.Add(compalMonthlyExportExcel);
         }
     }
 }

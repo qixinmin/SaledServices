@@ -104,6 +104,7 @@
             this.材料名称ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.其他报表ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.rMAAIO导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rMALBG导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -132,7 +133,7 @@
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.板子所有记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rMALBG导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compal月报ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -747,7 +748,8 @@
             // 
             this.其他报表ToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rMAAIO导出ToolStripMenuItem,
-            this.rMALBG导出ToolStripMenuItem});
+            this.rMALBG导出ToolStripMenuItem,
+            this.compal月报ToolStripMenuItem});
             this.其他报表ToolStripMenuItem1.Name = "其他报表ToolStripMenuItem1";
             this.其他报表ToolStripMenuItem1.Size = new System.Drawing.Size(204, 32);
             this.其他报表ToolStripMenuItem1.Text = "其他报表";
@@ -758,6 +760,13 @@
             this.rMAAIO导出ToolStripMenuItem.Size = new System.Drawing.Size(216, 32);
             this.rMAAIO导出ToolStripMenuItem.Text = "RMA_AIO导出";
             this.rMAAIO导出ToolStripMenuItem.Click += new System.EventHandler(this.rMAAIO导出ToolStripMenuItem_Click);
+            // 
+            // rMALBG导出ToolStripMenuItem
+            // 
+            this.rMALBG导出ToolStripMenuItem.Name = "rMALBG导出ToolStripMenuItem";
+            this.rMALBG导出ToolStripMenuItem.Size = new System.Drawing.Size(216, 32);
+            this.rMALBG导出ToolStripMenuItem.Text = "RMA LBG导出";
+            this.rMALBG导出ToolStripMenuItem.Click += new System.EventHandler(this.rMALBG导出ToolStripMenuItem_Click);
             // 
             // 报表ToolStripMenuItem
             // 
@@ -983,12 +992,12 @@
             this.板子所有记录查询ToolStripMenuItem.Text = "板子所有记录查询";
             this.板子所有记录查询ToolStripMenuItem.Click += new System.EventHandler(this.板子所有记录查询ToolStripMenuItem_Click);
             // 
-            // rMALBG导出ToolStripMenuItem
+            // compal月报ToolStripMenuItem
             // 
-            this.rMALBG导出ToolStripMenuItem.Name = "rMALBG导出ToolStripMenuItem";
-            this.rMALBG导出ToolStripMenuItem.Size = new System.Drawing.Size(216, 32);
-            this.rMALBG导出ToolStripMenuItem.Text = "RMA LBG导出";
-            this.rMALBG导出ToolStripMenuItem.Click += new System.EventHandler(this.rMALBG导出ToolStripMenuItem_Click);
+            this.compal月报ToolStripMenuItem.Name = "compal月报ToolStripMenuItem";
+            this.compal月报ToolStripMenuItem.Size = new System.Drawing.Size(216, 32);
+            this.compal月报ToolStripMenuItem.Text = "Compal月报";
+            this.compal月报ToolStripMenuItem.Click += new System.EventHandler(this.compal月报ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -1119,6 +1128,7 @@
         private System.Windows.Forms.ToolStripMenuItem 其他报表ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem rMAAIO导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rMALBG导出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compal月报ToolStripMenuItem;
     }
 }
 

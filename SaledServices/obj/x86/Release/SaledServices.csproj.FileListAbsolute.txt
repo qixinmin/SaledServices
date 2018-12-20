@@ -115,4 +115,4 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Transf
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.ReturnGT2RepairRecordExport.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.AIO_RMAExportExcel.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.LBG_RMAExportExcel.resources
-D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.csprojResolveAssemblyReference.cache
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.CompalMonthlyExportExcel.resources

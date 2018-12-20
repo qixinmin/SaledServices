@@ -291,6 +291,12 @@
     <Compile Include="Export\AIO_RMAExportExcel.Designer.cs">
       <DependentUpon>AIO_RMAExportExcel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Export\CompalMonthlyExportExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\CompalMonthlyExportExcel.Designer.cs">
+      <DependentUpon>CompalMonthlyExportExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Export\LBG_RMAExportExcel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -835,6 +841,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\AIO_RMAExportExcel.resx">
       <DependentUpon>AIO_RMAExportExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\CompalMonthlyExportExcel.resx">
+      <DependentUpon>CompalMonthlyExportExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\LBG_RMAExportExcel.resx">
       <DependentUpon>LBG_RMAExportExcel.cs</DependentUpon>
