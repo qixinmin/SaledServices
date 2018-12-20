@@ -80,11 +80,13 @@ namespace SaledServices.Export
 
                 foreach (ReturnOrderStruct temp in receiveOrderList)
                 {
-                    cmd.CommandText = "select order_receive_date from DeliveredTable where track_serial_no='" + temp.track_serial_no + "'";
+                    cmd.CommandText = "select order_receive_date,custom_fault,lenovo_custom_service_no from DeliveredTable where track_serial_no='" + temp.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
                         temp.receive_date = querySdr[0].ToString();
+                        temp.custom_fault = querySdr[1].ToString();
+                        temp.lenovo_custom_service_no = querySdr[2].ToString();
                         break;
                     }
                     querySdr.Close();
@@ -238,6 +240,9 @@ namespace SaledServices.Export
             titleList.Add("联想维修单编号");
         
             titleList.Add("TAT");
+       
+             titleList.Add("客户故障");    
+             titleList.Add("联想客服序号");    
 
             foreach (ReturnOrderStruct stockcheck in StockCheckList)
             {
@@ -264,7 +269,9 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.lenovo_maintenance_no);
                 ct1.Add(stockcheck.lenovo_repair_no);
                 ct1.Add(stockcheck.tat);           
-                //ct1.Add(stockcheck.inputuser);           
+                //ct1.Add(stockcheck.inputuser);     
+                ct1.Add(stockcheck.custom_fault);
+                ct1.Add(stockcheck.lenovo_custom_service_no);      
                
                 ctest1.contentArray = ct1;
                 contentList.Add(ctest1);
@@ -403,6 +410,9 @@ namespace SaledServices.Export
         public string inputuser;
         public string lenovo_maintenance_no;
         public string lenovo_repair_no;
+
+        public string custom_fault;
+        public string lenovo_custom_service_no;
     }
 }
 
