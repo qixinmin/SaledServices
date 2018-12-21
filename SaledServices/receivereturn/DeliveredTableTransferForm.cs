@@ -30,8 +30,16 @@ namespace SaledServices
 
             if (User.UserSelfForm.isSuperManager() == false)
             {
-                this.modify.Visible = false;
-                this.delete.Visible = false;
+                if (User.UserSelfForm.isReceiveReturn() == true)
+                {
+                    this.modify.Visible = true;
+                    this.delete.Visible = false;
+                }
+                else
+                {
+                    this.modify.Visible = false;
+                    this.delete.Visible = false;
+                }
             }
         }
 
