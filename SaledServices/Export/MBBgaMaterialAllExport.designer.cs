@@ -35,6 +35,7 @@
             this.dateTimePickerstart = new System.Windows.Forms.DateTimePicker();
             this.exportxmlbutton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label4
@@ -42,7 +43,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(244, 243);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 12);
+            this.label4.Size = new System.Drawing.Size(173, 12);
             this.label4.TabIndex = 20;
             this.label4.Text = "默认输出路径D:\\导出文件汇总\\";
             // 
@@ -98,11 +99,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.label3.Location = new System.Drawing.Point(26, 166);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(371, 12);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "在导出信息的时候，首先导出MBBga材料信息表，它是用来更新数据的";
+            // 
             // MBBgaMaterialAllExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 365);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -127,5 +139,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerstart;
         private System.Windows.Forms.Button exportxmlbutton;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
     }
 }

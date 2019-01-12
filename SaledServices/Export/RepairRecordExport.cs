@@ -90,7 +90,23 @@ namespace SaledServices.Export
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "SELECT track_serial_no,COUNT(*)  from repair_record_table where repair_date between '" + startTime + "' and '" + endTime + "'  group by track_serial_no";
+                string subsql = "";
+                if (this.vendorComboBox.Text.Trim() != "")
+                {
+                    subsql += " and vendor='"+this.vendorComboBox.Text.Trim()+"'";
+                }
+
+                if (this.productComboBox.Text.Trim() != "")
+                {
+                    subsql += " and product='" + this.productComboBox.Text.Trim() + "'";
+                }
+
+                string sql = "SELECT track_serial_no,COUNT(*)  from repair_record_table where repair_date between '" + startTime + "' and '" + endTime + "'  group by track_serial_no";
+                if (subsql != "")
+                {
+                    sql = "SELECT track_serial_no,COUNT(*)  from repair_record_table where repair_date between '" + startTime + "' and '" + endTime + "' " + subsql + " group by track_serial_no";
+                }
+                cmd.CommandText = sql;
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
