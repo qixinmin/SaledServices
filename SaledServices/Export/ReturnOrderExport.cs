@@ -80,13 +80,14 @@ namespace SaledServices.Export
 
                 foreach (ReturnOrderStruct temp in receiveOrderList)
                 {
-                    cmd.CommandText = "select order_receive_date,custom_fault,lenovo_custom_service_no from DeliveredTable where track_serial_no='" + temp.track_serial_no + "'";
+                    cmd.CommandText = "select order_receive_date,custom_fault,lenovo_custom_service_no,mb_brief from DeliveredTable where track_serial_no='" + temp.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
                         temp.receive_date = querySdr[0].ToString();
                         temp.custom_fault = querySdr[1].ToString();
                         temp.lenovo_custom_service_no = querySdr[2].ToString();
+                        temp.mb_brief = querySdr[3].ToString();
                         break;
                     }
                     querySdr.Close();
@@ -228,6 +229,7 @@ namespace SaledServices.Export
             titleList.Add("还货时间");
             titleList.Add("订单编号");
             titleList.Add("客户料号");
+            titleList.Add("MB简称");
             titleList.Add("DPK状态");
             titleList.Add("跟踪条码");
             titleList.Add("客户序号");
@@ -257,7 +259,8 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.receive_date);
                 ct1.Add(stockcheck.return_date);                
                 ct1.Add(stockcheck.orderno);
-                ct1.Add(stockcheck.custommaterialNo);                
+                ct1.Add(stockcheck.custommaterialNo);
+                ct1.Add(stockcheck.mb_brief);      
                 ct1.Add(stockcheck.dpkpn);
                 ct1.Add(stockcheck.track_serial_no);
                 ct1.Add(stockcheck.custom_serial_no);                
@@ -413,6 +416,8 @@ namespace SaledServices.Export
 
         public string custom_fault;
         public string lenovo_custom_service_no;
+
+        public string mb_brief;
     }
 }
 
