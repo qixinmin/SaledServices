@@ -362,7 +362,7 @@ namespace SaledServices.Export
             } 
             allcontentList.Add(secondsheet);
 
-            Utils.createMulitSheetsUsingNPOI(string.Format("D:\\{0}平衡表信息导出{1}-{2}", this.houseComboBox.Text, startTime.Replace('/', '-'), endTime.Replace('/', '-')) + ".xls", allcontentList);
+            Utils.createMulitSheetsUsingNPOI(string.Format("{0}平衡表信息导出{1}-{2}", this.houseComboBox.Text, startTime.Replace('/', '-'), endTime.Replace('/', '-')) + ".xls", allcontentList);
         }
     }
 
