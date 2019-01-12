@@ -689,7 +689,7 @@
             this.storehouseTextBox.Location = new System.Drawing.Point(676, 238);
             this.storehouseTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.storehouseTextBox.Name = "storehouseTextBox";
-            this.storehouseTextBox.ReadOnly = true;
+  
             this.storehouseTextBox.Size = new System.Drawing.Size(212, 26);
             this.storehouseTextBox.TabIndex = 0;
             // 

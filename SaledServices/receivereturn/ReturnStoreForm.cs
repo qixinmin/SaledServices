@@ -449,6 +449,25 @@ namespace SaledServices
                         }
                     }
 
+                    //根据料号查询物料对照表的厂商与客户别，看是否与选择的厂商与客户别对应，否则报错
+                    cmd.CommandText = "select top 1 vendor,product from MBMaterialCompare where custommaterialNo = '"
+                       + this.custommaterialNoTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    string vendortemp="", producttemp = "";
+                    while (querySdr.Read())
+                    {
+                        vendortemp = querySdr[0].ToString();
+                        producttemp = querySdr[1].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (this.vendor_serail_noTextBox.Text.Trim() != vendortemp && this.productComboBox.Text.Trim() != producttemp)
+                    {
+                        MessageBox.Show("物料对照表中的厂商与客户别跟选择的厂商与客户别不相同，请检查！");
+                        conn.Close();
+                        return;
+                    }
+
                     //在更新收货表的同时，需要同时更新导入的表格收货数量，不然数据会乱掉
                     cmd.CommandText = "select _status, ordernum, receivedNum, returnNum,cid_number from receiveOrder where orderno = '" + this.ordernoTextBox.Text
                            + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
