@@ -78,10 +78,23 @@ namespace SaledServices.Test_Outlook
 
                     if (tracknos.Count <= 0)
                     {
+                        cmd.CommandText = "select distinct(track_serial_no_transfer) from  DeliveredTableTransfer where  track_serial_no_transfer='" + querycontent + "'";
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            tracknos.Add(querySdr[0].ToString());
+                        }
+                        querySdr.Close();
+                    }
+
+                    if (tracknos.Count <= 0)
+                    {
                         MessageBox.Show("没有内容，请检查输入！");
                         mConn.Close();
                         return;
                     }
+
+
                     //where track_serial_no in ('RMLB181014010005','RMLB181014010022')
                     result = "('";
                     for (int i = 0; i < tracknos.Count; i++)//(string str in tracknos)
