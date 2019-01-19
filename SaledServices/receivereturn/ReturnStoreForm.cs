@@ -461,7 +461,7 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    if (this.vendor_serail_noTextBox.Text.Trim() != vendortemp || this.productComboBox.Text.Trim() != producttemp)
+                    if (this.vendorComboBox.Text.Trim() != vendortemp || this.productComboBox.Text.Trim() != producttemp)
                     {
                         MessageBox.Show("物料对照表中的厂商与客户别跟选择的厂商与客户别不相同，请检查！");
                         conn.Close();
