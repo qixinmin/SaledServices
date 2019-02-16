@@ -151,8 +151,8 @@ namespace SaledServices.Export
             firstsheet.titleList.Add("BGAPN");
             firstsheet.titleList.Add("BGA描述");
             firstsheet.titleList.Add("BGA简述");
-            firstsheet.titleList.Add("bga维修人");
-            firstsheet.titleList.Add("bga维修日期");
+            firstsheet.titleList.Add("录入人");
+            firstsheet.titleList.Add("录入日期");
 
             foreach (BgaWaitMaterialStruct stockcheck in StockCheckList)
             {

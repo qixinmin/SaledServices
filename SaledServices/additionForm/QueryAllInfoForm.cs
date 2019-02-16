@@ -127,6 +127,14 @@ namespace SaledServices.Test_Outlook
                     this.dataGridView_repair.DataSource = ds.Tables[0];
                     dataGridView_repair.RowHeadersVisible = false;
 
+                    cmd.CommandText = "select * from  fru_smt_used_record where track_serial_no in " + result;
+
+                    sda.SelectCommand = cmd;
+                    ds = new DataSet();
+                    sda.Fill(ds, "fru_smt_used_record");
+                    this.dataGridView_subModify.DataSource = ds.Tables[0];
+                    dataGridView_subModify.RowHeadersVisible = false;
+
                     cmd.CommandText = "select * from  bga_repair_record_table where track_serial_no in " + result;
 
                     sda.SelectCommand = cmd;

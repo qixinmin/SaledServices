@@ -121,7 +121,7 @@ namespace SaledServices.Export
                 //过滤到test2的信息
                 foreach (RepairRecordStruct repairRecord in receiveOrderList)
                 {
-                    cmd.CommandText = "select Id from test2table where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    cmd.CommandText = "select Id from test2table where track_serial_no ='" + repairRecord.track_serial_no + "' and test_date between '" + startTime + "' and '" + endTime + "' ";
                     querySdr = cmd.ExecuteReader();
                     if (querySdr.HasRows)
                     {                       
@@ -132,7 +132,7 @@ namespace SaledServices.Export
 
                 foreach (RepairRecordStruct repairRecord in receiveOrderList)
                 {
-                    cmd.CommandText = "select Id from testalltable where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    cmd.CommandText = "select Id from testalltable where track_serial_no ='" + repairRecord.track_serial_no + "' and test_date between '" + startTime + "' and '" + endTime + "' ";
                     querySdr = cmd.ExecuteReader();
                     if (querySdr.HasRows)
                     {
@@ -253,19 +253,21 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select top 1 tester from test1table where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    cmd.CommandText = "select top 1 tester,test_date from test2table where track_serial_no ='" + repairRecord.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
                         repairRecord.tester = querySdr[0].ToString();
+                        repairRecord.test_date = querySdr[1].ToString();
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select top 1 tester from testalltable where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    cmd.CommandText = "select top 1 tester,test_date from testalltable where track_serial_no ='" + repairRecord.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
                         repairRecord.tester = querySdr[0].ToString();
+                        repairRecord.test_date = querySdr[1].ToString();
                     }
                     querySdr.Close();
 
@@ -341,6 +343,7 @@ namespace SaledServices.Export
             titleList.Add("故障类别");
             titleList.Add("维修人");
             titleList.Add("测试人");
+            titleList.Add("测试日期");
             titleList.Add("修复日期 ");
             titleList.Add("修复结果");
             titleList.Add("联想维修站编号");
@@ -355,7 +358,7 @@ namespace SaledServices.Export
                 ct1.Add(repaircheck.product);
                 ct1.Add(repaircheck.source);
                 ct1.Add(repaircheck.order_no);
-                ct1.Add(repaircheck.receivedate!=null?repaircheck.receivedate.Replace("0:00:00", "").Trim():"");
+                ct1.Add(Utils.modifyDataFormat(repaircheck.receivedate));
                 ct1.Add(repaircheck.custommaterialNo);
                 ct1.Add(repaircheck.custom_serial_no);
                 ct1.Add(repaircheck.mb_describe);
@@ -363,7 +366,7 @@ namespace SaledServices.Export
                 ct1.Add(repaircheck.vendor_serail_no);
 
                 ct1.Add(repaircheck.mpn);
-                ct1.Add(repaircheck.mb_make_date!=null ? repaircheck.mb_make_date.Replace("0:00:00", "").Trim():"");
+                ct1.Add(Utils.modifyDataFormat(repaircheck.mb_make_date));
                 ct1.Add(repaircheck.custom_fault);
                 ct1.Add(repaircheck.software_update);
 
@@ -417,7 +420,8 @@ namespace SaledServices.Export
                 ct1.Add(repaircheck.fault_type);
                 ct1.Add(repaircheck.repairer);
                 ct1.Add(repaircheck.tester);
-                ct1.Add(repaircheck.repair_date!=null ? repaircheck.repair_date.Replace("0:00:00", "").Trim():"");
+                ct1.Add(Utils.modifyDataFormat(repaircheck.test_date));
+                ct1.Add(Utils.modifyDataFormat(repaircheck.repair_date));
                 ct1.Add(repaircheck.repair_result);
                 ct1.Add(repaircheck.lenovo_maintenance_no);
 
@@ -470,6 +474,7 @@ namespace SaledServices.Export
         public string fault_type;//故障类别
         public string repairer;
         public string tester;//测试1站别的测试人
+        public string test_date;//测试日期 
         public string repair_date;//修复日期 
         public string repair_result;//修复结果
         public string lenovo_maintenance_no;//联想维修站编号
