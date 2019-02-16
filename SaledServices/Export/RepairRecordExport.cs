@@ -118,28 +118,33 @@ namespace SaledServices.Export
                 }
                 querySdr.Close();
 
-                //过滤到test2的信息
                 foreach (RepairRecordStruct repairRecord in receiveOrderList)
                 {
-                    cmd.CommandText = "select Id from test2table where track_serial_no ='" + repairRecord.track_serial_no + "' and test_date between '" + startTime + "' and '" + endTime + "' ";
-                    querySdr = cmd.ExecuteReader();
-                    if (querySdr.HasRows)
-                    {                       
-                        receiveOrderListtarget.Add(repairRecord);
-                    }
-                    querySdr.Close();
+                     receiveOrderListtarget.Add(repairRecord);
                 }
 
-                foreach (RepairRecordStruct repairRecord in receiveOrderList)
-                {
-                    cmd.CommandText = "select Id from testalltable where track_serial_no ='" + repairRecord.track_serial_no + "' and test_date between '" + startTime + "' and '" + endTime + "' ";
-                    querySdr = cmd.ExecuteReader();
-                    if (querySdr.HasRows)
-                    {
-                        receiveOrderListtarget.Add(repairRecord);
-                    }
-                    querySdr.Close();
-                }
+                //过滤到test2的信息
+                //foreach (RepairRecordStruct repairRecord in receiveOrderList)
+                //{
+                //    cmd.CommandText = "select Id from test2table where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                //    querySdr = cmd.ExecuteReader();
+                //    if (querySdr.HasRows)
+                //    {                       
+                //        receiveOrderListtarget.Add(repairRecord);
+                //    }
+                //    querySdr.Close();
+                //}
+
+                //foreach (RepairRecordStruct repairRecord in receiveOrderList)
+                //{
+                //    cmd.CommandText = "select Id from testalltable where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                //    querySdr = cmd.ExecuteReader();
+                //    if (querySdr.HasRows)
+                //    {
+                //        receiveOrderListtarget.Add(repairRecord);
+                //    }
+                //    querySdr.Close();
+                //}
 
                 foreach (RepairRecordStruct repairRecord in receiveOrderListtarget)
                 {
