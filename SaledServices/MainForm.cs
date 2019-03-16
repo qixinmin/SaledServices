@@ -1654,5 +1654,21 @@ namespace SaledServices
 
             allForm.Add(compalMonthlyExportExcel);
         }
+
+        private TestInfoExport testInfoExport; 
+        private void 测试报表导出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (testInfoExport == null || testInfoExport.IsDisposed)
+            {
+                testInfoExport = new TestInfoExport();
+                testInfoExport.MdiParent = this;
+            }
+
+            testInfoExport.WindowState = FormWindowState.Maximized;
+            testInfoExport.BringToFront();
+            testInfoExport.Show();
+
+            allForm.Add(testInfoExport);
+        }
     }
 }
