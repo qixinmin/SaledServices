@@ -387,7 +387,7 @@ namespace SaledServices
             sumContentAio2.titleList.Add("收货日期");
             sumContentAio2.titleList.Add("还货日期");
             sumContentAio2.titleList.Add("TAT");
-           // sumContentAio2.titleList.Add("状态");
+            sumContentAio2.titleList.Add("状态");
 
             foreach (FruReturnStruct stockcheck in returnOrderListfru)
             {
@@ -415,7 +415,7 @@ namespace SaledServices
                 ct1.Add(Utils.modifyDataFormat(stockcheck.make_date));//用来装载收货日期
                 ct1.Add(Utils.modifyDataFormat(stockcheck.receive_date));
                 ct1.Add(stockcheck.tat);
-                //ct1.Add(stockcheck._status);
+                ct1.Add(stockcheck._status);
 
                 ctest1.contentArray = ct1;
                 sumContentAio2.contentList.Add(ctest1);
@@ -492,6 +492,7 @@ namespace SaledServices
             sumContentAio4.titleList.Add("TAT");
             sumContentAio4.titleList.Add("超期原因");
             sumContentAio4.titleList.Add("料号");
+            sumContentAio4.titleList.Add("状态");
 
             foreach (ReturnOrderStructLBG stockcheck in returnOrderList)
             {
@@ -516,6 +517,7 @@ namespace SaledServices
                 ct1.Add(stockcheck.tat);
                 ct1.Add(stockcheck.reason);
                 ct1.Add(stockcheck.waitMaterial);
+                ct1.Add(stockcheck._status);
 
                 ctest1.contentArray = ct1;
                 sumContentAio4.contentList.Add(ctest1);

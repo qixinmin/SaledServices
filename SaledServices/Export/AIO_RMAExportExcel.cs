@@ -294,7 +294,7 @@ namespace SaledServices
             sumContentAio2.titleList.Add("客户序号");
             sumContentAio2.titleList.Add("厂商序号");
             sumContentAio2.titleList.Add("厂商料号");
-            //sumContentAio2.titleList.Add("状态");
+            sumContentAio2.titleList.Add("状态");
             //sumContentAio2.titleList.Add("客责类别");
             //sumContentAio2.titleList.Add("客责描述");
             //sumContentAio2.titleList.Add("联想维修站编号");
@@ -323,7 +323,7 @@ namespace SaledServices
                 ct1.Add(stockcheck.custom_serial_no);
                 ct1.Add(stockcheck.vendor_serail_no);
                 ct1.Add(stockcheck.vendormaterialNo);
-                //ct1.Add(stockcheck._status);
+                ct1.Add(stockcheck._status);
                 //ct1.Add(stockcheck.custom_res_type);
                 //ct1.Add(stockcheck.response_describe);
                 //ct1.Add(stockcheck.lenovo_maintenance_no);
