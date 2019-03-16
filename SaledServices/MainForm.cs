@@ -627,7 +627,6 @@ namespace SaledServices
             allForm.Add(sisf);  
         }
 
-
         private FRU_SMT_InSheetForm frusmtinform;
         private void fRUToolStripMenuItem_Click(object sender, EventArgs e)
         {

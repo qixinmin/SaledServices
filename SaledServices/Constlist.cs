@@ -662,7 +662,7 @@ namespace SaledServices
 
             if (contentList.Count == 0)
             {
-                MessageBox.Show("查询到的内容为空，请检查！");
+                MessageBox.Show("查询到的内容为空，请检查！"); 
                 return;
             }
             //1.创建Applicaton对象

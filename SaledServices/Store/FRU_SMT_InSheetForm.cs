@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SaledServices.Export;
 
 namespace SaledServices
 {
@@ -640,6 +641,15 @@ namespace SaledServices
                 csform.MdiParent = Program.parentForm;
                 csform.Show();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StoreFruInExport frusmtinform = new StoreFruInExport();
+            frusmtinform.MdiParent = this.ParentForm;
+            //frusmtinform.WindowState = FormWindowState.Maximized;
+            frusmtinform.BringToFront();
+            frusmtinform.Show();
         }
     }
 }

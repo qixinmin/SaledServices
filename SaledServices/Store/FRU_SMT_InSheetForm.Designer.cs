@@ -74,6 +74,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.mb_brieftextBox = new System.Windows.Forms.TextBox();
             this.material_namecomboBox = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewToReturn = new System.Windows.Forms.DataGridView();
@@ -386,6 +387,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label7, 4, 1);
             this.tableLayoutPanel3.Controls.Add(this.mb_brieftextBox, 5, 2);
             this.tableLayoutPanel3.Controls.Add(this.material_namecomboBox, 5, 1);
+            this.tableLayoutPanel3.Controls.Add(this.button1, 4, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -582,6 +584,17 @@
             this.material_namecomboBox.Size = new System.Drawing.Size(160, 24);
             this.material_namecomboBox.TabIndex = 27;
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(682, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(160, 38);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "入库记录导出";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 4;
@@ -727,5 +740,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox notetextBox;
         private System.Windows.Forms.ComboBox material_namecomboBox;
+        private System.Windows.Forms.Button button1;
     }
 }
