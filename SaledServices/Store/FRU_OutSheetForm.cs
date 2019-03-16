@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SaledServices.Export;
 
 namespace SaledServices
 {
@@ -611,6 +612,15 @@ namespace SaledServices
         private void vendorcomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StoreFruOutExport frusmtinform = new StoreFruOutExport();
+            frusmtinform.MdiParent = this.ParentForm;
+            //frusmtinform.WindowState = FormWindowState.Maximized;
+            frusmtinform.BringToFront();
+            frusmtinform.Show();
         }
     }
     
