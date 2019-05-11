@@ -394,6 +394,11 @@ namespace SaledServices
                 return;                
             }
 
+            if (checkCustomSerialNo() == false)
+            {
+                return;
+            }
+
             if (this.matertiallibMpnTextBox.Text.Trim() != this.bommpnTextBox.Text.Trim())
             {
                 if (this.track_serial_noTextBox.Text.Trim().StartsWith("RMUP") == false)//RMUP的板子不检查mpn
@@ -848,7 +853,7 @@ namespace SaledServices
                         while (querySdr.Read())
                         {
                             exist = true;
-                            this.custom_serial_noTextBox.Text = querySdr[0].ToString();
+                            //this.custom_serial_noTextBox.Text = querySdr[0].ToString();改成手动输入，后续验证8s，防止放入错误的8s码
                             this.vendor_serail_noTextBox.Text = querySdr[1].ToString();
                             this.matertiallibMpnTextBox.Text = querySdr[2].ToString();
                             this.lenovo_maintenance_noTextBox.Text = querySdr[3].ToString();
@@ -864,7 +869,7 @@ namespace SaledServices
                             while (querySdr.Read())
                             {
                                 exist = true;
-                                this.custom_serial_noTextBox.Text = querySdr[0].ToString();
+                               // this.custom_serial_noTextBox.Text = querySdr[0].ToString();
                                 this.vendor_serail_noTextBox.Text = querySdr[1].ToString();
                                 this.matertiallibMpnTextBox.Text = querySdr[2].ToString();
                                 this.lenovo_maintenance_noTextBox.Text = querySdr[3].ToString();
@@ -873,7 +878,7 @@ namespace SaledServices
                             querySdr.Close();
                         }
 
-                        if (this.custom_serial_noTextBox.Text == "")//说明板子从buffer库出来的
+                        if (this.vendor_serail_noTextBox.Text == "")//说明板子从buffer库出来的
                         {
                             cmd.CommandText = "select custom_serial_no, vendor_serial_no,mpn from mb_out_stock where track_serial_no = '"
                           + this.track_serial_noTextBox.Text + "'";
@@ -881,7 +886,7 @@ namespace SaledServices
                             querySdr = cmd.ExecuteReader();
                             while (querySdr.Read())
                             {
-                                this.custom_serial_noTextBox.Text = querySdr[0].ToString();
+                                //this.custom_serial_noTextBox.Text = querySdr[0].ToString();
                                 this.vendor_serail_noTextBox.Text = querySdr[1].ToString();
                                 this.matertiallibMpnTextBox.Text = querySdr[2].ToString();
                                 this.lenovo_maintenance_noTextBox.Text = "";
@@ -892,39 +897,39 @@ namespace SaledServices
                         mConn.Close();
 
                         //从历史数据查询是否匹配
-                        if (this.custom_serial_noTextBox.Text == "")
-                        {
-                            MessageBox.Show("客户序号不能为空，严重，检查！");
-                        }
+                        //if (this.custom_serial_noTextBox.Text == "")
+                        //{
+                        //    MessageBox.Show("客户序号不能为空，严重，检查！");
+                        //}
 
-                        if (this.productComboBox.Text != "TBG" && this.productComboBox.Text != "DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
-                        {
-                            //需要去掉前面的非0字段
-                            string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
-                            string replacedCustomSerial = this.replace_custom_materialNotextBox.Text.TrimStart('0');
+                        //if (this.productComboBox.Text != "TBG" && this.productComboBox.Text != "DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
+                        //{
+                        //    //需要去掉前面的非0字段
+                        //    string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
+                        //    string replacedCustomSerial = this.replace_custom_materialNotextBox.Text.TrimStart('0');
 
-                            if (this.custom_serial_noTextBox.Text.ToLower().Contains(customSerial.ToLower()))
-                            {
-                            }
-                            else
-                            {
-                                if (this.track_serial_noTextBox.Text.Trim().StartsWith("RMUP") == false)//RMUP的板子不检查mpn
-                                {
-                                    if (this.custom_serial_noTextBox.Text.ToLower().Contains(replacedCustomSerial.ToLower()))
-                                    {
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("在" + this.productComboBox.Text + "下客户序号没有包含客户料号, 请检查追踪条码是否正确");
-                                        this.track_serial_noTextBox.Focus();
-                                        this.track_serial_noTextBox.SelectAll();
+                        //    if (this.custom_serial_noTextBox.Text.ToLower().Contains(customSerial.ToLower()))
+                        //    {
+                        //    }
+                        //    else
+                        //    {
+                        //        if (this.track_serial_noTextBox.Text.Trim().StartsWith("RMUP") == false)//RMUP的板子不检查mpn
+                        //        {
+                        //            if (this.custom_serial_noTextBox.Text.ToLower().Contains(replacedCustomSerial.ToLower()))
+                        //            {
+                        //            }
+                        //            else
+                        //            {
+                        //                MessageBox.Show("在" + this.productComboBox.Text + "下客户序号没有包含客户料号, 请检查追踪条码是否正确");
+                        //                this.track_serial_noTextBox.Focus();
+                        //                this.track_serial_noTextBox.SelectAll();
 
-                                        this.custom_serial_noTextBox.Text = "";
-                                        return;
-                                    }
-                                }
-                            }
-                        }
+                        //                this.custom_serial_noTextBox.Text = "";
+                        //                return;
+                        //            }
+                        //        }
+                        //    }
+                        //}
                     }
                 }
                 catch (Exception ex)
@@ -987,10 +992,140 @@ namespace SaledServices
             }
         }
 
+        private bool checkCustomSerialNo()
+        {
+            bool exist = false;
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                String inputSerialNo = this.custom_serial_noTextBox.Text.Trim();
+               
+                //先验证收货表
+                cmd.CommandText = "select custom_serial_no from DeliveredTable where track_serial_no = '" + this.track_serial_noTextBox.Text.Trim() + "'";
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    if (inputSerialNo == querySdr[0].ToString().Trim())
+                    {
+                        exist = true;
+                    }
+                }
+                querySdr.Close();
+
+                if (!exist)//从转换表中查询
+                {
+                    cmd.CommandText = "select custom_serial_no from DeliveredTableTransfer where track_serial_no = '" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        if (inputSerialNo == querySdr[0].ToString().Trim())
+                        {
+                            exist = true;
+                        }
+                    }
+                    querySdr.Close();
+                }
+
+                if (!exist)//从主板出库查询
+                {
+                    cmd.CommandText = "select custom_serial_no from mb_out_stock where track_serial_no = '" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        if (inputSerialNo == querySdr[0].ToString().Trim())
+                        {
+                            exist = true;
+                        }
+                    }
+                    querySdr.Close();
+                }
+
+                if (exist == false)//均不存在
+                {
+                    this.returnStore.Enabled = false;
+                    MessageBox.Show("此客户序号不存在于收货表，转换表与主板出库表中，请检查是否正确！");
+                }
+                else
+                {
+
+                    if (this.productComboBox.Text != "TBG" && this.productComboBox.Text != "DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
+                    {
+                        //需要去掉前面的非0字段
+                        string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');
+                        string replacedCustomSerial = this.replace_custom_materialNotextBox.Text.TrimStart('0');
+
+                        if (this.custom_serial_noTextBox.Text.ToLower().Contains(customSerial.ToLower()))
+                        {
+                        }
+                        else
+                        {
+                            if (this.track_serial_noTextBox.Text.Trim().StartsWith("RMUP") == false)//RMUP的板子不检查mpn
+                            {
+                                if (this.custom_serial_noTextBox.Text.ToLower().Contains(replacedCustomSerial.ToLower()))
+                                {
+                                }
+                                else
+                                {
+                                    MessageBox.Show("在" + this.productComboBox.Text + "下客户序号没有包含客户料号, 请检查追踪条码是否正确");
+                                    this.track_serial_noTextBox.Focus();
+                                    this.track_serial_noTextBox.SelectAll();
+
+                                    this.custom_serial_noTextBox.Text = "";
+                                    this.custom_serial_noTextBox.Text = "";
+                                    mConn.Close();
+                                    return exist;
+                                }
+                            }
+                        }
+                    }
+
+
+                    this.returnStore.Enabled = true;
+                }
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return exist;
+        }
+
         private void custom_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
             {
+
+                //需要增加验证逻辑，1主动输入此8s码， 如果没有则不能还货
+                //2 根据输入的8s来验证，1）跟收货的8s，如果不存在则与主板转换的8s，如果不存在则跟库房出货的8s比对，这逻辑是根据跟踪条码拉出来的8s，来取三个地方
+                if (this.custom_serial_noTextBox.Text.Trim() == "")
+                {
+                    MessageBox.Show("此客户序号为空！");
+                    this.returnStore.Enabled = false;
+                    return;
+                }
+
+                if (this.track_serial_noTextBox.Text.Trim() == "")
+                {
+                    MessageBox.Show("此跟踪条码为空！");
+                    this.returnStore.Enabled = false;
+                    return;
+                }
+
+
+                if (checkCustomSerialNo() == false)
+                {
+                    return;
+                }
+
                 this.response_describeComboBox.Focus();
 
                 if (track_serial_noTextBox.Text.Trim() == "")

@@ -106,6 +106,7 @@
             this.rMAAIO导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rMALBG导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compal月报ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.测试报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货信息导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -134,7 +135,6 @@
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.板子所有记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.测试报表导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -777,6 +777,13 @@
             this.compal月报ToolStripMenuItem.Text = "Compal月报";
             this.compal月报ToolStripMenuItem.Click += new System.EventHandler(this.compal月报ToolStripMenuItem_Click);
             // 
+            // 测试报表导出ToolStripMenuItem
+            // 
+            this.测试报表导出ToolStripMenuItem.Name = "测试报表导出ToolStripMenuItem";
+            this.测试报表导出ToolStripMenuItem.Size = new System.Drawing.Size(216, 32);
+            this.测试报表导出ToolStripMenuItem.Text = "测试报表导出";
+            this.测试报表导出ToolStripMenuItem.Click += new System.EventHandler(this.测试报表导出ToolStripMenuItem_Click);
+            // 
             // 报表ToolStripMenuItem
             // 
             this.报表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1001,13 +1008,6 @@
             this.板子所有记录查询ToolStripMenuItem.Text = "板子所有记录查询";
             this.板子所有记录查询ToolStripMenuItem.Click += new System.EventHandler(this.板子所有记录查询ToolStripMenuItem_Click);
             // 
-            // 测试报表导出ToolStripMenuItem
-            // 
-            this.测试报表导出ToolStripMenuItem.Name = "测试报表导出ToolStripMenuItem";
-            this.测试报表导出ToolStripMenuItem.Size = new System.Drawing.Size(216, 32);
-            this.测试报表导出ToolStripMenuItem.Text = "测试报表导出";
-            this.测试报表导出ToolStripMenuItem.Click += new System.EventHandler(this.测试报表导出ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1020,7 +1020,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统0216-";
+            this.Text = "上海进销存系统0511-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
