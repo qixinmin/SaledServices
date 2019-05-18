@@ -67,6 +67,39 @@ namespace SaledServices.Export
                 }
                 querySdr.Close();
 
+                //遍历查找库位
+                foreach (FaultMbStruct temp in receiveOrderList)
+                {
+                    cmd.CommandText = "select house, place from store_house_ng where mpn='" + temp.mpn + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        temp.house = querySdr[0].ToString();
+                        temp.place = querySdr[1].ToString();
+                        break;
+                    }
+                    querySdr.Close();
+                }
+
+                foreach (FaultMbStruct temp in receiveOrderList)
+                {
+                    cmd.CommandText = "select fault_describe,fault_place,fault_reason,confirmer,confirm_date,pcbzhouqi,pcbtype from fault_mb_confirm_table where track_serial_no='" + temp.track_serial_no + "'";
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        temp.fault_describe = querySdr[0].ToString();
+                        temp.fault_place = querySdr[1].ToString();
+
+                        temp.fault_reason = querySdr[0].ToString();
+                        temp.confirmer = querySdr[1].ToString();
+                        temp.confirm_date = querySdr[0].ToString();
+                        temp.pcbzhouqi = querySdr[1].ToString();
+                        temp.pcbtype = querySdr[0].ToString();
+                        break;
+                    }
+                    querySdr.Close();
+                }
+
                 mConn.Close();
             }
             catch (Exception ex)
@@ -97,7 +130,18 @@ namespace SaledServices.Export
 
             titleList.Add("入库人");
             titleList.Add("入库日期");
+            titleList.Add("库房");
+            titleList.Add("库位");
             titleList.Add("类型");
+
+
+            titleList.Add("缺陷描述");
+            titleList.Add("缺陷位置");
+            titleList.Add("缺陷原因");
+            titleList.Add("确认人");
+            titleList.Add("确认日期");
+            titleList.Add("PCB Zhouqi");
+            titleList.Add("PCB类型");
 
             foreach (FaultMbStruct stockcheck in StockCheckList)
             {
@@ -117,7 +161,17 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.cpu_brief);
                 ct1.Add(stockcheck.repairer);
                 ct1.Add(stockcheck.repair_date);
+                ct1.Add(stockcheck.house);
+                ct1.Add(stockcheck.place);
                 ct1.Add("报废");
+
+                ct1.Add(stockcheck.fault_describe);
+                ct1.Add(stockcheck.fault_place);
+                ct1.Add(stockcheck.fault_reason);
+                ct1.Add(stockcheck.confirmer);
+                ct1.Add(stockcheck.confirm_date);
+                ct1.Add(stockcheck.pcbzhouqi);
+                ct1.Add(stockcheck.pcbtype);
 
                 ctest1.contentArray = ct1;
                 contentList.Add(ctest1);
@@ -144,5 +198,16 @@ namespace SaledServices.Export
 
         public string repairer;
         public string repair_date;
+
+        public string house;
+        public string place;
+
+        public string fault_describe;
+        public string fault_place;
+        public string fault_reason;
+        public string confirmer;
+        public string confirm_date;
+        public string pcbzhouqi;
+        public string pcbtype;
     }
 }
