@@ -168,10 +168,11 @@ namespace SaledServices
 
                 if (status == "open")
                 {
-                    cmd.CommandText = "select custom_machine_type,mb_brief,dpk_type,mpn,mb_descripe,warranty_period from MBMaterialCompare where custommaterialNo ='"
+                    cmd.CommandText = "select custom_machine_type,mb_brief,dpk_type,mpn,mb_descripe,warranty_period,vendor from MBMaterialCompare where custommaterialNo ='"
                         + custommaterialNo + "'";
 
                     querySdr = cmd.ExecuteReader();
+                    string materialVendor = "";
                     while (querySdr.Read())
                     {
                         this.custom_machine_typeTextBox.Text = querySdr[0].ToString();
@@ -180,8 +181,19 @@ namespace SaledServices
                         this.mpnTextBox.Text = querySdr[3].ToString();
                         this.mb_describeTextBox.Text = querySdr[4].ToString();
                         this.warranty_periodTextBox.Text = querySdr[5].ToString();
+                        materialVendor = querySdr[6].ToString();
                     }
                     querySdr.Close();
+
+                    if (this.vendorTextBox.Text.Trim() != materialVendor)
+                    {
+                        MessageBox.Show("厂商不一致，导入厂商是：" + this.vendorTextBox.Text + " 而物料对照表的厂商是：" + materialVendor + ",请检查");
+                        this.add.Enabled = false;
+                    }
+                    else
+                    {
+                        this.add.Enabled = true;
+                    }
                 }
                 else if (status == "close")
                 {

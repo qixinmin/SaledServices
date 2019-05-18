@@ -73,11 +73,11 @@
             this.gurantee_noteTextBox = new System.Windows.Forms.TextBox();
             this.timecheckresult = new System.Windows.Forms.Label();
             this.timechecktextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewWaitToReturn = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -588,6 +588,17 @@
             this.timechecktextBox.TabIndex = 9;
             this.timechecktextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.timechecktextBox_KeyPress);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("SimSun", 15F);
+            this.label3.Location = new System.Drawing.Point(676, 309);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(209, 40);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "可以根据配件序号进行精确查询";
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
@@ -657,17 +668,6 @@
             this.dataGridViewWaitToReturn.Size = new System.Drawing.Size(479, 298);
             this.dataGridViewWaitToReturn.TabIndex = 1;
             this.dataGridViewWaitToReturn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWaitToReturn_CellClick);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label3.Location = new System.Drawing.Point(676, 309);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(209, 40);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "可以根据配件序号进行精确查询";
             // 
             // FruDeliveredTableForm
             // 
