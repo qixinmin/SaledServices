@@ -192,32 +192,32 @@ namespace SaledServices.Export
                                 stockcheck.outnumber = bgaoutnumber + "";
                                 break;
                             }
-                        default://smt/fru
-                            {
-                                cmd.CommandText = "select stock_in_num from fru_smt_in_stock where mpn ='" + stockcheck.mpn.Split('_')[0] + "' and input_date between '" + startTime + "' and '" + endTime + "'";
-                                int bgainnumber = 0;
-                                querySdr = cmd.ExecuteReader();
-                                while (querySdr.Read())
-                                {
-                                    bgainnumber += Int32.Parse(querySdr[0].ToString());
-                                    //break;
-                                }
-                                querySdr.Close();
-                                stockcheck.buynumber = bgainnumber + "";
+                        //default://smt/fru,暂时不要smt，不重要
+                            //{
+                                //cmd.CommandText = "select stock_in_num from fru_smt_in_stock where mpn ='" + stockcheck.mpn.Split('_')[0] + "' and input_date between '" + startTime + "' and '" + endTime + "'";
+                                //int bgainnumber = 0;
+                                //querySdr = cmd.ExecuteReader();
+                                //while (querySdr.Read())
+                                //{
+                                //    bgainnumber += Int32.Parse(querySdr[0].ToString());
+                                //    //break;
+                                //}
+                                //querySdr.Close();
+                                //stockcheck.buynumber = bgainnumber + "";
 
-                                cmd.CommandText = "select stock_out_num from fru_smt_out_stock where mpn ='" + stockcheck.mpn.Split('_')[0] + "' and input_date between '" + startTime + "' and '" + endTime + "'";
-                                int bgaoutnumber = 0;
-                                querySdr = cmd.ExecuteReader();
-                                while (querySdr.Read())
-                                {
-                                    bgaoutnumber += Int32.Parse(querySdr[0].ToString());
-                                    //break;
-                                }
-                                querySdr.Close();
-                                stockcheck.outnumber = bgaoutnumber + "";
+                                //cmd.CommandText = "select stock_out_num from fru_smt_out_stock where mpn ='" + stockcheck.mpn.Split('_')[0] + "' and input_date between '" + startTime + "' and '" + endTime + "'";
+                                //int bgaoutnumber = 0;
+                                //querySdr = cmd.ExecuteReader();
+                                //while (querySdr.Read())
+                                //{
+                                //    bgaoutnumber += Int32.Parse(querySdr[0].ToString());
+                                //    //break;
+                                //}
+                                //querySdr.Close();
+                                //stockcheck.outnumber = bgaoutnumber + "";
 
-                                break;
-                            }
+                                //break;
+                            //}
                     }
                 }
 
@@ -310,23 +310,26 @@ namespace SaledServices.Export
 
             foreach (StoreHouseStatisticsStruct stockcheck in StockCheckList)
             {
-                ExportExcelContent ctest1 = new ExportExcelContent();
-                List<string> ct1 = new List<string>();
-                ct1.Add(stockcheck.Id);
-                ct1.Add(stockcheck.house);
-                ct1.Add(stockcheck.place);
-                ct1.Add(stockcheck.mpn);
-                ct1.Add(stockcheck.type);
-                ct1.Add(stockcheck.vendor);
-                ct1.Add(stockcheck.leftnumber);
-                ct1.Add(stockcheck.buynumber);
-                ct1.Add(stockcheck.outnumber);
-                ct1.Add(stockcheck.othernumber);
-                ct1.Add(stockcheck.describe);
-                ct1.Add(stockcheck.bga_brief);
+                if (stockcheck.type !=null && !stockcheck.type.Contains("SMT")) 
+                {
+                    ExportExcelContent ctest1 = new ExportExcelContent();
+                    List<string> ct1 = new List<string>();
+                    ct1.Add(stockcheck.Id);
+                    ct1.Add(stockcheck.house);
+                    ct1.Add(stockcheck.place);
+                    ct1.Add(stockcheck.mpn);
+                    ct1.Add(stockcheck.type);
+                    ct1.Add(stockcheck.vendor);
+                    ct1.Add(stockcheck.leftnumber);
+                    ct1.Add(stockcheck.buynumber);
+                    ct1.Add(stockcheck.outnumber);
+                    ct1.Add(stockcheck.othernumber);
+                    ct1.Add(stockcheck.describe);
+                    ct1.Add(stockcheck.bga_brief);
 
-                ctest1.contentArray = ct1;
-                firstsheet.contentList.Add(ctest1);
+                    ctest1.contentArray = ct1;
+                    firstsheet.contentList.Add(ctest1);
+                }
             }
             allcontentList.Add(firstsheet);
 

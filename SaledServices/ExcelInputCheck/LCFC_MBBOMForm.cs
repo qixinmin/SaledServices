@@ -95,15 +95,27 @@ namespace SaledServices
                     }
                 }
 
-                if (productTextBox.Text.Trim() != "")
+                if (material_describeTextBox.Text.Trim() != "")
                 {
                     if (!sqlStr.Contains("where"))
                     {
-                        sqlStr += " where product= '" + productTextBox.Text.Trim() + "' ";
+                        sqlStr += " where material_describe= '" + material_describeTextBox.Text.Trim() + "' ";
                     }
                     else
                     {
-                        sqlStr += " and product= '" + productTextBox.Text.Trim() + "' ";
+                        sqlStr += " and material_describe= '" + material_describeTextBox.Text.Trim() + "' ";
+                    }
+                }
+
+                if (this.mb_briefTextBox.Text.Trim() != "")
+                {
+                    if (!sqlStr.Contains("where"))
+                    {
+                        sqlStr += " where mb_brief= '" + mb_briefTextBox.Text.Trim() + "' ";
+                    }
+                    else
+                    {
+                        sqlStr += " and mb_brief= '" + mb_briefTextBox.Text.Trim() + "' ";
                     }
                 }
 
