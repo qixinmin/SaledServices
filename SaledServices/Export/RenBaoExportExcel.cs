@@ -259,9 +259,16 @@ namespace SaledServices
                         ct1.Add(stockcheck.ssn);
                         ct1.Add(stockcheck.wip_sn);
 
-                        DateTime makedate = Convert.ToDateTime(stockcheck.mb_make_date);
+                        if (stockcheck.mb_make_date != null)
+                        {
+                            DateTime makedate = Convert.ToDateTime(stockcheck.mb_make_date);
 
-                        ct1.Add("Y" + stockcheck.mb_make_date.Substring(2, 2) + Utils.GetWeekOfYear(makedate));
+                            ct1.Add("Y" + stockcheck.mb_make_date.Substring(2, 2) + Utils.GetWeekOfYear(makedate));
+                        }
+                        else
+                        {
+                            ct1.Add("Y--no");//当拿不到makedate的时候
+                        }
 
                         DateTime receiveDate = Convert.ToDateTime(stockcheck.receive_date);
                         ct1.Add(receiveDate.AddDays(1).ToString("yyyy-MM-dd"));
@@ -271,8 +278,8 @@ namespace SaledServices
                         //stockcheck.customer_fault
                         string renbaocode="",renbaodes="";//aocodeaoDataStruct
                         foreach (badcodescompare temp in badcodeslist)
-                        {
-                            if (temp.yimaides.Trim() == stockcheck.customer_fault.Trim())
+                        {  
+                            if (temp.yimaides.Trim() == (stockcheck.customer_fault !=null ?stockcheck.customer_fault.Trim():""))
                             {
                                 renbaocode = temp.renbaocode;
                                 renbaodes = temp.renbaodes;
