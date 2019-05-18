@@ -78,6 +78,8 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewWaitToReturn = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lenovo_maintenance_notextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -195,11 +197,13 @@
             this.tableLayoutPanel1.Controls.Add(this.make_datedateTimePicker, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label9, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.customermaterialdesTextBox, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label16, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.gurantee_noteTextBox, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.timecheckresult, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.timechecktextBox, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.label3, 3, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label8, 2, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lenovo_maintenance_notextBox, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label16, 4, 5);
+            this.tableLayoutPanel1.Controls.Add(this.gurantee_noteTextBox, 5, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -553,7 +557,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("SimSun", 15F);
-            this.label16.Location = new System.Drawing.Point(453, 258);
+            this.label16.Location = new System.Drawing.Point(899, 258);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(49, 20);
@@ -562,7 +566,7 @@
             // 
             // gurantee_noteTextBox
             // 
-            this.gurantee_noteTextBox.Location = new System.Drawing.Point(676, 262);
+            this.gurantee_noteTextBox.Location = new System.Drawing.Point(1122, 262);
             this.gurantee_noteTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.gurantee_noteTextBox.Name = "gurantee_noteTextBox";
             this.gurantee_noteTextBox.Size = new System.Drawing.Size(212, 26);
@@ -669,6 +673,23 @@
             this.dataGridViewWaitToReturn.TabIndex = 1;
             this.dataGridViewWaitToReturn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWaitToReturn_CellClick);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(452, 258);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(88, 16);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "维修站编号";
+            // 
+            // lenovo_maintenance_notextBox
+            // 
+            this.lenovo_maintenance_notextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lenovo_maintenance_notextBox.Location = new System.Drawing.Point(675, 261);
+            this.lenovo_maintenance_notextBox.Name = "lenovo_maintenance_notextBox";
+            this.lenovo_maintenance_notextBox.Size = new System.Drawing.Size(214, 26);
+            this.lenovo_maintenance_notextBox.TabIndex = 13;
+            // 
             // FruDeliveredTableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -742,5 +763,7 @@
         private System.Windows.Forms.TextBox timechecktextBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox lenovo_maintenance_notextBox;
     }
 }

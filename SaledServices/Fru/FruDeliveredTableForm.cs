@@ -353,8 +353,9 @@ namespace SaledServices
                         this.gurantee_noteTextBox.Text.Trim() + "','" +
                         this.vendor_material_noTextBox.Text.Trim() + "','" +
                         this.mpn1TextBox.Text.Trim() + "','" +
-                        this.receiverTextBox.Text.Trim() + "','" +                       
-                        this.receive_dateTextBox.Text.Trim() +
+                        this.receiverTextBox.Text.Trim() + "','" +
+                        this.receive_dateTextBox.Text.Trim() + "','" +    
+                        this.lenovo_maintenance_notextBox.Text.Trim() +
                         "')";
                    
                     cmd.ExecuteNonQuery();

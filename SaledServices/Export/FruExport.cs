@@ -46,7 +46,7 @@ namespace SaledServices.Export
                 if (this.receiveradioButton.Checked)
                 {
                     cmd.CommandText = "select orderno, vendor, product, customermaterialno, machine_type, name, customermaterialdes , peijian_no, customer_serial_no," +
-                    "custom_fault, make_date, gurantee, gurantee_note, vendor_material_no, mpn1, receiver, receive_date  from fruDeliveredTable where receive_date between '" + startTime + "' and '" + endTime + "'";
+                    "custom_fault, make_date, gurantee, gurantee_note, vendor_material_no, mpn1, receiver, receive_date,lenovo_maintenance_no  from fruDeliveredTable where receive_date between '" + startTime + "' and '" + endTime + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
@@ -70,6 +70,7 @@ namespace SaledServices.Export
                         temp.mpn1 = querySdr[14].ToString();
                         temp.receiver = querySdr[15].ToString();
                         temp.receive_date = querySdr[16].ToString();
+                        temp.lenovo_maintenance_no = querySdr[17].ToString();
 
                         frureceiveOrderList.Add(temp);
                     }
@@ -289,6 +290,7 @@ namespace SaledServices.Export
             titleList.Add("MPN1");
             titleList.Add("收件人");
             titleList.Add("收货日期");
+            titleList.Add("维修站编号");
 
             foreach (FruReceiveStruct stockcheck in StockCheckList)
             {
@@ -313,6 +315,7 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.mpn1);
                 ct1.Add(stockcheck.receiver);
                 ct1.Add(stockcheck.receive_date);
+                ct1.Add(stockcheck.lenovo_maintenance_no);
 
                 ctest1.contentArray = ct1;
                 contentList.Add(ctest1);
@@ -341,6 +344,7 @@ namespace SaledServices.Export
         public string mpn1;/*MPN1*/
         public string receiver;/*收件人*/
         public string receive_date; /*收货日期*/
+        public string lenovo_maintenance_no; /*后加字段，维修站编号 */
     }
 
    public class FruReturnStruct

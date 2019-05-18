@@ -791,7 +791,8 @@ gurantee_note NVARCHAR(128) NOT NULL,/*保外备注*/
 vendor_material_no NVARCHAR(128) NOT NULL,/*厂商料号*/
 mpn1 NVARCHAR(128) NOT NULL,/*MPN1*/
 receiver NVARCHAR(128) NOT NULL,/*收件人*/
-receive_date date/*收货日期*/
+receive_date date,/*收货日期*/
+lenovo_maintenance_no NVARCHAR(128) /*后加字段，维修站编号 */
 )
 
 CREATE TABLE frureturnStore(
