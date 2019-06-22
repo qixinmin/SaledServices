@@ -49,9 +49,21 @@ namespace SaledServices.Export
                 {
                     BgaOutStruct temp = new BgaOutStruct();
                     temp.Id =  querySdr[0].ToString();
-                    temp.vendor = querySdr[1].ToString();
-                    temp.product = querySdr[2].ToString();
+
                     temp.mpn = querySdr[3].ToString();
+                    if (temp.mpn.Contains("_"))
+                    {
+                        temp.vendor = temp.mpn.Split('_')[1];
+                        //temp.product = querySdr[2].ToString();
+
+                        temp.mpn = temp.mpn.Split('_')[0];
+                    }
+                    else
+                    {
+                        temp.vendor = querySdr[1].ToString();
+                        temp.product = querySdr[2].ToString();
+                    }
+
                     temp.bga_brief = querySdr[4].ToString();
                     temp.bga_describe = querySdr[5].ToString();
                     temp.stock_place = querySdr[6].ToString();

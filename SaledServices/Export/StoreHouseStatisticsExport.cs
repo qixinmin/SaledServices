@@ -110,7 +110,7 @@ namespace SaledServices.Export
 
                 foreach (StoreHouseStatisticsStruct stockcheck in receiveOrderList)
                 {
-                    cmd.CommandText = "select describe,material_type from stock_in_sheet where mpn ='" + stockcheck.mpn.Split('_')[0] + "'";
+                    cmd.CommandText = "select describe,material_type from stock_in_sheet where mpn ='" + stockcheck.mpn.Split('_')[0] + "' and vendor='" + stockcheck.vendor + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
@@ -159,7 +159,7 @@ namespace SaledServices.Export
                         case "BGA":
                             {
                                 //只是获取简称信息，不需要加入时间限制
-                                cmd.CommandText = "select bga_describe from bga_in_stock where mpn ='" + stockcheck.mpn.Split('_')[0] + "'";                              
+                                cmd.CommandText = "select bga_describe from bga_in_stock where mpn ='" + stockcheck.mpn.Split('_')[0] + "' and vendor='"+stockcheck.vendor+"'";                              
                                 querySdr = cmd.ExecuteReader();
                                 while (querySdr.Read())
                                 {                                  
@@ -168,7 +168,7 @@ namespace SaledServices.Export
                                 }
                                 querySdr.Close();
 
-                                cmd.CommandText = "select input_number,bga_describe from bga_in_stock where mpn ='" + stockcheck.mpn.Split('_')[0] + "' and input_date between '" + startTime + "' and '" + endTime + "'";
+                                cmd.CommandText = "select input_number,bga_describe from bga_in_stock where mpn ='" + stockcheck.mpn.Split('_')[0] + "'and vendor='" + stockcheck.vendor + "' and input_date between '" + startTime + "' and '" + endTime + "'";
                                 int bgainnumber = 0;
                                 querySdr = cmd.ExecuteReader();
                                 while (querySdr.Read())
@@ -180,7 +180,7 @@ namespace SaledServices.Export
                                 querySdr.Close();
                                 stockcheck.buynumber = bgainnumber + "";
 
-                                cmd.CommandText = "select out_number from bga_out_stock where mpn like '%" + stockcheck.mpn + "%' and input_date between '" + startTime + "' and '" + endTime + "'";
+                                cmd.CommandText = "select out_number from bga_out_stock where mpn like '%" + stockcheck.mpn + "%' and vendor='" + stockcheck.vendor + "'and input_date between '" + startTime + "' and '" + endTime + "'";
                                 int bgaoutnumber = 0;
                                 querySdr = cmd.ExecuteReader();
                                 while (querySdr.Read())

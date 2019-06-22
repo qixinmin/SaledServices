@@ -220,14 +220,55 @@ namespace SaledServices.Test_Outlook
 
         private void print_Click(object sender, EventArgs e)
         {
-            if (_8sCodes == "" || dpk_status == "")
+            //从收货表里面把信息拿出来
+            try
             {
-                MessageBox.Show("客户序号或DPK为空!");
-                return;
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+                string temp8s="", tempdpkstatus = "";
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "select product,custom_serial_no,mac,custommaterialNo,dpk_status from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string product = "";
+                    while (querySdr.Read())
+                    {
+                        product = querySdr[0].ToString();
+
+                        temp8s = querySdr[1].ToString();
+
+                        mac = querySdr[2].ToString();
+                        custommaterialno = querySdr[3].ToString();
+                        tempdpkstatus = querySdr[4].ToString();
+                    }
+                    querySdr.Close();
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+
+                if (temp8s == "" || tempdpkstatus == "")
+                {
+                    MessageBox.Show("客户序号或DPK为空!");
+                    return;
+                }
+
+                PrintUtils.print8sCode(temp8s, tempdpkstatus);
+                _8sCodes = "";
+                this.print.Enabled = false;
             }
-            PrintUtils.print8sCode(_8sCodes, dpk_status);
-            _8sCodes = ""; 
-            this.print.Enabled = false;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
