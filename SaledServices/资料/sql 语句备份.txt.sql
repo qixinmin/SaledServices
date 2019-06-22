@@ -1,4 +1,17 @@
 
+
+/*二次或多次根据条件锁定*/
+CREATE TABLE need_to_lock(
+Id INT PRIMARY KEY IDENTITY, 
+locktype NVARCHAR(128),/*analysis_8s,modify_more_than_three, ntf_twice*/
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+orderno NVARCHAR(128) NOT NULL, /*订单编号*/
+_8sCode NVARCHAR(128), /*8s*/
+isLock NVARCHAR(128), /*默认false*/
+input_date date, /*输入日期*/
+unlcok_date date, /*解锁日期，为true时此日期不为空*/
+)
+
 /*日期	厂商	材料类别	MPN	MB简称	简述	描述	状态	数量	出库原因	收货商名称	备注*/
 CREATE TABLE TransferOrSold_sheet(
 Id INT PRIMARY KEY IDENTITY, 

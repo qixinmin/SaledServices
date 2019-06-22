@@ -1670,5 +1670,21 @@ namespace SaledServices
 
             allForm.Add(testInfoExport);
         }
+
+        private UnlockForm unlockForm;
+        private void 解锁锁定板子ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (unlockForm == null || unlockForm.IsDisposed)
+            {
+                unlockForm = new UnlockForm();
+                unlockForm.MdiParent = this;
+            }
+
+           // unlockForm.WindowState = FormWindowState.Maximized;
+            unlockForm.BringToFront();
+            unlockForm.Show();
+
+            allForm.Add(unlockForm);
+        }
     }
 }

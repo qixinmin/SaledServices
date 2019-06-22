@@ -135,6 +135,7 @@
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.板子所有记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.解锁锁定板子ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -214,7 +215,8 @@
             this.cID操作ToolStripMenuItem,
             this.数据库备份ToolStripMenuItem,
             this.mB转换ToolStripMenuItem,
-            this.库房料转移ToolStripMenuItem});
+            this.库房料转移ToolStripMenuItem,
+            this.解锁锁定板子ToolStripMenuItem});
             this.FunctionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -1008,6 +1010,13 @@
             this.板子所有记录查询ToolStripMenuItem.Text = "板子所有记录查询";
             this.板子所有记录查询ToolStripMenuItem.Click += new System.EventHandler(this.板子所有记录查询ToolStripMenuItem_Click);
             // 
+            // 解锁锁定板子ToolStripMenuItem
+            // 
+            this.解锁锁定板子ToolStripMenuItem.Name = "解锁锁定板子ToolStripMenuItem";
+            this.解锁锁定板子ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.解锁锁定板子ToolStripMenuItem.Text = "解锁锁定板子";
+            this.解锁锁定板子ToolStripMenuItem.Click += new System.EventHandler(this.解锁锁定板子ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1139,6 +1148,7 @@
         private System.Windows.Forms.ToolStripMenuItem rMALBG导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compal月报ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 测试报表导出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 解锁锁定板子ToolStripMenuItem;
     }
 }
 

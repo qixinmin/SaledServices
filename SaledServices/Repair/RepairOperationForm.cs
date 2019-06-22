@@ -215,6 +215,22 @@ namespace SaledServices
                         this.add.Enabled = false;
                         error = true;
                     }
+
+                    //根据来的次数提醒维修人员
+                    cmd.CommandText = "select vendor from DeliveredTable where vendor_serail_no = '" + vendor_serial_no + "'";
+                    querySdr = cmd.ExecuteReader();
+                    int count = 0;
+                    while (querySdr.Read())
+                    {
+                        count++;
+                    }
+                    querySdr.Close();
+
+                    if (count > 1)//这次是第二次或以上 维修
+                    {
+                        MessageBox.Show("此主板已经来过【" + count + "】次，请注意");
+                    }
+
                     this.add.Enabled = true;
                     mConn.Close();
                 }

@@ -473,6 +473,19 @@ namespace SaledServices
                         return;
                     }
 
+                    cmd.CommandText = "select _8sCode from need_to_lock where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "' and isLock='true'";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        MessageBox.Show("此序列号已经锁定，不能走下面的流程！");
+                        querySdr.Close();
+                        conn.Close();
+                        this.returnStore.Enabled = false;
+                        return;
+                    }
+                    this.returnStore.Enabled = true;
+                    querySdr.Close();
+
                     //在更新收货表的同时，需要同时更新导入的表格收货数量，不然数据会乱掉
                     cmd.CommandText = "select _status, ordernum, receivedNum, returnNum,cid_number from receiveOrder where orderno = '" + this.ordernoTextBox.Text
                            + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
@@ -894,6 +907,116 @@ namespace SaledServices
                             }
                             querySdr.Close();
                         }
+
+                        //根据来的次数进行锁定，并提示锁定
+                        cmd.CommandText = "select vendor from DeliveredTable where vendor_serail_no = '" + this.vendor_serail_noTextBox.Text + "'";
+                        querySdr = cmd.ExecuteReader();
+                        int count = 0;
+                        while (querySdr.Read())
+                        {
+                            count++;
+                        }
+                        querySdr.Close();
+                        
+
+                        if (count == 2)//这是第二次来
+                        {
+                           //判断前2次是否都是NTF，如果是则拦下了 锁定
+
+                            //查询是否有2此NTF，如果有进入锁定表格
+                            cmd.CommandText = "select _action,orderno,repair_result,repair_date,fault_describe,software_update from repair_record_table where vendor_serail_no ='" + vendor_serail_noTextBox.Text.Trim() + "'";
+                            querySdr = cmd.ExecuteReader();
+                            int ntfcount = 0;
+                            List<string> orderlist = new List<string>();
+                            while (querySdr.Read())
+                            {
+                                if (querySdr[0].ToString().Trim().ToUpper() == "NTF")
+                                {
+                                    ntfcount++;
+
+                                    if (!orderlist.Contains(querySdr[1].ToString().Trim()))
+                                    {
+                                        orderlist.Add(querySdr[1].ToString().Trim());
+                                    }
+                                }
+                            }
+                            querySdr.Close();
+
+                            if (ntfcount >= 2 && orderlist.Count >= 2)
+                            {
+                                cmd.CommandText = "select isLock from need_to_lock where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                                querySdr = cmd.ExecuteReader();
+
+                                if (querySdr.HasRows)
+                                {
+                                    querySdr.Read();
+                                    string result = querySdr[0].ToString().Trim();
+                                    if (result == "true")
+                                    {
+                                        MessageBox.Show("此序列号已经锁定，不能走下面的流程！");
+                                        querySdr.Close();
+                                        mConn.Close();
+                                        this.returnStore.Enabled = false;
+                                        return;
+                                    }
+                                }
+                                else
+                                {
+                                    querySdr.Close();
+
+                                    cmd.CommandText = "INSERT INTO need_to_lock VALUES('" +
+                                                "ntf_twice" + "','" +
+                                            this.track_serial_noTextBox.Text.Trim() + "','" +
+                                            this.ordernoTextBox.Text.Trim() + "','" +
+                                            this.vendor_serail_noTextBox.Text.Trim() + "','" +//记录厂商序号
+                                            "true" + "','" +
+                                            DateTime.Now.ToString("yyyy/MM/dd") +
+                                            "','')";
+                                    cmd.ExecuteNonQuery();
+
+                                    this.returnStore.Enabled = false;
+                                    MessageBox.Show("提示：因为超过2个订单的记录有2次NTF，请注意已锁定");
+                                }
+                            }
+                        }
+                        else if (count >= 3)
+                        {
+                            cmd.CommandText = "select isLock from need_to_lock where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                            querySdr = cmd.ExecuteReader();
+
+                            if (querySdr.HasRows)
+                            {
+                                querySdr.Read();
+                                string result = querySdr[0].ToString().Trim();
+                                if(result == "true")
+                                {
+                                    MessageBox.Show("此序列号已经锁定，不能走下面的流程！");
+                                    querySdr.Close();
+                                    mConn.Close();
+                                    this.returnStore.Enabled = false;
+                                    return;
+                                }
+                            }
+                            else 
+                            { 
+                                querySdr.Close();
+
+                                //这次是第三次过来，不管前面记录，则直接锁定
+                                cmd.CommandText = "INSERT INTO need_to_lock VALUES('" +
+                                        "more_than_three_return" + "','" +
+                                    this.track_serial_noTextBox.Text.Trim() + "','" +
+                                    this.ordernoTextBox.Text.Trim() + "','" +
+                                    this.vendor_serail_noTextBox.Text.Trim() + "','" +//记录厂商序号
+                                    "true" + "','" +
+                                    DateTime.Now.ToString("yyyy/MM/dd") +
+                                    "','')";
+                                cmd.ExecuteNonQuery();
+
+                                this.returnStore.Enabled = false;
+                                MessageBox.Show("此主板已经来过【" + count + "】次，请注意已锁定");
+                            }
+                        }
+
                         mConn.Close();
 
                         //从历史数据查询是否匹配
