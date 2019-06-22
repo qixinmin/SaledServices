@@ -147,7 +147,6 @@
             // 
             // print
             // 
-            this.print.Enabled = false;
             this.print.Location = new System.Drawing.Point(312, 157);
             this.print.Name = "print";
             this.print.Size = new System.Drawing.Size(85, 44);

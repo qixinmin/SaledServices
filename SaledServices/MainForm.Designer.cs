@@ -49,6 +49,7 @@
             this.数据库备份ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mB转换ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.库房料转移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.解锁锁定板子ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -135,7 +136,6 @@
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.板子所有记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.解锁锁定板子ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -319,6 +319,13 @@
             this.库房料转移ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.库房料转移ToolStripMenuItem.Text = "库房料转移";
             this.库房料转移ToolStripMenuItem.Click += new System.EventHandler(this.库房料转移ToolStripMenuItem_Click);
+            // 
+            // 解锁锁定板子ToolStripMenuItem
+            // 
+            this.解锁锁定板子ToolStripMenuItem.Name = "解锁锁定板子ToolStripMenuItem";
+            this.解锁锁定板子ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.解锁锁定板子ToolStripMenuItem.Text = "解锁锁定板子";
+            this.解锁锁定板子ToolStripMenuItem.Click += new System.EventHandler(this.解锁锁定板子ToolStripMenuItem_Click);
             // 
             // receiveReturnStoreMenuItem
             // 
@@ -1010,13 +1017,6 @@
             this.板子所有记录查询ToolStripMenuItem.Text = "板子所有记录查询";
             this.板子所有记录查询ToolStripMenuItem.Click += new System.EventHandler(this.板子所有记录查询ToolStripMenuItem_Click);
             // 
-            // 解锁锁定板子ToolStripMenuItem
-            // 
-            this.解锁锁定板子ToolStripMenuItem.Name = "解锁锁定板子ToolStripMenuItem";
-            this.解锁锁定板子ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.解锁锁定板子ToolStripMenuItem.Text = "解锁锁定板子";
-            this.解锁锁定板子ToolStripMenuItem.Click += new System.EventHandler(this.解锁锁定板子ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1029,7 +1029,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统06221-";
+            this.Text = "上海进销存系统06222-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);

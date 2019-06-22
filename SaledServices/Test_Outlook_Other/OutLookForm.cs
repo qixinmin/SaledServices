@@ -221,6 +221,12 @@ namespace SaledServices.Test_Outlook
         private void print_Click(object sender, EventArgs e)
         {
             //从收货表里面把信息拿出来
+            if (this.tracker_bar_textBox.Text.Trim() == "")
+            {
+                MessageBox.Show("追踪条码的内容为空，请检查！");
+                return;
+            }
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
