@@ -1020,7 +1020,7 @@ namespace SaledServices
 
                 if (!exist)//从转换表中查询
                 {
-                    cmd.CommandText = "select custom_serial_no from DeliveredTableTransfer where track_serial_no = '" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    cmd.CommandText = "select custom_serial_no from DeliveredTableTransfer where track_serial_no_transfer = '" + this.track_serial_noTextBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {

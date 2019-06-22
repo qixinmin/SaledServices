@@ -220,12 +220,12 @@ namespace SaledServices.Test_Outlook
 
         private void print_Click(object sender, EventArgs e)
         {
-            if (_8sCodes == "")
+            if (_8sCodes == "" || dpk_status == "")
             {
-                MessageBox.Show("客户料号为空!");
+                MessageBox.Show("客户序号或DPK为空!");
                 return;
             }
-            PrintUtils.print8sCode(_8sCodes);
+            PrintUtils.print8sCode(_8sCodes, dpk_status);
             _8sCodes = ""; 
             this.print.Enabled = false;
         }

@@ -108,7 +108,7 @@ namespace SaledServices
             }
         }
 
-        public static void print8sCode(string _8sCode)
+        public static void print8sCode(string _8sCode, string dpk_status)
         {
             if (labApp == null)
             {
@@ -117,7 +117,12 @@ namespace SaledServices
 
             try
             {
-                string labFileName = @"D:\printLab\BAR11.Lab";
+                string labFileName = @"D:\printLab\win.Lab";
+                if (dpk_status == "NOK")
+                {
+                    labFileName = @"D:\printLab\nok.Lab";
+                }
+
                 if (!File.Exists(labFileName))
                 {
                     MessageBox.Show("沒有找到標簽模板文件：" + labFileName + ",請聯系系統管理員", "溫馨提示");
