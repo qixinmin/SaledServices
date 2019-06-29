@@ -567,6 +567,45 @@ namespace SaledServices
 
             generateExcelToCheck(receiveOrderList, this.addDateTextBox.Text.Trim(), this.custom_machine_typeTextBox.Text.Trim());
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.numTextBox.Text = "";
+            this.vendorTextBox.Text = "";
+            this.prouductTextBox.Text = "";
+            this.mbBriefTextBox.Text = "";
+            this.vendormaterialNoTextBox.Text = "";
+            this.mpnTextBox.Text = "";
+            this.replaceMpnTextBox.Text = "";
+            this.custommaterialNotextBox.Text = "";
+            this.replace_custom_materialNoTextBox.Text = "";
+            this.fruNoTextBox.Text = "";
+            this.replace_fruNoTextBox.Text = "";
+            this.mb_descripeTextBox.Text = "";
+            this.vendor_pch_mpnTextBox.Text = "";
+            this.pcb_brief_describeTextBox.Text = "";
+            this.pcb_describeTextBox.Text = "";
+            this.vendor_vga_mpnTextBox.Text = "";
+            this.vga_brief_describeTextBox.Text = "";
+            this.vga_describeTextBox.Text = "";
+            this.vendor_cpu_mpnTextBox.Text = "";
+            this.cpu_briefTextBox.Text = "";
+            this.cpu_describeTextBox.Text = "";
+            this.dpk_typeTextBox.Text = "";
+            this.dpkpnTextBox.Text = "";
+            this.warranty_periodTextBox.Text = "";
+            this.custom_machine_typeTextBox.Text = "";
+            this.whole_machine_numTextBox.Text = "";
+            this.areaTextBox.Text = "";
+            this.statusTextBox.Text = "";
+            this.cpu_typeTextBox.Text = "";
+            this.cpu_freqTextBox.Text = "";
+
+            this.ecoTextBox.Text = "";
+            this.eolTextBox.Text = "";
+            this.addDateTextBox.Text = "";
+            this.inputUserTextBox.Text = "";
+        }
     }
 
     public class MBMaterialStruct

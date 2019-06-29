@@ -267,6 +267,12 @@
     <Compile Include="additionForm\RepairFaultTypeForm.Designer.cs">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="additionForm\UnlockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\UnlockForm.Designer.cs">
+      <DependentUpon>UnlockForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Export\AllBossExport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -296,6 +302,24 @@
     </Compile>
     <Compile Include="Export\CompalMonthlyExportExcel.Designer.cs">
       <DependentUpon>CompalMonthlyExportExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\TestInfoExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\TestInfoExport.designer.cs">
+      <DependentUpon>TestInfoExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\StoreFruOutExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\StoreFruOutExport.designer.cs">
+      <DependentUpon>StoreFruOutExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\StoreFruInExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\StoreFruInExport.designer.cs">
+      <DependentUpon>StoreFruInExport.cs</DependentUpon>
     </Compile>
     <Compile Include="Export\LBG_RMAExportExcel.cs">
       <SubType>Form</SubType>
@@ -830,6 +854,9 @@
     <EmbeddedResource Include="additionForm\RepairFaultTypeForm.resx">
       <DependentUpon>RepairFaultTypeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\UnlockForm.resx">
+      <DependentUpon>UnlockForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Export\AllBossExport.resx">
       <DependentUpon>AllBossExport.cs</DependentUpon>
     </EmbeddedResource>
@@ -844,6 +871,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\CompalMonthlyExportExcel.resx">
       <DependentUpon>CompalMonthlyExportExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\TestInfoExport.resx">
+      <DependentUpon>TestInfoExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\StoreFruOutExport.resx">
+      <DependentUpon>StoreFruOutExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\StoreFruInExport.resx">
+      <DependentUpon>StoreFruInExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\LBG_RMAExportExcel.resx">
       <DependentUpon>LBG_RMAExportExcel.cs</DependentUpon>

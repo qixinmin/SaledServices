@@ -454,6 +454,56 @@ namespace SaledServices
                         }
                     }
 
+                    //加入判断8s的跟fru或fru的替换料的包含关系
+                    cmd.CommandText = "select fruNo, replace_fruNo  from MBMaterialCompare where  custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
+                    bool existfru = false;
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        string fru = querySdr[0].ToString();
+                        string replacefru = querySdr[1].ToString();
+                        if (fru != null && fru != "" && this.custom_serial_noTextBox.Text.Trim().Contains(fru))
+                        {
+                            existfru = true;
+                            break;
+                        }
+
+                        if (replacefru != null && replacefru != "" && this.custom_serial_noTextBox.Text.Trim().Contains(replacefru))
+                        {
+                            existfru = true;
+                            break;
+                        }
+                    }
+                    querySdr.Close();
+
+                    if (!existfru)
+                    {
+                        this.track_serial_noTextBox.Focus();
+                        this.track_serial_noTextBox.SelectAll();
+                        querySdr.Close();
+                        conn.Close();
+                        MessageBox.Show("8s条码不包含fru与替换fru的内容!");
+                        return;
+                    }
+
+                    //在插入之前再考虑一下是否已经锁定，否则不能还货
+                    cmd.CommandText = "select isLock from need_to_lock where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+
+                    if (querySdr.HasRows)
+                    {
+                        querySdr.Read();
+                        string result = querySdr[0].ToString().Trim();
+                        if (result == "true")
+                        {
+                            MessageBox.Show("此序列号已经锁定，不能走下面的流程！");
+                            querySdr.Close();
+                            conn.Close();
+                            this.returnStore.Enabled = false;
+                            return;
+                        }
+                    }
+
                     //根据料号查询物料对照表的厂商与客户别，看是否与选择的厂商与客户别对应，否则报错
                     cmd.CommandText = "select top 1 vendor,product from MBMaterialCompare where custommaterialNo = '"
                        + this.custommaterialNoTextBox.Text.Trim() + "'";

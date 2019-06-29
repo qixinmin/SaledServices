@@ -110,7 +110,14 @@ namespace SaledServices.Export
 
                 foreach (StoreHouseStatisticsStruct stockcheck in receiveOrderList)
                 {
-                    cmd.CommandText = "select describe,material_type from stock_in_sheet where mpn ='" + stockcheck.mpn.Split('_')[0] + "' and vendor='" + stockcheck.vendor + "'";
+                    if (stockcheck.vendor != null && stockcheck.vendor.Trim() != "")
+                    {
+                        cmd.CommandText = "select describe,material_type from stock_in_sheet where mpn ='" + stockcheck.mpn.Split('_')[0] + "' and vendor='" + stockcheck.vendor + "'";
+                    }
+                    else
+                    {
+                        cmd.CommandText = "select describe,material_type from stock_in_sheet where mpn ='" + stockcheck.mpn.Split('_')[0] + "'";
+                    }
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
@@ -186,38 +193,50 @@ namespace SaledServices.Export
                                 while (querySdr.Read())
                                 {
                                     bgaoutnumber += Int32.Parse(querySdr[0].ToString());
-                                   // break;
+                                }
+                                querySdr.Close();
+                                stockcheck.outnumber = bgaoutnumber + "";
+
+                                //兼容数据库内容
+                                cmd.CommandText = "select out_number from bga_out_stock where mpn like '%" + stockcheck.mpn.Trim() + "_" + stockcheck.vendor.Trim() + "' and input_date between '" + startTime + "' and '" + endTime + "'";
+                                querySdr = cmd.ExecuteReader();
+                                while (querySdr.Read())
+                                {
+                                    bgaoutnumber += Int32.Parse(querySdr[0].ToString());
                                 }
                                 querySdr.Close();
                                 stockcheck.outnumber = bgaoutnumber + "";
                                 break;
                             }
-                        //default://smt/fru,暂时不要smt，不重要
-                            //{
-                                //cmd.CommandText = "select stock_in_num from fru_smt_in_stock where mpn ='" + stockcheck.mpn.Split('_')[0] + "' and input_date between '" + startTime + "' and '" + endTime + "'";
-                                //int bgainnumber = 0;
-                                //querySdr = cmd.ExecuteReader();
-                                //while (querySdr.Read())
-                                //{
-                                //    bgainnumber += Int32.Parse(querySdr[0].ToString());
-                                //    //break;
-                                //}
-                                //querySdr.Close();
-                                //stockcheck.buynumber = bgainnumber + "";
+                        default://smt/fru,暂时不要smt，不重要
+                            {
+                                if (this.houseComboBox.Text.Trim() != "库房6")
+                                {
+                                    cmd.CommandText = "select stock_in_num from fru_smt_in_stock where mpn ='" + stockcheck.mpn.Split('_')[0] + "' and input_date between '" + startTime + "' and '" + endTime + "'";
+                                    int bgainnumber = 0;
+                                    querySdr = cmd.ExecuteReader();
+                                    while (querySdr.Read())
+                                    {
+                                        bgainnumber += Int32.Parse(querySdr[0].ToString());
+                                        //break;
+                                    }
+                                    querySdr.Close();
+                                    stockcheck.buynumber = bgainnumber + "";
 
-                                //cmd.CommandText = "select stock_out_num from fru_smt_out_stock where mpn ='" + stockcheck.mpn.Split('_')[0] + "' and input_date between '" + startTime + "' and '" + endTime + "'";
-                                //int bgaoutnumber = 0;
-                                //querySdr = cmd.ExecuteReader();
-                                //while (querySdr.Read())
-                                //{
-                                //    bgaoutnumber += Int32.Parse(querySdr[0].ToString());
-                                //    //break;
-                                //}
-                                //querySdr.Close();
-                                //stockcheck.outnumber = bgaoutnumber + "";
-
-                                //break;
-                            //}
+                                    cmd.CommandText = "select stock_out_num from fru_smt_out_stock where mpn ='" + stockcheck.mpn.Split('_')[0] + "' and input_date between '" + startTime + "' and '" + endTime + "'";
+                                    int bgaoutnumber = 0;
+                                    querySdr = cmd.ExecuteReader();
+                                    while (querySdr.Read())
+                                    {
+                                        bgaoutnumber += Int32.Parse(querySdr[0].ToString());
+                                        //break;
+                                    }
+                                    querySdr.Close();
+                                    stockcheck.outnumber = bgaoutnumber + "";
+                              
+                                }
+                                break;
+                            }
                     }
                 }
 
