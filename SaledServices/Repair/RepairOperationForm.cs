@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SaledServices.Repair;
+using SaledServices.Test_Outlook;
 
 namespace SaledServices
 {
@@ -65,6 +66,18 @@ namespace SaledServices
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private QueryAllInfoExistForm aIO_RMAExportExcel = null;
+        private void showRepairRecordIfExist(String vendor_serial_no)
+        {
+            if (aIO_RMAExportExcel == null || aIO_RMAExportExcel.IsDisposed)
+            {
+                aIO_RMAExportExcel = new QueryAllInfoExistForm();
+            }
+            aIO_RMAExportExcel.resetInfo(vendor_serial_no);
+            aIO_RMAExportExcel.BringToFront();
+            aIO_RMAExportExcel.Show();
         }
 
         private void track_serial_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -148,6 +161,16 @@ namespace SaledServices
 
                     }
                     querySdr.Close();
+
+                    //查询维修记录，如果有则自动调取之前的记录
+                    cmd.CommandText = "SELECT Id FROM repair_record_table where vendor_serail_no='" + vendor_serial_no.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        showRepairRecordIfExist(vendor_serial_no.Trim());
+                    }
+                    querySdr.Close();
+                    //end
 
                     if (customMaterialNo == "")
                     {

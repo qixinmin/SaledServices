@@ -31,6 +31,19 @@ namespace SaledServices.Test_Outlook
         string cpu_type = "", cpu_freq = "", dpk_type = "", dpkpn = "", mpn = "",eco="";
         bool existBuffer = false, existRepair = false;
         string currentStoreHouse = "";
+
+        private QueryAllInfoExistForm aIO_RMAExportExcel = null;
+        private void showRepairRecordIfExist(String vendor_serial_no)
+        {
+            if (aIO_RMAExportExcel == null || aIO_RMAExportExcel.IsDisposed)
+            {
+                aIO_RMAExportExcel = new QueryAllInfoExistForm();
+            }
+            aIO_RMAExportExcel.resetInfo(vendor_serial_no);
+            aIO_RMAExportExcel.BringToFront();
+            aIO_RMAExportExcel.Show();
+        }
+
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
@@ -89,14 +102,28 @@ namespace SaledServices.Test_Outlook
                     this.bomdownload.Enabled = true;
 
                     currentStoreHouse = "";
-                    cmd.CommandText = "select storehouse from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-
+                    cmd.CommandText = "select storehouse,vendor_serail_no from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    string vendor_serail_no = "";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
-                        currentStoreHouse = querySdr[0].ToString().Trim(); ;
+                        currentStoreHouse = querySdr[0].ToString().Trim();
+                        vendor_serail_no = querySdr[1].ToString().Trim();
                     }
                     querySdr.Close();
+
+                    //查询维修记录，如果有则自动调取之前的记录
+                    if (this.showRepairList.Checked)
+                    {
+                        cmd.CommandText = "SELECT Id FROM repair_record_table where vendor_serail_no='" + vendor_serail_no + "'";
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows)
+                        {
+                            showRepairRecordIfExist(vendor_serail_no);
+                        }
+                        querySdr.Close();
+                    }
+                    //end
 
                     if (currentStoreHouse == "")//从替换表里查询
                     {

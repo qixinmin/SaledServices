@@ -455,7 +455,7 @@ namespace SaledServices
                     }
 
                     //加入判断8s的跟fru或fru的替换料的包含关系
-                    cmd.CommandText = "select fruNo, replace_fruNo  from MBMaterialCompare where  custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
+                    cmd.CommandText = "select fruNo, replace_fruNo  from MBMaterialCompare where  custommaterialNo = '" + this.custommaterialNoTextBox.Text + "'";
                     bool existfru = false;
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
@@ -503,6 +503,7 @@ namespace SaledServices
                             return;
                         }
                     }
+                    querySdr.Close();
 
                     //根据料号查询物料对照表的厂商与客户别，看是否与选择的厂商与客户别对应，否则报错
                     cmd.CommandText = "select top 1 vendor,product from MBMaterialCompare where custommaterialNo = '"

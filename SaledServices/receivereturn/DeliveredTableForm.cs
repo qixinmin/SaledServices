@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using SaledServices.Test_Outlook;
 
 namespace SaledServices
 {
@@ -639,8 +640,31 @@ namespace SaledServices
                         querySdr.Close();
                     }
 
+                    //加入判断此料号是否存在于订单中                    
+                    cmd.CommandText = "select custom_materialNo  from receiveOrder where orderno = '" + this.custom_orderComboBox.Text + "'";
+                    bool existCustom_material_no=false;
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        if(this.custommaterialNoTextBox.Text.Trim().ToUpper().Equals(querySdr[0].ToString().ToUpper().Trim()))
+                        {
+                            existCustom_material_no = true;
+                            break;
+                        }
+                    }
+                    querySdr.Close();
+                    if (existCustom_material_no == false)
+                    {
+                        querySdr.Close();
+                        conn.Close();
+                        clearInputContent();
+                        MessageBox.Show("此客户料号不存在此订单中，请检测是否有错误!");
+                        return;
+                    }
+                    //end
+
                     //加入判断8s的跟fru或fru的替换料的包含关系
-                    cmd.CommandText = "select fruNo, replace_fruNo  from MBMaterialCompare where  custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
+                    cmd.CommandText = "select fruNo, replace_fruNo  from MBMaterialCompare where  custommaterialNo = '" + this.custommaterialNoTextBox.Text + "'";
                     bool existfru=false;
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
@@ -1168,6 +1192,18 @@ namespace SaledServices
             }
         }
 
+        private QueryAllInfoExistForm aIO_RMAExportExcel = null; 
+        private void showRepairRecordIfExist(String vendor_serial_no)
+        {
+            if (aIO_RMAExportExcel == null || aIO_RMAExportExcel.IsDisposed)
+            {
+                aIO_RMAExportExcel = new QueryAllInfoExistForm();
+            }
+            aIO_RMAExportExcel.resetInfo(vendor_serial_no);
+            aIO_RMAExportExcel.BringToFront();
+            aIO_RMAExportExcel.Show();
+        }
+
         private void vendor_serail_noTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == System.Convert.ToChar(13))
@@ -1190,8 +1226,7 @@ namespace SaledServices
                 {
                     MessageBox.Show("包含非字符与数字的字符，请检查！");
                     return;
-                }                
-
+                }               
 
                 //检查客户序号或厂商序号是否已经存在本订单编号里面了，收货表中
                 string vendor = "";
@@ -1236,7 +1271,37 @@ namespace SaledServices
                     {
                         MessageBox.Show("此客户序号已经来过【"+count+"】次，请记录下来");
                     }
-                    
+
+                    //查询是否有CID记录                    
+                    cmd.CommandText = "SELECT DeliveredTable.vendor_serail_no FROM cidRecord INNER JOIN DeliveredTable ON cidRecord.track_serial_no = DeliveredTable.track_serial_no";
+                    querySdr = cmd.ExecuteReader();
+                    bool cidexit = false;
+                    while (querySdr.Read())
+                    {
+                        if (this.vendor_serail_noTextBox.Text.Trim().Equals(querySdr[0].ToString().Trim()))
+                        {
+                            cidexit = true;
+                            break;
+                        }
+                    }
+                    querySdr.Close();
+
+                    if (cidexit)
+                    {
+                        MessageBox.Show("此板子之前存在于CID库中，请记录下来");
+                    }
+                    //end
+
+                    //查询维修记录，如果有则自动调取之前的记录
+                    cmd.CommandText = "SELECT Id FROM repair_record_table where vendor_serail_no='"+this.vendor_serail_noTextBox.Text.Trim()+"'";
+                    querySdr = cmd.ExecuteReader();                   
+                    if(querySdr.HasRows)
+                    {
+                        showRepairRecordIfExist(this.vendor_serail_noTextBox.Text.Trim());
+                    }
+                    querySdr.Close();
+                    //end
+
                     //根据数据库的内容，把内容查找如果，如果存在，则保修期为15个月，否则默认
                     cmd.CommandText = "select Id from limit_gurante where MB_COMPAL_SN = '" + this.vendor_serail_noTextBox.Text + "'";
                     querySdr = cmd.ExecuteReader();

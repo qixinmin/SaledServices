@@ -116,3 +116,8 @@ D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.AIO_RMAExportExcel.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.LBG_RMAExportExcel.resources
 D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.CompalMonthlyExportExcel.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.UnlockForm.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.TestInfoExport.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.StoreFruOutExport.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Export.StoreFruInExport.resources
+D:\维修系统\SaledServices\SaledServices\obj\x86\Release\SaledServices.Test_Outlook.QueryAllInfoExistForm.resources
