@@ -496,5 +496,77 @@ namespace SaledServices
             this.stock_placetextBox.Text = dataGridView2.SelectedCells[2].Value.ToString();
             doRequestUsingMpn();
         }
+
+        private void buttoncheckoldsn_Click(object sender, EventArgs e)
+        {
+            if (oldsntextBox.Text.Trim() == "") {
+                MessageBox.Show("内容为空");
+                return;
+            }
+
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+                    //需要更新库房对应储位的数量 减去 本次出库的数量
+                    //根据mpn查对应的查询
+                    cmd.CommandText = "select track_serial_no from bga_repair_record_table where oldSn='" + this.oldsntextBox.Text.Trim() + "'";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string trackno = "";
+                    while(querySdr.Read())
+                    {
+                        trackno=querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+                    if (trackno == "")
+                    {
+                        MessageBox.Show("此Sn不存在与CPu待还记录中！");
+                        conn.Close();
+                        return;
+                    }
+                    else
+                    {
+                        cmd.CommandText = "select Id from old_cpu_sn_record where oldsn='" + this.oldsntextBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows)
+                        {
+                            MessageBox.Show("此Sn已经存在记录中！");
+                            querySdr.Close();
+                            conn.Close();
+                            return;
+                        }
+                        querySdr.Close();
+
+                        cmd.CommandText = "INSERT INTO old_cpu_sn_record VALUES('" +
+                           trackno + "','" +
+                           this.oldsntextBox.Text.Trim() + "','" +
+                           this.inputerTextBox.Text.Trim() + "','" +
+                           this.input_dateTextBox.Text.Trim() + "')";
+
+                        cmd.ExecuteNonQuery();
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+                this.oldsntextBox.Text = "";
+                MessageBox.Show("存入数据库成功！");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

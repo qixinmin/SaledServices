@@ -1,4 +1,12 @@
 
+/*记录cpu的sn在库房换料的数据*/
+CREATE TABLE old_cpu_sn_record(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+oldsn NVARCHAR(128) NOT NULL, /*订单编号*/
+inputer NVARCHAR(128) NOT NULL, /*操作人*/
+input_date date, /*输入日期*/
+)
 
 /*二次或多次根据条件锁定*/
 CREATE TABLE need_to_lock(

@@ -276,6 +276,15 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
+                    cmd.CommandText = "select top 1 custom_serial_no from cidRecord where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        repairRecord.is_cid = "是";
+                    }
+                  
+                    querySdr.Close();
+
                     //修改最终结果repairRecord.repair_result
                     if (repairRecord.pch == "" && repairRecord.pch_place == ""
                         && repairRecord.vga == "" && repairRecord.vga_place == ""
@@ -352,6 +361,7 @@ namespace SaledServices.Export
             titleList.Add("修复日期 ");
             titleList.Add("修复结果");
             titleList.Add("联想维修站编号");
+            titleList.Add("是否退货");
 
             foreach (RepairRecordStruct repaircheck in repairRecordList)
             {
@@ -429,6 +439,7 @@ namespace SaledServices.Export
                 ct1.Add(Utils.modifyDataFormat(repaircheck.repair_date));
                 ct1.Add(repaircheck.repair_result);
                 ct1.Add(repaircheck.lenovo_maintenance_no);
+                ct1.Add(repaircheck.is_cid);
 
                 ctest1.contentArray = ct1;
                 contentList.Add(ctest1);
@@ -487,6 +498,8 @@ namespace SaledServices.Export
         public string software_update;//软体更新
 
         public string repair_Num;//维修次数
+
+        public string is_cid;
     }
 
     public class SmtRecort

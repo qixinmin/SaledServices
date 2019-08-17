@@ -114,6 +114,7 @@ namespace SaledServices
                 {
                     CompalMonthlyDataStruct temp = new CompalMonthlyDataStruct();
                     temp.tracker_no_receive = querySdr[0].ToString();
+                    temp.TrackNo = temp.tracker_no_receive;
                     temp.RMACaseID = querySdr[1].ToString();
                     temp.Region = "";
                     temp.TPR = "";
@@ -236,6 +237,7 @@ namespace SaledServices
        
             titleList.Add("No");
             titleList.Add("RMACaseID");
+            titleList.Add("TrackNo");
             titleList.Add("Region");
             titleList.Add("TPR");
             titleList.Add("Model");
@@ -261,6 +263,7 @@ namespace SaledServices
                 stockcheck.No =(i++ )+"";
                 ct1.Add(stockcheck.No);              
                 ct1.Add(stockcheck.RMACaseID);
+                ct1.Add(stockcheck.TrackNo);
                 ct1.Add(stockcheck.Region);
                 ct1.Add(stockcheck.TPR);
                 ct1.Add(stockcheck.Model);
@@ -292,6 +295,7 @@ namespace SaledServices
         //FAILURE DESCRIPTIONS-Customer	ERROR CODE	FAILURE DESCRIPTIONS-Compal	PART	LOCATION	CATEGORY	RepairMonth	ShippingDate	ReceivedDate	
         public string No;
         public string RMACaseID;
+        public string TrackNo;
         public string Region;    
         public string TPR;     
         public string Model; 

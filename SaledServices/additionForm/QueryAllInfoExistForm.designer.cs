@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dataGridView_return = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView_repair = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
@@ -43,11 +41,13 @@
             this.vendor_serial_no_textBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.dataGridView_subModify = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dataGridView_return = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_return)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_repair)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_bga)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_subModify)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_return)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -88,30 +88,6 @@
             this.label1.Size = new System.Drawing.Size(63, 14);
             this.label1.TabIndex = 0;
             this.label1.Text = "厂商序号";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(5, 410);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 12);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "还货表";
-            // 
-            // dataGridView_return
-            // 
-            this.dataGridView_return.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridView_return.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView_return.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView_return.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_return.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView_return.Location = new System.Drawing.Point(127, 413);
-            this.dataGridView_return.Name = "dataGridView_return";
-            this.dataGridView_return.RowTemplate.Height = 23;
-            this.dataGridView_return.Size = new System.Drawing.Size(874, 94);
-            this.dataGridView_return.TabIndex = 7;
             // 
             // label4
             // 
@@ -194,6 +170,30 @@
             this.dataGridView_subModify.Size = new System.Drawing.Size(874, 119);
             this.dataGridView_subModify.TabIndex = 7;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(5, 410);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 12);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "还货表";
+            // 
+            // dataGridView_return
+            // 
+            this.dataGridView_return.AllowUserToAddRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridView_return.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView_return.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView_return.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_return.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_return.Location = new System.Drawing.Point(127, 413);
+            this.dataGridView_return.Name = "dataGridView_return";
+            this.dataGridView_return.RowTemplate.Height = 23;
+            this.dataGridView_return.Size = new System.Drawing.Size(874, 94);
+            this.dataGridView_return.TabIndex = 7;
+            // 
             // QueryAllInfoExistForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -205,10 +205,10 @@
             this.Text = "板子所有信息查询";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_return)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_repair)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_bga)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_subModify)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_return)).EndInit();
             this.ResumeLayout(false);
 
         }

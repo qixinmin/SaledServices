@@ -45,7 +45,7 @@ namespace SaledServices.Export
                 cmd.CommandType = CommandType.Text;
 
                 cmd.CommandText = "select track_serial_no,repairer,vendor,product,source,orderno,receivedate,bga_repairer,mb_brief,custom_serial_no," +
-                "vendor_serail_no,mpn,mb_make_date,customFault,bgatype,BGAPN,bga_brief,mbfa1, short_cut,bga_repair_date from bga_repair_record_table where bga_repair_date between '"
+                "vendor_serail_no,mpn,mb_make_date,customFault,bgatype,BGAPN,bga_brief,mbfa1, short_cut,bga_repair_date,oldSn, newSn from bga_repair_record_table where bga_repair_date between '"
                     + startTime + "' and '" + endTime + "' and bga_repair_result='" + this.bgaRepair_resultcomboBox.Text.Trim() + "'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
@@ -72,6 +72,9 @@ namespace SaledServices.Export
                     temp.change_reason = querySdr[17].ToString();
                     temp.shortcut = querySdr[18].ToString();
                     temp.change_date = querySdr[19].ToString();
+
+                    temp.oldSn = querySdr[20].ToString();
+                    temp.newSn = querySdr[21].ToString();
 
                     receiveOrderList.Add(temp);                    
                 }
@@ -106,6 +109,42 @@ namespace SaledServices.Export
                     {
                         queryData = "cpu_describe";
                         condition = "cpu_brief";
+                        if (temp.oldSn != null && temp.oldSn != "")
+                        {
+                            //CPU的采购类别
+                            cmd.CommandText = "select buy_type from bga_in_stock where bgasn='" + temp.oldSn + "'";
+                            querySdr = cmd.ExecuteReader();
+                            string isbgaExist="";
+                            while (querySdr.Read())
+                            {
+                                isbgaExist = querySdr[0].ToString();
+                            }
+                            querySdr.Close();
+
+                            if(isbgaExist != "")
+                            {
+                                temp.cpu_buy_type = isbgaExist;
+                            }else{
+                                temp.cpu_buy_type = "首次更换";
+                            }
+
+                            //
+                            cmd.CommandText = "select Id from old_cpu_sn_record where oldsn='" + temp.oldSn + "'";
+                            querySdr = cmd.ExecuteReader();
+                            if (querySdr.HasRows)
+                            {
+                                temp.cpu_change = "已拆件";
+                            }
+                            else
+                            {
+                                temp.cpu_change = "未拆件";
+                            }
+                            querySdr.Close();
+                        }
+                        else
+                        {
+                            temp.cpu_change = "老SN无记录";
+                        }
                     }
                     else if (temp.bgatype == "PCH")
                     {
@@ -204,12 +243,16 @@ namespace SaledServices.Export
             firstsheet.titleList.Add("BGAPN");
             firstsheet.titleList.Add("BGA描述");
             firstsheet.titleList.Add("BGA简述");
+            firstsheet.titleList.Add("老sn");
+            firstsheet.titleList.Add("新sn");
             				
             firstsheet.titleList.Add("更换原因");
             firstsheet.titleList.Add("短路电压");
             firstsheet.titleList.Add("维修人");
             firstsheet.titleList.Add("更换人");
             firstsheet.titleList.Add("更换日期");
+            firstsheet.titleList.Add("CPU采购类别");
+            firstsheet.titleList.Add("CPU是否更换");
 
             foreach (BgaUsedStruct stockcheck in StockCheckList)
             {
@@ -235,12 +278,16 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.BGA_describe);
 
                 ct1.Add(stockcheck.bga_brief);
+                ct1.Add(stockcheck.oldSn);
+                ct1.Add(stockcheck.newSn);
 
                 ct1.Add(stockcheck.change_reason);
                 ct1.Add(stockcheck.shortcut);
                 ct1.Add(stockcheck.repairer);
                 ct1.Add(stockcheck.bga_repairer);
                 ct1.Add(Utils.modifyDataFormat(stockcheck.change_date));
+                ct1.Add(stockcheck.cpu_buy_type);
+                ct1.Add(stockcheck.cpu_change);
 
                 ctest1.contentArray = ct1;
                 firstsheet.contentList.Add(ctest1);
@@ -319,10 +366,16 @@ namespace SaledServices.Export
         public string BGA_describe;
         public string bga_brief;
 
+        public string oldSn;
+        public string newSn;
+
         public string change_reason;
         public string shortcut;
         public string repairer;
         public string bga_repairer;
         public string change_date;
+
+        public string cpu_buy_type;
+        public string cpu_change;
     }
 }
