@@ -515,16 +515,25 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
-                    //需要更新库房对应储位的数量 减去 本次出库的数量
-                    //根据mpn查对应的查询
-                    cmd.CommandText = "select track_serial_no from bga_repair_record_table where oldSn='" + this.oldsntextBox.Text.Trim() + "'";
+                    //CPU的采购类别
+                    cmd.CommandText = "select buy_type from bga_in_stock where bgasn='" + this.oldsntextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    string trackno = "";
+                    string isbgaExist = "";
+                    while (querySdr.Read())
+                    {
+                        isbgaExist = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = "select track_serial_no from bga_repair_record_table where oldSn='" + this.oldsntextBox.Text.Trim() + "'";
+                     querySdr = cmd.ExecuteReader();
+                    string trackno = "首次更换";
                     while(querySdr.Read())
                     {
                         trackno=querySdr[0].ToString();
                     }
                     querySdr.Close();
+
                     if (trackno == "")
                     {
                         MessageBox.Show("此Sn不存在与CPu待还记录中！");
@@ -537,7 +546,7 @@ namespace SaledServices
                         querySdr = cmd.ExecuteReader();
                         if (querySdr.HasRows)
                         {
-                            MessageBox.Show("此Sn已经存在记录中！");
+                            MessageBox.Show("此Sn已经存在记录中！" + isbgaExist);
                             querySdr.Close();
                             conn.Close();
                             return;
@@ -551,6 +560,8 @@ namespace SaledServices
                            this.input_dateTextBox.Text.Trim() + "')";
 
                         cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("存入数据库成功！" + isbgaExist);
                     }
                     
                 }
@@ -561,7 +572,6 @@ namespace SaledServices
 
                 conn.Close();
                 this.oldsntextBox.Text = "";
-                MessageBox.Show("存入数据库成功！");
             }
             catch (Exception ex)
             {
