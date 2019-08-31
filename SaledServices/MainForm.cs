@@ -1686,5 +1686,21 @@ namespace SaledServices
 
             allForm.Add(unlockForm);
         }
+
+        private SMT_OutSheetForm smtoutform;
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            if (smtoutform == null || smtoutform.IsDisposed)
+            {
+                smtoutform = new SMT_OutSheetForm();
+                smtoutform.MdiParent = this;
+            }
+
+            smtoutform.WindowState = FormWindowState.Maximized;
+            smtoutform.BringToFront();
+            smtoutform.Show();
+
+            allForm.Add(smtoutform);  
+        }
     }
 }

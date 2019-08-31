@@ -101,7 +101,7 @@ namespace SaledServices.Export
                 MessageBox.Show(ex.ToString());
             }
 
-            Utils.createExcel("FRU出货信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
+            Utils.createExcel("FRU_SMT出货信息" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xlsx", titleList, contentList);
         }
     }
 }

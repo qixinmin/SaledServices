@@ -518,7 +518,7 @@ namespace SaledServices
                     //CPU的采购类别
                     cmd.CommandText = "select buy_type from bga_in_stock where bgasn='" + this.oldsntextBox.Text.Trim() + "'";
                     SqlDataReader querySdr = cmd.ExecuteReader();
-                    string isbgaExist = "";
+                    string isbgaExist = "首次更换";
                     while (querySdr.Read())
                     {
                         isbgaExist = querySdr[0].ToString();
@@ -527,7 +527,7 @@ namespace SaledServices
 
                     cmd.CommandText = "select track_serial_no from bga_repair_record_table where oldSn='" + this.oldsntextBox.Text.Trim() + "'";
                      querySdr = cmd.ExecuteReader();
-                    string trackno = "首次更换";
+                    string trackno = "";
                     while(querySdr.Read())
                     {
                         trackno=querySdr[0].ToString();

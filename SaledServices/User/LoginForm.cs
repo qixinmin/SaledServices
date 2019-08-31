@@ -153,6 +153,25 @@ namespace SaledServices
                     
                 }
 
+                if (User.UserSelfForm.super_manager == "True" || User.UserSelfForm.test_all == "True" || User.UserSelfForm.test1 == "True" || User.UserSelfForm.test2 == "True")
+                {
+                    cmd.CommandText = "select COUNT(*) from DPK_table where _status ='未使用'";
+                    querySdr = cmd.ExecuteReader();
+                    string dpkcount = "0";
+                    while (querySdr.Read())
+                    {
+                        dpkcount = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    mConn.Close();
+
+                    if (Int16.Parse(dpkcount) < 2500)
+                    {
+                        MessageBox.Show("DPK未使用的数量已经少于2500了，现在为" + dpkcount);
+                    }
+                }
+
                 mConn.Close();
             }
             catch (Exception ex)
