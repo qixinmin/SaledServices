@@ -402,5 +402,204 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void jiaochaquery_Click(object sender, EventArgs e)
+        {
+            if (mb_briefTextBox.Text.Trim() == "" && this.material_mpnTextBox.Text.Trim() == "" && this.material_describeTextBox.Text.Trim() != "")
+            {
+                MessageBox.Show("输入的内容为空，不能导出");
+                return;
+            }
+
+            List<string> titleList = new List<string>();
+            List<Object> contentList = new List<object>();
+
+            string querycolumnmb_brief = "", quereyContentmb_brief = "";
+
+            if (this.mb_briefTextBox.Text.Trim() != "")
+            {
+                querycolumnmb_brief = "mb_brief";
+                quereyContentmb_brief = this.mb_briefTextBox.Text.Trim();
+            }
+
+            string querycolumnmaterial_mpn = "", quereyContentmaterial_mpn = "";
+
+            if (this.material_mpnTextBox.Text.Trim() != "")
+            {
+                querycolumnmaterial_mpn = "material_mpn";
+                quereyContentmaterial_mpn = this.material_mpnTextBox.Text.Trim();
+            }
+
+            string querycolumnmaterial_describe = "", quereyContentmaterial_describe = "";
+
+            if (this.material_describeTextBox.Text.Trim() != "")
+            {
+                querycolumnmaterial_describe = "material_describe";
+                quereyContentmaterial_describe = this.material_describeTextBox.Text.Trim();
+            }
+
+            string sqlCmd = "select * from LCFC_MBBOM_table ";
+
+            if (querycolumnmb_brief != "")
+            {
+                if (sqlCmd.Contains("where"))
+                {
+                    sqlCmd += " and " + querycolumnmb_brief + " like '%" + quereyContentmb_brief + "%'";
+                }
+                else
+                {
+                    sqlCmd += " where " + querycolumnmb_brief + " like '%" + quereyContentmb_brief + "%'";
+                }
+            }
+
+            if (querycolumnmaterial_mpn != "")
+            {
+                if (sqlCmd.Contains("where"))
+                {
+                    sqlCmd += " and " + querycolumnmaterial_mpn + " like '%" + quereyContentmaterial_mpn + "%'";
+                }
+                else
+                {
+                    sqlCmd += " where " + querycolumnmaterial_mpn + " like '%" + quereyContentmaterial_mpn + "%'";
+                }
+            }
+
+            if (querycolumnmaterial_describe != "")
+            {
+                if (sqlCmd.Contains("where"))
+                {
+                    sqlCmd += " and " + querycolumnmaterial_describe + " like '%" + quereyContentmaterial_describe + "%'";
+                }
+                else
+                {
+                    sqlCmd += " where " + querycolumnmaterial_describe + " like '%" + quereyContentmaterial_describe + "%'";
+                }
+            }
+
+            titleList.Add("ID");
+            titleList.Add("日期");
+            titleList.Add("厂商");
+            titleList.Add("客户别");
+            titleList.Add("MB简称");
+            titleList.Add("MPN");
+            titleList.Add("材料MPN");
+            titleList.Add("料盒位置");
+            titleList.Add("物料描述");
+            titleList.Add("用料数量");
+            titleList.Add("L1");
+            titleList.Add("L2");
+            titleList.Add("L3");
+            titleList.Add("L4");
+            titleList.Add("L5");
+            titleList.Add("L6");
+            titleList.Add("L7");
+            titleList.Add("L8");
+
+            try
+            {
+                List<Lcfc_mbbom> mbbomlist = new List<Lcfc_mbbom>();
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = sqlCmd;
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        Lcfc_mbbom lcfc = new Lcfc_mbbom();
+                        lcfc.id=querySdr[0].ToString();
+                        lcfc.date =querySdr[1].ToString();
+                        lcfc.vendor = querySdr[2].ToString();
+                        lcfc.producet = querySdr[3].ToString();
+                        lcfc.mbbrief =querySdr[4].ToString();
+                        lcfc.mpn = querySdr[5].ToString();
+                        lcfc.materialmpn=querySdr[6].ToString();
+                        lcfc.place=querySdr[7].ToString();;
+                        lcfc.describe=querySdr[8].ToString();;
+                        lcfc.num=querySdr[9].ToString();
+                        lcfc.l1=querySdr[10].ToString();
+                        lcfc.l2=querySdr[11].ToString();
+                        lcfc.l3=querySdr[12].ToString();
+                        lcfc.l4=querySdr[13].ToString();
+                        lcfc.l5=querySdr[14].ToString();
+                        lcfc.l6=querySdr[15].ToString();
+                        lcfc.l7=querySdr[16].ToString();
+                        lcfc.l8=querySdr[17].ToString();
+                        mbbomlist.Add(lcfc);
+                    }
+                    querySdr.Close();
+
+                    foreach(Lcfc_mbbom bom in mbbomlist){
+                        cmd.CommandText = "select Id from LCFC_MBBOM_table where vendor='"+bom.vendor+"' and material_mpn='"+bom.materialmpn+"'";
+                        querySdr = cmd.ExecuteReader();
+                        if(querySdr.HasRows == false)
+                        {
+                             ExportExcelContent ctest1 = new ExportExcelContent();
+                            List<string> ct1 = new List<string>();
+                            ct1.Add(bom.id);
+                            ct1.Add(bom.date);
+                            ct1.Add(bom.vendor);
+                            ct1.Add(bom.producet);
+                            ct1.Add(bom.mbbrief);
+                            ct1.Add(bom.mpn);
+                            ct1.Add(bom.materialmpn);
+                            ct1.Add(bom.place);
+                            ct1.Add(bom.describe);
+                            ct1.Add(bom.num);
+                            ct1.Add(bom.l1);
+                            ct1.Add(bom.l2);
+                            ct1.Add(bom.l3);
+                            ct1.Add(bom.l4);
+                            ct1.Add(bom.l5);
+                            ct1.Add(bom.l6);
+                            ct1.Add(bom.l7);
+                            ct1.Add(bom.l8);
+
+                            ctest1.contentArray = ct1;
+                            contentList.Add(ctest1);
+                        }
+                        querySdr.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+                Utils.createExcel("在LCFC_MBBOM交叉查询不存在的料号" + DateTime.Now.ToString("yyyy-MM-dd").Replace('/', '-') + ".xlsx", titleList, contentList);
+                this.Cursor = Cursors.Default;
+            }
+            catch (Exception ex)
+            {
+                this.Cursor = Cursors.Default;
+                MessageBox.Show(ex.ToString());
+            }
+        }
+    }
+
+    class Lcfc_mbbom {
+        public string id;  //titleList.Add("ID");
+        public string date; //   titleList.Add("日期");
+        public string vendor;//   titleList.Add("厂商");
+        public string producet; //   titleList.Add("客户别");
+        public string mbbrief; //   titleList.Add("MB简称");
+        public string mpn; //   titleList.Add("MPN");
+        public string materialmpn; //   titleList.Add("材料MPN");
+        public string place; //   titleList.Add("料盒位置");
+        public string describe; //   titleList.Add("物料描述");
+        public string num; //   titleList.Add("用料数量");
+        public string l1; //   titleList.Add("L1");
+        public string l2; //   titleList.Add("L2");
+        public string l3; //   titleList.Add("L3");
+        public string l4; //   titleList.Add("L4");
+        public string l5;//   titleList.Add("L5");
+        public string l6; //   titleList.Add("L6");
+        public string l7; //   titleList.Add("L7");
+        public string l8; //   titleList.Add("L8");
     }
 }

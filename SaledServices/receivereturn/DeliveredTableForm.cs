@@ -436,7 +436,7 @@ namespace SaledServices
                 }
                 if (this.vendorTextBox.Text != "宝龙达")
                 {
-                    if (this.productTextBox.Text != "TBG" && this.productTextBox.Text != "DT")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
+                    if (this.productTextBox.Text != "TBG" && this.productTextBox.Text != "DT" && this.productTextBox.Text !="AIO")//在某种客户别下 客户序号包含客户料号的东西，需要主动验证
                     {
                         //需要去掉前面的非0字段
                         string customSerial = this.custommaterialNoTextBox.Text.TrimStart('0');

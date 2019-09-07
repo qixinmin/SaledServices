@@ -79,6 +79,7 @@
             this.出库请求查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.还货请求查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fRUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.fRUSMT入库记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA入库记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA出库记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -136,7 +137,6 @@
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.板子所有记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -574,6 +574,13 @@
             this.fRUToolStripMenuItem.Size = new System.Drawing.Size(297, 32);
             this.fRUToolStripMenuItem.Text = "FRU/SMT入库记录";
             this.fRUToolStripMenuItem.Click += new System.EventHandler(this.fRUToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(297, 32);
+            this.toolStripMenuItem6.Text = "SMT出库";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // fRUSMT入库记录ToolStripMenuItem
             // 
@@ -1019,13 +1026,6 @@
             this.板子所有记录查询ToolStripMenuItem.Text = "板子所有记录查询";
             this.板子所有记录查询ToolStripMenuItem.Click += new System.EventHandler(this.板子所有记录查询ToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(297, 32);
-            this.toolStripMenuItem6.Text = "SMT出库";
-            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1038,7 +1038,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统083101-";
+            this.Text = "上海进销存系统090701-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);

@@ -74,6 +74,7 @@
             this.datetextBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.jiaochaquery = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -504,6 +505,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label18, 6, 2);
             this.tableLayoutPanel3.Controls.Add(this.datetextBox, 7, 2);
             this.tableLayoutPanel3.Controls.Add(this.button1, 6, 4);
+            this.tableLayoutPanel3.Controls.Add(this.jiaochaquery, 7, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
@@ -594,6 +596,17 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1362, 47);
             this.tableLayoutPanel2.TabIndex = 9;
             // 
+            // jiaochaquery
+            // 
+            this.jiaochaquery.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.jiaochaquery.Location = new System.Drawing.Point(1189, 194);
+            this.jiaochaquery.Name = "jiaochaquery";
+            this.jiaochaquery.Size = new System.Drawing.Size(167, 41);
+            this.jiaochaquery.TabIndex = 7;
+            this.jiaochaquery.Text = "交叉查询不存在的料号(颜色)";
+            this.jiaochaquery.UseVisualStyleBackColor = true;
+            this.jiaochaquery.Click += new System.EventHandler(this.jiaochaquery_Click);
+            // 
             // LCFC_MBBOMForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -662,5 +675,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox datetextBox;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button jiaochaquery;
     }
 }
