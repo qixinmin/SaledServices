@@ -935,28 +935,28 @@ namespace SaledServices
                            //  querySdr = cmd.ExecuteReader();
                            
                             //把库房的数量减掉，可以为负数                             
-                            cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox1.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
-                            SqlDataReader  querySdr = cmd.ExecuteReader();
-                            int leftNum = 0;
-                            if (querySdr.HasRows)
-                            {
-                                querySdr.Read();
-                                string currentNumber = querySdr[0].ToString().Trim();                                  
-                                if (currentNumber == "")
-                                {
-                                    leftNum = 0 - Int16.Parse(useNum1.Text.Trim());
-                                }
-                                else
-                                {
-                                    leftNum = Int16.Parse(currentNumber) -Int16.Parse(useNum1.Text.Trim());
-                                }
-                            }
-                            querySdr.Close();
+                            //cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox1.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            //SqlDataReader  querySdr = cmd.ExecuteReader();
+                            //int leftNum = 0;
+                            //if (querySdr.HasRows)
+                            //{
+                            //    querySdr.Read();
+                            //    string currentNumber = querySdr[0].ToString().Trim();                                  
+                            //    if (currentNumber == "")
+                            //    {
+                            //        leftNum = 0 - Int16.Parse(useNum1.Text.Trim());
+                            //    }
+                            //    else
+                            //    {
+                            //        leftNum = Int16.Parse(currentNumber) -Int16.Parse(useNum1.Text.Trim());
+                            //    }
+                            //}
+                            //querySdr.Close();
 
-                            //更新数量
-                            cmd.CommandText = "update store_house set number = '" + leftNum + "' "
-                                + "where mpn='" + material_mpnComboBox1.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
-                            cmd.ExecuteNonQuery();
+                            ////更新数量
+                            //cmd.CommandText = "update store_house set number = '" + leftNum + "' "
+                            //    + "where mpn='" + material_mpnComboBox1.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            //cmd.ExecuteNonQuery();
                         }
 
                         if (actioncomboBox.Text.Trim() != "更换")
@@ -985,28 +985,28 @@ namespace SaledServices
                             //首先判断材料是不是库房存在的材料，如果不是则需要报错                        
                             // querySdr = cmd.ExecuteReader();
                             //把库房的数量减掉，可以为负数                             
-                            cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox2.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
-                            SqlDataReader querySdr = cmd.ExecuteReader();
-                            int leftNum = 0;
-                            if (querySdr.HasRows)
-                            {
-                                querySdr.Read();
-                                string currentNumber = querySdr[0].ToString().Trim();
-                                if (currentNumber == "")
-                                {
-                                    leftNum = 0 - Int16.Parse(useNum2.Text.Trim());
-                                }
-                                else
-                                {
-                                    leftNum = Int16.Parse(currentNumber) - Int16.Parse(useNum2.Text.Trim());
-                                }
-                            }
-                            querySdr.Close();
+                            //cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox2.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            //SqlDataReader querySdr = cmd.ExecuteReader();
+                            //int leftNum = 0;
+                            //if (querySdr.HasRows)
+                            //{
+                            //    querySdr.Read();
+                            //    string currentNumber = querySdr[0].ToString().Trim();
+                            //    if (currentNumber == "")
+                            //    {
+                            //        leftNum = 0 - Int16.Parse(useNum2.Text.Trim());
+                            //    }
+                            //    else
+                            //    {
+                            //        leftNum = Int16.Parse(currentNumber) - Int16.Parse(useNum2.Text.Trim());
+                            //    }
+                            //}
+                            //querySdr.Close();
 
-                            //更新数量
-                            cmd.CommandText = "update store_house set number = '" + leftNum + "' "
-                                + "where mpn='" + material_mpnComboBox2.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
-                            cmd.ExecuteNonQuery();
+                            ////更新数量
+                            //cmd.CommandText = "update store_house set number = '" + leftNum + "' "
+                            //    + "where mpn='" + material_mpnComboBox2.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            //cmd.ExecuteNonQuery();
                         }
 
                         if (actioncomboBox.Text.Trim() != "更换")
@@ -1036,28 +1036,28 @@ namespace SaledServices
                             //首先判断材料是不是库房存在的材料，如果不是则需要报错                        
                              //querySdr = cmd.ExecuteReader();
                             //把库房的数量减掉，可以为负数                             
-                            cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox3.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
-                            SqlDataReader querySdr = cmd.ExecuteReader();
-                            int leftNum = 0;
-                            if (querySdr.HasRows)
-                            {
-                                querySdr.Read();
-                                string currentNumber = querySdr[0].ToString().Trim();
-                                if (currentNumber == "")
-                                {
-                                    leftNum = 0 - Int16.Parse(useNum3.Text.Trim());
-                                }
-                                else
-                                {
-                                    leftNum = Int16.Parse(currentNumber) - Int16.Parse(useNum3.Text.Trim());
-                                }
-                            }
-                            querySdr.Close();
+                            //cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox3.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            //SqlDataReader querySdr = cmd.ExecuteReader();
+                            //int leftNum = 0;
+                            //if (querySdr.HasRows)
+                            //{
+                            //    querySdr.Read();
+                            //    string currentNumber = querySdr[0].ToString().Trim();
+                            //    if (currentNumber == "")
+                            //    {
+                            //        leftNum = 0 - Int16.Parse(useNum3.Text.Trim());
+                            //    }
+                            //    else
+                            //    {
+                            //        leftNum = Int16.Parse(currentNumber) - Int16.Parse(useNum3.Text.Trim());
+                            //    }
+                            //}
+                            //querySdr.Close();
 
-                            //更新数量
-                            cmd.CommandText = "update store_house set number = '" + leftNum + "' "
-                                + "where mpn='" + material_mpnComboBox3.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
-                            cmd.ExecuteNonQuery();
+                            ////更新数量
+                            //cmd.CommandText = "update store_house set number = '" + leftNum + "' "
+                            //    + "where mpn='" + material_mpnComboBox3.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            //cmd.ExecuteNonQuery();
                         }
 
                         if (actioncomboBox.Text.Trim() != "更换")
@@ -1086,28 +1086,28 @@ namespace SaledServices
                             //首先判断材料是不是库房存在的材料，如果不是则需要报错                        
                             // querySdr = cmd.ExecuteReader();
                             //把库房的数量减掉，可以为负数                             
-                            cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox4.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
-                            SqlDataReader querySdr = cmd.ExecuteReader();
-                            int leftNum = 0;
-                            if (querySdr.HasRows)
-                            {
-                                querySdr.Read();
-                                string currentNumber = querySdr[0].ToString().Trim();
-                                if (currentNumber == "")
-                                {
-                                    leftNum = 0 - Int16.Parse(useNum4.Text.Trim());
-                                }
-                                else
-                                {
-                                    leftNum = Int16.Parse(currentNumber) - Int16.Parse(useNum4.Text.Trim());
-                                }
-                            }
-                            querySdr.Close();
+                            //cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox4.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            //SqlDataReader querySdr = cmd.ExecuteReader();
+                            //int leftNum = 0;
+                            //if (querySdr.HasRows)
+                            //{
+                            //    querySdr.Read();
+                            //    string currentNumber = querySdr[0].ToString().Trim();
+                            //    if (currentNumber == "")
+                            //    {
+                            //        leftNum = 0 - Int16.Parse(useNum4.Text.Trim());
+                            //    }
+                            //    else
+                            //    {
+                            //        leftNum = Int16.Parse(currentNumber) - Int16.Parse(useNum4.Text.Trim());
+                            //    }
+                            //}
+                            //querySdr.Close();
 
-                            //更新数量
-                            cmd.CommandText = "update store_house set number = '" + leftNum + "' "
-                                + "where mpn='" + material_mpnComboBox4.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
-                            cmd.ExecuteNonQuery();
+                            ////更新数量
+                            //cmd.CommandText = "update store_house set number = '" + leftNum + "' "
+                            //    + "where mpn='" + material_mpnComboBox4.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            //cmd.ExecuteNonQuery();
                         }
 
                         if (actioncomboBox.Text.Trim() != "更换")
@@ -1136,28 +1136,28 @@ namespace SaledServices
                             //首先判断材料是不是库房存在的材料，如果不是则需要报错                        
                             // querySdr = cmd.ExecuteReader();
                             //把库房的数量减掉，可以为负数                             
-                            cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox5.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
-                            SqlDataReader querySdr = cmd.ExecuteReader();
-                            int leftNum = 0;
-                            if (querySdr.HasRows)
-                            {
-                                querySdr.Read();
-                                string currentNumber = querySdr[0].ToString().Trim();
-                                if (currentNumber == "")
-                                {
-                                    leftNum = 0 - Int16.Parse(useNum5.Text.Trim());
-                                }
-                                else
-                                {
-                                    leftNum = Int16.Parse(currentNumber) - Int16.Parse(useNum5.Text.Trim());
-                                }
-                            }
-                            querySdr.Close();
+                            //cmd.CommandText = "select number from store_house where mpn='" + material_mpnComboBox5.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            //SqlDataReader querySdr = cmd.ExecuteReader();
+                            //int leftNum = 0;
+                            //if (querySdr.HasRows)
+                            //{
+                            //    querySdr.Read();
+                            //    string currentNumber = querySdr[0].ToString().Trim();
+                            //    if (currentNumber == "")
+                            //    {
+                            //        leftNum = 0 - Int16.Parse(useNum5.Text.Trim());
+                            //    }
+                            //    else
+                            //    {
+                            //        leftNum = Int16.Parse(currentNumber) - Int16.Parse(useNum5.Text.Trim());
+                            //    }
+                            //}
+                            //querySdr.Close();
 
-                            //更新数量
-                            cmd.CommandText = "update store_house set number = '" + leftNum + "' "
-                                + "where mpn='" + material_mpnComboBox5.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
-                            cmd.ExecuteNonQuery();
+                            ////更新数量
+                            //cmd.CommandText = "update store_house set number = '" + leftNum + "' "
+                            //    + "where mpn='" + material_mpnComboBox5.Text.Trim().Split(',')[0] + "_" + this.vendorTextBox.Text.Trim() + "'";
+                            //cmd.ExecuteNonQuery();
                         }
 
                         if (actioncomboBox.Text.Trim() != "更换")
