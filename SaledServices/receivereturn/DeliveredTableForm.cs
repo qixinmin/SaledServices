@@ -1226,7 +1226,13 @@ namespace SaledServices
                 {
                     MessageBox.Show("包含非字符与数字的字符，请检查！");
                     return;
-                }               
+                }
+
+                if (this.custom_serial_noTextBox.Text.Trim() == "")
+                {
+                    MessageBox.Show("请先输入客户序号，本次检查需要客户序号资料！");
+                    return;
+                }
 
                 //检查客户序号或厂商序号是否已经存在本订单编号里面了，收货表中
                 string vendor = "";
@@ -1260,17 +1266,34 @@ namespace SaledServices
 
                     cmd.CommandText = "select vendor from " + this.tableName + " where vendor_serail_no = '" + this.vendor_serail_noTextBox.Text+ "'";
                     querySdr = cmd.ExecuteReader();
-                    int count = 0;
+                    int vendorCount = 0;
                     while (querySdr.Read())
                     {
-                        count++;
+                        vendorCount++;
                     }
                     querySdr.Close();
 
-                    if (count !=0)
+                    if (vendorCount != 0)
                     {
-                        MessageBox.Show("此客户序号已经来过【"+count+"】次，请记录下来");
+                        MessageBox.Show("此厂商序号已经来过【" + vendorCount + "】次，请记录下来");
                     }
+
+                    //查询客户序号来过几次，并查询对应的厂商序号是否相同，包含本次的厂商序号对比
+                    cmd.CommandText = "select vendor_serail_no from " + this.tableName + " where custom_serial_no = '" + this.custom_serial_noTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    HashSet<string> set = new HashSet<string>();//去重集合
+                    while (querySdr.Read())
+                    {
+                        set.Add(querySdr[0].ToString().Trim());
+                    }
+                    querySdr.Close();
+                    set.Add(this.vendor_serail_noTextBox.Text.Trim());
+
+                    if (set.Count > 1)
+                    {
+                        MessageBox.Show("此客户料号对应的厂商序号（含本次）不一样，请记录下来");
+                    }
+
 
                     //查询是否有CID记录                    
                     cmd.CommandText = "SELECT DeliveredTable.vendor_serail_no FROM cidRecord INNER JOIN DeliveredTable ON cidRecord.track_serial_no = DeliveredTable.track_serial_no";

@@ -167,6 +167,7 @@ namespace SaledServices.Test_Outlook
                             existBuffer = true;
                             this.buffertest.Enabled = true;
                             this.isburn.Enabled = true;
+                            this.bomdownload.Enabled = true;
                         }
                     }
                     else
@@ -751,6 +752,15 @@ namespace SaledServices.Test_Outlook
                 return;
             }
             runBatFile(@"C:\CHKDPK\", "CHKDPK.BAT");
+
+            //检查文件是否存在
+            string generateFile = "D:\\YMDOS\\LOG\\"+this.tracker_bar_textBox.Text.Trim()+".TXT";
+            if (File.Exists(generateFile) == false)
+            {
+                MessageBox.Show(generateFile + "文件不存在！");
+                return;
+            }
+
             if (isNotNOKCheck())
             {
                 confirmbutton_Click(null, null);

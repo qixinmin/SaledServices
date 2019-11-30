@@ -749,6 +749,15 @@ namespace SaledServices.Test_Outlook
         private void button5_Click(object sender, EventArgs e)
         {
             runBatFile(@"C:\CHKDPK\", "CHKDPK.BAT");
+            
+            //检查文件是否存在
+            string generateFile = "D:\\YMDOS\\LOG\\" + this.tracker_bar_textBox.Text.Trim() + ".TXT";
+            if (File.Exists(generateFile) == false)
+            {
+                MessageBox.Show(generateFile + "文件不存在！");
+                return;
+            }
+
             confirmbutton_Click(null, null);
             this.Close();
         }
