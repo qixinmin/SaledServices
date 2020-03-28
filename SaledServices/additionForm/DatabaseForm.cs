@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Threading;
 
 namespace SaledServices.additionForm
 {
@@ -29,36 +30,44 @@ namespace SaledServices.additionForm
 
         public void button1_Click(object sender, EventArgs e)
         {
-            try
+
+            Thread thread = new Thread(delegate()
             {
-                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
-                mConn.Open();
-
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = mConn;
-                cmd.CommandType = CommandType.Text;
-
-                string path = "D:\\backup\\";
-                if (Directory.Exists(path) == false)
+                try
                 {
-                    Directory.CreateDirectory(path);
+                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                    mConn.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = mConn;
+                    cmd.CommandTimeout = 5*60;//5分钟超时设置，修改默认30s
+                    cmd.CommandType = CommandType.Text;
+
+                    string path = "D:\\backup\\";
+                    if (Directory.Exists(path) == false)
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+
+                    string filename = path + DateTime.Now.ToString("yyyyMMddHHmmss") + ".bak";
+
+                    cmd.CommandText = "BACKUP DATABASE  SaledService TO DISK = '" + filename + "'";
+                    cmd.ExecuteNonQuery();
+                    mConn.Close();
+
+                    if (isShow)
+                    {
+                        MessageBox.Show("备份成功到服务器的 " + filename);
+                    }
                 }
-
-                string filename = path + DateTime.Now.ToString("yyyyMMddHHmmss") + ".bak";
-
-                cmd.CommandText = "BACKUP DATABASE  SaledService TO DISK = '" + filename + "'";
-                cmd.ExecuteNonQuery();
-                mConn.Close();
-
-                if (isShow)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("备份成功到服务器的 " + filename);
+                    MessageBox.Show(ex.ToString());
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            });
+
+            thread.Start();
+            
         }
     }
 }

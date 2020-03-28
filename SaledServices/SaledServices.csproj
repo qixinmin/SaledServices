@@ -231,6 +231,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="additionForm\QueryAllInfoFormForRepair.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\QueryAllInfoFormForRepair.designer.cs">
+      <DependentUpon>QueryAllInfoFormForRepair.cs</DependentUpon>
+    </Compile>
     <Compile Include="additionForm\QueryAllInfoExistForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -848,6 +854,9 @@
     <Compile Include="additionForm\VendorForm.Designer.cs">
       <DependentUpon>VendorForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="additionForm\QueryAllInfoFormForRepair.resx">
+      <DependentUpon>QueryAllInfoFormForRepair.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="additionForm\QueryAllInfoExistForm.resx">
       <DependentUpon>QueryAllInfoExistForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -1702,5 +1702,22 @@ namespace SaledServices
 
             allForm.Add(smtoutform);  
         }
+
+        private QueryAllInfoFormForRepair queryAllInfoFormForRepair; 
+        private void 维修记录专用查询ToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (queryAllInfoFormForRepair == null || queryAllInfoFormForRepair.IsDisposed)
+            {
+                queryAllInfoFormForRepair = new QueryAllInfoFormForRepair();
+                queryAllInfoFormForRepair.MdiParent = this;
+            }
+
+            queryAllInfoFormForRepair.WindowState = FormWindowState.Maximized;
+            queryAllInfoFormForRepair.BringToFront();
+            queryAllInfoFormForRepair.Show();
+
+            allForm.Add(queryAllInfoFormForRepair);
+        }
+
     }
 }

@@ -137,6 +137,7 @@
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.板子所有记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.维修记录专用查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -386,6 +387,7 @@
             this.toolStripMenuItem2,
             this.mB报废判定ToolStripMenuItem,
             this.bGA待料输入ToolStripMenuItem,
+            this.维修记录专用查询ToolStripMenuItem,
             this.二返报表格式ToolStripMenuItem});
             this.维修ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.维修ToolStripMenuItem.Name = "维修ToolStripMenuItem";
@@ -1026,6 +1028,13 @@
             this.板子所有记录查询ToolStripMenuItem.Text = "板子所有记录查询";
             this.板子所有记录查询ToolStripMenuItem.Click += new System.EventHandler(this.板子所有记录查询ToolStripMenuItem_Click);
             // 
+            // 维修记录专用查询ToolStripMenuItem
+            // 
+            this.维修记录专用查询ToolStripMenuItem.Name = "维修记录专用查询ToolStripMenuItem";
+            this.维修记录专用查询ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.维修记录专用查询ToolStripMenuItem.Text = "维修记录专用查询";
+            this.维修记录专用查询ToolStripMenuItem.Click += new System.EventHandler(this.维修记录专用查询ToolStripMenuItem_Click_1);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1038,7 +1047,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统113001-";
+            this.Text = "上海进销存系统032702-";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1159,6 +1168,7 @@
         private System.Windows.Forms.ToolStripMenuItem 测试报表导出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 解锁锁定板子ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem 维修记录专用查询ToolStripMenuItem;
     }
 }
 
