@@ -238,6 +238,28 @@ namespace SaledServices
 
     public class Utils
     {
+        public static  bool existAndCopyToServer(String trackNo, string station)
+        {
+            string fileName = trackNo + ".txt";
+            String filePath = @"D:\YMDOS\LOG\" + fileName;
+            if (File.Exists(filePath) == false)
+            {
+                return false;
+            }
+
+            string fileDestName = trackNo + "_" + station + ".txt";
+            try
+            {
+                File.Copy(filePath, @"\\192.168.5.222\ymdos_backup\" + fileDestName,true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("文件远程copy失败， 请检查网络后重试！");
+                return false;
+            }
+
+            return true;
+        }
 
         public static string getFirstDayOfMonth(DateTime current)
         {

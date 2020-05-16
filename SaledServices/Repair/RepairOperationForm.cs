@@ -760,6 +760,21 @@ namespace SaledServices
                     MessageBox.Show("必须输入的框中有空值!");
                     return;
                 }
+
+                bool isFANeeded = false;
+                if (source_txt.Equals("DT工厂_IQC")
+                    || source_txt.Equals("IQC_采购")
+                    || source_txt.Equals("RMA_DOA")
+                   || source_txt.Equals("RMA_IQC"))
+                {
+                    isFANeeded = true;
+                }
+
+                if (isFANeeded && mbfa1rich_txt.Equals(""))
+                {
+                    MessageBox.Show("FA分析中必须要有值!");
+                    return;
+                }
             }
 
             try
@@ -1214,6 +1229,10 @@ namespace SaledServices
                     //更新维修站别
                     cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                                + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+                 "','维修','" + repairer_txt + "',GETDATE()')";
                     cmd.ExecuteNonQuery();
 
                 }

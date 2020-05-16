@@ -1719,5 +1719,38 @@ namespace SaledServices
             allForm.Add(queryAllInfoFormForRepair);
         }
 
+        private TestLogQueryForm testLogQueryForm; 
+        private void 测试的LOG记录ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (testLogQueryForm == null || testLogQueryForm.IsDisposed)
+            {
+                testLogQueryForm = new TestLogQueryForm();
+                testLogQueryForm.MdiParent = this;
+            }
+
+            testLogQueryForm.WindowState = FormWindowState.Maximized;
+            testLogQueryForm.BringToFront();
+            testLogQueryForm.Show();
+
+            allForm.Add(testLogQueryForm);
+        }
+
+        private PrintHistoryExport printHistoryExport; 
+        private void 导出打印记录ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (printHistoryExport == null || printHistoryExport.IsDisposed)
+            {
+                printHistoryExport = new PrintHistoryExport();
+                printHistoryExport.MdiParent = this;
+            }
+
+            printHistoryExport.WindowState = FormWindowState.Maximized;
+            printHistoryExport.BringToFront();
+            printHistoryExport.Show();
+
+            allForm.Add(printHistoryExport);
+        }
+
     }
 }

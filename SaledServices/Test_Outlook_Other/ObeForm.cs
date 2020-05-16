@@ -145,6 +145,10 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "update stationInformation set station = 'Obe', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+            "','Obe','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {

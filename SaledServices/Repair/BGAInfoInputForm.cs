@@ -622,6 +622,10 @@ namespace SaledServices
                                       + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
 
                         cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+            "','BGA待修','" + repairer_txt + "',GETDATE())";
+                        cmd.ExecuteNonQuery();
                     }
                 }
                 else

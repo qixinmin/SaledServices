@@ -307,7 +307,6 @@
             this.mb_make_dateTextBox.Location = new System.Drawing.Point(1122, 7);
             this.mb_make_dateTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mb_make_dateTextBox.Name = "mb_make_dateTextBox";
-            this.mb_make_dateTextBox.ReadOnly = true;
             this.mb_make_dateTextBox.Size = new System.Drawing.Size(217, 26);
             this.mb_make_dateTextBox.TabIndex = 0;
             // 

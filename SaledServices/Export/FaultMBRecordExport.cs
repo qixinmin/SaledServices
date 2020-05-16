@@ -90,11 +90,11 @@ namespace SaledServices.Export
                         temp.fault_describe = querySdr[0].ToString();
                         temp.fault_place = querySdr[1].ToString();
 
-                        temp.fault_reason = querySdr[0].ToString();
-                        temp.confirmer = querySdr[1].ToString();
-                        temp.confirm_date = querySdr[0].ToString();
-                        temp.pcbzhouqi = querySdr[1].ToString();
-                        temp.pcbtype = querySdr[0].ToString();
+                        temp.fault_reason = querySdr[2].ToString();
+                        temp.confirmer = querySdr[3].ToString();
+                        temp.confirm_date = querySdr[4].ToString();
+                        temp.pcbzhouqi = querySdr[5].ToString();
+                        temp.pcbtype = querySdr[6].ToString();
                         break;
                     }
                     querySdr.Close();

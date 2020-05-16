@@ -318,11 +318,17 @@ namespace SaledServices
                               + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
 
+                   
+
                     //如果是 更换OK待测量, 此时查询是否在待料表中存在此序列号，如果存在，则把相应地状态改为1
                     if (this.bgaRepair_resultcomboBox.Text.Trim() == "更换OK待测量")
                     {
                         cmd.CommandText = "update bga_wait_material_record_table set status = '1'"
                              + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "' and bgatype='" + bgatype_txt + "'";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+           "','BGA更换OK待测量','" + bgarepairer_txt + "',GETDATE())";
                         cmd.ExecuteNonQuery();
                     }
                 }

@@ -1,4 +1,13 @@
 
+/*记录打印8s的数据*/
+CREATE TABLE print_8s_record(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL, /*跟踪条码*/
+_8sCode NVARCHAR(128) NOT NULL, /*8s*/
+inputer NVARCHAR(128) NOT NULL, /*操作人*/
+input_date date, /*输入日期*/
+)
+
 /*记录cpu的sn在库房换料的数据*/
 CREATE TABLE old_cpu_sn_record(
 Id INT PRIMARY KEY IDENTITY, 

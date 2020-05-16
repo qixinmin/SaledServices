@@ -164,6 +164,10 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "update stationInformation set station = '外观', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+             "','外观','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {
@@ -253,6 +257,18 @@ namespace SaledServices.Test_Outlook
                         tempdpkstatus = querySdr[4].ToString();
                     }
                     querySdr.Close();
+
+                    cmd.CommandText = "select Id from print_8s_record where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        MessageBox.Show("此条形码已经打印过，可以继续");
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = "insert into print_8s_record  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+            "','"+temp8s+"','" + this.testerTextBox.Text.Trim() + "','" + this.testdatetextBox.Text.Trim() + "')";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {

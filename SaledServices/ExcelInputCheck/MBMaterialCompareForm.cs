@@ -40,6 +40,11 @@ namespace SaledServices
 
         private void modify_Click(object sender, EventArgs e)
         {
+            if (checkMessage("确定要修改吗?") == false)
+            {
+                return;
+            }  
+
             DataTable dt = ds.Tables[tableName];
             sda.FillSchema(dt, SchemaType.Mapped);
             DataRow dr = dt.Rows.Find(this.numTextBox.Text.Trim());
@@ -80,6 +85,13 @@ namespace SaledServices
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
+
+            MessageBox.Show("修改成功！");
+        }
+
+        private bool checkMessage(String msg)
+        {
+            return (MessageBox.Show(msg, "确认", MessageBoxButtons.OKCancel) == DialogResult.OK);
         }
 
         private void add_Click(object sender, EventArgs e)
@@ -89,6 +101,11 @@ namespace SaledServices
                 MessageBox.Show("客户编号为空!");
                 return;
             }
+
+            if (checkMessage("确定要新增吗?") == false)
+            {
+                return;
+            }          
 
             try
             {
@@ -140,6 +157,8 @@ namespace SaledServices
                 else
                 {
                     MessageBox.Show("SaledService is not opened");
+                    conn.Close();
+                    return;
                 }
 
                 conn.Close();
@@ -147,7 +166,9 @@ namespace SaledServices
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+                return;
             }
+            MessageBox.Show("新增成功！");
         }
 
         private void delete_Click(object sender, EventArgs e)

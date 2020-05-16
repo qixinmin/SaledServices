@@ -34,6 +34,12 @@ namespace SaledServices.Test_Outlook
 
                 try
                 {
+                    //检查文件是否存在
+                    if (Utils.existAndCopyToServer(this.tracker_bar_textBox.Text.Trim(), "test2") == false)
+                    {
+                        MessageBox.Show("追踪条码的Log内容为空，请检查！");
+                        return;
+                    }             
 
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                     mConn.Open();
@@ -118,6 +124,10 @@ namespace SaledServices.Test_Outlook
 
                     cmd.CommandText = "update stationInformation set station = 'Test2', updateDate =GETDATE()  "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+               "','Test2','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
                 }
                 else

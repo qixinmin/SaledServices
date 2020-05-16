@@ -607,6 +607,10 @@ namespace SaledServices
                         cmd.CommandText = "update stationInformation set station = 'return', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                              + "where track_serial_no = '" + this.track_serial_noTextBox.Text.Trim() + "'";
                         cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+            "','还货','" + this.inputUserTextBox.Text.Trim() + "',GETDATE())";
+                        cmd.ExecuteNonQuery();
                         
                         //dataGridViewToReturn里面的数据要更新
                         doQueryAfterSelection();

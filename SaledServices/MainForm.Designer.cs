@@ -50,6 +50,7 @@
             this.mB转换ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.库房料转移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.解锁锁定板子ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.测试的LOG记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +64,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.mB报废判定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA待料输入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.维修记录专用查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.二返报表格式ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA维修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -137,7 +139,7 @@
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.板子所有记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.维修记录专用查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.导出打印记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -218,7 +220,9 @@
             this.数据库备份ToolStripMenuItem,
             this.mB转换ToolStripMenuItem,
             this.库房料转移ToolStripMenuItem,
-            this.解锁锁定板子ToolStripMenuItem});
+            this.解锁锁定板子ToolStripMenuItem,
+            this.测试的LOG记录ToolStripMenuItem,
+            this.导出打印记录ToolStripMenuItem});
             this.FunctionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.FunctionMenuItem.Name = "FunctionMenuItem";
             this.FunctionMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -329,6 +333,13 @@
             this.解锁锁定板子ToolStripMenuItem.Text = "解锁锁定板子";
             this.解锁锁定板子ToolStripMenuItem.Click += new System.EventHandler(this.解锁锁定板子ToolStripMenuItem_Click);
             // 
+            // 测试的LOG记录ToolStripMenuItem
+            // 
+            this.测试的LOG记录ToolStripMenuItem.Name = "测试的LOG记录ToolStripMenuItem";
+            this.测试的LOG记录ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.测试的LOG记录ToolStripMenuItem.Text = "测试的LOG记录";
+            this.测试的LOG记录ToolStripMenuItem.Click += new System.EventHandler(this.测试的LOG记录ToolStripMenuItem_Click);
+            // 
             // receiveReturnStoreMenuItem
             // 
             this.receiveReturnStoreMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -435,6 +446,13 @@
             this.bGA待料输入ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
             this.bGA待料输入ToolStripMenuItem.Text = "BGA待料输入";
             this.bGA待料输入ToolStripMenuItem.Click += new System.EventHandler(this.bGA待料输入ToolStripMenuItem_Click);
+            // 
+            // 维修记录专用查询ToolStripMenuItem
+            // 
+            this.维修记录专用查询ToolStripMenuItem.Name = "维修记录专用查询ToolStripMenuItem";
+            this.维修记录专用查询ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.维修记录专用查询ToolStripMenuItem.Text = "维修记录专用查询";
+            this.维修记录专用查询ToolStripMenuItem.Click += new System.EventHandler(this.维修记录专用查询ToolStripMenuItem_Click_1);
             // 
             // 二返报表格式ToolStripMenuItem
             // 
@@ -1028,12 +1046,12 @@
             this.板子所有记录查询ToolStripMenuItem.Text = "板子所有记录查询";
             this.板子所有记录查询ToolStripMenuItem.Click += new System.EventHandler(this.板子所有记录查询ToolStripMenuItem_Click);
             // 
-            // 维修记录专用查询ToolStripMenuItem
+            // 导出打印记录ToolStripMenuItem
             // 
-            this.维修记录专用查询ToolStripMenuItem.Name = "维修记录专用查询ToolStripMenuItem";
-            this.维修记录专用查询ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
-            this.维修记录专用查询ToolStripMenuItem.Text = "维修记录专用查询";
-            this.维修记录专用查询ToolStripMenuItem.Click += new System.EventHandler(this.维修记录专用查询ToolStripMenuItem_Click_1);
+            this.导出打印记录ToolStripMenuItem.Name = "导出打印记录ToolStripMenuItem";
+            this.导出打印记录ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.导出打印记录ToolStripMenuItem.Text = "导出打印记录";
+            this.导出打印记录ToolStripMenuItem.Click += new System.EventHandler(this.导出打印记录ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -1047,7 +1065,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统032702-";
+            this.Text = "上海进销存系统050701-生命周期";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1169,6 +1187,8 @@
         private System.Windows.Forms.ToolStripMenuItem 解锁锁定板子ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem 维修记录专用查询ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 测试的LOG记录ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 导出打印记录ToolStripMenuItem;
     }
 }
 

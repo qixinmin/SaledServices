@@ -379,7 +379,11 @@ namespace SaledServices
                         +""//新家状态字段
                         + "')";
 
-                    cmd.ExecuteNonQuery();                    
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+          "','BGA待料','" + repairer_txt + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {

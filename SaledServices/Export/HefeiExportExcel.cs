@@ -188,7 +188,11 @@ namespace SaledServices
                     temp.SHIP_BACK_DATE = querySdr[11].ToString();//收货日期
                     temp.SVC_RECEIVE_DATE = querySdr[11].ToString();//同一天
                     temp.SERVICE_TYPE = (querySdr[12].ToString() == "保内" ? "IW" : "OOW");
-                    temp.INCOMING_INSPECTION = (querySdr[13].ToString() == "良品"? "IW":"CID");
+                    temp.INCOMING_INSPECTION = (querySdr[13].ToString() == "良品" ? "IW" : "CID");
+                    if (temp.INCOMING_INSPECTION == "CID")
+                    {
+                        temp.SHIPPING_SN = temp.SHIPPING_SN+","+temp.PRODUCT_SN;
+                    }
                     temp.LINE_INPUT_DATE = querySdr[11].ToString();
                     temp.REPAIR_START_DATE = querySdr[11].ToString();
                     temp.PACKING_DATE = querySdr[14].ToString();//还货日期

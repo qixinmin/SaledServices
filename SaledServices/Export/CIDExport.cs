@@ -42,7 +42,7 @@ namespace SaledServices.Export
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select track_serial_no,vendor,product,custom_order,custommaterialNo,custom_serial_no,mb_brief, mpn,order_receive_date,custom_fault,custom_res_type,customResponsibility,short_cut,inputdate from cidRecord where inputdate between '" + startTime + "' and '" + endTime + "'";
+                cmd.CommandText = "select track_serial_no,vendor,product,custom_order,custommaterialNo,custom_serial_no,mb_brief, mpn,order_receive_date,custom_fault,custom_res_type,customResponsibility,short_cut,inputdate,inputuser from cidRecord where inputdate between '" + startTime + "' and '" + endTime + "'";
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -62,6 +62,7 @@ namespace SaledServices.Export
                     temp.customResponsibility= querySdr[11].ToString();
                     temp.short_cut = querySdr[12].ToString();
                     temp.inputdate = querySdr[13].ToString();
+                    temp.inputer = querySdr[14].ToString();
 
                     receiveOrderList.Add(temp);                  
                 }
@@ -69,13 +70,14 @@ namespace SaledServices.Export
 
                 foreach (CidStruct temp in receiveOrderList)
                 {
-                    cmd.CommandText = "select lenovo_maintenance_no,lenovo_custom_service_no,custom_fault from DeliveredTable where track_serial_no='" + temp.track_serial_no + "'";
+                    cmd.CommandText = "select lenovo_maintenance_no,lenovo_custom_service_no,custom_fault,storehouse from DeliveredTable where track_serial_no='" + temp.track_serial_no + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {                        
                         temp.lenovo_maintenance_no = querySdr[0].ToString();
                         temp.lenovo_custom_service_no = querySdr[1].ToString();
                         temp.custom_fault = querySdr[2].ToString();
+                        temp.storehouse = querySdr[3].ToString();
                     }
                     querySdr.Close();
                 }
@@ -99,6 +101,7 @@ namespace SaledServices.Export
             titleList.Add("跟踪条码");
             titleList.Add("厂商");
             titleList.Add("客户别");
+            titleList.Add("库别");
             titleList.Add("订单编号");
             titleList.Add("客户料号");
             titleList.Add("客户序号");
@@ -110,6 +113,7 @@ namespace SaledServices.Export
             titleList.Add("客责描述");
             titleList.Add("短路电压");
             titleList.Add("录入日期");
+            titleList.Add("录入人");
 
             titleList.Add("联想维修站编号");
             titleList.Add("联想客服序号");
@@ -121,6 +125,7 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.track_serial_no);
                 ct1.Add(stockcheck.vendor);
                 ct1.Add(stockcheck.product);
+                ct1.Add(stockcheck.storehouse);
                 ct1.Add(stockcheck.custom_order);
                 ct1.Add(stockcheck.custommaterialNo);
                 ct1.Add(stockcheck.custom_serial_no);
@@ -133,6 +138,7 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.customResponsibility);
                 ct1.Add(stockcheck.short_cut);
                 ct1.Add(stockcheck.inputdate);
+                ct1.Add(stockcheck.inputer);
 
                 ct1.Add(stockcheck.lenovo_maintenance_no);
                 ct1.Add(stockcheck.lenovo_custom_service_no);
@@ -151,6 +157,7 @@ namespace SaledServices.Export
         public string track_serial_no;
         public string vendor;
         public string product;
+        public string storehouse;
         public string custom_order;
         public string custommaterialNo;
         public string custom_serial_no;
@@ -162,6 +169,7 @@ namespace SaledServices.Export
         public string customResponsibility;
         public string short_cut;
         public string inputdate;
+        public string inputer;
         public string lenovo_maintenance_no;
         public string lenovo_custom_service_no;
     }

@@ -231,6 +231,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="additionForm\TestLogQueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\TestLogQueryForm.Designer.cs">
+      <DependentUpon>TestLogQueryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="additionForm\QueryAllInfoFormForRepair.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -314,6 +320,18 @@
     </Compile>
     <Compile Include="Export\CompalMonthlyExportExcel.Designer.cs">
       <DependentUpon>CompalMonthlyExportExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\DPKExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\DPKExport.designer.cs">
+      <DependentUpon>DPKExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\PrintHistoryExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\PrintHistoryExport.designer.cs">
+      <DependentUpon>PrintHistoryExport.cs</DependentUpon>
     </Compile>
     <Compile Include="Export\TestInfoExport.cs">
       <SubType>Form</SubType>
@@ -416,12 +434,6 @@
     </Compile>
     <Compile Include="Export\RMAExportExcel.Designer.cs">
       <DependentUpon>RMAExportExcel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Export\DPKExport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Export\DPKExport.designer.cs">
-      <DependentUpon>DPKExport.cs</DependentUpon>
     </Compile>
     <Compile Include="Export\StoreHouseStatisticsExport.cs">
       <SubType>Form</SubType>
@@ -854,6 +866,9 @@
     <Compile Include="additionForm\VendorForm.Designer.cs">
       <DependentUpon>VendorForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="additionForm\TestLogQueryForm.resx">
+      <DependentUpon>TestLogQueryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="additionForm\QueryAllInfoFormForRepair.resx">
       <DependentUpon>QueryAllInfoFormForRepair.cs</DependentUpon>
     </EmbeddedResource>
@@ -895,6 +910,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\CompalMonthlyExportExcel.resx">
       <DependentUpon>CompalMonthlyExportExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\DPKExport.resx">
+      <DependentUpon>DPKExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\PrintHistoryExport.resx">
+      <DependentUpon>PrintHistoryExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\TestInfoExport.resx">
       <DependentUpon>TestInfoExport.cs</DependentUpon>
@@ -946,9 +967,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\RMAExportExcel.resx">
       <DependentUpon>RMAExportExcel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Export\DPKExport.resx">
-      <DependentUpon>DPKExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\StoreHouseStatisticsExport.resx">
       <DependentUpon>StoreHouseStatisticsExport.cs</DependentUpon>

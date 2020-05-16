@@ -589,8 +589,8 @@ namespace SaledServices
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("客户料号里面的日期规则不对!");
-                    this.add.Enabled = false;
+                    MessageBox.Show("客户料号里面的日期规则不对! 手動修改");
+                   // this.add.Enabled = false;
                     return;
                 }
 
@@ -775,9 +775,14 @@ namespace SaledServices
                         + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "')";
                     cmd.ExecuteNonQuery();
 
-                    conn.Close();
+                
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+                   "','收货','" + this.inputUserTextBox.Text.Trim() + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
 
                     MessageBox.Show("收货成功！");
+
+                    conn.Close();
 
                     clearInputContent();
                     doQueryAfterSelection();

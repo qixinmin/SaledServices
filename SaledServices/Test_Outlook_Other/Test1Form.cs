@@ -24,6 +24,7 @@ namespace SaledServices.Test_Outlook
             testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             this.tracker_bar_textBox.Focus();
         }
+
         string tempKeySerial="";
         string track_serial_no = "",product;
         string customMaterialNo = "", vendor_serail_no = "", mac = "", uuid = "", custom_serial_no = "", mb_brief = "";
@@ -57,6 +58,14 @@ namespace SaledServices.Test_Outlook
 
                 try
                 {
+
+                    //检查文件是否存在
+                    if (Utils.existAndCopyToServer(this.tracker_bar_textBox.Text.Trim(), "test1") == false)
+                    {
+                        MessageBox.Show("追踪条码的Log内容为空，请检查！");
+                        return;
+                    }                   
+
                     //先删除已经存在的三个文件,后面再生成
                     Utils.deleteFile("D:\\fru\\", "BOM.bat");
                     Utils.deleteFile("D:\\fru\\", "BOM.NSH");
@@ -286,7 +295,7 @@ namespace SaledServices.Test_Outlook
                                 if (dpk_type != "NOK" && dpkpn != "")//此时需要查找导入的dpk表格，查找对应的KEYI KEYSERIAL
                                 {
                                     //首先判断这个板子有没有来过，若来过则重新拿号给他，否则去新的
-                                    cmd.CommandText = "select burn_date,KEYID,KEYSERIAL from DPK_table where custom_serial_no='" + custom_serial_no + "'";
+                                    cmd.CommandText = "select top 1 burn_date,KEYID,KEYSERIAL from DPK_table where custom_serial_no='" + custom_serial_no + "' order by burn_date desc";
                                     querySdr = cmd.ExecuteReader();
                                     string burn_date = "";                                    
                                     while (querySdr.Read())
@@ -294,6 +303,7 @@ namespace SaledServices.Test_Outlook
                                         burn_date = querySdr[0].ToString();
                                         KEYID = querySdr[1].ToString();
                                         KEYSERIAL = querySdr[2].ToString();
+                                        break;
                                     }
                                     querySdr.Close();
 
@@ -498,13 +508,19 @@ namespace SaledServices.Test_Outlook
                         }
                         querySdr.Close();
                     }
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                "','Test1','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close();
                 }
                 else
                 {
                     MessageBox.Show("SaledService is not opened");
                 }
 
-                conn.Close();
+               
                 MessageBox.Show("插入测试1数据OK");
             }
             catch (Exception ex)
