@@ -1147,6 +1147,58 @@ namespace SaledServices
 
         public void importMbCheck(string sheetName, string tableName)
         {
+            Microsoft.Office.Interop.Excel.Application app;
+            Microsoft.Office.Interop.Excel.Workbooks wbs;
+            Microsoft.Office.Interop.Excel.Workbook wb;
+
+            app = new Microsoft.Office.Interop.Excel.Application();
+            app.DisplayAlerts = false;
+            wbs = app.Workbooks;
+            wb = wbs.Add(filePath.Text);            
+            
+            wb = wbs.Open(filePath.Text, 0, false, 5, string.Empty, string.Empty, 
+                false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, 
+                string.Empty, true, false, 0, true, 1, 0);
+
+                Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
+                int rowLength = ws.UsedRange.Rows.Count;
+                int columnLength = ws.UsedRange.Columns.Count;
+
+            if (checkIsNullCell(ws, rowLength, columnLength))
+            {
+                MessageBox.Show("主板拦截中有空值，请确认后在上传");
+                //关闭excel应用
+                try
+                {
+                    wbs.Close();
+                    app.Quit();
+                    IntPtr intptr = new IntPtr(app.Hwnd);
+                    int id;
+                    GetWindowThreadProcessId(intptr, out id);
+                    var p = Process.GetProcessById(id);
+                    //if (p != null)
+                    p.Kill();
+                }
+                catch (Exception ex)
+                { }
+                this.importButton.Enabled = true;
+                return;
+            }
+            //关闭excel应用
+            try
+            {
+                wbs.Close();
+                app.Quit();
+                IntPtr intptr = new IntPtr(app.Hwnd);
+                int id;
+                GetWindowThreadProcessId(intptr, out id);
+                var p = Process.GetProcessById(id);
+                //if (p != null)
+                p.Kill();
+            }
+            catch (Exception ex)
+            { }
+
             DataSet ds = new DataSet();
             try
             {

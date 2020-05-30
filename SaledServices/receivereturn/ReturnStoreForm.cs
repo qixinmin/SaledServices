@@ -894,6 +894,7 @@ namespace SaledServices
                             {
                                 currentUsedTable = "testalltable";
                             }
+                           
                             cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
                             querySdr = cmd.ExecuteReader();
                             string station = "";
@@ -902,9 +903,16 @@ namespace SaledServices
                                 station = querySdr[0].ToString();
                             }
                             querySdr.Close();
-                            if (station != "Test2" && station != "Test1&2")
+                            //if (station != "Test2" && station != "Test1&2")
+                            //{
+                            //    MessageBox.Show("此单没有经过Test2检查站别！");
+                            //    mConn.Close();
+                            //    return;
+                            //}
+
+                            if (station != "外观")
                             {
-                                MessageBox.Show("此单没有经过Test2检查站别！");
+                                MessageBox.Show("此单没有经过外观检查站别！");
                                 mConn.Close();
                                 return;
                             }
@@ -914,7 +922,7 @@ namespace SaledServices
                             statusComboBox.Text = "不良品";
                         }
 
-                        cmd.CommandText = "select custom_serial_no, vendor_serail_no,mpn ,lenovo_maintenance_no,lenovo_repair_no from DeliveredTable where track_serial_no = '"
+                        cmd.CommandText = "select custom_serial_no, vendor_serail_no,mpn ,lenovo_maintenance_no,lenovo_repair_no,custommaterialNo from DeliveredTable where track_serial_no = '"
                             + this.track_serial_noTextBox.Text + "'";
                         bool exist = false;
                         querySdr = cmd.ExecuteReader();
@@ -926,12 +934,13 @@ namespace SaledServices
                             this.matertiallibMpnTextBox.Text = querySdr[2].ToString();
                             this.lenovo_maintenance_noTextBox.Text = querySdr[3].ToString();
                             this.lenovo_repair_noTextBox.Text = querySdr[4].ToString();
+                            this.currentMaterialNo = querySdr[5].ToString();
                         }
                         querySdr.Close();
 
                         if (exist == false)//从替换表里查询
                         {
-                            cmd.CommandText = "select custom_serial_no, vendor_serail_no,mpn ,lenovo_maintenance_no,lenovo_repair_no from DeliveredTableTransfer where track_serial_no_transfer = '"
+                            cmd.CommandText = "select custom_serial_no, vendor_serail_no,mpn ,lenovo_maintenance_no,lenovo_repair_no,custommaterialNo from DeliveredTableTransfer where track_serial_no_transfer = '"
                             + this.track_serial_noTextBox.Text + "'";                          
                             querySdr = cmd.ExecuteReader();
                             while (querySdr.Read())
@@ -942,6 +951,7 @@ namespace SaledServices
                                 this.matertiallibMpnTextBox.Text = querySdr[2].ToString();
                                 this.lenovo_maintenance_noTextBox.Text = querySdr[3].ToString();
                                 this.lenovo_repair_noTextBox.Text = querySdr[4].ToString();
+                                this.currentMaterialNo = querySdr[5].ToString();
                             }
                             querySdr.Close();
                         }
@@ -962,6 +972,47 @@ namespace SaledServices
                             }
                             querySdr.Close();
                         }
+
+                        int row = dataGridViewToReturn.Rows.Count;
+                        for (int i = 0; i < row; i++)
+                        {
+                            dataGridViewToReturn.Rows[i].Selected = false;
+                        }
+
+                        //开始查询内容
+                        //首先查找tat最大的
+                        int tatTemp = -1;
+                        for (int i = 0; i < row; i++)
+                        {
+                            string queryedStr = dataGridViewToReturn.Rows[i].Cells[1].Value.ToString();
+                            if (queryedStr.EndsWith(currentMaterialNo))
+                            {
+                               this.tatTextBox.Text = dataGridViewToReturn.Rows[i].Cells[6].Value.ToString().Trim();
+                               if (Int16.Parse(this.tatTextBox.Text) > tatTemp)
+                                {
+                                    tatTemp = Int16.Parse(this.tatTextBox.Text);
+                                    tat = this.tatTextBox.Text.Trim();
+                                    orderNo = this.ordernoTextBox.Text = dataGridViewToReturn.Rows[i].Cells[0].Value.ToString();
+                                }
+                            }
+                        }
+
+                        for (int i = 0; i < row; i++)
+                        {
+                            string queryedStr = dataGridViewToReturn.Rows[i].Cells[1].Value.ToString();
+                            if (queryedStr.EndsWith(currentMaterialNo)
+                                && this.orderNo.Trim() == dataGridViewToReturn.Rows[i].Cells[0].Value.ToString().Trim())
+                            {
+                                this.custommaterialNoTextBox.Text = queryedStr;
+                                orderNo = this.ordernoTextBox.Text = dataGridViewToReturn.Rows[i].Cells[0].Value.ToString();
+                                tat = this.tatTextBox.Text = dataGridViewToReturn.Rows[i].Cells[6].Value.ToString();
+
+                                dataGridViewToReturn.Rows[i].Selected = true;
+                                dataGridViewToReturn.CurrentCell = dataGridViewToReturn.Rows[i].Cells[0];
+                                break;
+                            }
+                        }
+                        simulateEnter(currentMaterialNo, orderNo, tat);
 
                         //根据来的次数进行锁定，并提示锁定
                         cmd.CommandText = "select vendor from DeliveredTable where vendor_serail_no = '" + this.vendor_serail_noTextBox.Text + "'";

@@ -63,6 +63,19 @@ namespace SaledServices.Export
             }
         }
 
+        private bool isTest = false;
+        private void test_exportxmlbutton_Click(object sender, EventArgs e)
+        {
+            isTest = true;
+            exportxmlbutton_Click(sender, e);
+        }
+
+        private void outllok_exportxmlbutton_Click(object sender, EventArgs e)
+        {
+            isTest = false;
+            exportxmlbutton_Click(sender, e);
+        }
+
         private void exportxmlbutton_Click(object sender, EventArgs e)
         {
             DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy-MM-dd"));
@@ -101,22 +114,63 @@ namespace SaledServices.Export
                     subsql += " and product='" + this.productComboBox.Text.Trim() + "'";
                 }
 
-                string sql = "SELECT track_serial_no,COUNT(*)  from repair_record_table where repair_date between '" + startTime + "' and '" + endTime + "'  group by track_serial_no";
-                if (subsql != "")
+                string sql = "";
+                SqlDataReader querySdr = null;
+                if (isTest)
                 {
-                    sql = "SELECT track_serial_no,COUNT(*)  from repair_record_table where repair_date between '" + startTime + "' and '" + endTime + "' " + subsql + " group by track_serial_no";
-                }
-                cmd.CommandText = sql;
-                SqlDataReader querySdr = cmd.ExecuteReader();
-                while (querySdr.Read())
-                {
-                    RepairRecordStruct temp = new RepairRecordStruct();
-                    temp.track_serial_no = querySdr[0].ToString();
-                    temp.repair_Num = querySdr[1].ToString();
+                    sql = "SELECT track_serial_no,COUNT(*)  from test2table where test_date between '" + startTime + "' and '" + endTime + "'  group by track_serial_no";
+                    if (subsql != "")
+                    {
+                        sql = "SELECT track_serial_no,COUNT(*)  from test2table where test_date between '" + startTime + "' and '" + endTime + "' " + subsql + " group by track_serial_no";
+                    }
+                    cmd.CommandText = sql;
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        RepairRecordStruct temp = new RepairRecordStruct();
+                        temp.track_serial_no = querySdr[0].ToString();
+                        temp.repair_Num = querySdr[1].ToString();
 
-                    receiveOrderList.Add(temp);
+                        receiveOrderList.Add(temp);
+                    }
+                    querySdr.Close();
+
+                    sql = "SELECT track_serial_no,COUNT(*)  from test2table where test_date between '" + startTime + "' and '" + endTime + "'  group by track_serial_no";
+                    if (subsql != "")
+                    {
+                        sql = "SELECT track_serial_no,COUNT(*)  from test2table where test_date between '" + startTime + "' and '" + endTime + "' " + subsql + " group by track_serial_no";
+                    }
+                    cmd.CommandText = sql;
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        RepairRecordStruct temp = new RepairRecordStruct();
+                        temp.track_serial_no = querySdr[0].ToString();
+                        temp.repair_Num = querySdr[1].ToString();
+
+                        receiveOrderList.Add(temp);
+                    }
+                    querySdr.Close();
                 }
-                querySdr.Close();
+                else//此时走外观逻辑
+                {
+                    sql = "SELECT track_serial_no,COUNT(*)  from outlookcheck where test_date between '" + startTime + "' and '" + endTime + "'  group by track_serial_no";
+                    if (subsql != "")
+                    {
+                        sql = "SELECT track_serial_no,COUNT(*)  from outlookcheck where test_date between '" + startTime + "' and '" + endTime + "' " + subsql + " group by track_serial_no";
+                    }
+                    cmd.CommandText = sql;
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        RepairRecordStruct temp = new RepairRecordStruct();
+                        temp.track_serial_no = querySdr[0].ToString();
+                        temp.repair_Num = querySdr[1].ToString();
+
+                        receiveOrderList.Add(temp);
+                    }
+                    querySdr.Close();
+                }
 
                 foreach (RepairRecordStruct repairRecord in receiveOrderList)
                 {
@@ -171,7 +225,7 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select Id,short_cut,fault_type,repairer,repair_date,repair_result,software_update from repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' order by id desc";
+                    cmd.CommandText = "select top 1 Id,short_cut,fault_type,repairer,repair_date,repair_result,software_update from repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' order by id desc";
                     querySdr = cmd.ExecuteReader();
                     repairRecord.fault_describeList = new List<string>();
                     repairRecord.mbfaList = new List<string>();
@@ -258,7 +312,7 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select top 1 tester,test_date from test2table where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    cmd.CommandText = "select top 1 tester,test_date from test2table where track_serial_no ='" + repairRecord.track_serial_no + "'   order by test_date desc";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
@@ -267,7 +321,7 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select top 1 tester,test_date from testalltable where track_serial_no ='" + repairRecord.track_serial_no + "'";
+                    cmd.CommandText = "select top 1 tester,test_date from testalltable where track_serial_no ='" + repairRecord.track_serial_no + "' order by test_date desc";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {

@@ -21,6 +21,131 @@ namespace SaledServices.Test_Outlook
             this.tracker_bar_textBox.Focus();
         }
 
+        private void autochecktextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                if (this.autochecktextBox.Text.Trim() == "")
+                {
+                    this.autochecktextBox.Focus();
+                    MessageBox.Show("追踪条码的内容为空，请检查！");
+                    return;
+                }
+
+                try
+                {
+                    SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                    mConn.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = mConn;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.autochecktextBox.Text.Trim() + "'";
+
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    string station = "";
+                    while (querySdr.Read())
+                    {
+                        station = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (station != "Test2" && station != "Test1&2")
+                    {
+                        MessageBox.Show("板子已经经过站别[" + station + "]");
+                        mConn.Close();
+                        return;
+                    }
+
+                    cmd.CommandText = "select * from testalltable where track_serial_no='" + this.autochecktextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    bool isTestExist = false;
+                    if (querySdr.HasRows == false)
+                    {
+                        querySdr.Close();
+
+                        cmd.CommandText = "select * from test2table where track_serial_no='" + this.autochecktextBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows)
+                        {
+                            isTestExist = true;
+                        }
+                        querySdr.Close();
+
+                    }
+                    else
+                    {
+                        isTestExist = true;
+                    }
+
+                    if (isTestExist)
+                    {
+                        cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.autochecktextBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        string Id = "";
+                        while (querySdr.Read())
+                        {
+                            Id = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                       
+                        bool bothExist = false;
+                        if (Id != "")
+                        {
+                            cmd.CommandText = "select top 1 Id from stationInformation where track_serial_no='" + this.autochecktextBox.Text.Trim() + "' and station='外观'  order by updateDate desc";
+                            querySdr = cmd.ExecuteReader();
+                            if (querySdr.HasRows)
+                            {
+                                bothExist = true;
+                            }
+                            querySdr.Close();
+                        }
+                        else
+                        {
+                            bothExist = false;
+                        }
+
+                        if (bothExist)
+                        {
+                            MessageBox.Show("此序列号已经存在！");
+                            this.autochecktextBox.Text = "";
+                            mConn.Close();
+                            return;
+                        }
+
+                        cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
+                            + this.autochecktextBox.Text.Trim() + "','"
+                            + this.testerTextBox.Text.Trim() + "','"
+                            + "pass" + "','"
+                            + this.testdatetextBox.Text.Trim()
+                            + "')";
+
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "update stationInformation set station = '外观', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
+                                  + "where track_serial_no = '" + this.autochecktextBox.Text + "'";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.autochecktextBox.Text.Trim() +
+                 "','外观','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+                        cmd.ExecuteNonQuery();
+                        this.autochecktextBox.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("追踪条码的不在测试列表中，请检查！");
+                    }
+                 
+                    mConn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
         string _8sCodes = "",mac="", dpk_status="",custommaterialno="";
 
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -43,9 +168,28 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = mConn;
                     cmd.CommandType = CommandType.Text;
 
-                    cmd.CommandText = "select product,custom_serial_no,mac,custommaterialNo,dpk_status from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.CommandText = "select station from stationInformation where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
+                    string station = "";
+                    while (querySdr.Read())
+                    {
+                        station = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (station != "Test2" && station != "Test1&2")
+                    {
+                        MessageBox.Show("板子已经经过站别[" + station + "]");
+                        mConn.Close();
+                        this.confirmbutton.Enabled = false;
+                        this.button1.Enabled = false;
+                        return;
+                    }
+
+                    cmd.CommandText = "select product,custom_serial_no,mac,custommaterialNo,dpk_status from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                    querySdr = cmd.ExecuteReader();
                     string product = "";
                     while (querySdr.Read())
                     {
@@ -145,7 +289,24 @@ namespace SaledServices.Test_Outlook
                         Id = querySdr[0].ToString();
                     }
                     querySdr.Close();
+
+                    bool bothExist = false;
                     if (Id != "")
+                    {
+                        cmd.CommandText = "select top 1 Id from stationInformation where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "' and station='外观' order by updateDate desc";
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows)
+                        {
+                            bothExist = true;
+                        }
+                        querySdr.Close();
+                    }
+                    else
+                    {
+                        bothExist = false;
+                    }
+
+                    if (bothExist)
                     {
                         MessageBox.Show("此序列号已经存在！");
                         this.tracker_bar_textBox.Text = "";
@@ -156,6 +317,7 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
                         + this.testerTextBox.Text.Trim() + "','"
+                        + "pass" + "','"
                         + this.testdatetextBox.Text.Trim()
                         + "')";
                    
@@ -168,6 +330,7 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
              "','外观','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
+                    this.tracker_bar_textBox.Text = "";
                 }
                 else
                 {
@@ -181,7 +344,7 @@ namespace SaledServices.Test_Outlook
             {
                 MessageBox.Show(ex.ToString());
             }
-            this.Close();
+           // this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -189,6 +352,12 @@ namespace SaledServices.Test_Outlook
             if (this.tracker_bar_textBox.Text.Trim() == "")
             {
                 MessageBox.Show("追踪条码的内容为空，请检查！");
+                return;
+            }
+
+            if (this.failReasonTextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("失败原因的内容为空，请检查！");
                 return;
             }
 
@@ -203,9 +372,24 @@ namespace SaledServices.Test_Outlook
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
+                    cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
+                      + this.tracker_bar_textBox.Text.Trim() + "','"
+                      + this.testerTextBox.Text.Trim() + "','"
+                      + this.failReasonTextBox.Text.Trim() + "','"
+                      + this.testdatetextBox.Text.Trim()
+                      + "')";
+
+                    cmd.ExecuteNonQuery();
+
                     cmd.CommandText = "update stationInformation set station = '维修', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+             "','外观','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
+                    this.tracker_bar_textBox.Text = "";
+                    this.failReasonTextBox.Text = "";
                 }
                 else
                 {
@@ -321,5 +505,7 @@ namespace SaledServices.Test_Outlook
             custommaterialno = "";
             this.print.Enabled = false;
         }
+
+
     }
 }

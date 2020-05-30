@@ -38,6 +38,7 @@
             this.vendorComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.productComboBox = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label4
@@ -45,7 +46,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(244, 243);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 12);
+            this.label4.Size = new System.Drawing.Size(173, 12);
             this.label4.TabIndex = 20;
             this.label4.Text = "默认输出路径D:\\导出文件汇总\\";
             // 
@@ -85,11 +86,11 @@
             // 
             this.exportxmlbutton.Location = new System.Drawing.Point(246, 190);
             this.exportxmlbutton.Name = "exportxmlbutton";
-            this.exportxmlbutton.Size = new System.Drawing.Size(133, 25);
+            this.exportxmlbutton.Size = new System.Drawing.Size(171, 25);
             this.exportxmlbutton.TabIndex = 15;
-            this.exportxmlbutton.Text = "导出维修信息Excel";
+            this.exportxmlbutton.Text = "测试站导出维修信息Excel";
             this.exportxmlbutton.UseVisualStyleBackColor = true;
-            this.exportxmlbutton.Click += new System.EventHandler(this.exportxmlbutton_Click);
+            this.exportxmlbutton.Click += new System.EventHandler(this.test_exportxmlbutton_Click);
             // 
             // label3
             // 
@@ -133,6 +134,16 @@
             this.productComboBox.Size = new System.Drawing.Size(138, 20);
             this.productComboBox.TabIndex = 30;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(48, 190);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(171, 25);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "外观站导出维修信息Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.outllok_exportxmlbutton_Click);
+            // 
             // RepairRecordExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -147,6 +158,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePickerend);
             this.Controls.Add(this.dateTimePickerstart);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.exportxmlbutton);
             this.Name = "RepairRecordExport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -168,5 +180,6 @@
         private System.Windows.Forms.ComboBox vendorComboBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox productComboBox;
+        private System.Windows.Forms.Button button1;
     }
 }

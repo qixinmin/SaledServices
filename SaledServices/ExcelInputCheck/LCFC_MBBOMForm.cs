@@ -72,6 +72,7 @@ namespace SaledServices
             {
                 MessageBox.Show(ex.ToString());
             }
+            MessageBox.Show("新增OK");
         }
 
         private void query_Click(object sender, EventArgs e)
@@ -145,6 +146,7 @@ namespace SaledServices
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
                 dataGridView1.Columns[i].Name = hTxt[i];
             }
+            MessageBox.Show("查询OK");
         }
 
         private void modify_Click(object sender, EventArgs e)
@@ -173,6 +175,7 @@ namespace SaledServices
 
             SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(sda);
             sda.Update(dt);
+            MessageBox.Show("修改OK");
         }
 
         private void delete_Click(object sender, EventArgs e)
@@ -201,6 +204,7 @@ namespace SaledServices
             {
                 MessageBox.Show(ex.ToString());
             }
+            MessageBox.Show("删除OK");
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

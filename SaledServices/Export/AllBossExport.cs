@@ -136,7 +136,7 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select Id,short_cut,fault_type,repairer,repair_date,repair_result,software_update from repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' order by id desc";
+                    cmd.CommandText = "select top 1 Id,short_cut,fault_type,repairer,repair_date,repair_result,software_update from repair_record_table where track_serial_no ='" + repairRecord.track_serial_no + "' order by id desc";
                     querySdr = cmd.ExecuteReader();
                     repairRecord.fault_describeList = new List<string>();
                     repairRecord.mbfaList = new List<string>();
