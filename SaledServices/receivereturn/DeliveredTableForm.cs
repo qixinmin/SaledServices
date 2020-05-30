@@ -517,6 +517,15 @@ namespace SaledServices
                         return;
                     }
 
+                    cmd.CommandText = "select check_reason from mb_receive_check where custom_serial_no = '" + this.custom_serial_noTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                     while (querySdr.Read())
+                    {
+                        MessageBox.Show("客户序号被拦截，原因是：" + querySdr[0].ToString());
+                    }
+                    querySdr.Close();
+
+
                     mConn.Close();
                 }
                 catch (Exception ex)

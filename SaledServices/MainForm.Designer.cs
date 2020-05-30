@@ -51,6 +51,7 @@
             this.库房料转移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.解锁锁定板子ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测试的LOG记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.导出打印记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveReturnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnStoreMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -139,7 +140,6 @@
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.板子所有记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.导出打印记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -339,6 +339,13 @@
             this.测试的LOG记录ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
             this.测试的LOG记录ToolStripMenuItem.Text = "测试的LOG记录";
             this.测试的LOG记录ToolStripMenuItem.Click += new System.EventHandler(this.测试的LOG记录ToolStripMenuItem_Click);
+            // 
+            // 导出打印记录ToolStripMenuItem
+            // 
+            this.导出打印记录ToolStripMenuItem.Name = "导出打印记录ToolStripMenuItem";
+            this.导出打印记录ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
+            this.导出打印记录ToolStripMenuItem.Text = "导出打印记录";
+            this.导出打印记录ToolStripMenuItem.Click += new System.EventHandler(this.导出打印记录ToolStripMenuItem_Click);
             // 
             // receiveReturnStoreMenuItem
             // 
@@ -1046,13 +1053,6 @@
             this.板子所有记录查询ToolStripMenuItem.Text = "板子所有记录查询";
             this.板子所有记录查询ToolStripMenuItem.Click += new System.EventHandler(this.板子所有记录查询ToolStripMenuItem_Click);
             // 
-            // 导出打印记录ToolStripMenuItem
-            // 
-            this.导出打印记录ToolStripMenuItem.Name = "导出打印记录ToolStripMenuItem";
-            this.导出打印记录ToolStripMenuItem.Size = new System.Drawing.Size(264, 32);
-            this.导出打印记录ToolStripMenuItem.Text = "导出打印记录";
-            this.导出打印记录ToolStripMenuItem.Click += new System.EventHandler(this.导出打印记录ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1065,7 +1065,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统050701-生命周期";
+            this.Text = "上海进销存系统0501601-生命周期";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);

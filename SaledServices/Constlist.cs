@@ -88,6 +88,9 @@ namespace SaledServices
 
         public static string table_badcodes = "不良代码对照表";
         public static string table_name_badcodes = "badcodes";
+
+        public static string table_mb_receive_check = "主板拦截";
+        public static string table_name_mb_receive_check = "mb_receive_check";
     }
 
     public class PrintUtils
@@ -238,16 +241,23 @@ namespace SaledServices
 
     public class Utils
     {
-        public static  bool existAndCopyToServer(String trackNo, string station)
+        public static  bool existAndCopyToServer(String trackNo, string station, string inputer, string mb_brief)
         {
-            string fileName = trackNo + ".txt";
+            string fileName = trackNo + "PASS.txt";
             String filePath = @"D:\YMDOS\LOG\" + fileName;
             if (File.Exists(filePath) == false)
             {
                 return false;
             }
 
-            string fileDestName = trackNo + "_" + station + ".txt";
+            fileName = trackNo + ".txt";
+            filePath = @"D:\YMDOS\LOG\" + fileName;
+            if (File.Exists(filePath) == false)
+            {
+                return false;
+            }
+
+            string fileDestName = trackNo + "_" + station +"_"+inputer+"_"+mb_brief+ ".txt";
             try
             {
                 File.Copy(filePath, @"\\192.168.5.222\ymdos_backup\" + fileDestName,true);

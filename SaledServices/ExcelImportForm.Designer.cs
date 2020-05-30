@@ -33,6 +33,7 @@
             this.filePath = new System.Windows.Forms.TextBox();
             this.findFile = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.machineImportRadioButton = new System.Windows.Forms.RadioButton();
             this.FruBom = new System.Windows.Forms.RadioButton();
             this.guranteCheckRadioButton = new System.Windows.Forms.RadioButton();
             this.userInputRadioButton = new System.Windows.Forms.RadioButton();
@@ -48,7 +49,7 @@
             this.receiveOrder = new System.Windows.Forms.RadioButton();
             this.mbmaterial = new System.Windows.Forms.RadioButton();
             this.updateDBRadio = new System.Windows.Forms.RadioButton();
-            this.machineImportRadioButton = new System.Windows.Forms.RadioButton();
+            this.mbcheckimport = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,6 +86,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.mbcheckimport);
             this.panel1.Controls.Add(this.machineImportRadioButton);
             this.panel1.Controls.Add(this.FruBom);
             this.panel1.Controls.Add(this.guranteCheckRadioButton);
@@ -105,6 +107,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(575, 512);
             this.panel1.TabIndex = 4;
+            // 
+            // machineImportRadioButton
+            // 
+            this.machineImportRadioButton.AutoSize = true;
+            this.machineImportRadioButton.Location = new System.Drawing.Point(240, 297);
+            this.machineImportRadioButton.Name = "machineImportRadioButton";
+            this.machineImportRadioButton.Size = new System.Drawing.Size(167, 24);
+            this.machineImportRadioButton.TabIndex = 7;
+            this.machineImportRadioButton.Text = "整机出货量导入";
+            this.machineImportRadioButton.UseVisualStyleBackColor = true;
             // 
             // FruBom
             // 
@@ -262,15 +274,15 @@
             this.updateDBRadio.Text = "更新库存";
             this.updateDBRadio.UseVisualStyleBackColor = true;
             // 
-            // machineImportRadioButton
+            // mbcheckimport
             // 
-            this.machineImportRadioButton.AutoSize = true;
-            this.machineImportRadioButton.Location = new System.Drawing.Point(240, 297);
-            this.machineImportRadioButton.Name = "machineImportRadioButton";
-            this.machineImportRadioButton.Size = new System.Drawing.Size(167, 24);
-            this.machineImportRadioButton.TabIndex = 7;
-            this.machineImportRadioButton.Text = "整机出货量导入";
-            this.machineImportRadioButton.UseVisualStyleBackColor = true;
+            this.mbcheckimport.AutoSize = true;
+            this.mbcheckimport.Location = new System.Drawing.Point(240, 345);
+            this.mbcheckimport.Name = "mbcheckimport";
+            this.mbcheckimport.Size = new System.Drawing.Size(187, 24);
+            this.mbcheckimport.TabIndex = 7;
+            this.mbcheckimport.Text = "主板拦截信息导入";
+            this.mbcheckimport.UseVisualStyleBackColor = true;
             // 
             // ExcelImportForm
             // 
@@ -317,5 +329,6 @@
         private System.Windows.Forms.RadioButton frureceiveOrder;
         private System.Windows.Forms.RadioButton ymrenbaocodecompare;
         private System.Windows.Forms.RadioButton machineImportRadioButton;
+        private System.Windows.Forms.RadioButton mbcheckimport;
     }
 }

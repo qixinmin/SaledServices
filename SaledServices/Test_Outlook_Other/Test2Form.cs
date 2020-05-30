@@ -34,13 +34,7 @@ namespace SaledServices.Test_Outlook
 
                 try
                 {
-                    //检查文件是否存在
-                    if (Utils.existAndCopyToServer(this.tracker_bar_textBox.Text.Trim(), "test2") == false)
-                    {
-                        MessageBox.Show("追踪条码的Log内容为空，请检查！");
-                        return;
-                    }             
-
+                   
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                     mConn.Open();
 
@@ -68,10 +62,74 @@ namespace SaledServices.Test_Outlook
                         this.button1.Enabled = false;
                         return;
                     }
-                    this.confirmbutton.Enabled = true;
-                    this.button1.Enabled = true;                   
+
+                    bool existBuffer = false, existRepair = false; ;
+                    string mb_brief="";
+                    cmd.CommandText = "select track_serial_no,product from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows == false)
+                    {
+                        querySdr.Close();
+
+                        cmd.CommandText = "select track_serial_no,product from mb_out_stock where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows)
+                        {  
+                            existBuffer = true;
+                        }
+                        querySdr.Close();
+                    }
+                    else
+                    {
+                        querySdr.Close();
+                        existRepair = true;
+                    }                   
+
+                    if (existRepair)
+                    {
+                        cmd.CommandText = "select mb_brief from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            mb_brief = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+
+                        if (mb_brief == "")//从替换表里查询
+                        {
+                            cmd.CommandText = "select mb_brief from DeliveredTableTransfer where track_serial_no_transfer='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                            querySdr = cmd.ExecuteReader();
+                            while (querySdr.Read())
+                            {
+                                mb_brief = querySdr[0].ToString();
+                            }
+                            querySdr.Close();
+                        }
+                    }
+                    else if (existBuffer)
+                    {
+                        cmd.CommandText = "select mb_brief from mb_out_stock where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            mb_brief = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                    }
 
                     this.testerTextBox.Text = LoginForm.currentUser;
+
+                    //检查文件是否存在
+                    if (Utils.existAndCopyToServer(this.tracker_bar_textBox.Text.Trim(), "test2", this.testerTextBox.Text.Trim(), mb_brief) == false)
+                    {
+                        MessageBox.Show("追踪条码的Log内容为空，请检查！");
+                        return;
+                    }
+
+                    this.confirmbutton.Enabled = true;
+                    this.button1.Enabled = true;    
+
                     this.testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
                     mConn.Close();
                 }

@@ -47,12 +47,7 @@ namespace SaledServices.Test_Outlook
                 try
                 {
 
-                    //检查文件是否存在
-                    if (Utils.existAndCopyToServer(this.tracker_bar_textBox.Text.Trim(), "test1_2") == false)
-                    {
-                        MessageBox.Show("追踪条码的Log内容为空，请检查！");
-                        return;
-                    }             
+                             
 
                     Utils.deleteFile("D:\\fru\\", "BOM.bat");
                     Utils.deleteFile("D:\\fru\\", "BOM.NSH");
@@ -324,6 +319,13 @@ namespace SaledServices.Test_Outlook
                                     KEYID = "NOK";
                                     KEYSERIAL = "NOK";
                                 }
+
+                                //检查文件是否存在
+                                if (Utils.existAndCopyToServer(this.tracker_bar_textBox.Text.Trim(), "test1_2",this.testerTextBox.Text.Trim(), mb_brief) == false)
+                                {
+                                    MessageBox.Show("追踪条码的Log内容为空，请检查！");
+                                    return;
+                                }  
 
                                 this.keyidtextBox.Text = KEYID;
 

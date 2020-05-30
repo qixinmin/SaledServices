@@ -1,4 +1,19 @@
 
+/*主板拦截信息导入*/
+CREATE TABLE mb_receive_check(
+Id INT PRIMARY KEY IDENTITY,
+vendor NVARCHAR(128), /*厂商*/
+product NVARCHAR(128) NOT NULL, /*客户别*/
+custom_machine_type NVARCHAR(128) NOT NULL, /*客户机型*/
+mb_brief NVARCHAR(128) NOT NULL, /*MB简称*/
+custom_material_no NVARCHAR(128),/*客户料号*/
+custom_serial_no NVARCHAR(128) NOT NULL, /*客户序号*/
+vendor_serail_no NVARCHAR(128) NOT NULL, /*厂商序号*/
+vendor_material_no NVARCHAR(128),/*厂商料号*/
+mb_describe NVARCHAR(128) NOT NULL,/*MB描述*/
+check_reason NVARCHAR(128) NOT NULL,/*拦截原因*/
+)
+
 /*记录打印8s的数据*/
 CREATE TABLE print_8s_record(
 Id INT PRIMARY KEY IDENTITY, 
