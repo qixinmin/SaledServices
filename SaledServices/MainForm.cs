@@ -1752,5 +1752,21 @@ namespace SaledServices
             allForm.Add(printHistoryExport);
         }
 
+        private LifeCycleQueryForm lifeCycleQueryForm; 
+        private void 生命周期查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lifeCycleQueryForm == null || lifeCycleQueryForm.IsDisposed)
+            {
+                lifeCycleQueryForm = new LifeCycleQueryForm();
+                lifeCycleQueryForm.MdiParent = this;
+            }
+
+            lifeCycleQueryForm.WindowState = FormWindowState.Maximized;
+            lifeCycleQueryForm.BringToFront();
+            lifeCycleQueryForm.Show();
+
+            allForm.Add(lifeCycleQueryForm);
+        }
+
     }
 }

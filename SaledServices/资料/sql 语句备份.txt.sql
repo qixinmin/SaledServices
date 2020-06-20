@@ -1,3 +1,24 @@
+/*测试结果表格， 包括：序列号，测试人， 时间， 结果（Pass/Fail)， 如果是错误的必须要错误描述， 站别*/
+
+CREATE TABLE test_all_result_record(
+Id INT PRIMARY KEY IDENTITY,
+trackno NVARCHAR(128), /*序列号*/
+tester NVARCHAR(128) NOT NULL, /*测试人*/
+inputdate datetime NOT NULL, /*时间*/
+result NVARCHAR(128) NOT NULL, /*结果*/
+failDescribe NVARCHAR(256),/*错误原因*/
+station NVARCHAR(128) not null
+)
+
+
+/*主板生命周期表*/
+CREATE TABLE [dbo].[stationInfoRecord](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[trackno] [nvarchar](128) NOT NULL,
+	[station] [nvarchar](128) NOT NULL,
+	[inputer] [nvarchar](128) NOT NULL,
+	[inputdate] [datetime] NOT NULL
+) ON [PRIMARY]
 
 /*主板拦截信息导入*/
 CREATE TABLE mb_receive_check(

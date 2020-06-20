@@ -140,6 +140,7 @@
             this.信息查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询板子站别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.板子所有记录查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.生命周期查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -707,7 +708,8 @@
             this.厂商信息ToolStripMenuItem,
             this.员工管理ToolStripMenuItem,
             this.材料名称ToolStripMenuItem,
-            this.其他报表ToolStripMenuItem1});
+            this.其他报表ToolStripMenuItem1,
+            this.生命周期查询ToolStripMenuItem});
             this.additionMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.additionMenuItem.Name = "additionMenuItem";
             this.additionMenuItem.Size = new System.Drawing.Size(104, 31);
@@ -1053,6 +1055,13 @@
             this.板子所有记录查询ToolStripMenuItem.Text = "板子所有记录查询";
             this.板子所有记录查询ToolStripMenuItem.Click += new System.EventHandler(this.板子所有记录查询ToolStripMenuItem_Click);
             // 
+            // 生命周期查询ToolStripMenuItem
+            // 
+            this.生命周期查询ToolStripMenuItem.Name = "生命周期查询ToolStripMenuItem";
+            this.生命周期查询ToolStripMenuItem.Size = new System.Drawing.Size(204, 32);
+            this.生命周期查询ToolStripMenuItem.Text = "生命周期查询";
+            this.生命周期查询ToolStripMenuItem.Click += new System.EventHandler(this.生命周期查询ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1065,7 +1074,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统0503001";
+            this.Text = "上海进销存系统0618";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1189,6 +1198,7 @@
         private System.Windows.Forms.ToolStripMenuItem 维修记录专用查询ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 测试的LOG记录ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 导出打印记录ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 生命周期查询ToolStripMenuItem;
     }
 }
 

@@ -254,6 +254,17 @@ namespace SaledServices
                         MessageBox.Show("此主板已经来过【" + count + "】次，请注意");
                     }
 
+
+                    string failReason = "";
+                    cmd.CommandText = "select top 1 failDescribe from test_all_result_record where trackno='" + this.track_serial_noTextBox.Text.Trim() + "'   and result='Fail' order by inputdate desc ";
+                    querySdr = cmd.ExecuteReader();
+                    while(querySdr.Read()){
+                        failReason = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+                    if(failReason != ""){
+                        MessageBox.Show(failReason, "最近一次测试不良描述");
+                    }
                     this.add.Enabled = true;
                     mConn.Close();
                 }
@@ -788,6 +799,29 @@ namespace SaledServices
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
 
+                    //TODO 120天的多次主板需要写FA分析
+                    //select D.custom_serial_no from DeliveredTable as D inner Join returnStore as R on D.custom_serial_no = R.custom_serial_no where R.return_date>'2020-03-01' order by R.return_date desc
+                    //1 时间动态变化，需要之前推四个月
+                    //2 找到最近一个的还货时间，并记录下来，等会在维修表中使用
+                    DateTime nowTime = DateTime.Now;
+                    DateTime beforeTime = nowTime.AddMonths(-4);
+                    String beforeTimeStr = beforeTime.ToString("yyyy-MM-dd");
+                    cmd.CommandText = "select top 1 D.custom_serial_no from DeliveredTable as D inner Join returnStore as R on D.custom_serial_no = R.custom_serial_no where R.custom_serial_no ='"
+                        + this.custom_serial_notextBox.Text.Trim() + "' and R.return_date>'" + beforeTimeStr + "' order by R.return_date desc";
+                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    bool is120Return = false;
+                    if (querySdr.HasRows)
+                    {
+                        is120Return = true;
+                    }
+                    querySdr.Close();
+                    if (is120Return && this.mbfa1richTextBox.Text.Trim() == "")
+                    {
+                        MessageBox.Show("在120天内返回的版子FA分析是必填的");
+                        conn.Close();
+                        return;
+                    }
+
                     if (actioncomboBox.Text.Trim() == "更换")//非更换的情况下可以允许数量为空，但是位置与料号必须要有
                     {
                         try
@@ -1232,7 +1266,7 @@ namespace SaledServices
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
-                 "','维修','" + repairer_txt + "',GETDATE()')";
+                 "','维修','" + repairer_txt + "',GETDATE())";
                     cmd.ExecuteNonQuery();
 
                 }
@@ -1413,7 +1447,7 @@ namespace SaledServices
                 tableLayoutPanel5.Enabled = false;
                 this.fault_typecomboBox.Enabled = false;
                 this.actioncomboBox.Enabled = false;
-                this.mbfa1richTextBox.Enabled = false;
+               // this.mbfa1richTextBox.Enabled = false;
                 this.fault_describecomboBox.Enabled = false;             
 
                 this.checkBox1.Enabled = false;
@@ -1722,6 +1756,11 @@ namespace SaledServices
         }
 
         private void actioncomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void track_serial_noTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

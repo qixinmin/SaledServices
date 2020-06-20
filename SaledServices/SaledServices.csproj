@@ -231,6 +231,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="additionForm\LifeCycleQueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\LifeCycleQueryForm.Designer.cs">
+      <DependentUpon>LifeCycleQueryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="additionForm\TestLogQueryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -866,6 +872,9 @@
     <Compile Include="additionForm\VendorForm.Designer.cs">
       <DependentUpon>VendorForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="additionForm\LifeCycleQueryForm.resx">
+      <DependentUpon>LifeCycleQueryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="additionForm\TestLogQueryForm.resx">
       <DependentUpon>TestLogQueryForm.cs</DependentUpon>
     </EmbeddedResource>

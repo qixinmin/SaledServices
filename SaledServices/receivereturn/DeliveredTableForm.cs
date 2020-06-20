@@ -525,6 +525,25 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
+                    //TODO 120天的多次主板需要写FA分析
+                    //select D.custom_serial_no from DeliveredTable as D inner Join returnStore as R on D.custom_serial_no = R.custom_serial_no where R.return_date>'2020-03-01' order by R.return_date desc
+                    //1 时间动态变化，需要之前推四个月
+                    //2 找到最近一个的还货时间，并记录下来，等会在维修表中使用
+                    //DateTime nowTime = DateTime.Now;
+                    //DateTime beforeTime = nowTime.AddMonths(-4);
+                    //String beforeTimeStr = beforeTime.ToString("yyyy-MM-dd");
+                    //cmd.CommandText = "select top 1 D.custom_serial_no from DeliveredTable as D inner Join returnStore as R on D.custom_serial_no = R.custom_serial_no where R.custom_serial_no ='"
+                    //    + this.custom_serial_noTextBox.Text.Trim() + "' and R.return_date>'" + beforeTimeStr + "' order by R.return_date desc";
+                    //querySdr = cmd.ExecuteReader();
+                    //if (querySdr.HasRows)
+                    //{
+
+                    //}
+                    //querySdr.Close();
+
+
+                
+
 
                     mConn.Close();
                 }
@@ -532,6 +551,8 @@ namespace SaledServices
                 {
                     MessageBox.Show(ex.ToString());
                 }
+
+                
 
                 string year, mouth, day;
                 vendor = this.vendorTextBox.Text.Trim();

@@ -315,13 +315,13 @@ namespace SaledServices
             {
                 return;
             }
-            this.matertiallibMpnTextBox.Text = "";
-            this.track_serial_noTextBox.Text = "";
+            //this.matertiallibMpnTextBox.Text = "";
+           // this.track_serial_noTextBox.Text = "";
             this.custom_serial_noTextBox.Text = "";
 
             currentMaterialNo = this.custommaterialNoTextBox.Text = dataGridViewToReturn.SelectedCells[1].Value.ToString();
             orderNo = this.ordernoTextBox.Text = dataGridViewToReturn.SelectedCells[0].Value.ToString();
-            tat = this.tatTextBox.Text = dataGridViewToReturn.SelectedCells[5].Value.ToString();
+            tat = this.tatTextBox.Text = dataGridViewToReturn.SelectedCells[6].Value.ToString();
             simulateEnter(this.custommaterialNoTextBox.Text.Trim(), orderNo, tat);
         }
 

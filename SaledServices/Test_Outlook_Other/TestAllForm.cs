@@ -500,6 +500,11 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
                "','测试1_2','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
+                     + this.tracker_bar_textBox.Text.Trim() + "','"
+                     + this.testerTextBox.Text.Trim() + "',GETDATE(),'Pass','','Test1_2')";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {
@@ -537,6 +542,16 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "update stationInformation set station = '维修', updateDate = GETDATE() "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
+
+
+                    cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
+                        + this.tracker_bar_textBox.Text.Trim() + "','"
+                        + this.testerTextBox.Text.Trim() + "',GETDATE(),'Fail','" + this.failDescribe.Text.Trim() + "','Test1_2')";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+              "','Test2','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {
@@ -544,7 +559,7 @@ namespace SaledServices.Test_Outlook
                 }
 
                 conn.Close();
-                MessageBox.Show("已插入测试2 Fail 数据, 現在需要把板子給維修人員");
+                MessageBox.Show("已插入测试1_2 Fail 数据, 現在需要把板子給維修人員");
             }
             catch (Exception ex)
             {

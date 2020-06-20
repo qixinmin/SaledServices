@@ -102,6 +102,7 @@ namespace SaledServices.Test_Outlook
                         }
                     }
                     this.bomdownload.Enabled = true;
+                    this.button1.Enabled = true;
 
                     currentStoreHouse = "";
                     cmd.CommandText = "select storehouse,vendor_serail_no from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
@@ -514,6 +515,11 @@ namespace SaledServices.Test_Outlook
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
                 "','Test1','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
+                     + this.tracker_bar_textBox.Text.Trim() + "','"
+                     + this.testerTextBox.Text.Trim() + "',GETDATE(),'Pass','','Test1')";
                     cmd.ExecuteNonQuery();
 
                     conn.Close();
@@ -944,6 +950,55 @@ namespace SaledServices.Test_Outlook
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (this.failDescribe.Text.Trim() == "")
+            {
+                MessageBox.Show("不良现象内容为空！");
+                return;
+            }
+
+
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constlist.ConStr);
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+
+
+                    cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
+                        + this.tracker_bar_textBox.Text.Trim() + "','"
+                        + this.testerTextBox.Text.Trim() + "',GETDATE(),'Fail','"+this.failDescribe.Text.Trim()+"','Test1')";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "update stationInformation set station = '维修', updateDate = GETDATE() "
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+               "','Test1','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("SaledService is not opened");
+                }
+
+                conn.Close();
+                MessageBox.Show("插入测试Fail数据OK");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }           
+
         }
 
     }

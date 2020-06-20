@@ -63,7 +63,7 @@ namespace SaledServices.Test_Outlook
                         return;
                     }
 
-                    bool existBuffer = false, existRepair = false; ;
+                    bool existBuffer = false, existRepair = false;
                     string mb_brief="";
                     cmd.CommandText = "select track_serial_no,product from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
@@ -118,12 +118,64 @@ namespace SaledServices.Test_Outlook
                         querySdr.Close();
                     }
 
+                    // 所有更换过的BGA的主板，或者维修记录最后一条记录是NTF的， 测试2 running的时间必须在一个小时以上
+                    bool isBgaRepaired = false;
+                    cmd.CommandText = "select top 1 Id from bga_repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        isBgaRepaired = true;
+                    }
+                    querySdr.Close();
+
+                    bool isNTF = false;
+
+                    cmd.CommandText = "select top 1 track_serial_no from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "' and _action='NTF' order by Id desc";
+
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows )
+                    {
+                        isNTF = true;
+                    }               
+                    querySdr.Close();
+                              
+
+                    if (isBgaRepaired || isNTF)
+                    {
+                        cmd.CommandText="select top 1 inputdate from stationInfoRecord where trackno='"+ this.tracker_bar_textBox.Text.Trim() +"' and station='Test1'";
+                        querySdr = cmd.ExecuteReader();
+                        string test1Date = "";
+                        while (querySdr.Read())
+                        {
+                            test1Date = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+
+                        DateTime test1datetime = Convert.ToDateTime(test1Date);
+                        DateTime now = DateTime.Now;
+                        TimeSpan ts = now.Subtract(test1datetime);
+                        if (ts.Hours < 1)
+                        {
+                            if (isBgaRepaired)
+                            {
+                                MessageBox.Show("从BGA过来的测试1到测试2的不足一个小时");
+                            }
+                            if (isNTF)
+                            {
+                                MessageBox.Show("从NTF过来的测试1到测试2的不足一个小时");
+                            }
+                            mConn.Close();
+                            return;
+                        }
+                    }
+
                     this.testerTextBox.Text = LoginForm.currentUser;
 
                     //检查文件是否存在
                     if (Utils.existAndCopyToServer(this.tracker_bar_textBox.Text.Trim(), "test2", this.testerTextBox.Text.Trim(), mb_brief) == false)
                     {
                         MessageBox.Show("追踪条码的Log内容为空，请检查！");
+                        mConn.Close();
                         return;
                     }
 
@@ -187,6 +239,11 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
                "','Test2','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
+                      + this.tracker_bar_textBox.Text.Trim() + "','"
+                      + this.testerTextBox.Text.Trim() + "',GETDATE(),'Pass','','Test2')";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {
@@ -224,6 +281,16 @@ namespace SaledServices.Test_Outlook
 
                     cmd.CommandText = "update stationInformation set station = '维修', updateDate = GETDATE() "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                    cmd.ExecuteNonQuery();
+
+
+                    cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
+                        + this.tracker_bar_textBox.Text.Trim() + "','"
+                        + this.testerTextBox.Text.Trim() + "',GETDATE(),'Fail','" + this.failDescribe.Text.Trim() + "','Test2')";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+              "','Test2','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
                 }
                 else
