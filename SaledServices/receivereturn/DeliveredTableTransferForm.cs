@@ -553,6 +553,10 @@ namespace SaledServices
                         + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "')";
                     cmd.ExecuteNonQuery();
 
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_no_tansfer_TextBox.Text.Trim() +
+      "','MB转换','" + this.modifertextBox.Text.Trim() + "',GETDATE())";
+                    cmd.ExecuteNonQuery();                    
+
                     conn.Close();
 
                     MessageBox.Show("MB转换成功！");

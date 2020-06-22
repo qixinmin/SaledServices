@@ -236,6 +236,10 @@ namespace SaledServices
                     cmd.CommandText = "update stationInformation set station = '报废', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                                + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+        "','主板报废判定','" + this.confirmertextBox.Text.Trim() + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {

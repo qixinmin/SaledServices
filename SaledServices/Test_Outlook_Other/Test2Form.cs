@@ -59,7 +59,7 @@ namespace SaledServices.Test_Outlook
                         this.tracker_bar_textBox.Focus();
                         this.tracker_bar_textBox.SelectAll();
                         this.confirmbutton.Enabled = false;
-                        this.button1.Enabled = false;
+                        //this.button1.Enabled = false;
                         return;
                     }
 
@@ -138,11 +138,11 @@ namespace SaledServices.Test_Outlook
                         isNTF = true;
                     }               
                     querySdr.Close();
-                              
+
 
                     if (isBgaRepaired || isNTF)
                     {
-                        cmd.CommandText="select top 1 inputdate from stationInfoRecord where trackno='"+ this.tracker_bar_textBox.Text.Trim() +"' and station='Test1'";
+                        cmd.CommandText = "select top 1 inputdate from stationInfoRecord where trackno='" + this.tracker_bar_textBox.Text.Trim() + "' and station='Test1'";
                         querySdr = cmd.ExecuteReader();
                         string test1Date = "";
                         while (querySdr.Read())
@@ -150,22 +150,29 @@ namespace SaledServices.Test_Outlook
                             test1Date = querySdr[0].ToString();
                         }
                         querySdr.Close();
-
-                        DateTime test1datetime = Convert.ToDateTime(test1Date);
-                        DateTime now = DateTime.Now;
-                        TimeSpan ts = now.Subtract(test1datetime);
-                        if (ts.Hours < 1)
+                        try
                         {
-                            if (isBgaRepaired)
+
+                            DateTime test1datetime = Convert.ToDateTime(test1Date);
+                            DateTime now = DateTime.Now;
+                            TimeSpan ts = now.Subtract(test1datetime);
+                            if (ts.Hours < 1)
                             {
-                                MessageBox.Show("从BGA过来的测试1到测试2的不足一个小时");
+                                if (isBgaRepaired)
+                                {
+                                    MessageBox.Show("从BGA过来的测试1到测试2的不足一个小时");
+                                }
+                                if (isNTF)
+                                {
+                                    MessageBox.Show("从NTF过来的测试1到测试2的不足一个小时");
+                                }
+                                mConn.Close();
+                                return;
                             }
-                            if (isNTF)
-                            {
-                                MessageBox.Show("从NTF过来的测试1到测试2的不足一个小时");
-                            }
-                            mConn.Close();
-                            return;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString() +"Test1Date的时间是：【"+ test1Date+"】");
                         }
                     }
 

@@ -454,6 +454,39 @@ namespace SaledServices
                         }
                     }
 
+                    //判断obe是否通过
+                    cmd.CommandText = "select ischeck from decideOBEchecktable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "' and ischeck='True'";
+
+                    querySdr = cmd.ExecuteReader();
+                    string ischeck = "";
+
+                    while (querySdr.Read())
+                    {
+                        ischeck = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+                    if (ischeck == "True")
+                    {
+                        cmd.CommandText = "select checkresult from ObeStationtable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+
+                        querySdr = cmd.ExecuteReader();
+                        string checkresult = "";
+
+                        while (querySdr.Read())
+                        {
+                            checkresult = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                        if (checkresult == "" || checkresult != "P")
+                        {
+                            MessageBox.Show("追踪条码的内容在OBE站别中，没有检查结果！");
+                            conn.Close();
+                            return;
+                        }
+                    }                    
+
+                    //end 判断obe
+
                     //加入判断8s的跟fru或fru的替换料的包含关系
                     cmd.CommandText = "select fruNo, replace_fruNo  from MBMaterialCompare where  custommaterialNo = '" + this.custommaterialNoTextBox.Text + "'";
                     bool existfru = false;
@@ -910,7 +943,7 @@ namespace SaledServices
                             //    return;
                             //}
 
-                            if (station != "外观")
+                            if (station != "外观" && station != "Obe")//obe是可选站别
                             {
                                 MessageBox.Show("此单没有经过外观检查站别！");
                                 mConn.Close();

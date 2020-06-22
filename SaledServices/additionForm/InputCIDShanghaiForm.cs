@@ -327,6 +327,11 @@ namespace SaledServices
                     cmd.CommandText = "update stationInformation set station = 'CID', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                                + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
                     cmd.ExecuteNonQuery();
+
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+          "','CID','" + inputer_txt + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {
@@ -375,7 +380,7 @@ namespace SaledServices
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
-                cmd.CommandText = "select * from cidRecord";
+                cmd.CommandText = "select top 10 * from cidRecord order by Id desc";
                 cmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter sda = new SqlDataAdapter();

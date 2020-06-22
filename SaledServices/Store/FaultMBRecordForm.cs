@@ -242,6 +242,10 @@ namespace SaledServices
                         + this.input_datetextBox.Text.Trim() + "')";
                     
                     cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
+        "','主板不良品入库','" + this.inputertextBox.Text.Trim() + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
                     
                     //更新数量
                     cmd.CommandText = "select Id,number from store_house_ng where house='" + chooseStock.house + "' and place='" + chooseStock.place + "'";

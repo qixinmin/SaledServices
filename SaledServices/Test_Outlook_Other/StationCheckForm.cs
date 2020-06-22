@@ -104,6 +104,10 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "update stationInformation set station = '"+this.stationComboBox.Text.Trim()+"', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd") + "' "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim() + "'";
                     cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+           "','" + this.stationComboBox.Text.Trim() +"_主动修改"+ "','" + LoginForm.currentUser + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {

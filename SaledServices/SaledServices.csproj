@@ -791,6 +791,12 @@
     <Compile Include="Store\StoreHouseInnerNGForm.designer.cs">
       <DependentUpon>StoreHouseInnerNGForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Test_Outlook_Other\ImageCheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test_Outlook_Other\ImageCheckForm.Designer.cs">
+      <DependentUpon>ImageCheckForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Test_Outlook_Other\StationCheckForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1151,6 +1157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Store\StoreHouseInnerNGForm.resx">
       <DependentUpon>StoreHouseInnerNGForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test_Outlook_Other\ImageCheckForm.resx">
+      <DependentUpon>ImageCheckForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test_Outlook_Other\StationCheckForm.resx">
       <DependentUpon>StationCheckForm.cs</DependentUpon>

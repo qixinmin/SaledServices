@@ -584,6 +584,10 @@ namespace SaledServices
 
                     if (error == false)
                     {
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + track_serial_no_txt.ToUpper() +
+          "','" + status + "','" + repairer_txt + "',GETDATE())";
+                        cmd.ExecuteNonQuery();
+
                         cmd.CommandText = "INSERT INTO bga_wait_record_table VALUES('"
                            + track_serial_no_txt.ToUpper() + "','"
                            + status + "','"
@@ -624,7 +628,7 @@ namespace SaledServices
                         cmd.ExecuteNonQuery();
 
                         cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
-            "','BGA待修','" + repairer_txt + "',GETDATE())";
+            "','BGA待修:"+status+"','" + repairer_txt + "',GETDATE())";
                         cmd.ExecuteNonQuery();
                     }
                 }

@@ -759,6 +759,97 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
+                    //插入obe的抽查比例
+                    cmd.CommandText = "select ordernum from receiveOrder where orderno='" + this.custom_orderComboBox.Text.Trim() 
+                        + "' and custom_materialNo='" + currentMaterialNo + "'";
+                    querySdr = cmd.ExecuteReader();
+                    string ordernum = "";
+                    while (querySdr.Read())
+                    {
+                        ordernum = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+                    if (ordernum == "")
+                    {
+                        MessageBox.Show("此订单编号不存在！"+this.custom_orderComboBox.Text.Trim());                        
+                        conn.Close();
+                        return;
+                    }
+
+                    try
+                    {
+                        int num = Int16.Parse(ordernum);
+                        if (num <= 0)
+                        {
+                            MessageBox.Show("此订单编号对应的数量不对！");
+                            conn.Close();
+                            return;
+                        }
+
+                        cmd.CommandText = "select top 1 rate from obe_checkrate_table where orderno='" + this.custom_orderComboBox.Text.Trim()
+                            + "' and custom_materialNo='" + currentMaterialNo + "'";
+                        cmd.CommandType = CommandType.Text;
+                        querySdr = cmd.ExecuteReader();
+
+                        string rateStr = "";
+                        while (querySdr.Read())
+                        {
+                            rateStr = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+
+                        try
+                        {
+                            //现在基数有了，查询数据库中有多少个，然后决定当前跟踪条码是第几个
+                            double rate = Double.Parse(rateStr);// 0.15;
+
+                            int totalchecknum = (int)Math.Ceiling(num * rate);
+
+                            //查询现在有多少个了，只需要查最后一个，也许没有
+                            cmd.CommandText = "select COUNT(*)  from decideOBEchecktable where orderno='" + this.custom_orderComboBox.Text.Trim()
+                                + "'and custom_materialNo='" + currentMaterialNo + "'";
+                            querySdr = cmd.ExecuteReader();
+                            string existnum = "";
+                            while (querySdr.Read())
+                            {
+                                existnum = querySdr[0].ToString();
+                            }
+                            querySdr.Close();
+                            int currentIndex = Int16.Parse(existnum) + 1;
+                            bool ischeck = isObeCheck(num, totalchecknum, currentIndex);
+
+                            //后续要插入到数据库中
+                            cmd.CommandText = "INSERT INTO decideOBEchecktable VALUES('"
+                              + this.track_serial_noTextBox.Text.Trim() + "','"
+                              + this.custom_orderComboBox.Text.Trim() + "','"
+                              + currentMaterialNo + "','"
+                              + num + "','"
+                              + rate + "','"
+                              + currentIndex + "','"
+                              + (ischeck ? "True" : "False") + "','"
+                              + this.inputUserTextBox.Text.Trim() + "','"
+                              + this.order_receive_dateTextBox.Text.Trim()
+                              + "')";
+                            cmd.ExecuteNonQuery();
+
+                            if (ischeck)
+                            {
+                                MessageBox.Show(this.track_serial_noTextBox.Text.Trim() + " 需要过OBE站别，请分类");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+
+                    //end obe 抽查比例
+
                     cmd.CommandText = "update receiveOrder set _status = '" + status + "',receivedNum = '" + (receivedNum + 1) +
                                 "', receivedate = '" + DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                                 + "where orderno = '" + this.custom_orderComboBox.Text
@@ -847,6 +938,34 @@ namespace SaledServices
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+            
+
+        private bool isObeCheck(int totalnum, int totalchecknum, int currentIndex)
+        {
+            if (totalnum == currentIndex)//比如总数为1
+            {
+                return true;
+            }
+
+            if (totalchecknum == currentIndex)//比如最后一个
+            {
+                return true;
+            }
+
+            int step = (int)Math.Floor(totalnum / totalchecknum*1.0);//步长取数值
+            int forward = 1;
+            while (forward <= totalchecknum)
+            {
+                forward += step;
+                if (forward == currentIndex)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void clearOrderReleatedInfo()

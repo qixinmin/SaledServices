@@ -45,6 +45,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.autochecktextBox = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -215,7 +216,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.68988F));
             this.tableLayoutPanel2.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.autochecktextBox, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 281);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 287);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -240,11 +241,22 @@
             this.autochecktextBox.TabIndex = 1;
             this.autochecktextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.autochecktextBox_KeyPress);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(545, 248);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(96, 27);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "启动图片检查";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // OutLookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 409);
+            this.ClientSize = new System.Drawing.Size(684, 409);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "OutLookForm";
@@ -278,5 +290,6 @@
         private System.Windows.Forms.TextBox autochecktextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TextBox failReasonTextBox;
+        private System.Windows.Forms.Button button4;
     }
 }

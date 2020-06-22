@@ -1,3 +1,44 @@
+
+/*Obe 抽查的结果表 */
+CREATE TABLE ObeStationtable(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL,
+orderno NVARCHAR(128) NOT NULL, /*订单编号*/
+custom_materialNo NVARCHAR(128) NOT NULL,/*客户料号*/
+checkresult NVARCHAR(128),/*检查结果，F fail ： P pass*/
+failreason NVARCHAR(1280),
+tester NVARCHAR(128) NOT NULL,
+input_date date
+)
+
+/*收货一站来决定是否obe抽检，采用总数与抽查比例算后用等差数列来计数 */
+CREATE TABLE decideOBEchecktable(
+Id INT PRIMARY KEY IDENTITY, 
+track_serial_no NVARCHAR(128) NOT NULL,
+orderno NVARCHAR(128) NOT NULL, /*订单编号*/
+custom_materialNo NVARCHAR(128) NOT NULL,/*客户料号*/
+totalNum NVARCHAR(128),
+rate NVARCHAR(128),/*抽查比例*/
+currentindex NVARCHAR(128),/*在总数里面的序数第几个，先到先计数，顺序不固定*/
+ischeck NVARCHAR(128),/*是否抽查*/
+tester NVARCHAR(128) NOT NULL,
+input_date date
+)
+
+/*
+订单的抽检比例，根据订单号来做区分，如果已经开始走obe则不能修改抽检比例，否在可以修改
+*/
+CREATE TABLE obe_checkrate_table(
+Id INT PRIMARY KEY IDENTITY, 
+orderno NVARCHAR(128) NOT NULL, /*订单编号*/
+custom_materialNo NVARCHAR(128) NOT NULL,/*客户料号*/
+rate  NVARCHAR(128) NOT NULL, 
+inputer NVARCHAR(128) NOT NULL, /*输入人*/
+input_date date, /*日期*/
+)
+
+
+
 /*测试结果表格， 包括：序列号，测试人， 时间， 结果（Pass/Fail)， 如果是错误的必须要错误描述， 站别*/
 
 CREATE TABLE test_all_result_record(

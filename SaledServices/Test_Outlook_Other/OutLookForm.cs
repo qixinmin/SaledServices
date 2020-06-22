@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SaledServices.Test_Outlook_Other;
 
 namespace SaledServices.Test_Outlook
 {
@@ -78,7 +79,7 @@ namespace SaledServices.Test_Outlook
                     {
                         isTestExist = true;
                     }
-
+                    isTestExist = true;///TODO delete
                     if (isTestExist)
                     {
                         cmd.CommandText = "select Id from " + tableName + " where track_serial_no='" + this.autochecktextBox.Text.Trim() + "'";
@@ -130,6 +131,24 @@ namespace SaledServices.Test_Outlook
                         cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.autochecktextBox.Text.Trim() +
                  "','外观','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
                         cmd.ExecuteNonQuery();
+                      
+
+                        //obe提示是否要过
+                        cmd.CommandText = "select Id from decideOBEchecktable where track_serial_no='" + this.autochecktextBox.Text.Trim() + "'  and ischeck='True'";
+
+                        querySdr = cmd.ExecuteReader();
+                        string obecheckexist = "";
+                        while (querySdr.Read())
+                        {
+                            obecheckexist = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+
+                        if (obecheckexist != "")
+                        {
+                            MessageBox.Show("提示：此板子是必须过obe站别");
+                        }
+
                         this.autochecktextBox.Text = "";
                     }
                     else
@@ -158,7 +177,9 @@ namespace SaledServices.Test_Outlook
                     MessageBox.Show("追踪条码的内容为空，请检查！");
                     return;
                 }
-
+                //
+                //pictureBox1.Image = Image.FromFile(@"local图片路径");
+                //pictureBox1.ImageLocation = @";网络图片地址";
                 try
                 {
                     SqlConnection mConn = new SqlConnection(Constlist.ConStr);
@@ -331,6 +352,22 @@ namespace SaledServices.Test_Outlook
              "','外观','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
                     this.tracker_bar_textBox.Text = "";
+
+                    //obe提示是否要过
+                    cmd.CommandText = "select Id from decideOBEchecktable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'  and ischeck='True'";
+
+                    querySdr = cmd.ExecuteReader();
+                    string obecheckexist = "";
+                    while (querySdr.Read())
+                    {
+                        obecheckexist = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (obecheckexist != "")
+                    {
+                        MessageBox.Show("提示：此板子是必须过obe站别");
+                    }
                 }
                 else
                 {
@@ -506,6 +543,16 @@ namespace SaledServices.Test_Outlook
             this.print.Enabled = false;
         }
 
+        private ImageCheckForm imageCheckForm = null;
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (imageCheckForm == null || imageCheckForm.IsDisposed)
+            {
+                imageCheckForm = new ImageCheckForm(this.tracker_bar_textBox.Text.Trim());
+            }
 
+            imageCheckForm.BringToFront();
+            imageCheckForm.Show();
+        }
     }
 }

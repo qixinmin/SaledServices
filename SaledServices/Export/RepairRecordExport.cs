@@ -91,6 +91,7 @@ namespace SaledServices.Export
             string endTime = this.dateTimePickerend.Value.ToString("yyyy-MM-dd");
 
             List<RepairRecordStruct> receiveOrderList = new List<RepairRecordStruct>();
+            List<string> tracknolist = new List<string>();//用来判别是否有重复项问题
 
             List<RepairRecordStruct> receiveOrderListtarget = new List<RepairRecordStruct>();
 
@@ -118,7 +119,28 @@ namespace SaledServices.Export
                 SqlDataReader querySdr = null;
                 if (isTest)
                 {
-                   sql = "SELECT  A.track_serial_no  from test2table  as A inner join repair_record_table as B on A.track_serial_no =B.track_serial_no "+
+                    sql = "SELECT  A.track_serial_no  from testalltable  as A inner join repair_record_table as B on A.track_serial_no =B.track_serial_no " +
+                           "where A.test_date between '" + startTime + "' and '" + endTime + "' ";
+                    if (subsql != "")
+                    {
+                        sql += subsql;
+                    }
+                    cmd.CommandText = sql;
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        RepairRecordStruct temp = new RepairRecordStruct();
+                        temp.track_serial_no = querySdr[0].ToString();
+                        //temp.repair_Num = querySdr[1].ToString();
+                        if (tracknolist.Contains(temp.track_serial_no) == false)
+                        {
+                            tracknolist.Add(temp.track_serial_no);
+                            receiveOrderList.Add(temp);
+                        }
+                    }
+                    querySdr.Close();
+
+                    sql = "SELECT  A.track_serial_no  from test2table  as A inner join repair_record_table as B on A.track_serial_no =B.track_serial_no "+
                             "where A.test_date between '"+startTime+"' and '"+endTime+"' ";
                     if (subsql != "")
                     {
@@ -131,8 +153,11 @@ namespace SaledServices.Export
                         RepairRecordStruct temp = new RepairRecordStruct();
                         temp.track_serial_no = querySdr[0].ToString();
                         //temp.repair_Num = querySdr[1].ToString();
-
-                        receiveOrderList.Add(temp);
+                        if (tracknolist.Contains(temp.track_serial_no) == false)
+                        {
+                            tracknolist.Add(temp.track_serial_no);
+                            receiveOrderList.Add(temp);
+                        }
                     }
                     querySdr.Close();
 
@@ -169,8 +194,11 @@ namespace SaledServices.Export
                         RepairRecordStruct temp = new RepairRecordStruct();
                         temp.track_serial_no = querySdr[0].ToString();
                         //temp.repair_Num = querySdr[1].ToString();
-
-                        receiveOrderList.Add(temp);
+                        if (tracknolist.Contains(temp.track_serial_no) == false)
+                        {
+                            tracknolist.Add(temp.track_serial_no);
+                            receiveOrderList.Add(temp);
+                        }
                     }
                     querySdr.Close();
 
