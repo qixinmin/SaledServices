@@ -130,7 +130,7 @@ namespace SaledServices.Export
                     while (querySdr.Read())
                     {
                         RepairRecordStruct temp = new RepairRecordStruct();
-                        temp.track_serial_no = querySdr[0].ToString();
+                        temp.track_serial_no = querySdr[0].ToString().ToUpper();
                         //temp.repair_Num = querySdr[1].ToString();
                         if (tracknolist.Contains(temp.track_serial_no) == false)
                         {
@@ -151,7 +151,7 @@ namespace SaledServices.Export
                     while (querySdr.Read())
                     {
                         RepairRecordStruct temp = new RepairRecordStruct();
-                        temp.track_serial_no = querySdr[0].ToString();
+                        temp.track_serial_no = querySdr[0].ToString().ToUpper();
                         //temp.repair_Num = querySdr[1].ToString();
                         if (tracknolist.Contains(temp.track_serial_no) == false)
                         {
@@ -192,7 +192,7 @@ namespace SaledServices.Export
                     while (querySdr.Read())
                     {
                         RepairRecordStruct temp = new RepairRecordStruct();
-                        temp.track_serial_no = querySdr[0].ToString();
+                        temp.track_serial_no = querySdr[0].ToString().ToUpper();
                         //temp.repair_Num = querySdr[1].ToString();
                         if (tracknolist.Contains(temp.track_serial_no) == false)
                         {

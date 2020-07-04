@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.customMaterialNotextBox = new System.Windows.Forms.TextBox();
@@ -45,10 +45,11 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.29032F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.16129F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.customMaterialNotextBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
@@ -75,9 +76,9 @@
             // customMaterialNotextBox
             // 
             this.customMaterialNotextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customMaterialNotextBox.Location = new System.Drawing.Point(103, 4);
+            this.customMaterialNotextBox.Location = new System.Drawing.Point(77, 4);
             this.customMaterialNotextBox.Name = "customMaterialNotextBox";
-            this.customMaterialNotextBox.Size = new System.Drawing.Size(202, 21);
+            this.customMaterialNotextBox.Size = new System.Drawing.Size(148, 21);
             this.customMaterialNotextBox.TabIndex = 1;
             // 
             // label2
@@ -92,14 +93,14 @@
             // mbBrieftextBox
             // 
             this.mbBrieftextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mbBrieftextBox.Location = new System.Drawing.Point(103, 38);
+            this.mbBrieftextBox.Location = new System.Drawing.Point(77, 38);
             this.mbBrieftextBox.Name = "mbBrieftextBox";
-            this.mbBrieftextBox.Size = new System.Drawing.Size(202, 21);
+            this.mbBrieftextBox.Size = new System.Drawing.Size(148, 21);
             this.mbBrieftextBox.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(312, 38);
+            this.button1.Location = new System.Drawing.Point(232, 38);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -125,8 +126,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;

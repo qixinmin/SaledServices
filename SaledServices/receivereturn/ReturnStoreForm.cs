@@ -455,35 +455,38 @@ namespace SaledServices
                     }
 
                     //判断obe是否通过
-                    cmd.CommandText = "select ischeck from decideOBEchecktable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "' and ischeck='True'";
-
-                    querySdr = cmd.ExecuteReader();
-                    string ischeck = "";
-
-                    while (querySdr.Read())
+                    if (statusComboBox.Text.Trim() != "不良品")
                     {
-                        ischeck = querySdr[0].ToString();
-                    }
-                    querySdr.Close();
-                    if (ischeck == "True")
-                    {
-                        cmd.CommandText = "select checkresult from ObeStationtable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+                        cmd.CommandText = "select ischeck from decideOBEchecktable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "' and ischeck='True'";
 
                         querySdr = cmd.ExecuteReader();
-                        string checkresult = "";
+                        string ischeck = "";
 
                         while (querySdr.Read())
                         {
-                            checkresult = querySdr[0].ToString();
+                            ischeck = querySdr[0].ToString();
                         }
                         querySdr.Close();
-                        if (checkresult == "" || checkresult != "P")
+                        if (ischeck == "True")
                         {
-                            MessageBox.Show("追踪条码的内容在OBE站别中，没有检查结果！");
-                            conn.Close();
-                            return;
+                            cmd.CommandText = "select checkresult from ObeStationtable where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
+
+                            querySdr = cmd.ExecuteReader();
+                            string checkresult = "";
+
+                            while (querySdr.Read())
+                            {
+                                checkresult = querySdr[0].ToString();
+                            }
+                            querySdr.Close();
+                            if (checkresult == "" || checkresult != "P")
+                            {
+                                MessageBox.Show("追踪条码的内容在OBE站别中，没有检查结果！");
+                                conn.Close();
+                                return;
+                            }
                         }
-                    }                    
+                    }
 
                     //end 判断obe
 

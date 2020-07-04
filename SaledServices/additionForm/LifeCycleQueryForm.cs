@@ -23,6 +23,17 @@ namespace SaledServices
             InitializeComponent();
         }
 
+    
+        class lifecycleinfo
+        {
+            public string trackNo { get; set; }
+            public string station { get; set; }
+            public string result { get; set; }
+
+            public string failDescribe { get; set; }
+            public string inputer { get; set; }
+            public string inputdate { get; set; }
+        }
      
         private void query_Click(object sender, EventArgs e)
         {
@@ -39,12 +50,12 @@ namespace SaledServices
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
                 mConn.Open();
-
+                SqlDataReader querySdr = null;
                 string trackno = "";
                 if (is8s)
                 {
                     cmd.CommandText = "select track_serial_no from DeliveredTable where custom_serial_no='" + query + "' order by Id desc";
-                    SqlDataReader querySdr = cmd.ExecuteReader();
+                    querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
                         trackno = querySdr[0].ToString();
@@ -56,16 +67,70 @@ namespace SaledServices
                     trackno = query;
                 }
 
+                List<lifecycleinfo> list = new List<lifecycleinfo>();
 
                 cmd.CommandText = "select * from stationInfoRecord where  trackno='" + trackno + "' order by Id desc";
                 cmd.CommandType = CommandType.Text;
+                querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    lifecycleinfo useclass = new lifecycleinfo();
+                    useclass.trackNo = querySdr[1].ToString();
+                    useclass.station = querySdr[2].ToString();
+                    useclass.inputer = querySdr[3].ToString();
+                    useclass.inputdate = querySdr[4].ToString();
 
-                sda = new SqlDataAdapter();
-                sda.SelectCommand = cmd;
-                ds = new DataSet();
-                sda.Fill(ds, tableName);
-                dataGridView1.DataSource = ds.Tables[0];
-                dataGridView1.RowHeadersVisible = false;
+                    list.Add(useclass);
+                }
+                querySdr.Close();
+
+                foreach (lifecycleinfo info in list)
+                {
+                    //根据之前的时间查一个时间段
+                    //  select  dateadd(ss,60, '2020-06-20 11:21:11.923')
+    //select  dateadd(ss,-60, '2020-06-20 11:21:11.923')
+                    string sTime="", eTime="";
+                    cmd.CommandText = " select  dateadd(ss,-60, '"+info.inputdate+"')";
+                    cmd.CommandType = CommandType.Text;
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        sTime = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    cmd.CommandText = " select  dateadd(ss,60, '" + info.inputdate + "')";
+                    cmd.CommandType = CommandType.Text;
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {
+                        eTime = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+
+                    cmd.CommandText = "select top 1 result,failDescribe from test_all_result_record where  trackno='" + trackno + "' and station='" + info.station + "' and inputdate between '" + sTime + "' and '" + eTime + "' order by Id desc";
+                    cmd.CommandType = CommandType.Text;
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        while (querySdr.Read())
+                        {
+                            info.result = querySdr[0].ToString();
+                            info.failDescribe = querySdr[1].ToString();
+                        }
+                    }
+                    else
+                    {
+                        info.result = "PASS";
+                    }
+                    querySdr.Close();
+                }
+
+                querySdr.Close();
+
+                dataGridView1.DataSource = list;
+
                 mConn.Close();
             }
             catch (Exception ex)
@@ -73,7 +138,7 @@ namespace SaledServices
                 MessageBox.Show(ex.ToString());
             }
 
-            string[] hTxt = { "ID", "跟踪条码", "站别", "输入人", "输入时间" };
+            string[] hTxt = { "跟踪条码", "站别","结果","失败原因", "输入人", "输入时间" };
             for (int i = 0; i < hTxt.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = hTxt[i];
@@ -181,9 +246,14 @@ namespace SaledServices
                     querySdr.Close();
 
                     //查询测试结果
-                    if (temp.station == "Test1" || temp.station == "Test1_2" || temp.station == "Test2")
+                    if (temp.station == "Test1" || temp.station == "测试1_2" || temp.station == "Test2")
                     {
-                        cmd.CommandText = "select failDescribe from test_all_result_record where trackno='" + temp.trackno + "' and station='" + temp.station + "'";
+                        string querystation = temp.station;
+                        if (temp.station == "测试1_2")
+                        {
+                            querystation = "Test1_2";
+                        }
+                        cmd.CommandText = "select failDescribe from test_all_result_record where trackno='" + temp.trackno + "' and station='" + querystation + "'";
                         querySdr = cmd.ExecuteReader();
                         while (querySdr.Read())
                         {
@@ -265,6 +335,11 @@ namespace SaledServices
 
                         }
                         querySdr.Close();
+                    }
+
+                    if (temp.station.StartsWith("BGA"))
+                    {
+                        temp.result = "PASS";
                     }
 
 

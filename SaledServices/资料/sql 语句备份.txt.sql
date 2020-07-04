@@ -1,4 +1,12 @@
 
+/*后台管理表*/
+CREATE TABLE functionControltable(
+Id INT PRIMARY KEY IDENTITY, 
+funtion NVARCHAR(128) NOT NULL,/*功能名称*/
+able NVARCHAR(128) NOT NULL, /*是否启用，默认启用 1 不启用 0*/
+other NVARCHAR(128),/*备用*/
+)
+
 /*Obe 抽查的结果表 */
 CREATE TABLE ObeStationtable(
 Id INT PRIMARY KEY IDENTITY, 

@@ -142,7 +142,7 @@ namespace SaledServices.Test_Outlook
 
                     if (isBgaRepaired || isNTF)
                     {
-                        cmd.CommandText = "select top 1 inputdate from stationInfoRecord where trackno='" + this.tracker_bar_textBox.Text.Trim() + "' and station='Test1'";
+                        cmd.CommandText = "select top 1 inputdate from stationInfoRecord where trackno='" + this.tracker_bar_textBox.Text.Trim() + "' and station='Test1' order by inputdate desc";
                         querySdr = cmd.ExecuteReader();
                         string test1Date = "";
                         while (querySdr.Read())
@@ -235,7 +235,7 @@ namespace SaledServices.Test_Outlook
                     //}
 
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
-                        + this.tracker_bar_textBox.Text.Trim() + "','"
+                        + this.tracker_bar_textBox.Text.Trim().ToUpper() + "','"
                         + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
 
@@ -243,12 +243,12 @@ namespace SaledServices.Test_Outlook
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim().ToUpper() +
                "','Test2','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
-                      + this.tracker_bar_textBox.Text.Trim() + "','"
+                      + this.tracker_bar_textBox.Text.Trim().ToUpper() + "','"
                       + this.testerTextBox.Text.Trim() + "',GETDATE(),'Pass','','Test2')";
                     cmd.ExecuteNonQuery();
                 }
@@ -292,12 +292,12 @@ namespace SaledServices.Test_Outlook
 
 
                     cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
-                        + this.tracker_bar_textBox.Text.Trim() + "','"
+                        + this.tracker_bar_textBox.Text.Trim().ToUpper() + "','"
                         + this.testerTextBox.Text.Trim() + "',GETDATE(),'Fail','" + this.failDescribe.Text.Trim() + "','Test2')";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-              "','Test2','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+              "','Test2','" + this.testerTextBox.Text.Trim().ToUpper() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
                 }
                 else

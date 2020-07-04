@@ -41,9 +41,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePickerstart = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerend = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePickerstart = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -58,20 +58,20 @@
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(5, 131);
+            this.dataGridView1.Location = new System.Drawing.Point(5, 159);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(950, 613);
+            this.dataGridView1.Size = new System.Drawing.Size(950, 585);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // querytrackno
             // 
             this.querytrackno.Font = new System.Drawing.Font("SimSun", 15F);
-            this.querytrackno.Location = new System.Drawing.Point(425, 8);
+            this.querytrackno.Location = new System.Drawing.Point(401, 8);
             this.querytrackno.Margin = new System.Windows.Forms.Padding(5);
             this.querytrackno.Name = "querytrackno";
             this.querytrackno.Size = new System.Drawing.Size(150, 35);
@@ -93,7 +93,7 @@
             // 
             // tracknoTextBox
             // 
-            this.tracknoTextBox.Location = new System.Drawing.Point(170, 8);
+            this.tracknoTextBox.Location = new System.Drawing.Point(160, 8);
             this.tracknoTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.tracknoTextBox.Name = "tracknoTextBox";
             this.tracknoTextBox.Size = new System.Drawing.Size(226, 30);
@@ -110,8 +110,8 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.95594F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.04406F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.56075F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.43925F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(960, 749);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
@@ -122,7 +122,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.6423F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.3577F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 364F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 388F));
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.querytrackno, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this._8sCode, 0, 1);
@@ -137,13 +137,13 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(954, 120);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(954, 148);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // _8sCode
             // 
             this._8sCode.AutoSize = true;
-            this._8sCode.Location = new System.Drawing.Point(6, 72);
+            this._8sCode.Location = new System.Drawing.Point(6, 100);
             this._8sCode.Name = "_8sCode";
             this._8sCode.Size = new System.Drawing.Size(49, 20);
             this._8sCode.TabIndex = 4;
@@ -152,7 +152,7 @@
             // query8s
             // 
             this.query8s.Font = new System.Drawing.Font("SimSun", 15F);
-            this.query8s.Location = new System.Drawing.Point(425, 77);
+            this.query8s.Location = new System.Drawing.Point(401, 105);
             this.query8s.Margin = new System.Windows.Forms.Padding(5);
             this.query8s.Name = "query8s";
             this.query8s.Size = new System.Drawing.Size(150, 31);
@@ -163,7 +163,7 @@
             // 
             // _8sCodetextBox
             // 
-            this._8sCodetextBox.Location = new System.Drawing.Point(170, 77);
+            this._8sCodetextBox.Location = new System.Drawing.Point(160, 105);
             this._8sCodetextBox.Margin = new System.Windows.Forms.Padding(5);
             this._8sCodetextBox.Name = "_8sCodetextBox";
             this._8sCodetextBox.Size = new System.Drawing.Size(226, 30);
@@ -173,9 +173,9 @@
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(589, 75);
+            this.button1.Location = new System.Drawing.Point(565, 103);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(359, 39);
+            this.button1.Size = new System.Drawing.Size(383, 39);
             this.button1.TabIndex = 5;
             this.button1.Text = "生命周期报表导出";
             this.button1.UseVisualStyleBackColor = true;
@@ -188,41 +188,33 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.91453F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.08547F));
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.dateTimePickerstart, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.dateTimePickerend, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.dateTimePickerstart, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(589, 6);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(565, 6);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(359, 60);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.80952F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.19048F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(383, 88);
             this.tableLayoutPanel3.TabIndex = 6;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 31);
+            this.label2.Location = new System.Drawing.Point(6, 44);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 21;
             this.label2.Text = "结束日期";
             // 
-            // dateTimePickerstart
-            // 
-            this.dateTimePickerstart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePickerstart.Location = new System.Drawing.Point(113, 6);
-            this.dateTimePickerstart.Name = "dateTimePickerstart";
-            this.dateTimePickerstart.Size = new System.Drawing.Size(240, 30);
-            this.dateTimePickerstart.TabIndex = 17;
-            // 
             // dateTimePickerend
             // 
             this.dateTimePickerend.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePickerend.Location = new System.Drawing.Point(113, 34);
+            this.dateTimePickerend.Location = new System.Drawing.Point(120, 47);
             this.dateTimePickerend.Name = "dateTimePickerend";
-            this.dateTimePickerend.Size = new System.Drawing.Size(240, 30);
+            this.dateTimePickerend.Size = new System.Drawing.Size(257, 30);
             this.dateTimePickerend.TabIndex = 18;
             // 
             // label1
@@ -233,6 +225,14 @@
             this.label1.Size = new System.Drawing.Size(89, 20);
             this.label1.TabIndex = 20;
             this.label1.Text = "开始日期";
+            // 
+            // dateTimePickerstart
+            // 
+            this.dateTimePickerstart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePickerstart.Location = new System.Drawing.Point(120, 6);
+            this.dateTimePickerstart.Name = "dateTimePickerstart";
+            this.dateTimePickerstart.Size = new System.Drawing.Size(257, 30);
+            this.dateTimePickerstart.TabIndex = 17;
             // 
             // LifeCycleQueryForm
             // 

@@ -101,6 +101,39 @@ namespace SaledServices.Test_Outlook
                             return;
                         }
                     }
+
+                    //检查打fail后 防止维修不敲记录的情况
+                    string trackbar = this.tracker_bar_textBox.Text.Trim().ToUpper();
+                    cmd.CommandText = "select top 1 inputdate from test_all_result_record where trackno='" + trackbar + "' and result='Fail' order by Id desc";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        string lastFailInputdate = "";
+                        while (querySdr.Read())
+                        {
+                            lastFailInputdate = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+
+                        cmd.CommandText = "select Id from stationInfoRecord where inputdate >'" + lastFailInputdate + "' and trackno='" + trackbar + "' and station='维修'";
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows == false)
+                        {
+                            querySdr.Close();
+                            MessageBox.Show("自测试打不良后维修没有输入记录");
+                            querySdr.Close();
+                            mConn.Close();
+                            this.tracker_bar_textBox.Focus();
+                            this.tracker_bar_textBox.SelectAll();
+                            this.bomdownload.Enabled = false;
+                            return;
+                        }
+                        querySdr.Close();
+
+                    }
+                    querySdr.Close();
+                    //end 检查
+
                     this.bomdownload.Enabled = true;
                     this.button1.Enabled = true;
 
@@ -742,11 +775,15 @@ namespace SaledServices.Test_Outlook
                         else
                         {
                             cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
-                                + this.tracker_bar_textBox.Text.Trim() + "','"
+                                + this.tracker_bar_textBox.Text.Trim().ToUpper() + "','"
                                 + this.testerTextBox.Text.Trim() + "',GETDATE())";
 
                             cmd.ExecuteNonQuery();
                         }
+
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim().ToUpper() +
+              "','Test1','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+                        cmd.ExecuteNonQuery();
 
                         cmd.CommandText = "update stationInformation set station = 'Test1', updateDate = GETDATE()  "
                                 + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
@@ -934,8 +971,12 @@ namespace SaledServices.Test_Outlook
                         + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
 
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim().ToUpper() +
+              "','Test1','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
+
                     cmd.CommandText = "update stationInformation set station = 'Test1', updateDate = GETDATE() "
-                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim().ToUpper() + "'";
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -975,14 +1016,14 @@ namespace SaledServices.Test_Outlook
 
                     cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
                         + this.tracker_bar_textBox.Text.Trim() + "','"
-                        + this.testerTextBox.Text.Trim() + "',GETDATE(),'Fail','"+this.failDescribe.Text.Trim()+"','Test1')";
+                        + this.testerTextBox.Text.Trim().ToUpper() + "',GETDATE(),'Fail','" + this.failDescribe.Text.Trim() + "','Test1')";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "update stationInformation set station = '维修', updateDate = GETDATE() "
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim().ToUpper() +
                "','Test1','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
                 }

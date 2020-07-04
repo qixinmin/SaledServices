@@ -46,9 +46,6 @@ namespace SaledServices.Test_Outlook
 
                 try
                 {
-
-                             
-
                     Utils.deleteFile("D:\\fru\\", "BOM.bat");
                     Utils.deleteFile("D:\\fru\\", "BOM.NSH");
                     Utils.deleteFile("D:\\fru\\", "DPK.TXT");
@@ -111,6 +108,82 @@ namespace SaledServices.Test_Outlook
                             return;
                         }
                     }
+
+                    //检查打fail后 防止维修不敲记录的情况
+                    string trackbar = this.tracker_bar_textBox.Text.Trim().ToUpper();
+                    cmd.CommandText = "select top 1 inputdate from test_all_result_record where trackno='" + trackbar + "' and result='Fail' order by Id desc";
+                    querySdr = cmd.ExecuteReader();
+                    if (querySdr.HasRows)
+                    {
+                        string lastFailInputdate = "";
+                        while (querySdr.Read())
+                        {
+                            lastFailInputdate = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+
+                        cmd.CommandText = "select Id from stationInfoRecord where inputdate >'" + lastFailInputdate + "' and trackno='" + trackbar + "' and station='维修'";
+                        querySdr = cmd.ExecuteReader();
+                        if (querySdr.HasRows == false)
+                        {
+                            querySdr.Close();
+                            MessageBox.Show("自测试打不良后维修没有输入记录");
+                            querySdr.Close();
+                            mConn.Close();
+                            this.tracker_bar_textBox.Focus();
+                            this.tracker_bar_textBox.SelectAll();
+                            this.bomdownload.Enabled = false;
+                            return;
+                        }
+                        querySdr.Close();
+
+                    }
+                    querySdr.Close();
+                    //end 检查
+                    
+
+                    //需要加入后台管理信息
+                    cmd.CommandText = "select able from functionControltable where funtion='test1_2_jump'";
+
+                    querySdr = cmd.ExecuteReader();
+                    string able = "";
+                    while (querySdr.Read())
+                    {
+                        able = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+                    if (able == "1")//只有为1的时候才可以检查
+                    {
+                        cmd.CommandText = "select top 1 inputdate from stationInfoRecord where trackno='" + this.tracker_bar_textBox.Text.Trim() + "' and station='维修' order by inputdate desc";
+                        querySdr = cmd.ExecuteReader();
+                        string repairDate = "";
+                        while (querySdr.Read())
+                        {
+                            repairDate = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+                        try
+                        {
+
+                            DateTime test1datetime = Convert.ToDateTime(repairDate);
+                            DateTime now = DateTime.Now;
+                            TimeSpan ts = now.Subtract(test1datetime);
+                            if (ts.Hours < 1)
+                            {
+                                MessageBox.Show("从维修过来到测试的时间不足一个小时");
+
+                                mConn.Close();
+                                return;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString() + "RepaireDate的时间是：【" + repairDate + "】");
+                            mConn.Close();
+                            return;
+                        }
+                    }
+                    
 
                     this.bomdownload.Enabled = true;
 
@@ -468,7 +541,7 @@ namespace SaledServices.Test_Outlook
                     }
                     
                     cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
-                        + this.tracker_bar_textBox.Text.Trim() + "','"
+                        + this.tracker_bar_textBox.Text.Trim().ToUpper() + "','"
                         + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
 
@@ -478,7 +551,7 @@ namespace SaledServices.Test_Outlook
                     {
                         querySdr.Close();
                         cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = GETDATE() "
-                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim().ToUpper() + "'";
                         cmd.ExecuteNonQuery();
                     }
                     else
@@ -491,18 +564,18 @@ namespace SaledServices.Test_Outlook
                             //记录站别信息
                             querySdr.Close();
                             cmd.CommandText = "INSERT INTO stationInformation VALUES('"
-                                + this.tracker_bar_textBox.Text.Trim() + "','Test1&2',GETDATE())";
+                                + this.tracker_bar_textBox.Text.Trim().ToUpper() + "','Test1&2',GETDATE())";
                             cmd.ExecuteNonQuery();
                         }
                         querySdr.Close();
                     }
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-               "','测试1_2','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+               "','测试1_2','" + this.testerTextBox.Text.Trim().ToUpper() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
-                     + this.tracker_bar_textBox.Text.Trim() + "','"
+                     + this.tracker_bar_textBox.Text.Trim().ToUpper() + "','"
                      + this.testerTextBox.Text.Trim() + "',GETDATE(),'Pass','','Test1_2')";
                     cmd.ExecuteNonQuery();
                 }
@@ -528,6 +601,12 @@ namespace SaledServices.Test_Outlook
                 return;
             }
 
+            if (this.failDescribe.Text.Trim() == "")
+            {
+                MessageBox.Show("失败原因内容为空，请检查！");
+                return;
+            }
+
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -545,12 +624,17 @@ namespace SaledServices.Test_Outlook
 
 
                     cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
-                        + this.tracker_bar_textBox.Text.Trim() + "','"
+                        + this.tracker_bar_textBox.Text.Trim().ToUpper() + "','"
                         + this.testerTextBox.Text.Trim() + "',GETDATE(),'Fail','" + this.failDescribe.Text.Trim() + "','Test1_2')";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-              "','Test2','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+              "','Test2','" + this.testerTextBox.Text.Trim().ToUpper() + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
+                    + this.tracker_bar_textBox.Text.Trim().ToUpper() + "','"
+                    + this.testerTextBox.Text.Trim() + "',GETDATE(),'"+this.failDescribe.Text.Trim()+"','','Test1_2')";
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -751,12 +835,21 @@ namespace SaledServices.Test_Outlook
                         cmd.CommandType = CommandType.Text;
 
                         cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
-                            + this.tracker_bar_textBox.Text.Trim() + "','"
+                            + this.tracker_bar_textBox.Text.Trim().ToUpper() + "','"
                             + this.testerTextBox.Text.Trim() + "',GETDATE())";
                         cmd.ExecuteNonQuery();
 
                         cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate =GETDATE()  "
-                                + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                                + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim().ToUpper() + "'";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim().ToUpper() +
+           "','测试1_2','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
+                   + this.tracker_bar_textBox.Text.Trim().ToUpper() + "','"
+                   + this.testerTextBox.Text.Trim() + "',GETDATE(),'Pass','','Test1_2')";
                         cmd.ExecuteNonQuery();
                     }
                     else
@@ -934,7 +1027,7 @@ namespace SaledServices.Test_Outlook
                     else
                     {
                         cmd.CommandText = "INSERT INTO " + tableName + " VALUES('"
-                           + this.tracker_bar_textBox.Text.Trim() + "','"
+                           + this.tracker_bar_textBox.Text.Trim().ToUpper() + "','"
                            + this.testerTextBox.Text.Trim() + "',GETDATE())";
                         cmd.ExecuteNonQuery();
                     }
@@ -945,7 +1038,7 @@ namespace SaledServices.Test_Outlook
                     {
                         querySdr.Close();
                         cmd.CommandText = "update stationInformation set station = 'Test1&2', updateDate = GETDATE() "
-                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
+                              + "where track_serial_no = '" + this.tracker_bar_textBox.Text.Trim().ToUpper() + "'";
                         cmd.ExecuteNonQuery();
                     }
                     else
@@ -958,11 +1051,20 @@ namespace SaledServices.Test_Outlook
                             //记录站别信息
                             querySdr.Close();
                             cmd.CommandText = "INSERT INTO stationInformation VALUES('"
-                                + this.tracker_bar_textBox.Text.Trim() + "','Test1&2',GETDATE())";
+                                + this.tracker_bar_textBox.Text.Trim().ToUpper() + "','Test1&2',GETDATE())";
                             cmd.ExecuteNonQuery();
                         }
                         querySdr.Close();
                     }
+
+                    cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim().ToUpper() +
+           "','测试1_2','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
+                   + this.tracker_bar_textBox.Text.Trim().ToUpper() + "','"
+                   + this.testerTextBox.Text.Trim() + "',GETDATE(),'Pass','','Test1_2')";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {

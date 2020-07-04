@@ -219,10 +219,26 @@ namespace SaledServices.Test_Outlook
                         _8sCodes = querySdr[1].ToString();
 
                         mac = querySdr[2].ToString();
-                        custommaterialno = querySdr[3].ToString();
+                        custommaterialno = querySdr[3].ToString().Trim();
                         dpk_status = querySdr[4].ToString();
                     }
                     querySdr.Close();
+
+                    //eco检查
+                    cmd.CommandText = "select eco from MBMaterialCompare where custommaterialNo='" + custommaterialno + "'";
+                    querySdr = cmd.ExecuteReader();
+                    string eco = "";
+                    while (querySdr.Read())
+                    {
+                        eco = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+
+                    if (eco != "")
+                    {
+                        MessageBox.Show("ECO动作:"+eco);
+                    }
+                    //end eco
 
                     string tableName = "testalltable";
                     if (product == "LBG")

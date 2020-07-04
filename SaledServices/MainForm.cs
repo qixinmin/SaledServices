@@ -179,6 +179,15 @@ namespace SaledServices
                 this.dPK报表导出ToolStripMenuItem.Enabled = false;
                 this.dPKToolStripMenuItem.Enabled = false;
             }
+
+            if (LoginForm.currentUser == "杨明" || LoginForm.currentUser == "陈广全")
+            {
+                this.后台管理ToolStripMenuItem.Visible = true;
+            }
+            else
+            {
+                this.后台管理ToolStripMenuItem.Visible = false;
+            }
            
         }
        
@@ -1752,9 +1761,29 @@ namespace SaledServices
             allForm.Add(printHistoryExport);
         }
 
-        private LifeCycleQueryForm lifeCycleQueryForm; 
-        private void 生命周期查询ToolStripMenuItem_Click(object sender, EventArgs e)
+       
+
+        private BackServicesManagerForm backServicesManagerForm;
+        private void 后台管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (backServicesManagerForm == null || backServicesManagerForm.IsDisposed)
+            {
+                backServicesManagerForm = new BackServicesManagerForm();
+                backServicesManagerForm.MdiParent = this;
+            }
+
+            backServicesManagerForm.WindowState = FormWindowState.Maximized;
+            backServicesManagerForm.BringToFront();
+            backServicesManagerForm.Show();
+
+            allForm.Add(backServicesManagerForm);
+        }
+
+        private LifeCycleQueryForm lifeCycleQueryForm;
+  
+        private void 生命周期查询ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
             if (lifeCycleQueryForm == null || lifeCycleQueryForm.IsDisposed)
             {
                 lifeCycleQueryForm = new LifeCycleQueryForm();
