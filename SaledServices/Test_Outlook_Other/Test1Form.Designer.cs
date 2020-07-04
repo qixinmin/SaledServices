@@ -311,6 +311,7 @@
             this.failDescribe.Size = new System.Drawing.Size(238, 131);
             this.failDescribe.TabIndex = 17;
             this.failDescribe.Text = "";
+            this.failDescribe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.failDescribe_KeyPress);
             // 
             // button1
             // 

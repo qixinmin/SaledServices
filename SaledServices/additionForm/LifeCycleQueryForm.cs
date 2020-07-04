@@ -186,13 +186,16 @@ namespace SaledServices
 
         private void button1_Click(object sender, EventArgs e)
         {
+            exportExcel(null);
+        }
 
+        private void exportExcel(string station)
+        {
             DateTime time1 = Convert.ToDateTime(this.dateTimePickerstart.Value.Date.ToString("yyyy-MM-dd", System.Globalization.DateTimeFormatInfo.InvariantInfo));
             //AddDays 1 是为了加上一天，查询当然的数据，因为天数里面有时分秒 
             DateTime time2 = Convert.ToDateTime(this.dateTimePickerend.Value.AddDays(1).Date.ToString("yyyy-MM-dd", System.Globalization.DateTimeFormatInfo.InvariantInfo));
 
             DateTime endTimeforName = Convert.ToDateTime(this.dateTimePickerend.Value.Date.ToString("yyyy-MM-dd", System.Globalization.DateTimeFormatInfo.InvariantInfo));
-
 
             if (DateTime.Compare(time1, time2) > 0) //判断日期大小
             {
@@ -217,7 +220,13 @@ namespace SaledServices
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select trackno,station,inputer,inputdate from stationInfoRecord where inputdate between '" + startTime + "' and '" + endTime + "'";
+                string sql = "select trackno,station,inputer,inputdate from stationInfoRecord where inputdate between '" + startTime + "' and '" + endTime + "'";
+                if (station != null)
+                {
+                    sql = sql + " and station = '"+station+"'";
+                }
+
+                cmd.CommandText = sql;
                 SqlDataReader querySdr = cmd.ExecuteReader();
                 while (querySdr.Read())
                 {
@@ -227,7 +236,7 @@ namespace SaledServices
                     temp.tester = querySdr[2].ToString();
                     temp.inputdate = querySdr[3].ToString();
 
-                    receiveOrderList.Add(temp);
+                    receiveOrderList.Add(temp);                    
                 }
                 querySdr.Close();
 
@@ -306,7 +315,7 @@ namespace SaledServices
                         while (querySdr.Read())
                         {
                             temp.result = querySdr[0].ToString();
-                           
+
                         }
                         querySdr.Close();
                     }
@@ -318,7 +327,7 @@ namespace SaledServices
                         querySdr = cmd.ExecuteReader();
                         while (querySdr.Read())
                         {
-                            temp.result = querySdr[0].ToString()+","+querySdr[1].ToString()+","+querySdr[2].ToString();
+                            temp.result = querySdr[0].ToString() + "," + querySdr[1].ToString() + "," + querySdr[2].ToString();
 
                         }
                         querySdr.Close();
@@ -353,7 +362,7 @@ namespace SaledServices
                     {
                         lifeCycleSumStruct newTemp = new lifeCycleSumStruct();
                         newTemp.station = temp.station;
-                        lifeSumlist.Add(newTemp);                        
+                        lifeSumlist.Add(newTemp);
                     }
                     else
                     {
@@ -372,11 +381,11 @@ namespace SaledServices
                         {
                             lifeCycleSumStruct newTemp = new lifeCycleSumStruct();
                             newTemp.station = temp.station;
-                            lifeSumlist.Add(newTemp);                            
+                            lifeSumlist.Add(newTemp);
                         }
                     }
-                }                
-                
+                }
+
             }
             catch (Exception ex)
             {
@@ -455,6 +464,11 @@ namespace SaledServices
 
 
             Utils.createMulitSheetsUsingNPOI("主板生命周期信息" + "-" + startTime.Replace('/', '-') + "-" + endTime.Replace('/', '-') + ".xls", allcontentList);
+        }
+
+        private void obeexport_Click(object sender, EventArgs e)
+        {
+            exportExcel("Obe");
         }
     }
 

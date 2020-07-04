@@ -7,18 +7,58 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace SaledServices.Test_Outlook
 {
     public partial class Test2Form : Form
     {
         private String tableName = "test2table";
+
+        Dictionary<string, string> myDictionary = new Dictionary<string, string>();
+
         public Test2Form()
         {
             InitializeComponent();
             testerTextBox.Text = LoginForm.currentUser;
             testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             this.tracker_bar_textBox.Focus();
+            loadAdditionInfomation();
+        }
+
+        private void loadAdditionInfomation()
+        {
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = "select fault_index, fault_describe from customFault";
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    string index = querySdr[0].ToString();
+                    string temp = querySdr[1].ToString();
+                    if (temp != "")
+                    {
+                        if (myDictionary.Keys.Contains(index) == false)
+                        {
+                            myDictionary.Add(index, temp);
+                        }
+                    }
+                }
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void tracker_bar_textBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -140,40 +180,54 @@ namespace SaledServices.Test_Outlook
                     querySdr.Close();
 
 
-                    if (isBgaRepaired || isNTF)
-                    {
-                        cmd.CommandText = "select top 1 inputdate from stationInfoRecord where trackno='" + this.tracker_bar_textBox.Text.Trim() + "' and station='Test1' order by inputdate desc";
-                        querySdr = cmd.ExecuteReader();
-                        string test1Date = "";
-                        while (querySdr.Read())
-                        {
-                            test1Date = querySdr[0].ToString();
-                        }
-                        querySdr.Close();
-                        try
-                        {
+                    //需要加入后台管理信息
+                    cmd.CommandText = "select able from functionControltable where funtion='test2_jump'";
 
-                            DateTime test1datetime = Convert.ToDateTime(test1Date);
-                            DateTime now = DateTime.Now;
-                            TimeSpan ts = now.Subtract(test1datetime);
-                            if (ts.Hours < 1)
+                    querySdr = cmd.ExecuteReader();
+                    string able = "";
+                    while (querySdr.Read())
+                    {
+                        able = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+                    if (able == "1")//只有为1的时候才可以检查
+                    {
+                        if (isBgaRepaired || isNTF)
+                        {
+                            cmd.CommandText = "select top 1 inputdate from stationInfoRecord where trackno='" + this.tracker_bar_textBox.Text.Trim() + "' and station='Test1' order by inputdate desc";
+                            querySdr = cmd.ExecuteReader();
+                            string test1Date = "";
+                            while (querySdr.Read())
                             {
-                                if (isBgaRepaired)
+                                test1Date = querySdr[0].ToString();
+                            }
+                            querySdr.Close();
+                            try
+                            {
+
+                                DateTime test1datetime = Convert.ToDateTime(test1Date);
+                                DateTime now = DateTime.Now;
+                                TimeSpan ts = now.Subtract(test1datetime);
+                                if (ts.Hours < 1)
                                 {
-                                    MessageBox.Show("从BGA过来的测试1到测试2的不足一个小时");
+                                    if (isBgaRepaired)
+                                    {
+                                        MessageBox.Show("从BGA过来的测试1到测试2的不足一个小时");
+                                    }
+                                    if (isNTF)
+                                    {
+                                        MessageBox.Show("从NTF过来的测试1到测试2的不足一个小时");
+                                    }
+                                    mConn.Close();
+                                    return;
                                 }
-                                if (isNTF)
-                                {
-                                    MessageBox.Show("从NTF过来的测试1到测试2的不足一个小时");
-                                }
-                                mConn.Close();
-                                return;
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.ToString() + "Test1Date的时间是：【" + test1Date + "】");
                             }
                         }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.ToString() +"Test1Date的时间是：【"+ test1Date+"】");
-                        }
+
                     }
 
                     this.testerTextBox.Text = LoginForm.currentUser;
@@ -311,6 +365,24 @@ namespace SaledServices.Test_Outlook
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void failDescribe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                if (this.failDescribe.Text.Trim() != "" && Regex.IsMatch(this.failDescribe.Text.Trim(), @"^[+-]?\d*[.]?\d*$"))
+                {
+                    try
+                    {
+                        this.failDescribe.Text = myDictionary[this.failDescribe.Text.Trim()];
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("故障代码" + this.failDescribe.Text.Trim() + "不存在");
+                    }
+                }
             }
         }
     }

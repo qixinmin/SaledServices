@@ -38,16 +38,19 @@
             this._8sCode = new System.Windows.Forms.Label();
             this.query8s = new System.Windows.Forms.Button();
             this._8sCodetextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.allexport = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePickerend = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerstart = new System.Windows.Forms.DateTimePicker();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.obeexport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -129,21 +132,22 @@
             this.tableLayoutPanel2.Controls.Add(this.query8s, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.tracknoTextBox, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this._8sCodetextBox, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.button1, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 3, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(954, 148);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // _8sCode
             // 
             this._8sCode.AutoSize = true;
-            this._8sCode.Location = new System.Drawing.Point(6, 100);
+            this._8sCode.Location = new System.Drawing.Point(6, 77);
             this._8sCode.Name = "_8sCode";
             this._8sCode.Size = new System.Drawing.Size(49, 20);
             this._8sCode.TabIndex = 4;
@@ -152,7 +156,7 @@
             // query8s
             // 
             this.query8s.Font = new System.Drawing.Font("SimSun", 15F);
-            this.query8s.Location = new System.Drawing.Point(401, 105);
+            this.query8s.Location = new System.Drawing.Point(401, 82);
             this.query8s.Margin = new System.Windows.Forms.Padding(5);
             this.query8s.Name = "query8s";
             this.query8s.Size = new System.Drawing.Size(150, 31);
@@ -163,23 +167,23 @@
             // 
             // _8sCodetextBox
             // 
-            this._8sCodetextBox.Location = new System.Drawing.Point(160, 105);
+            this._8sCodetextBox.Location = new System.Drawing.Point(160, 82);
             this._8sCodetextBox.Margin = new System.Windows.Forms.Padding(5);
             this._8sCodetextBox.Name = "_8sCodetextBox";
             this._8sCodetextBox.Size = new System.Drawing.Size(226, 30);
             this._8sCodetextBox.TabIndex = 2;
             this._8sCodetextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._8sCodetextBox_KeyPress);
             // 
-            // button1
+            // allexport
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(565, 103);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(383, 39);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "生命周期报表导出";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.allexport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.allexport.Location = new System.Drawing.Point(5, 5);
+            this.allexport.Name = "allexport";
+            this.allexport.Size = new System.Drawing.Size(244, 29);
+            this.allexport.TabIndex = 5;
+            this.allexport.Text = "生命周期报表导出";
+            this.allexport.UseVisualStyleBackColor = true;
+            this.allexport.Click += new System.EventHandler(this.button1_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -197,13 +201,13 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.80952F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.19048F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(383, 88);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(383, 65);
             this.tableLayoutPanel3.TabIndex = 6;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 44);
+            this.label2.Location = new System.Drawing.Point(6, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 21;
@@ -212,7 +216,7 @@
             // dateTimePickerend
             // 
             this.dateTimePickerend.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePickerend.Location = new System.Drawing.Point(120, 47);
+            this.dateTimePickerend.Location = new System.Drawing.Point(120, 36);
             this.dateTimePickerend.Name = "dateTimePickerend";
             this.dateTimePickerend.Size = new System.Drawing.Size(257, 30);
             this.dateTimePickerend.TabIndex = 18;
@@ -234,6 +238,33 @@
             this.dateTimePickerstart.Size = new System.Drawing.Size(257, 30);
             this.dateTimePickerstart.TabIndex = 17;
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.31853F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.68146F));
+            this.tableLayoutPanel4.Controls.Add(this.allexport, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.obeexport, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(565, 80);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(383, 39);
+            this.tableLayoutPanel4.TabIndex = 7;
+            // 
+            // obeexport
+            // 
+            this.obeexport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.obeexport.Location = new System.Drawing.Point(257, 5);
+            this.obeexport.Name = "obeexport";
+            this.obeexport.Size = new System.Drawing.Size(121, 29);
+            this.obeexport.TabIndex = 5;
+            this.obeexport.Text = "OBE导出";
+            this.obeexport.UseVisualStyleBackColor = true;
+            this.obeexport.Click += new System.EventHandler(this.obeexport_Click);
+            // 
             // LifeCycleQueryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -252,6 +283,7 @@
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -267,11 +299,13 @@
         private System.Windows.Forms.Label _8sCode;
         private System.Windows.Forms.TextBox _8sCodetextBox;
         private System.Windows.Forms.Button query8s;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button allexport;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.DateTimePicker dateTimePickerstart;
         private System.Windows.Forms.DateTimePicker dateTimePickerend;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button obeexport;
     }
 }

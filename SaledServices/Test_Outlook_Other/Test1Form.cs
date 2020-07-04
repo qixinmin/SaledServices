@@ -17,12 +17,52 @@ namespace SaledServices.Test_Outlook
     {
         private String tableName = "test1table";
 
+        Dictionary<string, string> myDictionary = new Dictionary<string, string>();
+
+
         public Test1Form()
         {
             InitializeComponent();
             testerTextBox.Text = LoginForm.currentUser;
             testdatetextBox.Text = DateTime.Now.ToString("yyyy/MM/dd",System.Globalization.DateTimeFormatInfo.InvariantInfo);
             this.tracker_bar_textBox.Focus();
+
+            loadAdditionInfomation();
+        }
+
+        private void loadAdditionInfomation()
+        {
+            try
+            {
+                SqlConnection mConn = new SqlConnection(Constlist.ConStr);
+                mConn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = mConn;
+                cmd.CommandType = CommandType.Text;
+             
+                cmd.CommandText = "select fault_index, fault_describe from customFault";
+                SqlDataReader querySdr = cmd.ExecuteReader();
+                while (querySdr.Read())
+                {
+                    string index = querySdr[0].ToString();
+                    string temp = querySdr[1].ToString();
+                    if (temp != "")
+                    {                       
+                        if (myDictionary.Keys.Contains(index) == false)
+                        {
+                            myDictionary.Add(index, temp);
+                        }
+                    }
+                }
+                querySdr.Close();
+
+                mConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         string tempKeySerial="";
@@ -1001,7 +1041,6 @@ namespace SaledServices.Test_Outlook
                 return;
             }
 
-
             try
             {
                 SqlConnection conn = new SqlConnection(Constlist.ConStr);
@@ -1038,8 +1077,25 @@ namespace SaledServices.Test_Outlook
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }           
+            } 
+        }
 
+        private void failDescribe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == System.Convert.ToChar(13))
+            {
+                if (this.failDescribe.Text.Trim() != "" && Regex.IsMatch(this.failDescribe.Text.Trim(), @"^[+-]?\d*[.]?\d*$"))
+                {
+                    try
+                    {
+                        this.failDescribe.Text = myDictionary[this.failDescribe.Text.Trim()];
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("故障代码" + this.failDescribe.Text.Trim() + "不存在");
+                    }
+                }
+            }
         }
 
     }

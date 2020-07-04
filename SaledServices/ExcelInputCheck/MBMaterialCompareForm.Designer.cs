@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.vendorTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -303,10 +303,10 @@
             // replace_fruNoTextBox
             // 
             this.replace_fruNoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.replace_fruNoTextBox.Location = new System.Drawing.Point(155, 285);
-            this.replace_fruNoTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.replace_fruNoTextBox.Location = new System.Drawing.Point(161, 291);
+            this.replace_fruNoTextBox.Margin = new System.Windows.Forms.Padding(10);
             this.replace_fruNoTextBox.Name = "replace_fruNoTextBox";
-            this.replace_fruNoTextBox.Size = new System.Drawing.Size(177, 26);
+            this.replace_fruNoTextBox.Size = new System.Drawing.Size(165, 26);
             this.replace_fruNoTextBox.TabIndex = 19;
             // 
             // label11
@@ -673,8 +673,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(4, 397);
@@ -886,8 +886,9 @@
             // 
             // button1
             // 
+            this.button1.AutoSize = true;
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("SimSun", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.Location = new System.Drawing.Point(1015, 191);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(167, 23);
@@ -898,6 +899,7 @@
             // 
             // button2
             // 
+            this.button2.AutoSize = true;
             this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button2.Location = new System.Drawing.Point(1190, 222);
             this.button2.Name = "button2";
@@ -909,7 +911,6 @@
             // 
             // label35
             // 
-            this.label35.AutoSize = true;
             this.label35.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label35.Font = new System.Drawing.Font("SimSun", 10F);
             this.label35.Location = new System.Drawing.Point(1190, 188);
