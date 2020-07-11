@@ -610,7 +610,7 @@ namespace SaledServices.Test_Outlook
                     }
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-               "','测试1_2','" + this.testerTextBox.Text.Trim().ToUpper() + "',GETDATE())";
+               "','Test1_2','" + this.testerTextBox.Text.Trim().ToUpper() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"

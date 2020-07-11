@@ -260,7 +260,7 @@ namespace SaledServices
                     querySdr.Close();
 
                     //查询测试结果
-                    if (temp.station == "Test1" || temp.station == "测试1_2" || temp.station == "Test2")
+                    if (temp.station == "Test1" || temp.station == "测试1_2" || temp.station == "Test2" || temp.station == "Test1_2")
                     {
 
                         string sTime="", eTime="";

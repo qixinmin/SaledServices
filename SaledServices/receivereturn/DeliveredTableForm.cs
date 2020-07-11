@@ -760,8 +760,7 @@ namespace SaledServices
                     querySdr.Close();
 
                     //插入obe的抽查比例
-                    cmd.CommandText = "select ordernum from receiveOrder where orderno='" + this.custom_orderComboBox.Text.Trim() 
-                        + "' and custom_materialNo='" + currentMaterialNo + "'";
+                    cmd.CommandText = "select  SUM(convert(int, ordernum)) from receiveOrder where orderno='" + this.custom_orderComboBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();
                     string ordernum = "";
                     while (querySdr.Read())
@@ -786,28 +785,15 @@ namespace SaledServices
                             return;
                         }
 
-                        cmd.CommandText = "select top 1 rate from obe_checkrate_table where orderno='" + this.custom_orderComboBox.Text.Trim()
-                            + "' and custom_materialNo='" + currentMaterialNo + "'";
-                        cmd.CommandType = CommandType.Text;
-                        querySdr = cmd.ExecuteReader();
-
-                        string rateStr = "";
-                        while (querySdr.Read())
-                        {
-                            rateStr = querySdr[0].ToString();
-                        }
-                        querySdr.Close();
-
                         try
                         {
                             //现在基数有了，查询数据库中有多少个，然后决定当前跟踪条码是第几个
-                            double rate = Double.Parse(rateStr);// 0.15;
+                            double rate = 0.1;
 
                             int totalchecknum = (int)Math.Ceiling(num * rate);
 
                             //查询现在有多少个了，只需要查最后一个，也许没有
-                            cmd.CommandText = "select COUNT(*)  from decideOBEchecktable where orderno='" + this.custom_orderComboBox.Text.Trim()
-                                + "'and custom_materialNo='" + currentMaterialNo + "'";
+                            cmd.CommandText = "select COUNT(*)  from decideOBEchecktable where orderno='" + this.custom_orderComboBox.Text.Trim() + "'";
                             querySdr = cmd.ExecuteReader();
                             string existnum = "";
                             while (querySdr.Read())
