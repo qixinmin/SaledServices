@@ -668,12 +668,7 @@ namespace SaledServices.Test_Outlook
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
-              "','Test2','" + this.testerTextBox.Text.Trim().ToUpper() + "',GETDATE())";
-                    cmd.ExecuteNonQuery();
-
-                    cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
-                    + this.tracker_bar_textBox.Text.Trim().ToUpper() + "','"
-                    + this.testerTextBox.Text.Trim() + "',GETDATE(),'"+this.failDescribe.Text.Trim()+"','','Test1_2')";
+              "','Test1_2','" + this.testerTextBox.Text.Trim().ToUpper() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -883,7 +878,7 @@ namespace SaledServices.Test_Outlook
                         cmd.ExecuteNonQuery();
 
                         cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim().ToUpper() +
-           "','测试1_2','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+           "','Test1_2','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
                         cmd.ExecuteNonQuery();
 
                         cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
@@ -1097,7 +1092,7 @@ namespace SaledServices.Test_Outlook
                     }
 
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim().ToUpper() +
-           "','测试1_2','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
+           "','Test1_2','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"

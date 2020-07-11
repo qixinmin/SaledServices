@@ -108,8 +108,13 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
+                    string querystation = info.station;
+                    if (info.station == "测试1_2")
+                    {
+                        querystation = "Test1_2";
+                    }
 
-                    cmd.CommandText = "select top 1 result,failDescribe from test_all_result_record where  trackno='" + trackno + "' and station='" + info.station + "' and inputdate between '" + sTime + "' and '" + eTime + "' order by Id desc";
+                    cmd.CommandText = "select top 1 result,failDescribe from test_all_result_record where  trackno='" + trackno + "' and station='" + querystation + "' and inputdate between '" + sTime + "' and '" + eTime + "' order by Id desc";
                     cmd.CommandType = CommandType.Text;
                     querySdr = cmd.ExecuteReader();
                     if (querySdr.HasRows)
@@ -257,20 +262,49 @@ namespace SaledServices
                     //查询测试结果
                     if (temp.station == "Test1" || temp.station == "测试1_2" || temp.station == "Test2")
                     {
+
+                        string sTime="", eTime="";
+                        cmd.CommandText = " select  dateadd(ss,-60, '"+temp.inputdate+"')";
+                        cmd.CommandType = CommandType.Text;
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            sTime = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+
+                        cmd.CommandText = " select  dateadd(ss,60, '" + temp.inputdate + "')";
+                        cmd.CommandType = CommandType.Text;
+                        querySdr = cmd.ExecuteReader();
+                        while (querySdr.Read())
+                        {
+                            eTime = querySdr[0].ToString();
+                        }
+                        querySdr.Close();
+
                         string querystation = temp.station;
                         if (temp.station == "测试1_2")
                         {
                             querystation = "Test1_2";
                         }
-                        cmd.CommandText = "select failDescribe from test_all_result_record where trackno='" + temp.trackno + "' and station='" + querystation + "'";
+
+                        cmd.CommandText = "select top 1 failDescribe from test_all_result_record where  trackno='" + temp.trackno + "' and station='" + querystation + "' and inputdate between '" + sTime + "' and '" + eTime + "' order by Id desc";
+                        cmd.CommandType = CommandType.Text;
                         querySdr = cmd.ExecuteReader();
-                        while (querySdr.Read())
+                        if (querySdr.HasRows)
                         {
-                            temp.result = querySdr[0].ToString();
-                            if (temp.result.Trim() == "")
+                            while (querySdr.Read())
                             {
-                                temp.result = "PASS";
+                                temp.result = querySdr[0].ToString().Trim() ;
+                                if (temp.result == "")
+                                {
+                                    temp.result = "PASS";
+                                }
                             }
+                        }
+                        else
+                        {
+                            temp.result = "PASS";
                         }
                         querySdr.Close();
                     }
