@@ -111,7 +111,7 @@ namespace SaledServices.Test_Outlook
 
                     sda = new SqlDataAdapter();
 
-                    cmd.CommandText = "select vendor,track_serial_no,orderno,receivedate,mb_describe,mb_brief,"
+                    cmd.CommandText = "select vendor,source,track_serial_no,orderno,receivedate,mb_describe,mb_brief,"
                         +"custom_serial_no,vendor_serail_no,mpn,customFault,fault_describe,mbfa1,short_cut,not_good_place,material_mpn,"
                         +"material_type,fault_type,_action,repair_result,repairer ,repair_date from  repair_record_table where track_serial_no in " + result;
 

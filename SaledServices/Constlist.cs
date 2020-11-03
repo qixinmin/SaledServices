@@ -16,6 +16,7 @@ using System.Globalization;
 using SaledServices.Export;
 using NPOI.SS.UserModel;
 using NPOI.HSSF.Util;
+using System.Xml;
 
 namespace SaledServices
 {
@@ -35,6 +36,168 @@ namespace SaledServices
         public string stock_place;
         public string thisUseNumber;
         public string totalUseNumber;
+    }
+
+    public class xml2excel
+    {
+
+        public class xml2excelbody
+        {
+            public string SN_NO;
+            public string SSN;
+            public string MAC_ADDR;
+            public string UUID;
+            public string MB_PN;
+            public string MB_VERSION;
+
+        }
+
+        public static List<xml2excelbody> getContentFromXml(String filePath)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(filePath);
+
+            // 得到根节点bookstore
+            XmlNode xn = doc.SelectSingleNode("COMPALTOVENDOR");
+
+            // 得到根节点的所有子节点
+            XmlNodeList xnl = xn.ChildNodes;
+            List<xml2excelbody> list = new List<xml2excelbody>();
+            foreach (XmlNode xn1 in xnl)
+            {
+                xml2excelbody bookModel = new xml2excelbody();
+                // 将节点转换为元素，便于得到节点的属性值
+                XmlElement xe = (XmlElement)xn1;
+                // 得到Type和ISBN两个属性的属性值
+                bookModel.SN_NO = xe.GetAttribute("SN_NO").ToString();
+                bookModel.SSN = xe.GetAttribute("SSN").ToString();
+                bookModel.MAC_ADDR = xe.GetAttribute("MAC_ADDR").ToString();
+                bookModel.UUID = xe.GetAttribute("UUID").ToString();
+                bookModel.MB_PN = xe.GetAttribute("MB_PN").ToString();
+                bookModel.MB_VERSION = xe.GetAttribute("MB_VERSION").ToString();
+                list.Add(bookModel);
+            }
+
+            return list;
+        }
+
+        public static void generateExcelFromList(List<xml2excelbody> StockCheckList)
+        {
+            List<string> titleList = new List<string>();
+            List<Object> contentList = new List<object>();
+
+            titleList.Add("SN_NO");
+            titleList.Add("SSN");
+            titleList.Add("MAC_ADDR");
+            titleList.Add("UUID");
+            titleList.Add("MB_PN");
+            titleList.Add("MB_VERSION");
+
+            foreach (xml2excelbody stockcheck in StockCheckList)
+            {
+                ExportExcelContent ctest1 = new ExportExcelContent();
+                List<string> ct1 = new List<string>();
+                ct1.Add(stockcheck.SN_NO);
+                ct1.Add(stockcheck.SSN);
+                ct1.Add(stockcheck.MAC_ADDR);
+                ct1.Add(stockcheck.UUID);
+                ct1.Add(stockcheck.MB_PN);
+                ct1.Add(stockcheck.MB_VERSION);
+
+                ctest1.contentArray = ct1;
+                contentList.Add(ctest1);
+            }
+
+            Utils.createExcel("XML_2_Excel相关信息" + DateTime.Now.ToString("yyyyMMddHHmmss").Replace('/', '-') + ".xlsx", titleList, contentList);
+        }
+
+
+        public static List<String> getContentFromExcel(String xmlpath, String sheetName)
+        {
+            Microsoft.Office.Interop.Excel.Application app;
+            Microsoft.Office.Interop.Excel.Workbooks wbs;
+            Microsoft.Office.Interop.Excel.Workbook wb;
+   
+            app = new Microsoft.Office.Interop.Excel.Application();
+            app.DisplayAlerts = false;
+            wbs = app.Workbooks;
+            wb = wbs.Add(xmlpath);
+
+            wb = wbs.Open(xmlpath, 0, false, 5, string.Empty, string.Empty,
+                false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows,
+                string.Empty, true, false, 0, true, 1, 0);
+
+            List<String> retlist= new List<string>();
+            try
+            {
+                Microsoft.Office.Interop.Excel.Worksheet ws = wb.Worksheets[sheetName];
+
+                int rowLength = ws.UsedRange.Rows.Count;
+                int columnLength = ws.UsedRange.Columns.Count;
+                for (int i = 2; i <= rowLength; i++)
+                {
+                    string temp = ((Microsoft.Office.Interop.Excel.Range)ws.Cells[i, 1]).Value2.ToString();
+                    retlist.Add(temp);
+                }
+            }
+            finally
+            {
+                wbs.Close();
+
+                try
+                {
+                    wbs.Close();
+                    app.Quit();
+                    IntPtr intptr = new IntPtr(app.Hwnd);
+                    int id;
+                    GetWindowThreadProcessId(intptr, out id);
+                    var p = Process.GetProcessById(id);
+                    //if (p != null)
+                    p.Kill();
+                }
+                catch (Exception ex)
+                { }
+            }
+
+           return retlist;
+        }
+
+        [DllImport("User32.dll")]
+        public static extern int GetWindowThreadProcessId(IntPtr hWnd, out int ProcessId);
+
+
+        public static void createxmlFromExcel(List<String> xmllist, string fileName)
+        {
+            StringBuilder xmlResult = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
+            xmlResult.Append("<VENDORTOCOMPAL NAME=\"L\">\n");
+
+            foreach (String storeTrans in xmllist)
+            {
+                xmlResult.Append("<SN>\n");
+
+                xmlResult.AppendFormat("<SN_NO>{0}</SN_NO>\n", storeTrans);
+
+                xmlResult.Append("</SN>\n");
+            }
+            xmlResult.Append("</VENDORTOCOMPAL>\n");
+
+            //写入文件  
+            try
+            {
+                //1.创建文件流    
+                FileStream fileStream = new FileStream(fileName, FileMode.Create);
+                //2.创建写入器    
+                StreamWriter streamWriter = new StreamWriter(fileStream);
+                //3.将内容写入文件    
+                streamWriter.WriteLine(xmlResult);
+                //4.关闭写入器    
+                streamWriter.Close();
+                //5.关闭文件流    
+                fileStream.Close();
+            }
+            catch (Exception e)
+            { }
+        }
     }
 
     public class Constlist
@@ -241,6 +404,49 @@ namespace SaledServices
 
     public class Utils
     {
+        public static bool existAndCopy3DToServer(String _8s, string station, string inputer, string mb_brief)
+        {
+           // string fileName = _8s + "PASS.txt";
+            String filePath = @"D:\Runin\3dmarklog\";
+            DirectoryInfo foler = new DirectoryInfo(filePath);
+            if (foler.Exists)
+            {
+                bool exist = false;
+                foreach (FileInfo file in foler.GetFiles())
+                {
+                    if (file.Name.Contains(_8s) == true)
+                    {
+                        exist = true;
+                        string fileDestName = LoginForm.currentUser.Trim().ToUpper()+"_" +file.Name;
+                        try
+                        {
+                            File.Copy(filePath + file.Name, @"\\192.168.5.222\3dmarklog\" + fileDestName, true);
+                            break;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("文件远程copy失败， 请检查网络后重试！");
+                            return false;
+                        }
+                    }
+                }
+
+                if (exist == false)
+                {
+                    return false;
+                }
+            }
+            else
+            { 
+                MessageBox.Show(filePath+"文件夹不存在");
+
+                return false;
+            }          
+
+
+            return true;
+        }
+
         public static  bool existAndCopyToServer(String trackNo, string station, string inputer, string mb_brief)
         {
             string fileName = trackNo + "PASS.txt";

@@ -517,13 +517,30 @@ namespace SaledServices
                         return;
                     }
 
+                    //提示后加入拦截功能
                     cmd.CommandText = "select check_reason from mb_receive_check where custom_serial_no = '" + this.custom_serial_noTextBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();
+                    bool is_mb_receive_check_lock = false;
                      while (querySdr.Read())
                     {
                         MessageBox.Show("客户序号被拦截，原因是：" + querySdr[0].ToString());
+                        is_mb_receive_check_lock = true;
                     }
-                    querySdr.Close();
+                     querySdr.Close();
+                     //加入need_to_lock表中
+                     if (is_mb_receive_check_lock)
+                     {
+                         cmd.CommandText = "INSERT INTO need_to_lock VALUES('" +
+                                              "mb_receive_check" + "','" +
+                                          this.track_serial_noTextBox.Text.Trim() + "','" +
+                                          this.custom_orderComboBox.Text.Trim() + "','" +
+                                          this.vendor_serail_noTextBox.Text.Trim() + "','" +//记录厂商序号
+                                          "true" + "','" +
+                                          DateTime.Now.ToString("yyyy/MM/dd") +
+                                          "','')";
+                         cmd.ExecuteNonQuery();
+                     }
+
 
                     //TODO 120天的多次主板需要写FA分析
                     //select D.custom_serial_no from DeliveredTable as D inner Join returnStore as R on D.custom_serial_no = R.custom_serial_no where R.return_date>'2020-03-01' order by R.return_date desc
@@ -940,7 +957,13 @@ namespace SaledServices
                 return true;
             }
 
-            int step = (int)Math.Floor(totalnum / totalchecknum*1.0);//步长取数值
+            int step = (int)Math.Floor(totalnum / totalchecknum * 1.0);//步长取数值
+
+            if (currentIndex % step == 0)
+            {
+                return true;
+            }
+            /*
             int forward = 1;
             while (forward <= totalchecknum)
             {
@@ -949,7 +972,7 @@ namespace SaledServices
                 {
                     return true;
                 }
-            }
+            }*/
 
             return false;
         }

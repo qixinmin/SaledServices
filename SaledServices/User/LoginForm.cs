@@ -20,6 +20,7 @@ namespace SaledServices
     public partial class LoginForm : Form
     {
         public static string currentUser = "defaultUser";
+        private string path = @"d:\\.ym_hidde.txt";
       
         private MainForm mParent;
         public LoginForm(MainForm parent)
@@ -27,10 +28,43 @@ namespace SaledServices
             InitializeComponent();
             mParent = parent;
             this.ControlBox = false;
-            this.workIdInput.Focus();
-            this.workIdInput.SelectAll();
+            this.login.Focus();
+            //this.workIdInput.SelectAll();
+            readPasswd();
         }
 
+        private void readPasswd()
+        {
+            try
+            {
+                StreamReader sr = File.OpenText(path);
+                this.workIdInput.Text= sr.ReadLine();
+                this.passwordInput.Text = sr.ReadLine();
+            
+                sr.Close();
+            }
+            catch (Exception ex)
+            {
+                // MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void writePasswd(string user, string passwd)
+        {
+            try
+            {
+                StreamWriter w = File.CreateText(path);
+                w.WriteLine(user);
+                w.WriteLine(passwd);
+                w.Flush();
+                w.Close();
+
+            }
+            catch (Exception ex)
+            {
+               // MessageBox.Show(ex.ToString());
+            }
+        }
         private void login_Click(object sender, EventArgs e)
         {
             if (this.workIdInput.Text.Trim() == "" || this.passwordInput.Text.Trim() == "")
@@ -41,6 +75,8 @@ namespace SaledServices
 
             try
             {
+
+
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                 mConn.Open();
                 SqlCommand cmd = new SqlCommand();
@@ -55,6 +91,7 @@ namespace SaledServices
                 {
                     temp = querySdr[1].ToString();
                     User.UserSelfForm.username = temp;
+                    User.UserSelfForm.workId = workIdInput.Text.Trim(); ;
                     User.UserSelfForm.super_manager = querySdr[3].ToString();
                     User.UserSelfForm.bga = querySdr[4].ToString();
                     User.UserSelfForm.repair = querySdr[5].ToString();
@@ -79,6 +116,8 @@ namespace SaledServices
                 else
                 {
                     currentUser = temp;//记录用户名
+
+                    writePasswd(this.workIdInput.Text, this.passwordInput.Text);
 
                     this.Hide();
                   

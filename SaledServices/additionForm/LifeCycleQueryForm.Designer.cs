@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.querytrackno = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,8 +57,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(5, 159);
@@ -74,7 +74,7 @@
             // querytrackno
             // 
             this.querytrackno.Font = new System.Drawing.Font("SimSun", 15F);
-            this.querytrackno.Location = new System.Drawing.Point(385, 8);
+            this.querytrackno.Location = new System.Drawing.Point(337, 8);
             this.querytrackno.Margin = new System.Windows.Forms.Padding(5);
             this.querytrackno.Name = "querytrackno";
             this.querytrackno.Size = new System.Drawing.Size(150, 35);
@@ -96,10 +96,10 @@
             // 
             // tracknoTextBox
             // 
-            this.tracknoTextBox.Location = new System.Drawing.Point(154, 8);
+            this.tracknoTextBox.Location = new System.Drawing.Point(136, 8);
             this.tracknoTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.tracknoTextBox.Name = "tracknoTextBox";
-            this.tracknoTextBox.Size = new System.Drawing.Size(218, 30);
+            this.tracknoTextBox.Size = new System.Drawing.Size(188, 30);
             this.tracknoTextBox.TabIndex = 2;
             this.tracknoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tracknoTextBox_KeyPress);
             // 
@@ -125,7 +125,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.6423F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.3577F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 404F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 452F));
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.querytrackno, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this._8sCode, 0, 1);
@@ -156,7 +156,7 @@
             // query8s
             // 
             this.query8s.Font = new System.Drawing.Font("SimSun", 15F);
-            this.query8s.Location = new System.Drawing.Point(385, 82);
+            this.query8s.Location = new System.Drawing.Point(337, 82);
             this.query8s.Margin = new System.Windows.Forms.Padding(5);
             this.query8s.Name = "query8s";
             this.query8s.Size = new System.Drawing.Size(150, 31);
@@ -167,10 +167,10 @@
             // 
             // _8sCodetextBox
             // 
-            this._8sCodetextBox.Location = new System.Drawing.Point(154, 82);
+            this._8sCodetextBox.Location = new System.Drawing.Point(136, 82);
             this._8sCodetextBox.Margin = new System.Windows.Forms.Padding(5);
             this._8sCodetextBox.Name = "_8sCodetextBox";
-            this._8sCodetextBox.Size = new System.Drawing.Size(218, 30);
+            this._8sCodetextBox.Size = new System.Drawing.Size(188, 30);
             this._8sCodetextBox.TabIndex = 2;
             this._8sCodetextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._8sCodetextBox_KeyPress);
             // 
@@ -185,12 +185,12 @@
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.dateTimePickerstart, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(549, 6);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(501, 6);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.80952F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.19048F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(399, 65);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(447, 65);
             this.tableLayoutPanel3.TabIndex = 6;
             // 
             // label2
@@ -205,9 +205,9 @@
             // dateTimePickerend
             // 
             this.dateTimePickerend.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePickerend.Location = new System.Drawing.Point(125, 36);
+            this.dateTimePickerend.Location = new System.Drawing.Point(140, 36);
             this.dateTimePickerend.Name = "dateTimePickerend";
-            this.dateTimePickerend.Size = new System.Drawing.Size(268, 30);
+            this.dateTimePickerend.Size = new System.Drawing.Size(301, 30);
             this.dateTimePickerend.TabIndex = 18;
             // 
             // label1
@@ -222,9 +222,9 @@
             // dateTimePickerstart
             // 
             this.dateTimePickerstart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePickerstart.Location = new System.Drawing.Point(125, 6);
+            this.dateTimePickerstart.Location = new System.Drawing.Point(140, 6);
             this.dateTimePickerstart.Name = "dateTimePickerstart";
-            this.dateTimePickerstart.Size = new System.Drawing.Size(268, 30);
+            this.dateTimePickerstart.Size = new System.Drawing.Size(301, 30);
             this.dateTimePickerstart.TabIndex = 17;
             // 
             // tableLayoutPanel4
@@ -236,11 +236,11 @@
             this.tableLayoutPanel4.Controls.Add(this.allexport, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.obeexport, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(549, 80);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(501, 80);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(399, 39);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(447, 39);
             this.tableLayoutPanel4.TabIndex = 7;
             // 
             // allexport
@@ -248,7 +248,7 @@
             this.allexport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.allexport.Location = new System.Drawing.Point(5, 5);
             this.allexport.Name = "allexport";
-            this.allexport.Size = new System.Drawing.Size(254, 29);
+            this.allexport.Size = new System.Drawing.Size(286, 29);
             this.allexport.TabIndex = 5;
             this.allexport.Text = "生命周期报表导出";
             this.allexport.UseVisualStyleBackColor = true;
@@ -257,9 +257,9 @@
             // obeexport
             // 
             this.obeexport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.obeexport.Location = new System.Drawing.Point(267, 5);
+            this.obeexport.Location = new System.Drawing.Point(299, 5);
             this.obeexport.Name = "obeexport";
-            this.obeexport.Size = new System.Drawing.Size(127, 29);
+            this.obeexport.Size = new System.Drawing.Size(143, 29);
             this.obeexport.TabIndex = 5;
             this.obeexport.Text = "OBE导出";
             this.obeexport.UseVisualStyleBackColor = true;

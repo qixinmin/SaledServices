@@ -1797,5 +1797,53 @@ namespace SaledServices
             allForm.Add(lifeCycleQueryForm);
         }
 
+        private _3DMarkTestForm m_3DMarkTestForm;
+        private void dMark测试ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (m_3DMarkTestForm == null || m_3DMarkTestForm.IsDisposed)
+            {
+                m_3DMarkTestForm = new _3DMarkTestForm();
+                m_3DMarkTestForm.MdiParent = this;
+            }
+
+            m_3DMarkTestForm.WindowState = FormWindowState.Maximized;
+            m_3DMarkTestForm.BringToFront();
+            m_3DMarkTestForm.Show();
+
+            allForm.Add(m_3DMarkTestForm);
+        }
+
+        private Xml2ExcelForm xml2ExcelForm;
+        private void xML与Excel互换ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (xml2ExcelForm == null || xml2ExcelForm.IsDisposed)
+            {
+                xml2ExcelForm = new Xml2ExcelForm();
+                xml2ExcelForm.MdiParent = this;
+            }
+
+            xml2ExcelForm.WindowState = FormWindowState.Maximized;
+            xml2ExcelForm.BringToFront();
+            xml2ExcelForm.Show();
+
+            allForm.Add(xml2ExcelForm);
+        }
+
+        private OldNew8sRelationForm oldNew8sRelationForm;
+        private void 新旧8s条码对应关系ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (oldNew8sRelationForm == null || oldNew8sRelationForm.IsDisposed)
+            {
+                oldNew8sRelationForm = new OldNew8sRelationForm();
+                oldNew8sRelationForm.MdiParent = this;
+            }
+
+            oldNew8sRelationForm.WindowState = FormWindowState.Maximized;
+            oldNew8sRelationForm.BringToFront();
+            oldNew8sRelationForm.Show();
+
+            allForm.Add(oldNew8sRelationForm);
+        }
+
     }
 }

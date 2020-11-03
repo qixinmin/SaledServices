@@ -28,6 +28,7 @@ namespace SaledServices.User
         public static string outlook="";
         public static string running = "";
         public static string obe = "";
+        public static string workId = "";
 
         public UserSelfForm()
         {

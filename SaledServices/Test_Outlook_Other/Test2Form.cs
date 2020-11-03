@@ -86,6 +86,7 @@ namespace SaledServices.Test_Outlook
 
                     SqlDataReader querySdr = cmd.ExecuteReader();
                     string station = "";
+                    string _8s = "";
                     while (querySdr.Read())
                     {
                         station = querySdr[0].ToString();
@@ -94,7 +95,7 @@ namespace SaledServices.Test_Outlook
 
                     if (station != "Test1")
                     {
-                        MessageBox.Show("板子已经经过站别[" + station+"]");
+                        MessageBox.Show("板子已经经过站别[" + station + "]，测试未测试");
                         mConn.Close();
                         this.tracker_bar_textBox.Focus();
                         this.tracker_bar_textBox.SelectAll();
@@ -105,55 +106,75 @@ namespace SaledServices.Test_Outlook
 
                     bool existBuffer = false, existRepair = false;
                     string mb_brief="";
-                    cmd.CommandText = "select track_serial_no,product from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.CommandText = "select track_serial_no,product,custom_serial_no from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                     querySdr = cmd.ExecuteReader();
                     if (querySdr.HasRows == false)
                     {
                         querySdr.Close();
 
-                        cmd.CommandText = "select track_serial_no,product from mb_out_stock where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        cmd.CommandText = "select track_serial_no,product,custom_serial_no from mb_out_stock where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
                         querySdr = cmd.ExecuteReader();
                         if (querySdr.HasRows)
-                        {  
+                        {
+                           // _8s = querySdr[2].ToString();
                             existBuffer = true;
                         }
                         querySdr.Close();
                     }
                     else
-                    {
+                    {                      
+                       // _8s = querySdr[2].ToString(); 在下面修改8s
                         querySdr.Close();
                         existRepair = true;
-                    }                   
+                    }
 
+                    this.repairedLabel.Text = "无维修记录";
                     if (existRepair)
                     {
-                        cmd.CommandText = "select mb_brief from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        cmd.CommandText = "select mb_brief,custom_serial_no,vendor from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
                         querySdr = cmd.ExecuteReader();
+                        String vendorStr = "";
                         while (querySdr.Read())
                         {
                             mb_brief = querySdr[0].ToString();
+                            _8s = querySdr[1].ToString();
+                            vendorStr = querySdr[2].ToString();
                         }
                         querySdr.Close();
+                        this.Text = "测试2界面：" + vendorStr;
 
                         if (mb_brief == "")//从替换表里查询
                         {
-                            cmd.CommandText = "select mb_brief from DeliveredTableTransfer where track_serial_no_transfer='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                            cmd.CommandText = "select mb_brief,custom_serial_no from DeliveredTableTransfer where track_serial_no_transfer='" + this.tracker_bar_textBox.Text.Trim() + "'";
                             querySdr = cmd.ExecuteReader();
                             while (querySdr.Read())
                             {
                                 mb_brief = querySdr[0].ToString();
+                                _8s = querySdr[1].ToString();
                             }
                             querySdr.Close();
                         }
+
+                        cmd.CommandText = "select customFault,repair_date from repair_record_table where custom_serial_no='" + _8s + "' order by Id desc";
+
+                        querySdr = cmd.ExecuteReader();
+                        string faultContent = "";
+                        while (querySdr.Read())
+                        {
+                            faultContent += "：" + querySdr[0].ToString() + "," + Utils.modifyDataFormat(querySdr[1].ToString()) + "\n";
+                        }
+                        querySdr.Close();
+                        this.repairedLabel.Text = faultContent;
                     }
                     else if (existBuffer)
                     {
-                        cmd.CommandText = "select mb_brief from mb_out_stock where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        cmd.CommandText = "select mb_brief,custom_serial_no from mb_out_stock where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
                         querySdr = cmd.ExecuteReader();
                         while (querySdr.Read())
                         {
                             mb_brief = querySdr[0].ToString();
+                            _8s = querySdr[1].ToString();
                         }
                         querySdr.Close();
                     }
@@ -233,9 +254,9 @@ namespace SaledServices.Test_Outlook
                     this.testerTextBox.Text = LoginForm.currentUser;
 
                     //检查文件是否存在
-                    if (Utils.existAndCopyToServer(this.tracker_bar_textBox.Text.Trim(), "test2", this.testerTextBox.Text.Trim(), mb_brief) == false)
+                    if (Utils.existAndCopy3DToServer(_8s, "test2", this.testerTextBox.Text.Trim(), mb_brief) == false)
                     {
-                        MessageBox.Show("追踪条码的Log内容为空，请检查！");
+                        MessageBox.Show("追踪条码的3DMark Log内容为空，请检查！");
                         mConn.Close();
                         return;
                     }

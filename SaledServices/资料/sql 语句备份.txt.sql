@@ -1,4 +1,14 @@
 
+/*新旧8s对应关系表*/
+CREATE TABLE old_new_8s_relationship(
+Id INT PRIMARY KEY IDENTITY, 
+old8s NVARCHAR(128) NOT NULL,
+new8s NVARCHAR(128) NOT NULL,
+inputer NVARCHAR(128) NOT NULL,
+input_date date
+)
+
+
 /*后台管理表*/
 CREATE TABLE functionControltable(
 Id INT PRIMARY KEY IDENTITY, 

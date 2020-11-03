@@ -143,24 +143,25 @@ namespace SaledServices
         private void vendorComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             this.vendorStr = this.vendorComboBox.Text;
-            doQueryAfterSelection();
+            doQueryAfterSelection(true);
         }
 
         private void productComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             this.productStr = this.productComboBox.Text;
-            doQueryAfterSelection();
+            doQueryAfterSelection(true);
         }
 
          private void storehouseTextBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.storehousestr = this.storehouseTextBox.Text;
-            doQueryAfterSelection();
+            doQueryAfterSelection(true);
         }
 
-        private void doQueryAfterSelection()
+        Dictionary<string, string> tatMap = new Dictionary<string, string>();
+        private void doQueryAfterSelection(Boolean isUpdateTAT)
         {
-            if (this.vendorStr == "" || this.productStr == "" )
+            if (this.vendorStr == "" || this.productStr == "" || this.storehousestr == "")
             {
                 return;
             }
@@ -171,12 +172,12 @@ namespace SaledServices
                 dataGridViewToReturn.Columns.Clear();
                 SqlConnection mConn = new SqlConnection(Constlist.ConStr);
                 mConn.Open();
-
+                checkTime(122);
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = mConn;
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "select orderno, custom_materialNo,mb_brief,receivedNum,returnNum,ordertime from receiveOrder where vendor='" + vendorStr
+                cmd.CommandText = "select orderno, custom_materialNo,mb_brief,receivedNum,returnNum,ordertime,DATEDIFF( Day, ordertime, GETDATE()) from receiveOrder where vendor='" + vendorStr
                 + "' and product ='" + productStr + "' and _status = 'close' and storehouse like '" + this.storehousestr + "'"; 
 
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -185,14 +186,15 @@ namespace SaledServices
                 sda.Fill(ds, "receiveOrder");
                 dataGridViewToReturn.DataSource = ds.Tables[0];
                 dataGridViewToReturn.RowHeadersVisible = false;
-
-                string[] hTxt = { "订单编号", "客户料号", "MB简称", "收货数量", "还货数量", "制单时间" };
+                checkTime(123);
+                string[] hTxt = { "订单编号", "客户料号", "MB简称", "收货数量", "还货数量", "制单时间", "TAT" };
                 for (int i = 0; i < hTxt.Length; i++)
                 {
                     dataGridViewToReturn.Columns[i].HeaderText = hTxt[i];
                     dataGridViewToReturn.Columns[i].Name = hTxt[i];
                 }
-
+                /*
+                checkTime(124);
                 DataGridViewColumn dc = new DataGridViewColumn();
                 dc.Name = "TAT";
                 //dc.DataPropertyName = "FID";
@@ -202,25 +204,54 @@ namespace SaledServices
                 dc.HeaderText = "TAT";
                 dc.CellTemplate = new DataGridViewTextBoxCell();
                 int columnIndex = dataGridViewToReturn.Columns.Add(dc);
-
-                foreach (DataGridViewRow dr in dataGridViewToReturn.Rows)
-                {
-                    try
+                checkTime(125);
+                
+                if (tatMap.Count == 0) {
+                    checkTime(dataGridViewToReturn.Rows.Count);
+                    foreach (DataGridViewRow dr in dataGridViewToReturn.Rows)
                     {
-                        DateTime dt1 = Convert.ToDateTime(dr.Cells["制单时间"].Value.ToString());
-                        DateTime dt2 = DateTime.Now;
+                        try
+                        {
+                            checkTime(12500);
+                            DateTime dt1 = Convert.ToDateTime(dr.Cells["制单时间"].Value.ToString());
+                            DateTime dt2 = DateTime.Now;
 
-                        TimeSpan ts = dt2.Subtract(dt1);
-                        int overdays = ts.Days;
+                            TimeSpan ts = dt2.Subtract(dt1);
+                            int overdays = ts.Days;
+                            checkTime(12501);
+                            dr.Cells["TAT"].Value = overdays + " ";
+                            checkTime(12502);
+                            string val1= dr.Cells["订单编号"].Value.ToString();
+                            string val2= dr.Cells["客户料号"].Value.ToString();
+                            string val3= dr.Cells["MB简称"].Value.ToString();
+                                
+                            tatMap.Add(val1+val2+val3, dr.Cells["TAT"].Value.ToString());
+                            checkTime(12503);
 
-                        dr.Cells["TAT"].Value = overdays + " ";
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                        }
                     }
-                    catch (Exception ex)
+                    checkTime(1250);
+                }else{
+                    checkTime(dataGridViewToReturn.Rows.Count);
+                    foreach (DataGridViewRow dr in dataGridViewToReturn.Rows)
                     {
-                        MessageBox.Show(ex.ToString());
-                    }
+                        checkTime(125101);
+                            string val1= dr.Cells["订单编号"].Value.ToString();
+                            string val2= dr.Cells["客户料号"].Value.ToString();
+                            string val3= dr.Cells["MB简称"].Value.ToString();
+                            checkTime(125102);
+                            dr.Cells["TAT"].Value = tatMap[val1+val2+val3];
+                            checkTime(12511);
+
+                     }
+                     checkTime(1251);
                 }
-
+                checkTime(126);
+                 * */
                 mConn.Close();
 
                 if (ds.Tables[0].Rows.Count > 0)
@@ -386,6 +417,11 @@ namespace SaledServices
             return retStr;
         }
 
+        private void checkTime(int count)
+        {
+            //Console.WriteLine(count+"'"+DateTime.Now.ToString("yyyyMMddHHmmssffff"));
+        }
+
         private void returnStore_Click(object sender, EventArgs e)
         {
             if (checkIsNull())
@@ -394,6 +430,7 @@ namespace SaledServices
                 return;                
             }
 
+            checkTime(0);
             if (checkCustomSerialNo() == false)
             {
                 return;
@@ -413,7 +450,7 @@ namespace SaledServices
                     }
                 }
             }
-
+            checkTime(1);
             if (statusComboBox.Text.Trim() == "不良品")
             {
                 if (this.lenovo_maintenance_noTextBox.Text == "" || this.lenovo_repair_noTextBox.Text == "")
@@ -453,7 +490,7 @@ namespace SaledServices
                             return;
                         }
                     }
-
+                    checkTime(2);
                     //判断obe是否通过
                     if (statusComboBox.Text.Trim() != "不良品")
                     {
@@ -489,7 +526,7 @@ namespace SaledServices
                     }
 
                     //end 判断obe
-
+                    checkTime(3);
                     //加入判断8s的跟fru或fru的替换料的包含关系
                     cmd.CommandText = "select fruNo, replace_fruNo  from MBMaterialCompare where  custommaterialNo = '" + this.custommaterialNoTextBox.Text + "'";
                     bool existfru = false;
@@ -511,7 +548,7 @@ namespace SaledServices
                         }
                     }
                     querySdr.Close();
-
+                    checkTime(4);
                     if (!existfru)
                     {
                         this.track_serial_noTextBox.Focus();
@@ -521,7 +558,7 @@ namespace SaledServices
                         MessageBox.Show("8s条码不包含fru与替换fru的内容!");
                         return;
                     }
-
+                    checkTime(5);
                     //在插入之前再考虑一下是否已经锁定，否则不能还货
                     cmd.CommandText = "select isLock from need_to_lock where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();
@@ -540,7 +577,7 @@ namespace SaledServices
                         }
                     }
                     querySdr.Close();
-
+                    checkTime(6);
                     //根据料号查询物料对照表的厂商与客户别，看是否与选择的厂商与客户别对应，否则报错
                     cmd.CommandText = "select top 1 vendor,product from MBMaterialCompare where custommaterialNo = '"
                        + this.custommaterialNoTextBox.Text.Trim() + "'";
@@ -559,7 +596,7 @@ namespace SaledServices
                         conn.Close();
                         return;
                     }
-
+                    checkTime(7);
                     cmd.CommandText = "select _8sCode from need_to_lock where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "' and isLock='true'";
                     querySdr = cmd.ExecuteReader();
                     if (querySdr.HasRows)
@@ -572,7 +609,7 @@ namespace SaledServices
                     }
                     this.returnStore.Enabled = true;
                     querySdr.Close();
-
+                    checkTime(8);
                     //在更新收货表的同时，需要同时更新导入的表格收货数量，不然数据会乱掉
                     cmd.CommandText = "select _status, ordernum, receivedNum, returnNum,cid_number from receiveOrder where orderno = '" + this.ordernoTextBox.Text
                            + "' and custom_materialNo = '" + this.custommaterialNoTextBox.Text + "'";
@@ -606,7 +643,7 @@ namespace SaledServices
                         }
                     }
                     querySdr.Close();
-
+                    checkTime(9);
                     if (isDone == false)
                     {
                         cmd.CommandText = "update receiveOrder set _status = '" + status + "',returnNum = '" + (returnNum + 1) +"' "
@@ -639,7 +676,7 @@ namespace SaledServices
                         returnOrderIndex +
                         "')";
                         cmd.ExecuteNonQuery();
-
+                        checkTime(10);
                         cmd.CommandText = "update stationInformation set station = 'return', updateDate = '" + DateTime.Now.ToString("yyyy/MM/dd", System.Globalization.DateTimeFormatInfo.InvariantInfo) + "' "
                              + "where track_serial_no = '" + this.track_serial_noTextBox.Text.Trim() + "'";
                         cmd.ExecuteNonQuery();
@@ -647,11 +684,12 @@ namespace SaledServices
                         cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
             "','还货','" + this.inputUserTextBox.Text.Trim() + "',GETDATE())";
                         cmd.ExecuteNonQuery();
-                        
+                        checkTime(11);
                         //dataGridViewToReturn里面的数据要更新
-                        doQueryAfterSelection();
+                        doQueryAfterSelection(false);
+                        checkTime(12);
                         clearInputData();
-
+                        checkTime(13);
                         if (status == "return")
                         {
                             custommaterialNoTextBox.Text = "";
@@ -684,7 +722,7 @@ namespace SaledServices
                 {
                     MessageBox.Show("SaledService is not opened");
                 }
-
+                checkTime(14);
                 conn.Close();
             }
             catch (Exception ex)
@@ -693,6 +731,7 @@ namespace SaledServices
             }
             this.track_serial_noTextBox.Focus();
             queryLastest(true);
+            checkTime(15);
         }
 
         private bool checkIsNull()
@@ -854,6 +893,24 @@ namespace SaledServices
                         mConn.Close();
                         return;
                     }
+
+                    cmd.CommandText = "select isLock from need_to_lock where track_serial_no='" + this.track_serial_noTextBox.Text.Trim() + "' and locktype='mb_receive_check'";
+                    querySdr = cmd.ExecuteReader();
+
+                    if (querySdr.HasRows)
+                    {
+                        querySdr.Read();
+                        string result = querySdr[0].ToString().Trim();
+                        if (result == "true")
+                        {
+                            MessageBox.Show("此序号被拦截已经锁定，不能走下面的流程，请找管理员解锁！");
+                            querySdr.Close();
+                            mConn.Close();
+                            this.returnStore.Enabled = false;
+                            return;
+                        }
+                    }
+                    querySdr.Close();
 
                     cmd.CommandText = "select 跟踪条码,仁宝料号,客户序号,仁宝序号,MB11S from CSD_old_data where 跟踪条码 = '" + this.track_serial_noTextBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();
@@ -1315,6 +1372,13 @@ namespace SaledServices
                 {
                     this.returnStore.Enabled = false;
                     MessageBox.Show("此客户序号不存在于收货表，转换表与主板出库表中，请检查是否正确！");
+
+                    if (User.UserSelfForm.isSuperManager())
+                    {
+                        MessageBox.Show("现在由超级管理员操作，可以跳过！");
+                        this.returnStore.Enabled = true;
+                        exist = true;
+                    }
                 }
                 else
                 {
@@ -1350,8 +1414,27 @@ namespace SaledServices
                         }
                     }
 
+                    //查询已经来过几次了，第3次直接拦截
+                    cmd.CommandText = "select count(Id) from returnStore where custom_serial_no = '" + this.custom_serial_noTextBox.Text.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    int returnCount = 0;
+                    while (querySdr.Read())
+                    {
+                        returnCount = Int32.Parse(querySdr[0].ToString().Trim());
+                        break;
+                    }
+                    querySdr.Close();
 
-                    this.returnStore.Enabled = true;
+                    if (returnCount >= 2)
+                    {
+                        MessageBox.Show("已经来过2次以上，不能出货！");
+                        this.returnStore.Enabled = false;
+                    }
+                    else
+                    {
+                        this.returnStore.Enabled = true;
+                    }
+                   
                 }
 
                 mConn.Close();

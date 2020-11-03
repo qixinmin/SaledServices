@@ -37,7 +37,7 @@
             this.testdatetextBox = new System.Windows.Forms.TextBox();
             this.confirmbutton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.repairedLabel = new System.Windows.Forms.Label();
             this.failDescribe = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,8 +60,8 @@
             this.tableLayoutPanel1.Controls.Add(this.testdatetextBox, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.confirmbutton, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.button1, 5, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.failDescribe, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.repairedLabel, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -146,14 +146,14 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label4
+            // repairedLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(281, 220);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "不良现象";
+            this.repairedLabel.AutoSize = true;
+            this.repairedLabel.Location = new System.Drawing.Point(66, 220);
+            this.repairedLabel.Name = "repairedLabel";
+            this.repairedLabel.Size = new System.Drawing.Size(53, 12);
+            this.repairedLabel.TabIndex = 3;
+            this.repairedLabel.Text = "不良现象";
             // 
             // failDescribe
             // 
@@ -191,7 +191,7 @@
         private System.Windows.Forms.TextBox testdatetextBox;
         private System.Windows.Forms.Button confirmbutton;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label repairedLabel;
         private System.Windows.Forms.RichTextBox failDescribe;
     }
 }

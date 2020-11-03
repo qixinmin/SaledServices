@@ -58,16 +58,18 @@ namespace SaledServices.Test_Outlook
                     querySdr.Close();
                     if (station == "外观")
                     {
-                        cmd.CommandText = "select custommaterialNo from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                        cmd.CommandText = "select custommaterialNo,vendor from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                         querySdr = cmd.ExecuteReader();
-                        string customMaterialNo = "";
+                        string customMaterialNo = "",vendorStr="";
 
                         while (querySdr.Read())
                         {
                             customMaterialNo = querySdr[0].ToString();
+                            vendorStr = querySdr[1].ToString();
                         }
                         querySdr.Close();
+                        this.Text = "OBE界面：" + vendorStr;
 
                         if (customMaterialNo != "")
                         {
@@ -174,6 +176,10 @@ namespace SaledServices.Test_Outlook
             "','Obe','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
 
+                    cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
+                  + this.tracker_bar_textBox.Text.Trim() + "','"
+                  + this.testerTextBox.Text.Trim() + "',GETDATE(),'Pass','','Obe')";
+                    cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "select orderno,custom_materialNo from decideOBEchecktable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
@@ -264,6 +270,11 @@ namespace SaledServices.Test_Outlook
                               + "where track_serial_no = '" + this.tracker_bar_textBox.Text + "'";
                     cmd.ExecuteNonQuery();
 
+
+                    cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
+                       + this.tracker_bar_textBox.Text.Trim() + "','"
+                       + this.testerTextBox.Text.Trim().ToUpper() + "',GETDATE(),'Fail','" + this.failresontextBox.Text.Trim() + "','Obe')";
+                    cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "select orderno,custom_materialNo from decideOBEchecktable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
                     querySdr = cmd.ExecuteReader();

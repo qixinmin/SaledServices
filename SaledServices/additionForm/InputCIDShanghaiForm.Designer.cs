@@ -804,7 +804,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "InputCIDShanghaiForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "维修界面";
+            this.Text = "维修界面CID";
             this.Load += new System.EventHandler(this.RepairOperationForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

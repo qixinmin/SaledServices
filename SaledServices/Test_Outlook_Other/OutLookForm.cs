@@ -54,7 +54,7 @@ namespace SaledServices.Test_Outlook
 
                     if (station != "Test2" && station != "Test1&2")
                     {
-                        MessageBox.Show("板子已经经过站别[" + station + "]");
+                        MessageBox.Show("板子已经经过站别[" + station + "], 3DMark未测试");
                         mConn.Close();
                         return;
                     }
@@ -149,13 +149,39 @@ namespace SaledServices.Test_Outlook
                             MessageBox.Show("提示：此板子是必须过obe站别");
                         }
 
-                        this.autochecktextBox.Text = "";
+                     
                     }
                     else
                     {
                         MessageBox.Show("追踪条码的不在测试列表中，请检查！");
                     }
-                 
+
+                    //查询已经来过几次了，第3次直接拦截
+                    cmd.CommandText = "select custom_serial_no from DeliveredTable where track_serial_no='" + this.autochecktextBox.Text.Trim() + "'";
+
+                    querySdr = cmd.ExecuteReader();
+                    while (querySdr.Read())
+                    {                       
+                        _8sCodes = querySdr[0].ToString();
+                    }
+                    querySdr.Close();
+                    
+                    cmd.CommandText = "select count(Id) from returnStore where custom_serial_no = '" + _8sCodes.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    int returnCount = 0;
+                    while (querySdr.Read())
+                    {
+                        returnCount = Int32.Parse(querySdr[0].ToString().Trim());
+                        break;
+                    }
+                    querySdr.Close();
+
+                    if (returnCount >= 2)
+                    {
+                        MessageBox.Show(countOver2Msg);
+                    }
+                    //end
+                    this.autochecktextBox.Text = "";
                     mConn.Close();
                 }
                 catch (Exception ex)
@@ -164,6 +190,8 @@ namespace SaledServices.Test_Outlook
                 }
             }
         }
+
+        string countOver2Msg = "已经来过2次以上，请分流！";
 
         string _8sCodes = "",mac="", dpk_status="",custommaterialno="";
 
@@ -208,10 +236,10 @@ namespace SaledServices.Test_Outlook
                         return;
                     }
 
-                    cmd.CommandText = "select product,custom_serial_no,mac,custommaterialNo,dpk_status from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.CommandText = "select product,custom_serial_no,mac,custommaterialNo,dpk_status,vendor from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                     querySdr = cmd.ExecuteReader();
-                    string product = "";
+                    string product = "",vendorStr="";
                     while (querySdr.Read())
                     {
                         product = querySdr[0].ToString();
@@ -221,8 +249,26 @@ namespace SaledServices.Test_Outlook
                         mac = querySdr[2].ToString();
                         custommaterialno = querySdr[3].ToString().Trim();
                         dpk_status = querySdr[4].ToString();
+                        vendorStr = querySdr[5].ToString().Trim();
                     }
                     querySdr.Close();
+                    this.Text = "外观检查界面：" + vendorStr;
+
+                    //查询已经来过几次了，第3次直接拦截
+                    cmd.CommandText = "select count(Id) from returnStore where custom_serial_no = '" + _8sCodes.Trim() + "'";
+                    querySdr = cmd.ExecuteReader();
+                    int returnCount = 0;
+                    while (querySdr.Read())
+                    {
+                        returnCount = Int32.Parse(querySdr[0].ToString().Trim());
+                        break;
+                    }
+                    querySdr.Close();
+
+                    if (returnCount >= 2)
+                    {
+                        MessageBox.Show(countOver2Msg);
+                    }
 
                     //eco检查
                     cmd.CommandText = "select eco from MBMaterialCompare where custommaterialNo='" + custommaterialno + "'";
@@ -369,6 +415,11 @@ namespace SaledServices.Test_Outlook
                     cmd.ExecuteNonQuery();
                     this.tracker_bar_textBox.Text = "";
 
+                    cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
+                    + this.tracker_bar_textBox.Text.Trim() + "','"
+                    + this.testerTextBox.Text.Trim() + "',GETDATE(),'Pass','','外观')";
+                    cmd.ExecuteNonQuery();
+
                     //obe提示是否要过
                     cmd.CommandText = "select Id from decideOBEchecktable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'  and ischeck='True'";
 
@@ -441,6 +492,12 @@ namespace SaledServices.Test_Outlook
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.tracker_bar_textBox.Text.Trim() +
              "','外观','" + this.testerTextBox.Text.Trim() + "',GETDATE())";
                     cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "INSERT INTO test_all_result_record VALUES('"
+                       + this.tracker_bar_textBox.Text.Trim() + "','"
+                       + this.testerTextBox.Text.Trim().ToUpper() + "',GETDATE(),'Fail','" + this.failReasonTextBox.Text.Trim() + "','外观')";
+                    cmd.ExecuteNonQuery();
+
                     this.tracker_bar_textBox.Text = "";
                     this.failReasonTextBox.Text = "";
                 }

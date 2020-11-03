@@ -132,7 +132,7 @@ namespace SaledServices.Test_Outlook
                         }
                         else
                         {
-                            MessageBox.Show("板子已经经过站别[" + station + "]");
+                            MessageBox.Show("板子已经经过站别[" + station + "]，测试未测试");
                             querySdr.Close();
                             mConn.Close();
                             this.tracker_bar_textBox.Focus();
@@ -176,17 +176,20 @@ namespace SaledServices.Test_Outlook
 
                     this.bomdownload.Enabled = true;
                     this.button1.Enabled = true;
+                   
 
                     currentStoreHouse = "";
-                    cmd.CommandText = "select storehouse,vendor_serail_no from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
-                    string vendor_serail_no = "";
+                    cmd.CommandText = "select storehouse,vendor_serail_no,vendor from DeliveredTable where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    string vendor_serail_no = "",  vendorStr="";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
                         currentStoreHouse = querySdr[0].ToString().Trim();
                         vendor_serail_no = querySdr[1].ToString().Trim();
+                        vendorStr = querySdr[2].ToString().Trim();
                     }
                     querySdr.Close();
+                    this.Text = "测试1界面：" + vendorStr;
 
                     //查询维修记录，如果有则自动调取之前的记录
                     if (this.showRepairList.Checked)
@@ -213,10 +216,11 @@ namespace SaledServices.Test_Outlook
                         querySdr.Close();
                     }
 
-                    cmd.CommandText = "select track_serial_no,product from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
+                    cmd.CommandText = "select track_serial_no,product,custom_serial_no from repair_record_table where track_serial_no='" + this.tracker_bar_textBox.Text.Trim() + "'";
 
                     querySdr = cmd.ExecuteReader();
                     track_serial_no = ""; product = "";
+                    String custom_serial_no = "";
                     this.bomdownload.Enabled = false; this.buffertest.Enabled = false; this.isburn.Enabled = false;
                     if (querySdr.HasRows == false)
                     {
@@ -252,6 +256,7 @@ namespace SaledServices.Test_Outlook
                         {
                             track_serial_no = querySdr[0].ToString();
                             product = querySdr[1].ToString();
+                            custom_serial_no = querySdr[2].ToString();
                         }
                         querySdr.Close();
                         this.bomdownload.Enabled = true;
@@ -276,7 +281,21 @@ namespace SaledServices.Test_Outlook
                             mConn.Close();
                             return;
                         }
+
+                        cmd.CommandText = "select customFault,repair_date from repair_record_table where custom_serial_no='" + custom_serial_no + "' order by Id desc";
+
+                        querySdr = cmd.ExecuteReader();
+                        string faultContent = "";
+                        while (querySdr.Read())
+                        {
+                            faultContent += "：" + querySdr[0].ToString() + "," + Utils.modifyDataFormat(querySdr[1].ToString()) + "\n";
+                        }
+                        querySdr.Close();
+                        this.repairedLabel.Text=faultContent;
+                    }else{
+                        this.repairedLabel.Text="无维修记录";
                     }
+                    
 
                     //当是LBG的时候，需要分1与2test站别，否则只需要设置一个testall站别
                     if (product != "" && product == "LBG")
@@ -651,7 +670,10 @@ namespace SaledServices.Test_Outlook
                             + "SET -v MODELID " + mb_brief + "\r\n"
                             + "SET -v storehouse " + currentStoreHouse + "\r\n"
                             + "SET -v eco " + eco + "\r\n"
-                            + "SET -v DPK " + dpk_type;
+                         +"SET -v DPK=" + dpk_type + "\r\n"
+                         + "SET -v CPUTYPE=" + cpu_type + "\r\n"
+                         + "SET -v CPUFREQ=" + cpu_freq + "\r\n"
+                         + "SET -v USERID=" + User.UserSelfForm.workId;
             Utils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
 
             totalStr = "SET MBID=" + track_serial_no + "\r\n"
@@ -668,7 +690,11 @@ namespace SaledServices.Test_Outlook
                            + "SET MODELID=" + mb_brief + "\r\n"
                             + "SET storehouse=" + currentStoreHouse + "\r\n"
                              + "SET eco=" + eco + "\r\n"
-                           + "SET DPK=" + dpk_type;
+                           + "SET DPK=" + dpk_type + "\r\n"
+                           + "SET CPUTYPE=" + cpu_type + "\r\n"
+                           + "SET CPUFREQ=" + cpu_freq + "\r\n"
+                           + "SET USERID=" + User.UserSelfForm.workId;
+               
             Utils.createFile("D:\\fru\\", "BOM.bat", totalStr);
 
             //string totalStr = "SET MBID=" + track_serial_no + "\r\n"
@@ -757,7 +783,10 @@ namespace SaledServices.Test_Outlook
                                 + "SET -v MODELID " + mb_brief + "\r\n"
                                 + "SET -v storehouse " + currentStoreHouse + "\r\n"
                                  + "SET -v eco " + eco + "\r\n"
-                                + "SET -v DPK " + dpk_type;
+                            +"SET -v DPK=" + dpk_type + "\r\n"
+                        + "SET -v CPUTYPE=" + cpu_type + "\r\n"
+                        + "SET -v CPUFREQ=" + cpu_freq + "\r\n"
+                        + "SET -v USERID=" + User.UserSelfForm.workId;
                 Utils.createFile("D:\\fru\\", "BOM.NSH", totalStr);
 
                 totalStr = "SET MBID=" + track_serial_no + "\r\n"
@@ -774,7 +803,10 @@ namespace SaledServices.Test_Outlook
                                + "SET MODELID=" + mb_brief + "\r\n"
                                + "SET storehouse=" + currentStoreHouse + "\r\n"
                                + "SET eco=" + eco + "\r\n"
-                               + "SET DPK=" + dpk_type;
+                            + "SET DPK=" + dpk_type + "\r\n"
+                           + "SET CPUTYPE=" + cpu_type + "\r\n"
+                           + "SET CPUFREQ=" + cpu_freq + "\r\n"
+                           + "SET USERID=" + User.UserSelfForm.workId;
                 Utils.createFile("D:\\fru\\", "BOM.bat", totalStr);
 
                 Utils.createFile("C:\\CHKCPU\\", "BOM.bat", totalStr);
@@ -1097,6 +1129,5 @@ namespace SaledServices.Test_Outlook
                 }
             }
         }
-
     }
 }

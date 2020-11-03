@@ -332,6 +332,11 @@ namespace SaledServices
                     cmd.CommandText = "insert into stationInfoRecord  VALUES('" + this.track_serial_noTextBox.Text.Trim() +
           "','CID','" + inputer_txt + "',GETDATE())";
                     cmd.ExecuteNonQuery();
+
+                    //主动解锁lock的板子
+                    cmd.CommandText = "update need_to_lock set isLock = 'false', unlcok_date = GETDATE() "
+                            + "where track_serial_no = '" + this.track_serial_noTextBox.Text + "'";
+                    cmd.ExecuteNonQuery();
                 }
                 else
                 {

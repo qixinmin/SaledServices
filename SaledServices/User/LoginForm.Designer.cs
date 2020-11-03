@@ -87,7 +87,7 @@
             this.workIdInput.Margin = new System.Windows.Forms.Padding(5);
             this.workIdInput.Name = "workIdInput";
             this.workIdInput.Size = new System.Drawing.Size(164, 30);
-            this.workIdInput.TabIndex = 0;
+            this.workIdInput.TabIndex = 2;
             this.workIdInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.workIdInput_KeyPress);
             // 
             // login
@@ -96,7 +96,7 @@
             this.login.Margin = new System.Windows.Forms.Padding(5);
             this.login.Name = "login";
             this.login.Size = new System.Drawing.Size(125, 38);
-            this.login.TabIndex = 2;
+            this.login.TabIndex = 0;
             this.login.Text = "登录";
             this.login.UseVisualStyleBackColor = true;
             this.login.Click += new System.EventHandler(this.login_Click);

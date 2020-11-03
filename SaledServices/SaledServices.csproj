@@ -231,11 +231,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="additionForm\3DMarkTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\3DMarkTestForm.Designer.cs">
+      <DependentUpon>3DMarkTestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="additionForm\BackServicesManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="additionForm\BackServicesManagerForm.Designer.cs">
       <DependentUpon>BackServicesManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="additionForm\OldNew8sRelationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\OldNew8sRelationForm.Designer.cs">
+      <DependentUpon>OldNew8sRelationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="additionForm\LifeCycleQueryForm.cs">
       <SubType>Form</SubType>
@@ -302,6 +314,12 @@
     </Compile>
     <Compile Include="additionForm\UnlockForm.Designer.cs">
       <DependentUpon>UnlockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="additionForm\Xml2ExcelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\Xml2ExcelForm.Designer.cs">
+      <DependentUpon>Xml2ExcelForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Export\AllBossExport.cs">
       <SubType>Form</SubType>
@@ -884,8 +902,14 @@
     <Compile Include="additionForm\VendorForm.Designer.cs">
       <DependentUpon>VendorForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="additionForm\3DMarkTestForm.resx">
+      <DependentUpon>3DMarkTestForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="additionForm\BackServicesManagerForm.resx">
       <DependentUpon>BackServicesManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\OldNew8sRelationForm.resx">
+      <DependentUpon>OldNew8sRelationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\LifeCycleQueryForm.resx">
       <DependentUpon>LifeCycleQueryForm.cs</DependentUpon>
@@ -919,6 +943,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="additionForm\UnlockForm.resx">
       <DependentUpon>UnlockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\Xml2ExcelForm.resx">
+      <DependentUpon>Xml2ExcelForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\AllBossExport.resx">
       <DependentUpon>AllBossExport.cs</DependentUpon>
