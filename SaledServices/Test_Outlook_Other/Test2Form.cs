@@ -95,7 +95,7 @@ namespace SaledServices.Test_Outlook
 
                     if (station != "Test1")
                     {
-                        MessageBox.Show("板子已经经过站别[" + station + "]，测试未测试");
+                        MessageBox.Show("测试1未测试，板子已经经过站别[" + station + "]，测试未测试");
                         mConn.Close();
                         this.tracker_bar_textBox.Focus();
                         this.tracker_bar_textBox.SelectAll();

@@ -132,7 +132,7 @@ namespace SaledServices.Test_Outlook
                         }
                         else
                         {
-                            MessageBox.Show("板子已经经过站别[" + station + "]，测试未测试");
+                            MessageBox.Show("主板未维修，板子已经经过站别[" + station + "]，测试未测试");
                             querySdr.Close();
                             mConn.Close();
                             this.tracker_bar_textBox.Focus();

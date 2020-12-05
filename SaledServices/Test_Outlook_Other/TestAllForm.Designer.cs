@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.repairedLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tracker_bar_textBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.failDescribe = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.repairedLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -101,6 +101,15 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 138F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(938, 418);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // repairedLabel
+            // 
+            this.repairedLabel.AutoSize = true;
+            this.repairedLabel.Location = new System.Drawing.Point(111, 276);
+            this.repairedLabel.Name = "repairedLabel";
+            this.repairedLabel.Size = new System.Drawing.Size(65, 12);
+            this.repairedLabel.TabIndex = 20;
+            this.repairedLabel.Text = "无维修记录";
             // 
             // label1
             // 
@@ -336,15 +345,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // repairedLabel
-            // 
-            this.repairedLabel.AutoSize = true;
-            this.repairedLabel.Location = new System.Drawing.Point(111, 276);
-            this.repairedLabel.Name = "repairedLabel";
-            this.repairedLabel.Size = new System.Drawing.Size(65, 12);
-            this.repairedLabel.TabIndex = 20;
-            this.repairedLabel.Text = "无维修记录";
             // 
             // TestAllForm
             // 

@@ -229,7 +229,7 @@ namespace SaledServices.Test_Outlook
 
                     if (station != "Test2" && station != "Test1&2")
                     {
-                        MessageBox.Show("板子已经经过站别[" + station + "]");
+                        MessageBox.Show("测试2或测试1&2未测试，板子已经经过站别[" + station + "]");
                         mConn.Close();
                         this.confirmbutton.Enabled = false;
                         this.button1.Enabled = false;

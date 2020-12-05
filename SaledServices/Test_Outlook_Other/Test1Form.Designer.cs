@@ -68,7 +68,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.14894F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.553192F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.33939F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 281F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 297F));
             this.tableLayoutPanel1.Controls.Add(this.button5, 6, 2);
             this.tableLayoutPanel1.Controls.Add(this.bomdownload, 6, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
@@ -104,7 +104,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(749, 214);
+            this.button5.Location = new System.Drawing.Point(732, 214);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(82, 34);
             this.button5.TabIndex = 2;
@@ -115,7 +115,7 @@
             // bomdownload
             // 
             this.bomdownload.Enabled = false;
-            this.bomdownload.Location = new System.Drawing.Point(749, 87);
+            this.bomdownload.Location = new System.Drawing.Point(732, 87);
             this.bomdownload.Name = "bomdownload";
             this.bomdownload.Size = new System.Drawing.Size(82, 46);
             this.bomdownload.TabIndex = 3;
@@ -135,16 +135,16 @@
             // tracker_bar_textBox
             // 
             this.tracker_bar_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tracker_bar_textBox.Location = new System.Drawing.Point(59, 6);
+            this.tracker_bar_textBox.Location = new System.Drawing.Point(57, 6);
             this.tracker_bar_textBox.Name = "tracker_bar_textBox";
-            this.tracker_bar_textBox.Size = new System.Drawing.Size(178, 21);
+            this.tracker_bar_textBox.Size = new System.Drawing.Size(174, 21);
             this.tracker_bar_textBox.TabIndex = 1;
             this.tracker_bar_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tracker_bar_textBox_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(246, 3);
+            this.label2.Location = new System.Drawing.Point(240, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 2;
@@ -153,16 +153,16 @@
             // testerTextBox
             // 
             this.testerTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.testerTextBox.Location = new System.Drawing.Point(319, 6);
+            this.testerTextBox.Location = new System.Drawing.Point(312, 6);
             this.testerTextBox.Name = "testerTextBox";
             this.testerTextBox.ReadOnly = true;
-            this.testerTextBox.Size = new System.Drawing.Size(206, 21);
+            this.testerTextBox.Size = new System.Drawing.Size(201, 21);
             this.testerTextBox.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(534, 3);
+            this.label3.Location = new System.Drawing.Point(522, 3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 24);
             this.label3.TabIndex = 2;
@@ -171,10 +171,10 @@
             // testdatetextBox
             // 
             this.testdatetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.testdatetextBox.Location = new System.Drawing.Point(591, 6);
+            this.testdatetextBox.Location = new System.Drawing.Point(578, 6);
             this.testdatetextBox.Name = "testdatetextBox";
             this.testdatetextBox.ReadOnly = true;
-            this.testdatetextBox.Size = new System.Drawing.Size(149, 21);
+            this.testdatetextBox.Size = new System.Drawing.Size(145, 21);
             this.testdatetextBox.TabIndex = 1;
             // 
             // label4
@@ -189,16 +189,16 @@
             // cpuTypetextBox
             // 
             this.cpuTypetextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cpuTypetextBox.Location = new System.Drawing.Point(59, 87);
+            this.cpuTypetextBox.Location = new System.Drawing.Point(57, 87);
             this.cpuTypetextBox.Name = "cpuTypetextBox";
             this.cpuTypetextBox.ReadOnly = true;
-            this.cpuTypetextBox.Size = new System.Drawing.Size(178, 21);
+            this.cpuTypetextBox.Size = new System.Drawing.Size(174, 21);
             this.cpuTypetextBox.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(246, 84);
+            this.label5.Location = new System.Drawing.Point(240, 84);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 12);
             this.label5.TabIndex = 2;
@@ -207,10 +207,10 @@
             // cpuFreqtextBox
             // 
             this.cpuFreqtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cpuFreqtextBox.Location = new System.Drawing.Point(319, 87);
+            this.cpuFreqtextBox.Location = new System.Drawing.Point(312, 87);
             this.cpuFreqtextBox.Name = "cpuFreqtextBox";
             this.cpuFreqtextBox.ReadOnly = true;
-            this.cpuFreqtextBox.Size = new System.Drawing.Size(206, 21);
+            this.cpuFreqtextBox.Size = new System.Drawing.Size(201, 21);
             this.cpuFreqtextBox.TabIndex = 1;
             // 
             // label6
@@ -225,17 +225,17 @@
             // keyidtextBox
             // 
             this.keyidtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.keyidtextBox.Location = new System.Drawing.Point(59, 214);
+            this.keyidtextBox.Location = new System.Drawing.Point(57, 214);
             this.keyidtextBox.Multiline = true;
             this.keyidtextBox.Name = "keyidtextBox";
             this.keyidtextBox.ReadOnly = true;
-            this.keyidtextBox.Size = new System.Drawing.Size(178, 50);
+            this.keyidtextBox.Size = new System.Drawing.Size(174, 50);
             this.keyidtextBox.TabIndex = 1;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(246, 211);
+            this.label7.Location = new System.Drawing.Point(240, 211);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 12);
             this.label7.TabIndex = 2;
@@ -244,11 +244,11 @@
             // KEYSERIALtextBox
             // 
             this.KEYSERIALtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KEYSERIALtextBox.Location = new System.Drawing.Point(319, 214);
+            this.KEYSERIALtextBox.Location = new System.Drawing.Point(312, 214);
             this.KEYSERIALtextBox.Multiline = true;
             this.KEYSERIALtextBox.Name = "KEYSERIALtextBox";
             this.KEYSERIALtextBox.ReadOnly = true;
-            this.KEYSERIALtextBox.Size = new System.Drawing.Size(206, 50);
+            this.KEYSERIALtextBox.Size = new System.Drawing.Size(201, 50);
             this.KEYSERIALtextBox.TabIndex = 1;
             // 
             // panel1
@@ -257,9 +257,9 @@
             this.panel1.Controls.Add(this.buffertest);
             this.panel1.Controls.Add(this.isburn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(591, 87);
+            this.panel1.Location = new System.Drawing.Point(578, 87);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(149, 118);
+            this.panel1.Size = new System.Drawing.Size(145, 118);
             this.panel1.TabIndex = 14;
             // 
             // buffertest
@@ -288,9 +288,9 @@
             // 
             this.showRepairList.AutoSize = true;
             this.showRepairList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.showRepairList.Location = new System.Drawing.Point(749, 6);
+            this.showRepairList.Location = new System.Drawing.Point(732, 6);
             this.showRepairList.Name = "showRepairList";
-            this.showRepairList.Size = new System.Drawing.Size(278, 72);
+            this.showRepairList.Size = new System.Drawing.Size(295, 72);
             this.showRepairList.TabIndex = 15;
             this.showRepairList.Text = "显示维修记录";
             this.showRepairList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -299,7 +299,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(246, 270);
+            this.label8.Location = new System.Drawing.Point(240, 270);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 16;
@@ -308,9 +308,9 @@
             // failDescribe
             // 
             this.failDescribe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.failDescribe.Location = new System.Drawing.Point(319, 273);
+            this.failDescribe.Location = new System.Drawing.Point(312, 273);
             this.failDescribe.Name = "failDescribe";
-            this.failDescribe.Size = new System.Drawing.Size(206, 165);
+            this.failDescribe.Size = new System.Drawing.Size(201, 165);
             this.failDescribe.TabIndex = 17;
             this.failDescribe.Text = "";
             this.failDescribe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.failDescribe_KeyPress);
@@ -318,7 +318,7 @@
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(591, 273);
+            this.button1.Location = new System.Drawing.Point(578, 273);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 18;
@@ -329,7 +329,7 @@
             // repairedLabel
             // 
             this.repairedLabel.AutoSize = true;
-            this.repairedLabel.Location = new System.Drawing.Point(59, 270);
+            this.repairedLabel.Location = new System.Drawing.Point(57, 270);
             this.repairedLabel.Name = "repairedLabel";
             this.repairedLabel.Size = new System.Drawing.Size(65, 12);
             this.repairedLabel.TabIndex = 19;

@@ -1,3 +1,14 @@
+/*DOA分析内容存储*/
+CREATE TABLE doa_analysis(
+Id INT PRIMARY KEY IDENTITY, 
+_8s NVARCHAR(128) NOT NULL,
+response_check NVARCHAR(128) NOT NULL,
+analysis_step NVARCHAR(128) NOT NULL,
+improve_action NVARCHAR(128) NOT NULL,
+inputer NVARCHAR(128) NOT NULL,
+input_date date
+)
+
 
 /*新旧8s对应关系表*/
 CREATE TABLE old_new_8s_relationship(

@@ -70,6 +70,8 @@
             this.bGA待料输入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.维修记录专用查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.二返报表格式ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dOA信息输入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dOA报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA维修ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bGA维修界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.测试ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -437,7 +439,9 @@
             this.mB报废判定ToolStripMenuItem,
             this.bGA待料输入ToolStripMenuItem,
             this.维修记录专用查询ToolStripMenuItem,
-            this.二返报表格式ToolStripMenuItem});
+            this.二返报表格式ToolStripMenuItem,
+            this.dOA信息输入ToolStripMenuItem,
+            this.dOA报表ToolStripMenuItem});
             this.维修ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.维修ToolStripMenuItem.Name = "维修ToolStripMenuItem";
             this.维修ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -498,6 +502,20 @@
             this.二返报表格式ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
             this.二返报表格式ToolStripMenuItem.Text = "二返报表导出";
             this.二返报表格式ToolStripMenuItem.Click += new System.EventHandler(this.二返报表格式ToolStripMenuItem_Click);
+            // 
+            // dOA信息输入ToolStripMenuItem
+            // 
+            this.dOA信息输入ToolStripMenuItem.Name = "dOA信息输入ToolStripMenuItem";
+            this.dOA信息输入ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.dOA信息输入ToolStripMenuItem.Text = "DOA信息输入";
+            this.dOA信息输入ToolStripMenuItem.Click += new System.EventHandler(this.dOA信息输入ToolStripMenuItem_Click);
+            // 
+            // dOA报表ToolStripMenuItem
+            // 
+            this.dOA报表ToolStripMenuItem.Name = "dOA报表ToolStripMenuItem";
+            this.dOA报表ToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.dOA报表ToolStripMenuItem.Text = "DOA报表";
+            this.dOA报表ToolStripMenuItem.Click += new System.EventHandler(this.dOA报表ToolStripMenuItem_Click);
             // 
             // bGA维修ToolStripMenuItem
             // 
@@ -1125,7 +1143,7 @@
             this.MainMenuStrip = this.AllMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "上海进销存系统20110301";
+            this.Text = "上海进销存系统20120501";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1256,6 +1274,8 @@
         private System.Windows.Forms.ToolStripMenuItem xML与Excel互换ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 附加功能ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 新旧8s条码对应关系ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dOA信息输入ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dOA报表ToolStripMenuItem;
     }
 }
 

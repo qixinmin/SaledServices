@@ -203,16 +203,16 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="NPOI">
-      <HintPath>C:\Users\Think\Downloads\NPOI 2.3.0.0\dotnet4\NPOI.dll</HintPath>
+      <HintPath>..\NPOI 2.3.0.0\dotnet4\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OOXML">
-      <HintPath>C:\Users\Think\Downloads\NPOI 2.3.0.0\dotnet4\NPOI.OOXML.dll</HintPath>
+      <HintPath>..\NPOI 2.3.0.0\dotnet4\NPOI.OOXML.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>C:\Users\Think\Downloads\NPOI 2.3.0.0\dotnet4\NPOI.OpenXml4Net.dll</HintPath>
+      <HintPath>..\NPOI 2.3.0.0\dotnet4\NPOI.OpenXml4Net.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXmlFormats">
-      <HintPath>C:\Users\Think\Downloads\NPOI 2.3.0.0\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
+      <HintPath>..\NPOI 2.3.0.0\dotnet4\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp">
       <HintPath>C:\Users\Administrator\Downloads\RestSharp.104.0\lib\net4\RestSharp.dll</HintPath>
@@ -242,6 +242,12 @@
     </Compile>
     <Compile Include="additionForm\BackServicesManagerForm.Designer.cs">
       <DependentUpon>BackServicesManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="additionForm\DOARepairInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="additionForm\DOARepairInputForm.Designer.cs">
+      <DependentUpon>DOARepairInputForm.cs</DependentUpon>
     </Compile>
     <Compile Include="additionForm\OldNew8sRelationForm.cs">
       <SubType>Form</SubType>
@@ -350,6 +356,12 @@
     </Compile>
     <Compile Include="Export\CompalMonthlyExportExcel.Designer.cs">
       <DependentUpon>CompalMonthlyExportExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Export\DoaRepairRecordExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Export\DoaRepairRecordExport.designer.cs">
+      <DependentUpon>DoaRepairRecordExport.cs</DependentUpon>
     </Compile>
     <Compile Include="Export\DPKExport.cs">
       <SubType>Form</SubType>
@@ -908,6 +920,9 @@
     <EmbeddedResource Include="additionForm\BackServicesManagerForm.resx">
       <DependentUpon>BackServicesManagerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="additionForm\DOARepairInputForm.resx">
+      <DependentUpon>DOARepairInputForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="additionForm\OldNew8sRelationForm.resx">
       <DependentUpon>OldNew8sRelationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -961,6 +976,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export\CompalMonthlyExportExcel.resx">
       <DependentUpon>CompalMonthlyExportExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Export\DoaRepairRecordExport.resx">
+      <DependentUpon>DoaRepairRecordExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Export\DPKExport.resx">
       <DependentUpon>DPKExport.cs</DependentUpon>

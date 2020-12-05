@@ -343,7 +343,7 @@ namespace SaledServices.Export
                 foreach (bgaReport temp in bgas)
                 {
                     //查询历史维修量
-                    cmd.CommandText = "select top 1 bgapn,bgatype from bga_repair_record_table where mpn='"+temp.mpn+"' and bga_brief='"+temp.bga_brief+"'";
+                    cmd.CommandText = "select top 1 bgapn,bgatype from bga_repair_record_table where mpn='"+temp.mpn+"' and bga_brief='"+temp.bga_brief+"' order by id desc";
 
                     querySdr = cmd.ExecuteReader();
                     if (querySdr.Read())
@@ -379,7 +379,7 @@ namespace SaledServices.Export
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select " + Utils.getColumnName(lastMonth.Month) + "," + Utils.getColumnName(lastLastmonth.Month) + " from repaire_history_data_sheet where mpn='"+temp.mpn+"'";
+                    cmd.CommandText = "select " + Utils.getColumnName(lastMonth.Month) + "," + Utils.getColumnName(lastLastmonth.Month) + " from repaire_history_data_sheet where mpn='"+temp.mpn+"' order by Id desc";
                     querySdr = cmd.ExecuteReader();
                     if (querySdr.Read())
                     {

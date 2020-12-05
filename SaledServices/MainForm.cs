@@ -1844,6 +1844,37 @@ namespace SaledServices
 
             allForm.Add(oldNew8sRelationForm);
         }
+        private DOARepairInputForm doaRepairInputForm;
+        private void dOA信息输入ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (doaRepairInputForm == null || doaRepairInputForm.IsDisposed)
+            {
+                doaRepairInputForm = new DOARepairInputForm();
+                doaRepairInputForm.MdiParent = this;
+            }
+
+            doaRepairInputForm.WindowState = FormWindowState.Maximized;
+            doaRepairInputForm.BringToFront();
+            doaRepairInputForm.Show();
+
+            allForm.Add(doaRepairInputForm);
+        }
+
+        private DoaRepairRecordExport doaRepairRecordExport;
+        private void dOA报表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (doaRepairRecordExport == null || doaRepairRecordExport.IsDisposed)
+            {
+                doaRepairRecordExport = new DoaRepairRecordExport();
+                doaRepairRecordExport.MdiParent = this;
+            }
+
+            doaRepairRecordExport.WindowState = FormWindowState.Maximized;
+            doaRepairRecordExport.BringToFront();
+            doaRepairRecordExport.Show();
+
+            allForm.Add(doaRepairRecordExport);
+        }
 
     }
 }

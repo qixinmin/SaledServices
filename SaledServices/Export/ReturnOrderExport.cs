@@ -244,7 +244,8 @@ namespace SaledServices.Export
             titleList.Add("TAT");
        
              titleList.Add("客户故障");    
-             titleList.Add("联想客服序号");    
+             titleList.Add("联想客服序号");
+             titleList.Add("还货人");
 
             foreach (ReturnOrderStruct stockcheck in StockCheckList)
             {
@@ -274,7 +275,9 @@ namespace SaledServices.Export
                 ct1.Add(stockcheck.tat);           
                 //ct1.Add(stockcheck.inputuser);     
                 ct1.Add(stockcheck.custom_fault);
-                ct1.Add(stockcheck.lenovo_custom_service_no);      
+                ct1.Add(stockcheck.lenovo_custom_service_no);
+
+                ct1.Add(stockcheck.inputuser);
                
                 ctest1.contentArray = ct1;
                 contentList.Add(ctest1);

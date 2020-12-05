@@ -209,10 +209,10 @@ namespace SaledServices
 
                     foreach (HefeiDataStruct temp1 in receiveOrdersource)
                     {
-                        if (temp1.tracker_no_receive.Trim() == temp.tracker_no_return.Trim()
-                            || temp1.tracker_no_receive.Trim() == temp.tracker_no_receive.Trim())
+                        if (temp1.tracker_no_receive.Trim() == temp.tracker_no_receive.Trim())
                         {
                             receiveOrdersource.Remove(temp1);
+                            Console.WriteLine(temp1.tracker_no_receive);
                             break;
                         }
                     }
@@ -253,7 +253,7 @@ namespace SaledServices
                         temp.TAT = overdays + "";
                     }
 
-                    cmd.CommandText = "select top 1 test_date from test1table where track_serial_no='" + temp.tracker_no_return + "' order by Id desc";
+                    cmd.CommandText = "select top 1 test_date from test1table where track_serial_no='" + temp.tracker_no_receive + "' order by Id desc";
                     querySdr = cmd.ExecuteReader();
                     temp.FINAL_TEST_DATE =null;
                     while (querySdr.Read())
@@ -265,7 +265,7 @@ namespace SaledServices
 
                     if(temp.FINAL_TEST_DATE == null)
                     {
-                        cmd.CommandText = "select top 1 test_date from testalltable where track_serial_no='" + temp.tracker_no_return + "' order by Id desc";
+                        cmd.CommandText = "select top 1 test_date from testalltable where track_serial_no='" + temp.tracker_no_receive + "' order by Id desc";
                         querySdr = cmd.ExecuteReader();
                         temp.FINAL_TEST_DATE =null;
                         while (querySdr.Read())
@@ -277,8 +277,8 @@ namespace SaledServices
                     }
 
                     //维修记录，首先查询BGA然后查询小材料       
-                  
-                    cmd.CommandText = "select BGA_place, bgatype,BGAPN from bga_repair_record_table where track_serial_no ='" + temp.tracker_no_return + "' and newSn !='' order by Id desc";
+
+                    cmd.CommandText = "select BGA_place, bgatype,BGAPN from bga_repair_record_table where track_serial_no ='" + temp.tracker_no_receive + "' and newSn !='' order by Id desc";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {
@@ -295,7 +295,7 @@ namespace SaledServices
                     }
                     querySdr.Close();
 
-                    cmd.CommandText = "select stock_place,material_mpn,_action,thisNumber from fru_smt_used_record where track_serial_no ='" + temp.tracker_no_return + "'";
+                    cmd.CommandText = "select stock_place,material_mpn,_action,thisNumber from fru_smt_used_record where track_serial_no ='" + temp.tracker_no_receive + "'";
                     querySdr = cmd.ExecuteReader();
                     while (querySdr.Read())
                     {

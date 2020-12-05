@@ -73,7 +73,7 @@
             // 
             // trackNoTxt
             // 
-            this.trackNoTxt.Location = new System.Drawing.Point(173, 7);
+            this.trackNoTxt.Location = new System.Drawing.Point(172, 7);
             this.trackNoTxt.Margin = new System.Windows.Forms.Padding(5);
             this.trackNoTxt.Name = "trackNoTxt";
             this.trackNoTxt.Size = new System.Drawing.Size(164, 30);
@@ -82,7 +82,7 @@
             // query
             // 
             this.query.Font = new System.Drawing.Font("SimSun", 15F);
-            this.query.Location = new System.Drawing.Point(487, 7);
+            this.query.Location = new System.Drawing.Point(484, 7);
             this.query.Margin = new System.Windows.Forms.Padding(5);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(159, 21);
@@ -97,7 +97,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.57557F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.42443F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 437F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 440F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.query, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.trackNoTxt, 1, 0);
@@ -126,7 +126,7 @@
             // 
             // textBox8S
             // 
-            this.textBox8S.Location = new System.Drawing.Point(173, 40);
+            this.textBox8S.Location = new System.Drawing.Point(172, 40);
             this.textBox8S.Margin = new System.Windows.Forms.Padding(5);
             this.textBox8S.Name = "textBox8S";
             this.textBox8S.Size = new System.Drawing.Size(164, 30);
@@ -135,7 +135,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("SimSun", 15F);
-            this.button1.Location = new System.Drawing.Point(487, 40);
+            this.button1.Location = new System.Drawing.Point(484, 40);
             this.button1.Margin = new System.Windows.Forms.Padding(5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(159, 32);

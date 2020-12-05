@@ -37,8 +37,8 @@
             this.testdatetextBox = new System.Windows.Forms.TextBox();
             this.confirmbutton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.repairedLabel = new System.Windows.Forms.Label();
             this.failDescribe = new System.Windows.Forms.RichTextBox();
+            this.repairedLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -146,15 +146,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // repairedLabel
-            // 
-            this.repairedLabel.AutoSize = true;
-            this.repairedLabel.Location = new System.Drawing.Point(66, 220);
-            this.repairedLabel.Name = "repairedLabel";
-            this.repairedLabel.Size = new System.Drawing.Size(53, 12);
-            this.repairedLabel.TabIndex = 3;
-            this.repairedLabel.Text = "不良现象";
-            // 
             // failDescribe
             // 
             this.failDescribe.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -164,6 +155,15 @@
             this.failDescribe.TabIndex = 4;
             this.failDescribe.Text = "";
             this.failDescribe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.failDescribe_KeyPress);
+            // 
+            // repairedLabel
+            // 
+            this.repairedLabel.AutoSize = true;
+            this.repairedLabel.Location = new System.Drawing.Point(66, 220);
+            this.repairedLabel.Name = "repairedLabel";
+            this.repairedLabel.Size = new System.Drawing.Size(53, 12);
+            this.repairedLabel.TabIndex = 3;
+            this.repairedLabel.Text = "不良现象";
             // 
             // Test2Form
             // 
